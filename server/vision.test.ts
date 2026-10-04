@@ -225,7 +225,7 @@ for (const { mode, malformed } of [
                   action:
                     actionAttempt === 1
                       ? { type: "click", x: 100, y: 70 }
-                      : { type: "finish" },
+                      : { type: "wait" },
                   verdict: actionAttempt === 1 ? "continue" : "pass",
                   finding:
                     actionAttempt === 2 && mode === "scenario"

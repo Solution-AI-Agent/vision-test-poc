@@ -380,7 +380,7 @@ export async function runVision(
               after: step.after,
             });
         }
-        if (plan.action.type === "finish") {
+        if (plan.action.type === "finish" || plan.verdict === "pass") {
           run.status = "completed";
           run.outcome =
             run.input.mode === "scenario" && plan.verdict === "pass"
