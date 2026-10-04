@@ -53,7 +53,7 @@ it("Midscene transports screenshots without hidden DOM and executes the validate
                 finish_reason: "stop",
                 message: {
                   role: "assistant",
-                  content: `<data-json>${JSON.stringify(plan)}</data-json>`,
+                  content: JSON.stringify(plan),
                 },
               },
             ],
@@ -80,6 +80,7 @@ it("Midscene transports screenshots without hidden DOM and executes the validate
     expect(run.calls).toBe(1);
     expect(run.transport[0].images).toBeGreaterThan(0);
     expect(run.tokens).toBe(42);
+    expect(run.transport[0].responseFormat?.normalizedPlainJson).toBe(true);
     await executeAction(page, returned.action);
     expect(await page.getByRole("button").textContent()).toBe("Clicked");
     await expect(

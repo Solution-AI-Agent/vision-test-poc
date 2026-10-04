@@ -17,7 +17,7 @@ const sourceVersion = {
     .update(readFileSync("server/domain.ts"))
     .update(readFileSync("server/runner.ts"))
     .digest("hex"),
-  promptVersion: "goal-first-v2-bounded-replan",
+  promptVersion: "goal-first-v3-protocol-and-replan",
 };
 import {
   planPrompt,
@@ -162,6 +162,24 @@ export function instrumentClient(client: any, run: Run, runtime: Runtime) {
           : "Model request failed",
       );
     }
+    const message = response.choices?.[0]?.message;
+    const content = message?.content;
+    if (typeof content === "string") {
+      record.responseFormat = {
+        finishReason: response.choices?.[0]?.finish_reason,
+        chars: content.length,
+        hasDataJson: content.includes("<data-json>"),
+        normalizedPlainJson: false,
+      };
+      if (!record.responseFormat.hasDataJson) {
+        const plain = content.trim().replace(/^```(?:json)?\s*|\s*```$/g, "");
+        try {
+          const structured = JSON.parse(plain);
+          message.content = `<data-json>${JSON.stringify(structured)}</data-json>`;
+          record.responseFormat.normalizedPlainJson = true;
+        } catch {}
+      }
+    }
     record.elapsedMs = Date.now() - started;
     record.responseModel = response.model;
     record.requestId = response.id;
@@ -292,16 +310,28 @@ export async function runVision(
         const before = await capture(`${index}-before`);
         await persist();
         const getPlan = async (feedback = "") => {
-          const output = await agent.aiQuery(
-            planPrompt(run.input, run.steps, goal) + feedback,
-            {
-              domIncluded: false,
-              screenshotIncluded: true,
-              abortSignal: runtime.controller.signal,
-            },
-          );
-          run.transport.at(-1)!.parsedOutput = output;
-          return planSchema.safeParse(output);
+          try {
+            const output = await agent.aiQuery(
+              planPrompt(run.input, run.steps, goal) + feedback,
+              {
+                domIncluded: false,
+                screenshotIncluded: true,
+                abortSignal: runtime.controller.signal,
+              },
+            );
+            run.transport.at(-1)!.parsedOutput = output;
+            return planSchema.safeParse(output);
+          } catch (error) {
+            if (
+              runtime.controller.signal.aborted ||
+              !run.transport.at(-1)?.requestId ||
+              run.calls >= settings.maxCalls
+            )
+              throw error;
+            run.transport.at(-1)!.validationError =
+              "Midscene response protocol";
+            return planSchema.safeParse(undefined);
+          }
         };
         let parsed = await getPlan();
         if (!parsed.success && schemaRetries < 1) {
@@ -316,7 +346,11 @@ export async function runVision(
             ` Previous structured output failed validation at: ${paths}. No action was executed for that output. Return a corrected object matching EXACTLY the requested schema. Previous output: ${JSON.stringify(run.transport.at(-1)?.parsedOutput)}`,
           );
         }
-        if (!parsed.success) throw parsed.error;
+        if (!parsed.success) {
+          if (run.transport.at(-1)?.responseFormat?.finishReason === "length")
+            throw new Error("MODEL_OUTPUT_TRUNCATED");
+          throw parsed.error;
+        }
         const plan = parsed.data;
         const step: Step = {
           index,
@@ -415,9 +449,11 @@ export async function runVision(
         : "사용자가 실행 중지"
       : apiStatus
         ? `모델 API 오류 (${apiStatus}) · ${apiStatus === "401" ? "인증 키" : apiStatus === "402" ? "계정 잔액" : apiStatus === "429" ? "공급자 요청 한도" : "모델·이미지 지원"}를 확인하세요`
-        : error?.name === "ZodError"
-          ? `모델 응답 형식 검증 실패 · ${error.issues?.map((issue: any) => issue.path.join(".")).join(", ") ?? "schema"}`
-          : "브라우저 또는 모델 실행 실패 · 환경과 설정을 확인하세요";
+        : error?.message === "MODEL_OUTPUT_TRUNCATED"
+          ? "모델 응답이 출력 토큰 한도에서 잘려 판단할 수 없습니다"
+          : error?.name === "ZodError"
+            ? `모델 응답 형식 검증 실패 · ${error.issues?.map((issue: any) => issue.path.join(".")).join(", ") ?? "schema"}`
+            : "브라우저 또는 모델 실행 실패 · 환경과 설정을 확인하세요";
     run.outcome = run.error;
   } finally {
     clearTimeout(timeout);
