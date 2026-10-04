@@ -56,7 +56,16 @@ UI validation outputs: `artifacts/ui-check/RESULT.json`, screenshots and raw Web
 
 ## Remaining verification
 
-The user supplied a temporary key and requested `qwen/qwen3-vl-30b-a3b-instruct`. A live registered search task reached actual YouTube results (5 requests / 4 actions / 39.531 seconds / provider-reported $0.00228389). Two initial autonomous runs hit the action limit while repeating clicks/waits; a goal-first run independently chose “cooking recipes” but failed action-schema validation. These failures are preserved. The revised planner has bounded schema correction and stagnation replanning; further live outcomes are recorded in `HANDOFF.md` and the project work log. A single completed goal does not establish broad autonomous defect discovery. Actual bugs on YouTube have no complete ground truth: do not report recall/miss rates, and do not treat zero findings as proof of no bugs. Candidate findings remain independent-review work. Windows execution and the edited explanatory video are not complete; raw UI/target recordings are available for video production.
+The user supplied a temporary key and requested `qwen/qwen3-vl-30b-a3b-instruct`. Final live runs used clean code commit `8fcac127a2e76abb5da45ecad8913367f9d33267`, prompt `goal-first-v3-protocol-and-replan`, and limits of 6 actions / 8 actual requests / 120 seconds / 2048 response tokens per request.
+
+| Final mode | Observed result | Requests / actions | Time | Reported cost |
+|---|---|---|---|---|
+| Registered search | Actual related YouTube results reached; 0 defect candidates | 5 / 4 | 28.991 s | $0.00236504 |
+| Autonomous | Screenshot-selected cooking search; failed to focus input, one replan did not recover; stopped inconclusive; 0 candidates | 6 / 4 | 43.431 s | $0.00283305 |
+
+The complete package suite at that code commit passed **2 files / 10 tests**, and TypeScript + Vite build passed. Final UI evidence was captured after font/theme stabilization. Earlier failed runs and the initial app false positive are preserved. All eight live attempts total 42 actual requests and provider-reported $0.0198094. The separate locator baseline reached results; different execution times, ads and operation units prevent a general speed comparison.
+
+**Autonomous defect discovery remains unproven.** The final autonomous run demonstrates goal selection and bounded failure handling, not successful task completion. YouTube has no complete defect ground truth: do not report recall/miss rates or treat zero findings as proof of no bugs. Windows execution and the edited explanatory video are not complete. `HANDOFF.md` identifies final run IDs, evidence and reproduction commands; raw UI/target recordings are available for video production.
 
 ## References
 
