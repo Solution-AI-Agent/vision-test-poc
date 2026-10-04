@@ -74,3 +74,9 @@ npx tsx scripts/live-capture.ts  # read-only stabilized UI capture
 ```
 
 `test:ui` and `lifecycle-check.ts` change/delete session settings: use a separate no-key session for those checks. The temporary key is not persisted, so restart requires re-entry. Do not reuse old cost/time numbers for a new run. Independent review, autonomous input/coordinate reliability and actual defect reproduction remain next-stage work; this handoff does not close the overall PoC acceptance.
+
+## Input focus and visual confirmation follow-up
+
+Independent review `WORK_LOGS/VISION_QA_FIXED_CODE_REVIEW_2026_10_04.md` found an empty input misdescribed as filled. New type plans require screenshot-selected x/y; focus click and insertText are each logged/counted. A separate image-only query reads the actual field value, with no prior observation/action history. Only exact text match with a changed screen is accepted as model visual confirmation; unchanged screens override even a false model success claim. Missing/uncertain confirmation prevents submission and ends inconclusive or uses the one available autonomous replan. Tool requests, tool completion and visual confirmation are separate in the report/UI.
+
+Local regressions reproduce silent loss from unfocused typing, demonstrate selected-coordinate focus, and inject a false confirmation after a no-op click; the unchanged-screen guard rejects that claim. Product vision inputs contain no DOM; DOM field values are test oracles only. A fresh live run will be recorded separately below; all prior reports/captures remain preserved.

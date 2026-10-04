@@ -1141,7 +1141,7 @@ export default function App() {
                                 </Badge>
                                 <span className="text-xs text-muted-foreground">
                                   {s.executed
-                                    ? "행동 실행됨"
+                                    ? "도구 호출 완료 · 결과 별도 확인"
                                     : s.plan.action.type === "finish"
                                       ? "종료 판단"
                                       : "미실행"}
@@ -1180,6 +1180,44 @@ export default function App() {
                                   />
                                 </a>
                               </div>
+                              {s.toolCalls && (
+                                <p className="text-xs text-muted-foreground mt-2">
+                                  요청:{" "}
+                                  {s.toolCalls
+                                    .map(
+                                      (tool) =>
+                                        `${tool.action.type} (${tool.completed ? "도구 완료" : "완료 미확인"})`,
+                                    )
+                                    .join(" → ")}
+                                </p>
+                              )}
+                              {s.inputConfirmation && (
+                                <div className="flex flex-col gap-2 mt-3">
+                                  <Badge variant="outline">
+                                    {s.inputConfirmation.status === "verified"
+                                      ? "입력 값 시각 확인 · 모델 판독"
+                                      : "입력 결과 미확인"}
+                                  </Badge>
+                                  <p className="text-sm">
+                                    모델 판독 값:{" "}
+                                    {JSON.stringify(
+                                      s.inputConfirmation.visibleText,
+                                    )}
+                                  </p>
+                                  <p className="text-xs text-muted-foreground">
+                                    {s.inputConfirmation.reason}
+                                  </p>
+                                  <a
+                                    href={s.inputConfirmation.screenshot}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="text-xs underline"
+                                  >
+                                    입력 확인의 실제 모델 요청 이미지 · 호출{" "}
+                                    {s.inputConfirmation.call}
+                                  </a>
+                                </div>
+                              )}
                               {s.error && (
                                 <p className="text-destructive text-sm">
                                   {s.error}

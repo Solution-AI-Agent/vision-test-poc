@@ -376,3 +376,149 @@ it("unchanged autonomous screens trigger one bounded replan then an explicit inc
   expect(run.calls).toBe(6);
   expect(run.steps.every((s) => s.unchanged)).toBe(true);
 }, 30000);
+
+for (const missingFocus of [false, true]) {
+  it(`focus and screenshot input confirmation ${missingFocus ? "reject silent input loss despite a false model claim" : "verify a typed value"} within tool/request limits`, async () => {
+    const { runVision } = await import("./runner");
+    const settings = {
+      ...defaults,
+      apiKey: "stub-key",
+      maxActions: 2,
+      maxCalls: 3,
+    };
+    const run = makeRun(
+      inputSchema.parse({
+        mode: "scenario",
+        url: "https://www.youtube.com/",
+        task: "Type sample in the visible field",
+        expected: "sample appears",
+      }),
+      settings,
+    );
+    let page: import("playwright").Page;
+    let attempt = 0;
+    let actualText = "";
+    const requests: string[] = [];
+    await runVision(
+      run,
+      settings,
+      { controller: new AbortController() },
+      async () => {},
+      {
+        launchBrowser: async () => {
+          const browser = await chromium.launch({ headless: true });
+          const original = browser.newContext.bind(browser);
+          browser.newContext = async (options) => {
+            const context = await original(options);
+            context.on("page", (p) => {
+              page = p;
+              if (missingFocus) page.mouse.click = async () => {}; // Reproduce silent focus failure, not a product fallback.
+              void page.route("**/*", (route) =>
+                route.fulfill({
+                  contentType: "text/html",
+                  body: '<body style="margin:0"><input style="position:absolute;left:100px;top:100px;width:300px;height:50px" placeholder="Visible field"><div style="display:none">INPUT_HIDDEN_SENTINEL</div></body>',
+                }),
+              );
+            });
+            return context;
+          };
+          return browser;
+        },
+        createClient: () => ({
+          chat: {
+            completions: {
+              create: async (body: any) => {
+                const demand = JSON.stringify(body.messages);
+                requests.push(demand);
+                expect(demand).not.toContain("INPUT_HIDDEN_SENTINEL");
+                attempt++;
+                if (attempt === 2)
+                  actualText = await page.locator("input").inputValue(); // Test oracle only; never sent as model input.
+                const output =
+                  attempt === 2
+                    ? {
+                        status: "verified",
+                        visibleText: "sample",
+                        reason:
+                          "Stub intentionally claims success even if focus was lost",
+                      }
+                    : {
+                        observation:
+                          attempt === 1
+                            ? "Visible empty field"
+                            : "sample visible",
+                        rationale: "Fixture",
+                        action:
+                          attempt === 1
+                            ? { type: "type", text: "sample", x: 200, y: 125 }
+                            : { type: "finish" },
+                        verdict: attempt === 1 ? "continue" : "pass",
+                        finding: null,
+                      };
+                return {
+                  id: `input-stub-${attempt}`,
+                  model: "stub-vlm",
+                  choices: [
+                    {
+                      index: 0,
+                      finish_reason: "stop",
+                      message: {
+                        role: "assistant",
+                        content: `<data-json>${JSON.stringify(output)}</data-json>`,
+                      },
+                    },
+                  ],
+                  usage: { total_tokens: 42 },
+                };
+              },
+            },
+          },
+        }),
+      },
+    );
+    expect(run.actions).toBe(2); // Focus click and insertText each counted, never one compound action.
+    expect(
+      run.steps[0].toolCalls?.map((t) => [t.action.type, t.completed]),
+    ).toEqual([
+      ["click", true],
+      ["type", true],
+    ]);
+    expect(requests[1]).toContain("independent visual input check");
+    expect(requests[1]).not.toContain("History:");
+    expect(run.steps[0].inputConfirmation?.screenshot).toBe(
+      run.transport[1].screenshot,
+    );
+    expect(run.steps[0].inputConfirmation?.call).toBe(2);
+    if (missingFocus) {
+      expect(actualText).toBe("");
+      expect(run.steps[0].unchanged).toBe(true);
+      expect(run.steps[0].inputConfirmation?.status).toBe("not-visible");
+      expect(run.status).toBe("limited");
+      expect(run.outcome).toContain("입력 결과");
+      expect(run.calls).toBe(2);
+      expect(run.steps).toHaveLength(1); // Never accept a subsequent pass or submit on silent loss.
+    } else {
+      expect(actualText).toBe("sample");
+      expect(run.steps[0].inputConfirmation?.status).toBe("verified");
+      expect(run.status).toBe("completed");
+      expect(run.calls).toBe(3);
+    }
+    expect(run.findings).toHaveLength(0);
+  }, 30000);
+}
+
+it("typing without focus silently drops text in a real browser; a screenshot-selected focus fixes it", async () => {
+  const browser = await chromium.launch({ headless: true });
+  try {
+    const page = await browser.newPage();
+    await page.setContent(
+      '<input style="position:absolute;left:100px;top:100px;width:300px;height:50px">',
+    );
+    await page.keyboard.insertText("sample");
+    expect(await page.locator("input").inputValue()).toBe("");
+    await executeAction(page, { type: "type", text: "sample", x: 200, y: 125 });
+    expect(await page.locator("input").inputValue()).toBe("sample");
+  } finally {
+    await browser.close();
+  }
+}, 30000);

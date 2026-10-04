@@ -1,12 +1,13 @@
 import { chromium } from "playwright";
 import { mkdir } from "node:fs/promises";
 const origin = "http://127.0.0.1:4310";
-await mkdir("artifacts/live-capture", { recursive: true });
+const captureDir = process.argv[2] ?? "artifacts/live-capture";
+await mkdir(captureDir, { recursive: true });
 const browser = await chromium.launch({ headless: true });
 const context = await browser.newContext({
   viewport: { width: 1440, height: 1100 },
   recordVideo: {
-    dir: "artifacts/live-capture",
+    dir: captureDir,
     size: { width: 1440, height: 1100 },
   },
 });
@@ -15,7 +16,7 @@ async function capture(name: string) {
   await page.evaluate(() => document.fonts.ready);
   await page.waitForTimeout(500);
   await page.screenshot({
-    path: `artifacts/live-capture/${name}.png`,
+    path: `${captureDir}/${name}.png`,
     fullPage: true,
   });
 }

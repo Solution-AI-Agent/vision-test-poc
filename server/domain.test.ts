@@ -6,6 +6,7 @@ import {
   settingsSchema,
   defaults,
   planPrompt,
+  actionSchema,
 } from "./domain";
 describe("execution boundaries", () => {
   it("accepts public YouTube HTTPS only", () => {
@@ -31,6 +32,12 @@ describe("execution boundaries", () => {
     };
     expect(() =>
       planSchema.parse({ ...base, action: { type: "click", x: 1280, y: 5 } }),
+    ).toThrow();
+    expect(() =>
+      actionSchema.parse({ type: "type", text: "sample" }),
+    ).toThrow();
+    expect(() =>
+      actionSchema.parse({ type: "type", text: "sample", x: 1280, y: 10 }),
     ).toThrow();
     expect(() =>
       planSchema.parse({ ...base, action: { type: "eval", code: "evil" } }),

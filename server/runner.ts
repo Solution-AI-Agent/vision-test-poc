@@ -17,12 +17,14 @@ const sourceVersion = {
     .update(readFileSync("server/domain.ts"))
     .update(readFileSync("server/runner.ts"))
     .digest("hex"),
-  promptVersion: "goal-first-v3-protocol-and-replan",
+  promptVersion: "goal-first-v4-focus-and-visual-input",
 };
 import {
   planPrompt,
   goalPrompt,
   goalSchema,
+  inputConfirmationSchema,
+  inputConfirmationPrompt,
   type Goal,
   planSchema,
   validateTarget,
@@ -38,7 +40,18 @@ export type Runtime = {
   browser?: Browser;
   stopReason?: "stopped" | "limited";
 };
-export async function executeAction(page: Page, action: Action) {
+export async function executeAction(
+  page: Page,
+  action: Action,
+  onTool?: (action: Action, completed: boolean) => void,
+) {
+  if (action.type === "type")
+    await executeAction(
+      page,
+      { type: "click", x: action.x, y: action.y },
+      onTool,
+    );
+  onTool?.(action, false);
   switch (action.type) {
     case "click":
       await page.mouse.click(action.x, action.y);
@@ -58,6 +71,7 @@ export async function executeAction(page: Page, action: Action) {
     case "finish":
       break;
   }
+  onTool?.(action, true);
 }
 export function makeRun(input: Input, settings: Settings): Run {
   const { apiKey: _key, ...safe } = settings;
@@ -286,7 +300,7 @@ export async function runVision(
         const query =
           goalPrompt() +
           (replan
-            ? ` Prior chosen goal: ${JSON.stringify(goal)}. The last ${unchangedCount} actions produced identical before/after screenshots. Choose a different read-only test or a genuinely different method; do not repeat the same ineffective action. History: ${JSON.stringify(run.steps.map((s) => ({ action: s.plan.action, observation: s.plan.observation, unchanged: s.unchanged })))}`
+            ? ` Prior chosen goal: ${JSON.stringify(goal)}. The last ${unchangedCount} actions produced identical before/after screenshots. Prior model observations are unverified. An inputConfirmation other than verified means input success was NOT established; do not assume text exists. Choose a different read-only test or a genuinely different method; do not repeat the same ineffective action. History: ${JSON.stringify(run.steps.map((s) => ({ action: s.plan.action, observation: s.plan.observation, unchanged: s.unchanged, inputConfirmation: s.inputConfirmation })))}`
             : "");
         const selected = goalSchema.parse(
           await agent.aiQuery(query, {
@@ -390,15 +404,32 @@ export async function runVision(
                 : "탐색 종료 · 결과 검토 필요";
           break;
         }
-        if (run.actions >= settings.maxActions) {
+        const neededActions = plan.action.type === "type" ? 2 : 1;
+        if (run.actions + neededActions > settings.maxActions) {
           run.status = "limited";
-          run.outcome = "행동 한도 도달";
+          run.outcome = "행동 한도 도달 · 포커스와 입력도 각각 포함";
+          break;
+        }
+        if (plan.action.type === "type" && run.calls >= settings.maxCalls) {
+          run.status = "limited";
+          run.outcome = "입력 결과 확인에 필요한 모델 호출 한도 부족 · 미실행";
           break;
         }
         run.stage = "Playwright 좌표 행동 실행";
         try {
-          await executeAction(page, plan.action);
-          run.actions++;
+          step.toolCalls = [];
+          await executeAction(page, plan.action, (action, completed) => {
+            if (!completed) {
+              run.actions++;
+              step.toolCalls!.push({
+                action,
+                completed,
+                at: new Date().toISOString(),
+              });
+            } else {
+              step.toolCalls!.at(-1)!.completed = true;
+            }
+          });
           step.executed = true;
           await page.waitForTimeout(700);
           step.after = await capture(`${index}-after`);
@@ -408,15 +439,61 @@ export async function runVision(
             await readFile(imageFile(step.after)),
           );
           unchangedCount = step.unchanged ? unchangedCount + 1 : 0;
+          if (plan.action.type === "type") {
+            run.stage = "도구 완료 · 입력 결과를 새 화면에서 확인";
+            await persist();
+            const confirmation = inputConfirmationSchema.safeParse(
+              await agent.aiQuery(inputConfirmationPrompt(plan.action), {
+                domIncluded: false,
+                screenshotIncluded: true,
+                abortSignal: runtime.controller.signal,
+              }),
+            );
+            const observation = confirmation.success
+              ? confirmation.data
+              : {
+                  status: "uncertain" as const,
+                  visibleText: "",
+                  reason: "입력 확인 응답 형식이 유효하지 않음",
+                };
+            step.inputConfirmation = {
+              ...observation,
+              status: step.unchanged
+                ? "not-visible"
+                : observation.status === "verified" &&
+                    observation.visibleText === plan.action.text
+                  ? "verified"
+                  : observation.status === "uncertain"
+                    ? "uncertain"
+                    : "not-visible",
+              reason: step.unchanged
+                ? "입력 전후 화면이 동일함 · 도구 완료는 입력 성공 증거가 아님"
+                : observation.reason,
+              screenshot: run.transport.at(-1)!.screenshot!,
+              call: run.calls,
+            };
+            run.transport.at(-1)!.parsedOutput = observation;
+          }
           for (const finding of run.findings.filter((f) => f.step === index))
             finding.after = step.after;
         } catch {
-          step.error = "행동 실행 실패 · 제품 결함 아님";
-          throw new Error(step.error);
+          step.error = step.executed
+            ? "도구는 완료했으나 입력 결과 시각 확인 실패 · 제품 결함 아님"
+            : "행동 실행 실패 · 제품 결함 아님";
+          throw new Error(
+            step.executed ? "INPUT_CONFIRMATION_FAILED" : step.error,
+          );
         }
         await persist();
-        if (run.input.mode === "autonomous" && unchangedCount >= 2) {
+        const inputFailed =
+          step.inputConfirmation &&
+          step.inputConfirmation.status !== "verified";
+        if (
+          inputFailed ||
+          (run.input.mode === "autonomous" && unchangedCount >= 2)
+        ) {
           if (
+            run.input.mode === "autonomous" &&
             replans === 0 &&
             run.actions < settings.maxActions &&
             run.calls < settings.maxCalls
@@ -426,7 +503,9 @@ export async function runVision(
             unchangedCount = 0;
           } else {
             run.status = "limited";
-            run.outcome = "재계획 후에도 화면 진전 없음 · 판단 불가";
+            run.outcome = inputFailed
+              ? "입력 결과를 화면에서 확인하지 못함 · 판단 불가"
+              : "재계획 후에도 화면 진전 없음 · 판단 불가";
             break;
           }
         }
@@ -451,9 +530,11 @@ export async function runVision(
         ? `모델 API 오류 (${apiStatus}) · ${apiStatus === "401" ? "인증 키" : apiStatus === "402" ? "계정 잔액" : apiStatus === "429" ? "공급자 요청 한도" : "모델·이미지 지원"}를 확인하세요`
         : error?.message === "MODEL_OUTPUT_TRUNCATED"
           ? "모델 응답이 출력 토큰 한도에서 잘려 판단할 수 없습니다"
-          : error?.name === "ZodError"
-            ? `모델 응답 형식 검증 실패 · ${error.issues?.map((issue: any) => issue.path.join(".")).join(", ") ?? "schema"}`
-            : "브라우저 또는 모델 실행 실패 · 환경과 설정을 확인하세요";
+          : error?.message === "INPUT_CONFIRMATION_FAILED"
+            ? "도구 완료 후 입력 결과 시각 확인 실패 · 판단 불가"
+            : error?.name === "ZodError"
+              ? `모델 응답 형식 검증 실패 · ${error.issues?.map((issue: any) => issue.path.join(".")).join(", ") ?? "schema"}`
+              : "브라우저 또는 모델 실행 실패 · 환경과 설정을 확인하세요";
     run.outcome = run.error;
   } finally {
     clearTimeout(timeout);
