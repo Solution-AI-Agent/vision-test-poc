@@ -184,6 +184,11 @@ app.post("/api/runs", async (req, res, next) => {
   try {
     if (runtimes.size) throw new Error("한 번에 하나의 실행만 지원합니다");
     const input = inputSchema.parse(req.body);
+    if (input.mode === "autonomous") {
+      input.task = "";
+      input.expected = "";
+      input.query = "";
+    }
     validateTarget(input.url);
     if (input.mode !== "baseline" && !settings.apiKey)
       throw new Error("Vision 실행에는 OpenRouter API 키가 필요합니다");

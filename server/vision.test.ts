@@ -116,8 +116,12 @@ it("provider error bodies are sanitized before SDK or Midscene logging", async (
   }
 });
 
-for (const mode of ["scenario", "autonomous"] as const) {
-  it(`${mode} runner preserves request-image/plan/action linkage and a fresh finish image (local fixture, stub VLM)`, async () => {
+for (const { mode, malformed } of [
+  { mode: "scenario", malformed: false },
+  { mode: "autonomous", malformed: false },
+  { mode: "scenario", malformed: true },
+] as const) {
+  it(`${mode}${malformed ? " with schema correction" : ""} runner preserves request-image/plan/action linkage and a fresh finish image (local fixture, stub VLM)`, async () => {
     const { runVision, artifactsDir } = await import("./runner");
     const { readFile, stat, writeFile } = await import("node:fs/promises");
     const path = await import("node:path");
@@ -168,11 +172,46 @@ for (const mode of ["scenario", "autonomous"] as const) {
                   "HIDDEN_DOM_RUNNER_SENTINEL",
                 );
                 attempt++;
-                if (attempt === 2)
+                if (malformed && attempt === 1)
+                  return {
+                    id: "stub-invalid",
+                    model: "stub-vlm",
+                    choices: [
+                      {
+                        index: 0,
+                        finish_reason: "stop",
+                        message: {
+                          role: "assistant",
+                          content:
+                            '<data-json>{"action":{"type":"press","key":"Enter"}}</data-json>',
+                        },
+                      },
+                    ],
+                    usage: { total_tokens: 42 },
+                  };
+                if (mode === "autonomous" && attempt === 1)
+                  return {
+                    id: "stub-goal",
+                    model: "stub-vlm",
+                    choices: [
+                      {
+                        index: 0,
+                        finish_reason: "stop",
+                        message: {
+                          role: "assistant",
+                          content: `<data-json>${JSON.stringify({ hypothesis: "Visible button responds to input", task: "Click the visible button", expected: "Button says Clicked", basis: "A visible interactive button" })}</data-json>`,
+                        },
+                      },
+                    ],
+                    usage: { total_tokens: 42 },
+                  };
+                const actionAttempt =
+                  attempt - (mode === "autonomous" || malformed ? 1 : 0);
+                if (actionAttempt === 2)
                   clicked =
                     (await fixturePage.getByRole("button").textContent()) ===
                     "Clicked";
-                if (attempt === 1)
+                if (actionAttempt === 1)
                   sentImage = body.messages
                     .flatMap((m: any) =>
                       Array.isArray(m.content) ? m.content : [],
@@ -180,19 +219,23 @@ for (const mode of ["scenario", "autonomous"] as const) {
                     .find((b: any) => b.type === "image_url").image_url.url;
                 const plan = {
                   observation:
-                    attempt === 1 ? "A visible button" : "Clicked button",
+                    actionAttempt === 1 ? "A visible button" : "Clicked button",
                   rationale: "Local stub fixture test",
                   action:
-                    attempt === 1
+                    actionAttempt === 1
                       ? { type: "click", x: 100, y: 70 }
                       : { type: "finish" },
-                  verdict:
-                    attempt === 1
-                      ? "continue"
-                      : mode === "scenario"
-                        ? "pass"
-                        : "inconclusive",
-                  finding: null,
+                  verdict: actionAttempt === 1 ? "continue" : "pass",
+                  finding:
+                    actionAttempt === 2 && mode === "scenario"
+                      ? {
+                          title: "Normal expected outcome",
+                          observed: "Clicked button",
+                          expected: "Clicked button",
+                          basis: "Task met",
+                          reproduction: ["Click button"],
+                        }
+                      : null,
                 };
                 return {
                   id: `stub-${attempt}`,
@@ -217,10 +260,17 @@ for (const mode of ["scenario", "autonomous"] as const) {
     );
     expect(run.status).toBe("completed");
     expect(run.actions).toBe(1);
-    expect(run.calls).toBe(2);
+    const offset = mode === "autonomous" || malformed ? 1 : 0;
+    if (malformed) expect(run.transport[0].validationError).toContain("action");
+    expect(run.calls).toBe(2 + offset);
+    if (mode === "autonomous") {
+      expect(run.goals?.[0].screenshot).toBe(run.transport[0].screenshot);
+      expect(run.goals?.[0].task).toBe("Click the visible button");
+    }
+    expect(run.findings).toHaveLength(0);
     expect(clicked).toBe(true);
-    expect(run.steps[0].before).toBe(run.transport[0].screenshot);
-    expect(run.steps[1].before).toBe(run.transport[1].screenshot);
+    expect(run.steps[0].before).toBe(run.transport[offset].screenshot);
+    expect(run.steps[1].before).toBe(run.transport[1 + offset].screenshot);
     expect(run.steps[1].after).toContain("1-decision.png");
     expect(run.steps[1].executed).toBe(false);
     const file = (url: string) =>
@@ -240,3 +290,88 @@ for (const mode of ["scenario", "autonomous"] as const) {
     );
   }, 30000);
 }
+
+it("unchanged autonomous screens trigger one bounded replan then an explicit inconclusive stop", async () => {
+  const { runVision } = await import("./runner");
+  const run = makeRun(
+    inputSchema.parse({ mode: "autonomous", url: "https://www.youtube.com/" }),
+    { ...defaults, apiKey: "stub-key" },
+  );
+  const runtime = { controller: new AbortController() };
+  let requestedGoals = 0,
+    outgoingCalls = 0;
+  await runVision(
+    run,
+    { ...defaults, apiKey: "stub-key" },
+    runtime,
+    async () => {},
+    {
+      launchBrowser: async () => {
+        const browser = await chromium.launch({ headless: true });
+        const original = browser.newContext.bind(browser);
+        browser.newContext = async (options) => {
+          const context = await original(options);
+          context.on("page", (page) => {
+            void page.route("**/*", (route) =>
+              route.fulfill({
+                contentType: "text/html",
+                body: '<body style="margin:0">Static fixture</body>',
+              }),
+            );
+          });
+          return context;
+        };
+        return browser;
+      },
+      createClient: () => ({
+        chat: {
+          completions: {
+            create: async (body: any) => {
+              outgoingCalls++;
+              const demand = JSON.stringify(body.messages);
+              const selecting = demand.includes(
+                "Choose ONE concrete visual QA hypothesis",
+              );
+              const output = selecting
+                ? {
+                    hypothesis: `Goal ${++requestedGoals}`,
+                    task: "Observe this read-only fixture",
+                    expected: "Visible page content",
+                    basis: "Screen evidence",
+                  }
+                : {
+                    observation: "Static fixture",
+                    rationale: "Stub deliberately simulates a stuck planner",
+                    action: { type: "wait" },
+                    verdict: "continue",
+                    finding: null,
+                  };
+              return {
+                id: `stub-${outgoingCalls}`,
+                model: "stub-vlm",
+                choices: [
+                  {
+                    index: 0,
+                    finish_reason: "stop",
+                    message: {
+                      role: "assistant",
+                      content: `<data-json>${JSON.stringify(output)}</data-json>`,
+                    },
+                  },
+                ],
+                usage: { total_tokens: 42 },
+              };
+            },
+          },
+        },
+      }),
+    },
+  );
+  expect(requestedGoals).toBe(2);
+  expect(run.goals).toHaveLength(2);
+  expect(run.status).toBe("limited");
+  expect(run.outcome).toContain("판단 불가");
+  expect(run.actions).toBe(4);
+  expect(run.calls).toBe(6);
+  expect(run.steps.every((s) => s.unchanged)).toBe(true);
+}, 30000);

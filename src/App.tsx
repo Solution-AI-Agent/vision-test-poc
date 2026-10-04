@@ -231,8 +231,8 @@ export default function App() {
       const run = await api<Run>("/runs", "POST", {
         mode,
         url: draft.url,
-        task: draft.task,
-        expected: draft.expected,
+        task: mode === "scenario" ? draft.task : "",
+        expected: mode === "scenario" ? draft.expected : "",
         query: "Midscene AI demo",
       });
       setSelected(run.id);
@@ -1091,6 +1091,34 @@ export default function App() {
                         </Card>
                       ))
                     )}
+                    {current.goals?.map((goal, i) => (
+                      <Card key={i}>
+                        <CardHeader>
+                          <CardTitle>자율 선택 테스트 가설</CardTitle>
+                          <CardDescription>{goal.hypothesis}</CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                          <div className="flex flex-col gap-3">
+                            <p className="text-sm">업무: {goal.task}</p>
+                            <p className="text-sm text-muted-foreground">
+                              기대: {goal.expected}
+                              <br />
+                              화면 근거: {goal.basis}
+                            </p>
+                            <img
+                              className="screen-preview"
+                              src={goal.screenshot}
+                              alt="자율 테스트 가설을 선택한 실제 모델 입력 화면"
+                            />
+                          </div>
+                        </CardContent>
+                        <CardFooter>
+                          <Badge variant="outline">
+                            사용자 업무 입력 없이 화면에서 선택
+                          </Badge>
+                        </CardFooter>
+                      </Card>
+                    ))}
                     <Card>
                       <CardHeader>
                         <CardTitle>화면 → 계획 → 행동</CardTitle>

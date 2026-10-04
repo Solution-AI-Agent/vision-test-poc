@@ -40,10 +40,18 @@ POC-LEAD review: `WORK_LOGS/VISION_QA_CHECKPOINT_ONE_REVIEW_2026_10_04.md` / Buz
 
 ## Not verified / remaining work
 
-- **No live OpenRouter calls:** no real key or paid-call budget was supplied. Authentication, actual model image compatibility, YouTube registered/autonomous runs and defect judgment/independent reproduction remain pending. Enter settings through the running local app; do not post API keys to the channel.
+- **Live OpenRouter calls were authorized by the user after the first checkpoint.** Model: `qwen/qwen3-vl-30b-a3b-instruct`. Registered YouTube search reached results in 5 requests / 4 actions / 39.531 seconds, reported cost $0.00228389. Initial autonomous runs repeated actions and hit their limits; a first goal-first run selected its own cooking query but failed action-schema validation. Further revised-planner live results are appended below. Broader autonomous discovery and confirmed defect reproduction remain unproven.
 - No financial budget enforcement: limits are time, actions, request count and response tokens. Displayed cost is only provider-reported data, not the billing ledger.
 - No Windows execution driver or native test result. The UI says planned/unverified.
 - No edited explanatory video yet. Real UI and YouTube baseline recordings are ready; record Vision runs after model setup, then combine only verified results.
 - No claims of overall feasibility acceptance, defect recall or absence of YouTube bugs.
 
 Run from this worktree with `npm run dev`, then open http://127.0.0.1:4310. `README.md` contains clean-install and reproduction commands.
+
+## Revised planner after live findings
+
+- Only verdict=candidate responses create defect candidates. Pass responses with a normal finding payload are retained in the step log and never promoted; regression-covered. The original normal-success candidate was independently classified as an app false positive, not a YouTube bug.
+- Autonomous mode selects a screenshot-grounded hypothesis, concrete task, representative input and observable expected result before action planning. It does not receive the user scenario/task/query. Goal images and basis are reviewable in the evidence UI.
+- One malformed-plan correction request is allowed per run. Repeated byte-identical before/after screens trigger one goal replan; continued stagnation stops as inconclusive, with all requests inside the existing cap. Exact-byte matching may miss stagnation on dynamic ads/video; hard limits still apply.
+- Each new run records the startup source commit, working-tree dirty flag, combined runner/domain SHA-256 and prompt version. Prior runs predate this ledger; do not invent exact hashes for their intermediate working-tree states.
+- Structured parsed model outputs are retained for format failures, without exposing API keys or hidden reasoning.

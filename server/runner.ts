@@ -1,11 +1,29 @@
 import { chromium, type Browser, type Page } from "playwright";
 import { PlaywrightAgent } from "@midscene/web/playwright";
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, writeFile, readFile } from "node:fs/promises";
 import path from "node:path";
-import { randomUUID } from "node:crypto";
+import { randomUUID, createHash } from "node:crypto";
 import OpenAI from "openai";
+import { execFileSync } from "node:child_process";
+import { readFileSync } from "node:fs";
+const sourceVersion = {
+  commit: execFileSync("git", ["rev-parse", "HEAD"], {
+    encoding: "utf8",
+  }).trim(),
+  dirty: !!execFileSync("git", ["status", "--porcelain"], {
+    encoding: "utf8",
+  }).trim(),
+  sourceHash: createHash("sha256")
+    .update(readFileSync("server/domain.ts"))
+    .update(readFileSync("server/runner.ts"))
+    .digest("hex"),
+  promptVersion: "goal-first-v2-bounded-replan",
+};
 import {
   planPrompt,
+  goalPrompt,
+  goalSchema,
+  type Goal,
   planSchema,
   validateTarget,
   type Run,
@@ -62,6 +80,7 @@ export function makeRun(input: Input, settings: Settings): Run {
         ? "Playwright locator / 1.63.0"
         : "Midscene aiQuery / 1.14.0 → Playwright coordinates / 1.63.0",
     transport: [],
+    sourceVersion,
   };
 }
 export function providerClient(settings: Settings) {
@@ -236,18 +255,69 @@ export async function runVision(
             runtime,
           ),
       });
-      for (let index = 0; index <= settings.maxActions; index++) {
-        if (runtime.controller.signal.aborted) throw new Error("실행 중지됨");
-        run.stage = "화면 관찰 · 다음 QA 계획";
-        const before = await capture(`${index}-before`);
+      let goal: Goal | undefined;
+      let replans = 0,
+        unchangedCount = 0,
+        schemaRetries = 0;
+      const selectGoal = async (replan = false) => {
+        run.stage = replan
+          ? "무진전 · 다른 테스트 가설 재계획"
+          : "화면에서 테스트 가설 선택";
+        await capture(`goal-${run.goals?.length ?? 0}-before`);
         await persist();
-        const plan = planSchema.parse(
-          await agent.aiQuery(planPrompt(run.input, run.steps), {
+        const query =
+          goalPrompt() +
+          (replan
+            ? ` Prior chosen goal: ${JSON.stringify(goal)}. The last ${unchangedCount} actions produced identical before/after screenshots. Choose a different read-only test or a genuinely different method; do not repeat the same ineffective action. History: ${JSON.stringify(run.steps.map((s) => ({ action: s.plan.action, observation: s.plan.observation, unchanged: s.unchanged })))}`
+            : "");
+        const selected = goalSchema.parse(
+          await agent.aiQuery(query, {
             domIncluded: false,
             screenshotIncluded: true,
             abortSignal: runtime.controller.signal,
           }),
         );
+        goal = {
+          ...selected,
+          screenshot: run.transport.at(-1)?.screenshot ?? run.screenshot!,
+          at: new Date().toISOString(),
+        };
+        (run.goals ??= []).push(goal);
+        await persist();
+      };
+      if (run.input.mode === "autonomous") await selectGoal();
+      for (let index = 0; index <= settings.maxActions; index++) {
+        if (runtime.controller.signal.aborted) throw new Error("실행 중지됨");
+        run.stage = "화면 관찰 · 다음 QA 계획";
+        const before = await capture(`${index}-before`);
+        await persist();
+        const getPlan = async (feedback = "") => {
+          const output = await agent.aiQuery(
+            planPrompt(run.input, run.steps, goal) + feedback,
+            {
+              domIncluded: false,
+              screenshotIncluded: true,
+              abortSignal: runtime.controller.signal,
+            },
+          );
+          run.transport.at(-1)!.parsedOutput = output;
+          return planSchema.safeParse(output);
+        };
+        let parsed = await getPlan();
+        if (!parsed.success && schemaRetries < 1) {
+          schemaRetries++;
+          const paths = parsed.error.issues
+            .map((issue) => issue.path.join("."))
+            .join(", ");
+          run.transport.at(-1)!.validationError = paths;
+          run.stage = "모델 응답 형식 교정 · 행동 미실행";
+          await persist();
+          parsed = await getPlan(
+            ` Previous structured output failed validation at: ${paths}. No action was executed for that output. Return a corrected object matching EXACTLY the requested schema. Previous output: ${JSON.stringify(run.transport.at(-1)?.parsedOutput)}`,
+          );
+        }
+        if (!parsed.success) throw parsed.error;
+        const plan = parsed.data;
         const step: Step = {
           index,
           at: new Date().toISOString(),
@@ -259,7 +329,7 @@ export async function runVision(
         run.steps.push(step);
         // A fresh decision-time screen must follow the actual model-input image, including finish/limit decisions.
         step.after = await capture(`${index}-decision`);
-        if (plan.finding) {
+        if (plan.verdict === "candidate" && plan.finding) {
           const duplicate = run.findings.some(
             (f) =>
               f.title.trim().toLowerCase() ===
@@ -281,7 +351,9 @@ export async function runVision(
           run.outcome =
             run.input.mode === "scenario" && plan.verdict === "pass"
               ? "기대 결과 관찰됨 · 독립 검토 필요"
-              : "탐색 종료 · 결과 검토 필요";
+              : run.input.mode === "autonomous" && plan.verdict === "pass"
+                ? "자율 선택 업무의 기대 결과 관찰됨 · 결함 검토 별도"
+                : "탐색 종료 · 결과 검토 필요";
           break;
         }
         if (run.actions >= settings.maxActions) {
@@ -296,6 +368,12 @@ export async function runVision(
           step.executed = true;
           await page.waitForTimeout(700);
           step.after = await capture(`${index}-after`);
+          const imageFile = (url: string) =>
+            path.join(artifactsDir, url.replace("/artifacts/", ""));
+          step.unchanged = (await readFile(imageFile(before))).equals(
+            await readFile(imageFile(step.after)),
+          );
+          unchangedCount = step.unchanged ? unchangedCount + 1 : 0;
           for (const finding of run.findings.filter((f) => f.step === index))
             finding.after = step.after;
         } catch {
@@ -303,6 +381,21 @@ export async function runVision(
           throw new Error(step.error);
         }
         await persist();
+        if (run.input.mode === "autonomous" && unchangedCount >= 2) {
+          if (
+            replans === 0 &&
+            run.actions < settings.maxActions &&
+            run.calls < settings.maxCalls
+          ) {
+            replans++;
+            await selectGoal(true);
+            unchangedCount = 0;
+          } else {
+            run.status = "limited";
+            run.outcome = "재계획 후에도 화면 진전 없음 · 판단 불가";
+            break;
+          }
+        }
       }
     }
     const video = page.video();
@@ -323,7 +416,7 @@ export async function runVision(
       : apiStatus
         ? `모델 API 오류 (${apiStatus}) · ${apiStatus === "401" ? "인증 키" : apiStatus === "402" ? "계정 잔액" : apiStatus === "429" ? "공급자 요청 한도" : "모델·이미지 지원"}를 확인하세요`
         : error?.name === "ZodError"
-          ? "모델 응답 형식 검증 실패"
+          ? `모델 응답 형식 검증 실패 · ${error.issues?.map((issue: any) => issue.path.join(".")).join(", ") ?? "schema"}`
           : "브라우저 또는 모델 실행 실패 · 환경과 설정을 확인하세요";
     run.outcome = run.error;
   } finally {
