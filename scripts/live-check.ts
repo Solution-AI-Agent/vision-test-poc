@@ -26,7 +26,7 @@ while (true) {
   await new Promise((resolve) => setTimeout(resolve, 1500));
   const runs = await (await fetch(`${origin}/api/runs`)).json();
   const run = runs.find((r: any) => r.id === start.id);
-  if (run.status !== "running") {
+  if (run.status !== "running" && run.endedAt) {
     await mkdir("artifacts/live-check", { recursive: true });
     await writeFile(
       `artifacts/live-check/${mode.toUpperCase()}_${run.id}_RESULT.json`,
