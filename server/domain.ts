@@ -187,6 +187,15 @@ export type Run = {
 };
 export function validateTarget(raw: string) {
   const url = new URL(raw);
+  if (
+    url.origin === "http://127.0.0.1:4310" &&
+    url.pathname === "/fixture/order" &&
+    !url.search &&
+    !url.hash &&
+    !url.username &&
+    !url.password
+  )
+    return url.href;
   // Public, read-only YouTube scope keeps credentials, private networks and arbitrary sites outside this PoC.
   if (
     url.protocol !== "https:" ||

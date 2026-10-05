@@ -23,6 +23,19 @@ describe("execution boundaries", () => {
     ])
       expect(() => validateTarget(url)).toThrow();
   });
+  it("allows only the exact local fixture origin/path", () => {
+    expect(validateTarget("http://127.0.0.1:4310/fixture/order")).toBe(
+      "http://127.0.0.1:4310/fixture/order",
+    );
+    for (const url of [
+      "http://localhost:4310/fixture/order",
+      "http://127.0.0.1:4311/fixture/order",
+      "http://127.0.0.1:4310/fixture/operator",
+      "http://127.0.0.1:4310/api/settings",
+      "http://127.0.0.1:4310/fixture/order?state=total",
+    ])
+      expect(() => validateTarget(url)).toThrow();
+  });
   it("rejects malformed or out-of-screen actions", () => {
     const base = {
       observation: "visible",

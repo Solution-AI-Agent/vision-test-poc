@@ -270,6 +270,25 @@ app.get("/api/runs/:id/export", (req, res) => {
       "결함 후보는 독립 재검증 전 확정 결함이 아닙니다. 비용 null은 조회 불가이며 무료를 뜻하지 않습니다.",
   });
 });
+// Operator state never enters the visible order or model prompt. Local single-user fixture.
+let fixtureState = "normal";
+app.put("/api/fixture/operator", (req, res) => {
+  if (!["normal", "clipped", "total", "decoration"].includes(req.body.state)) {
+    res.status(400).json({ error: "Unknown fixture state" });
+    return;
+  }
+  fixtureState = req.body.state;
+  res.json({ state: fixtureState });
+});
+app.get("/api/fixture/presentation", (_req, res) => {
+  res
+    .set("Cache-Control", "no-store")
+    .json({
+      noticeHeight: fixtureState === "clipped" ? 44 : 80,
+      receiptTotal: fixtureState === "total" ? 68 : 48,
+      decoration: fixtureState === "decoration",
+    });
+});
 app.use("/artifacts", express.static(artifactsDir, { dotfiles: "deny" }));
 const server = createServer(app);
 if (process.env.NODE_ENV === "production")
