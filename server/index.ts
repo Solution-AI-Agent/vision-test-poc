@@ -291,9 +291,12 @@ app.get("/api/fixture/presentation", (_req, res) => {
 });
 app.use("/artifacts", express.static(artifactsDir, { dotfiles: "deny" }));
 const server = createServer(app);
-if (process.env.NODE_ENV === "production")
+if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.resolve("dist")));
-else {
+  app.get(["/fixture/order", "/fixture/operator"], (_req, res) => {
+    res.sendFile(path.resolve("dist/index.html"));
+  });
+} else {
   const { createServer: createViteServer } = await import("vite");
   const vite = await createViteServer({
     server: { middlewareMode: true, hmr: { server } },
