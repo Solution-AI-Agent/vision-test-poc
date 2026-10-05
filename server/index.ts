@@ -294,7 +294,7 @@ const server = createServer(app);
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.resolve("dist")));
   app.get(["/fixture/order", "/fixture/operator"], (_req, res) => {
-    res.sendFile(path.resolve("dist/index.html"));
+    res.sendFile("index.html", { root: path.resolve("dist") });
   });
 } else {
   const { createServer: createViteServer } = await import("vite");
