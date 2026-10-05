@@ -290,6 +290,7 @@ app.get("/api/fixture/presentation", (_req, res) => {
     });
 });
 let demoState = "normal";
+app.get("/api/demo/state", (_req,res)=>res.set("Cache-Control","no-store").json({state:demoState}));
 app.put("/api/demo/state", (req, res) => {
   if (!["normal", "cover", "cover-wide"].includes(req.body.state)) {res.status(400).json({error:"Unknown demo state"});return;}
   demoState=req.body.state;res.json({state:demoState});
