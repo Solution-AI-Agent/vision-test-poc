@@ -7,6 +7,7 @@ import { execFileSync } from "node:child_process";
 import { defaults, inputSchema } from "../server/domain";
 import { makeRun, providerClient, instrumentClient } from "../server/runner";
 import { fixtureBaseline } from "./fixture-baseline";
+import { fixtureModelConfig } from "../server/fixture-assessment";
 const apiKey = process.env.OPENROUTER_API_KEY;
 if (!apiKey)
   throw new Error(
@@ -155,12 +156,7 @@ try {
           persistExecutionDump: false,
           autoPrintReportMsg: false,
           forceChromeSelectRendering: false,
-          modelConfig: {
-            MIDSCENE_MODEL_API_KEY: apiKey,
-            MIDSCENE_MODEL_NAME: settings.model,
-            MIDSCENE_MODEL_FAMILY: settings.family,
-            MIDSCENE_MODEL_RETRY_COUNT: 0,
-          },
+          modelConfig: fixtureModelConfig(settings),
           createOpenAIClient: async () =>
             instrumentClient(client, run, runtime),
         });

@@ -522,3 +522,69 @@ it("typing without focus silently drops text in a real browser; a screenshot-sel
     await browser.close();
   }
 }, 30000);
+
+it("controlled screenshot assessment initializes the explicit OpenRouter base URL with a stub client, without DOM", async () => {
+  const { fixtureModelConfig } = await import("./fixture-assessment");
+  const browser = await chromium.launch({ headless: true });
+  try {
+    const page = await browser.newPage({
+      viewport: { width: 1280, height: 720 },
+    });
+    await page.setContent(
+      '<p>Order confirmation fixture</p><p style="display:none">ASSESSMENT_HIDDEN_SENTINEL</p>',
+    );
+    let requests = 0;
+    const agent = new PlaywrightAgent(page, {
+      generateReport: false,
+      persistExecutionDump: false,
+      autoPrintReportMsg: false,
+      forceChromeSelectRendering: false,
+      modelConfig: fixtureModelConfig({
+        ...defaults,
+        model: "qwen/qwen3-vl-30b-a3b-instruct",
+        apiKey: "stub-key",
+      }),
+      createOpenAIClient: async () =>
+        ({
+          chat: {
+            completions: {
+              create: async (body: any) => {
+                requests++;
+                expect(JSON.stringify(body)).toContain("image_url");
+                expect(JSON.stringify(body)).not.toContain(
+                  "ASSESSMENT_HIDDEN_SENTINEL",
+                );
+                return {
+                  id: "assessment-stub",
+                  model: "stub",
+                  choices: [
+                    {
+                      index: 0,
+                      finish_reason: "stop",
+                      message: {
+                        role: "assistant",
+                        content:
+                          '<data-json>{"status":"pass","observation":"stub","issues":[]}</data-json>',
+                      },
+                    },
+                  ],
+                };
+              },
+            },
+          },
+        }) as any,
+    });
+    agent.interface.getElementsNodeTree = async () => {
+      throw new Error("DOM forbidden");
+    };
+    expect(
+      await agent.aiQuery(
+        "Return {status,observation,issues} from the current screenshot",
+        { domIncluded: false, screenshotIncluded: true },
+      ),
+    ).toEqual({ status: "pass", observation: "stub", issues: [] });
+    expect(requests).toBe(1);
+  } finally {
+    await browser.close();
+  }
+}, 30000);
