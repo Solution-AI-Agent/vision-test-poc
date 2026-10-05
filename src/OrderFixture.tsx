@@ -17,6 +17,7 @@ type Presentation = {
   noticeHeight: number;
   receiptTotal: number;
   decoration: boolean;
+  cover?: number;
 };
 export default function OrderFixture() {
   const [presentation, setPresentation] = useState<Presentation>();
@@ -24,14 +25,15 @@ export default function OrderFixture() {
   const [email, setEmail] = useState("");
   const [confirmed, setConfirmed] = useState(false);
   const canvas = useRef<HTMLCanvasElement>(null);
+  const demo = location.pathname === "/demo/order";
   const operator = location.pathname === "/fixture/operator";
   const [state, setState] = useState("normal");
   useEffect(() => {
     if (!operator)
-      fetch("/api/fixture/presentation")
+      fetch(demo ? "/api/demo/presentation" : "/api/fixture/presentation")
         .then((r) => r.json())
         .then(setPresentation);
-  }, [operator]);
+  }, [operator, demo]);
   useEffect(() => {
     if (!confirmed || !presentation || !canvas.current) return;
     const c = canvas.current.getContext("2d")!;
@@ -230,7 +232,8 @@ export default function OrderFixture() {
                 : "3 items · Complimentary shipping"}
             </CardDescription>
           </CardHeader>
-          <CardContent>
+          <CardContent className="demo-receipt-content">
+            {confirmed && !!presentation.cover && <div className={`demo-layout-panel demo-cover-${presentation.cover}`} aria-hidden="true"><ShoppingBag size={48} /><p>Discover your next everyday essential.</p><span>ATELIER / GOODS</span></div>}
             {confirmed ? (
               <canvas
                 ref={canvas}

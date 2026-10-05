@@ -24,10 +24,13 @@ describe("execution boundaries", () => {
       expect(() => validateTarget(url)).toThrow();
   });
   it("allows only the exact local fixture origin/path", () => {
+    expect(validateTarget("http://127.0.0.1:4310/demo/order")).toBe("http://127.0.0.1:4310/demo/order");
     expect(validateTarget("http://127.0.0.1:4310/fixture/order")).toBe(
       "http://127.0.0.1:4310/fixture/order",
     );
     for (const url of [
+      "http://127.0.0.1:4310/demo",
+      "http://127.0.0.1:4310/demo/order?state=cover",
       "http://localhost:4310/fixture/order",
       "http://127.0.0.1:4311/fixture/order",
       "http://127.0.0.1:4310/fixture/operator",

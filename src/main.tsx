@@ -1,14 +1,15 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App";
+import Demo from "./Demo";
 import OrderFixture from "./OrderFixture";
 import "./index.css";
 createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    {["/fixture/order", "/fixture/operator"].includes(location.pathname) ? (
+    {["/fixture/order", "/fixture/operator", "/demo/order"].includes(location.pathname) ? (
       <OrderFixture />
     ) : (
-      <App />
+      location.pathname === "/demo" ? <Demo /> : <App />
     )}
   </React.StrictMode>,
 );

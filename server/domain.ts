@@ -189,7 +189,7 @@ export function validateTarget(raw: string) {
   const url = new URL(raw);
   if (
     url.origin === "http://127.0.0.1:4310" &&
-    url.pathname === "/fixture/order" &&
+    ["/fixture/order", "/demo/order"].includes(url.pathname) &&
     !url.search &&
     !url.hash &&
     !url.username &&

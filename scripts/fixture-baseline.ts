@@ -1,8 +1,8 @@
 import { expect } from "@playwright/test";
 import type { Page } from "playwright";
 // Frozen before implementation/defect injection. Same assertions in every state.
-export async function fixtureBaseline(page: Page) {
-  await page.goto("http://127.0.0.1:4310/fixture/order");
+export async function fixtureBaseline(page: Page, url = "http://127.0.0.1:4310/fixture/order") {
+  await page.goto(url);
   await page.getByRole("heading", { name: "Review your order" }).waitFor();
   await page.getByLabel("Recipient name").fill("Alex Morgan");
   await page.getByLabel("Email address").fill("alex@example.test");

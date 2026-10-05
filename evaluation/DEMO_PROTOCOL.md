@@ -1,0 +1,7 @@
+# Readability demo v2
+
+Separate version from original four-state controlled site and blind diagnostic. A promotional layout panel may cover the rendered receipt after order confirmation, leaving underlying DOM/functional assertions intact. Same baseline assertions; only navigation URL differs. Original data, text and criteria/evidence are preserved. Model receives screenshot and common readability requirement, no injected state name/answer. It judges current rendering, with textual localization; no pixel coordinate gate.
+
+Bounded case-selection demo: probe normal once plus at most two candidates once each; then freeze selected candidate/code/common prompt and verify normal/defect three times each. Additional phase maximum nine actual requests total, 30s/2048tokens/one request each, no format retries. Failed cases preserved. Same user-selected model. Counter in .data/demo-call-ledger.json persists across stages. Do not reset for success seeking. Prompt/schema in scripts/demo-evaluate.ts frozen with source. Selection based on observed valid localized response, never hardcoded verdict.
+
+Dashboard /demo toggles isolated demo presentation and shows actual stored run evidence from .data/demo-evidence.json. It performs no paid call on toggle; saved results are labeled. /demo/order is exact additional local allowlisted target. This is selected injected-case demonstration, not fair held-out defect performance, autonomous discovery or superiority over screenshot testing.

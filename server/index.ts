@@ -289,11 +289,21 @@ app.get("/api/fixture/presentation", (_req, res) => {
       decoration: fixtureState === "decoration",
     });
 });
+let demoState = "normal";
+app.put("/api/demo/state", (req, res) => {
+  if (!["normal", "cover", "cover-wide"].includes(req.body.state)) {res.status(400).json({error:"Unknown demo state"});return;}
+  demoState=req.body.state;res.json({state:demoState});
+});
+app.get("/api/demo/presentation", (_req,res)=>res.set("Cache-Control","no-store").json({noticeHeight:80,receiptTotal:48,decoration:false,cover:demoState==='cover'?1:demoState==='cover-wide'?2:0}));
+app.get("/api/demo/evidence", async (_req,res)=>{
+ try{res.set("Cache-Control","no-store").json(JSON.parse(await readFile(path.join(dataDir,"demo-evidence.json"),"utf8")));}
+ catch{res.json({results:[],note:"Actual recorded evaluation not available yet"});}
+});
 app.use("/artifacts", express.static(artifactsDir, { dotfiles: "deny" }));
 const server = createServer(app);
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.resolve("dist")));
-  app.get(["/fixture/order", "/fixture/operator"], (_req, res) => {
+  app.get(["/fixture/order", "/fixture/operator", "/demo/order", "/demo"], (_req, res) => {
     res.sendFile("index.html", { root: path.resolve("dist") });
   });
 } else {
