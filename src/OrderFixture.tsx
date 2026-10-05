@@ -21,8 +21,8 @@ type Presentation = {
 };
 export default function OrderFixture() {
   const [presentation, setPresentation] = useState<Presentation>();
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const [name, setName] = useState(location.pathname === "/demo/order" ? "Alex Morgan" : "");
+  const [email, setEmail] = useState(location.pathname === "/demo/order" ? "alex@example.test" : "");
   const [confirmed, setConfirmed] = useState(false);
   const canvas = useRef<HTMLCanvasElement>(null);
   const demo = location.pathname === "/demo/order";
