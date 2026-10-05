@@ -98,3 +98,7 @@ The fixed actual-model 4×3 evaluation **did not prove Vision differentiation**:
 ## Selected-case differentiation demo
 
 Open http://127.0.0.1:4310/demo and switch normal/fault, then confirm the prefilled order. Same meaningful functional suite passed for both; actual Vision recognized the selected large receipt-occlusion case 3/3 while normal passed 3/3. Saved original image/raw log links are shown in the UI; toggling does not call a model. See [DEMO_HANDOFF.md](DEMO_HANDOFF.md) for exact runs, local artifact restoration and limitations. The first candidate was missed; original four-state matrix remains a failed detection experiment. The later blind diagnostic remained inconclusive due to invalid localization. This selected demo is not held-out performance or autonomous discovery, and Playwright screenshot comparison detects it too.
+
+## Independent sample target (current deliverable)
+
+The QA platform remains on 4310. A separate ordinary store runs at **http://127.0.0.1:4311/order** with its own process/API/build. Operator **http://127.0.0.1:4311/operator** selects normal, misalignment, occlusion, clipping, wrong product image, or reversed chart presentation. Run `npm run sample:build` then `npm run sample:start`; see [sample-site/README.md](sample-site/README.md). The platform can target the exact 4311/order URL through its usual scenario workflow. New sample model detection is unverified; previous /demo evidence and v5 remain historical originals.

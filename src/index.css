@@ -3,6 +3,10 @@
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/geist";
 
+/* Shared primitives and standalone sample are explicit sources for either app build. */
+@source "./components/ui";
+@source "../sample-site";
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {

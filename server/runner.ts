@@ -17,7 +17,7 @@ const sourceVersion = {
     .update(readFileSync("server/domain.ts"))
     .update(readFileSync("server/runner.ts"))
     .digest("hex"),
-  promptVersion: "goal-first-v4-focus-and-visual-input",
+  promptVersion: "goal-first-v5-exact-simulated-order-scope",
 };
 import {
   planPrompt,
@@ -298,9 +298,9 @@ export async function runVision(
         await capture(`goal-${run.goals?.length ?? 0}-before`);
         await persist();
         const query =
-          goalPrompt() +
+          goalPrompt(run.input.url) +
           (replan
-            ? ` Prior chosen goal: ${JSON.stringify(goal)}. The last ${unchangedCount} actions produced identical before/after screenshots. Prior model observations are unverified. An inputConfirmation other than verified means input success was NOT established; do not assume text exists. Choose a different read-only test or a genuinely different method; do not repeat the same ineffective action. History: ${JSON.stringify(run.steps.map((s) => ({ action: s.plan.action, observation: s.plan.observation, unchanged: s.unchanged, inputConfirmation: s.inputConfirmation })))}`
+            ? ` Prior chosen goal: ${JSON.stringify(goal)}. The last ${unchangedCount} actions produced identical before/after screenshots. Prior model observations are unverified. An inputConfirmation other than verified means input success was NOT established; do not assume text exists. Choose a different permitted test or a genuinely different method; do not repeat the same ineffective action. History: ${JSON.stringify(run.steps.map((s) => ({ action: s.plan.action, observation: s.plan.observation, unchanged: s.unchanged, inputConfirmation: s.inputConfirmation })))}`
             : "");
         const selected = goalSchema.parse(
           await agent.aiQuery(query, {

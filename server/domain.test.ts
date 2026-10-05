@@ -7,6 +7,7 @@ import {
   defaults,
   planPrompt,
   actionSchema,
+  goalPrompt,
 } from "./domain";
 describe("execution boundaries", () => {
   it("accepts public YouTube HTTPS only", () => {
@@ -28,7 +29,13 @@ describe("execution boundaries", () => {
     expect(validateTarget("http://127.0.0.1:4310/fixture/order")).toBe(
       "http://127.0.0.1:4310/fixture/order",
     );
+    expect(validateTarget("http://127.0.0.1:4311/order")).toBe("http://127.0.0.1:4311/order");
     for (const url of [
+      "http://127.0.0.1:4311/operator",
+      "http://127.0.0.1:4311/order?state=occluded",
+      "http://127.0.0.1:4311/order#normal",
+      "http://localhost:4311/order",
+      "http://127.0.0.1:4312/order",
       "http://127.0.0.1:4310/demo",
       "http://127.0.0.1:4310/demo/order?state=cover",
       "http://localhost:4310/fixture/order",
@@ -90,4 +97,12 @@ describe("execution boundaries", () => {
     expect(prompt).not.toContain("youtube.com");
     expect(prompt).toContain("Autonomously choose");
   });
+});
+
+it("permits simulated submission only for the exact standalone sample target", () => {
+ const sample = inputSchema.parse({mode:"scenario",url:"http://127.0.0.1:4311/order",task:"Complete a simulated order",expected:"Receipt appears"});
+ expect(planPrompt(sample,[])).toContain("submit the simulated order");
+ expect(goalPrompt(sample.url)).toContain("synthetic recipient");
+ expect(goalPrompt("https://www.youtube.com/")).not.toContain("submit the simulated order");
+ expect(goalPrompt("http://127.0.0.1:4311/operator")).not.toContain("submit the simulated order");
 });
