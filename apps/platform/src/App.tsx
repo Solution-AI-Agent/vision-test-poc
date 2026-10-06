@@ -515,7 +515,7 @@ export default function App() {
                   <CardHeader>
                     <CardTitle>실행 한도</CardTitle>
                     <CardDescription>
-                      시간·행동·실제 모델 요청 수를 각각 제한합니다. 정밀 입력·값 읽기·시각 QA도 호출을 사용하므로 여러 필드를 입력하는 업무는 호출·시간 한도를 함께 조정하세요.
+                      전체 실행 기본 시간은 15분이며 0은 시간 제한 없음입니다. 개별 모델 요청의 30초 제한은 없습니다. 중지·행동·호출 한도는 계속 적용합니다. 정밀 입력·값 읽기·시각 QA도 호출을 사용하므로 여러 필드를 입력하는 업무는 호출·시간 한도를 함께 조정하세요.
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
@@ -535,9 +535,9 @@ export default function App() {
                         },
                         {
                           key: "maxSeconds",
-                          label: "최대 시간 (초)",
-                          min: 10,
-                          max: 600,
+                          label: "전체 시간 (초, 0 = 제한 없음)",
+                          min: 0,
+                          max: 7200,
                         },
                         {
                           key: "maxTokens",
@@ -798,7 +798,7 @@ export default function App() {
                     )}
                     <p className="text-xs text-muted-foreground">
                       {config?.maxActions ?? 8} 행동 · {config?.maxCalls ?? 10}{" "}
-                      모델 호출 · {config?.maxSeconds ?? 120}초 / 최대
+                      모델 호출 · {config?.maxSeconds === 0 ? "시간 제한 없음" : `${config?.maxSeconds ?? 900}초`} / 최대
                     </p>
                   </CardFooter>
                 </Card>

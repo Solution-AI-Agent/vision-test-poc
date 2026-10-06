@@ -31,7 +31,7 @@ export async function runMidsceneWorkflow(agent:PlaywrightAgent,run:Run,runtime:
  let current:Step|undefined;
  agent.interface.beforeInvokeAction=async(name,param)=>{
   runtime.controller.signal.throwIfAborted();
-  if(run.actions>=run.settings.maxActions){runtime.stopReason='limited';throw Error('Midscene 행동 한도 도달');}
+  if(run.actions>=run.settings.maxActions){runtime.stopReason='limited';runtime.limitReason=`Midscene 행동 한도 도달 (${run.settings.maxActions}회)`;throw Error(runtime.limitReason);}
   await before?.(name,param);
   const screen=await capture(`native-${run.steps.length}-before`);
   const description=`${names[name]??'Midscene 행동'}${param?.locate?.description?' · '+param.locate.description:''}`;
@@ -41,7 +41,7 @@ export async function runMidsceneWorkflow(agent:PlaywrightAgent,run:Run,runtime:
  agent.interface.afterInvokeAction=async(name,param)=>{
   await after?.(name,param);
   if(current){current.executed=true;current.after=await capture(`native-${current.index}-after`);current.native!.parameters=structuredClone(param);}
-  run.visualComplete=false;await save();
+  run.visualComplete=false;run.executionPhase="model-plan";await save();
  };
  try {
   for(const [index,step] of run.workflow.steps.entries()) {

@@ -19071,6 +19071,48 @@
       "source": "REPOS/vision-test-delivery/artifacts/midscene-native-20261006/pack-check.log",
       "bytes": 113,
       "sha256": "dfae2b82a4ff9d411c0c4f7d4514977806db25600b3a25d75a4abf4bc23aee3d"
+    },
+    {
+      "path": "evidence/reviews/runtime-timeout-20261006/BUILD.log",
+      "bytes": 2217,
+      "sha256": "04279776993756bcae87ab8ea1a2d6f7470f4ff9be34c95184a33cd5c52ced24",
+      "source": "artifacts/runtime-timeout-20261006/BUILD.log"
+    },
+    {
+      "path": "evidence/reviews/runtime-timeout-20261006/PROFILE.json",
+      "bytes": 985,
+      "sha256": "ee7eb56df9ad5c3ffca8eedcfe0cf4809509098093b0a2f7bb4a19447838a4e4",
+      "source": "artifacts/runtime-timeout-20261006/PROFILE.json"
+    },
+    {
+      "path": "evidence/reviews/runtime-timeout-20261006/README.md",
+      "bytes": 1981,
+      "sha256": "2130223ec747578c81dd0fd70a5d9e8a0c6fd886a0c7f3333675b8396e75c85a",
+      "source": "artifacts/runtime-timeout-20261006/README.md"
+    },
+    {
+      "path": "evidence/reviews/runtime-timeout-20261006/SETTINGS_CARD.png",
+      "bytes": 42011,
+      "sha256": "1e7023e58a811ae3d0cc0774b935b968efeb4e57d731cf68bb37c59d83e1727e",
+      "source": "artifacts/runtime-timeout-20261006/SETTINGS_CARD.png"
+    },
+    {
+      "path": "evidence/reviews/runtime-timeout-20261006/TESTS_FIXED.log",
+      "bytes": 637,
+      "sha256": "b59c3219a67285963104d6956f16204144b88c197ccf1bed4a293f10e9734ec1",
+      "source": "artifacts/runtime-timeout-20261006/TESTS_FIXED.log"
+    },
+    {
+      "path": "evidence/reviews/runtime-timeout-20261006/UI_CHECK.ts",
+      "bytes": 1344,
+      "sha256": "fb7e5998058819348945e2ab07bc5da5fa1d4a4ad11e971a7ecb3a8baf025129",
+      "source": "artifacts/runtime-timeout-20261006/UI_CHECK.ts"
+    },
+    {
+      "path": "evidence/reviews/runtime-timeout-20261006/UI_REPORT.json",
+      "bytes": 247,
+      "sha256": "c6da864c11efe9d38d199f5383527077cc5e731f4ee1ba48eecbfeb80c3c9215",
+      "source": "artifacts/runtime-timeout-20261006/UI_REPORT.json"
     }
   ],
   "updates": [

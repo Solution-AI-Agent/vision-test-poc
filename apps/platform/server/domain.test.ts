@@ -89,7 +89,7 @@ describe("execution boundaries", () => {
       settingsSchema.parse({ ...defaults, maxCalls: 999 }),
     ).toThrow();
     expect(() =>
-      settingsSchema.parse({ ...defaults, maxSeconds: 0 }),
+      settingsSchema.parse({ ...defaults, maxSeconds: -1 }),
     ).toThrow();
   });
   it("autonomous prompt does not supply a YouTube task sequence or URL", () => {

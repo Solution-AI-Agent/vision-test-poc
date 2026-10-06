@@ -20,7 +20,7 @@ export function proxyEnvironment(env: NodeJS.ProcessEnv = process.env) {
 // Explicit dispatcher works on Node 24.0 too; no startup-only environment flag is needed.
 export function createNetworkFetch(env: NodeJS.ProcessEnv = process.env) {
   const config = proxyEnvironment(env);
-  const dispatcher = new EnvHttpProxyAgent(config);
+  const dispatcher = new EnvHttpProxyAgent({ ...config, headersTimeout: 0, bodyTimeout: 0 });
   const request: typeof globalThis.fetch = async (input, init) => {
     try { return await undiciFetch(input as any, { ...init, dispatcher } as any) as unknown as Response; }
     catch { throw new SafeExecutionError(config.httpProxy || config.httpsProxy ? "PROXY_NETWORK_FAILED" : "MODEL_NETWORK_FAILED"); }

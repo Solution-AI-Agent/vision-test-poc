@@ -4,7 +4,7 @@ import { z } from "zod";
 export const limitsSchema = z.object({
   maxActions: z.number().int().min(1).max(40),
   maxCalls: z.number().int().min(1).max(60),
-  maxSeconds: z.number().int().min(10).max(600),
+  maxSeconds: z.union([z.literal(0), z.number().int().min(10).max(7200)]),
   maxTokens: z.number().int().min(256).max(4096),
 });
 export const defaults = {
@@ -13,7 +13,7 @@ export const defaults = {
   family: "qwen3-vl" as const,
   maxActions: 8,
   maxCalls: 10,
-  maxSeconds: 120,
+  maxSeconds: 900,
   maxTokens: 1536,
 };
 export const settingsSchema = limitsSchema.extend({

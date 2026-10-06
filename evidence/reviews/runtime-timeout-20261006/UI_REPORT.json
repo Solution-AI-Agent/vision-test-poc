@@ -1,0 +1,7 @@
+{
+  "errors": [],
+  "initialValue": "900",
+  "noDeadlineInput": "0",
+  "range": "0 or 10..7200",
+  "note": "Read-only UI review: changed draft field, did not submit or overwrite saved settings. API schema/persistence covered by automated tests."
+}

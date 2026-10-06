@@ -53,3 +53,14 @@ it("applies instructions to both planning modes and freezes each run's settings 
   expect(run.settings.agentInstructions).toBe("한국어 화면의 가독성을 확인한다.");
   expect(JSON.stringify(run)).not.toContain("test-only-secret");
 });
+
+it('migrates only the legacy 120-second default once, preserving explicitly saved short limits',async()=>{
+ const dir=await directory();const file=path.join(dir,'settings.json');const store=new SettingsStore(dir);
+ await writeFile(file,JSON.stringify({...defaults,maxSeconds:120}));
+ expect((await store.load()).maxSeconds).toBe(900);
+ expect(JSON.parse(await readFile(path.join(dir,'settings.before-timeout-v2.json'),'utf8')).maxSeconds).toBe(120);
+ expect(JSON.parse(await readFile(file,'utf8')).settingsVersion).toBe(2);
+ await store.save({...defaults,maxSeconds:120});expect((await store.load()).maxSeconds).toBe(120);
+ await writeFile(file,JSON.stringify({...defaults,maxSeconds:240}));expect((await store.load()).maxSeconds).toBe(240);
+ await store.save({...defaults,maxSeconds:0});expect((await store.load()).maxSeconds).toBe(0);
+});

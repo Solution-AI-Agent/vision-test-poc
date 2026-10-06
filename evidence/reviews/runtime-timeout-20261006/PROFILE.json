@@ -1,0 +1,31 @@
+{
+  "runId": "3e1ef9cc-2620-4536-b77d-453f31320a85",
+  "model": "qwen/qwen3-vl-30b-a3b-instruct",
+  "wallSeconds": 143.8,
+  "responseSeconds": 135.543,
+  "otherSeconds": 8.257,
+  "responseShare": 0.9426,
+  "groups": {
+    "visual-review": {
+      "requests": 6,
+      "responseSeconds": 95.993,
+      "maxResponseSeconds": 27.18
+    },
+    "model-plan": {
+      "requests": 8,
+      "responseSeconds": 19.351,
+      "maxResponseSeconds": 4.711
+    },
+    "input-confirmation": {
+      "requests": 4,
+      "responseSeconds": 7.351,
+      "maxResponseSeconds": 2.032
+    },
+    "screenshot": {
+      "requests": 3,
+      "responseSeconds": 12.848,
+      "maxResponseSeconds": 5.921
+    }
+  },
+  "note": "Response duration includes transport/proxy/provider queue and generation. These cannot be separated from this ledger. Historical screenshot phase may include native planning after an action. Missing/failed request duration is excluded; otherSeconds is not pure browser CPU time."
+}
