@@ -1,0 +1,152 @@
+{
+  "id": "c4ea5c9e-561a-4113-9751-24e7448dd113",
+  "input": {
+    "mode": "scenario",
+    "url": "https://www.youtube.com/",
+    "task": "Click the visible button",
+    "expected": "Button says Clicked",
+    "query": "Midscene AI demo"
+  },
+  "settings": {
+    "model": "qwen/qwen3-vl-235b-a22b-instruct",
+    "family": "qwen3-vl",
+    "maxActions": 8,
+    "maxCalls": 10,
+    "maxSeconds": 120,
+    "maxTokens": 1536
+  },
+  "startedAt": "2026-10-05T11:56:22.645Z",
+  "status": "completed",
+  "outcome": "기대 결과 관찰됨 · 독립 검토 필요",
+  "stage": "종료",
+  "calls": 2,
+  "actions": 1,
+  "tokens": 84,
+  "cost": null,
+  "steps": [
+    {
+      "index": 0,
+      "at": "2026-10-05T11:56:23.840Z",
+      "before": "/artifacts/c4ea5c9e-561a-4113-9751-24e7448dd113/model-request-1.jpg",
+      "after": "/artifacts/c4ea5c9e-561a-4113-9751-24e7448dd113/0-after.png",
+      "plan": {
+        "observation": "A visible button",
+        "rationale": "Local stub fixture test",
+        "action": {
+          "type": "click",
+          "x": 100,
+          "y": 70
+        },
+        "verdict": "continue",
+        "finding": null
+      },
+      "executed": true,
+      "toolCalls": [
+        {
+          "action": {
+            "type": "click",
+            "x": 100,
+            "y": 70
+          },
+          "completed": true,
+          "at": "2026-10-05T11:56:23.858Z"
+        }
+      ],
+      "unchanged": false
+    },
+    {
+      "index": 1,
+      "at": "2026-10-05T11:56:24.656Z",
+      "before": "/artifacts/c4ea5c9e-561a-4113-9751-24e7448dd113/model-request-2.jpg",
+      "after": "/artifacts/c4ea5c9e-561a-4113-9751-24e7448dd113/1-decision.png",
+      "plan": {
+        "observation": "Clicked button",
+        "rationale": "Local stub fixture test",
+        "action": {
+          "type": "wait"
+        },
+        "verdict": "pass",
+        "finding": {
+          "title": "Normal expected outcome",
+          "observed": "Clicked button",
+          "expected": "Clicked button",
+          "basis": "Task met",
+          "reproduction": [
+            "Click button"
+          ]
+        }
+      },
+      "executed": false
+    }
+  ],
+  "findings": [],
+  "engine": "LOCAL FIXTURE / STUB VLM · NOT OPENROUTER",
+  "transport": [
+    {
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/c4ea5c9e-561a-4113-9751-24e7448dd113/model-request-1.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 172,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 1,
+      "responseModel": "stub-vlm",
+      "requestId": "stub-1",
+      "parsedOutput": {
+        "observation": "A visible button",
+        "rationale": "Local stub fixture test",
+        "action": {
+          "type": "click",
+          "x": 100,
+          "y": 70
+        },
+        "verdict": "continue",
+        "finding": null
+      }
+    },
+    {
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/c4ea5c9e-561a-4113-9751-24e7448dd113/model-request-2.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 288,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 10,
+      "responseModel": "stub-vlm",
+      "requestId": "stub-2",
+      "parsedOutput": {
+        "observation": "Clicked button",
+        "rationale": "Local stub fixture test",
+        "action": {
+          "type": "wait"
+        },
+        "verdict": "pass",
+        "finding": {
+          "title": "Normal expected outcome",
+          "observed": "Clicked button",
+          "expected": "Clicked button",
+          "basis": "Task met",
+          "reproduction": [
+            "Click button"
+          ]
+        }
+      }
+    }
+  ],
+  "sourceVersion": {
+    "commit": "045fdf3d93ff677f4669650aa4394856b01b752c",
+    "dirty": false,
+    "sourceHash": "6b5c5a420827a76881ff575b3f06c39972ddc2fc48c2642d992b133df89cccb4",
+    "promptVersion": "goal-first-v5-exact-simulated-order-scope"
+  },
+  "screenshot": "/artifacts/c4ea5c9e-561a-4113-9751-24e7448dd113/1-decision.png",
+  "video": "/artifacts/c4ea5c9e-561a-4113-9751-24e7448dd113/page@e4eaa4112e398ea04ceaacfed3b5e3a9.webm",
+  "endedAt": "2026-10-05T11:56:24.734Z",
+  "mock": true
+}

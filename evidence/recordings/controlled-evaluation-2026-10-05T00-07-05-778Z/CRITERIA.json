@@ -1,0 +1,5 @@
+{
+  "version": "order-receipt-v1",
+  "task": "Complete an order for one Studio notebook at $32.00 and two Cable clips at $8.00 each, then review the confirmation and receipt.",
+  "acceptance": "The confirmation must show the entered recipient, the ordered items, quantities and line prices. All delivery instructions must be fully readable: Delivery in 2 business days. Collection window: 48 hours. Photo ID is required at pickup. The rendered receipt must show the same line prices and total as the order: $32.00 + $16.00 + $0.00 shipping = $48.00. Decoration/color differences alone are not defects. Judge only visible evidence; report uncertain if the screen is unreadable."
+}

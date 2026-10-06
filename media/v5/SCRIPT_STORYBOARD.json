@@ -1,0 +1,193 @@
+{
+  "project": "vision-test",
+  "version": "v5-final-review-01",
+  "duration": 160,
+  "resolution": [
+    1280,
+    720
+  ],
+  "fps": 24,
+  "audio": "silent Korean captions",
+  "scenes": [
+    {
+      "id": 1,
+      "start": 0,
+      "duration": 7,
+      "kind": "fault",
+      "title": "주문은 끝났는데, 영수증을 읽을 수 없습니다",
+      "kicker": "실제 모델 입력 · 의도적으로 주입한 렌더링 결함",
+      "captions": [
+        "큰 빈 패널이 영수증을 가려 상품·금액·합계를 읽을 수 없습니다.",
+        "실제 1280×720 입력 화면의 영수증 영역을 확대합니다."
+      ]
+    },
+    {
+      "id": 2,
+      "start": 7,
+      "duration": 6,
+      "kind": "dom",
+      "title": "같은 실행의 기능 검사는 PASS",
+      "kicker": "ae75c703… · 실제 원장 발췌",
+      "captions": [
+        "주문 완료·명세·의미 총액·요소 가시성 검사는 통과했습니다.",
+        "이 PASS가 화면의 읽기 가능성을 보장하지는 않습니다."
+      ]
+    },
+    {
+      "id": 3,
+      "start": 13,
+      "duration": 10,
+      "kind": "issue",
+      "title": "Vision은 가려진 영수증을 지적했습니다",
+      "kicker": "ae75c703… · 원응답 첫 issue",
+      "captions": [
+        "문제 위치는 “Your receipt section”입니다.",
+        "큰 패널 때문에 상품명·금액·합계를 읽을 수 없다는 실제 지적입니다."
+      ]
+    },
+    {
+      "id": 4,
+      "start": 23,
+      "duration": 7,
+      "kind": "normal",
+      "title": "정상 화면은 같은 기준으로 통과",
+      "kicker": "b7181596… · 실제 입력과 저장된 모델 응답",
+      "captions": [
+        "정상 화면에서는 명세와 영수증을 읽을 수 있습니다.",
+        "이 정상 실행은 pass로 판정했고 문제가 없다고 기록했습니다."
+      ]
+    },
+    {
+      "id": 5,
+      "start": 30,
+      "duration": 12,
+      "kind": "scope",
+      "title": "같은 업무, 서로 다른 검증 정보",
+      "kicker": "기능 assertion / 시각적 수락 기준",
+      "captions": [
+        "기능 검사는 주문 상태와 의미 데이터를 확인합니다.",
+        "Vision은 현재 화면에서 사용자가 내용을 읽을 수 있는지 판단합니다."
+      ]
+    },
+    {
+      "id": 6,
+      "start": 42,
+      "duration": 12,
+      "kind": "toggle",
+      "title": "사이트에서 정상과 결함을 전환합니다",
+      "kicker": "실제 UI 조작 캡처 순서 편집 · 모델 입력과 별도",
+      "captions": [
+        "정상 또는 렌더링 결함을 선택하고 Confirm order를 누릅니다.",
+        "전환은 유료 호출을 하지 않습니다. 오른쪽은 저장된 실제 실행 결과입니다."
+      ]
+    },
+    {
+      "id": 7,
+      "start": 54,
+      "duration": 12,
+      "kind": "evidence",
+      "title": "주문 완료에서 실제 검사 근거로",
+      "kicker": "실제 UI 캡처 · 원본 이미지와 원응답 링크",
+      "captions": [
+        "주문 완료 화면 옆에서 기능 PASS와 Vision 지적을 확인합니다.",
+        "실제 입력 이미지와 원응답/로그 링크로 해당 실행의 근거를 열 수 있습니다."
+      ]
+    },
+    {
+      "id": 8,
+      "start": 66,
+      "duration": 12,
+      "kind": "assertion",
+      "title": "기능 검사에서 실제로 확인한 항목",
+      "kicker": "고정 baseline · 실측 코드 373ecad3 · 소스 발췌",
+      "captions": [
+        "의미 총액과 안내 DOM 문구·영수증 요소의 가시성을 검사합니다.",
+        "이 assertion은 큰 패널 뒤의 픽셀 내용을 읽을 수 있는지 판정하지 않습니다."
+      ]
+    },
+    {
+      "id": 9,
+      "start": 78,
+      "duration": 12,
+      "kind": "loop",
+      "title": "현재 화면 한 장을 직접 판단합니다",
+      "kicker": "Midscene 화면 평가 · qwen/qwen3-vl-30b-a3b-instruct",
+      "captions": [
+        "현재 화면과 공통 가독성 기준으로 모델이 직접 판단했습니다.",
+        "DOM·정답·기준 이미지·이력은 제공하지 않았습니다. 전사+코드 비교가 아닙니다."
+      ]
+    },
+    {
+      "id": 10,
+      "start": 90,
+      "duration": 10,
+      "kind": "detail",
+      "title": "영수증의 위치와 읽기 문제를 연결",
+      "kicker": "정상/결함 실제 입력 · 같은 영역 확대",
+      "captions": [
+        "정상 영수증에는 상품·금액·합계가 보입니다.",
+        "결함 화면의 같은 영역은 가려져 있습니다. 이 문제를 실제 응답이 지적했습니다."
+      ]
+    },
+    {
+      "id": 11,
+      "start": 100,
+      "duration": 10,
+      "kind": "matrix",
+      "title": "고정 확인: 정상 3/3 · 결함 3/3 지적",
+      "kicker": "같은 고정 모델·코드·공통 기준의 확인 실행",
+      "captions": [
+        "정상은 3/3 PASS, 결함은 3/3 candidate. 기능 suite는 6/6 PASS입니다.",
+        "고정 확인 6요청 · 공급자 응답 보고 비용 $0.00255091입니다."
+      ]
+    },
+    {
+      "id": 12,
+      "start": 110,
+      "duration": 10,
+      "kind": "screenshot",
+      "title": "Playwright도 기준 화면을 비교할 수 있습니다",
+      "kicker": "실제 screenshot suite도 이 결함을 구분",
+      "captions": [
+        "Playwright의 기준 screenshot 검사도 이 결함을 잡았습니다.",
+        "이번 비교 대상은 동일 업무의 DOM/기능 assertion과 시각적 수락 기준입니다."
+      ]
+    },
+    {
+      "id": 13,
+      "start": 120,
+      "duration": 10,
+      "kind": "value",
+      "title": "기준 이미지 없는 화면 검토의 추가 가치",
+      "kicker": "확인한 범위: 선택한 영수증 가림 사례",
+      "captions": [
+        "기능 검사가 통과한 화면의 읽기 문제를, 기준 이미지 없이 발견했습니다.",
+        "자연어 요구와 현재 화면을 대조하고 문제 위치·이유를 설명한 사례입니다."
+      ]
+    },
+    {
+      "id": 14,
+      "start": 130,
+      "duration": 10,
+      "kind": "limits",
+      "title": "선별한 통제 데모라는 한계는 남습니다",
+      "kicker": "이전 실패는 출처·부록에 별도 보존",
+      "captions": [
+        "선별한 주입 사례·등록 기준 평가입니다. 일반 성능이나 완전 자율 발견은 미입증입니다.",
+        "이전 미탐도 보존했습니다. Windows와 모바일 Vision 정확도는 미검증입니다."
+      ]
+    },
+    {
+      "id": 15,
+      "start": 140,
+      "duration": 20,
+      "kind": "end",
+      "title": "사이트에서 직접 확인하세요",
+      "kicker": "정상/결함 전환 → 주문 완료 → 실제 검사 근거",
+      "captions": [
+        "127.0.0.1:4310/demo에서 상태를 선택하고 주문을 완료해 비교 화면을 보세요.",
+        "저장된 실제 입력과 원응답으로 기능 PASS와 Vision 지적의 근거를 확인할 수 있습니다."
+      ]
+    }
+  ]
+}

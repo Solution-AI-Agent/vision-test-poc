@@ -1,0 +1,144 @@
+{
+  "id": "25e9143e-50e4-419b-9f9c-faf38bcda89a",
+  "input": {
+    "mode": "scenario",
+    "url": "https://www.youtube.com/",
+    "task": "Click the visible button",
+    "expected": "Button says Clicked",
+    "query": "Midscene AI demo"
+  },
+  "settings": {
+    "model": "qwen/qwen3-vl-235b-a22b-instruct",
+    "family": "qwen3-vl",
+    "maxActions": 8,
+    "maxCalls": 10,
+    "maxSeconds": 120,
+    "maxTokens": 1536
+  },
+  "startedAt": "2026-10-04T10:01:47.615Z",
+  "status": "completed",
+  "outcome": "기대 결과 관찰됨 · 독립 검토 필요",
+  "stage": "종료",
+  "calls": 3,
+  "actions": 1,
+  "tokens": 126,
+  "cost": null,
+  "steps": [
+    {
+      "index": 0,
+      "at": "2026-10-04T10:01:48.875Z",
+      "before": "/artifacts/25e9143e-50e4-419b-9f9c-faf38bcda89a/model-request-2.jpg",
+      "after": "/artifacts/25e9143e-50e4-419b-9f9c-faf38bcda89a/0-after.png",
+      "plan": {
+        "observation": "A visible button",
+        "rationale": "Local stub fixture test",
+        "action": {
+          "type": "click",
+          "x": 100,
+          "y": 70
+        },
+        "verdict": "continue",
+        "finding": null
+      },
+      "executed": true,
+      "unchanged": false
+    },
+    {
+      "index": 1,
+      "at": "2026-10-04T10:01:49.708Z",
+      "before": "/artifacts/25e9143e-50e4-419b-9f9c-faf38bcda89a/model-request-3.jpg",
+      "after": "/artifacts/25e9143e-50e4-419b-9f9c-faf38bcda89a/1-decision.png",
+      "plan": {
+        "observation": "Clicked button",
+        "rationale": "Local stub fixture test",
+        "action": {
+          "type": "finish"
+        },
+        "verdict": "pass",
+        "finding": {
+          "title": "Normal expected outcome",
+          "observed": "Clicked button",
+          "expected": "Clicked button",
+          "basis": "Task met",
+          "reproduction": [
+            "Click button"
+          ]
+        }
+      },
+      "executed": false
+    }
+  ],
+  "findings": [],
+  "engine": "LOCAL FIXTURE / STUB VLM · NOT OPENROUTER",
+  "transport": [
+    {
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/25e9143e-50e4-419b-9f9c-faf38bcda89a/model-request-1.jpg",
+      "elapsedMs": 0,
+      "responseModel": "stub-vlm",
+      "requestId": "stub-invalid",
+      "parsedOutput": {
+        "action": {
+          "type": "press",
+          "key": "Enter"
+        }
+      },
+      "validationError": "observation, rationale, action.type, verdict, finding"
+    },
+    {
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/25e9143e-50e4-419b-9f9c-faf38bcda89a/model-request-2.jpg",
+      "elapsedMs": 0,
+      "responseModel": "stub-vlm",
+      "requestId": "stub-2",
+      "parsedOutput": {
+        "observation": "A visible button",
+        "rationale": "Local stub fixture test",
+        "action": {
+          "type": "click",
+          "x": 100,
+          "y": 70
+        },
+        "verdict": "continue",
+        "finding": null
+      }
+    },
+    {
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/25e9143e-50e4-419b-9f9c-faf38bcda89a/model-request-3.jpg",
+      "elapsedMs": 10,
+      "responseModel": "stub-vlm",
+      "requestId": "stub-3",
+      "parsedOutput": {
+        "observation": "Clicked button",
+        "rationale": "Local stub fixture test",
+        "action": {
+          "type": "finish"
+        },
+        "verdict": "pass",
+        "finding": {
+          "title": "Normal expected outcome",
+          "observed": "Clicked button",
+          "expected": "Clicked button",
+          "basis": "Task met",
+          "reproduction": [
+            "Click button"
+          ]
+        }
+      }
+    }
+  ],
+  "sourceVersion": {
+    "commit": "ecf9e53736f33d38f6ab2e80eefb1b7c14877030",
+    "dirty": true,
+    "sourceHash": "0ff4956f93f1806997d1e463c4ad9a9ae236151bdb9c5ee1b9fa488122c8ceee",
+    "promptVersion": "goal-first-v2-bounded-replan"
+  },
+  "screenshot": "/artifacts/25e9143e-50e4-419b-9f9c-faf38bcda89a/1-decision.png",
+  "video": "/artifacts/25e9143e-50e4-419b-9f9c-faf38bcda89a/page@ed66bd175bf6709b3d00de24ebf1043e.webm",
+  "endedAt": "2026-10-04T10:01:49.791Z",
+  "mock": true
+}

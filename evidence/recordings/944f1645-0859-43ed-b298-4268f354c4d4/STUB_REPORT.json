@@ -1,0 +1,86 @@
+{
+  "id": "944f1645-0859-43ed-b298-4268f354c4d4",
+  "input": {
+    "mode": "scenario",
+    "url": "https://www.youtube.com/",
+    "task": "Click the visible button",
+    "expected": "Button says Clicked",
+    "query": "Midscene AI demo"
+  },
+  "settings": {
+    "model": "qwen/qwen3-vl-235b-a22b-instruct",
+    "family": "qwen3-vl",
+    "maxActions": 8,
+    "maxCalls": 10,
+    "maxSeconds": 120,
+    "maxTokens": 1536
+  },
+  "startedAt": "2026-10-04T09:44:21.240Z",
+  "status": "completed",
+  "outcome": "기대 결과 관찰됨 · 독립 검토 필요",
+  "stage": "종료",
+  "calls": 2,
+  "actions": 1,
+  "tokens": 84,
+  "cost": null,
+  "steps": [
+    {
+      "index": 0,
+      "at": "2026-10-04T09:44:22.434Z",
+      "before": "/artifacts/944f1645-0859-43ed-b298-4268f354c4d4/model-request-1.jpg",
+      "after": "/artifacts/944f1645-0859-43ed-b298-4268f354c4d4/0-after.png",
+      "plan": {
+        "observation": "A visible button",
+        "rationale": "Local stub fixture test",
+        "action": {
+          "type": "click",
+          "x": 100,
+          "y": 70
+        },
+        "verdict": "continue",
+        "finding": null
+      },
+      "executed": true
+    },
+    {
+      "index": 1,
+      "at": "2026-10-04T09:44:23.252Z",
+      "before": "/artifacts/944f1645-0859-43ed-b298-4268f354c4d4/model-request-2.jpg",
+      "after": "/artifacts/944f1645-0859-43ed-b298-4268f354c4d4/1-decision.png",
+      "plan": {
+        "observation": "Clicked button",
+        "rationale": "Local stub fixture test",
+        "action": {
+          "type": "finish"
+        },
+        "verdict": "pass",
+        "finding": null
+      },
+      "executed": false
+    }
+  ],
+  "findings": [],
+  "engine": "LOCAL FIXTURE / STUB VLM · NOT OPENROUTER",
+  "transport": [
+    {
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/944f1645-0859-43ed-b298-4268f354c4d4/model-request-1.jpg",
+      "elapsedMs": 1,
+      "responseModel": "stub-vlm",
+      "requestId": "stub-1"
+    },
+    {
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/944f1645-0859-43ed-b298-4268f354c4d4/model-request-2.jpg",
+      "elapsedMs": 10,
+      "responseModel": "stub-vlm",
+      "requestId": "stub-2"
+    }
+  ],
+  "screenshot": "/artifacts/944f1645-0859-43ed-b298-4268f354c4d4/1-decision.png",
+  "video": "/artifacts/944f1645-0859-43ed-b298-4268f354c4d4/page@a6dfd4879d287bcc520eb352f93e00dd.webm",
+  "endedAt": "2026-10-04T09:44:23.330Z",
+  "mock": true
+}

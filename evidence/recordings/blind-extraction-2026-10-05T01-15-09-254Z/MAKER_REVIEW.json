@@ -1,0 +1,205 @@
+{
+  "source": {
+    "commit": "03320fdae7c17fbb9145d37b72ea5650a112503a",
+    "dirty": false,
+    "promptHash": "01651bd361fed537c414cd2f1ddfddac37329e36fe3d6ebc4891762ba0fecf61",
+    "comparatorHash": "ed2a9848649d5411316a14a9a16fd9cf69de206b9379a2eb022c2ced998b88b3",
+    "criteriaHash": "5e80a0bea244394ba5e54ea466150bb046be28764ff1f2b48fa9f05482d95ba5"
+  },
+  "classification": "gate not met; frozen comparator all 12 inconclusive; no retries",
+  "reportedCost": 0.010346,
+  "results": [
+    {
+      "state": "normal",
+      "repetition": 1,
+      "id": "33047aad-f792-4e86-b57f-c0a310f9555e",
+      "receiptTotalTextCorrect": true,
+      "deliveryVisibleLineCount": 3,
+      "expectedVisibleLineCount": 3,
+      "localizationCorrect": false,
+      "localizationEvidence": "receiptTotal.y exceeds 719 in all outputs; not transformed post hoc",
+      "comparator": {
+        "status": "inconclusive",
+        "issues": [],
+        "reason": "Malformed transcription"
+      },
+      "final": "inconclusive"
+    },
+    {
+      "state": "clipped",
+      "repetition": 1,
+      "id": "092624d8-98cd-4ec8-bdc6-8d62c01fde81",
+      "receiptTotalTextCorrect": true,
+      "deliveryVisibleLineCount": 2,
+      "expectedVisibleLineCount": 2,
+      "localizationCorrect": false,
+      "localizationEvidence": "receiptTotal.y exceeds 719 in all outputs; not transformed post hoc",
+      "comparator": {
+        "status": "inconclusive",
+        "issues": [],
+        "reason": "Malformed transcription"
+      },
+      "final": "inconclusive"
+    },
+    {
+      "state": "total",
+      "repetition": 1,
+      "id": "943329b7-6e54-4c23-aa19-3e143a726b11",
+      "receiptTotalTextCorrect": true,
+      "deliveryVisibleLineCount": 3,
+      "expectedVisibleLineCount": 3,
+      "localizationCorrect": false,
+      "localizationEvidence": "receiptTotal.y exceeds 719 in all outputs; not transformed post hoc",
+      "comparator": {
+        "status": "inconclusive",
+        "issues": [],
+        "reason": "Malformed transcription"
+      },
+      "final": "inconclusive"
+    },
+    {
+      "state": "decoration",
+      "repetition": 1,
+      "id": "11a209c7-f732-4302-a62f-8192e9bf665d",
+      "receiptTotalTextCorrect": true,
+      "deliveryVisibleLineCount": 3,
+      "expectedVisibleLineCount": 3,
+      "localizationCorrect": false,
+      "localizationEvidence": "receiptTotal.y exceeds 719 in all outputs; not transformed post hoc",
+      "comparator": {
+        "status": "inconclusive",
+        "issues": [],
+        "reason": "Malformed transcription"
+      },
+      "final": "inconclusive"
+    },
+    {
+      "state": "total",
+      "repetition": 2,
+      "id": "98a9bca6-0edc-4608-8582-2ec43f099841",
+      "receiptTotalTextCorrect": true,
+      "deliveryVisibleLineCount": 3,
+      "expectedVisibleLineCount": 3,
+      "localizationCorrect": false,
+      "localizationEvidence": "receiptTotal.y exceeds 719 in all outputs; not transformed post hoc",
+      "comparator": {
+        "status": "inconclusive",
+        "issues": [],
+        "reason": "Malformed transcription"
+      },
+      "final": "inconclusive"
+    },
+    {
+      "state": "normal",
+      "repetition": 2,
+      "id": "0a6682a4-7436-4639-a539-aa26b0d405d4",
+      "receiptTotalTextCorrect": true,
+      "deliveryVisibleLineCount": 3,
+      "expectedVisibleLineCount": 3,
+      "localizationCorrect": false,
+      "localizationEvidence": "receiptTotal.y exceeds 719 in all outputs; not transformed post hoc",
+      "comparator": {
+        "status": "inconclusive",
+        "issues": [],
+        "reason": "Malformed transcription"
+      },
+      "final": "inconclusive"
+    },
+    {
+      "state": "decoration",
+      "repetition": 2,
+      "id": "b255ecc9-b2af-49c9-9f03-222ffd77f11e",
+      "receiptTotalTextCorrect": true,
+      "deliveryVisibleLineCount": 3,
+      "expectedVisibleLineCount": 3,
+      "localizationCorrect": false,
+      "localizationEvidence": "receiptTotal.y exceeds 719 in all outputs; not transformed post hoc",
+      "comparator": {
+        "status": "inconclusive",
+        "issues": [],
+        "reason": "Malformed transcription"
+      },
+      "final": "inconclusive"
+    },
+    {
+      "state": "clipped",
+      "repetition": 2,
+      "id": "02f76a5a-c7b9-4f98-a391-a64fe166c0b6",
+      "receiptTotalTextCorrect": true,
+      "deliveryVisibleLineCount": 2,
+      "expectedVisibleLineCount": 2,
+      "localizationCorrect": false,
+      "localizationEvidence": "receiptTotal.y exceeds 719 in all outputs; not transformed post hoc",
+      "comparator": {
+        "status": "inconclusive",
+        "issues": [],
+        "reason": "Malformed transcription"
+      },
+      "final": "inconclusive"
+    },
+    {
+      "state": "decoration",
+      "repetition": 3,
+      "id": "83cd1ebc-7020-4a69-b01b-2f4df9611ab0",
+      "receiptTotalTextCorrect": true,
+      "deliveryVisibleLineCount": 3,
+      "expectedVisibleLineCount": 3,
+      "localizationCorrect": false,
+      "localizationEvidence": "receiptTotal.y exceeds 719 in all outputs; not transformed post hoc",
+      "comparator": {
+        "status": "inconclusive",
+        "issues": [],
+        "reason": "Malformed transcription"
+      },
+      "final": "inconclusive"
+    },
+    {
+      "state": "total",
+      "repetition": 3,
+      "id": "4cee2f7c-bb1f-466a-b243-76ecefeb7034",
+      "receiptTotalTextCorrect": true,
+      "deliveryVisibleLineCount": 3,
+      "expectedVisibleLineCount": 3,
+      "localizationCorrect": false,
+      "localizationEvidence": "receiptTotal.y exceeds 719 in all outputs; not transformed post hoc",
+      "comparator": {
+        "status": "inconclusive",
+        "issues": [],
+        "reason": "Malformed transcription"
+      },
+      "final": "inconclusive"
+    },
+    {
+      "state": "clipped",
+      "repetition": 3,
+      "id": "b01cc8f3-2cb4-4f53-9800-eefb085c03e2",
+      "receiptTotalTextCorrect": true,
+      "deliveryVisibleLineCount": 2,
+      "expectedVisibleLineCount": 2,
+      "localizationCorrect": false,
+      "localizationEvidence": "receiptTotal.y exceeds 719 in all outputs; not transformed post hoc",
+      "comparator": {
+        "status": "inconclusive",
+        "issues": [],
+        "reason": "Malformed transcription"
+      },
+      "final": "inconclusive"
+    },
+    {
+      "state": "normal",
+      "repetition": 3,
+      "id": "d45bf8d3-36ed-4063-8725-d574a411296d",
+      "receiptTotalTextCorrect": true,
+      "deliveryVisibleLineCount": 3,
+      "expectedVisibleLineCount": 3,
+      "localizationCorrect": false,
+      "localizationEvidence": "receiptTotal.y exceeds 719 in all outputs; not transformed post hoc",
+      "comparator": {
+        "status": "inconclusive",
+        "issues": [],
+        "reason": "Malformed transcription"
+      },
+      "final": "inconclusive"
+    }
+  ]
+}

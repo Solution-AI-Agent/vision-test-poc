@@ -1,0 +1,21 @@
+{
+  "state": "total",
+  "repetition": 2,
+  "id": "8481f3c2-7ea3-4b56-9521-aa14fd965eab",
+  "source": {
+    "commit": "ae27c5e5e11ce536c15a3f1f80e313e0dd886599",
+    "dirty": false,
+    "criteriaHash": "5e80a0bea244394ba5e54ea466150bb046be28764ff1f2b48fa9f05482d95ba5",
+    "promptHash": "fecd7a8e89ccdd45bc2735b04c0dbfe7b9bb1f317f9214abd0de5a01b730e80f"
+  },
+  "assessment": "registered criteria on DOM-prepared confirmation; not autonomous discovery",
+  "rawOutputs": [],
+  "domSuite": "PASS",
+  "status": "failed",
+  "error": "Browser/model assessment failed",
+  "durationMs": 811,
+  "calls": 0,
+  "tokens": 0,
+  "reportedCost": null,
+  "transport": []
+}

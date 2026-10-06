@@ -1,0 +1,37 @@
+[
+  {
+    "name": "YouTube 검색 결과 확인",
+    "url": "https://www.youtube.com/",
+    "task": "검색창에서 Midscene AI demo를 검색하고 검색 결과가 표시되는지 확인한다.",
+    "expected": "검색어에 해당하는 영상 결과 목록이 화면에 표시된다.",
+    "id": "31d43bc8-9a89-4f08-9fd4-6fbd6d6f2f7b"
+  },
+  {
+    "name": "YouTube 검색 결과 확인",
+    "url": "https://www.youtube.com/",
+    "task": "검색창에서 Midscene AI demo를 검색하고 검색 결과가 표시되는지 확인한다.",
+    "expected": "검색어에 해당하는 영상 결과 목록이 화면에 표시된다.",
+    "id": "7a9dbb60-740d-4989-9c7e-f06cd834b923"
+  },
+  {
+    "name": "YouTube 검색 결과 확인",
+    "url": "https://www.youtube.com/",
+    "task": "검색창에서 Midscene AI demo를 검색하고 검색 결과가 표시되는지 확인한다.",
+    "expected": "검색어에 해당하는 영상 결과 목록이 화면에 표시된다.",
+    "id": "8c041d8b-4a84-4d36-90ed-5d166334750b"
+  },
+  {
+    "name": "YouTube 검색 결과 확인",
+    "url": "https://www.youtube.com/",
+    "task": "검색창에서 Midscene AI demo를 검색하고 검색 결과가 표시되는지 확인한다.",
+    "expected": "검색어에 해당하는 영상 결과 목록이 화면에 표시된다.",
+    "id": "c8afcbb3-7ecf-4d4b-a501-f71597e7fb9e"
+  },
+  {
+    "name": "독립 샘플 주문 검증",
+    "url": "http://127.0.0.1:4311/order",
+    "task": "Select Red mug, quantity 2. Enter a synthetic recipient and email, confirm the simulated order and review its appearance, receipt and community chart.",
+    "expected": "Product appearance matches selection. Calculations and confirmation match input. Receipt and collection instructions are readable. Chart magnitude agrees with displayed values.",
+    "id": "60a1d425-906d-43ed-90f2-b76b0275d655"
+  }
+]

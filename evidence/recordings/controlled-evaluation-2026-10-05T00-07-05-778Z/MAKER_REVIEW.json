@@ -1,0 +1,91 @@
+{
+  "source": {
+    "commit": "5a22c40956c4833b3331d1860be5e8745c6c7d8b",
+    "dirty": false,
+    "criteriaHash": "5e80a0bea244394ba5e54ea466150bb046be28764ff1f2b48fa9f05482d95ba5",
+    "promptHash": "fecd7a8e89ccdd45bc2735b04c0dbfe7b9bb1f317f9214abd0de5a01b730e80f"
+  },
+  "model": "qwen/qwen3-vl-30b-a3b-instruct",
+  "limits": {
+    "maxCalls": 3,
+    "maxSeconds": 30,
+    "maxTokens": 2048
+  },
+  "requests": 12,
+  "reportedCost": 0.004661210000000001,
+  "makerClassification": [
+    {
+      "state": "normal",
+      "domPass": 3,
+      "modelPass": 3,
+      "modelCandidates": 0,
+      "falseNegatives": 0,
+      "falsePositives": 0,
+      "inputHashes": [
+        "2660fa0f032c19643be8aae0cc79d4a4406c1d20c8d00fea59737dc74cc1598f",
+        "2660fa0f032c19643be8aae0cc79d4a4406c1d20c8d00fea59737dc74cc1598f",
+        "2660fa0f032c19643be8aae0cc79d4a4406c1d20c8d00fea59737dc74cc1598f"
+      ],
+      "runIds": [
+        "5de71902-51da-4ed3-b61b-d0b0d8c93cc4",
+        "6c0082d2-d676-4e99-af57-95cd53f76b7f",
+        "5bffeca6-94d1-4909-b9af-7a4551930633"
+      ]
+    },
+    {
+      "state": "clipped",
+      "domPass": 3,
+      "modelPass": 3,
+      "modelCandidates": 0,
+      "falseNegatives": 3,
+      "falsePositives": 0,
+      "inputHashes": [
+        "863f83eb4ef60c13b88088a7c35a4eb589345761a1aa976b31e879d8d082b8ca",
+        "863f83eb4ef60c13b88088a7c35a4eb589345761a1aa976b31e879d8d082b8ca",
+        "863f83eb4ef60c13b88088a7c35a4eb589345761a1aa976b31e879d8d082b8ca"
+      ],
+      "runIds": [
+        "efd3d933-2a73-4ac0-8367-9611b51752db",
+        "4dc84209-bfb1-4f32-befd-e071d848cd1d",
+        "94dfcc88-c272-42d0-813d-e7b4474cf652"
+      ]
+    },
+    {
+      "state": "total",
+      "domPass": 3,
+      "modelPass": 3,
+      "modelCandidates": 0,
+      "falseNegatives": 3,
+      "falsePositives": 0,
+      "inputHashes": [
+        "59086ee23c3e1fbc5a7cd05c8e3c8c33454b1ccdae42e8df93916f94ad10314a",
+        "59086ee23c3e1fbc5a7cd05c8e3c8c33454b1ccdae42e8df93916f94ad10314a",
+        "59086ee23c3e1fbc5a7cd05c8e3c8c33454b1ccdae42e8df93916f94ad10314a"
+      ],
+      "runIds": [
+        "a323b3f8-408f-4bea-8734-5bca59ce3f46",
+        "be366397-e2d3-4ba2-b81e-a57a93b4eeef",
+        "0717ee77-8e90-47f0-8770-3124254adf34"
+      ]
+    },
+    {
+      "state": "decoration",
+      "domPass": 3,
+      "modelPass": 3,
+      "modelCandidates": 0,
+      "falseNegatives": 0,
+      "falsePositives": 0,
+      "inputHashes": [
+        "7c83ced7b5bb8ad0f7abd002de0be74b4d69640cd131fb17039381da10666083",
+        "7c83ced7b5bb8ad0f7abd002de0be74b4d69640cd131fb17039381da10666083",
+        "7c83ced7b5bb8ad0f7abd002de0be74b4d69640cd131fb17039381da10666083"
+      ],
+      "runIds": [
+        "fd91ff87-d214-49c6-819f-70a499971b7e",
+        "eec1ac2e-0af8-4d02-9a9c-f52f82aa3286",
+        "91c56111-4ef0-43ea-b25e-b4c90792feba"
+      ]
+    }
+  ],
+  "note": "Model verdicts preserved. Maker classification uses the controlled injection oracle and inspected input images; independent lead adjudication is pending. No general performance claim."
+}

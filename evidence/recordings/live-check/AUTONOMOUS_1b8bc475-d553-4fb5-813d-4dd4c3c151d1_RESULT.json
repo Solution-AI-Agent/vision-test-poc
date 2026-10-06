@@ -1,0 +1,217 @@
+{
+  "id": "1b8bc475-d553-4fb5-813d-4dd4c3c151d1",
+  "input": {
+    "mode": "autonomous",
+    "url": "https://www.youtube.com/",
+    "task": "검색창에서 Midscene AI demo를 검색하고 검색 결과가 표시되는지 확인한다.",
+    "expected": "검색어에 해당하는 영상 결과 목록이 화면에 표시된다.",
+    "query": "Midscene AI demo"
+  },
+  "settings": {
+    "maxActions": 6,
+    "maxCalls": 8,
+    "maxSeconds": 120,
+    "maxTokens": 2048,
+    "model": "qwen/qwen3-vl-30b-a3b-instruct",
+    "family": "qwen3-vl"
+  },
+  "startedAt": "2026-10-04T09:49:51.582Z",
+  "status": "limited",
+  "outcome": "행동 한도 도달",
+  "stage": "종료",
+  "calls": 7,
+  "actions": 6,
+  "tokens": 16367,
+  "cost": 0.00296482,
+  "steps": [
+    {
+      "index": 0,
+      "at": "2026-10-04T09:49:58.966Z",
+      "before": "/artifacts/1b8bc475-d553-4fb5-813d-4dd4c3c151d1/model-request-1.jpg",
+      "after": "/artifacts/1b8bc475-d553-4fb5-813d-4dd4c3c151d1/0-after.png",
+      "plan": {
+        "observation": "The screenshot shows a clean UI with a navigation bar on the left, a search bar at the top, and a 'Sign in' button on the right. The main area prompts the user to start searching for videos.",
+        "rationale": "To ensure the application is functioning correctly and the user can interact with it as expected, I need to verify that all elements are present and responsive. The presence of the search bar and the 'Sign in' button indicates that the core functionalities are accessible.",
+        "action": {
+          "type": "click",
+          "x": 450,
+          "y": 36
+        },
+        "verdict": "continue",
+        "finding": null
+      },
+      "executed": true
+    },
+    {
+      "index": 1,
+      "at": "2026-10-04T09:50:07.849Z",
+      "before": "/artifacts/1b8bc475-d553-4fb5-813d-4dd4c3c151d1/model-request-2.jpg",
+      "after": "/artifacts/1b8bc475-d553-4fb5-813d-4dd4c3c151d1/1-after.png",
+      "plan": {
+        "observation": "The screenshot shows the YouTube homepage with a navigation bar on the left, a search bar at the top, and a 'Sign in' button on the right. The main area prompts the user to start searching for videos. The search bar is active and ready for input.",
+        "rationale": "The search bar is prominently displayed and appears to be the primary interactive element on the page, suggesting that the next logical step is to initiate a search.",
+        "action": {
+          "type": "click",
+          "x": 450,
+          "y": 36
+        },
+        "verdict": "continue",
+        "finding": null
+      },
+      "executed": true
+    },
+    {
+      "index": 2,
+      "at": "2026-10-04T09:50:11.499Z",
+      "before": "/artifacts/1b8bc475-d553-4fb5-813d-4dd4c3c151d1/model-request-3.jpg",
+      "after": "/artifacts/1b8bc475-d553-4fb5-813d-4dd4c3c151d1/2-after.png",
+      "plan": {
+        "observation": "The screenshot shows the YouTube homepage with a navigation bar on the left, a search bar at the top, and a 'Sign in' button on the right. The main area prompts the user to start searching for videos. The search bar is active and ready for input.",
+        "rationale": "The search bar is active and ready for input, indicating that the user can proceed with searching for videos.",
+        "action": {
+          "type": "click",
+          "x": 450,
+          "y": 36
+        },
+        "verdict": "continue",
+        "finding": null
+      },
+      "executed": true
+    },
+    {
+      "index": 3,
+      "at": "2026-10-04T09:50:15.215Z",
+      "before": "/artifacts/1b8bc475-d553-4fb5-813d-4dd4c3c151d1/model-request-4.jpg",
+      "after": "/artifacts/1b8bc475-d553-4fb5-813d-4dd4c3c151d1/3-after.png",
+      "plan": {
+        "observation": "The screenshot shows the YouTube homepage with a navigation bar on the left, a search bar at the top, and a 'Sign in' button on the right. The main area prompts the user to start searching for videos. The search bar is active and ready for input.",
+        "rationale": "The search bar is clearly visible and appears to be the primary interactive element on the page, indicating that the next logical step is to engage with it.",
+        "action": {
+          "type": "click",
+          "x": 450,
+          "y": 36
+        },
+        "verdict": "continue",
+        "finding": null
+      },
+      "executed": true
+    },
+    {
+      "index": 4,
+      "at": "2026-10-04T09:50:18.949Z",
+      "before": "/artifacts/1b8bc475-d553-4fb5-813d-4dd4c3c151d1/model-request-5.jpg",
+      "after": "/artifacts/1b8bc475-d553-4fb5-813d-4dd4c3c151d1/4-after.png",
+      "plan": {
+        "observation": "The screenshot shows the YouTube homepage with a navigation bar on the left, a search bar at the top, and a 'Sign in' button on the right. The main area prompts the user to start searching for videos. The search bar is active and ready for input.",
+        "rationale": "The search bar is active and ready for input, indicating that the user can proceed with searching for videos.",
+        "action": {
+          "type": "click",
+          "x": 450,
+          "y": 36
+        },
+        "verdict": "continue",
+        "finding": null
+      },
+      "executed": true
+    },
+    {
+      "index": 5,
+      "at": "2026-10-04T09:50:22.646Z",
+      "before": "/artifacts/1b8bc475-d553-4fb5-813d-4dd4c3c151d1/model-request-6.jpg",
+      "after": "/artifacts/1b8bc475-d553-4fb5-813d-4dd4c3c151d1/5-after.png",
+      "plan": {
+        "observation": "The screenshot shows the YouTube homepage with a navigation bar on the left, a search bar at the top, and a 'Sign in' button on the right. The main area prompts the user to start searching for videos. The search bar is active and ready for input.",
+        "rationale": "The search bar is clearly visible and appears to be the primary interactive element for initiating user engagement on this page.",
+        "action": {
+          "type": "click",
+          "x": 450,
+          "y": 36
+        },
+        "verdict": "continue",
+        "finding": null
+      },
+      "executed": true
+    },
+    {
+      "index": 6,
+      "at": "2026-10-04T09:50:26.432Z",
+      "before": "/artifacts/1b8bc475-d553-4fb5-813d-4dd4c3c151d1/model-request-7.jpg",
+      "after": "/artifacts/1b8bc475-d553-4fb5-813d-4dd4c3c151d1/6-decision.png",
+      "plan": {
+        "observation": "The screenshot shows the YouTube homepage with a navigation bar on the left, a search bar at the top, and a 'Sign in' button on the right. The main area prompts the user to start searching for videos. The search bar is active and ready for input.",
+        "rationale": "The search bar is clearly visible and appears to be the primary interactive element for initiating user engagement, as indicated by the prompt to 'Try searching to get started'.",
+        "action": {
+          "type": "click",
+          "x": 450,
+          "y": 36
+        },
+        "verdict": "continue",
+        "finding": null
+      },
+      "executed": false
+    }
+  ],
+  "findings": [],
+  "engine": "Midscene aiQuery / 1.14.0 → Playwright coordinates / 1.63.0",
+  "transport": [
+    {
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/1b8bc475-d553-4fb5-813d-4dd4c3c151d1/model-request-1.jpg",
+      "elapsedMs": 3728,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791107395-dpTcwetU1BKSqE4veryF"
+    },
+    {
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/1b8bc475-d553-4fb5-813d-4dd4c3c151d1/model-request-2.jpg",
+      "elapsedMs": 7989,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791107400-ZAhUWp6H8zxvXPkIFx6B"
+    },
+    {
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/1b8bc475-d553-4fb5-813d-4dd4c3c151d1/model-request-3.jpg",
+      "elapsedMs": 2779,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791107408-rGRZ9dgKDfeBe3gCAqzd"
+    },
+    {
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/1b8bc475-d553-4fb5-813d-4dd4c3c151d1/model-request-4.jpg",
+      "elapsedMs": 2829,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791107412-snkM2UsNs1lCRSy0P2vi"
+    },
+    {
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/1b8bc475-d553-4fb5-813d-4dd4c3c151d1/model-request-5.jpg",
+      "elapsedMs": 2852,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791107416-MUROyZCerMPqDrxjPU1X"
+    },
+    {
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/1b8bc475-d553-4fb5-813d-4dd4c3c151d1/model-request-6.jpg",
+      "elapsedMs": 2814,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791107419-NXtJxz3uW9W7rObHNoxZ"
+    },
+    {
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/1b8bc475-d553-4fb5-813d-4dd4c3c151d1/model-request-7.jpg",
+      "elapsedMs": 2890,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791107423-QvZbAL2mRW4sQTbbXB6P"
+    }
+  ],
+  "screenshot": "/artifacts/1b8bc475-d553-4fb5-813d-4dd4c3c151d1/6-decision.png",
+  "video": "/artifacts/1b8bc475-d553-4fb5-813d-4dd4c3c151d1/page@01c6930beac79006614b6bf2e63e356f.webm",
+  "endedAt": "2026-10-04T09:50:26.543Z"
+}

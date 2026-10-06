@@ -1,0 +1,14 @@
+{
+  "sampleWorkflow": "PASS",
+  "platformOriginBlockedInBrowser": true,
+  "requestOrigins": [
+    "http://127.0.0.1:4311"
+  ],
+  "registeredSampleScenarios": [
+    {
+      "id": "60a1d425-906d-43ed-90f2-b76b0275d655",
+      "url": "http://127.0.0.1:4311/order"
+    }
+  ],
+  "paidModelCalls": 0
+}

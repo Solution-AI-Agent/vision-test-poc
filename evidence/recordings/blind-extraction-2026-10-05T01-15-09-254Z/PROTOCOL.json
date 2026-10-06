@@ -1,0 +1,51 @@
+{
+  "source": {
+    "commit": "03320fdae7c17fbb9145d37b72ea5650a112503a",
+    "dirty": false,
+    "promptHash": "01651bd361fed537c414cd2f1ddfddac37329e36fe3d6ebc4891762ba0fecf61",
+    "comparatorHash": "ed2a9848649d5411316a14a9a16fd9cf69de206b9379a2eb022c2ced998b88b3",
+    "criteriaHash": "5e80a0bea244394ba5e54ea466150bb046be28764ff1f2b48fa9f05482d95ba5"
+  },
+  "order": [
+    "normal",
+    "clipped",
+    "total",
+    "decoration",
+    "total",
+    "normal",
+    "decoration",
+    "clipped",
+    "decoration",
+    "total",
+    "clipped",
+    "normal"
+  ],
+  "images": [
+    [
+      "normal",
+      "5de71902-51da-4ed3-b61b-d0b0d8c93cc4",
+      "2660fa0f032c19643be8aae0cc79d4a4406c1d20c8d00fea59737dc74cc1598f"
+    ],
+    [
+      "clipped",
+      "efd3d933-2a73-4ac0-8367-9611b51752db",
+      "863f83eb4ef60c13b88088a7c35a4eb589345761a1aa976b31e879d8d082b8ca"
+    ],
+    [
+      "total",
+      "a323b3f8-408f-4bea-8734-5bca59ce3f46",
+      "59086ee23c3e1fbc5a7cd05c8e3c8c33454b1ccdae42e8df93916f94ad10314a"
+    ],
+    [
+      "decoration",
+      "fd91ff87-d214-49c6-819f-70a499971b7e",
+      "7c83ced7b5bb8ad0f7abd002de0be74b4d69640cd131fb17039381da10666083"
+    ]
+  ],
+  "limits": {
+    "requests": 12,
+    "perTrial": 1,
+    "seconds": 30,
+    "tokens": 2048
+  }
+}

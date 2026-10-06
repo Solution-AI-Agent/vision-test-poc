@@ -1,0 +1,10 @@
+{
+  "completed" : true,
+  "expected_duration_seconds" : 168,
+  "file" : "\/Users\/zpro\/.buzz\/OUTBOX\/VISION_TEST_LUMEN_V4\/VISION_TEST_LUMEN_ROUGHCUT_V4.mp4",
+  "full_GUI_watch" : false,
+  "last_time_seconds" : 168,
+  "method" : "AVPlayer real-time playback with AVPlayerItemVideoOutput; no GUI window",
+  "sampled_decoded_buffers" : 4032,
+  "wall_seconds" : 168.17243099212646
+}

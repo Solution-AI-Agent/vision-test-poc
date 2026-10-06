@@ -1,0 +1,15 @@
+{
+  "status": "pass",
+  "checks": [
+    "settings save and key masking",
+    "key deletion",
+    "scenario persistence",
+    "missing-key guard",
+    "target boundary",
+    "same-origin mutation guard",
+    "dark/light/mobile views",
+    "no browser exceptions"
+  ],
+  "provider": "not called",
+  "at": "2026-10-04T09:45:50.558Z"
+}

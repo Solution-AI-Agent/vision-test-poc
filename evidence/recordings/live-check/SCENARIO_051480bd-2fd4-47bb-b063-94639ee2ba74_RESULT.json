@@ -1,0 +1,188 @@
+{
+  "id": "051480bd-2fd4-47bb-b063-94639ee2ba74",
+  "input": {
+    "mode": "scenario",
+    "url": "https://www.youtube.com/",
+    "task": "검색창에서 Midscene AI demo를 검색하고 검색 결과가 표시되는지 확인한다.",
+    "expected": "검색어에 해당하는 영상 결과 목록이 화면에 표시된다.",
+    "query": "Midscene AI demo"
+  },
+  "settings": {
+    "maxActions": 6,
+    "maxCalls": 8,
+    "maxSeconds": 120,
+    "maxTokens": 2048,
+    "model": "qwen/qwen3-vl-30b-a3b-instruct",
+    "family": "qwen3-vl"
+  },
+  "startedAt": "2026-10-04T09:48:49.668Z",
+  "status": "completed",
+  "outcome": "기대 결과 관찰됨 · 독립 검토 필요",
+  "stage": "종료",
+  "calls": 5,
+  "actions": 4,
+  "tokens": 12124,
+  "cost": 0.0022838900000000002,
+  "steps": [
+    {
+      "index": 0,
+      "at": "2026-10-04T09:48:58.366Z",
+      "before": "/artifacts/051480bd-2fd4-47bb-b063-94639ee2ba74/model-request-1.jpg",
+      "after": "/artifacts/051480bd-2fd4-47bb-b063-94639ee2ba74/0-after.png",
+      "plan": {
+        "observation": "The screenshot shows a search bar at the top of the page with a placeholder text 'Search'. The main content area displays a message: 'Try searching to get started' and 'Start watching videos to help us build a feed of videos you'll love.' There are no video results visible on the screen. The left sidebar contains navigation icons for Home, Shorts, Subscriptions, and You. The user has not yet interacted with the search bar or performed any search action.",
+        "rationale": "The user's task is to search for 'Midscene AI demo' in the search bar and verify that the search results are displayed. Currently, no search has been performed, so there are no results shown. The next step should be to click on the search bar to begin the search process.",
+        "action": {
+          "type": "click",
+          "x": 458,
+          "y": 37
+        },
+        "verdict": "continue",
+        "finding": null
+      },
+      "executed": true
+    },
+    {
+      "index": 1,
+      "at": "2026-10-04T09:49:07.297Z",
+      "before": "/artifacts/051480bd-2fd4-47bb-b063-94639ee2ba74/model-request-2.jpg",
+      "after": "/artifacts/051480bd-2fd4-47bb-b063-94639ee2ba74/1-after.png",
+      "plan": {
+        "observation": "The screenshot shows the YouTube homepage with a search bar at the top. The search bar is currently empty, and the main content area displays a prompt to 'Try searching to get started.' There are no video results visible on the screen, indicating that a search has not yet been performed. The user has not interacted with the search bar or performed any search action.",
+        "rationale": "The user's task is to search for 'Midscene AI demo' in the search bar and verify that the search results are displayed. Currently, the search bar is empty, and no search results are visible, indicating that the search has not been executed yet.",
+        "action": {
+          "type": "type",
+          "text": "Midscene AI demo"
+        },
+        "verdict": "continue",
+        "finding": null
+      },
+      "executed": true
+    },
+    {
+      "index": 2,
+      "at": "2026-10-04T09:49:19.382Z",
+      "before": "/artifacts/051480bd-2fd4-47bb-b063-94639ee2ba74/model-request-3.jpg",
+      "after": "/artifacts/051480bd-2fd4-47bb-b063-94639ee2ba74/2-after.png",
+      "plan": {
+        "observation": "... the search bar contains the text 'Midscene AI demo,' and a dropdown list with search suggestions is visible below it. The main content area still displays the message 'Try searching to get started' and 'Start watching videos to help us build a feed of videos you'll love.' No video results are visible on the screen, indicating that the search has not yet been submitted.",
+        "rationale": "The user has typed the search query 'Midscene AI demo' into the search bar, but the search has not been submitted yet. The expected result is that the video results should be displayed on the screen after the search is submitted. Since the search has not been submitted, the video results are not visible.",
+        "action": {
+          "type": "key",
+          "key": "Enter"
+        },
+        "verdict": "continue",
+        "finding": null
+      },
+      "executed": true
+    },
+    {
+      "index": 3,
+      "at": "2026-10-04T09:49:24.146Z",
+      "before": "/artifacts/051480bd-2fd4-47bb-b063-94639ee2ba74/model-request-4.jpg",
+      "after": "/artifacts/051480bd-2fd4-47bb-b063-94639ee2ba74/3-after.png",
+      "plan": {
+        "observation": "The screenshot shows the YouTube homepage with a search bar at the top containing the text 'Midscene AI demo'. A dropdown list with search suggestions is visible below the search bar. The main content area still displays the message 'Try searching to get started' and 'Start watching videos to help us build a feed of videos you'll love.' No video results are visible on the screen, indicating that the search has not yet been submitted or the results have not loaded.",
+        "rationale": "The user has entered the search term 'Midscene AI demo' but has not yet submitted the search. The search results are expected to appear after submitting the search query.",
+        "action": {
+          "type": "key",
+          "key": "Enter"
+        },
+        "verdict": "inconclusive",
+        "finding": null
+      },
+      "executed": true
+    },
+    {
+      "index": 4,
+      "at": "2026-10-04T09:49:28.967Z",
+      "before": "/artifacts/051480bd-2fd4-47bb-b063-94639ee2ba74/model-request-5.jpg",
+      "after": "/artifacts/051480bd-2fd4-47bb-b063-94639ee2ba74/4-decision.png",
+      "plan": {
+        "observation": "The search query 'Midscene AI demo' has been entered, and relevant video results are displayed on the screen.",
+        "rationale": "The user's task was to search for 'Midscene AI demo' and verify that the search results are displayed. The screenshot confirms that the search results are visible, meeting the expected outcome.",
+        "action": {
+          "type": "finish"
+        },
+        "verdict": "pass",
+        "finding": {
+          "title": "Search results for 'Midscene AI demo' are displayed",
+          "observed": "Two video results are visible, including 'Midsceen.js: Your Companion in UI Automation' and an advertisement for BackTalk.",
+          "expected": "The search results for 'Midscene AI demo' should be displayed on the screen.",
+          "basis": "The presence of video results confirms that the search query was successfully processed and the results are shown.",
+          "reproduction": [
+            "Enter 'Midscene AI demo' in the search bar.",
+            "Press Enter to submit the search.",
+            "Verify that the search results are displayed on the screen."
+          ]
+        }
+      },
+      "executed": false
+    }
+  ],
+  "findings": [
+    {
+      "title": "Search results for 'Midscene AI demo' are displayed",
+      "observed": "Two video results are visible, including 'Midsceen.js: Your Companion in UI Automation' and an advertisement for BackTalk.",
+      "expected": "The search results for 'Midscene AI demo' should be displayed on the screen.",
+      "basis": "The presence of video results confirms that the search query was successfully processed and the results are shown.",
+      "reproduction": [
+        "Enter 'Midscene AI demo' in the search bar.",
+        "Press Enter to submit the search.",
+        "Verify that the search results are displayed on the screen."
+      ],
+      "id": "f4ff46a7-33d8-4762-b43e-02a903934c0a",
+      "status": "false-positive",
+      "reviewNote": "독립 화면 확인: 모델 요청 5와 4-decision 화면에 검색어 및 Midscene 영상 결과가 실제 표시된다. finding 내용 자체도 기대 결과 충족을 설명하며 결함을 제시하지 않는다. 앱이 pass 응답의 finding을 후보로 승격한 수집 조건 오류이며 YouTube 결함이 아니다.",
+      "step": 4,
+      "before": "/artifacts/051480bd-2fd4-47bb-b063-94639ee2ba74/model-request-5.jpg",
+      "after": "/artifacts/051480bd-2fd4-47bb-b063-94639ee2ba74/4-decision.png"
+    }
+  ],
+  "engine": "Midscene aiQuery / 1.14.0 → Playwright coordinates / 1.63.0",
+  "transport": [
+    {
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/051480bd-2fd4-47bb-b063-94639ee2ba74/model-request-1.jpg",
+      "elapsedMs": 4902,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791107334-VChxdkSfx7XVyzxkWf4N"
+    },
+    {
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/051480bd-2fd4-47bb-b063-94639ee2ba74/model-request-2.jpg",
+      "elapsedMs": 8045,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791107339-l4DAQHfJSrqop50bP6v8"
+    },
+    {
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/051480bd-2fd4-47bb-b063-94639ee2ba74/model-request-3.jpg",
+      "elapsedMs": 11200,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791107348-dJPfGwVkhVEztr7gR6Il"
+    },
+    {
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/051480bd-2fd4-47bb-b063-94639ee2ba74/model-request-4.jpg",
+      "elapsedMs": 3861,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791107360-4O6m7n0UCjR6ynK1RbTX"
+    },
+    {
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/051480bd-2fd4-47bb-b063-94639ee2ba74/model-request-5.jpg",
+      "elapsedMs": 3938,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791107365-Pypb6aojWx3Ce7QqT8TW"
+    }
+  ],
+  "screenshot": "/artifacts/051480bd-2fd4-47bb-b063-94639ee2ba74/4-decision.png",
+  "video": "/artifacts/051480bd-2fd4-47bb-b063-94639ee2ba74/page@50a8b2c5818f425a032449e217952879.webm",
+  "endedAt": "2026-10-04T09:49:29.199Z"
+}

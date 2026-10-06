@@ -1,0 +1,30 @@
+{
+  "commit": "72a46631fa1ee54b037c7fa870b5f42961694382",
+  "criteria": "evaluation/CRITERIA.json",
+  "results": [
+    {
+      "state": "normal",
+      "domSuite": "PASS",
+      "pageErrors": [],
+      "screenshot": "artifacts/fixture-production-72a4663/normal.png"
+    },
+    {
+      "state": "clipped",
+      "domSuite": "PASS",
+      "pageErrors": [],
+      "screenshot": "artifacts/fixture-production-72a4663/clipped.png"
+    },
+    {
+      "state": "total",
+      "domSuite": "PASS",
+      "pageErrors": [],
+      "screenshot": "artifacts/fixture-production-72a4663/total.png"
+    },
+    {
+      "state": "decoration",
+      "domSuite": "PASS",
+      "pageErrors": [],
+      "screenshot": "artifacts/fixture-production-72a4663/decoration.png"
+    }
+  ]
+}

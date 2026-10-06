@@ -1,0 +1,19 @@
+{
+  "source": {
+    "commit": "373ecad3216c92f9ace7785df91c7c59ed9dcb6e",
+    "dirty": false,
+    "promptHash": "255b832d36984f07b9f41169b7944af8efd3b6bad47473ece6c15516e882435a",
+    "criteria": "demo-readable-receipt-v1",
+    "baselineHash": "67190d1f94dd0581d0b79b321863a77062d0b18fe0ac7b4a95d12c542db08e7c"
+  },
+  "stage": "candidate",
+  "states": [
+    "cover-wide"
+  ],
+  "maxBatchCalls": 9,
+  "perTrial": {
+    "calls": 1,
+    "seconds": 30,
+    "tokens": 2048
+  }
+}

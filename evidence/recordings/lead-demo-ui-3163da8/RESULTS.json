@@ -1,0 +1,23 @@
+{
+  "before": "3163da8042744a8defc8647c31efe9d86d0c3c1e",
+  "after": "3163da8042744a8defc8647c31efe9d86d0c3c1e",
+  "errors": [],
+  "rows": [
+    {
+      "state": "normal",
+      "imageStatus": 200,
+      "recordStatus": 200,
+      "run": "b7181596-c25a-4eb9-be43-56e76d685802",
+      "verdict": "pass",
+      "dom": "PASS"
+    },
+    {
+      "state": "fault",
+      "imageStatus": 200,
+      "recordStatus": 200,
+      "run": "ae75c703-b63f-477b-84a0-0c9e753dd31a",
+      "verdict": "candidate",
+      "dom": "PASS"
+    }
+  ]
+}

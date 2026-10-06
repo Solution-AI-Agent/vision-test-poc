@@ -1,0 +1,330 @@
+{
+  "id": "719161ea-bd0b-49a0-b708-5e542ebfa6b8",
+  "input": {
+    "mode": "scenario",
+    "url": "https://www.youtube.com/",
+    "task": "검색창에서 Midscene AI demo를 검색하고 검색 결과가 표시되는지 확인한다.",
+    "expected": "검색어에 해당하는 영상 결과 목록이 화면에 표시된다.",
+    "query": "Midscene AI demo"
+  },
+  "settings": {
+    "maxActions": 6,
+    "maxCalls": 8,
+    "maxSeconds": 120,
+    "maxTokens": 2048,
+    "model": "qwen/qwen3-vl-30b-a3b-instruct",
+    "family": "qwen3-vl"
+  },
+  "startedAt": "2026-10-04T10:07:12.412Z",
+  "status": "limited",
+  "outcome": "행동 한도 도달",
+  "stage": "종료",
+  "calls": 7,
+  "actions": 6,
+  "tokens": 17002,
+  "cost": 0.00327014,
+  "steps": [
+    {
+      "index": 0,
+      "at": "2026-10-04T10:07:19.868Z",
+      "before": "/artifacts/719161ea-bd0b-49a0-b708-5e542ebfa6b8/model-request-1.jpg",
+      "after": "/artifacts/719161ea-bd0b-49a0-b708-5e542ebfa6b8/0-after.png",
+      "plan": {
+        "observation": "The search bar is present but no search has been conducted yet, as indicated by the prompt to 'Try searching to get started'. No search results are displayed on the screen.",
+        "rationale": "The task requires searching for 'Midscene AI demo' in the search bar and verifying if the search results are displayed. Since the search has not been initiated, the next step should be to enter the search term.",
+        "action": {
+          "type": "click",
+          "x": 465,
+          "y": 37
+        },
+        "verdict": "continue",
+        "finding": null
+      },
+      "executed": true,
+      "unchanged": false
+    },
+    {
+      "index": 1,
+      "at": "2026-10-04T10:07:23.852Z",
+      "before": "/artifacts/719161ea-bd0b-49a0-b708-5e542ebfa6b8/model-request-2.jpg",
+      "after": "/artifacts/719161ea-bd0b-49a0-b708-5e542ebfa6b8/1-after.png",
+      "plan": {
+        "observation": "The search bar is present but no search has been conducted yet, as indicated by the prompt to 'Try searching to get started'. No search results are displayed on the screen.",
+        "rationale": "The user needs to enter the search term 'Midscene AI demo' into the search bar to check if the search results are displayed. Since the search has not been performed, the next step should be to type the search term.",
+        "action": {
+          "type": "type",
+          "text": "Midscene AI demo"
+        },
+        "verdict": "continue",
+        "finding": null
+      },
+      "executed": true,
+      "unchanged": false
+    },
+    {
+      "index": 2,
+      "at": "2026-10-04T10:07:27.351Z",
+      "before": "/artifacts/719161ea-bd0b-49a0-b708-5e542ebfa6b8/model-request-3.jpg",
+      "after": "/artifacts/719161ea-bd0b-49a0-b708-5e542ebfa6b8/2-after.png",
+      "plan": {
+        "observation": "The search bar contains the text 'Midscene AI demo,' but no search results are displayed on the screen. The page still shows the prompt 'Try searching to get started,' indicating that the search has not been executed yet.",
+        "rationale": "The search term has been entered, but the search has not been initiated, as there are no results displayed and the prompt remains visible.",
+        "action": {
+          "type": "key",
+          "key": "Enter"
+        },
+        "verdict": "continue",
+        "finding": null
+      },
+      "executed": true,
+      "unchanged": false
+    },
+    {
+      "index": 3,
+      "at": "2026-10-04T10:07:30.985Z",
+      "before": "/artifacts/719161ea-bd0b-49a0-b708-5e542ebfa6b8/model-request-4.jpg",
+      "after": "/artifacts/719161ea-bd0b-49a0-b708-5e542ebfa6b8/3-after.png",
+      "plan": {
+        "observation": "The search query 'Midscene AI demo' has been entered, but no search results are displayed on the screen.",
+        "rationale": "The search has been initiated, but the expected results are not visible, indicating a potential delay in loading or an issue with result display.",
+        "action": {
+          "type": "wait"
+        },
+        "verdict": "inconclusive",
+        "finding": null
+      },
+      "executed": true,
+      "unchanged": false
+    },
+    {
+      "index": 4,
+      "at": "2026-10-04T10:07:35.636Z",
+      "before": "/artifacts/719161ea-bd0b-49a0-b708-5e542ebfa6b8/model-request-5.jpg",
+      "after": "/artifacts/719161ea-bd0b-49a0-b708-5e542ebfa6b8/4-after.png",
+      "plan": {
+        "observation": "The search query 'Midscene AI demo' has been entered, and the search results are now visible on the screen. The results include a video titled 'Midscene.js: Your Companion in UI Automation' along with other related content.",
+        "rationale": "The search results for 'Midscene AI demo' are displayed as expected, indicating that the search was successfully executed and the results are shown.",
+        "action": {
+          "type": "wait"
+        },
+        "verdict": "pass",
+        "finding": null
+      },
+      "executed": true,
+      "unchanged": false
+    },
+    {
+      "index": 5,
+      "at": "2026-10-04T10:07:39.969Z",
+      "before": "/artifacts/719161ea-bd0b-49a0-b708-5e542ebfa6b8/model-request-6.jpg",
+      "after": "/artifacts/719161ea-bd0b-49a0-b708-5e542ebfa6b8/5-after.png",
+      "plan": {
+        "observation": "The search results for 'Midscene AI demo' are displayed, including a relevant video.",
+        "rationale": "The search query was successfully entered and executed, resulting in the display of relevant search results.",
+        "action": {
+          "type": "wait"
+        },
+        "verdict": "pass",
+        "finding": null
+      },
+      "executed": true,
+      "unchanged": false
+    },
+    {
+      "index": 6,
+      "at": "2026-10-04T10:07:44.100Z",
+      "before": "/artifacts/719161ea-bd0b-49a0-b708-5e542ebfa6b8/model-request-7.jpg",
+      "after": "/artifacts/719161ea-bd0b-49a0-b708-5e542ebfa6b8/6-decision.png",
+      "plan": {
+        "observation": "The search results for 'Midscene AI demo' are displayed, including a relevant video.",
+        "rationale": "The search query was entered, and the results are now visible on the screen, confirming that the search was successful.",
+        "action": {
+          "type": "wait"
+        },
+        "verdict": "pass",
+        "finding": null
+      },
+      "executed": false
+    }
+  ],
+  "findings": [],
+  "engine": "Midscene aiQuery / 1.14.0 → Playwright coordinates / 1.63.0",
+  "transport": [
+    {
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/719161ea-bd0b-49a0-b708-5e542ebfa6b8/model-request-1.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 1032,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 3774,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791108436-W2TgRvXUBDVKSNj63B29",
+      "parsedOutput": {
+        "observation": "The search bar is present but no search has been conducted yet, as indicated by the prompt to 'Try searching to get started'. No search results are displayed on the screen.",
+        "rationale": "The task requires searching for 'Midscene AI demo' in the search bar and verifying if the search results are displayed. Since the search has not been initiated, the next step should be to enter the search term.",
+        "action": {
+          "type": "click",
+          "x": 465,
+          "y": 37
+        },
+        "verdict": "continue",
+        "finding": null
+      }
+    },
+    {
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/719161ea-bd0b-49a0-b708-5e542ebfa6b8/model-request-2.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 908,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 3110,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791108440-wI0uEyrZv6xTacmWIxaq",
+      "parsedOutput": {
+        "observation": "The search bar is present but no search has been conducted yet, as indicated by the prompt to 'Try searching to get started'. No search results are displayed on the screen.",
+        "rationale": "The user needs to enter the search term 'Midscene AI demo' into the search bar to check if the search results are displayed. Since the search has not been performed, the next step should be to type the search term.",
+        "action": {
+          "type": "type",
+          "text": "Midscene AI demo"
+        },
+        "verdict": "continue",
+        "finding": null
+      }
+    },
+    {
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/719161ea-bd0b-49a0-b708-5e542ebfa6b8/model-request-3.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 776,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 2625,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791108444-2CV2vjyAKC3ia2QzeC18",
+      "parsedOutput": {
+        "observation": "The search bar contains the text 'Midscene AI demo,' but no search results are displayed on the screen. The page still shows the prompt 'Try searching to get started,' indicating that the search has not been executed yet.",
+        "rationale": "The search term has been entered, but the search has not been initiated, as there are no results displayed and the prompt remains visible.",
+        "action": {
+          "type": "key",
+          "key": "Enter"
+        },
+        "verdict": "continue",
+        "finding": null
+      }
+    },
+    {
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/719161ea-bd0b-49a0-b708-5e542ebfa6b8/model-request-4.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 823,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 2733,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791108448-LQTr1TB1WPk84RucfooS",
+      "parsedOutput": {
+        "observation": "The search query 'Midscene AI demo' has been entered, but no search results are displayed on the screen.",
+        "rationale": "The search has been initiated, but the expected results are not visible, indicating a potential delay in loading or an issue with result display.",
+        "action": {
+          "type": "wait",
+          "duration": 2
+        },
+        "verdict": "inconclusive",
+        "finding": null
+      }
+    },
+    {
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/719161ea-bd0b-49a0-b708-5e542ebfa6b8/model-request-5.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 787,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 2898,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791108452-4gjI87Qvvz0xNePOm8VC",
+      "parsedOutput": {
+        "observation": "The search query 'Midscene AI demo' has been entered, and the search results are now visible on the screen. The results include a video titled 'Midscene.js: Your Companion in UI Automation' along with other related content.",
+        "rationale": "The search results for 'Midscene AI demo' are displayed as expected, indicating that the search was successfully executed and the results are shown.",
+        "action": {
+          "type": "wait",
+          "key": "Enter"
+        },
+        "verdict": "pass",
+        "finding": null
+      }
+    },
+    {
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/719161ea-bd0b-49a0-b708-5e542ebfa6b8/model-request-6.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 588,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 2633,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791108457-Wmq1C2PY2YAh5spt2cHS",
+      "parsedOutput": {
+        "observation": "The search results for 'Midscene AI demo' are displayed, including a relevant video.",
+        "rationale": "The search query was successfully entered and executed, resulting in the display of relevant search results.",
+        "action": {
+          "type": "wait"
+        },
+        "verdict": "pass",
+        "finding": null
+      }
+    },
+    {
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/719161ea-bd0b-49a0-b708-5e542ebfa6b8/model-request-7.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 599,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 2409,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791108462-1bQ7kpir7HJcHlFmEzP3",
+      "parsedOutput": {
+        "observation": "The search results for 'Midscene AI demo' are displayed, including a relevant video.",
+        "rationale": "The search query was entered, and the results are now visible on the screen, confirming that the search was successful.",
+        "action": {
+          "type": "wait"
+        },
+        "verdict": "pass",
+        "finding": null
+      }
+    }
+  ],
+  "sourceVersion": {
+    "commit": "4e2b7be652c8896de42da9ce52a9e50f8dba1192",
+    "dirty": false,
+    "sourceHash": "9030143131c0ba7a26d51529ed7729ec2f1c0aea4e984ee2009438fd166a777f",
+    "promptVersion": "goal-first-v3-protocol-and-replan"
+  },
+  "screenshot": "/artifacts/719161ea-bd0b-49a0-b708-5e542ebfa6b8/6-decision.png",
+  "video": "/artifacts/719161ea-bd0b-49a0-b708-5e542ebfa6b8/page@303b60598414b254a0ec24119786839a.webm",
+  "endedAt": "2026-10-04T10:07:44.263Z"
+}

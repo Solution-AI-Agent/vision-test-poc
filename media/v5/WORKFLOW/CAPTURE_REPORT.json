@@ -1,0 +1,83 @@
+{
+  "headBefore": "3163da8042744a8defc8647c31efe9d86d0c3c1e",
+  "headAfter": "3163da8042744a8defc8647c31efe9d86d0c3c1e",
+  "sameHead": true,
+  "captures": [
+    {
+      "file": "normal-before.png",
+      "step": "selected normal before confirmation",
+      "time": "2026-10-05T01:42:35.990Z",
+      "kind": "UI workflow capture; not model input",
+      "viewport": {
+        "width": 1600,
+        "height": 1100
+      }
+    },
+    {
+      "file": "normal-confirmed.png",
+      "step": "confirmed normal; saved evidence panel visible",
+      "time": "2026-10-05T01:42:36.776Z",
+      "kind": "UI workflow capture; not model input",
+      "viewport": {
+        "width": 1600,
+        "height": 1100
+      }
+    },
+    {
+      "file": "fault-before.png",
+      "step": "selected fault before confirmation",
+      "time": "2026-10-05T01:42:37.583Z",
+      "kind": "UI workflow capture; not model input",
+      "viewport": {
+        "width": 1600,
+        "height": 1100
+      }
+    },
+    {
+      "file": "fault-confirmed.png",
+      "step": "confirmed fault; saved evidence panel visible",
+      "time": "2026-10-05T01:42:38.330Z",
+      "kind": "UI workflow capture; not model input",
+      "viewport": {
+        "width": 1600,
+        "height": 1100
+      }
+    },
+    {
+      "file": "fault-input-link.png",
+      "step": "opened actual recorded image URL",
+      "time": "2026-10-05T01:42:38.903Z",
+      "kind": "browser evidence link capture; exact original JPEG remains separately in ASSETS"
+    }
+  ],
+  "responses": [
+    {
+      "state": "normal",
+      "link": "실제 입력 이미지",
+      "url": "http://127.0.0.1:4310/artifacts/b7181596-c25a-4eb9-be43-56e76d685802/model-request-1.jpg",
+      "status": 200
+    },
+    {
+      "state": "normal",
+      "link": "원응답/로그",
+      "url": "http://127.0.0.1:4310/artifacts/demo-verify-2026-10-05T01-22-24-239Z/normal-1.json",
+      "status": 200
+    },
+    {
+      "state": "fault",
+      "link": "실제 입력 이미지",
+      "url": "http://127.0.0.1:4310/artifacts/ae75c703-b63f-477b-84a0-0c9e753dd31a/model-request-1.jpg",
+      "status": 200
+    },
+    {
+      "state": "fault",
+      "link": "원응답/로그",
+      "url": "http://127.0.0.1:4310/artifacts/demo-verify-2026-10-05T01-22-24-239Z/cover-wide-1.json",
+      "status": 200
+    }
+  ],
+  "errors": [],
+  "paidModelCalls": 0,
+  "recording": "chronological screenshots, not realtime video",
+  "restoredState": "normal"
+}

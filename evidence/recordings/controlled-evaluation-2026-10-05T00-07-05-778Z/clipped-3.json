@@ -1,0 +1,76 @@
+{
+  "state": "clipped",
+  "repetition": 3,
+  "id": "94dfcc88-c272-42d0-813d-e7b4474cf652",
+  "source": {
+    "commit": "5a22c40956c4833b3331d1860be5e8745c6c7d8b",
+    "dirty": false,
+    "criteriaHash": "5e80a0bea244394ba5e54ea466150bb046be28764ff1f2b48fa9f05482d95ba5",
+    "promptHash": "fecd7a8e89ccdd45bc2735b04c0dbfe7b9bb1f317f9214abd0de5a01b730e80f"
+  },
+  "assessment": "registered criteria on DOM-prepared confirmation; not autonomous discovery",
+  "rawOutputs": [
+    {
+      "id": "gen-1791158873-qx3oiy2GGWQDfX1G3tga",
+      "model": "qwen/qwen3-vl-30b-a3b-instruct",
+      "finishReason": "stop",
+      "content": "<observation>The screenshot shows a checkout order confirmation page for \"ATELIER / GOODS\". The order is confirmed, and the receipt details are visible. The order section lists the items: \"Studio notebook x 1\" at $32.00 and \"Cable clips x 2\" at $16.00 (calculated as $8.00 each). Shipping is $0.00. The collection details state \"Delivery in 2 business days.\" and \"Collection window: 48 hours.\". The receipt on the right confirms the same line items and prices, with a total of $48.00. All required information is fully readable and matches the expected values.</observation>\n<data-json>\n{\n  \"status\": \"pass\",\n  \"observation\": \"The order confirmation page displays the correct recipient, items, quantities, prices, and delivery instructions. The receipt matches the order details with the correct total.\",\n  \"issues\": []\n}\n</data-json>",
+      "usage": {
+        "prompt_tokens": 1903,
+        "completion_tokens": 203,
+        "total_tokens": 2106,
+        "cost": 0.0005227,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.0005227,
+          "upstream_inference_prompt_cost": 0.0003806,
+          "upstream_inference_completions_cost": 0.0001421
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      }
+    }
+  ],
+  "domSuite": "PASS",
+  "verdict": {
+    "status": "pass",
+    "observation": "The order confirmation page displays the correct recipient, items, quantities, prices, and delivery instructions. The receipt matches the order details with the correct total.",
+    "issues": []
+  },
+  "status": "assessed",
+  "video": "/Users/zpro/.buzz/REPOS/vision-test-maker/artifacts/94dfcc88-c272-42d0-813d-e7b4474cf652/page@d60f521e1fcfa2bef9324e0186de40d3.webm",
+  "durationMs": 6092,
+  "calls": 1,
+  "tokens": 2106,
+  "reportedCost": 0.0005227,
+  "transport": [
+    {
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/94dfcc88-c272-42d0-813d-e7b4474cf652/model-request-1.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 834,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 4906,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791158873-qx3oiy2GGWQDfX1G3tga",
+      "parsedOutput": {
+        "status": "pass",
+        "observation": "The order confirmation page displays the correct recipient, items, quantities, prices, and delivery instructions. The receipt matches the order details with the correct total.",
+        "issues": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "state": "total",
+  "repetition": 3,
+  "id": "0717ee77-8e90-47f0-8770-3124254adf34",
+  "source": {
+    "commit": "5a22c40956c4833b3331d1860be5e8745c6c7d8b",
+    "dirty": false,
+    "criteriaHash": "5e80a0bea244394ba5e54ea466150bb046be28764ff1f2b48fa9f05482d95ba5",
+    "promptHash": "fecd7a8e89ccdd45bc2735b04c0dbfe7b9bb1f317f9214abd0de5a01b730e80f"
+  },
+  "assessment": "registered criteria on DOM-prepared confirmation; not autonomous discovery",
+  "rawOutputs": [
+    {
+      "id": "gen-1791158893-myTv5N6W0DReROG28fjw",
+      "model": "qwen/qwen3-vl-30b-a3b-instruct",
+      "finishReason": "stop",
+      "content": "<observation>The screenshot shows an order confirmation page for \"ATELIER / GOODS\". The user has ordered a Studio notebook at $32.00 and two Cable clips at $8.00 each, totaling $48.00. The receipt confirms the line items and total price. Delivery instructions are clearly visible: \"Delivery in 2 business days. Collection window: 48 hours. Photo ID is required at pickup.\" All information matches the expected criteria.</observation>\n<data-json>\n{\n  \"status\": \"pass\",\n  \"observation\": \"All required information is visible and correct.\",\n  \"issues\": []\n}\n</data-json>",
+      "usage": {
+        "prompt_tokens": 1903,
+        "completion_tokens": 134,
+        "total_tokens": 2037,
+        "cost": 0.00031707,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.00031707,
+          "upstream_inference_prompt_cost": 0.00024739,
+          "upstream_inference_completions_cost": 0.00006968
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      }
+    }
+  ],
+  "domSuite": "PASS",
+  "verdict": {
+    "status": "pass",
+    "observation": "All required information is visible and correct.",
+    "issues": []
+  },
+  "status": "assessed",
+  "video": "/Users/zpro/.buzz/REPOS/vision-test-maker/artifacts/0717ee77-8e90-47f0-8770-3124254adf34/page@e9a5e02a18e6b3ea02706bf12fe054ba.webm",
+  "durationMs": 3199,
+  "calls": 1,
+  "tokens": 2037,
+  "reportedCost": 0.00031707,
+  "transport": [
+    {
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/0717ee77-8e90-47f0-8770-3124254adf34/model-request-1.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 566,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 2208,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791158893-myTv5N6W0DReROG28fjw",
+      "parsedOutput": {
+        "status": "pass",
+        "observation": "All required information is visible and correct.",
+        "issues": []
+      }
+    }
+  ]
+}

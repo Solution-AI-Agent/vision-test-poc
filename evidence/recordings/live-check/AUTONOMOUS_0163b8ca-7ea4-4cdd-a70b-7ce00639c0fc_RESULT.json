@@ -1,0 +1,87 @@
+{
+  "id": "0163b8ca-7ea4-4cdd-a70b-7ce00639c0fc",
+  "input": {
+    "mode": "autonomous",
+    "url": "https://www.youtube.com/",
+    "task": "검색창에서 Midscene AI demo를 검색하고 검색 결과가 표시되는지 확인한다.",
+    "expected": "검색어에 해당하는 영상 결과 목록이 화면에 표시된다.",
+    "query": "Midscene AI demo"
+  },
+  "settings": {
+    "maxActions": 6,
+    "maxCalls": 8,
+    "maxSeconds": 120,
+    "maxTokens": 2048,
+    "model": "qwen/qwen3-vl-30b-a3b-instruct",
+    "family": "qwen3-vl"
+  },
+  "startedAt": "2026-10-04T09:56:54.728Z",
+  "status": "failed",
+  "outcome": "모델 응답 형식 검증 실패",
+  "stage": "종료",
+  "calls": 3,
+  "actions": 1,
+  "tokens": 6617,
+  "cost": 0.0013566,
+  "steps": [
+    {
+      "index": 0,
+      "at": "2026-10-04T09:57:08.409Z",
+      "before": "/artifacts/0163b8ca-7ea4-4cdd-a70b-7ce00639c0fc/model-request-2.jpg",
+      "after": "/artifacts/0163b8ca-7ea4-4cdd-a70b-7ce00639c0fc/0-after.png",
+      "plan": {
+        "observation": "The YouTube homepage is displayed with an empty main content area, a search bar at the top, and navigation icons on the left. No video results are visible.",
+        "rationale": "The task requires entering 'cooking recipes' into the search bar and pressing Enter to check if relevant video results appear. Currently, the search has not been performed, and no results are displayed.",
+        "action": {
+          "type": "type",
+          "text": "cooking recipes"
+        },
+        "verdict": "continue",
+        "finding": null
+      },
+      "executed": true
+    }
+  ],
+  "findings": [],
+  "engine": "Midscene aiQuery / 1.14.0 → Playwright coordinates / 1.63.0",
+  "transport": [
+    {
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/0163b8ca-7ea4-4cdd-a70b-7ce00639c0fc/model-request-1.jpg",
+      "elapsedMs": 4559,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791107821-LCW7JolITozTguGCFRTx"
+    },
+    {
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/0163b8ca-7ea4-4cdd-a70b-7ce00639c0fc/model-request-2.jpg",
+      "elapsedMs": 2922,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791107825-SaiSbcUCI5VTmgWYyRgI"
+    },
+    {
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/0163b8ca-7ea4-4cdd-a70b-7ce00639c0fc/model-request-3.jpg",
+      "elapsedMs": 6696,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791107829-phEJSv7z4gugYDpnfsRp"
+    }
+  ],
+  "screenshot": "/artifacts/0163b8ca-7ea4-4cdd-a70b-7ce00639c0fc/1-before.png",
+  "goals": [
+    {
+      "hypothesis": "The search functionality on the website works correctly and returns relevant video results when a query is entered.",
+      "task": "Enter 'cooking recipes' into the search bar and press Enter to initiate the search.",
+      "expected": "A list of videos related to cooking recipes should appear in the main content area, replacing the current empty state.",
+      "basis": "The presence of a functional search bar and the prompt to start watching videos suggest that the platform supports video discovery through search. Testing the search functionality is a reasonable task to verify the site's core utility.",
+      "screenshot": "/artifacts/0163b8ca-7ea4-4cdd-a70b-7ce00639c0fc/model-request-1.jpg",
+      "at": "2026-10-04T09:57:05.375Z"
+    }
+  ],
+  "error": "모델 응답 형식 검증 실패",
+  "video": "/artifacts/0163b8ca-7ea4-4cdd-a70b-7ce00639c0fc/page@d268e069464213a1ec9f60011419f6b4.webm",
+  "endedAt": "2026-10-04T09:57:16.012Z"
+}

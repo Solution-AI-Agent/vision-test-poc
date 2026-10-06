@@ -1,0 +1,76 @@
+{
+  "state": "normal",
+  "repetition": 1,
+  "id": "5de71902-51da-4ed3-b61b-d0b0d8c93cc4",
+  "source": {
+    "commit": "5a22c40956c4833b3331d1860be5e8745c6c7d8b",
+    "dirty": false,
+    "criteriaHash": "5e80a0bea244394ba5e54ea466150bb046be28764ff1f2b48fa9f05482d95ba5",
+    "promptHash": "fecd7a8e89ccdd45bc2735b04c0dbfe7b9bb1f317f9214abd0de5a01b730e80f"
+  },
+  "assessment": "registered criteria on DOM-prepared confirmation; not autonomous discovery",
+  "rawOutputs": [
+    {
+      "id": "gen-1791158827-OPiHubYOBWCjFoFvHYdi",
+      "model": "qwen/qwen3-vl-30b-a3b-instruct",
+      "finishReason": "stop",
+      "content": "<observation>The screenshot shows a checkout order confirmation page for Atelier / Goods. The user's name is Alex Morgan and the email is alex@example.test. The order includes a Studio notebook at $32.00 and Cable clips x 2 at $16.00, with $0.00 shipping, totaling $48.00. The receipt confirms the same items and prices. Delivery instructions state \"Delivery in 2 business days. Collection window: 48 hours. Photo ID is required at pickup.\" All required information is visible and matches the expected criteria.</observation>\n<data-json>\n{\n  \"status\": \"pass\",\n  \"observation\": \"All required information is visible and matches the expected criteria.\",\n  \"issues\": []\n}\n</data-json>",
+      "usage": {
+        "prompt_tokens": 1903,
+        "completion_tokens": 160,
+        "total_tokens": 2063,
+        "cost": 0.00033059,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.00033059,
+          "upstream_inference_prompt_cost": 0.00024739,
+          "upstream_inference_completions_cost": 0.0000832
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      }
+    }
+  ],
+  "domSuite": "PASS",
+  "verdict": {
+    "status": "pass",
+    "observation": "All required information is visible and matches the expected criteria.",
+    "issues": []
+  },
+  "status": "assessed",
+  "video": "/Users/zpro/.buzz/REPOS/vision-test-maker/artifacts/5de71902-51da-4ed3-b61b-d0b0d8c93cc4/page@b171b8294b1ed3850f74a6e80e708b71.webm",
+  "durationMs": 4746,
+  "calls": 1,
+  "tokens": 2063,
+  "reportedCost": 0.00033059,
+  "transport": [
+    {
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/5de71902-51da-4ed3-b61b-d0b0d8c93cc4/model-request-1.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 680,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 3403,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791158827-OPiHubYOBWCjFoFvHYdi",
+      "parsedOutput": {
+        "status": "pass",
+        "observation": "All required information is visible and matches the expected criteria.",
+        "issues": []
+      }
+    }
+  ]
+}

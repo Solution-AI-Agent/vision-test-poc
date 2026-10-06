@@ -1,0 +1,76 @@
+{
+  "state": "total",
+  "repetition": 2,
+  "id": "be366397-e2d3-4ba2-b81e-a57a93b4eeef",
+  "source": {
+    "commit": "5a22c40956c4833b3331d1860be5e8745c6c7d8b",
+    "dirty": false,
+    "criteriaHash": "5e80a0bea244394ba5e54ea466150bb046be28764ff1f2b48fa9f05482d95ba5",
+    "promptHash": "fecd7a8e89ccdd45bc2735b04c0dbfe7b9bb1f317f9214abd0de5a01b730e80f"
+  },
+  "assessment": "registered criteria on DOM-prepared confirmation; not autonomous discovery",
+  "rawOutputs": [
+    {
+      "id": "gen-1791158890-tWgxuaJ1WxxVcpLr3J4t",
+      "model": "qwen/qwen3-vl-30b-a3b-instruct",
+      "finishReason": "stop",
+      "content": "<observation>The screenshot shows a checkout order confirmation page for Atelier / Goods. The recipient is Alex Morgan with email alex@example.test. The order includes one Studio notebook at $32.00 and two Cable clips at $8.00 each, totaling $16.00. Shipping is $0.00. Collection details state: Delivery in 2 business days, Collection window: 48 hours, Photo ID is required at pickup. The receipt on the right shows the same items and prices: Studio notebook $32.00, Cable clips × 2 $16.00, shipping $0.00, total $48.00. All information matches the expected values.</observation>\n<data-json>\n{\n  \"status\": \"pass\",\n  \"observation\": \"All visible information matches the expected criteria: correct recipient, item quantities, line prices, delivery instructions, and total amount.\",\n  \"issues\": []\n}\n</data-json>",
+      "usage": {
+        "prompt_tokens": 1903,
+        "completion_tokens": 202,
+        "total_tokens": 2105,
+        "cost": 0.00035243,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.00035243,
+          "upstream_inference_prompt_cost": 0.00024739,
+          "upstream_inference_completions_cost": 0.00010504
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      }
+    }
+  ],
+  "domSuite": "PASS",
+  "verdict": {
+    "status": "pass",
+    "observation": "All visible information matches the expected criteria: correct recipient, item quantities, line prices, delivery instructions, and total amount.",
+    "issues": []
+  },
+  "status": "assessed",
+  "video": "/Users/zpro/.buzz/REPOS/vision-test-maker/artifacts/be366397-e2d3-4ba2-b81e-a57a93b4eeef/page@97fafb8100e460cf0c8df2f50d1fb1e2.webm",
+  "durationMs": 3695,
+  "calls": 1,
+  "tokens": 2105,
+  "reportedCost": 0.00035243,
+  "transport": [
+    {
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/be366397-e2d3-4ba2-b81e-a57a93b4eeef/model-request-1.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 808,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 2647,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791158890-tWgxuaJ1WxxVcpLr3J4t",
+      "parsedOutput": {
+        "status": "pass",
+        "observation": "All visible information matches the expected criteria: correct recipient, item quantities, line prices, delivery instructions, and total amount.",
+        "issues": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,162 @@
+{
+  "id": "4ddf88a9-e212-4a18-a8fd-198b9712c8c3",
+  "input": {
+    "mode": "scenario",
+    "url": "https://www.youtube.com/",
+    "task": "Click the visible button",
+    "expected": "Button says Clicked",
+    "query": "Midscene AI demo"
+  },
+  "settings": {
+    "model": "qwen/qwen3-vl-235b-a22b-instruct",
+    "family": "qwen3-vl",
+    "maxActions": 8,
+    "maxCalls": 10,
+    "maxSeconds": 120,
+    "maxTokens": 1536
+  },
+  "startedAt": "2026-10-04T10:08:50.920Z",
+  "status": "completed",
+  "outcome": "기대 결과 관찰됨 · 독립 검토 필요",
+  "stage": "종료",
+  "calls": 3,
+  "actions": 1,
+  "tokens": 126,
+  "cost": null,
+  "steps": [
+    {
+      "index": 0,
+      "at": "2026-10-04T10:08:52.178Z",
+      "before": "/artifacts/4ddf88a9-e212-4a18-a8fd-198b9712c8c3/model-request-2.jpg",
+      "after": "/artifacts/4ddf88a9-e212-4a18-a8fd-198b9712c8c3/0-after.png",
+      "plan": {
+        "observation": "A visible button",
+        "rationale": "Local stub fixture test",
+        "action": {
+          "type": "click",
+          "x": 100,
+          "y": 70
+        },
+        "verdict": "continue",
+        "finding": null
+      },
+      "executed": true,
+      "unchanged": false
+    },
+    {
+      "index": 1,
+      "at": "2026-10-04T10:08:53.028Z",
+      "before": "/artifacts/4ddf88a9-e212-4a18-a8fd-198b9712c8c3/model-request-3.jpg",
+      "after": "/artifacts/4ddf88a9-e212-4a18-a8fd-198b9712c8c3/1-decision.png",
+      "plan": {
+        "observation": "Clicked button",
+        "rationale": "Local stub fixture test",
+        "action": {
+          "type": "wait"
+        },
+        "verdict": "pass",
+        "finding": {
+          "title": "Normal expected outcome",
+          "observed": "Clicked button",
+          "expected": "Clicked button",
+          "basis": "Task met",
+          "reproduction": [
+            "Click button"
+          ]
+        }
+      },
+      "executed": false
+    }
+  ],
+  "findings": [],
+  "engine": "LOCAL FIXTURE / STUB VLM · NOT OPENROUTER",
+  "transport": [
+    {
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/4ddf88a9-e212-4a18-a8fd-198b9712c8c3/model-request-1.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 64,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 0,
+      "responseModel": "stub-vlm",
+      "requestId": "stub-invalid",
+      "parsedOutput": {
+        "action": {
+          "type": "press",
+          "key": "Enter"
+        }
+      },
+      "validationError": "observation, rationale, action.type, verdict, finding"
+    },
+    {
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/4ddf88a9-e212-4a18-a8fd-198b9712c8c3/model-request-2.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 172,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 1,
+      "responseModel": "stub-vlm",
+      "requestId": "stub-2",
+      "parsedOutput": {
+        "observation": "A visible button",
+        "rationale": "Local stub fixture test",
+        "action": {
+          "type": "click",
+          "x": 100,
+          "y": 70
+        },
+        "verdict": "continue",
+        "finding": null
+      }
+    },
+    {
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/4ddf88a9-e212-4a18-a8fd-198b9712c8c3/model-request-3.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 288,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 10,
+      "responseModel": "stub-vlm",
+      "requestId": "stub-3",
+      "parsedOutput": {
+        "observation": "Clicked button",
+        "rationale": "Local stub fixture test",
+        "action": {
+          "type": "wait"
+        },
+        "verdict": "pass",
+        "finding": {
+          "title": "Normal expected outcome",
+          "observed": "Clicked button",
+          "expected": "Clicked button",
+          "basis": "Task met",
+          "reproduction": [
+            "Click button"
+          ]
+        }
+      }
+    }
+  ],
+  "sourceVersion": {
+    "commit": "8fcac127a2e76abb5da45ecad8913367f9d33267",
+    "dirty": false,
+    "sourceHash": "718b306ce1f4e635b70b59d84d82852639760fa68de46f89426f6a2d02465aec",
+    "promptVersion": "goal-first-v3-protocol-and-replan"
+  },
+  "screenshot": "/artifacts/4ddf88a9-e212-4a18-a8fd-198b9712c8c3/1-decision.png",
+  "video": "/artifacts/4ddf88a9-e212-4a18-a8fd-198b9712c8c3/page@f9672f7313961788e79c90c8298af93c.webm",
+  "endedAt": "2026-10-04T10:08:53.128Z",
+  "mock": true
+}

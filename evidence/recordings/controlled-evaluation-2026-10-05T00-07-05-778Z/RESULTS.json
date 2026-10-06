@@ -1,0 +1,928 @@
+{
+  "source": {
+    "commit": "5a22c40956c4833b3331d1860be5e8745c6c7d8b",
+    "dirty": false,
+    "criteriaHash": "5e80a0bea244394ba5e54ea466150bb046be28764ff1f2b48fa9f05482d95ba5",
+    "promptHash": "fecd7a8e89ccdd45bc2735b04c0dbfe7b9bb1f317f9214abd0de5a01b730e80f"
+  },
+  "model": "qwen/qwen3-vl-30b-a3b-instruct",
+  "limits": {
+    "maxCalls": 3,
+    "maxSeconds": 30,
+    "maxTokens": 2048
+  },
+  "results": [
+    {
+      "state": "normal",
+      "repetition": 1,
+      "id": "5de71902-51da-4ed3-b61b-d0b0d8c93cc4",
+      "source": {
+        "commit": "5a22c40956c4833b3331d1860be5e8745c6c7d8b",
+        "dirty": false,
+        "criteriaHash": "5e80a0bea244394ba5e54ea466150bb046be28764ff1f2b48fa9f05482d95ba5",
+        "promptHash": "fecd7a8e89ccdd45bc2735b04c0dbfe7b9bb1f317f9214abd0de5a01b730e80f"
+      },
+      "assessment": "registered criteria on DOM-prepared confirmation; not autonomous discovery",
+      "rawOutputs": [
+        {
+          "id": "gen-1791158827-OPiHubYOBWCjFoFvHYdi",
+          "model": "qwen/qwen3-vl-30b-a3b-instruct",
+          "finishReason": "stop",
+          "content": "<observation>The screenshot shows a checkout order confirmation page for Atelier / Goods. The user's name is Alex Morgan and the email is alex@example.test. The order includes a Studio notebook at $32.00 and Cable clips x 2 at $16.00, with $0.00 shipping, totaling $48.00. The receipt confirms the same items and prices. Delivery instructions state \"Delivery in 2 business days. Collection window: 48 hours. Photo ID is required at pickup.\" All required information is visible and matches the expected criteria.</observation>\n<data-json>\n{\n  \"status\": \"pass\",\n  \"observation\": \"All required information is visible and matches the expected criteria.\",\n  \"issues\": []\n}\n</data-json>",
+          "usage": {
+            "prompt_tokens": 1903,
+            "completion_tokens": 160,
+            "total_tokens": 2063,
+            "cost": 0.00033059,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.00033059,
+              "upstream_inference_prompt_cost": 0.00024739,
+              "upstream_inference_completions_cost": 0.0000832
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          }
+        }
+      ],
+      "domSuite": "PASS",
+      "verdict": {
+        "status": "pass",
+        "observation": "All required information is visible and matches the expected criteria.",
+        "issues": []
+      },
+      "status": "assessed",
+      "video": "/Users/zpro/.buzz/REPOS/vision-test-maker/artifacts/5de71902-51da-4ed3-b61b-d0b0d8c93cc4/page@b171b8294b1ed3850f74a6e80e708b71.webm",
+      "durationMs": 4746,
+      "calls": 1,
+      "tokens": 2063,
+      "reportedCost": 0.00033059,
+      "transport": [
+        {
+          "images": 1,
+          "texts": 3,
+          "screenshot": "/artifacts/5de71902-51da-4ed3-b61b-d0b0d8c93cc4/model-request-1.jpg",
+          "responseFormat": {
+            "finishReason": "stop",
+            "chars": 680,
+            "hasDataJson": true,
+            "normalizedPlainJson": false
+          },
+          "elapsedMs": 3403,
+          "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+          "requestId": "gen-1791158827-OPiHubYOBWCjFoFvHYdi",
+          "parsedOutput": {
+            "status": "pass",
+            "observation": "All required information is visible and matches the expected criteria.",
+            "issues": []
+          }
+        }
+      ]
+    },
+    {
+      "state": "normal",
+      "repetition": 2,
+      "id": "6c0082d2-d676-4e99-af57-95cd53f76b7f",
+      "source": {
+        "commit": "5a22c40956c4833b3331d1860be5e8745c6c7d8b",
+        "dirty": false,
+        "criteriaHash": "5e80a0bea244394ba5e54ea466150bb046be28764ff1f2b48fa9f05482d95ba5",
+        "promptHash": "fecd7a8e89ccdd45bc2735b04c0dbfe7b9bb1f317f9214abd0de5a01b730e80f"
+      },
+      "assessment": "registered criteria on DOM-prepared confirmation; not autonomous discovery",
+      "rawOutputs": [
+        {
+          "id": "gen-1791158831-wlMd1lfbFQNsHcFQkZox",
+          "model": "qwen/qwen3-vl-30b-a3b-instruct",
+          "finishReason": "stop",
+          "content": "<observation>The screenshot shows an order confirmation page for \"ATELIER / GOODS\". The order details match the task: one Studio notebook at $32.00 and two Cable clips at $8.00 each, totaling $48.00 with $0.00 shipping. The recipient is Alex Morgan. The collection details are fully visible and correct: \"Delivery in 2 business days. Collection window: 48 hours. Photo ID is required at pickup.\" The receipt on the right side mirrors the order with the same items, prices, and total of $48.00. All required information is clearly readable and consistent across the order and receipt sections. There are no visible violations of the acceptance criteria.</observation>\n<data-json>\n{\n  \"status\": \"pass\",\n  \"observation\": \"All order details, collection instructions, and receipt totals are correctly displayed and match the task requirements.\",\n  \"issues\": []\n}\n</data-json>",
+          "usage": {
+            "prompt_tokens": 1903,
+            "completion_tokens": 198,
+            "total_tokens": 2101,
+            "cost": 0.00040425,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.00040425,
+              "upstream_inference_prompt_cost": 0.00028545,
+              "upstream_inference_completions_cost": 0.0001188
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          }
+        }
+      ],
+      "domSuite": "PASS",
+      "verdict": {
+        "status": "pass",
+        "observation": "All order details, collection instructions, and receipt totals are correctly displayed and match the task requirements.",
+        "issues": []
+      },
+      "status": "assessed",
+      "video": "/Users/zpro/.buzz/REPOS/vision-test-maker/artifacts/6c0082d2-d676-4e99-af57-95cd53f76b7f/page@42a96977cb5f6efeb720e949658a531a.webm",
+      "durationMs": 10513,
+      "calls": 1,
+      "tokens": 2101,
+      "reportedCost": 0.00040425,
+      "transport": [
+        {
+          "images": 1,
+          "texts": 3,
+          "screenshot": "/artifacts/6c0082d2-d676-4e99-af57-95cd53f76b7f/model-request-1.jpg",
+          "responseFormat": {
+            "finishReason": "stop",
+            "chars": 870,
+            "hasDataJson": true,
+            "normalizedPlainJson": false
+          },
+          "elapsedMs": 9076,
+          "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+          "requestId": "gen-1791158831-wlMd1lfbFQNsHcFQkZox",
+          "parsedOutput": {
+            "status": "pass",
+            "observation": "All order details, collection instructions, and receipt totals are correctly displayed and match the task requirements.",
+            "issues": []
+          }
+        }
+      ]
+    },
+    {
+      "state": "normal",
+      "repetition": 3,
+      "id": "5bffeca6-94d1-4909-b9af-7a4551930633",
+      "source": {
+        "commit": "5a22c40956c4833b3331d1860be5e8745c6c7d8b",
+        "dirty": false,
+        "criteriaHash": "5e80a0bea244394ba5e54ea466150bb046be28764ff1f2b48fa9f05482d95ba5",
+        "promptHash": "fecd7a8e89ccdd45bc2735b04c0dbfe7b9bb1f317f9214abd0de5a01b730e80f"
+      },
+      "assessment": "registered criteria on DOM-prepared confirmation; not autonomous discovery",
+      "rawOutputs": [
+        {
+          "id": "gen-1791158841-4CoT0VLnf1bUxLZqsyDE",
+          "model": "qwen/qwen3-vl-30b-a3b-instruct",
+          "finishReason": "stop",
+          "content": "<observation>The screenshot shows an order confirmation page for \"ATELIER / GOODS\". The order details match the task: one Studio notebook at $32.00 and two Cable clips at $8.00 each, totaling $48.00 with $0.00 shipping. The recipient is Alex Morgan. The collection details are fully visible and correct: \"Delivery in 2 business days. Collection window: 48 hours. Photo ID is required at pickup.\" The receipt on the right side mirrors the order with the same items, prices, and total of $48.00. All required information is clearly readable and consistent across the order and receipt sections. There are no visible violations of the acceptance criteria.</observation>\n<data-json>\n{\n  \"status\": \"pass\",\n  \"observation\": \"All order details, collection instructions, and receipt totals are correctly displayed and match the task requirements.\",\n  \"issues\": []\n}\n</data-json>",
+          "usage": {
+            "prompt_tokens": 1903,
+            "completion_tokens": 198,
+            "total_tokens": 2101,
+            "cost": 0.00040425,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.00040425,
+              "upstream_inference_prompt_cost": 0.00028545,
+              "upstream_inference_completions_cost": 0.0001188
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          }
+        }
+      ],
+      "domSuite": "PASS",
+      "verdict": {
+        "status": "pass",
+        "observation": "All order details, collection instructions, and receipt totals are correctly displayed and match the task requirements.",
+        "issues": []
+      },
+      "status": "assessed",
+      "video": "/Users/zpro/.buzz/REPOS/vision-test-maker/artifacts/5bffeca6-94d1-4909-b9af-7a4551930633/page@62d93b9a85f1d8a773cde60916c2451f.webm",
+      "durationMs": 12276,
+      "calls": 1,
+      "tokens": 2101,
+      "reportedCost": 0.00040425,
+      "transport": [
+        {
+          "images": 1,
+          "texts": 3,
+          "screenshot": "/artifacts/5bffeca6-94d1-4909-b9af-7a4551930633/model-request-1.jpg",
+          "responseFormat": {
+            "finishReason": "stop",
+            "chars": 870,
+            "hasDataJson": true,
+            "normalizedPlainJson": false
+          },
+          "elapsedMs": 10795,
+          "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+          "requestId": "gen-1791158841-4CoT0VLnf1bUxLZqsyDE",
+          "parsedOutput": {
+            "status": "pass",
+            "observation": "All order details, collection instructions, and receipt totals are correctly displayed and match the task requirements.",
+            "issues": []
+          }
+        }
+      ]
+    },
+    {
+      "state": "clipped",
+      "repetition": 1,
+      "id": "efd3d933-2a73-4ac0-8367-9611b51752db",
+      "source": {
+        "commit": "5a22c40956c4833b3331d1860be5e8745c6c7d8b",
+        "dirty": false,
+        "criteriaHash": "5e80a0bea244394ba5e54ea466150bb046be28764ff1f2b48fa9f05482d95ba5",
+        "promptHash": "fecd7a8e89ccdd45bc2735b04c0dbfe7b9bb1f317f9214abd0de5a01b730e80f"
+      },
+      "assessment": "registered criteria on DOM-prepared confirmation; not autonomous discovery",
+      "rawOutputs": [
+        {
+          "id": "gen-1791158854-W2QtqW1Hzwr4gJEGR6pu",
+          "model": "qwen/qwen3-vl-30b-a3b-instruct",
+          "finishReason": "stop",
+          "content": "<observation>The screenshot shows an order confirmation page for \"ATELIER / GOODS\". The order details match the task: one Studio notebook at $32.00 and two Cable clips at $16.00 (2 x $8.00), with $0.00 shipping, totaling $48.00. The recipient is Alex Morgan. The collection details are fully visible: \"Delivery in 2 business days. Collection window: 48 hours.\" The receipt on the right side mirrors the order with the same items, prices, and total. All required information is clearly readable and correct. There are no visible violations of the acceptance criteria.</observation>\n<data-json>\n{\n  \"status\": \"pass\",\n  \"observation\": \"All order details, delivery instructions, and receipt totals are correctly displayed and match the task requirements.\",\n  \"issues\": []\n}\n</data-json>",
+          "usage": {
+            "prompt_tokens": 1903,
+            "completion_tokens": 185,
+            "total_tokens": 2088,
+            "cost": 0.00039645,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.00039645,
+              "upstream_inference_prompt_cost": 0.00028545,
+              "upstream_inference_completions_cost": 0.000111
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          }
+        }
+      ],
+      "domSuite": "PASS",
+      "verdict": {
+        "status": "pass",
+        "observation": "All order details, delivery instructions, and receipt totals are correctly displayed and match the task requirements.",
+        "issues": []
+      },
+      "status": "assessed",
+      "video": "/Users/zpro/.buzz/REPOS/vision-test-maker/artifacts/efd3d933-2a73-4ac0-8367-9611b51752db/page@981586ef091e41f775c30a747e4ad1a8.webm",
+      "durationMs": 8939,
+      "calls": 1,
+      "tokens": 2088,
+      "reportedCost": 0.00039645,
+      "transport": [
+        {
+          "images": 1,
+          "texts": 3,
+          "screenshot": "/artifacts/efd3d933-2a73-4ac0-8367-9611b51752db/model-request-1.jpg",
+          "responseFormat": {
+            "finishReason": "stop",
+            "chars": 782,
+            "hasDataJson": true,
+            "normalizedPlainJson": false
+          },
+          "elapsedMs": 7642,
+          "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+          "requestId": "gen-1791158854-W2QtqW1Hzwr4gJEGR6pu",
+          "parsedOutput": {
+            "status": "pass",
+            "observation": "All order details, delivery instructions, and receipt totals are correctly displayed and match the task requirements.",
+            "issues": []
+          }
+        }
+      ]
+    },
+    {
+      "state": "clipped",
+      "repetition": 2,
+      "id": "4dc84209-bfb1-4f32-befd-e071d848cd1d",
+      "source": {
+        "commit": "5a22c40956c4833b3331d1860be5e8745c6c7d8b",
+        "dirty": false,
+        "criteriaHash": "5e80a0bea244394ba5e54ea466150bb046be28764ff1f2b48fa9f05482d95ba5",
+        "promptHash": "fecd7a8e89ccdd45bc2735b04c0dbfe7b9bb1f317f9214abd0de5a01b730e80f"
+      },
+      "assessment": "registered criteria on DOM-prepared confirmation; not autonomous discovery",
+      "rawOutputs": [
+        {
+          "id": "gen-1791158863-UgQ4nG1tl9Z790n1YqO6",
+          "model": "qwen/qwen3-vl-30b-a3b-instruct",
+          "finishReason": "stop",
+          "content": "<observation>The screenshot shows an order confirmation page for \"ATELIER / GOODS\". The order details match the task: one Studio notebook at $32.00 and two Cable clips at $16.00 (2 x $8.00), with $0.00 shipping, totaling $48.00. The recipient is Alex Morgan. The collection details are fully visible: \"Delivery in 2 business days. Collection window: 48 hours.\" The receipt on the right side mirrors the order with the same items, prices, and total. All required information is clearly readable and correct. There are no visible violations of the acceptance criteria.</observation>\n<data-json>\n{\n  \"status\": \"pass\",\n  \"observation\": \"All order details, delivery instructions, and receipt totals are correctly displayed and match the task requirements.\",\n  \"issues\": []\n}\n</data-json>",
+          "usage": {
+            "prompt_tokens": 1903,
+            "completion_tokens": 185,
+            "total_tokens": 2088,
+            "cost": 0.00039645,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.00039645,
+              "upstream_inference_prompt_cost": 0.00028545,
+              "upstream_inference_completions_cost": 0.000111
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          }
+        }
+      ],
+      "domSuite": "PASS",
+      "verdict": {
+        "status": "pass",
+        "observation": "All order details, delivery instructions, and receipt totals are correctly displayed and match the task requirements.",
+        "issues": []
+      },
+      "status": "assessed",
+      "video": "/Users/zpro/.buzz/REPOS/vision-test-maker/artifacts/4dc84209-bfb1-4f32-befd-e071d848cd1d/page@bc30eae6160747a50a6a2836ba6b0b22.webm",
+      "durationMs": 10407,
+      "calls": 1,
+      "tokens": 2088,
+      "reportedCost": 0.00039645,
+      "transport": [
+        {
+          "images": 1,
+          "texts": 3,
+          "screenshot": "/artifacts/4dc84209-bfb1-4f32-befd-e071d848cd1d/model-request-1.jpg",
+          "responseFormat": {
+            "finishReason": "stop",
+            "chars": 782,
+            "hasDataJson": true,
+            "normalizedPlainJson": false
+          },
+          "elapsedMs": 9039,
+          "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+          "requestId": "gen-1791158863-UgQ4nG1tl9Z790n1YqO6",
+          "parsedOutput": {
+            "status": "pass",
+            "observation": "All order details, delivery instructions, and receipt totals are correctly displayed and match the task requirements.",
+            "issues": []
+          }
+        }
+      ]
+    },
+    {
+      "state": "clipped",
+      "repetition": 3,
+      "id": "94dfcc88-c272-42d0-813d-e7b4474cf652",
+      "source": {
+        "commit": "5a22c40956c4833b3331d1860be5e8745c6c7d8b",
+        "dirty": false,
+        "criteriaHash": "5e80a0bea244394ba5e54ea466150bb046be28764ff1f2b48fa9f05482d95ba5",
+        "promptHash": "fecd7a8e89ccdd45bc2735b04c0dbfe7b9bb1f317f9214abd0de5a01b730e80f"
+      },
+      "assessment": "registered criteria on DOM-prepared confirmation; not autonomous discovery",
+      "rawOutputs": [
+        {
+          "id": "gen-1791158873-qx3oiy2GGWQDfX1G3tga",
+          "model": "qwen/qwen3-vl-30b-a3b-instruct",
+          "finishReason": "stop",
+          "content": "<observation>The screenshot shows a checkout order confirmation page for \"ATELIER / GOODS\". The order is confirmed, and the receipt details are visible. The order section lists the items: \"Studio notebook x 1\" at $32.00 and \"Cable clips x 2\" at $16.00 (calculated as $8.00 each). Shipping is $0.00. The collection details state \"Delivery in 2 business days.\" and \"Collection window: 48 hours.\". The receipt on the right confirms the same line items and prices, with a total of $48.00. All required information is fully readable and matches the expected values.</observation>\n<data-json>\n{\n  \"status\": \"pass\",\n  \"observation\": \"The order confirmation page displays the correct recipient, items, quantities, prices, and delivery instructions. The receipt matches the order details with the correct total.\",\n  \"issues\": []\n}\n</data-json>",
+          "usage": {
+            "prompt_tokens": 1903,
+            "completion_tokens": 203,
+            "total_tokens": 2106,
+            "cost": 0.0005227,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.0005227,
+              "upstream_inference_prompt_cost": 0.0003806,
+              "upstream_inference_completions_cost": 0.0001421
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          }
+        }
+      ],
+      "domSuite": "PASS",
+      "verdict": {
+        "status": "pass",
+        "observation": "The order confirmation page displays the correct recipient, items, quantities, prices, and delivery instructions. The receipt matches the order details with the correct total.",
+        "issues": []
+      },
+      "status": "assessed",
+      "video": "/Users/zpro/.buzz/REPOS/vision-test-maker/artifacts/94dfcc88-c272-42d0-813d-e7b4474cf652/page@d60f521e1fcfa2bef9324e0186de40d3.webm",
+      "durationMs": 6092,
+      "calls": 1,
+      "tokens": 2106,
+      "reportedCost": 0.0005227,
+      "transport": [
+        {
+          "images": 1,
+          "texts": 3,
+          "screenshot": "/artifacts/94dfcc88-c272-42d0-813d-e7b4474cf652/model-request-1.jpg",
+          "responseFormat": {
+            "finishReason": "stop",
+            "chars": 834,
+            "hasDataJson": true,
+            "normalizedPlainJson": false
+          },
+          "elapsedMs": 4906,
+          "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+          "requestId": "gen-1791158873-qx3oiy2GGWQDfX1G3tga",
+          "parsedOutput": {
+            "status": "pass",
+            "observation": "The order confirmation page displays the correct recipient, items, quantities, prices, and delivery instructions. The receipt matches the order details with the correct total.",
+            "issues": []
+          }
+        }
+      ]
+    },
+    {
+      "state": "total",
+      "repetition": 1,
+      "id": "a323b3f8-408f-4bea-8734-5bca59ce3f46",
+      "source": {
+        "commit": "5a22c40956c4833b3331d1860be5e8745c6c7d8b",
+        "dirty": false,
+        "criteriaHash": "5e80a0bea244394ba5e54ea466150bb046be28764ff1f2b48fa9f05482d95ba5",
+        "promptHash": "fecd7a8e89ccdd45bc2735b04c0dbfe7b9bb1f317f9214abd0de5a01b730e80f"
+      },
+      "assessment": "registered criteria on DOM-prepared confirmation; not autonomous discovery",
+      "rawOutputs": [
+        {
+          "id": "gen-1791158879-pe3GYcgbm8kMmxd2KhoC",
+          "model": "qwen/qwen3-vl-30b-a3b-instruct",
+          "finishReason": "stop",
+          "content": "<observation>The screenshot shows an order confirmation page for \"ATELIER / GOODS\". The order details and receipt are visible. The recipient is Alex Morgan with email alex@example.test. The order includes a Studio notebook for $32.00 and Cable clips × 2 for $16.00, with $0.00 shipping. The total is $48.00. The collection details state \"Delivery in 2 business days. Collection window: 48 hours. Photo ID is required at pickup.\" The receipt matches the order with the same items, prices, and total. All required information is fully readable and correct.</observation>\n<data-json>\n{\n  \"status\": \"pass\",\n  \"observation\": \"All order details, collection instructions, and receipt values are correctly displayed and match the expected criteria.\",\n  \"issues\": []\n}\n</data-json>",
+          "usage": {
+            "prompt_tokens": 1903,
+            "completion_tokens": 180,
+            "total_tokens": 2083,
+            "cost": 0.00039345,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.00039345,
+              "upstream_inference_prompt_cost": 0.00028545,
+              "upstream_inference_completions_cost": 0.000108
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          }
+        }
+      ],
+      "domSuite": "PASS",
+      "verdict": {
+        "status": "pass",
+        "observation": "All order details, collection instructions, and receipt values are correctly displayed and match the expected criteria.",
+        "issues": []
+      },
+      "status": "assessed",
+      "video": "/Users/zpro/.buzz/REPOS/vision-test-maker/artifacts/a323b3f8-408f-4bea-8734-5bca59ce3f46/page@04f735b9cb6b3a8dfc0cd581727f944c.webm",
+      "durationMs": 10434,
+      "calls": 1,
+      "tokens": 2083,
+      "reportedCost": 0.00039345,
+      "transport": [
+        {
+          "images": 1,
+          "texts": 3,
+          "screenshot": "/artifacts/a323b3f8-408f-4bea-8734-5bca59ce3f46/model-request-1.jpg",
+          "responseFormat": {
+            "finishReason": "stop",
+            "chars": 772,
+            "hasDataJson": true,
+            "normalizedPlainJson": false
+          },
+          "elapsedMs": 9033,
+          "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+          "requestId": "gen-1791158879-pe3GYcgbm8kMmxd2KhoC",
+          "parsedOutput": {
+            "status": "pass",
+            "observation": "All order details, collection instructions, and receipt values are correctly displayed and match the expected criteria.",
+            "issues": []
+          }
+        }
+      ]
+    },
+    {
+      "state": "total",
+      "repetition": 2,
+      "id": "be366397-e2d3-4ba2-b81e-a57a93b4eeef",
+      "source": {
+        "commit": "5a22c40956c4833b3331d1860be5e8745c6c7d8b",
+        "dirty": false,
+        "criteriaHash": "5e80a0bea244394ba5e54ea466150bb046be28764ff1f2b48fa9f05482d95ba5",
+        "promptHash": "fecd7a8e89ccdd45bc2735b04c0dbfe7b9bb1f317f9214abd0de5a01b730e80f"
+      },
+      "assessment": "registered criteria on DOM-prepared confirmation; not autonomous discovery",
+      "rawOutputs": [
+        {
+          "id": "gen-1791158890-tWgxuaJ1WxxVcpLr3J4t",
+          "model": "qwen/qwen3-vl-30b-a3b-instruct",
+          "finishReason": "stop",
+          "content": "<observation>The screenshot shows a checkout order confirmation page for Atelier / Goods. The recipient is Alex Morgan with email alex@example.test. The order includes one Studio notebook at $32.00 and two Cable clips at $8.00 each, totaling $16.00. Shipping is $0.00. Collection details state: Delivery in 2 business days, Collection window: 48 hours, Photo ID is required at pickup. The receipt on the right shows the same items and prices: Studio notebook $32.00, Cable clips × 2 $16.00, shipping $0.00, total $48.00. All information matches the expected values.</observation>\n<data-json>\n{\n  \"status\": \"pass\",\n  \"observation\": \"All visible information matches the expected criteria: correct recipient, item quantities, line prices, delivery instructions, and total amount.\",\n  \"issues\": []\n}\n</data-json>",
+          "usage": {
+            "prompt_tokens": 1903,
+            "completion_tokens": 202,
+            "total_tokens": 2105,
+            "cost": 0.00035243,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.00035243,
+              "upstream_inference_prompt_cost": 0.00024739,
+              "upstream_inference_completions_cost": 0.00010504
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          }
+        }
+      ],
+      "domSuite": "PASS",
+      "verdict": {
+        "status": "pass",
+        "observation": "All visible information matches the expected criteria: correct recipient, item quantities, line prices, delivery instructions, and total amount.",
+        "issues": []
+      },
+      "status": "assessed",
+      "video": "/Users/zpro/.buzz/REPOS/vision-test-maker/artifacts/be366397-e2d3-4ba2-b81e-a57a93b4eeef/page@97fafb8100e460cf0c8df2f50d1fb1e2.webm",
+      "durationMs": 3695,
+      "calls": 1,
+      "tokens": 2105,
+      "reportedCost": 0.00035243,
+      "transport": [
+        {
+          "images": 1,
+          "texts": 3,
+          "screenshot": "/artifacts/be366397-e2d3-4ba2-b81e-a57a93b4eeef/model-request-1.jpg",
+          "responseFormat": {
+            "finishReason": "stop",
+            "chars": 808,
+            "hasDataJson": true,
+            "normalizedPlainJson": false
+          },
+          "elapsedMs": 2647,
+          "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+          "requestId": "gen-1791158890-tWgxuaJ1WxxVcpLr3J4t",
+          "parsedOutput": {
+            "status": "pass",
+            "observation": "All visible information matches the expected criteria: correct recipient, item quantities, line prices, delivery instructions, and total amount.",
+            "issues": []
+          }
+        }
+      ]
+    },
+    {
+      "state": "total",
+      "repetition": 3,
+      "id": "0717ee77-8e90-47f0-8770-3124254adf34",
+      "source": {
+        "commit": "5a22c40956c4833b3331d1860be5e8745c6c7d8b",
+        "dirty": false,
+        "criteriaHash": "5e80a0bea244394ba5e54ea466150bb046be28764ff1f2b48fa9f05482d95ba5",
+        "promptHash": "fecd7a8e89ccdd45bc2735b04c0dbfe7b9bb1f317f9214abd0de5a01b730e80f"
+      },
+      "assessment": "registered criteria on DOM-prepared confirmation; not autonomous discovery",
+      "rawOutputs": [
+        {
+          "id": "gen-1791158893-myTv5N6W0DReROG28fjw",
+          "model": "qwen/qwen3-vl-30b-a3b-instruct",
+          "finishReason": "stop",
+          "content": "<observation>The screenshot shows an order confirmation page for \"ATELIER / GOODS\". The user has ordered a Studio notebook at $32.00 and two Cable clips at $8.00 each, totaling $48.00. The receipt confirms the line items and total price. Delivery instructions are clearly visible: \"Delivery in 2 business days. Collection window: 48 hours. Photo ID is required at pickup.\" All information matches the expected criteria.</observation>\n<data-json>\n{\n  \"status\": \"pass\",\n  \"observation\": \"All required information is visible and correct.\",\n  \"issues\": []\n}\n</data-json>",
+          "usage": {
+            "prompt_tokens": 1903,
+            "completion_tokens": 134,
+            "total_tokens": 2037,
+            "cost": 0.00031707,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.00031707,
+              "upstream_inference_prompt_cost": 0.00024739,
+              "upstream_inference_completions_cost": 0.00006968
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          }
+        }
+      ],
+      "domSuite": "PASS",
+      "verdict": {
+        "status": "pass",
+        "observation": "All required information is visible and correct.",
+        "issues": []
+      },
+      "status": "assessed",
+      "video": "/Users/zpro/.buzz/REPOS/vision-test-maker/artifacts/0717ee77-8e90-47f0-8770-3124254adf34/page@e9a5e02a18e6b3ea02706bf12fe054ba.webm",
+      "durationMs": 3199,
+      "calls": 1,
+      "tokens": 2037,
+      "reportedCost": 0.00031707,
+      "transport": [
+        {
+          "images": 1,
+          "texts": 3,
+          "screenshot": "/artifacts/0717ee77-8e90-47f0-8770-3124254adf34/model-request-1.jpg",
+          "responseFormat": {
+            "finishReason": "stop",
+            "chars": 566,
+            "hasDataJson": true,
+            "normalizedPlainJson": false
+          },
+          "elapsedMs": 2208,
+          "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+          "requestId": "gen-1791158893-myTv5N6W0DReROG28fjw",
+          "parsedOutput": {
+            "status": "pass",
+            "observation": "All required information is visible and correct.",
+            "issues": []
+          }
+        }
+      ]
+    },
+    {
+      "state": "decoration",
+      "repetition": 1,
+      "id": "fd91ff87-d214-49c6-819f-70a499971b7e",
+      "source": {
+        "commit": "5a22c40956c4833b3331d1860be5e8745c6c7d8b",
+        "dirty": false,
+        "criteriaHash": "5e80a0bea244394ba5e54ea466150bb046be28764ff1f2b48fa9f05482d95ba5",
+        "promptHash": "fecd7a8e89ccdd45bc2735b04c0dbfe7b9bb1f317f9214abd0de5a01b730e80f"
+      },
+      "assessment": "registered criteria on DOM-prepared confirmation; not autonomous discovery",
+      "rawOutputs": [
+        {
+          "id": "gen-1791158896-GjzVyh87ZWVampeRfaAA",
+          "model": "qwen/qwen3-vl-30b-a3b-instruct",
+          "finishReason": "stop",
+          "content": "<observation>The screenshot shows a confirmed order page for \"ATELIER / GOODS\". The user has ordered one Studio notebook at $32.00 and two Cable clips at $8.00 each, totaling $16.00. Shipping is free. The delivery details state \"Delivery in 2 business days. Collection window: 48 hours. Photo ID is required at pickup.\" The receipt on the right confirms all line items and the total of $48.00. All required information is clearly visible and matches the expected values.</observation>\n<data-json>\n{\n  \"status\": \"pass\",\n  \"observation\": \"All criteria are met. The order details and receipt match the expected values. Delivery instructions are fully readable.\",\n  \"issues\": []\n}\n</data-json>",
+          "usage": {
+            "prompt_tokens": 1903,
+            "completion_tokens": 164,
+            "total_tokens": 2067,
+            "cost": 0.00033267,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.00033267,
+              "upstream_inference_prompt_cost": 0.00024739,
+              "upstream_inference_completions_cost": 0.00008528
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          }
+        }
+      ],
+      "domSuite": "PASS",
+      "verdict": {
+        "status": "pass",
+        "observation": "All criteria are met. The order details and receipt match the expected values. Delivery instructions are fully readable.",
+        "issues": []
+      },
+      "status": "assessed",
+      "video": "/Users/zpro/.buzz/REPOS/vision-test-maker/artifacts/fd91ff87-d214-49c6-819f-70a499971b7e/page@0a3c0aedf165cd648d9f7b9915b9ec3c.webm",
+      "durationMs": 3414,
+      "calls": 1,
+      "tokens": 2067,
+      "reportedCost": 0.00033267,
+      "transport": [
+        {
+          "images": 1,
+          "texts": 3,
+          "screenshot": "/artifacts/fd91ff87-d214-49c6-819f-70a499971b7e/model-request-1.jpg",
+          "responseFormat": {
+            "finishReason": "stop",
+            "chars": 689,
+            "hasDataJson": true,
+            "normalizedPlainJson": false
+          },
+          "elapsedMs": 2392,
+          "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+          "requestId": "gen-1791158896-GjzVyh87ZWVampeRfaAA",
+          "parsedOutput": {
+            "status": "pass",
+            "observation": "All criteria are met. The order details and receipt match the expected values. Delivery instructions are fully readable.",
+            "issues": []
+          }
+        }
+      ]
+    },
+    {
+      "state": "decoration",
+      "repetition": 2,
+      "id": "eec1ac2e-0af8-4d02-9a9c-f52f82aa3286",
+      "source": {
+        "commit": "5a22c40956c4833b3331d1860be5e8745c6c7d8b",
+        "dirty": false,
+        "criteriaHash": "5e80a0bea244394ba5e54ea466150bb046be28764ff1f2b48fa9f05482d95ba5",
+        "promptHash": "fecd7a8e89ccdd45bc2735b04c0dbfe7b9bb1f317f9214abd0de5a01b730e80f"
+      },
+      "assessment": "registered criteria on DOM-prepared confirmation; not autonomous discovery",
+      "rawOutputs": [
+        {
+          "id": "gen-1791158900-tVUToG3nP2MDkGJohiiH",
+          "model": "qwen/qwen3-vl-30b-a3b-instruct",
+          "finishReason": "stop",
+          "content": "<observation>The screenshot shows an order confirmation page for \"ATELIER / GOODS\". The order details match the task: \"Studio notebook × 1\" at $32.00 and \"Cable clips × 2\" at $16.00, with $0.00 shipping, totaling $48.00. The recipient is \"Alex Morgan - alex@example.test\". The collection details are fully visible and correct: \"Delivery in 2 business days. Collection window: 48 hours. Photo ID is required at pickup.\" The receipt on the right side mirrors the order with the same items, prices, and total. All required information is clearly readable and consistent. There are no visible violations of the acceptance criteria.</observation>\n<data-json>\n{\n  \"status\": \"pass\",\n  \"observation\": \"All order details, collection instructions, and receipt totals are correctly displayed and match the task requirements.\",\n  \"issues\": []\n}\n</data-json>",
+          "usage": {
+            "prompt_tokens": 1903,
+            "completion_tokens": 200,
+            "total_tokens": 2103,
+            "cost": 0.00040545,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.00040545,
+              "upstream_inference_prompt_cost": 0.00028545,
+              "upstream_inference_completions_cost": 0.00012
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          }
+        }
+      ],
+      "domSuite": "PASS",
+      "verdict": {
+        "status": "pass",
+        "observation": "All order details, collection instructions, and receipt totals are correctly displayed and match the task requirements.",
+        "issues": []
+      },
+      "status": "assessed",
+      "video": "/Users/zpro/.buzz/REPOS/vision-test-maker/artifacts/eec1ac2e-0af8-4d02-9a9c-f52f82aa3286/page@2de5b99125e40a9c4f5c44c4c8d255de.webm",
+      "durationMs": 13998,
+      "calls": 1,
+      "tokens": 2103,
+      "reportedCost": 0.00040545,
+      "transport": [
+        {
+          "images": 1,
+          "texts": 3,
+          "screenshot": "/artifacts/eec1ac2e-0af8-4d02-9a9c-f52f82aa3286/model-request-1.jpg",
+          "responseFormat": {
+            "finishReason": "stop",
+            "chars": 845,
+            "hasDataJson": true,
+            "normalizedPlainJson": false
+          },
+          "elapsedMs": 12386,
+          "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+          "requestId": "gen-1791158900-tVUToG3nP2MDkGJohiiH",
+          "parsedOutput": {
+            "status": "pass",
+            "observation": "All order details, collection instructions, and receipt totals are correctly displayed and match the task requirements.",
+            "issues": []
+          }
+        }
+      ]
+    },
+    {
+      "state": "decoration",
+      "repetition": 3,
+      "id": "91c56111-4ef0-43ea-b25e-b4c90792feba",
+      "source": {
+        "commit": "5a22c40956c4833b3331d1860be5e8745c6c7d8b",
+        "dirty": false,
+        "criteriaHash": "5e80a0bea244394ba5e54ea466150bb046be28764ff1f2b48fa9f05482d95ba5",
+        "promptHash": "fecd7a8e89ccdd45bc2735b04c0dbfe7b9bb1f317f9214abd0de5a01b730e80f"
+      },
+      "assessment": "registered criteria on DOM-prepared confirmation; not autonomous discovery",
+      "rawOutputs": [
+        {
+          "id": "gen-1791158914-4ZwJ9nxmeGs7TVHjqIHS",
+          "model": "qwen/qwen3-vl-30b-a3b-instruct",
+          "finishReason": "stop",
+          "content": "<observation>The screenshot shows an order confirmation page for \"ATELIER / GOODS\". The order details match the task: \"Studio notebook × 1\" at $32.00 and \"Cable clips × 2\" at $16.00, with $0.00 shipping, totaling $48.00. The recipient is \"Alex Morgan - alex@example.test\". The collection details are fully visible and correct: \"Delivery in 2 business days. Collection window: 48 hours. Photo ID is required at pickup.\" The receipt on the right side mirrors the order with the same items, prices, and total. All required information is clearly readable and consistent. There are no visible violations of the acceptance criteria.</observation>\n<data-json>\n{\n  \"status\": \"pass\",\n  \"observation\": \"All order details, collection instructions, and receipt totals are correctly displayed and match the task requirements.\",\n  \"issues\": []\n}\n</data-json>",
+          "usage": {
+            "prompt_tokens": 1903,
+            "completion_tokens": 200,
+            "total_tokens": 2103,
+            "cost": 0.00040545,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.00040545,
+              "upstream_inference_prompt_cost": 0.00028545,
+              "upstream_inference_completions_cost": 0.00012
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          }
+        }
+      ],
+      "domSuite": "PASS",
+      "verdict": {
+        "status": "pass",
+        "observation": "All order details, collection instructions, and receipt totals are correctly displayed and match the task requirements.",
+        "issues": []
+      },
+      "status": "assessed",
+      "video": "/Users/zpro/.buzz/REPOS/vision-test-maker/artifacts/91c56111-4ef0-43ea-b25e-b4c90792feba/page@1ec04a7bf71bff9f20a98c6ad11a149f.webm",
+      "durationMs": 11680,
+      "calls": 1,
+      "tokens": 2103,
+      "reportedCost": 0.00040545,
+      "transport": [
+        {
+          "images": 1,
+          "texts": 3,
+          "screenshot": "/artifacts/91c56111-4ef0-43ea-b25e-b4c90792feba/model-request-1.jpg",
+          "responseFormat": {
+            "finishReason": "stop",
+            "chars": 845,
+            "hasDataJson": true,
+            "normalizedPlainJson": false
+          },
+          "elapsedMs": 10184,
+          "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+          "requestId": "gen-1791158914-4ZwJ9nxmeGs7TVHjqIHS",
+          "parsedOutput": {
+            "status": "pass",
+            "observation": "All order details, collection instructions, and receipt totals are correctly displayed and match the task requirements.",
+            "issues": []
+          }
+        }
+      ]
+    }
+  ]
+}

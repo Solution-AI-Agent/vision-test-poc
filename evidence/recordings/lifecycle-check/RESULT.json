@@ -1,0 +1,86 @@
+{
+  "at": "2026-10-04T09:44:07.993Z",
+  "status": "pass",
+  "limited": {
+    "id": "a9935f2e-fa43-4a29-a95c-c4ce4fd6abf5",
+    "input": {
+      "mode": "baseline",
+      "url": "https://www.youtube.com/",
+      "task": "",
+      "expected": "",
+      "query": "Midscene AI demo"
+    },
+    "settings": {
+      "maxActions": 1,
+      "maxCalls": 10,
+      "maxSeconds": 120,
+      "maxTokens": 1536,
+      "model": "qwen/qwen3-vl-235b-a22b-instruct",
+      "family": "qwen3-vl"
+    },
+    "startedAt": "2026-10-04T09:44:03.453Z",
+    "status": "limited",
+    "outcome": "행동 한도 도달",
+    "stage": "종료",
+    "calls": 0,
+    "actions": 1,
+    "tokens": 0,
+    "cost": null,
+    "steps": [
+      {
+        "index": 0,
+        "at": "2026-10-04T09:44:07.264Z",
+        "before": "/artifacts/a9935f2e-fa43-4a29-a95c-c4ce4fd6abf5/0-before.png",
+        "after": "/artifacts/a9935f2e-fa43-4a29-a95c-c4ce4fd6abf5/0-after.png",
+        "executed": true,
+        "plan": {
+          "observation": "검색 필드 입력 (role/label locator)",
+          "rationale": "사전 작성한 locator 스크립트",
+          "action": {
+            "type": "wait"
+          },
+          "verdict": "continue",
+          "finding": null
+        }
+      }
+    ],
+    "findings": [],
+    "engine": "Playwright locator / 1.63.0",
+    "transport": [],
+    "screenshot": "/artifacts/a9935f2e-fa43-4a29-a95c-c4ce4fd6abf5/0-after.png",
+    "video": "/artifacts/a9935f2e-fa43-4a29-a95c-c4ce4fd6abf5/page@ea8ab1c07063c852f520148057acc7e0.webm",
+    "endedAt": "2026-10-04T09:44:07.356Z"
+  },
+  "stopped": {
+    "id": "a10856e5-4d0f-40b7-9b03-454ea87c12a1",
+    "input": {
+      "mode": "baseline",
+      "url": "https://www.youtube.com/",
+      "task": "",
+      "expected": "",
+      "query": "Midscene AI demo"
+    },
+    "settings": {
+      "maxActions": 8,
+      "maxCalls": 10,
+      "maxSeconds": 120,
+      "maxTokens": 1536,
+      "model": "qwen/qwen3-vl-235b-a22b-instruct",
+      "family": "qwen3-vl"
+    },
+    "startedAt": "2026-10-04T09:44:07.481Z",
+    "status": "stopped",
+    "outcome": "사용자가 실행 중지",
+    "stage": "종료",
+    "calls": 0,
+    "actions": 0,
+    "tokens": 0,
+    "cost": null,
+    "steps": [],
+    "findings": [],
+    "engine": "Playwright locator / 1.63.0",
+    "transport": [],
+    "error": "사용자가 실행 중지",
+    "endedAt": "2026-10-04T09:44:07.576Z"
+  }
+}

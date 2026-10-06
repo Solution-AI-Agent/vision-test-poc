@@ -1,0 +1,14 @@
+{
+  "scenario": {
+    "name": "독립 샘플 주문 검증",
+    "url": "http://127.0.0.1:4311/order",
+    "task": "Select Red mug, quantity 2. Enter a synthetic recipient and email, confirm the simulated order and review its appearance, receipt and community chart.",
+    "expected": "Product appearance matches selection. Calculations and confirmation match input. Receipt and collection instructions are readable. Chart magnitude agrees with displayed values.",
+    "id": "60a1d425-906d-43ed-90f2-b76b0275d655"
+  },
+  "saveStatus": 201,
+  "operatorBlockedStatus": 400,
+  "hasKey": false,
+  "pageErrors": [],
+  "modelCalls": 0
+}

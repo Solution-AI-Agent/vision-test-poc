@@ -1,0 +1,103 @@
+{
+  "project": "vision-test",
+  "version": "v4",
+  "cutoff": "2026-10-04T10:39:12Z",
+  "sources": [
+    {
+      "original": "/Users/zpro/.buzz/REPOS/vision-test-maker/artifacts/044ecb6b-dfb3-4c61-970b-d0dc653f3201/model-request-1.jpg",
+      "copied": "ASSETS/044ecb6b-dfb3-4c61-970b-d0dc653f3201/model-request-1.jpg",
+      "sha256": "3e9e866a57f1e3ea3cfefc0f2da9d4602331607282849126595e5563d62943df",
+      "type": "original model-input/target capture; edit overlays are in MP4 only"
+    },
+    {
+      "original": "/Users/zpro/.buzz/REPOS/vision-test-maker/artifacts/044ecb6b-dfb3-4c61-970b-d0dc653f3201/0-after.png",
+      "copied": "ASSETS/044ecb6b-dfb3-4c61-970b-d0dc653f3201/0-after.png",
+      "sha256": "164ffc12b722aab0655c54a6ffb9367df9d56f02759cd45fcad65fcb0a0463f6",
+      "type": "original model-input/target capture; edit overlays are in MP4 only"
+    },
+    {
+      "original": "/Users/zpro/.buzz/REPOS/vision-test-maker/artifacts/044ecb6b-dfb3-4c61-970b-d0dc653f3201/1-after.png",
+      "copied": "ASSETS/044ecb6b-dfb3-4c61-970b-d0dc653f3201/1-after.png",
+      "sha256": "1283aea29fc30b29ce2ffd892170db4ba21c6a51a5cd2e9a7f9c7a81c3d84b5a",
+      "type": "original model-input/target capture; edit overlays are in MP4 only"
+    },
+    {
+      "original": "/Users/zpro/.buzz/REPOS/vision-test-maker/artifacts/044ecb6b-dfb3-4c61-970b-d0dc653f3201/2-after.png",
+      "copied": "ASSETS/044ecb6b-dfb3-4c61-970b-d0dc653f3201/2-after.png",
+      "sha256": "4317f6b340245bc080528081e8d79951254edffd275938bca47c9897b39d1b16",
+      "type": "original model-input/target capture; edit overlays are in MP4 only"
+    },
+    {
+      "original": "/Users/zpro/.buzz/REPOS/vision-test-maker/artifacts/044ecb6b-dfb3-4c61-970b-d0dc653f3201/4-decision.png",
+      "copied": "ASSETS/044ecb6b-dfb3-4c61-970b-d0dc653f3201/4-decision.png",
+      "sha256": "6a6536017ff5d209ebbb7365d7f1606c040a4bd11c003b05410cb118d141ad86",
+      "type": "original model-input/target capture; edit overlays are in MP4 only"
+    },
+    {
+      "original": "/Users/zpro/.buzz/REPOS/vision-test-maker/artifacts/5739f389-9faa-4528-8979-92e3d968b3ea/model-request-1.jpg",
+      "copied": "ASSETS/5739f389-9faa-4528-8979-92e3d968b3ea/model-request-1.jpg",
+      "sha256": "2386f4991f1bcf7402205a1eaaa5bd67ab7450072b1f89fd8d6391a16bdc49aa",
+      "type": "original model-input/target capture; edit overlays are in MP4 only"
+    },
+    {
+      "original": "/Users/zpro/.buzz/REPOS/vision-test-maker/artifacts/5739f389-9faa-4528-8979-92e3d968b3ea/model-request-3.jpg",
+      "copied": "ASSETS/5739f389-9faa-4528-8979-92e3d968b3ea/model-request-3.jpg",
+      "sha256": "354c9c1583f28caed5a9c493aecb824c98c1d0dd56b047bbc698f6796986df7d",
+      "type": "original model-input/target capture; edit overlays are in MP4 only"
+    },
+    {
+      "original": "/Users/zpro/.buzz/REPOS/vision-test-maker/artifacts/5739f389-9faa-4528-8979-92e3d968b3ea/3-after.png",
+      "copied": "ASSETS/5739f389-9faa-4528-8979-92e3d968b3ea/3-after.png",
+      "sha256": "26e5cdc32844ad2a7113c638b805aa22a2d512847e1a89ba502226514b8bd701",
+      "type": "original model-input/target capture; edit overlays are in MP4 only"
+    },
+    {
+      "original": "/Users/zpro/.buzz/REPOS/vision-test-maker/artifacts/f0b467c9-1aa1-4714-87fc-717ac619514f/2-after.png",
+      "copied": "ASSETS/f0b467c9-1aa1-4714-87fc-717ac619514f/2-after.png",
+      "sha256": "5a9e22da51448ccfa502729f93f4ef578e430cb038f72132d258b34fe9ee8ac9",
+      "type": "original model-input/target capture; edit overlays are in MP4 only"
+    },
+    {
+      "original": "/Users/zpro/.buzz/REPOS/vision-test-maker/artifacts/882f0db4-631d-4d35-bb24-b5af2e688930/model-request-4.jpg",
+      "copied": "ASSETS/882f0db4-631d-4d35-bb24-b5af2e688930/model-request-4.jpg",
+      "sha256": "f1b75358cd0eb3433578a561500c34787c4a809b8360f257cb5b0d37cffdab17",
+      "type": "original model-input/target capture; edit overlays are in MP4 only"
+    },
+    {
+      "original": "/Users/zpro/.buzz/REPOS/vision-test-maker/artifacts/882f0db4-631d-4d35-bb24-b5af2e688930/model-request-8.jpg",
+      "copied": "ASSETS/882f0db4-631d-4d35-bb24-b5af2e688930/model-request-8.jpg",
+      "sha256": "864fdf7fdb666664c2c11e1c98fc075437d1662d6c6f39929e82be201fe9ac8e",
+      "type": "original model-input/target capture; edit overlays are in MP4 only"
+    },
+    {
+      "original": "/Users/zpro/.buzz/WORK_LOGS/VISION_QA_FIXED_CODE_REVIEW_2026_10_04.md",
+      "copied": "SOURCES/VISION_QA_FIXED_CODE_REVIEW_2026_10_04.md",
+      "sha256": "c2224d8dc3a32da0a5362f3ad702280ed2fc933625a0e392949c55b095f04792"
+    },
+    {
+      "original": "/Users/zpro/.buzz/WORK_LOGS/VISION_QA_INPUT_RESULT_INDEPENDENT_REVIEW_2026_10_04.md",
+      "copied": "SOURCES/VISION_QA_INPUT_RESULT_INDEPENDENT_REVIEW_2026_10_04.md",
+      "sha256": "e56ace0f411844707a16d0a214977275af9ae890816b3e79cf0fcf2578a244c3"
+    },
+    {
+      "original": "/Users/zpro/.buzz/REPOS/vision-test-maker/artifacts/live-check/SCENARIO_044ecb6b-dfb3-4c61-970b-d0dc653f3201_RESULT.json",
+      "copied": "SOURCES/SCENARIO_044ecb6b-dfb3-4c61-970b-d0dc653f3201_RESULT.json",
+      "sha256": "b7d5e3cada09769b072e4377c2d1973857bcd13f30724d5254862aefe40aa3aa"
+    },
+    {
+      "original": "/Users/zpro/.buzz/REPOS/vision-test-maker/artifacts/live-check/AUTONOMOUS_5739f389-9faa-4528-8979-92e3d968b3ea_RESULT.json",
+      "copied": "SOURCES/AUTONOMOUS_5739f389-9faa-4528-8979-92e3d968b3ea_RESULT.json",
+      "sha256": "d1ec273ab13b02c588a10a87f46ed5b17c9a20c17a1e4abccbe79a374aebddd4"
+    },
+    {
+      "original": "/Users/zpro/.buzz/REPOS/vision-test-maker/artifacts/live-check/AUTONOMOUS_882f0db4-631d-4d35-bb24-b5af2e688930_RESULT.json",
+      "copied": "SOURCES/AUTONOMOUS_882f0db4-631d-4d35-bb24-b5af2e688930_RESULT.json",
+      "sha256": "83253c5917cb7f4415674ec76fd8119023fb082f0308bea894bf6be731d64ecd"
+    },
+    {
+      "original": "/Users/zpro/.buzz/REPOS/vision-test-maker/artifacts/youtube-check/RESULT.json",
+      "copied": "SOURCES/RESULT.json",
+      "sha256": "38dd4744fecdc8df7425f7d8b07d61c4c8f8ee94e9f2f42cfc10c328402fe059"
+    }
+  ]
+}

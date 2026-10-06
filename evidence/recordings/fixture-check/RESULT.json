@@ -1,0 +1,30 @@
+{
+  "commit": "ed76dafb5f0e8e815b491ec1291f2ab57b1e3eb0",
+  "criteria": "evaluation/CRITERIA.json",
+  "results": [
+    {
+      "state": "normal",
+      "domSuite": "PASS",
+      "pageErrors": [],
+      "screenshot": "artifacts/fixture-check/normal.png"
+    },
+    {
+      "state": "clipped",
+      "domSuite": "PASS",
+      "pageErrors": [],
+      "screenshot": "artifacts/fixture-check/clipped.png"
+    },
+    {
+      "state": "total",
+      "domSuite": "PASS",
+      "pageErrors": [],
+      "screenshot": "artifacts/fixture-check/total.png"
+    },
+    {
+      "state": "decoration",
+      "domSuite": "PASS",
+      "pageErrors": [],
+      "screenshot": "artifacts/fixture-check/decoration.png"
+    }
+  ]
+}

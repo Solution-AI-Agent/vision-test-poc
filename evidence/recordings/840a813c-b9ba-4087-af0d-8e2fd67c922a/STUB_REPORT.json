@@ -1,0 +1,104 @@
+{
+  "id": "840a813c-b9ba-4087-af0d-8e2fd67c922a",
+  "input": {
+    "mode": "autonomous",
+    "url": "https://www.youtube.com/",
+    "task": "Click the visible button",
+    "expected": "Button says Clicked",
+    "query": "Midscene AI demo"
+  },
+  "settings": {
+    "model": "qwen/qwen3-vl-235b-a22b-instruct",
+    "family": "qwen3-vl",
+    "maxActions": 8,
+    "maxCalls": 10,
+    "maxSeconds": 120,
+    "maxTokens": 1536
+  },
+  "startedAt": "2026-10-04T09:56:10.052Z",
+  "status": "completed",
+  "outcome": "자율 선택 업무의 기대 결과 관찰됨 · 결함 검토 별도",
+  "stage": "종료",
+  "calls": 3,
+  "actions": 1,
+  "tokens": 126,
+  "cost": null,
+  "steps": [
+    {
+      "index": 0,
+      "at": "2026-10-04T09:56:11.346Z",
+      "before": "/artifacts/840a813c-b9ba-4087-af0d-8e2fd67c922a/model-request-2.jpg",
+      "after": "/artifacts/840a813c-b9ba-4087-af0d-8e2fd67c922a/0-after.png",
+      "plan": {
+        "observation": "A visible button",
+        "rationale": "Local stub fixture test",
+        "action": {
+          "type": "click",
+          "x": 100,
+          "y": 70
+        },
+        "verdict": "continue",
+        "finding": null
+      },
+      "executed": true
+    },
+    {
+      "index": 1,
+      "at": "2026-10-04T09:56:12.163Z",
+      "before": "/artifacts/840a813c-b9ba-4087-af0d-8e2fd67c922a/model-request-3.jpg",
+      "after": "/artifacts/840a813c-b9ba-4087-af0d-8e2fd67c922a/1-decision.png",
+      "plan": {
+        "observation": "Clicked button",
+        "rationale": "Local stub fixture test",
+        "action": {
+          "type": "finish"
+        },
+        "verdict": "pass",
+        "finding": null
+      },
+      "executed": false
+    }
+  ],
+  "findings": [],
+  "engine": "LOCAL FIXTURE / STUB VLM · NOT OPENROUTER",
+  "transport": [
+    {
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/840a813c-b9ba-4087-af0d-8e2fd67c922a/model-request-1.jpg",
+      "elapsedMs": 0,
+      "responseModel": "stub-vlm",
+      "requestId": "stub-goal"
+    },
+    {
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/840a813c-b9ba-4087-af0d-8e2fd67c922a/model-request-2.jpg",
+      "elapsedMs": 0,
+      "responseModel": "stub-vlm",
+      "requestId": "stub-2"
+    },
+    {
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/840a813c-b9ba-4087-af0d-8e2fd67c922a/model-request-3.jpg",
+      "elapsedMs": 9,
+      "responseModel": "stub-vlm",
+      "requestId": "stub-3"
+    }
+  ],
+  "screenshot": "/artifacts/840a813c-b9ba-4087-af0d-8e2fd67c922a/1-decision.png",
+  "goals": [
+    {
+      "hypothesis": "Visible button responds to input",
+      "task": "Click the visible button",
+      "expected": "Button says Clicked",
+      "basis": "A visible interactive button",
+      "screenshot": "/artifacts/840a813c-b9ba-4087-af0d-8e2fd67c922a/model-request-1.jpg",
+      "at": "2026-10-04T09:56:11.246Z"
+    }
+  ],
+  "video": "/artifacts/840a813c-b9ba-4087-af0d-8e2fd67c922a/page@83dbd314e678fe52f9e3e0f5b8861e26.webm",
+  "endedAt": "2026-10-04T09:56:12.239Z",
+  "mock": true
+}

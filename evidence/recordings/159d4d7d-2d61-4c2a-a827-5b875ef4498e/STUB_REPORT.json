@@ -1,0 +1,173 @@
+{
+  "id": "159d4d7d-2d61-4c2a-a827-5b875ef4498e",
+  "input": {
+    "mode": "scenario",
+    "url": "https://www.youtube.com/",
+    "task": "Click the visible button",
+    "expected": "Button says Clicked",
+    "query": "Midscene AI demo"
+  },
+  "settings": {
+    "model": "qwen/qwen3-vl-235b-a22b-instruct",
+    "family": "qwen3-vl",
+    "maxActions": 8,
+    "maxCalls": 10,
+    "maxSeconds": 120,
+    "maxTokens": 1536
+  },
+  "startedAt": "2026-10-05T01:21:55.907Z",
+  "status": "completed",
+  "outcome": "기대 결과 관찰됨 · 독립 검토 필요",
+  "stage": "종료",
+  "calls": 3,
+  "actions": 1,
+  "tokens": 126,
+  "cost": null,
+  "steps": [
+    {
+      "index": 0,
+      "at": "2026-10-05T01:21:57.172Z",
+      "before": "/artifacts/159d4d7d-2d61-4c2a-a827-5b875ef4498e/model-request-2.jpg",
+      "after": "/artifacts/159d4d7d-2d61-4c2a-a827-5b875ef4498e/0-after.png",
+      "plan": {
+        "observation": "A visible button",
+        "rationale": "Local stub fixture test",
+        "action": {
+          "type": "click",
+          "x": 100,
+          "y": 70
+        },
+        "verdict": "continue",
+        "finding": null
+      },
+      "executed": true,
+      "toolCalls": [
+        {
+          "action": {
+            "type": "click",
+            "x": 100,
+            "y": 70
+          },
+          "completed": true,
+          "at": "2026-10-05T01:21:57.208Z"
+        }
+      ],
+      "unchanged": false
+    },
+    {
+      "index": 1,
+      "at": "2026-10-05T01:21:58.009Z",
+      "before": "/artifacts/159d4d7d-2d61-4c2a-a827-5b875ef4498e/model-request-3.jpg",
+      "after": "/artifacts/159d4d7d-2d61-4c2a-a827-5b875ef4498e/1-decision.png",
+      "plan": {
+        "observation": "Clicked button",
+        "rationale": "Local stub fixture test",
+        "action": {
+          "type": "wait"
+        },
+        "verdict": "pass",
+        "finding": {
+          "title": "Normal expected outcome",
+          "observed": "Clicked button",
+          "expected": "Clicked button",
+          "basis": "Task met",
+          "reproduction": [
+            "Click button"
+          ]
+        }
+      },
+      "executed": false
+    }
+  ],
+  "findings": [],
+  "engine": "LOCAL FIXTURE / STUB VLM · NOT OPENROUTER",
+  "transport": [
+    {
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/159d4d7d-2d61-4c2a-a827-5b875ef4498e/model-request-1.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 64,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 0,
+      "responseModel": "stub-vlm",
+      "requestId": "stub-invalid",
+      "parsedOutput": {
+        "action": {
+          "type": "press",
+          "key": "Enter"
+        }
+      },
+      "validationError": "observation, rationale, action.type, verdict, finding"
+    },
+    {
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/159d4d7d-2d61-4c2a-a827-5b875ef4498e/model-request-2.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 172,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 0,
+      "responseModel": "stub-vlm",
+      "requestId": "stub-2",
+      "parsedOutput": {
+        "observation": "A visible button",
+        "rationale": "Local stub fixture test",
+        "action": {
+          "type": "click",
+          "x": 100,
+          "y": 70
+        },
+        "verdict": "continue",
+        "finding": null
+      }
+    },
+    {
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/159d4d7d-2d61-4c2a-a827-5b875ef4498e/model-request-3.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 288,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 10,
+      "responseModel": "stub-vlm",
+      "requestId": "stub-3",
+      "parsedOutput": {
+        "observation": "Clicked button",
+        "rationale": "Local stub fixture test",
+        "action": {
+          "type": "wait"
+        },
+        "verdict": "pass",
+        "finding": {
+          "title": "Normal expected outcome",
+          "observed": "Clicked button",
+          "expected": "Clicked button",
+          "basis": "Task met",
+          "reproduction": [
+            "Click button"
+          ]
+        }
+      }
+    }
+  ],
+  "sourceVersion": {
+    "commit": "373ecad3216c92f9ace7785df91c7c59ed9dcb6e",
+    "dirty": false,
+    "sourceHash": "5e703f1ca9af2d8fc7b5d3d7a2dae2a7930ee3dfe5c403aee89c1e123e26f557",
+    "promptVersion": "goal-first-v4-focus-and-visual-input"
+  },
+  "screenshot": "/artifacts/159d4d7d-2d61-4c2a-a827-5b875ef4498e/1-decision.png",
+  "video": "/artifacts/159d4d7d-2d61-4c2a-a827-5b875ef4498e/page@22f7f4e8cf8fe86fc3677d44f277f826.webm",
+  "endedAt": "2026-10-05T01:21:58.084Z",
+  "mock": true
+}

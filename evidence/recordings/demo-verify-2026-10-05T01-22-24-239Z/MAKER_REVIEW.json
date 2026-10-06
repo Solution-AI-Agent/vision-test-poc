@@ -1,0 +1,97 @@
+{
+  "classification": "selected occlusion case valid: normal3pass and defect3localized candidates; independent review pending",
+  "rows": [
+    {
+      "stage": "probe",
+      "state": "normal",
+      "id": "c59fecb3-63c4-4bc1-b159-6357b57c8a70",
+      "hash": "2660fa0f032c19643be8aae0cc79d4a4406c1d20c8d00fea59737dc74cc1598f",
+      "dom": "PASS",
+      "model": "pass",
+      "cost": 0.00032331,
+      "duration": 4966
+    },
+    {
+      "stage": "probe",
+      "state": "cover",
+      "id": "be2dca29-ae0f-4549-898b-0a43ee00004f",
+      "hash": "b9884f0f38d5d5dcb3ba5f2605ae84172a05c0ef36993e53db7130d80cd9452a",
+      "dom": "PASS",
+      "model": "pass",
+      "cost": 0.00036647,
+      "duration": 4829
+    },
+    {
+      "stage": "candidate",
+      "state": "cover-wide",
+      "id": "054666fa-ab6f-45af-916e-462db2425c61",
+      "hash": "35e98c23f0d76e47715837099582f4f6f4b0f5d9d7dc1943839faa36bd20acc6",
+      "dom": "PASS",
+      "model": "candidate",
+      "cost": 0.00032747,
+      "duration": 4611
+    },
+    {
+      "stage": "verify",
+      "state": "normal",
+      "id": "b7181596-c25a-4eb9-be43-56e76d685802",
+      "hash": "2660fa0f032c19643be8aae0cc79d4a4406c1d20c8d00fea59737dc74cc1598f",
+      "dom": "PASS",
+      "model": "pass",
+      "cost": 0.00033839,
+      "duration": 4495
+    },
+    {
+      "stage": "verify",
+      "state": "cover-wide",
+      "id": "ae75c703-b63f-477b-84a0-0c9e753dd31a",
+      "hash": "35e98c23f0d76e47715837099582f4f6f4b0f5d9d7dc1943839faa36bd20acc6",
+      "dom": "PASS",
+      "model": "candidate",
+      "cost": 0.00038103,
+      "duration": 4419
+    },
+    {
+      "stage": "verify",
+      "state": "normal",
+      "id": "96fc5aa2-6f6e-46a1-8078-32013bb409db",
+      "hash": "2660fa0f032c19643be8aae0cc79d4a4406c1d20c8d00fea59737dc74cc1598f",
+      "dom": "PASS",
+      "model": "pass",
+      "cost": 0.000476,
+      "duration": 6123
+    },
+    {
+      "stage": "verify",
+      "state": "cover-wide",
+      "id": "6ae11b63-442d-4ae0-a349-d8d98ebb857e",
+      "hash": "35e98c23f0d76e47715837099582f4f6f4b0f5d9d7dc1943839faa36bd20acc6",
+      "dom": "PASS",
+      "model": "candidate",
+      "cost": 0.0005215,
+      "duration": 5087
+    },
+    {
+      "stage": "verify",
+      "state": "normal",
+      "id": "347607cd-153b-45aa-ac65-13ab0115d4d8",
+      "hash": "2660fa0f032c19643be8aae0cc79d4a4406c1d20c8d00fea59737dc74cc1598f",
+      "dom": "PASS",
+      "model": "pass",
+      "cost": 0.00033839,
+      "duration": 3550
+    },
+    {
+      "stage": "verify",
+      "state": "cover-wide",
+      "id": "05f5b7c7-9d8e-4f85-bf93-e084f2f3d182",
+      "hash": "35e98c23f0d76e47715837099582f4f6f4b0f5d9d7dc1943839faa36bd20acc6",
+      "dom": "PASS",
+      "model": "candidate",
+      "cost": 0.0004956,
+      "duration": 5130
+    }
+  ],
+  "firstCandidateMissPreserved": true,
+  "scope": "selected injected case, not held-out performance or autonomous discovery"
+}

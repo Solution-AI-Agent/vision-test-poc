@@ -1,0 +1,11 @@
+{
+  "errors": [],
+  "evidenceImageStatus": 200,
+  "checked": [
+    "normal and fault toggle",
+    "actual iframe confirmation",
+    "saved evidence image/json links",
+    "desktop and mobile"
+  ],
+  "commit": "1b57c39a0a40206a56d461ec3a607e78ef6ef71c"
+}

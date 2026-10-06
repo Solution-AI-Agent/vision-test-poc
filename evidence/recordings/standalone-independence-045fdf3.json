@@ -1,0 +1,7 @@
+{
+  "commit": "045fdf3d93ff677f4669650aa4394856b01b752c",
+  "platformPort4310": "connection refused after shutdown",
+  "samplePort4311": 200,
+  "sampleRemainedRunning": true,
+  "modelCalls": 0
+}

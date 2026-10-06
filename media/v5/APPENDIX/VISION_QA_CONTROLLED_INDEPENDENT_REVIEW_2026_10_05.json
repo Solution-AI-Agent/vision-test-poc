@@ -1,0 +1,117 @@
+{
+  "source": "REPOS/vision-test-maker/artifacts/controlled-evaluation-2026-10-05T00-07-05-778Z/RESULTS.json",
+  "sourceSha256": "4324fa5fa0406ca84b6dda4bd259ca234b1da0c48da135a3d1d003bc25653f50",
+  "calls": 12,
+  "reportedCost": "0.00466121",
+  "reviewMethod": "Viewed one actual input per state; verified three identical input hashes per state; checked all 12 parsed verdicts against raw JSON.",
+  "results": [
+    {
+      "state": "normal",
+      "repetition": 1,
+      "id": "5de71902-51da-4ed3-b61b-d0b0d8c93cc4",
+      "modelVerdict": "pass",
+      "independentClassification": "correct-pass",
+      "input": "REPOS/vision-test-maker/artifacts/5de71902-51da-4ed3-b61b-d0b0d8c93cc4/model-request-1.jpg",
+      "sha256": "2660fa0f032c19643be8aae0cc79d4a4406c1d20c8d00fea59737dc74cc1598f"
+    },
+    {
+      "state": "normal",
+      "repetition": 2,
+      "id": "6c0082d2-d676-4e99-af57-95cd53f76b7f",
+      "modelVerdict": "pass",
+      "independentClassification": "correct-pass",
+      "input": "REPOS/vision-test-maker/artifacts/6c0082d2-d676-4e99-af57-95cd53f76b7f/model-request-1.jpg",
+      "sha256": "2660fa0f032c19643be8aae0cc79d4a4406c1d20c8d00fea59737dc74cc1598f"
+    },
+    {
+      "state": "normal",
+      "repetition": 3,
+      "id": "5bffeca6-94d1-4909-b9af-7a4551930633",
+      "modelVerdict": "pass",
+      "independentClassification": "correct-pass",
+      "input": "REPOS/vision-test-maker/artifacts/5bffeca6-94d1-4909-b9af-7a4551930633/model-request-1.jpg",
+      "sha256": "2660fa0f032c19643be8aae0cc79d4a4406c1d20c8d00fea59737dc74cc1598f"
+    },
+    {
+      "state": "clipped",
+      "repetition": 1,
+      "id": "efd3d933-2a73-4ac0-8367-9611b51752db",
+      "modelVerdict": "pass",
+      "independentClassification": "missed-defect",
+      "input": "REPOS/vision-test-maker/artifacts/efd3d933-2a73-4ac0-8367-9611b51752db/model-request-1.jpg",
+      "sha256": "863f83eb4ef60c13b88088a7c35a4eb589345761a1aa976b31e879d8d082b8ca"
+    },
+    {
+      "state": "clipped",
+      "repetition": 2,
+      "id": "4dc84209-bfb1-4f32-befd-e071d848cd1d",
+      "modelVerdict": "pass",
+      "independentClassification": "missed-defect",
+      "input": "REPOS/vision-test-maker/artifacts/4dc84209-bfb1-4f32-befd-e071d848cd1d/model-request-1.jpg",
+      "sha256": "863f83eb4ef60c13b88088a7c35a4eb589345761a1aa976b31e879d8d082b8ca"
+    },
+    {
+      "state": "clipped",
+      "repetition": 3,
+      "id": "94dfcc88-c272-42d0-813d-e7b4474cf652",
+      "modelVerdict": "pass",
+      "independentClassification": "missed-defect",
+      "input": "REPOS/vision-test-maker/artifacts/94dfcc88-c272-42d0-813d-e7b4474cf652/model-request-1.jpg",
+      "sha256": "863f83eb4ef60c13b88088a7c35a4eb589345761a1aa976b31e879d8d082b8ca"
+    },
+    {
+      "state": "total",
+      "repetition": 1,
+      "id": "a323b3f8-408f-4bea-8734-5bca59ce3f46",
+      "modelVerdict": "pass",
+      "independentClassification": "missed-defect",
+      "input": "REPOS/vision-test-maker/artifacts/a323b3f8-408f-4bea-8734-5bca59ce3f46/model-request-1.jpg",
+      "sha256": "59086ee23c3e1fbc5a7cd05c8e3c8c33454b1ccdae42e8df93916f94ad10314a"
+    },
+    {
+      "state": "total",
+      "repetition": 2,
+      "id": "be366397-e2d3-4ba2-b81e-a57a93b4eeef",
+      "modelVerdict": "pass",
+      "independentClassification": "missed-defect",
+      "input": "REPOS/vision-test-maker/artifacts/be366397-e2d3-4ba2-b81e-a57a93b4eeef/model-request-1.jpg",
+      "sha256": "59086ee23c3e1fbc5a7cd05c8e3c8c33454b1ccdae42e8df93916f94ad10314a"
+    },
+    {
+      "state": "total",
+      "repetition": 3,
+      "id": "0717ee77-8e90-47f0-8770-3124254adf34",
+      "modelVerdict": "pass",
+      "independentClassification": "missed-defect",
+      "input": "REPOS/vision-test-maker/artifacts/0717ee77-8e90-47f0-8770-3124254adf34/model-request-1.jpg",
+      "sha256": "59086ee23c3e1fbc5a7cd05c8e3c8c33454b1ccdae42e8df93916f94ad10314a"
+    },
+    {
+      "state": "decoration",
+      "repetition": 1,
+      "id": "fd91ff87-d214-49c6-819f-70a499971b7e",
+      "modelVerdict": "pass",
+      "independentClassification": "correct-pass",
+      "input": "REPOS/vision-test-maker/artifacts/fd91ff87-d214-49c6-819f-70a499971b7e/model-request-1.jpg",
+      "sha256": "7c83ced7b5bb8ad0f7abd002de0be74b4d69640cd131fb17039381da10666083"
+    },
+    {
+      "state": "decoration",
+      "repetition": 2,
+      "id": "eec1ac2e-0af8-4d02-9a9c-f52f82aa3286",
+      "modelVerdict": "pass",
+      "independentClassification": "correct-pass",
+      "input": "REPOS/vision-test-maker/artifacts/eec1ac2e-0af8-4d02-9a9c-f52f82aa3286/model-request-1.jpg",
+      "sha256": "7c83ced7b5bb8ad0f7abd002de0be74b4d69640cd131fb17039381da10666083"
+    },
+    {
+      "state": "decoration",
+      "repetition": 3,
+      "id": "91c56111-4ef0-43ea-b25e-b4c90792feba",
+      "modelVerdict": "pass",
+      "independentClassification": "correct-pass",
+      "input": "REPOS/vision-test-maker/artifacts/91c56111-4ef0-43ea-b25e-b4c90792feba/model-request-1.jpg",
+      "sha256": "7c83ced7b5bb8ad0f7abd002de0be74b4d69640cd131fb17039381da10666083"
+    }
+  ]
+}

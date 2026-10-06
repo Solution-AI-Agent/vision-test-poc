@@ -1,0 +1,209 @@
+{
+  "id": "193a9473-8ded-4c4c-aaae-874d224160a8",
+  "input": {
+    "mode": "autonomous",
+    "url": "https://www.youtube.com/",
+    "task": "검색창에서 Midscene AI demo를 검색하고 검색 결과가 표시되는지 확인한다.",
+    "expected": "검색어에 해당하는 영상 결과 목록이 화면에 표시된다.",
+    "query": "Midscene AI demo"
+  },
+  "settings": {
+    "maxActions": 6,
+    "maxCalls": 8,
+    "maxSeconds": 120,
+    "maxTokens": 2048,
+    "model": "qwen/qwen3-vl-30b-a3b-instruct",
+    "family": "qwen3-vl"
+  },
+  "startedAt": "2026-10-04T09:52:32.939Z",
+  "status": "limited",
+  "outcome": "행동 한도 도달",
+  "stage": "종료",
+  "calls": 7,
+  "actions": 6,
+  "tokens": 17890,
+  "cost": 0.00362996,
+  "steps": [
+    {
+      "index": 0,
+      "at": "2026-10-04T09:52:40.793Z",
+      "before": "/artifacts/193a9473-8ded-4c4c-aaae-874d224160a8/model-request-1.jpg",
+      "after": "/artifacts/193a9473-8ded-4c4c-aaae-874d224160a8/0-after.png",
+      "plan": {
+        "observation": "The screenshot shows a YouTube-like interface with a navigation sidebar on the left (Home, Shorts, Subscriptions, You), a search bar at the top, and a central message prompting the user to start searching. No video content is displayed, indicating an empty feed. The 'Sign in' button is visible in the top-right corner, suggesting the user is not logged in.",
+        "rationale": "To perform a visual QA check, I need to verify the basic elements of the interface are present and functioning as expected. The presence of the navigation sidebar, search bar, and sign-in button confirms the core UI components are correctly rendered.",
+        "action": {
+          "type": "wait"
+        },
+        "verdict": "continue",
+        "finding": null
+      },
+      "executed": true
+    },
+    {
+      "index": 1,
+      "at": "2026-10-04T09:52:58.908Z",
+      "before": "/artifacts/193a9473-8ded-4c4c-aaae-874d224160a8/model-request-2.jpg",
+      "after": "/artifacts/193a9473-8ded-4c4c-aaae-874d224160a8/1-after.png",
+      "plan": {
+        "observation": "The screenshot shows the YouTube homepage with a navigation sidebar on the left, a search bar at the top, and a central message prompting the user to start searching. The 'Sign in' button is visible in the top-right corner, indicating the user is not logged in. No video content is displayed, suggesting an empty feed. The interface appears to be in a default state, awaiting user interaction.",
+        "rationale": "The task involves exploring the YouTube interface to understand its current state. The presence of the 'Sign in' button and the empty feed suggests that the user is not logged in and has not yet interacted with the platform. The central message encourages the user to start searching, which is a typical prompt for new or inactive users.",
+        "action": {
+          "type": "wait"
+        },
+        "verdict": "inconclusive",
+        "finding": null
+      },
+      "executed": true
+    },
+    {
+      "index": 2,
+      "at": "2026-10-04T09:53:04.024Z",
+      "before": "/artifacts/193a9473-8ded-4c4c-aaae-874d224160a8/model-request-3.jpg",
+      "after": "/artifacts/193a9473-8ded-4c4c-aaae-874d224160a8/2-after.png",
+      "plan": {
+        "observation": "The screenshot shows the YouTube homepage with a navigation sidebar on the left, a search bar at the top, and a central message prompting the user to start searching. The 'Sign in' button is visible in the top-right corner, indicating the user is not logged in. No video content is displayed, suggesting an empty feed. The interface appears to be in a default state, awaiting user interaction.",
+        "rationale": "The user is not logged in, as indicated by the 'Sign in' button. The page is in a default state with no video content, which is expected for a new or unauthenticated user. The central message encourages the user to start searching, which aligns with the typical behavior of a new user on YouTube.",
+        "action": {
+          "type": "wait"
+        },
+        "verdict": "continue",
+        "finding": null
+      },
+      "executed": true
+    },
+    {
+      "index": 3,
+      "at": "2026-10-04T09:53:19.322Z",
+      "before": "/artifacts/193a9473-8ded-4c4c-aaae-874d224160a8/model-request-4.jpg",
+      "after": "/artifacts/193a9473-8ded-4c4c-aaae-874d224160a8/3-after.png",
+      "plan": {
+        "observation": "The screenshot shows the YouTube homepage with a navigation sidebar on the left, a search bar at the top, and a central message prompting the user to start searching. The 'Sign in' button is visible in the top-right corner, indicating the user is not logged in. No video content is displayed, suggesting an empty feed. The interface appears to be in a default state, awaiting user interaction.",
+        "rationale": "The user is not logged in, as indicated by the 'Sign in' button. The feed is empty, and no video content is displayed. The interface is in a default state, awaiting user interaction. The last action was repeated three times with no visible progress, indicating a need to choose a different action or test hypothesis.",
+        "action": {
+          "type": "wait"
+        },
+        "verdict": "inconclusive",
+        "finding": null
+      },
+      "executed": true
+    },
+    {
+      "index": 4,
+      "at": "2026-10-04T09:53:24.177Z",
+      "before": "/artifacts/193a9473-8ded-4c4c-aaae-874d224160a8/model-request-5.jpg",
+      "after": "/artifacts/193a9473-8ded-4c4c-aaae-874d224160a8/4-after.png",
+      "plan": {
+        "observation": "The screenshot shows the YouTube homepage with a navigation sidebar on the left, a search bar at the top, and a central message prompting the user to start searching. The 'Sign in' button is visible in the top-right corner, indicating the user is not logged in. No video content is displayed, suggesting an empty feed. The interface appears to be in a default state, awaiting user interaction.",
+        "rationale": "The last action was repeated three times without visible progress, indicating no change in the state of the page. To proceed, a new action is needed to explore the interface further.",
+        "action": {
+          "type": "click",
+          "x": 428,
+          "y": 37
+        },
+        "verdict": "continue",
+        "finding": null
+      },
+      "executed": true
+    },
+    {
+      "index": 5,
+      "at": "2026-10-04T09:53:28.256Z",
+      "before": "/artifacts/193a9473-8ded-4c4c-aaae-874d224160a8/model-request-6.jpg",
+      "after": "/artifacts/193a9473-8ded-4c4c-aaae-874d224160a8/5-after.png",
+      "plan": {
+        "observation": "The screenshot shows the YouTube homepage with a navigation sidebar on the left, a search bar at the top, and a central message prompting the user to start searching. The 'Sign in' button is visible in the top-right corner, indicating the user is not logged in. No video content is displayed, suggesting an empty feed. The interface appears to be in a default state, awaiting user interaction.",
+        "rationale": "The last action was a click on the search bar, which is now focused and ready for input. This aligns with the expected behavior of initiating a search on the platform.",
+        "action": {
+          "type": "click",
+          "x": 428,
+          "y": 37
+        },
+        "verdict": "continue",
+        "finding": null
+      },
+      "executed": true
+    },
+    {
+      "index": 6,
+      "at": "2026-10-04T09:53:32.257Z",
+      "before": "/artifacts/193a9473-8ded-4c4c-aaae-874d224160a8/model-request-7.jpg",
+      "after": "/artifacts/193a9473-8ded-4c4c-aaae-874d224160a8/6-decision.png",
+      "plan": {
+        "observation": "The screenshot shows the YouTube homepage with a navigation sidebar on the left, a search bar at the top, and a central message prompting the user to start searching. The 'Sign in' button is visible in the top-right corner, indicating the user is not logged in. No video content is displayed, suggesting an empty feed. The interface appears to be in a default state, awaiting user interaction.",
+        "rationale": "The last action was clicking the search bar, which is now focused. However, no text has been entered, and the page remains unchanged, indicating that the click did not result in any visible progress or change in the interface.",
+        "action": {
+          "type": "click",
+          "x": 428,
+          "y": 37
+        },
+        "verdict": "inconclusive",
+        "finding": null
+      },
+      "executed": false
+    }
+  ],
+  "findings": [],
+  "engine": "Midscene aiQuery / 1.14.0 → Playwright coordinates / 1.63.0",
+  "transport": [
+    {
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/193a9473-8ded-4c4c-aaae-874d224160a8/model-request-1.jpg",
+      "elapsedMs": 4106,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791107557-zVx78vOLwfzaAZCS8QeL"
+    },
+    {
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/193a9473-8ded-4c4c-aaae-874d224160a8/model-request-2.jpg",
+      "elapsedMs": 16426,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791107562-ZvFAohuDMkXiPCm4ivxf"
+    },
+    {
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/193a9473-8ded-4c4c-aaae-874d224160a8/model-request-3.jpg",
+      "elapsedMs": 3418,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791107580-wSnT5ivNQ2ICe6vsGPfO"
+    },
+    {
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/193a9473-8ded-4c4c-aaae-874d224160a8/model-request-4.jpg",
+      "elapsedMs": 13611,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791107585-LbI6i3gyi2WKkHWjMG2k"
+    },
+    {
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/193a9473-8ded-4c4c-aaae-874d224160a8/model-request-5.jpg",
+      "elapsedMs": 3167,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791107601-oOPKFaDoaPbrFeGJgkeM"
+    },
+    {
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/193a9473-8ded-4c4c-aaae-874d224160a8/model-request-6.jpg",
+      "elapsedMs": 3188,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791107605-e8itGMiHOmQ81GGyFeBu"
+    },
+    {
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/193a9473-8ded-4c4c-aaae-874d224160a8/model-request-7.jpg",
+      "elapsedMs": 3118,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791107609-h7MbCKf5dHt1zO0P8SCy"
+    }
+  ],
+  "screenshot": "/artifacts/193a9473-8ded-4c4c-aaae-874d224160a8/6-decision.png",
+  "video": "/artifacts/193a9473-8ded-4c4c-aaae-874d224160a8/page@2f0c5024fb5a575f22cf860745601d04.webm",
+  "endedAt": "2026-10-04T09:53:32.365Z"
+}

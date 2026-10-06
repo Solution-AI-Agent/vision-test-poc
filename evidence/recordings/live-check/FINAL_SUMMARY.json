@@ -1,0 +1,143 @@
+{
+  "model": "qwen/qwen3-vl-30b-a3b-instruct",
+  "totalRequests": 42,
+  "reportedCostTotal": 0.019809399999999998,
+  "runs": [
+    {
+      "id": "051480bd-2fd4-47bb-b063-94639ee2ba74",
+      "mode": "scenario",
+      "status": "completed",
+      "outcome": "기대 결과 관찰됨 · 독립 검토 필요",
+      "requests": 5,
+      "actions": 4,
+      "durationSeconds": 39.531,
+      "reportedCost": 0.0022838900000000002,
+      "findings": [
+        {
+          "status": "false-positive",
+          "title": "Search results for 'Midscene AI demo' are displayed"
+        }
+      ],
+      "source": null,
+      "goal": []
+    },
+    {
+      "id": "1b8bc475-d553-4fb5-813d-4dd4c3c151d1",
+      "mode": "autonomous",
+      "status": "limited",
+      "outcome": "행동 한도 도달",
+      "requests": 7,
+      "actions": 6,
+      "durationSeconds": 34.961,
+      "reportedCost": 0.00296482,
+      "findings": [],
+      "source": null,
+      "goal": []
+    },
+    {
+      "id": "193a9473-8ded-4c4c-aaae-874d224160a8",
+      "mode": "autonomous",
+      "status": "limited",
+      "outcome": "행동 한도 도달",
+      "requests": 7,
+      "actions": 6,
+      "durationSeconds": 59.426,
+      "reportedCost": 0.00362996,
+      "findings": [],
+      "source": null,
+      "goal": []
+    },
+    {
+      "id": "0163b8ca-7ea4-4cdd-a70b-7ce00639c0fc",
+      "mode": "autonomous",
+      "status": "failed",
+      "outcome": "모델 응답 형식 검증 실패",
+      "requests": 3,
+      "actions": 1,
+      "durationSeconds": 21.284,
+      "reportedCost": 0.0013566,
+      "findings": [],
+      "source": null,
+      "goal": [
+        "Enter 'cooking recipes' into the search bar and press Enter to initiate the search."
+      ]
+    },
+    {
+      "id": "1bf47058-278d-4bdc-a722-6730c03d66d2",
+      "mode": "autonomous",
+      "status": "failed",
+      "outcome": "브라우저 또는 모델 실행 실패 · 환경과 설정을 확인하세요",
+      "requests": 2,
+      "actions": 0,
+      "durationSeconds": 22.515,
+      "reportedCost": 0.0011059,
+      "findings": [],
+      "source": {
+        "commit": "99ffcf217ca520385090b1baf096e872da75ff9c",
+        "dirty": false,
+        "sourceHash": "0ff4956f93f1806997d1e463c4ad9a9ae236151bdb9c5ee1b9fa488122c8ceee",
+        "promptVersion": "goal-first-v2-bounded-replan"
+      },
+      "goal": [
+        "Enter 'tutorials' into the search bar and observe the search suggestions or results."
+      ]
+    },
+    {
+      "id": "719161ea-bd0b-49a0-b708-5e542ebfa6b8",
+      "mode": "scenario",
+      "status": "limited",
+      "outcome": "행동 한도 도달",
+      "requests": 7,
+      "actions": 6,
+      "durationSeconds": 31.851,
+      "reportedCost": 0.00327014,
+      "findings": [],
+      "source": {
+        "commit": "4e2b7be652c8896de42da9ce52a9e50f8dba1192",
+        "dirty": false,
+        "sourceHash": "9030143131c0ba7a26d51529ed7729ec2f1c0aea4e984ee2009438fd166a777f",
+        "promptVersion": "goal-first-v3-protocol-and-replan"
+      },
+      "goal": []
+    },
+    {
+      "id": "5739f389-9faa-4528-8979-92e3d968b3ea",
+      "mode": "autonomous",
+      "status": "limited",
+      "outcome": "재계획 후에도 화면 진전 없음 · 판단 불가",
+      "requests": 6,
+      "actions": 4,
+      "durationSeconds": 43.431,
+      "reportedCost": 0.00283305,
+      "findings": [],
+      "source": {
+        "commit": "8fcac127a2e76abb5da45ecad8913367f9d33267",
+        "dirty": false,
+        "sourceHash": "718b306ce1f4e635b70b59d84d82852639760fa68de46f89426f6a2d02465aec",
+        "promptVersion": "goal-first-v3-protocol-and-replan"
+      },
+      "goal": [
+        "Type 'cooking tutorial' into the search bar and press enter to search for videos.",
+        "Type 'cooking tutorial' into the search bar and press enter to search for videos."
+      ]
+    },
+    {
+      "id": "044ecb6b-dfb3-4c61-970b-d0dc653f3201",
+      "mode": "scenario",
+      "status": "completed",
+      "outcome": "기대 결과 관찰됨 · 독립 검토 필요",
+      "requests": 5,
+      "actions": 4,
+      "durationSeconds": 28.991,
+      "reportedCost": 0.0023650399999999997,
+      "findings": [],
+      "source": {
+        "commit": "8fcac127a2e76abb5da45ecad8913367f9d33267",
+        "dirty": false,
+        "sourceHash": "718b306ce1f4e635b70b59d84d82852639760fa68de46f89426f6a2d02465aec",
+        "promptVersion": "goal-first-v3-protocol-and-replan"
+      },
+      "goal": []
+    }
+  ]
+}

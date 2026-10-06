@@ -1,0 +1,67 @@
+{
+  "id": "1bf47058-278d-4bdc-a722-6730c03d66d2",
+  "input": {
+    "mode": "autonomous",
+    "url": "https://www.youtube.com/",
+    "task": "",
+    "expected": "",
+    "query": ""
+  },
+  "settings": {
+    "maxActions": 6,
+    "maxCalls": 8,
+    "maxSeconds": 120,
+    "maxTokens": 2048,
+    "model": "qwen/qwen3-vl-30b-a3b-instruct",
+    "family": "qwen3-vl"
+  },
+  "startedAt": "2026-10-04T10:03:22.243Z",
+  "status": "failed",
+  "outcome": "브라우저 또는 모델 실행 실패 · 환경과 설정을 확인하세요",
+  "stage": "종료",
+  "calls": 2,
+  "actions": 0,
+  "tokens": 4516,
+  "cost": 0.0011059,
+  "steps": [],
+  "findings": [],
+  "engine": "Midscene aiQuery / 1.14.0 → Playwright coordinates / 1.63.0",
+  "transport": [
+    {
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/1bf47058-278d-4bdc-a722-6730c03d66d2/model-request-1.jpg",
+      "elapsedMs": 6855,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791108206-WtLEdHXsstrsIEXifQ7R"
+    },
+    {
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/1bf47058-278d-4bdc-a722-6730c03d66d2/model-request-2.jpg",
+      "elapsedMs": 11694,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791108213-y0JfWmiQnKgsRc1vXTjj"
+    }
+  ],
+  "sourceVersion": {
+    "commit": "99ffcf217ca520385090b1baf096e872da75ff9c",
+    "dirty": false,
+    "sourceHash": "0ff4956f93f1806997d1e463c4ad9a9ae236151bdb9c5ee1b9fa488122c8ceee",
+    "promptVersion": "goal-first-v2-bounded-replan"
+  },
+  "screenshot": "/artifacts/1bf47058-278d-4bdc-a722-6730c03d66d2/0-before.png",
+  "goals": [
+    {
+      "hypothesis": "The search functionality on the YouTube homepage is operational and allows users to enter queries.",
+      "task": "Enter 'tutorials' into the search bar and observe the search suggestions or results.",
+      "expected": "The search bar should accept the input 'tutorials' and display relevant search suggestions or results related to tutorials.",
+      "basis": "The presence of the search bar indicates an interactive element designed for user input, and the system should respond to valid queries.",
+      "screenshot": "/artifacts/1bf47058-278d-4bdc-a722-6730c03d66d2/model-request-1.jpg",
+      "at": "2026-10-04T10:03:32.976Z"
+    }
+  ],
+  "error": "브라우저 또는 모델 실행 실패 · 환경과 설정을 확인하세요",
+  "video": "/artifacts/1bf47058-278d-4bdc-a722-6730c03d66d2/page@addd131454039dc0ab4ecdb44406e546.webm",
+  "endedAt": "2026-10-04T10:03:44.758Z"
+}

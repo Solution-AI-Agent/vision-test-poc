@@ -1,0 +1,59 @@
+{
+  "commit": "045fdf3d93ff677f4669650aa4394856b01b752c",
+  "modelCalls": 0,
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "screenshots": "full-page browser capture; not model input",
+  "results": [
+    {
+      "state": "normal",
+      "functionalSuite": "PASS",
+      "invalidApiStatus": 400,
+      "foreignOriginStatus": 403,
+      "pageErrors": [],
+      "video": "/Users/zpro/.buzz/REPOS/vision-test-maker/artifacts/standalone-sample-2026-10-05T11-57-19-450Z/page@878d7b722de05228458326311528613c.webm"
+    },
+    {
+      "state": "misaligned",
+      "functionalSuite": "PASS",
+      "invalidApiStatus": 400,
+      "foreignOriginStatus": 403,
+      "pageErrors": [],
+      "video": "/Users/zpro/.buzz/REPOS/vision-test-maker/artifacts/standalone-sample-2026-10-05T11-57-19-450Z/page@e6b56de53e73008b53ba016fd37b326b.webm"
+    },
+    {
+      "state": "occluded",
+      "functionalSuite": "PASS",
+      "invalidApiStatus": 400,
+      "foreignOriginStatus": 403,
+      "pageErrors": [],
+      "video": "/Users/zpro/.buzz/REPOS/vision-test-maker/artifacts/standalone-sample-2026-10-05T11-57-19-450Z/page@05a8655b7475e5627668fdc5a3afe913.webm"
+    },
+    {
+      "state": "clipped",
+      "functionalSuite": "PASS",
+      "invalidApiStatus": 400,
+      "foreignOriginStatus": 403,
+      "pageErrors": [],
+      "video": "/Users/zpro/.buzz/REPOS/vision-test-maker/artifacts/standalone-sample-2026-10-05T11-57-19-450Z/page@0c363d1dd5c4cffd214375230925c738.webm"
+    },
+    {
+      "state": "product-image",
+      "functionalSuite": "PASS",
+      "invalidApiStatus": 400,
+      "foreignOriginStatus": 403,
+      "pageErrors": [],
+      "video": "/Users/zpro/.buzz/REPOS/vision-test-maker/artifacts/standalone-sample-2026-10-05T11-57-19-450Z/page@72a41e3b9db2843047491751aa842f4e.webm"
+    },
+    {
+      "state": "chart",
+      "functionalSuite": "PASS",
+      "invalidApiStatus": 400,
+      "foreignOriginStatus": 403,
+      "pageErrors": [],
+      "video": "/Users/zpro/.buzz/REPOS/vision-test-maker/artifacts/standalone-sample-2026-10-05T11-57-19-450Z/page@6b0d75e926257a0947d8a0b1687f2999.webm"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+VISION-TEST / LUMEN / v5 최종 검수본
+검토 담당: POC-LEAD. 사이트 독립 수락 이후 제작한 영상이며 영상 자체는 검수 요청 상태.
+영상: VISION_TEST_LUMEN_V5.mp4 (160초, 1280×720, H264, 24fps, 무음 한국어 자막)
+재생: REVIEW.html 또는 MP4를 로컬 플레이어에서 연다.
+대본/장면: SCRIPT_STORYBOARD.txt / .html / .json. 별도 자막: CAPTIONS_KO.srt (화면 자막과 동일한 30구간).
+출처: EVIDENCE_MANIFEST.json. 실제 모델 JPEG: ASSETS/fault.jpg 및 normal.jpg (원본 바이트 유지).
+원장/첫 issue/정상 판정: SOURCES/RESULTS.json 및 FAULT_RUN.json/NORMAL_RUN.json. 후자의 두 파일은 원장 발췌본.
+독립 수락: SOURCES/VISION_QA_WORKING_DEMO_ACCEPTANCE_2026_10_05.md. DEMO_HANDOFF.md는 당시 원본 사본이며 최신 수락 판단은 독립 검토 문서가 우선.
+실제 UI 조작 근거: WORKFLOW/CAPTURE_REPORT.json. 1600×1100 반응형 캡처는 정확한 1280×720 모델 입력과 구분. 이미지/JSON 링크 HTTP200, 페이지 오류0, 추가 모델 호출0.
+검수: QA_REPORT.txt / PLAYBACK_REPORT.json / QA_CONTINUOUS/DECODE_REPORT.json / QA_REDUCED_640/.
+제작: AppKit/CoreText/AVFoundation Swift, RENDER.swift와 RENDER_BODY.swift, 편집 JSON/ASSETS. VERIFY.swift/PLAYBACK.swift/REDUCED_QA.swift는 검수 도구.
+PREPARE_FINAL.py/ASSEMBLE_RENDER.py/PRESERVE_EXTRA_SOURCES.py/CAPTURE_WORKFLOW.mjs는 제작 이력 소스. 일부 출력 경로는 고정돼 있으므로 보존 폴더에서 그대로 재실행하지 말고 새 버전 경로로 바꾼다.
+재렌더 예: swiftc -suppress-warnings -module-cache-path .scratch/VISION_TEST_SWIFT_CACHE RENDER.swift -o .scratch/new-v5-render; 새 버전 폴더 경로를 해당 바이너리에 인자로 전달한다. 실행 전 RENDER.swift 인자/출력 규칙을 확인한다. macOS OS 코덱 접근이 필요하다.
+이 영상은 실제 캡처를 확대·순서 편집한 설명 영상이다. 원본 WebM의 연속 실시간 녹화라고 주장하지 않는다. 재생 검수의 GUI 전체 시청은 미수행이며 프로그램 실시간 재생과 출력 프레임 확인을 구분했다.
+데모: http://127.0.0.1:4310/demo (로컬 앱 실행 필요). 사이트 실행/복원 방법은 SOURCES/DEMO_HANDOFF.md 참조.
+선택한 주입 사례의 등록 기준 기반 직접 화면 판단이다. Playwright screenshot도 검출 가능. 이전 실패/선정 단계는 APPENDIX/에 분리했고 성공률에 합산하지 않았다. 두 번째 collection issue의 추측 위치를 정밀 검출 근거로 쓰지 않았다.
+API 키·설정 저장소·키가 노출된 대화/화면은 사용하지 않았다. v4와 이전 v5 기록은 덮어쓰지 않았다. 저장된 응답을 현재 실시간 호출로 표시하지 않았다.

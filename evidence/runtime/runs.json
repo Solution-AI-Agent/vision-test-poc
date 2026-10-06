@@ -1,0 +1,2586 @@
+[
+  {
+    "id": "5aadb81c-9ebc-4322-9d50-75475274d7f7",
+    "input": {
+      "mode": "autonomous",
+      "url": "https://www.youtube.com/",
+      "task": "",
+      "expected": "",
+      "query": ""
+    },
+    "settings": {
+      "maxActions": 6,
+      "maxCalls": 8,
+      "maxSeconds": 120,
+      "maxTokens": 2048,
+      "model": "qwen/qwen3-vl-30b-a3b-instruct",
+      "family": "qwen3-vl"
+    },
+    "startedAt": "2026-10-04T11:31:41.460Z",
+    "status": "completed",
+    "outcome": "자율 선택 업무의 기대 결과 관찰됨 · 결함 검토 별도",
+    "stage": "종료",
+    "calls": 8,
+    "actions": 6,
+    "tokens": 20558,
+    "cost": 0.00471817,
+    "steps": [
+      {
+        "index": 0,
+        "at": "2026-10-04T11:31:53.183Z",
+        "before": "/artifacts/5aadb81c-9ebc-4322-9d50-75475274d7f7/model-request-2.jpg",
+        "after": "/artifacts/5aadb81c-9ebc-4322-9d50-75475274d7f7/0-after.png",
+        "plan": {
+          "observation": "The YouTube homepage is shown with a visible and interactive search bar. No video results are currently displayed, indicating that a search has not been conducted yet.",
+          "rationale": "To achieve the goal of searching for 'tutorials', the first step is to click on the search bar to focus it, enabling text input. This aligns with the requirement to use the search functionality to find relevant video results.",
+          "action": {
+            "type": "click",
+            "x": 452,
+            "y": 37
+          },
+          "verdict": "continue",
+          "finding": null
+        },
+        "executed": true,
+        "toolCalls": [
+          {
+            "action": {
+              "type": "click",
+              "x": 452,
+              "y": 37
+            },
+            "completed": true,
+            "at": "2026-10-04T11:31:53.217Z"
+          }
+        ],
+        "unchanged": false
+      },
+      {
+        "index": 1,
+        "at": "2026-10-04T11:31:57.117Z",
+        "before": "/artifacts/5aadb81c-9ebc-4322-9d50-75475274d7f7/model-request-3.jpg",
+        "after": "/artifacts/5aadb81c-9ebc-4322-9d50-75475274d7f7/1-after.png",
+        "plan": {
+          "observation": "The YouTube homepage is shown with a visible and interactive search bar. No video results are currently displayed, indicating that a search has not been conducted yet.",
+          "rationale": "The presence of a functional search bar and the suggestion to start watching videos implies that searching is a valid action that will yield content. The last action was to click on the search bar to focus it, which is necessary before typing.",
+          "action": {
+            "type": "type",
+            "text": "tutorials",
+            "x": 452,
+            "y": 37
+          },
+          "verdict": "continue",
+          "finding": null
+        },
+        "executed": true,
+        "toolCalls": [
+          {
+            "action": {
+              "type": "click",
+              "x": 452,
+              "y": 37
+            },
+            "completed": true,
+            "at": "2026-10-04T11:31:57.153Z"
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "tutorials",
+              "x": 452,
+              "y": 37
+            },
+            "completed": true,
+            "at": "2026-10-04T11:31:57.155Z"
+          }
+        ],
+        "unchanged": false,
+        "inputConfirmation": {
+          "status": "verified",
+          "visibleText": "tutorials",
+          "reason": "The text 'tutorials' is clearly visible in the search bar, matching the intended value.",
+          "screenshot": "/artifacts/5aadb81c-9ebc-4322-9d50-75475274d7f7/model-request-4.jpg",
+          "call": 4
+        }
+      },
+      {
+        "index": 2,
+        "at": "2026-10-04T11:32:03.799Z",
+        "before": "/artifacts/5aadb81c-9ebc-4322-9d50-75475274d7f7/model-request-5.jpg",
+        "after": "/artifacts/5aadb81c-9ebc-4322-9d50-75475274d7f7/2-after.png",
+        "plan": {
+          "observation": "The search bar contains the text 'tutorials', and a dropdown of search suggestions is visible. However, no video results are displayed below the search bar, indicating that the search has not been submitted yet.",
+          "rationale": "The task requires submitting the search by pressing enter after typing 'tutorials'. The current state shows the text is present but the search has not been executed, as evidenced by the absence of video results.",
+          "action": {
+            "type": "key",
+            "key": "Enter"
+          },
+          "verdict": "continue",
+          "finding": null
+        },
+        "executed": true,
+        "toolCalls": [
+          {
+            "action": {
+              "type": "key",
+              "key": "Enter"
+            },
+            "completed": true,
+            "at": "2026-10-04T11:32:03.838Z"
+          }
+        ],
+        "unchanged": false
+      },
+      {
+        "index": 3,
+        "at": "2026-10-04T11:32:07.653Z",
+        "before": "/artifacts/5aadb81c-9ebc-4322-9d50-75475274d7f7/model-request-6.jpg",
+        "after": "/artifacts/5aadb81c-9ebc-4322-9d50-75475274d7f7/3-after.png",
+        "plan": {
+          "observation": "The search bar contains 'tutorials' and suggestions are shown, but no video results are visible.",
+          "rationale": "The task requires submitting the search for 'tutorials' to display video results. The current state shows the search term entered but not submitted, so the expected outcome has not yet occurred.",
+          "action": {
+            "type": "key",
+            "key": "Enter"
+          },
+          "verdict": "inconclusive",
+          "finding": null
+        },
+        "executed": true,
+        "toolCalls": [
+          {
+            "action": {
+              "type": "key",
+              "key": "Enter"
+            },
+            "completed": true,
+            "at": "2026-10-04T11:32:07.708Z"
+          }
+        ],
+        "unchanged": false
+      },
+      {
+        "index": 4,
+        "at": "2026-10-04T11:32:11.518Z",
+        "before": "/artifacts/5aadb81c-9ebc-4322-9d50-75475274d7f7/model-request-7.jpg",
+        "after": "/artifacts/5aadb81c-9ebc-4322-9d50-75475274d7f7/4-after.png",
+        "plan": {
+          "observation": "The search bar contains 'tutorials' and suggestions are shown, but no video results are visible.",
+          "rationale": "The task requires submitting the search by pressing Enter to display video results related to tutorials. The previous action of pressing Enter was executed, but no results are visible, suggesting the search may not have been processed or the page hasn't updated.",
+          "action": {
+            "type": "key",
+            "key": "Enter"
+          },
+          "verdict": "inconclusive",
+          "finding": null
+        },
+        "executed": true,
+        "toolCalls": [
+          {
+            "action": {
+              "type": "key",
+              "key": "Enter"
+            },
+            "completed": true,
+            "at": "2026-10-04T11:32:11.572Z"
+          }
+        ],
+        "unchanged": false
+      },
+      {
+        "index": 5,
+        "at": "2026-10-04T11:32:19.650Z",
+        "before": "/artifacts/5aadb81c-9ebc-4322-9d50-75475274d7f7/model-request-8.jpg",
+        "after": "/artifacts/5aadb81c-9ebc-4322-9d50-75475274d7f7/5-decision.png",
+        "plan": {
+          "observation": "The search for 'tutorials' has been executed, and the results page displays various tutorial videos, including a sponsored ad and a user-uploaded video.",
+          "rationale": "The expected outcome was that searching for 'tutorials' would display relevant video results. The screenshot confirms this, as the search bar contains 'tutorials' and multiple tutorial-related videos are listed below.",
+          "action": {
+            "type": "key",
+            "key": "Enter"
+          },
+          "verdict": "pass",
+          "finding": null
+        },
+        "executed": false
+      }
+    ],
+    "findings": [],
+    "engine": "Midscene aiQuery / 1.14.0 → Playwright coordinates / 1.63.0",
+    "transport": [
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/5aadb81c-9ebc-4322-9d50-75475274d7f7/model-request-1.jpg",
+        "responseFormat": {
+          "finishReason": "stop",
+          "chars": 997,
+          "hasDataJson": true,
+          "normalizedPlainJson": false
+        },
+        "elapsedMs": 3563,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791113506-JvaVicDeRjHtorktcr50"
+      },
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/5aadb81c-9ebc-4322-9d50-75475274d7f7/model-request-2.jpg",
+        "responseFormat": {
+          "finishReason": "stop",
+          "chars": 1540,
+          "hasDataJson": true,
+          "normalizedPlainJson": false
+        },
+        "elapsedMs": 3638,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791113509-2Kxy5O6ok8QbIWYq4KhM",
+        "parsedOutput": {
+          "observation": "The YouTube homepage is shown with a visible and interactive search bar. No video results are currently displayed, indicating that a search has not been conducted yet.",
+          "rationale": "To achieve the goal of searching for 'tutorials', the first step is to click on the search bar to focus it, enabling text input. This aligns with the requirement to use the search functionality to find relevant video results.",
+          "action": {
+            "type": "click",
+            "x": 452,
+            "y": 37
+          },
+          "verdict": "continue",
+          "finding": null
+        }
+      },
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/5aadb81c-9ebc-4322-9d50-75475274d7f7/model-request-3.jpg",
+        "responseFormat": {
+          "finishReason": "stop",
+          "chars": 999,
+          "hasDataJson": true,
+          "normalizedPlainJson": false
+        },
+        "elapsedMs": 3022,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791113514-qqYB5jldXJjbExHz5xCv",
+        "parsedOutput": {
+          "observation": "The YouTube homepage is shown with a visible and interactive search bar. No video results are currently displayed, indicating that a search has not been conducted yet.",
+          "rationale": "The presence of a functional search bar and the suggestion to start watching videos implies that searching is a valid action that will yield content. The last action was to click on the search bar to focus it, which is necessary before typing.",
+          "action": {
+            "type": "type",
+            "text": "tutorials",
+            "x": 452,
+            "y": 37
+          },
+          "verdict": "continue",
+          "finding": null
+        }
+      },
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/5aadb81c-9ebc-4322-9d50-75475274d7f7/model-request-4.jpg",
+        "responseFormat": {
+          "finishReason": "stop",
+          "chars": 625,
+          "hasDataJson": true,
+          "normalizedPlainJson": false
+        },
+        "elapsedMs": 2644,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791113518-UamxKHVLwr974A5Dof8Q",
+        "parsedOutput": {
+          "status": "verified",
+          "visibleText": "tutorials",
+          "reason": "The text 'tutorials' is clearly visible in the search bar, matching the intended value."
+        }
+      },
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/5aadb81c-9ebc-4322-9d50-75475274d7f7/model-request-5.jpg",
+        "responseFormat": {
+          "finishReason": "stop",
+          "chars": 829,
+          "hasDataJson": true,
+          "normalizedPlainJson": false
+        },
+        "elapsedMs": 3084,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791113520-kO7jSuy2rw1xqs2RVt6r",
+        "parsedOutput": {
+          "observation": "The search bar contains the text 'tutorials', and a dropdown of search suggestions is visible. However, no video results are displayed below the search bar, indicating that the search has not been submitted yet.",
+          "rationale": "The task requires submitting the search by pressing enter after typing 'tutorials'. The current state shows the text is present but the search has not been executed, as evidenced by the absence of video results.",
+          "action": {
+            "type": "key",
+            "key": "Enter"
+          },
+          "verdict": "continue",
+          "finding": null
+        }
+      },
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/5aadb81c-9ebc-4322-9d50-75475274d7f7/model-request-6.jpg",
+        "responseFormat": {
+          "finishReason": "stop",
+          "chars": 743,
+          "hasDataJson": true,
+          "normalizedPlainJson": false
+        },
+        "elapsedMs": 2918,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791113524-9Yl3U3nr9U8k0osNy7DH",
+        "parsedOutput": {
+          "observation": "The search bar contains 'tutorials' and suggestions are shown, but no video results are visible.",
+          "rationale": "The task requires submitting the search for 'tutorials' to display video results. The current state shows the search term entered but not submitted, so the expected outcome has not yet occurred.",
+          "action": {
+            "type": "key",
+            "key": "Enter"
+          },
+          "verdict": "inconclusive",
+          "finding": null
+        }
+      },
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/5aadb81c-9ebc-4322-9d50-75475274d7f7/model-request-7.jpg",
+        "responseFormat": {
+          "finishReason": "stop",
+          "chars": 769,
+          "hasDataJson": true,
+          "normalizedPlainJson": false
+        },
+        "elapsedMs": 2896,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791113528-ICFwKm7krEVUP3DjOvDf",
+        "parsedOutput": {
+          "observation": "The search bar contains 'tutorials' and suggestions are shown, but no video results are visible.",
+          "rationale": "The task requires submitting the search by pressing Enter to display video results related to tutorials. The previous action of pressing Enter was executed, but no results are visible, suggesting the search may not have been processed or the page hasn't updated.",
+          "action": {
+            "type": "key",
+            "key": "Enter"
+          },
+          "verdict": "inconclusive",
+          "finding": null
+        }
+      },
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/5aadb81c-9ebc-4322-9d50-75475274d7f7/model-request-8.jpg",
+        "responseFormat": {
+          "finishReason": "stop",
+          "chars": 1004,
+          "hasDataJson": true,
+          "normalizedPlainJson": false
+        },
+        "elapsedMs": 7148,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791113532-ehy2Icfal1Pv7x7JgQkO",
+        "parsedOutput": {
+          "observation": "The search for 'tutorials' has been executed, and the results page displays various tutorial videos, including a sponsored ad and a user-uploaded video.",
+          "rationale": "The expected outcome was that searching for 'tutorials' would display relevant video results. The screenshot confirms this, as the search bar contains 'tutorials' and multiple tutorial-related videos are listed below.",
+          "action": {
+            "type": "key",
+            "key": "Enter"
+          },
+          "verdict": "pass",
+          "finding": null
+        }
+      }
+    ],
+    "sourceVersion": {
+      "commit": "82f28b93d54e210dfefd18cad30d7c1517ac296a",
+      "dirty": false,
+      "sourceHash": "85d6c7947f5d68b6384e911446115f749050c46389c3c2cd0101b038ad5e1f20",
+      "promptVersion": "goal-first-v4-focus-and-visual-input"
+    },
+    "screenshot": "/artifacts/5aadb81c-9ebc-4322-9d50-75475274d7f7/5-decision.png",
+    "goals": [
+      {
+        "hypothesis": "Searching for 'tutorials' will display relevant video results.",
+        "task": "Type 'tutorials' into the search bar and press enter.",
+        "expected": "A list of video results related to tutorials should appear below the search bar.",
+        "basis": "The presence of a functional search bar and the suggestion to start watching videos implies that searching is a valid action that will yield content.",
+        "screenshot": "/artifacts/5aadb81c-9ebc-4322-9d50-75475274d7f7/model-request-1.jpg",
+        "at": "2026-10-04T11:31:49.433Z"
+      }
+    ],
+    "video": "/artifacts/5aadb81c-9ebc-4322-9d50-75475274d7f7/page@f618dbaa7dd2f35b6c5bf04f9218585b.webm",
+    "endedAt": "2026-10-04T11:32:20.001Z"
+  },
+  {
+    "id": "882f0db4-631d-4d35-bb24-b5af2e688930",
+    "input": {
+      "mode": "autonomous",
+      "url": "https://www.youtube.com/",
+      "task": "",
+      "expected": "",
+      "query": ""
+    },
+    "settings": {
+      "maxActions": 6,
+      "maxCalls": 8,
+      "maxSeconds": 120,
+      "maxTokens": 2048,
+      "model": "qwen/qwen3-vl-30b-a3b-instruct",
+      "family": "qwen3-vl"
+    },
+    "startedAt": "2026-10-04T10:29:34.965Z",
+    "status": "limited",
+    "outcome": "행동 한도 도달 · 포커스와 입력도 각각 포함",
+    "stage": "종료",
+    "calls": 8,
+    "actions": 6,
+    "tokens": 20656,
+    "cost": 0.00422962,
+    "steps": [
+      {
+        "index": 0,
+        "at": "2026-10-04T10:29:47.734Z",
+        "before": "/artifacts/882f0db4-631d-4d35-bb24-b5af2e688930/model-request-2.jpg",
+        "after": "/artifacts/882f0db4-631d-4d35-bb24-b5af2e688930/0-after.png",
+        "plan": {
+          "observation": "The YouTube homepage is displayed with an empty search bar. The user is not signed in, and the main content area suggests trying a search. The next step is to click the search bar to focus it.",
+          "rationale": "Clicking the search bar is necessary to focus it before typing the search term 'tutorials'. This ensures that the input is directed to the correct field.",
+          "action": {
+            "type": "click",
+            "x": 452,
+            "y": 37
+          },
+          "verdict": "continue",
+          "finding": null
+        },
+        "executed": true,
+        "toolCalls": [
+          {
+            "action": {
+              "type": "click",
+              "x": 452,
+              "y": 37
+            },
+            "completed": true,
+            "at": "2026-10-04T10:29:47.767Z"
+          }
+        ],
+        "unchanged": false
+      },
+      {
+        "index": 1,
+        "at": "2026-10-04T10:30:03.829Z",
+        "before": "/artifacts/882f0db4-631d-4d35-bb24-b5af2e688930/model-request-3.jpg",
+        "after": "/artifacts/882f0db4-631d-4d35-bb24-b5af2e688930/1-after.png",
+        "plan": {
+          "observation": "The search bar is focused and ready for input. The next step is to type 'tutorials' into the search bar.",
+          "rationale": "The search bar is visible and focused, indicating that it is ready to receive input. The user needs to type 'tutorials' to proceed with the search.",
+          "action": {
+            "type": "type",
+            "text": "tutorials",
+            "x": 452,
+            "y": 37
+          },
+          "verdict": "continue",
+          "finding": null
+        },
+        "executed": true,
+        "toolCalls": [
+          {
+            "action": {
+              "type": "click",
+              "x": 452,
+              "y": 37
+            },
+            "completed": true,
+            "at": "2026-10-04T10:30:03.866Z"
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "tutorials",
+              "x": 452,
+              "y": 37
+            },
+            "completed": true,
+            "at": "2026-10-04T10:30:03.868Z"
+          }
+        ],
+        "unchanged": false,
+        "inputConfirmation": {
+          "status": "verified",
+          "visibleText": "tutorials",
+          "reason": "The text 'tutorials' is clearly visible in the search bar, matching the intended value.",
+          "screenshot": "/artifacts/882f0db4-631d-4d35-bb24-b5af2e688930/model-request-4.jpg",
+          "call": 4
+        }
+      },
+      {
+        "index": 2,
+        "at": "2026-10-04T10:30:09.399Z",
+        "before": "/artifacts/882f0db4-631d-4d35-bb24-b5af2e688930/model-request-5.jpg",
+        "after": "/artifacts/882f0db4-631d-4d35-bb24-b5af2e688930/2-after.png",
+        "plan": {
+          "observation": "The search bar contains the text 'tutorials', and a dropdown of search suggestions is visible. The next step is to submit the search query by pressing Enter.",
+          "rationale": "The task requires entering 'tutorials' into the search bar and pressing Enter to display search results. The text has been successfully entered, and the next logical action is to submit the query.",
+          "action": {
+            "type": "key",
+            "key": "Enter"
+          },
+          "verdict": "continue",
+          "finding": null
+        },
+        "executed": true,
+        "toolCalls": [
+          {
+            "action": {
+              "type": "key",
+              "key": "Enter"
+            },
+            "completed": true,
+            "at": "2026-10-04T10:30:09.437Z"
+          }
+        ],
+        "unchanged": false
+      },
+      {
+        "index": 3,
+        "at": "2026-10-04T10:30:13.380Z",
+        "before": "/artifacts/882f0db4-631d-4d35-bb24-b5af2e688930/model-request-6.jpg",
+        "after": "/artifacts/882f0db4-631d-4d35-bb24-b5af2e688930/3-after.png",
+        "plan": {
+          "observation": "The search bar contains 'tutorials' and a dropdown of suggestions is shown, but no search results are displayed.",
+          "rationale": "The task requires submitting the search query by pressing Enter. Since the search results are not visible, the action to press Enter has not been completed yet.",
+          "action": {
+            "type": "key",
+            "key": "Enter"
+          },
+          "verdict": "continue",
+          "finding": null
+        },
+        "executed": true,
+        "toolCalls": [
+          {
+            "action": {
+              "type": "key",
+              "key": "Enter"
+            },
+            "completed": true,
+            "at": "2026-10-04T10:30:13.439Z"
+          }
+        ],
+        "unchanged": false
+      },
+      {
+        "index": 4,
+        "at": "2026-10-04T10:30:17.650Z",
+        "before": "/artifacts/882f0db4-631d-4d35-bb24-b5af2e688930/model-request-7.jpg",
+        "after": "/artifacts/882f0db4-631d-4d35-bb24-b5af2e688930/4-after.png",
+        "plan": {
+          "observation": "The search bar contains 'tutorials' and a dropdown of suggestions is shown, but no search results are displayed.",
+          "rationale": "The expected result was to display a list of videos related to tutorials after submitting the search query. Since the search results are not visible, the task has not been completed successfully.",
+          "action": {
+            "type": "key",
+            "key": "Enter"
+          },
+          "verdict": "inconclusive",
+          "finding": null
+        },
+        "executed": true,
+        "toolCalls": [
+          {
+            "action": {
+              "type": "key",
+              "key": "Enter"
+            },
+            "completed": true,
+            "at": "2026-10-04T10:30:17.699Z"
+          }
+        ],
+        "unchanged": false
+      },
+      {
+        "index": 5,
+        "at": "2026-10-04T10:30:21.469Z",
+        "before": "/artifacts/882f0db4-631d-4d35-bb24-b5af2e688930/model-request-8.jpg",
+        "after": "/artifacts/882f0db4-631d-4d35-bb24-b5af2e688930/5-decision.png",
+        "plan": {
+          "observation": "The search bar contains 'tutorials' with a dropdown of suggestions, but no search results are displayed.",
+          "rationale": "The search query was entered, but the expected outcome of displaying tutorial-related videos has not occurred. This suggests the search submission may not have been successful or the results are not loading.",
+          "action": {
+            "type": "key",
+            "key": "Enter"
+          },
+          "verdict": "inconclusive",
+          "finding": null
+        },
+        "executed": false
+      }
+    ],
+    "findings": [],
+    "engine": "Midscene aiQuery / 1.14.0 → Playwright coordinates / 1.63.0",
+    "transport": [
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/882f0db4-631d-4d35-bb24-b5af2e688930/model-request-1.jpg",
+        "responseFormat": {
+          "finishReason": "stop",
+          "chars": 1069,
+          "hasDataJson": true,
+          "normalizedPlainJson": false
+        },
+        "elapsedMs": 3655,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791109779-eAUUYhnzyu8Nd9pWCUtL"
+      },
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/882f0db4-631d-4d35-bb24-b5af2e688930/model-request-2.jpg",
+        "responseFormat": {
+          "finishReason": "stop",
+          "chars": 2039,
+          "hasDataJson": true,
+          "normalizedPlainJson": false
+        },
+        "elapsedMs": 4934,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791109783-s8FLBhWGGxYT5qGy7GvC",
+        "parsedOutput": {
+          "observation": "The YouTube homepage is displayed with an empty search bar. The user is not signed in, and the main content area suggests trying a search. The next step is to click the search bar to focus it.",
+          "rationale": "Clicking the search bar is necessary to focus it before typing the search term 'tutorials'. This ensures that the input is directed to the correct field.",
+          "action": {
+            "type": "click",
+            "x": 452,
+            "y": 37
+          },
+          "verdict": "continue",
+          "finding": null
+        }
+      },
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/882f0db4-631d-4d35-bb24-b5af2e688930/model-request-3.jpg",
+        "responseFormat": {
+          "finishReason": "stop",
+          "chars": 790,
+          "hasDataJson": true,
+          "normalizedPlainJson": false
+        },
+        "elapsedMs": 15232,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791109788-Unhbo8hasMDHJulMhS0K",
+        "parsedOutput": {
+          "observation": "The search bar is focused and ready for input. The next step is to type 'tutorials' into the search bar.",
+          "rationale": "The search bar is visible and focused, indicating that it is ready to receive input. The user needs to type 'tutorials' to proceed with the search.",
+          "action": {
+            "type": "type",
+            "text": "tutorials",
+            "x": 452,
+            "y": 37
+          },
+          "verdict": "continue",
+          "finding": null
+        }
+      },
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/882f0db4-631d-4d35-bb24-b5af2e688930/model-request-4.jpg",
+        "responseFormat": {
+          "finishReason": "stop",
+          "chars": 469,
+          "hasDataJson": true,
+          "normalizedPlainJson": false
+        },
+        "elapsedMs": 2166,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791109804-a8v7KRxLo5g2U3gUutHW",
+        "parsedOutput": {
+          "status": "verified",
+          "visibleText": "tutorials",
+          "reason": "The text 'tutorials' is clearly visible in the search bar, matching the intended value."
+        }
+      },
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/882f0db4-631d-4d35-bb24-b5af2e688930/model-request-5.jpg",
+        "responseFormat": {
+          "finishReason": "stop",
+          "chars": 706,
+          "hasDataJson": true,
+          "normalizedPlainJson": false
+        },
+        "elapsedMs": 2448,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791109807-68Vb1klaCqbrsL1X2LCS",
+        "parsedOutput": {
+          "observation": "The search bar contains the text 'tutorials', and a dropdown of search suggestions is visible. The next step is to submit the search query by pressing Enter.",
+          "rationale": "The task requires entering 'tutorials' into the search bar and pressing Enter to display search results. The text has been successfully entered, and the next logical action is to submit the query.",
+          "action": {
+            "type": "key",
+            "key": "Enter"
+          },
+          "verdict": "continue",
+          "finding": null
+        }
+      },
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/882f0db4-631d-4d35-bb24-b5af2e688930/model-request-6.jpg",
+        "responseFormat": {
+          "finishReason": "stop",
+          "chars": 799,
+          "hasDataJson": true,
+          "normalizedPlainJson": false
+        },
+        "elapsedMs": 3115,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791109810-mSAvx93kg2C65G7lYgFp",
+        "parsedOutput": {
+          "observation": "The search bar contains 'tutorials' and a dropdown of suggestions is shown, but no search results are displayed.",
+          "rationale": "The task requires submitting the search query by pressing Enter. Since the search results are not visible, the action to press Enter has not been completed yet.",
+          "action": {
+            "type": "key",
+            "key": "Enter"
+          },
+          "verdict": "continue",
+          "finding": null
+        }
+      },
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/882f0db4-631d-4d35-bb24-b5af2e688930/model-request-7.jpg",
+        "responseFormat": {
+          "finishReason": "stop",
+          "chars": 742,
+          "hasDataJson": true,
+          "normalizedPlainJson": false
+        },
+        "elapsedMs": 3345,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791109814-3tsg5OnTQDgtbfn4PVMb",
+        "parsedOutput": {
+          "observation": "The search bar contains 'tutorials' and a dropdown of suggestions is shown, but no search results are displayed.",
+          "rationale": "The expected result was to display a list of videos related to tutorials after submitting the search query. Since the search results are not visible, the task has not been completed successfully.",
+          "action": {
+            "type": "key",
+            "key": "Enter"
+          },
+          "verdict": "inconclusive",
+          "finding": null
+        }
+      },
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/882f0db4-631d-4d35-bb24-b5af2e688930/model-request-8.jpg",
+        "responseFormat": {
+          "finishReason": "stop",
+          "chars": 746,
+          "hasDataJson": true,
+          "normalizedPlainJson": false
+        },
+        "elapsedMs": 2858,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791109818-gmKWY0UGairG1IpjR0PT",
+        "parsedOutput": {
+          "observation": "The search bar contains 'tutorials' with a dropdown of suggestions, but no search results are displayed.",
+          "rationale": "The search query was entered, but the expected outcome of displaying tutorial-related videos has not occurred. This suggests the search submission may not have been successful or the results are not loading.",
+          "action": {
+            "type": "key",
+            "key": "Enter"
+          },
+          "verdict": "inconclusive",
+          "finding": null
+        }
+      }
+    ],
+    "sourceVersion": {
+      "commit": "82f28b93d54e210dfefd18cad30d7c1517ac296a",
+      "dirty": false,
+      "sourceHash": "85d6c7947f5d68b6384e911446115f749050c46389c3c2cd0101b038ad5e1f20",
+      "promptVersion": "goal-first-v4-focus-and-visual-input"
+    },
+    "screenshot": "/artifacts/882f0db4-631d-4d35-bb24-b5af2e688930/5-decision.png",
+    "goals": [
+      {
+        "hypothesis": "The website is functional and allows users to search for videos even when unauthenticated.",
+        "task": "Enter 'tutorials' into the search bar and press enter.",
+        "expected": "The search results page should display a list of videos related to tutorials.",
+        "basis": "The presence of a search bar and the instruction to 'Try searching to get started' indicate that searching is a primary function of the site, and this action can be performed without signing in.",
+        "screenshot": "/artifacts/882f0db4-631d-4d35-bb24-b5af2e688930/model-request-1.jpg",
+        "at": "2026-10-04T10:29:42.699Z"
+      }
+    ],
+    "video": "/artifacts/882f0db4-631d-4d35-bb24-b5af2e688930/page@35b9c6ab32577ee3a62e4cbec0609fa1.webm",
+    "endedAt": "2026-10-04T10:30:21.712Z"
+  },
+  {
+    "id": "044ecb6b-dfb3-4c61-970b-d0dc653f3201",
+    "input": {
+      "mode": "scenario",
+      "url": "https://www.youtube.com/",
+      "task": "검색창에서 Midscene AI demo를 검색하고 검색 결과가 표시되는지 확인한다.",
+      "expected": "검색어에 해당하는 영상 결과 목록이 화면에 표시된다.",
+      "query": "Midscene AI demo"
+    },
+    "settings": {
+      "maxActions": 6,
+      "maxCalls": 8,
+      "maxSeconds": 120,
+      "maxTokens": 2048,
+      "model": "qwen/qwen3-vl-30b-a3b-instruct",
+      "family": "qwen3-vl"
+    },
+    "startedAt": "2026-10-04T10:11:06.109Z",
+    "status": "completed",
+    "outcome": "기대 결과 관찰됨 · 독립 검토 필요",
+    "stage": "종료",
+    "calls": 5,
+    "actions": 4,
+    "tokens": 11731,
+    "cost": 0.0023650399999999997,
+    "steps": [
+      {
+        "index": 0,
+        "at": "2026-10-04T10:11:16.902Z",
+        "before": "/artifacts/044ecb6b-dfb3-4c61-970b-d0dc653f3201/model-request-1.jpg",
+        "after": "/artifacts/044ecb6b-dfb3-4c61-970b-d0dc653f3201/0-after.png",
+        "plan": {
+          "observation": "The search bar is empty and no search results are displayed on the screen.",
+          "rationale": "The user needs to search for 'Midscene AI demo' in the search bar to check if the search results are displayed. Currently, the search bar is empty, and no results are shown, indicating that the search has not been initiated.",
+          "action": {
+            "type": "click",
+            "x": 431,
+            "y": 32
+          },
+          "verdict": "continue",
+          "finding": null
+        },
+        "executed": true,
+        "unchanged": false
+      },
+      {
+        "index": 1,
+        "at": "2026-10-04T10:11:22.736Z",
+        "before": "/artifacts/044ecb6b-dfb3-4c61-970b-d0dc653f3201/model-request-2.jpg",
+        "after": "/artifacts/044ecb6b-dfb3-4c61-970b-d0dc653f3201/1-after.png",
+        "plan": {
+          "observation": "Search bar is visible and empty, no search results are displayed on the screen.",
+          "rationale": "The user needs to search for 'Midscene AI demo' in the search bar to check if the search results are displayed. The search bar is currently empty, so the next step is to type the search query.",
+          "action": {
+            "type": "type",
+            "text": "Midscene AI demo"
+          },
+          "verdict": "continue",
+          "finding": null
+        },
+        "executed": true,
+        "unchanged": false
+      },
+      {
+        "index": 2,
+        "at": "2026-10-04T10:11:26.602Z",
+        "before": "/artifacts/044ecb6b-dfb3-4c61-970b-d0dc653f3201/model-request-3.jpg",
+        "after": "/artifacts/044ecb6b-dfb3-4c61-970b-d0dc653f3201/2-after.png",
+        "plan": {
+          "observation": "The search query 'Midscene AI demo' has been entered, and search suggestions are shown, but no video results are visible on the page.",
+          "rationale": "The user has completed the search query input, and the system is displaying suggestions. However, the expected video results have not yet appeared, indicating that the search process may need to be finalized or the results loaded.",
+          "action": {
+            "type": "key",
+            "key": "Enter"
+          },
+          "verdict": "inconclusive",
+          "finding": null
+        },
+        "executed": true,
+        "unchanged": false
+      },
+      {
+        "index": 3,
+        "at": "2026-10-04T10:11:30.350Z",
+        "before": "/artifacts/044ecb6b-dfb3-4c61-970b-d0dc653f3201/model-request-4.jpg",
+        "after": "/artifacts/044ecb6b-dfb3-4c61-970b-d0dc653f3201/3-after.png",
+        "plan": {
+          "observation": "The search query 'Midscene AI demo' has been entered, and search suggestions are displayed, but no video results are visible on the page. The screen shows a placeholder message about searching to get started, indicating that the search results have not yet loaded.",
+          "rationale": "The user has entered the search query and pressed Enter, but the expected video results are not displayed. This suggests that either the search results are still loading or there is an issue with displaying them.",
+          "action": {
+            "type": "wait"
+          },
+          "verdict": "inconclusive",
+          "finding": null
+        },
+        "executed": true,
+        "unchanged": false
+      },
+      {
+        "index": 4,
+        "at": "2026-10-04T10:11:34.985Z",
+        "before": "/artifacts/044ecb6b-dfb3-4c61-970b-d0dc653f3201/model-request-5.jpg",
+        "after": "/artifacts/044ecb6b-dfb3-4c61-970b-d0dc653f3201/4-decision.png",
+        "plan": {
+          "observation": "The search query 'Midscene AI demo' has been entered, and the search results are now visible on the screen. The video titled 'Midscene.js: Your Companion in UI Automation' is displayed as a result, along with other related content.",
+          "rationale": "The search results for 'Midscene AI demo' are now visible, indicating that the search was successful and the expected video results are displayed.",
+          "action": {
+            "type": "wait"
+          },
+          "verdict": "pass",
+          "finding": null
+        },
+        "executed": false
+      }
+    ],
+    "findings": [],
+    "engine": "Midscene aiQuery / 1.14.0 → Playwright coordinates / 1.63.0",
+    "transport": [
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/044ecb6b-dfb3-4c61-970b-d0dc653f3201/model-request-1.jpg",
+        "responseFormat": {
+          "finishReason": "stop",
+          "chars": 857,
+          "hasDataJson": true,
+          "normalizedPlainJson": false
+        },
+        "elapsedMs": 6656,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791108670-7NbiYzdUmfvwBrBTlM9A",
+        "parsedOutput": {
+          "observation": "The search bar is empty and no search results are displayed on the screen.",
+          "rationale": "The user needs to search for 'Midscene AI demo' in the search bar to check if the search results are displayed. Currently, the search bar is empty, and no results are shown, indicating that the search has not been initiated.",
+          "action": {
+            "type": "click",
+            "x": 431,
+            "y": 32
+          },
+          "verdict": "continue",
+          "finding": null
+        }
+      },
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/044ecb6b-dfb3-4c61-970b-d0dc653f3201/model-request-2.jpg",
+        "responseFormat": {
+          "finishReason": "stop",
+          "chars": 659,
+          "hasDataJson": true,
+          "normalizedPlainJson": false
+        },
+        "elapsedMs": 4938,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791108677-BTN35P5MMgvXqoGYGBif",
+        "parsedOutput": {
+          "observation": "Search bar is visible and empty, no search results are displayed on the screen.",
+          "rationale": "The user needs to search for 'Midscene AI demo' in the search bar to check if the search results are displayed. The search bar is currently empty, so the next step is to type the search query.",
+          "action": {
+            "type": "type",
+            "text": "Midscene AI demo"
+          },
+          "verdict": "continue",
+          "finding": null
+        }
+      },
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/044ecb6b-dfb3-4c61-970b-d0dc653f3201/model-request-3.jpg",
+        "responseFormat": {
+          "finishReason": "stop",
+          "chars": 703,
+          "hasDataJson": true,
+          "normalizedPlainJson": false
+        },
+        "elapsedMs": 2967,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791108684-1CBdfX3ArM5z3uVOknQp",
+        "parsedOutput": {
+          "observation": "The search query 'Midscene AI demo' has been entered, and search suggestions are shown, but no video results are visible on the page.",
+          "rationale": "The user has completed the search query input, and the system is displaying suggestions. However, the expected video results have not yet appeared, indicating that the search process may need to be finalized or the results loaded.",
+          "action": {
+            "type": "key",
+            "key": "Enter"
+          },
+          "verdict": "inconclusive",
+          "finding": null
+        }
+      },
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/044ecb6b-dfb3-4c61-970b-d0dc653f3201/model-request-4.jpg",
+        "responseFormat": {
+          "finishReason": "stop",
+          "chars": 940,
+          "hasDataJson": true,
+          "normalizedPlainJson": false
+        },
+        "elapsedMs": 2882,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791108687-J6qZ9fq89nF62ljeV4g4",
+        "parsedOutput": {
+          "observation": "The search query 'Midscene AI demo' has been entered, and search suggestions are displayed, but no video results are visible on the page. The screen shows a placeholder message about searching to get started, indicating that the search results have not yet loaded.",
+          "rationale": "The user has entered the search query and pressed Enter, but the expected video results are not displayed. This suggests that either the search results are still loading or there is an issue with displaying them.",
+          "action": {
+            "type": "wait",
+            "duration": 2
+          },
+          "verdict": "inconclusive",
+          "finding": null
+        }
+      },
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/044ecb6b-dfb3-4c61-970b-d0dc653f3201/model-request-5.jpg",
+        "responseFormat": {
+          "finishReason": "stop",
+          "chars": 781,
+          "hasDataJson": true,
+          "normalizedPlainJson": false
+        },
+        "elapsedMs": 2899,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791108692-MQ05OS7s9EpG5dRaIvUi",
+        "parsedOutput": {
+          "observation": "The search query 'Midscene AI demo' has been entered, and the search results are now visible on the screen. The video titled 'Midscene.js: Your Companion in UI Automation' is displayed as a result, along with other related content.",
+          "rationale": "The search results for 'Midscene AI demo' are now visible, indicating that the search was successful and the expected video results are displayed.",
+          "action": {
+            "type": "wait"
+          },
+          "verdict": "pass",
+          "finding": null
+        }
+      }
+    ],
+    "sourceVersion": {
+      "commit": "8fcac127a2e76abb5da45ecad8913367f9d33267",
+      "dirty": false,
+      "sourceHash": "718b306ce1f4e635b70b59d84d82852639760fa68de46f89426f6a2d02465aec",
+      "promptVersion": "goal-first-v3-protocol-and-replan"
+    },
+    "screenshot": "/artifacts/044ecb6b-dfb3-4c61-970b-d0dc653f3201/4-decision.png",
+    "video": "/artifacts/044ecb6b-dfb3-4c61-970b-d0dc653f3201/page@1c1fb875e3da64fb2c6b94b7ae1b5335.webm",
+    "endedAt": "2026-10-04T10:11:35.100Z"
+  },
+  {
+    "id": "5739f389-9faa-4528-8979-92e3d968b3ea",
+    "input": {
+      "mode": "autonomous",
+      "url": "https://www.youtube.com/",
+      "task": "",
+      "expected": "",
+      "query": ""
+    },
+    "settings": {
+      "maxActions": 6,
+      "maxCalls": 8,
+      "maxSeconds": 120,
+      "maxTokens": 2048,
+      "model": "qwen/qwen3-vl-30b-a3b-instruct",
+      "family": "qwen3-vl"
+    },
+    "startedAt": "2026-10-04T10:09:31.022Z",
+    "status": "limited",
+    "outcome": "재계획 후에도 화면 진전 없음 · 판단 불가",
+    "stage": "종료",
+    "calls": 6,
+    "actions": 4,
+    "tokens": 13734,
+    "cost": 0.00283305,
+    "steps": [
+      {
+        "index": 0,
+        "at": "2026-10-04T10:09:45.774Z",
+        "before": "/artifacts/5739f389-9faa-4528-8979-92e3d968b3ea/model-request-2.jpg",
+        "after": "/artifacts/5739f389-9faa-4528-8979-92e3d968b3ea/0-after.png",
+        "plan": {
+          "observation": "The YouTube homepage is displayed with a visible search bar and no video results.",
+          "rationale": "The search bar is present and functional, allowing for input. To test the search functionality, I need to type 'cooking tutorial' into the search bar and press enter to see if relevant video results are displayed.",
+          "action": {
+            "type": "type",
+            "text": "cooking tutorial"
+          },
+          "verdict": "continue",
+          "finding": null
+        },
+        "executed": true,
+        "unchanged": true
+      },
+      {
+        "index": 1,
+        "at": "2026-10-04T10:09:53.208Z",
+        "before": "/artifacts/5739f389-9faa-4528-8979-92e3d968b3ea/model-request-3.jpg",
+        "after": "/artifacts/5739f389-9faa-4528-8979-92e3d968b3ea/1-after.png",
+        "plan": {
+          "observation": "The search bar is visible and the text 'cooking tutorial' has been entered. The page has not yet displayed video results, indicating the search has not been submitted.",
+          "rationale": "The search functionality is being tested by entering a query. To verify the search works, the query must be submitted. The expected outcome is a list of video results related to cooking tutorials, which has not yet been achieved.",
+          "action": {
+            "type": "key",
+            "key": "Enter"
+          },
+          "verdict": "continue",
+          "finding": null
+        },
+        "executed": true,
+        "unchanged": true
+      },
+      {
+        "index": 2,
+        "at": "2026-10-04T10:10:08.074Z",
+        "before": "/artifacts/5739f389-9faa-4528-8979-92e3d968b3ea/model-request-5.jpg",
+        "after": "/artifacts/5739f389-9faa-4528-8979-92e3d968b3ea/2-after.png",
+        "plan": {
+          "observation": "The search query 'cooking tutorial' has been entered and submitted, but no video results are displayed on the page.",
+          "rationale": "The expected outcome is that the page should display a list of video results related to cooking tutorials after the search is submitted. However, the page has not updated to show results, indicating a potential issue with the search functionality.",
+          "action": {
+            "type": "wait"
+          },
+          "verdict": "inconclusive",
+          "finding": null
+        },
+        "executed": true,
+        "unchanged": true
+      },
+      {
+        "index": 3,
+        "at": "2026-10-04T10:10:12.756Z",
+        "before": "/artifacts/5739f389-9faa-4528-8979-92e3d968b3ea/model-request-6.jpg",
+        "after": "/artifacts/5739f389-9faa-4528-8979-92e3d968b3ea/3-after.png",
+        "plan": {
+          "observation": "The search query 'cooking tutorial' has been entered and submitted, but no video results are displayed on the page. The page still shows the initial prompt to start watching videos.",
+          "rationale": "The search functionality was expected to return a list of video results related to cooking tutorials after the query was submitted. However, the page did not display any results, indicating a potential issue with the search function or a delay in loading the results.",
+          "action": {
+            "type": "wait"
+          },
+          "verdict": "inconclusive",
+          "finding": null
+        },
+        "executed": true,
+        "unchanged": true
+      }
+    ],
+    "findings": [],
+    "engine": "Midscene aiQuery / 1.14.0 → Playwright coordinates / 1.63.0",
+    "transport": [
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/5739f389-9faa-4528-8979-92e3d968b3ea/model-request-1.jpg",
+        "responseFormat": {
+          "finishReason": "stop",
+          "chars": 895,
+          "hasDataJson": true,
+          "normalizedPlainJson": false
+        },
+        "elapsedMs": 7261,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791108575-eahHK5tcPhhXfnuobnnM"
+      },
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/5739f389-9faa-4528-8979-92e3d968b3ea/model-request-2.jpg",
+        "responseFormat": {
+          "finishReason": "stop",
+          "chars": 872,
+          "hasDataJson": true,
+          "normalizedPlainJson": false
+        },
+        "elapsedMs": 3115,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791108582-wWqyBtMuia6fBMe5Vd7T",
+        "parsedOutput": {
+          "observation": "The YouTube homepage is displayed with a visible search bar and no video results.",
+          "rationale": "The search bar is present and functional, allowing for input. To test the search functionality, I need to type 'cooking tutorial' into the search bar and press enter to see if relevant video results are displayed.",
+          "action": {
+            "type": "type",
+            "text": "cooking tutorial"
+          },
+          "verdict": "continue",
+          "finding": null
+        }
+      },
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/5739f389-9faa-4528-8979-92e3d968b3ea/model-request-3.jpg",
+        "responseFormat": {
+          "finishReason": "stop",
+          "chars": 759,
+          "hasDataJson": true,
+          "normalizedPlainJson": false
+        },
+        "elapsedMs": 6552,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791108586-oNivyZrz4ScZ0aIQuFNr",
+        "parsedOutput": {
+          "observation": "The search bar is visible and the text 'cooking tutorial' has been entered. The page has not yet displayed video results, indicating the search has not been submitted.",
+          "rationale": "The search functionality is being tested by entering a query. To verify the search works, the query must be submitted. The expected outcome is a list of video results related to cooking tutorials, which has not yet been achieved.",
+          "action": {
+            "type": "key",
+            "key": "Enter"
+          },
+          "verdict": "continue",
+          "finding": null
+        }
+      },
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/5739f389-9faa-4528-8979-92e3d968b3ea/model-request-4.jpg",
+        "responseFormat": {
+          "finishReason": "stop",
+          "chars": 1038,
+          "hasDataJson": true,
+          "normalizedPlainJson": false
+        },
+        "elapsedMs": 6215,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791108594-J5bflxo2w6NF8vbs7EYz"
+      },
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/5739f389-9faa-4528-8979-92e3d968b3ea/model-request-5.jpg",
+        "responseFormat": {
+          "finishReason": "stop",
+          "chars": 854,
+          "hasDataJson": true,
+          "normalizedPlainJson": false
+        },
+        "elapsedMs": 7658,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791108600-bWY162ReUEgwXQru6a3S",
+        "parsedOutput": {
+          "observation": "The search query 'cooking tutorial' has been entered and submitted, but no video results are displayed on the page.",
+          "rationale": "The expected outcome is that the page should display a list of video results related to cooking tutorials after the search is submitted. However, the page has not updated to show results, indicating a potential issue with the search functionality.",
+          "action": {
+            "type": "wait",
+            "delta": 1000
+          },
+          "verdict": "inconclusive",
+          "finding": null
+        }
+      },
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/5739f389-9faa-4528-8979-92e3d968b3ea/model-request-6.jpg",
+        "responseFormat": {
+          "finishReason": "stop",
+          "chars": 829,
+          "hasDataJson": true,
+          "normalizedPlainJson": false
+        },
+        "elapsedMs": 2989,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791108609-JAdxJfMMhUHjQydzqqg5",
+        "parsedOutput": {
+          "observation": "The search query 'cooking tutorial' has been entered and submitted, but no video results are displayed on the page. The page still shows the initial prompt to start watching videos.",
+          "rationale": "The search functionality was expected to return a list of video results related to cooking tutorials after the query was submitted. However, the page did not display any results, indicating a potential issue with the search function or a delay in loading the results.",
+          "action": {
+            "type": "wait",
+            "duration": 5
+          },
+          "verdict": "inconclusive",
+          "finding": null
+        }
+      }
+    ],
+    "sourceVersion": {
+      "commit": "8fcac127a2e76abb5da45ecad8913367f9d33267",
+      "dirty": false,
+      "sourceHash": "718b306ce1f4e635b70b59d84d82852639760fa68de46f89426f6a2d02465aec",
+      "promptVersion": "goal-first-v3-protocol-and-replan"
+    },
+    "screenshot": "/artifacts/5739f389-9faa-4528-8979-92e3d968b3ea/3-after.png",
+    "goals": [
+      {
+        "hypothesis": "The search functionality on the website works correctly and returns relevant video results.",
+        "task": "Type 'cooking tutorial' into the search bar and press enter to search for videos.",
+        "expected": "The page should display a list of video results related to cooking tutorials.",
+        "basis": "The search bar is visible and functional, and searching for content is a primary user action on a video platform. Testing the search function is a logical step to verify the site's core functionality.",
+        "screenshot": "/artifacts/5739f389-9faa-4528-8979-92e3d968b3ea/model-request-1.jpg",
+        "at": "2026-10-04T10:09:42.541Z"
+      },
+      {
+        "hypothesis": "The search functionality on the website works correctly and returns relevant video results.",
+        "task": "Type 'cooking tutorial' into the search bar and press enter to search for videos.",
+        "expected": "The page should display a list of video results related to cooking tutorials.",
+        "basis": "The search bar is visible and functional, and searching for content is a primary user action on a video platform. Testing the search function is a logical step to verify the site's core functionality.",
+        "screenshot": "/artifacts/5739f389-9faa-4528-8979-92e3d968b3ea/model-request-4.jpg",
+        "at": "2026-10-04T10:10:00.322Z"
+      }
+    ],
+    "video": "/artifacts/5739f389-9faa-4528-8979-92e3d968b3ea/page@e9d19a6710973ede180308eced3b26fc.webm",
+    "endedAt": "2026-10-04T10:10:14.453Z"
+  },
+  {
+    "id": "719161ea-bd0b-49a0-b708-5e542ebfa6b8",
+    "input": {
+      "mode": "scenario",
+      "url": "https://www.youtube.com/",
+      "task": "검색창에서 Midscene AI demo를 검색하고 검색 결과가 표시되는지 확인한다.",
+      "expected": "검색어에 해당하는 영상 결과 목록이 화면에 표시된다.",
+      "query": "Midscene AI demo"
+    },
+    "settings": {
+      "maxActions": 6,
+      "maxCalls": 8,
+      "maxSeconds": 120,
+      "maxTokens": 2048,
+      "model": "qwen/qwen3-vl-30b-a3b-instruct",
+      "family": "qwen3-vl"
+    },
+    "startedAt": "2026-10-04T10:07:12.412Z",
+    "status": "limited",
+    "outcome": "행동 한도 도달",
+    "stage": "종료",
+    "calls": 7,
+    "actions": 6,
+    "tokens": 17002,
+    "cost": 0.00327014,
+    "steps": [
+      {
+        "index": 0,
+        "at": "2026-10-04T10:07:19.868Z",
+        "before": "/artifacts/719161ea-bd0b-49a0-b708-5e542ebfa6b8/model-request-1.jpg",
+        "after": "/artifacts/719161ea-bd0b-49a0-b708-5e542ebfa6b8/0-after.png",
+        "plan": {
+          "observation": "The search bar is present but no search has been conducted yet, as indicated by the prompt to 'Try searching to get started'. No search results are displayed on the screen.",
+          "rationale": "The task requires searching for 'Midscene AI demo' in the search bar and verifying if the search results are displayed. Since the search has not been initiated, the next step should be to enter the search term.",
+          "action": {
+            "type": "click",
+            "x": 465,
+            "y": 37
+          },
+          "verdict": "continue",
+          "finding": null
+        },
+        "executed": true,
+        "unchanged": false
+      },
+      {
+        "index": 1,
+        "at": "2026-10-04T10:07:23.852Z",
+        "before": "/artifacts/719161ea-bd0b-49a0-b708-5e542ebfa6b8/model-request-2.jpg",
+        "after": "/artifacts/719161ea-bd0b-49a0-b708-5e542ebfa6b8/1-after.png",
+        "plan": {
+          "observation": "The search bar is present but no search has been conducted yet, as indicated by the prompt to 'Try searching to get started'. No search results are displayed on the screen.",
+          "rationale": "The user needs to enter the search term 'Midscene AI demo' into the search bar to check if the search results are displayed. Since the search has not been performed, the next step should be to type the search term.",
+          "action": {
+            "type": "type",
+            "text": "Midscene AI demo"
+          },
+          "verdict": "continue",
+          "finding": null
+        },
+        "executed": true,
+        "unchanged": false
+      },
+      {
+        "index": 2,
+        "at": "2026-10-04T10:07:27.351Z",
+        "before": "/artifacts/719161ea-bd0b-49a0-b708-5e542ebfa6b8/model-request-3.jpg",
+        "after": "/artifacts/719161ea-bd0b-49a0-b708-5e542ebfa6b8/2-after.png",
+        "plan": {
+          "observation": "The search bar contains the text 'Midscene AI demo,' but no search results are displayed on the screen. The page still shows the prompt 'Try searching to get started,' indicating that the search has not been executed yet.",
+          "rationale": "The search term has been entered, but the search has not been initiated, as there are no results displayed and the prompt remains visible.",
+          "action": {
+            "type": "key",
+            "key": "Enter"
+          },
+          "verdict": "continue",
+          "finding": null
+        },
+        "executed": true,
+        "unchanged": false
+      },
+      {
+        "index": 3,
+        "at": "2026-10-04T10:07:30.985Z",
+        "before": "/artifacts/719161ea-bd0b-49a0-b708-5e542ebfa6b8/model-request-4.jpg",
+        "after": "/artifacts/719161ea-bd0b-49a0-b708-5e542ebfa6b8/3-after.png",
+        "plan": {
+          "observation": "The search query 'Midscene AI demo' has been entered, but no search results are displayed on the screen.",
+          "rationale": "The search has been initiated, but the expected results are not visible, indicating a potential delay in loading or an issue with result display.",
+          "action": {
+            "type": "wait"
+          },
+          "verdict": "inconclusive",
+          "finding": null
+        },
+        "executed": true,
+        "unchanged": false
+      },
+      {
+        "index": 4,
+        "at": "2026-10-04T10:07:35.636Z",
+        "before": "/artifacts/719161ea-bd0b-49a0-b708-5e542ebfa6b8/model-request-5.jpg",
+        "after": "/artifacts/719161ea-bd0b-49a0-b708-5e542ebfa6b8/4-after.png",
+        "plan": {
+          "observation": "The search query 'Midscene AI demo' has been entered, and the search results are now visible on the screen. The results include a video titled 'Midscene.js: Your Companion in UI Automation' along with other related content.",
+          "rationale": "The search results for 'Midscene AI demo' are displayed as expected, indicating that the search was successfully executed and the results are shown.",
+          "action": {
+            "type": "wait"
+          },
+          "verdict": "pass",
+          "finding": null
+        },
+        "executed": true,
+        "unchanged": false
+      },
+      {
+        "index": 5,
+        "at": "2026-10-04T10:07:39.969Z",
+        "before": "/artifacts/719161ea-bd0b-49a0-b708-5e542ebfa6b8/model-request-6.jpg",
+        "after": "/artifacts/719161ea-bd0b-49a0-b708-5e542ebfa6b8/5-after.png",
+        "plan": {
+          "observation": "The search results for 'Midscene AI demo' are displayed, including a relevant video.",
+          "rationale": "The search query was successfully entered and executed, resulting in the display of relevant search results.",
+          "action": {
+            "type": "wait"
+          },
+          "verdict": "pass",
+          "finding": null
+        },
+        "executed": true,
+        "unchanged": false
+      },
+      {
+        "index": 6,
+        "at": "2026-10-04T10:07:44.100Z",
+        "before": "/artifacts/719161ea-bd0b-49a0-b708-5e542ebfa6b8/model-request-7.jpg",
+        "after": "/artifacts/719161ea-bd0b-49a0-b708-5e542ebfa6b8/6-decision.png",
+        "plan": {
+          "observation": "The search results for 'Midscene AI demo' are displayed, including a relevant video.",
+          "rationale": "The search query was entered, and the results are now visible on the screen, confirming that the search was successful.",
+          "action": {
+            "type": "wait"
+          },
+          "verdict": "pass",
+          "finding": null
+        },
+        "executed": false
+      }
+    ],
+    "findings": [],
+    "engine": "Midscene aiQuery / 1.14.0 → Playwright coordinates / 1.63.0",
+    "transport": [
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/719161ea-bd0b-49a0-b708-5e542ebfa6b8/model-request-1.jpg",
+        "responseFormat": {
+          "finishReason": "stop",
+          "chars": 1032,
+          "hasDataJson": true,
+          "normalizedPlainJson": false
+        },
+        "elapsedMs": 3774,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791108436-W2TgRvXUBDVKSNj63B29",
+        "parsedOutput": {
+          "observation": "The search bar is present but no search has been conducted yet, as indicated by the prompt to 'Try searching to get started'. No search results are displayed on the screen.",
+          "rationale": "The task requires searching for 'Midscene AI demo' in the search bar and verifying if the search results are displayed. Since the search has not been initiated, the next step should be to enter the search term.",
+          "action": {
+            "type": "click",
+            "x": 465,
+            "y": 37
+          },
+          "verdict": "continue",
+          "finding": null
+        }
+      },
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/719161ea-bd0b-49a0-b708-5e542ebfa6b8/model-request-2.jpg",
+        "responseFormat": {
+          "finishReason": "stop",
+          "chars": 908,
+          "hasDataJson": true,
+          "normalizedPlainJson": false
+        },
+        "elapsedMs": 3110,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791108440-wI0uEyrZv6xTacmWIxaq",
+        "parsedOutput": {
+          "observation": "The search bar is present but no search has been conducted yet, as indicated by the prompt to 'Try searching to get started'. No search results are displayed on the screen.",
+          "rationale": "The user needs to enter the search term 'Midscene AI demo' into the search bar to check if the search results are displayed. Since the search has not been performed, the next step should be to type the search term.",
+          "action": {
+            "type": "type",
+            "text": "Midscene AI demo"
+          },
+          "verdict": "continue",
+          "finding": null
+        }
+      },
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/719161ea-bd0b-49a0-b708-5e542ebfa6b8/model-request-3.jpg",
+        "responseFormat": {
+          "finishReason": "stop",
+          "chars": 776,
+          "hasDataJson": true,
+          "normalizedPlainJson": false
+        },
+        "elapsedMs": 2625,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791108444-2CV2vjyAKC3ia2QzeC18",
+        "parsedOutput": {
+          "observation": "The search bar contains the text 'Midscene AI demo,' but no search results are displayed on the screen. The page still shows the prompt 'Try searching to get started,' indicating that the search has not been executed yet.",
+          "rationale": "The search term has been entered, but the search has not been initiated, as there are no results displayed and the prompt remains visible.",
+          "action": {
+            "type": "key",
+            "key": "Enter"
+          },
+          "verdict": "continue",
+          "finding": null
+        }
+      },
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/719161ea-bd0b-49a0-b708-5e542ebfa6b8/model-request-4.jpg",
+        "responseFormat": {
+          "finishReason": "stop",
+          "chars": 823,
+          "hasDataJson": true,
+          "normalizedPlainJson": false
+        },
+        "elapsedMs": 2733,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791108448-LQTr1TB1WPk84RucfooS",
+        "parsedOutput": {
+          "observation": "The search query 'Midscene AI demo' has been entered, but no search results are displayed on the screen.",
+          "rationale": "The search has been initiated, but the expected results are not visible, indicating a potential delay in loading or an issue with result display.",
+          "action": {
+            "type": "wait",
+            "duration": 2
+          },
+          "verdict": "inconclusive",
+          "finding": null
+        }
+      },
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/719161ea-bd0b-49a0-b708-5e542ebfa6b8/model-request-5.jpg",
+        "responseFormat": {
+          "finishReason": "stop",
+          "chars": 787,
+          "hasDataJson": true,
+          "normalizedPlainJson": false
+        },
+        "elapsedMs": 2898,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791108452-4gjI87Qvvz0xNePOm8VC",
+        "parsedOutput": {
+          "observation": "The search query 'Midscene AI demo' has been entered, and the search results are now visible on the screen. The results include a video titled 'Midscene.js: Your Companion in UI Automation' along with other related content.",
+          "rationale": "The search results for 'Midscene AI demo' are displayed as expected, indicating that the search was successfully executed and the results are shown.",
+          "action": {
+            "type": "wait",
+            "key": "Enter"
+          },
+          "verdict": "pass",
+          "finding": null
+        }
+      },
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/719161ea-bd0b-49a0-b708-5e542ebfa6b8/model-request-6.jpg",
+        "responseFormat": {
+          "finishReason": "stop",
+          "chars": 588,
+          "hasDataJson": true,
+          "normalizedPlainJson": false
+        },
+        "elapsedMs": 2633,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791108457-Wmq1C2PY2YAh5spt2cHS",
+        "parsedOutput": {
+          "observation": "The search results for 'Midscene AI demo' are displayed, including a relevant video.",
+          "rationale": "The search query was successfully entered and executed, resulting in the display of relevant search results.",
+          "action": {
+            "type": "wait"
+          },
+          "verdict": "pass",
+          "finding": null
+        }
+      },
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/719161ea-bd0b-49a0-b708-5e542ebfa6b8/model-request-7.jpg",
+        "responseFormat": {
+          "finishReason": "stop",
+          "chars": 599,
+          "hasDataJson": true,
+          "normalizedPlainJson": false
+        },
+        "elapsedMs": 2409,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791108462-1bQ7kpir7HJcHlFmEzP3",
+        "parsedOutput": {
+          "observation": "The search results for 'Midscene AI demo' are displayed, including a relevant video.",
+          "rationale": "The search query was entered, and the results are now visible on the screen, confirming that the search was successful.",
+          "action": {
+            "type": "wait"
+          },
+          "verdict": "pass",
+          "finding": null
+        }
+      }
+    ],
+    "sourceVersion": {
+      "commit": "4e2b7be652c8896de42da9ce52a9e50f8dba1192",
+      "dirty": false,
+      "sourceHash": "9030143131c0ba7a26d51529ed7729ec2f1c0aea4e984ee2009438fd166a777f",
+      "promptVersion": "goal-first-v3-protocol-and-replan"
+    },
+    "screenshot": "/artifacts/719161ea-bd0b-49a0-b708-5e542ebfa6b8/6-decision.png",
+    "video": "/artifacts/719161ea-bd0b-49a0-b708-5e542ebfa6b8/page@303b60598414b254a0ec24119786839a.webm",
+    "endedAt": "2026-10-04T10:07:44.263Z"
+  },
+  {
+    "id": "1bf47058-278d-4bdc-a722-6730c03d66d2",
+    "input": {
+      "mode": "autonomous",
+      "url": "https://www.youtube.com/",
+      "task": "",
+      "expected": "",
+      "query": ""
+    },
+    "settings": {
+      "maxActions": 6,
+      "maxCalls": 8,
+      "maxSeconds": 120,
+      "maxTokens": 2048,
+      "model": "qwen/qwen3-vl-30b-a3b-instruct",
+      "family": "qwen3-vl"
+    },
+    "startedAt": "2026-10-04T10:03:22.243Z",
+    "status": "failed",
+    "outcome": "브라우저 또는 모델 실행 실패 · 환경과 설정을 확인하세요",
+    "stage": "종료",
+    "calls": 2,
+    "actions": 0,
+    "tokens": 4516,
+    "cost": 0.0011059,
+    "steps": [],
+    "findings": [],
+    "engine": "Midscene aiQuery / 1.14.0 → Playwright coordinates / 1.63.0",
+    "transport": [
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/1bf47058-278d-4bdc-a722-6730c03d66d2/model-request-1.jpg",
+        "elapsedMs": 6855,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791108206-WtLEdHXsstrsIEXifQ7R"
+      },
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/1bf47058-278d-4bdc-a722-6730c03d66d2/model-request-2.jpg",
+        "elapsedMs": 11694,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791108213-y0JfWmiQnKgsRc1vXTjj"
+      }
+    ],
+    "sourceVersion": {
+      "commit": "99ffcf217ca520385090b1baf096e872da75ff9c",
+      "dirty": false,
+      "sourceHash": "0ff4956f93f1806997d1e463c4ad9a9ae236151bdb9c5ee1b9fa488122c8ceee",
+      "promptVersion": "goal-first-v2-bounded-replan"
+    },
+    "screenshot": "/artifacts/1bf47058-278d-4bdc-a722-6730c03d66d2/0-before.png",
+    "goals": [
+      {
+        "hypothesis": "The search functionality on the YouTube homepage is operational and allows users to enter queries.",
+        "task": "Enter 'tutorials' into the search bar and observe the search suggestions or results.",
+        "expected": "The search bar should accept the input 'tutorials' and display relevant search suggestions or results related to tutorials.",
+        "basis": "The presence of the search bar indicates an interactive element designed for user input, and the system should respond to valid queries.",
+        "screenshot": "/artifacts/1bf47058-278d-4bdc-a722-6730c03d66d2/model-request-1.jpg",
+        "at": "2026-10-04T10:03:32.976Z"
+      }
+    ],
+    "error": "브라우저 또는 모델 실행 실패 · 환경과 설정을 확인하세요",
+    "video": "/artifacts/1bf47058-278d-4bdc-a722-6730c03d66d2/page@addd131454039dc0ab4ecdb44406e546.webm",
+    "endedAt": "2026-10-04T10:03:44.758Z"
+  },
+  {
+    "id": "0163b8ca-7ea4-4cdd-a70b-7ce00639c0fc",
+    "input": {
+      "mode": "autonomous",
+      "url": "https://www.youtube.com/",
+      "task": "검색창에서 Midscene AI demo를 검색하고 검색 결과가 표시되는지 확인한다.",
+      "expected": "검색어에 해당하는 영상 결과 목록이 화면에 표시된다.",
+      "query": "Midscene AI demo"
+    },
+    "settings": {
+      "maxActions": 6,
+      "maxCalls": 8,
+      "maxSeconds": 120,
+      "maxTokens": 2048,
+      "model": "qwen/qwen3-vl-30b-a3b-instruct",
+      "family": "qwen3-vl"
+    },
+    "startedAt": "2026-10-04T09:56:54.728Z",
+    "status": "failed",
+    "outcome": "모델 응답 형식 검증 실패",
+    "stage": "종료",
+    "calls": 3,
+    "actions": 1,
+    "tokens": 6617,
+    "cost": 0.0013566,
+    "steps": [
+      {
+        "index": 0,
+        "at": "2026-10-04T09:57:08.409Z",
+        "before": "/artifacts/0163b8ca-7ea4-4cdd-a70b-7ce00639c0fc/model-request-2.jpg",
+        "after": "/artifacts/0163b8ca-7ea4-4cdd-a70b-7ce00639c0fc/0-after.png",
+        "plan": {
+          "observation": "The YouTube homepage is displayed with an empty main content area, a search bar at the top, and navigation icons on the left. No video results are visible.",
+          "rationale": "The task requires entering 'cooking recipes' into the search bar and pressing Enter to check if relevant video results appear. Currently, the search has not been performed, and no results are displayed.",
+          "action": {
+            "type": "type",
+            "text": "cooking recipes"
+          },
+          "verdict": "continue",
+          "finding": null
+        },
+        "executed": true
+      }
+    ],
+    "findings": [],
+    "engine": "Midscene aiQuery / 1.14.0 → Playwright coordinates / 1.63.0",
+    "transport": [
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/0163b8ca-7ea4-4cdd-a70b-7ce00639c0fc/model-request-1.jpg",
+        "elapsedMs": 4559,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791107821-LCW7JolITozTguGCFRTx"
+      },
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/0163b8ca-7ea4-4cdd-a70b-7ce00639c0fc/model-request-2.jpg",
+        "elapsedMs": 2922,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791107825-SaiSbcUCI5VTmgWYyRgI"
+      },
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/0163b8ca-7ea4-4cdd-a70b-7ce00639c0fc/model-request-3.jpg",
+        "elapsedMs": 6696,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791107829-phEJSv7z4gugYDpnfsRp"
+      }
+    ],
+    "screenshot": "/artifacts/0163b8ca-7ea4-4cdd-a70b-7ce00639c0fc/1-before.png",
+    "goals": [
+      {
+        "hypothesis": "The search functionality on the website works correctly and returns relevant video results when a query is entered.",
+        "task": "Enter 'cooking recipes' into the search bar and press Enter to initiate the search.",
+        "expected": "A list of videos related to cooking recipes should appear in the main content area, replacing the current empty state.",
+        "basis": "The presence of a functional search bar and the prompt to start watching videos suggest that the platform supports video discovery through search. Testing the search functionality is a reasonable task to verify the site's core utility.",
+        "screenshot": "/artifacts/0163b8ca-7ea4-4cdd-a70b-7ce00639c0fc/model-request-1.jpg",
+        "at": "2026-10-04T09:57:05.375Z"
+      }
+    ],
+    "error": "모델 응답 형식 검증 실패",
+    "video": "/artifacts/0163b8ca-7ea4-4cdd-a70b-7ce00639c0fc/page@d268e069464213a1ec9f60011419f6b4.webm",
+    "endedAt": "2026-10-04T09:57:16.012Z"
+  },
+  {
+    "id": "193a9473-8ded-4c4c-aaae-874d224160a8",
+    "input": {
+      "mode": "autonomous",
+      "url": "https://www.youtube.com/",
+      "task": "검색창에서 Midscene AI demo를 검색하고 검색 결과가 표시되는지 확인한다.",
+      "expected": "검색어에 해당하는 영상 결과 목록이 화면에 표시된다.",
+      "query": "Midscene AI demo"
+    },
+    "settings": {
+      "maxActions": 6,
+      "maxCalls": 8,
+      "maxSeconds": 120,
+      "maxTokens": 2048,
+      "model": "qwen/qwen3-vl-30b-a3b-instruct",
+      "family": "qwen3-vl"
+    },
+    "startedAt": "2026-10-04T09:52:32.939Z",
+    "status": "limited",
+    "outcome": "행동 한도 도달",
+    "stage": "종료",
+    "calls": 7,
+    "actions": 6,
+    "tokens": 17890,
+    "cost": 0.00362996,
+    "steps": [
+      {
+        "index": 0,
+        "at": "2026-10-04T09:52:40.793Z",
+        "before": "/artifacts/193a9473-8ded-4c4c-aaae-874d224160a8/model-request-1.jpg",
+        "after": "/artifacts/193a9473-8ded-4c4c-aaae-874d224160a8/0-after.png",
+        "plan": {
+          "observation": "The screenshot shows a YouTube-like interface with a navigation sidebar on the left (Home, Shorts, Subscriptions, You), a search bar at the top, and a central message prompting the user to start searching. No video content is displayed, indicating an empty feed. The 'Sign in' button is visible in the top-right corner, suggesting the user is not logged in.",
+          "rationale": "To perform a visual QA check, I need to verify the basic elements of the interface are present and functioning as expected. The presence of the navigation sidebar, search bar, and sign-in button confirms the core UI components are correctly rendered.",
+          "action": {
+            "type": "wait"
+          },
+          "verdict": "continue",
+          "finding": null
+        },
+        "executed": true
+      },
+      {
+        "index": 1,
+        "at": "2026-10-04T09:52:58.908Z",
+        "before": "/artifacts/193a9473-8ded-4c4c-aaae-874d224160a8/model-request-2.jpg",
+        "after": "/artifacts/193a9473-8ded-4c4c-aaae-874d224160a8/1-after.png",
+        "plan": {
+          "observation": "The screenshot shows the YouTube homepage with a navigation sidebar on the left, a search bar at the top, and a central message prompting the user to start searching. The 'Sign in' button is visible in the top-right corner, indicating the user is not logged in. No video content is displayed, suggesting an empty feed. The interface appears to be in a default state, awaiting user interaction.",
+          "rationale": "The task involves exploring the YouTube interface to understand its current state. The presence of the 'Sign in' button and the empty feed suggests that the user is not logged in and has not yet interacted with the platform. The central message encourages the user to start searching, which is a typical prompt for new or inactive users.",
+          "action": {
+            "type": "wait"
+          },
+          "verdict": "inconclusive",
+          "finding": null
+        },
+        "executed": true
+      },
+      {
+        "index": 2,
+        "at": "2026-10-04T09:53:04.024Z",
+        "before": "/artifacts/193a9473-8ded-4c4c-aaae-874d224160a8/model-request-3.jpg",
+        "after": "/artifacts/193a9473-8ded-4c4c-aaae-874d224160a8/2-after.png",
+        "plan": {
+          "observation": "The screenshot shows the YouTube homepage with a navigation sidebar on the left, a search bar at the top, and a central message prompting the user to start searching. The 'Sign in' button is visible in the top-right corner, indicating the user is not logged in. No video content is displayed, suggesting an empty feed. The interface appears to be in a default state, awaiting user interaction.",
+          "rationale": "The user is not logged in, as indicated by the 'Sign in' button. The page is in a default state with no video content, which is expected for a new or unauthenticated user. The central message encourages the user to start searching, which aligns with the typical behavior of a new user on YouTube.",
+          "action": {
+            "type": "wait"
+          },
+          "verdict": "continue",
+          "finding": null
+        },
+        "executed": true
+      },
+      {
+        "index": 3,
+        "at": "2026-10-04T09:53:19.322Z",
+        "before": "/artifacts/193a9473-8ded-4c4c-aaae-874d224160a8/model-request-4.jpg",
+        "after": "/artifacts/193a9473-8ded-4c4c-aaae-874d224160a8/3-after.png",
+        "plan": {
+          "observation": "The screenshot shows the YouTube homepage with a navigation sidebar on the left, a search bar at the top, and a central message prompting the user to start searching. The 'Sign in' button is visible in the top-right corner, indicating the user is not logged in. No video content is displayed, suggesting an empty feed. The interface appears to be in a default state, awaiting user interaction.",
+          "rationale": "The user is not logged in, as indicated by the 'Sign in' button. The feed is empty, and no video content is displayed. The interface is in a default state, awaiting user interaction. The last action was repeated three times with no visible progress, indicating a need to choose a different action or test hypothesis.",
+          "action": {
+            "type": "wait"
+          },
+          "verdict": "inconclusive",
+          "finding": null
+        },
+        "executed": true
+      },
+      {
+        "index": 4,
+        "at": "2026-10-04T09:53:24.177Z",
+        "before": "/artifacts/193a9473-8ded-4c4c-aaae-874d224160a8/model-request-5.jpg",
+        "after": "/artifacts/193a9473-8ded-4c4c-aaae-874d224160a8/4-after.png",
+        "plan": {
+          "observation": "The screenshot shows the YouTube homepage with a navigation sidebar on the left, a search bar at the top, and a central message prompting the user to start searching. The 'Sign in' button is visible in the top-right corner, indicating the user is not logged in. No video content is displayed, suggesting an empty feed. The interface appears to be in a default state, awaiting user interaction.",
+          "rationale": "The last action was repeated three times without visible progress, indicating no change in the state of the page. To proceed, a new action is needed to explore the interface further.",
+          "action": {
+            "type": "click",
+            "x": 428,
+            "y": 37
+          },
+          "verdict": "continue",
+          "finding": null
+        },
+        "executed": true
+      },
+      {
+        "index": 5,
+        "at": "2026-10-04T09:53:28.256Z",
+        "before": "/artifacts/193a9473-8ded-4c4c-aaae-874d224160a8/model-request-6.jpg",
+        "after": "/artifacts/193a9473-8ded-4c4c-aaae-874d224160a8/5-after.png",
+        "plan": {
+          "observation": "The screenshot shows the YouTube homepage with a navigation sidebar on the left, a search bar at the top, and a central message prompting the user to start searching. The 'Sign in' button is visible in the top-right corner, indicating the user is not logged in. No video content is displayed, suggesting an empty feed. The interface appears to be in a default state, awaiting user interaction.",
+          "rationale": "The last action was a click on the search bar, which is now focused and ready for input. This aligns with the expected behavior of initiating a search on the platform.",
+          "action": {
+            "type": "click",
+            "x": 428,
+            "y": 37
+          },
+          "verdict": "continue",
+          "finding": null
+        },
+        "executed": true
+      },
+      {
+        "index": 6,
+        "at": "2026-10-04T09:53:32.257Z",
+        "before": "/artifacts/193a9473-8ded-4c4c-aaae-874d224160a8/model-request-7.jpg",
+        "after": "/artifacts/193a9473-8ded-4c4c-aaae-874d224160a8/6-decision.png",
+        "plan": {
+          "observation": "The screenshot shows the YouTube homepage with a navigation sidebar on the left, a search bar at the top, and a central message prompting the user to start searching. The 'Sign in' button is visible in the top-right corner, indicating the user is not logged in. No video content is displayed, suggesting an empty feed. The interface appears to be in a default state, awaiting user interaction.",
+          "rationale": "The last action was clicking the search bar, which is now focused. However, no text has been entered, and the page remains unchanged, indicating that the click did not result in any visible progress or change in the interface.",
+          "action": {
+            "type": "click",
+            "x": 428,
+            "y": 37
+          },
+          "verdict": "inconclusive",
+          "finding": null
+        },
+        "executed": false
+      }
+    ],
+    "findings": [],
+    "engine": "Midscene aiQuery / 1.14.0 → Playwright coordinates / 1.63.0",
+    "transport": [
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/193a9473-8ded-4c4c-aaae-874d224160a8/model-request-1.jpg",
+        "elapsedMs": 4106,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791107557-zVx78vOLwfzaAZCS8QeL"
+      },
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/193a9473-8ded-4c4c-aaae-874d224160a8/model-request-2.jpg",
+        "elapsedMs": 16426,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791107562-ZvFAohuDMkXiPCm4ivxf"
+      },
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/193a9473-8ded-4c4c-aaae-874d224160a8/model-request-3.jpg",
+        "elapsedMs": 3418,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791107580-wSnT5ivNQ2ICe6vsGPfO"
+      },
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/193a9473-8ded-4c4c-aaae-874d224160a8/model-request-4.jpg",
+        "elapsedMs": 13611,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791107585-LbI6i3gyi2WKkHWjMG2k"
+      },
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/193a9473-8ded-4c4c-aaae-874d224160a8/model-request-5.jpg",
+        "elapsedMs": 3167,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791107601-oOPKFaDoaPbrFeGJgkeM"
+      },
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/193a9473-8ded-4c4c-aaae-874d224160a8/model-request-6.jpg",
+        "elapsedMs": 3188,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791107605-e8itGMiHOmQ81GGyFeBu"
+      },
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/193a9473-8ded-4c4c-aaae-874d224160a8/model-request-7.jpg",
+        "elapsedMs": 3118,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791107609-h7MbCKf5dHt1zO0P8SCy"
+      }
+    ],
+    "screenshot": "/artifacts/193a9473-8ded-4c4c-aaae-874d224160a8/6-decision.png",
+    "video": "/artifacts/193a9473-8ded-4c4c-aaae-874d224160a8/page@2f0c5024fb5a575f22cf860745601d04.webm",
+    "endedAt": "2026-10-04T09:53:32.365Z"
+  },
+  {
+    "id": "1b8bc475-d553-4fb5-813d-4dd4c3c151d1",
+    "input": {
+      "mode": "autonomous",
+      "url": "https://www.youtube.com/",
+      "task": "검색창에서 Midscene AI demo를 검색하고 검색 결과가 표시되는지 확인한다.",
+      "expected": "검색어에 해당하는 영상 결과 목록이 화면에 표시된다.",
+      "query": "Midscene AI demo"
+    },
+    "settings": {
+      "maxActions": 6,
+      "maxCalls": 8,
+      "maxSeconds": 120,
+      "maxTokens": 2048,
+      "model": "qwen/qwen3-vl-30b-a3b-instruct",
+      "family": "qwen3-vl"
+    },
+    "startedAt": "2026-10-04T09:49:51.582Z",
+    "status": "limited",
+    "outcome": "행동 한도 도달",
+    "stage": "종료",
+    "calls": 7,
+    "actions": 6,
+    "tokens": 16367,
+    "cost": 0.00296482,
+    "steps": [
+      {
+        "index": 0,
+        "at": "2026-10-04T09:49:58.966Z",
+        "before": "/artifacts/1b8bc475-d553-4fb5-813d-4dd4c3c151d1/model-request-1.jpg",
+        "after": "/artifacts/1b8bc475-d553-4fb5-813d-4dd4c3c151d1/0-after.png",
+        "plan": {
+          "observation": "The screenshot shows a clean UI with a navigation bar on the left, a search bar at the top, and a 'Sign in' button on the right. The main area prompts the user to start searching for videos.",
+          "rationale": "To ensure the application is functioning correctly and the user can interact with it as expected, I need to verify that all elements are present and responsive. The presence of the search bar and the 'Sign in' button indicates that the core functionalities are accessible.",
+          "action": {
+            "type": "click",
+            "x": 450,
+            "y": 36
+          },
+          "verdict": "continue",
+          "finding": null
+        },
+        "executed": true
+      },
+      {
+        "index": 1,
+        "at": "2026-10-04T09:50:07.849Z",
+        "before": "/artifacts/1b8bc475-d553-4fb5-813d-4dd4c3c151d1/model-request-2.jpg",
+        "after": "/artifacts/1b8bc475-d553-4fb5-813d-4dd4c3c151d1/1-after.png",
+        "plan": {
+          "observation": "The screenshot shows the YouTube homepage with a navigation bar on the left, a search bar at the top, and a 'Sign in' button on the right. The main area prompts the user to start searching for videos. The search bar is active and ready for input.",
+          "rationale": "The search bar is prominently displayed and appears to be the primary interactive element on the page, suggesting that the next logical step is to initiate a search.",
+          "action": {
+            "type": "click",
+            "x": 450,
+            "y": 36
+          },
+          "verdict": "continue",
+          "finding": null
+        },
+        "executed": true
+      },
+      {
+        "index": 2,
+        "at": "2026-10-04T09:50:11.499Z",
+        "before": "/artifacts/1b8bc475-d553-4fb5-813d-4dd4c3c151d1/model-request-3.jpg",
+        "after": "/artifacts/1b8bc475-d553-4fb5-813d-4dd4c3c151d1/2-after.png",
+        "plan": {
+          "observation": "The screenshot shows the YouTube homepage with a navigation bar on the left, a search bar at the top, and a 'Sign in' button on the right. The main area prompts the user to start searching for videos. The search bar is active and ready for input.",
+          "rationale": "The search bar is active and ready for input, indicating that the user can proceed with searching for videos.",
+          "action": {
+            "type": "click",
+            "x": 450,
+            "y": 36
+          },
+          "verdict": "continue",
+          "finding": null
+        },
+        "executed": true
+      },
+      {
+        "index": 3,
+        "at": "2026-10-04T09:50:15.215Z",
+        "before": "/artifacts/1b8bc475-d553-4fb5-813d-4dd4c3c151d1/model-request-4.jpg",
+        "after": "/artifacts/1b8bc475-d553-4fb5-813d-4dd4c3c151d1/3-after.png",
+        "plan": {
+          "observation": "The screenshot shows the YouTube homepage with a navigation bar on the left, a search bar at the top, and a 'Sign in' button on the right. The main area prompts the user to start searching for videos. The search bar is active and ready for input.",
+          "rationale": "The search bar is clearly visible and appears to be the primary interactive element on the page, indicating that the next logical step is to engage with it.",
+          "action": {
+            "type": "click",
+            "x": 450,
+            "y": 36
+          },
+          "verdict": "continue",
+          "finding": null
+        },
+        "executed": true
+      },
+      {
+        "index": 4,
+        "at": "2026-10-04T09:50:18.949Z",
+        "before": "/artifacts/1b8bc475-d553-4fb5-813d-4dd4c3c151d1/model-request-5.jpg",
+        "after": "/artifacts/1b8bc475-d553-4fb5-813d-4dd4c3c151d1/4-after.png",
+        "plan": {
+          "observation": "The screenshot shows the YouTube homepage with a navigation bar on the left, a search bar at the top, and a 'Sign in' button on the right. The main area prompts the user to start searching for videos. The search bar is active and ready for input.",
+          "rationale": "The search bar is active and ready for input, indicating that the user can proceed with searching for videos.",
+          "action": {
+            "type": "click",
+            "x": 450,
+            "y": 36
+          },
+          "verdict": "continue",
+          "finding": null
+        },
+        "executed": true
+      },
+      {
+        "index": 5,
+        "at": "2026-10-04T09:50:22.646Z",
+        "before": "/artifacts/1b8bc475-d553-4fb5-813d-4dd4c3c151d1/model-request-6.jpg",
+        "after": "/artifacts/1b8bc475-d553-4fb5-813d-4dd4c3c151d1/5-after.png",
+        "plan": {
+          "observation": "The screenshot shows the YouTube homepage with a navigation bar on the left, a search bar at the top, and a 'Sign in' button on the right. The main area prompts the user to start searching for videos. The search bar is active and ready for input.",
+          "rationale": "The search bar is clearly visible and appears to be the primary interactive element for initiating user engagement on this page.",
+          "action": {
+            "type": "click",
+            "x": 450,
+            "y": 36
+          },
+          "verdict": "continue",
+          "finding": null
+        },
+        "executed": true
+      },
+      {
+        "index": 6,
+        "at": "2026-10-04T09:50:26.432Z",
+        "before": "/artifacts/1b8bc475-d553-4fb5-813d-4dd4c3c151d1/model-request-7.jpg",
+        "after": "/artifacts/1b8bc475-d553-4fb5-813d-4dd4c3c151d1/6-decision.png",
+        "plan": {
+          "observation": "The screenshot shows the YouTube homepage with a navigation bar on the left, a search bar at the top, and a 'Sign in' button on the right. The main area prompts the user to start searching for videos. The search bar is active and ready for input.",
+          "rationale": "The search bar is clearly visible and appears to be the primary interactive element for initiating user engagement, as indicated by the prompt to 'Try searching to get started'.",
+          "action": {
+            "type": "click",
+            "x": 450,
+            "y": 36
+          },
+          "verdict": "continue",
+          "finding": null
+        },
+        "executed": false
+      }
+    ],
+    "findings": [],
+    "engine": "Midscene aiQuery / 1.14.0 → Playwright coordinates / 1.63.0",
+    "transport": [
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/1b8bc475-d553-4fb5-813d-4dd4c3c151d1/model-request-1.jpg",
+        "elapsedMs": 3728,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791107395-dpTcwetU1BKSqE4veryF"
+      },
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/1b8bc475-d553-4fb5-813d-4dd4c3c151d1/model-request-2.jpg",
+        "elapsedMs": 7989,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791107400-ZAhUWp6H8zxvXPkIFx6B"
+      },
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/1b8bc475-d553-4fb5-813d-4dd4c3c151d1/model-request-3.jpg",
+        "elapsedMs": 2779,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791107408-rGRZ9dgKDfeBe3gCAqzd"
+      },
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/1b8bc475-d553-4fb5-813d-4dd4c3c151d1/model-request-4.jpg",
+        "elapsedMs": 2829,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791107412-snkM2UsNs1lCRSy0P2vi"
+      },
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/1b8bc475-d553-4fb5-813d-4dd4c3c151d1/model-request-5.jpg",
+        "elapsedMs": 2852,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791107416-MUROyZCerMPqDrxjPU1X"
+      },
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/1b8bc475-d553-4fb5-813d-4dd4c3c151d1/model-request-6.jpg",
+        "elapsedMs": 2814,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791107419-NXtJxz3uW9W7rObHNoxZ"
+      },
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/1b8bc475-d553-4fb5-813d-4dd4c3c151d1/model-request-7.jpg",
+        "elapsedMs": 2890,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791107423-QvZbAL2mRW4sQTbbXB6P"
+      }
+    ],
+    "screenshot": "/artifacts/1b8bc475-d553-4fb5-813d-4dd4c3c151d1/6-decision.png",
+    "video": "/artifacts/1b8bc475-d553-4fb5-813d-4dd4c3c151d1/page@01c6930beac79006614b6bf2e63e356f.webm",
+    "endedAt": "2026-10-04T09:50:26.543Z"
+  },
+  {
+    "id": "051480bd-2fd4-47bb-b063-94639ee2ba74",
+    "input": {
+      "mode": "scenario",
+      "url": "https://www.youtube.com/",
+      "task": "검색창에서 Midscene AI demo를 검색하고 검색 결과가 표시되는지 확인한다.",
+      "expected": "검색어에 해당하는 영상 결과 목록이 화면에 표시된다.",
+      "query": "Midscene AI demo"
+    },
+    "settings": {
+      "maxActions": 6,
+      "maxCalls": 8,
+      "maxSeconds": 120,
+      "maxTokens": 2048,
+      "model": "qwen/qwen3-vl-30b-a3b-instruct",
+      "family": "qwen3-vl"
+    },
+    "startedAt": "2026-10-04T09:48:49.668Z",
+    "status": "completed",
+    "outcome": "기대 결과 관찰됨 · 독립 검토 필요",
+    "stage": "종료",
+    "calls": 5,
+    "actions": 4,
+    "tokens": 12124,
+    "cost": 0.0022838900000000002,
+    "steps": [
+      {
+        "index": 0,
+        "at": "2026-10-04T09:48:58.366Z",
+        "before": "/artifacts/051480bd-2fd4-47bb-b063-94639ee2ba74/model-request-1.jpg",
+        "after": "/artifacts/051480bd-2fd4-47bb-b063-94639ee2ba74/0-after.png",
+        "plan": {
+          "observation": "The screenshot shows a search bar at the top of the page with a placeholder text 'Search'. The main content area displays a message: 'Try searching to get started' and 'Start watching videos to help us build a feed of videos you'll love.' There are no video results visible on the screen. The left sidebar contains navigation icons for Home, Shorts, Subscriptions, and You. The user has not yet interacted with the search bar or performed any search action.",
+          "rationale": "The user's task is to search for 'Midscene AI demo' in the search bar and verify that the search results are displayed. Currently, no search has been performed, so there are no results shown. The next step should be to click on the search bar to begin the search process.",
+          "action": {
+            "type": "click",
+            "x": 458,
+            "y": 37
+          },
+          "verdict": "continue",
+          "finding": null
+        },
+        "executed": true
+      },
+      {
+        "index": 1,
+        "at": "2026-10-04T09:49:07.297Z",
+        "before": "/artifacts/051480bd-2fd4-47bb-b063-94639ee2ba74/model-request-2.jpg",
+        "after": "/artifacts/051480bd-2fd4-47bb-b063-94639ee2ba74/1-after.png",
+        "plan": {
+          "observation": "The screenshot shows the YouTube homepage with a search bar at the top. The search bar is currently empty, and the main content area displays a prompt to 'Try searching to get started.' There are no video results visible on the screen, indicating that a search has not yet been performed. The user has not interacted with the search bar or performed any search action.",
+          "rationale": "The user's task is to search for 'Midscene AI demo' in the search bar and verify that the search results are displayed. Currently, the search bar is empty, and no search results are visible, indicating that the search has not been executed yet.",
+          "action": {
+            "type": "type",
+            "text": "Midscene AI demo"
+          },
+          "verdict": "continue",
+          "finding": null
+        },
+        "executed": true
+      },
+      {
+        "index": 2,
+        "at": "2026-10-04T09:49:19.382Z",
+        "before": "/artifacts/051480bd-2fd4-47bb-b063-94639ee2ba74/model-request-3.jpg",
+        "after": "/artifacts/051480bd-2fd4-47bb-b063-94639ee2ba74/2-after.png",
+        "plan": {
+          "observation": "... the search bar contains the text 'Midscene AI demo,' and a dropdown list with search suggestions is visible below it. The main content area still displays the message 'Try searching to get started' and 'Start watching videos to help us build a feed of videos you'll love.' No video results are visible on the screen, indicating that the search has not yet been submitted.",
+          "rationale": "The user has typed the search query 'Midscene AI demo' into the search bar, but the search has not been submitted yet. The expected result is that the video results should be displayed on the screen after the search is submitted. Since the search has not been submitted, the video results are not visible.",
+          "action": {
+            "type": "key",
+            "key": "Enter"
+          },
+          "verdict": "continue",
+          "finding": null
+        },
+        "executed": true
+      },
+      {
+        "index": 3,
+        "at": "2026-10-04T09:49:24.146Z",
+        "before": "/artifacts/051480bd-2fd4-47bb-b063-94639ee2ba74/model-request-4.jpg",
+        "after": "/artifacts/051480bd-2fd4-47bb-b063-94639ee2ba74/3-after.png",
+        "plan": {
+          "observation": "The screenshot shows the YouTube homepage with a search bar at the top containing the text 'Midscene AI demo'. A dropdown list with search suggestions is visible below the search bar. The main content area still displays the message 'Try searching to get started' and 'Start watching videos to help us build a feed of videos you'll love.' No video results are visible on the screen, indicating that the search has not yet been submitted or the results have not loaded.",
+          "rationale": "The user has entered the search term 'Midscene AI demo' but has not yet submitted the search. The search results are expected to appear after submitting the search query.",
+          "action": {
+            "type": "key",
+            "key": "Enter"
+          },
+          "verdict": "inconclusive",
+          "finding": null
+        },
+        "executed": true
+      },
+      {
+        "index": 4,
+        "at": "2026-10-04T09:49:28.967Z",
+        "before": "/artifacts/051480bd-2fd4-47bb-b063-94639ee2ba74/model-request-5.jpg",
+        "after": "/artifacts/051480bd-2fd4-47bb-b063-94639ee2ba74/4-decision.png",
+        "plan": {
+          "observation": "The search query 'Midscene AI demo' has been entered, and relevant video results are displayed on the screen.",
+          "rationale": "The user's task was to search for 'Midscene AI demo' and verify that the search results are displayed. The screenshot confirms that the search results are visible, meeting the expected outcome.",
+          "action": {
+            "type": "finish"
+          },
+          "verdict": "pass",
+          "finding": {
+            "title": "Search results for 'Midscene AI demo' are displayed",
+            "observed": "Two video results are visible, including 'Midsceen.js: Your Companion in UI Automation' and an advertisement for BackTalk.",
+            "expected": "The search results for 'Midscene AI demo' should be displayed on the screen.",
+            "basis": "The presence of video results confirms that the search query was successfully processed and the results are shown.",
+            "reproduction": [
+              "Enter 'Midscene AI demo' in the search bar.",
+              "Press Enter to submit the search.",
+              "Verify that the search results are displayed on the screen."
+            ]
+          }
+        },
+        "executed": false
+      }
+    ],
+    "findings": [
+      {
+        "title": "Search results for 'Midscene AI demo' are displayed",
+        "observed": "Two video results are visible, including 'Midsceen.js: Your Companion in UI Automation' and an advertisement for BackTalk.",
+        "expected": "The search results for 'Midscene AI demo' should be displayed on the screen.",
+        "basis": "The presence of video results confirms that the search query was successfully processed and the results are shown.",
+        "reproduction": [
+          "Enter 'Midscene AI demo' in the search bar.",
+          "Press Enter to submit the search.",
+          "Verify that the search results are displayed on the screen."
+        ],
+        "id": "f4ff46a7-33d8-4762-b43e-02a903934c0a",
+        "status": "false-positive",
+        "reviewNote": "독립 화면 확인: 모델 요청 5와 4-decision 화면에 검색어 및 Midscene 영상 결과가 실제 표시된다. finding 내용 자체도 기대 결과 충족을 설명하며 결함을 제시하지 않는다. 앱이 pass 응답의 finding을 후보로 승격한 수집 조건 오류이며 YouTube 결함이 아니다.",
+        "step": 4,
+        "before": "/artifacts/051480bd-2fd4-47bb-b063-94639ee2ba74/model-request-5.jpg",
+        "after": "/artifacts/051480bd-2fd4-47bb-b063-94639ee2ba74/4-decision.png"
+      }
+    ],
+    "engine": "Midscene aiQuery / 1.14.0 → Playwright coordinates / 1.63.0",
+    "transport": [
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/051480bd-2fd4-47bb-b063-94639ee2ba74/model-request-1.jpg",
+        "elapsedMs": 4902,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791107334-VChxdkSfx7XVyzxkWf4N"
+      },
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/051480bd-2fd4-47bb-b063-94639ee2ba74/model-request-2.jpg",
+        "elapsedMs": 8045,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791107339-l4DAQHfJSrqop50bP6v8"
+      },
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/051480bd-2fd4-47bb-b063-94639ee2ba74/model-request-3.jpg",
+        "elapsedMs": 11200,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791107348-dJPfGwVkhVEztr7gR6Il"
+      },
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/051480bd-2fd4-47bb-b063-94639ee2ba74/model-request-4.jpg",
+        "elapsedMs": 3861,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791107360-4O6m7n0UCjR6ynK1RbTX"
+      },
+      {
+        "images": 1,
+        "texts": 3,
+        "screenshot": "/artifacts/051480bd-2fd4-47bb-b063-94639ee2ba74/model-request-5.jpg",
+        "elapsedMs": 3938,
+        "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+        "requestId": "gen-1791107365-Pypb6aojWx3Ce7QqT8TW"
+      }
+    ],
+    "screenshot": "/artifacts/051480bd-2fd4-47bb-b063-94639ee2ba74/4-decision.png",
+    "video": "/artifacts/051480bd-2fd4-47bb-b063-94639ee2ba74/page@50a8b2c5818f425a032449e217952879.webm",
+    "endedAt": "2026-10-04T09:49:29.199Z"
+  },
+  {
+    "id": "a10856e5-4d0f-40b7-9b03-454ea87c12a1",
+    "input": {
+      "mode": "baseline",
+      "url": "https://www.youtube.com/",
+      "task": "",
+      "expected": "",
+      "query": "Midscene AI demo"
+    },
+    "settings": {
+      "maxActions": 8,
+      "maxCalls": 10,
+      "maxSeconds": 120,
+      "maxTokens": 1536,
+      "model": "qwen/qwen3-vl-235b-a22b-instruct",
+      "family": "qwen3-vl"
+    },
+    "startedAt": "2026-10-04T09:44:07.481Z",
+    "status": "stopped",
+    "outcome": "사용자가 실행 중지",
+    "stage": "종료",
+    "calls": 0,
+    "actions": 0,
+    "tokens": 0,
+    "cost": null,
+    "steps": [],
+    "findings": [],
+    "engine": "Playwright locator / 1.63.0",
+    "transport": [],
+    "error": "사용자가 실행 중지",
+    "endedAt": "2026-10-04T09:44:07.576Z"
+  },
+  {
+    "id": "a9935f2e-fa43-4a29-a95c-c4ce4fd6abf5",
+    "input": {
+      "mode": "baseline",
+      "url": "https://www.youtube.com/",
+      "task": "",
+      "expected": "",
+      "query": "Midscene AI demo"
+    },
+    "settings": {
+      "maxActions": 1,
+      "maxCalls": 10,
+      "maxSeconds": 120,
+      "maxTokens": 1536,
+      "model": "qwen/qwen3-vl-235b-a22b-instruct",
+      "family": "qwen3-vl"
+    },
+    "startedAt": "2026-10-04T09:44:03.453Z",
+    "status": "limited",
+    "outcome": "행동 한도 도달",
+    "stage": "종료",
+    "calls": 0,
+    "actions": 1,
+    "tokens": 0,
+    "cost": null,
+    "steps": [
+      {
+        "index": 0,
+        "at": "2026-10-04T09:44:07.264Z",
+        "before": "/artifacts/a9935f2e-fa43-4a29-a95c-c4ce4fd6abf5/0-before.png",
+        "after": "/artifacts/a9935f2e-fa43-4a29-a95c-c4ce4fd6abf5/0-after.png",
+        "executed": true,
+        "plan": {
+          "observation": "검색 필드 입력 (role/label locator)",
+          "rationale": "사전 작성한 locator 스크립트",
+          "action": {
+            "type": "wait"
+          },
+          "verdict": "continue",
+          "finding": null
+        }
+      }
+    ],
+    "findings": [],
+    "engine": "Playwright locator / 1.63.0",
+    "transport": [],
+    "screenshot": "/artifacts/a9935f2e-fa43-4a29-a95c-c4ce4fd6abf5/0-after.png",
+    "video": "/artifacts/a9935f2e-fa43-4a29-a95c-c4ce4fd6abf5/page@ea8ab1c07063c852f520148057acc7e0.webm",
+    "endedAt": "2026-10-04T09:44:07.356Z"
+  },
+  {
+    "id": "f0b467c9-1aa1-4714-87fc-717ac619514f",
+    "input": {
+      "mode": "baseline",
+      "url": "https://www.youtube.com/",
+      "task": "",
+      "expected": "",
+      "query": "Midscene AI demo"
+    },
+    "settings": {
+      "model": "qwen/qwen3-vl-235b-a22b-instruct",
+      "family": "qwen3-vl",
+      "maxActions": 8,
+      "maxCalls": 10,
+      "maxSeconds": 120,
+      "maxTokens": 1536
+    },
+    "startedAt": "2026-10-04T09:38:57.981Z",
+    "status": "completed",
+    "outcome": "고정 검색 업무 완료 · locator 결과 확인",
+    "stage": "종료",
+    "calls": 0,
+    "actions": 3,
+    "tokens": 0,
+    "cost": null,
+    "steps": [
+      {
+        "index": 0,
+        "at": "2026-10-04T09:39:02.674Z",
+        "before": "/artifacts/f0b467c9-1aa1-4714-87fc-717ac619514f/0-before.png",
+        "after": "/artifacts/f0b467c9-1aa1-4714-87fc-717ac619514f/0-after.png",
+        "executed": true,
+        "plan": {
+          "observation": "검색 필드 입력 (role/label locator)",
+          "rationale": "사전 작성한 locator 스크립트",
+          "action": {
+            "type": "wait"
+          },
+          "verdict": "continue",
+          "finding": null
+        }
+      },
+      {
+        "index": 1,
+        "at": "2026-10-04T09:39:03.839Z",
+        "before": "/artifacts/f0b467c9-1aa1-4714-87fc-717ac619514f/1-before.png",
+        "after": "/artifacts/f0b467c9-1aa1-4714-87fc-717ac619514f/1-after.png",
+        "executed": true,
+        "plan": {
+          "observation": "검색 실행 (Enter)",
+          "rationale": "사전 작성한 locator 스크립트",
+          "action": {
+            "type": "wait"
+          },
+          "verdict": "continue",
+          "finding": null
+        }
+      },
+      {
+        "index": 2,
+        "at": "2026-10-04T09:39:05.293Z",
+        "before": "/artifacts/f0b467c9-1aa1-4714-87fc-717ac619514f/2-before.png",
+        "after": "/artifacts/f0b467c9-1aa1-4714-87fc-717ac619514f/2-after.png",
+        "executed": true,
+        "plan": {
+          "observation": "검색 결과 링크 가시성 확인",
+          "rationale": "사전 작성한 locator 스크립트",
+          "action": {
+            "type": "wait"
+          },
+          "verdict": "continue",
+          "finding": null
+        }
+      }
+    ],
+    "findings": [],
+    "engine": "Playwright locator / 1.63.0",
+    "transport": [],
+    "screenshot": "/artifacts/f0b467c9-1aa1-4714-87fc-717ac619514f/2-after.png",
+    "video": "/artifacts/f0b467c9-1aa1-4714-87fc-717ac619514f/page@b33a6d0d9c8d1b612e51a7e303121044.webm",
+    "endedAt": "2026-10-04T09:39:05.402Z"
+  }
+]

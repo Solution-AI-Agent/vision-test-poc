@@ -1,0 +1,82 @@
+{
+  "id": "f0b467c9-1aa1-4714-87fc-717ac619514f",
+  "input": {
+    "mode": "baseline",
+    "url": "https://www.youtube.com/",
+    "task": "",
+    "expected": "",
+    "query": "Midscene AI demo"
+  },
+  "settings": {
+    "model": "qwen/qwen3-vl-235b-a22b-instruct",
+    "family": "qwen3-vl",
+    "maxActions": 8,
+    "maxCalls": 10,
+    "maxSeconds": 120,
+    "maxTokens": 1536
+  },
+  "startedAt": "2026-10-04T09:38:57.981Z",
+  "status": "completed",
+  "outcome": "고정 검색 업무 완료 · locator 결과 확인",
+  "stage": "종료",
+  "calls": 0,
+  "actions": 3,
+  "tokens": 0,
+  "cost": null,
+  "steps": [
+    {
+      "index": 0,
+      "at": "2026-10-04T09:39:02.674Z",
+      "before": "/artifacts/f0b467c9-1aa1-4714-87fc-717ac619514f/0-before.png",
+      "after": "/artifacts/f0b467c9-1aa1-4714-87fc-717ac619514f/0-after.png",
+      "executed": true,
+      "plan": {
+        "observation": "검색 필드 입력 (role/label locator)",
+        "rationale": "사전 작성한 locator 스크립트",
+        "action": {
+          "type": "wait"
+        },
+        "verdict": "continue",
+        "finding": null
+      }
+    },
+    {
+      "index": 1,
+      "at": "2026-10-04T09:39:03.839Z",
+      "before": "/artifacts/f0b467c9-1aa1-4714-87fc-717ac619514f/1-before.png",
+      "after": "/artifacts/f0b467c9-1aa1-4714-87fc-717ac619514f/1-after.png",
+      "executed": true,
+      "plan": {
+        "observation": "검색 실행 (Enter)",
+        "rationale": "사전 작성한 locator 스크립트",
+        "action": {
+          "type": "wait"
+        },
+        "verdict": "continue",
+        "finding": null
+      }
+    },
+    {
+      "index": 2,
+      "at": "2026-10-04T09:39:05.293Z",
+      "before": "/artifacts/f0b467c9-1aa1-4714-87fc-717ac619514f/2-before.png",
+      "after": "/artifacts/f0b467c9-1aa1-4714-87fc-717ac619514f/2-after.png",
+      "executed": true,
+      "plan": {
+        "observation": "검색 결과 링크 가시성 확인",
+        "rationale": "사전 작성한 locator 스크립트",
+        "action": {
+          "type": "wait"
+        },
+        "verdict": "continue",
+        "finding": null
+      }
+    }
+  ],
+  "findings": [],
+  "engine": "Playwright locator / 1.63.0",
+  "transport": [],
+  "screenshot": "/artifacts/f0b467c9-1aa1-4714-87fc-717ac619514f/2-after.png",
+  "video": "/artifacts/f0b467c9-1aa1-4714-87fc-717ac619514f/page@b33a6d0d9c8d1b612e51a7e303121044.webm",
+  "endedAt": "2026-10-04T09:39:05.402Z"
+}

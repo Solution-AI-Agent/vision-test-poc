@@ -1,0 +1,37 @@
+{
+  "runId": "882f0db4-631d-4d35-bb24-b5af2e688930",
+  "source": {
+    "commit": "82f28b93d54e210dfefd18cad30d7c1517ac296a",
+    "dirty": false,
+    "sourceHash": "85d6c7947f5d68b6384e911446115f749050c46389c3c2cd0101b038ad5e1f20",
+    "promptVersion": "goal-first-v4-focus-and-visual-input"
+  },
+  "model": "qwen/qwen3-vl-30b-a3b-instruct",
+  "status": "limited",
+  "agentOutcome": "행동 한도 도달 · 포커스와 입력도 각각 포함",
+  "requests": 8,
+  "toolActions": 6,
+  "durationSeconds": 46.747,
+  "reportedCost": 0.00422962,
+  "findings": 0,
+  "visualInputCheck": {
+    "status": "verified",
+    "visibleText": "tutorials",
+    "reason": "The text 'tutorials' is clearly visible in the search bar, matching the intended value.",
+    "screenshot": "/artifacts/882f0db4-631d-4d35-bb24-b5af2e688930/model-request-4.jpg",
+    "call": 4
+  },
+  "makerReview": {
+    "inputVisible": true,
+    "inputImage": "/artifacts/882f0db4-631d-4d35-bb24-b5af2e688930/model-request-4.jpg",
+    "resultVisible": true,
+    "resultImage": "/artifacts/882f0db4-631d-4d35-bb24-b5af2e688930/model-request-8.jpg",
+    "decisionImage": "/artifacts/882f0db4-631d-4d35-bb24-b5af2e688930/5-decision.png",
+    "agentResultObservationIncorrect": true,
+    "note": "Maker inspected actual images: tutorials visibly entered; final request/decision contain a tutorial-related video result and an ad, not search suggestions. Agent kept claiming suggestions/no results and ended limited. This is an agent perception failure, not a confirmed YouTube bug."
+  },
+  "oldEightRequests": 42,
+  "oldEightReportedCost": 0.0198094,
+  "allNineRequests": 50,
+  "allNineReportedCost": 0.02403902
+}
