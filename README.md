@@ -37,7 +37,7 @@ npm run sample:start
 # equivalent: npm run start --workspace @vision-qa/sample
 ```
 
-Open **http://127.0.0.1:4311/order**; presentation controls are separately at **http://127.0.0.1:4311/operator**. Stop either app independently; the sample does not require the QA platform. Both bind loopback for this local single-user PoC.
+Open **http://127.0.0.1:4311/order**; presentation controls are separately at **http://127.0.0.1:4311/operator**. Stop either app independently; the sample does not require the QA platform. Both bind loopback for this local single-user PoC. Production start uses a Node launcher rather than shell environment assignment; it has been executed on macOS. Windows cmd execution remains untested, and this does not add a Windows Native QA driver.
 
 Development: `npm run dev` for platform, `npm run sample:dev` for sample. App-only builds: `npm run platform:build` and `npm run sample:build`. Existing root start/dev/sample commands remain supported. `PORT` overrides platform 4310; `SAMPLE_PORT` overrides sample 4311, but the platform target allowlist remains the exact default sample URL.
 
@@ -50,10 +50,10 @@ All platform launch commands read/write **repository-root `.data/` and `artifact
 ```sh
 npm run evidence:check    # verify preserved source checksums
 npm run evidence:restore  # import artifacts/ and .data/, no model calls
-npm run media:serve       # http://127.0.0.1:4312/index.html
+npm run media:serve       # http://127.0.0.1:4312/media/index.html
 ```
 
-The evidence commands call `evidence/restore.mjs` (check uses `--check`), supplied by the delivery bundle. Existing different runtime files are not overwritten by that importer. The media server serves only `media/` and does not need either application running. Without restored records, the app shows that recorded evaluation is unavailable. Evidence/media content and restore verification are integrated separately; the monorepo migration itself does not alter those directories.
+The evidence commands call `evidence/restore.mjs` (check uses `--check`), supplied by the delivery bundle. Existing different runtime files are not overwritten by that importer. The media server mounts only `/media` and `/evidence` to those publication directories; `/` redirects to `/media/index.html`. Relative source links stay valid. It does not serve the repository root or `.data/`, and does not need either application running. Without restored records, the app shows that recorded evaluation is unavailable. Evidence/media content and restore verification are integrated separately; the monorepo migration itself does not alter those directories.
 
 Build outputs are `apps/platform/dist/` and `sample-site/dist/`. Do not copy old root `dist/` as a deployment build. The independent app's business logic and visible states are unchanged. No new paid evaluation or model-detection claim is part of the monorepo migration.
 

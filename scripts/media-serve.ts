@@ -8,5 +8,7 @@ if (!existsSync(path.join(media, "index.html"))) {
   throw new Error("media/index.html is missing. Include the delivery bundle before serving media.");
 }
 const app = express();
-app.use(express.static(media, { dotfiles: "deny" }));
-app.listen(4312, "127.0.0.1", () => console.log("Media: http://127.0.0.1:4312/index.html"));
+app.get("/", (_req, res) => res.redirect("/media/index.html"));
+app.use("/media", express.static(media, { dotfiles: "deny" }));
+app.use("/evidence", express.static(path.join(root, "evidence"), { dotfiles: "deny" }));
+app.listen(4312, "127.0.0.1", () => console.log("Media: http://127.0.0.1:4312/media/index.html"));

@@ -5,10 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "tsx server.ts",
-    "start": "NODE_ENV=production tsx server.ts",
+    "start": "node --import tsx ../scripts/start.mjs sample",
     "build": "tsc --noEmit -p tsconfig.json && vite build",
     "test": "vitest run",
-    "test:functional": "cd .. && tsx scripts/sample-check.ts"
+    "test:functional": "tsx ../scripts/sample-check.ts"
   },
   "dependencies": {
     "@vision-qa/ui": "0.1.0",
