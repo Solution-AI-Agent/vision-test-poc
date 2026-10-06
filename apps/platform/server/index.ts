@@ -13,6 +13,8 @@ import {
   type Run,
 } from "./domain";
 import { artifactsDir, makeRun, runVision, type Runtime } from "./runner";
+import { diagnose, phaseLabels, SafeExecutionError } from "./diagnostics";
+import { networkFetch } from "./network";
 const app = express();
 const port = Number(process.env.PORT ?? 4310);
 const origin = `http://127.0.0.1:${port}`;
@@ -134,13 +136,13 @@ app.delete("/api/settings/key", (_req, res, next) => {
 app.post("/api/settings/check", async (_req, res, next) => {
   try {
     if (!settings.apiKey) throw new Error("API 키를 먼저 저장하세요");
-    const response = await fetch("https://openrouter.ai/api/v1/auth/key", {
+    const response = await networkFetch("https://openrouter.ai/api/v1/auth/key", {
       headers: { Authorization: `Bearer ${settings.apiKey}` },
       signal: AbortSignal.timeout(15000),
     });
     if (!response.ok) {
       connection = "error";
-      throw new Error(`OpenRouter 인증 실패 (${response.status})`);
+      throw new SafeExecutionError("MODEL_API_FAILED", response.status);
     }
     connection = "connected";
     res.json({
@@ -148,9 +150,10 @@ app.post("/api/settings/check", async (_req, res, next) => {
       visionVerified: false,
       note: "인증 연결만 확인했습니다. 이미지/Midscene 실행은 별도 검증합니다.",
     });
-  } catch {
+  } catch (error) {
     connection = "error";
-    next(new Error("연결 확인 실패 · API 키와 네트워크를 확인하세요"));
+    const diagnostic = diagnose(error, "model-initialization");
+    next(new Error(`연결 확인 실패 · ${diagnostic.code} · ${diagnostic.action}`));
   }
 });
 app.get("/api/scenarios", (_req, res) => res.json(scenarios));
@@ -209,7 +212,12 @@ app.post("/api/runs", async (req, res, next) => {
     void runVision(run, { ...settings }, runtime, persist)
       .catch(() => {
         run.status = "failed";
-        run.outcome = "실행 증거 저장 실패";
+        run.failureStage ??= run.stage;
+        run.executionPhase = "persistence";
+        run.diagnostic = diagnose(new SafeExecutionError("ARTIFACT_WRITE_FAILED"), "persistence");
+        run.stage = `실패 · ${phaseLabels.persistence}`;
+        run.error = run.diagnostic.message;
+        run.outcome = run.error;
       })
       .finally(() => {
         runtimes.delete(run.id);

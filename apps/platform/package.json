@@ -10,14 +10,15 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@vision-qa/ui": "0.1.0",
     "@midscene/web": "1.14.0",
+    "@vision-qa/ui": "0.1.0",
     "express": "^5.1.0",
+    "lucide-react": "^0.468.0",
     "openai": "^6.49.0",
     "playwright": "1.63.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "lucide-react": "^0.468.0",
+    "undici": "^7.30.0",
     "zod": "^4.6.5"
   },
   "devDependencies": {

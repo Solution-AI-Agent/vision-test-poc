@@ -776,6 +776,7 @@ export default function App() {
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
+                    {current?.diagnostic && <Alert variant="destructive" className="mb-4"><AlertTitle>{current.diagnostic.code} · {current.stage}</AlertTitle><AlertDescription><p>{current.error}</p><p>{current.diagnostic.action}</p>{current.failureStage && <p>실패 당시 작업: {current.failureStage}</p>}</AlertDescription></Alert>}
                     {current?.screenshot ? (
                       <div className="flex flex-col gap-4">
                         <img

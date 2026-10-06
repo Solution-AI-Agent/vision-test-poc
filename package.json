@@ -16,7 +16,8 @@
     "sample:test": "npm run test:functional --workspace @vision-qa/sample",
     "evidence:restore": "node evidence/restore.mjs",
     "evidence:check": "node evidence/restore.mjs --check",
-    "media:serve": "tsx scripts/media-serve.ts"
+    "media:serve": "tsx scripts/media-serve.ts",
+    "doctor": "tsx scripts/runtime-doctor.ts"
   },
   "dependencies": {
     "playwright": "1.63.0",

@@ -166,3 +166,31 @@ Platform `/demo` is labelled **previous experiment records** and links to the cu
 현재 /store/a와 /store/b의 상품·입력·영수증·수령 안내·차트·오류·운영자 화면은 한국어입니다. 예시: “빨간 머그 2개를 선택하고 테스트용 이름과 이메일을 입력해 주문을 확정한 뒤, 이미지와 영수증·수령 안내·차트가 일치하고 읽을 수 있는지 확인하세요.” 이전 영어 영상과 모델 판정은 과거 자료로만 보존합니다.
 
 플랫폼을 종료하고 샘플 서버만 실행한 상태에서 `npx tsx scripts/direct-store-capture.ts`를 실행하면 운영자 호출 없는 일반 브라우저 방문·주문 화면을 새 artifacts 폴더에 남깁니다. 캡처는 모델 입력이나 검출 성공 증거가 아닙니다.
+
+
+### 사내 프록시와 실행 점검 (Windows PowerShell)
+
+앱 시작 전 환경변수만 설정하면 인증 확인과 실제 Midscene/OpenRouter 이미지 요청, Chromium 외부 탐색에 반영됩니다. 프록시가 없으면 직접 접속하며, 프록시 오류에서 직접 접속으로 자동 우회하지 않습니다. `HTTP_PROXY`, `HTTPS_PROXY`, `NO_PROXY`의 소문자도 지원하며 동시에 있으면 소문자가 우선입니다. HTTPS_PROXY가 비어 있으면 HTTP_PROXY를 사용합니다. 로컬 `127.0.0.1`, `localhost`, `::1`은 항상 직접 연결합니다. `NO_PROXY`는 쉼표로 구분하는 호스트/도메인 패턴(예: `*.internal.example`)·포트 또는 `*`입니다.
+
+```powershell
+$env:HTTP_PROXY = "http://proxy.company.example:8080"
+$env:HTTPS_PROXY = "http://proxy.company.example:8080"
+$env:NO_PROXY = "localhost,127.0.0.1,::1,*.internal.example"
+# 사내 CA가 필요한 경우, IT가 제공한 신뢰할 PEM 인증서를 앱 시작 전에 지정
+$env:NODE_EXTRA_CA_CERTS = "C:\certs\company-ca.pem"
+npm ci
+npx playwright install chromium
+npm run build
+npm run doctor
+npm start
+# 샘플 서버는 별도 터미널에서 실행
+npm run sample:start
+```
+
+`npm run doctor`는 API 키 없이 로컬 Chromium 시작 → 화면 캡처 → FFmpeg 동영상 생성과 Node/Playwright 버전을 JSON으로 점검합니다. 임시 파일은 제거하며 모델·외부 네트워크를 호출하지 않습니다. 프록시의 설정 여부만 표시하고 주소·인증값은 표시하지 않습니다. 따라서 doctor PASS는 OpenRouter 연결/이미지 실행의 성공을 뜻하지 않습니다. 브라우저 또는 동영상 설치 실패에는 `npx playwright install chromium`을 먼저 실행하세요.
+
+실행 관찰에는 실패 단계·안전한 코드·조치가 남습니다. API 키·프록시 주소/인증·공급자 오류 원문을 공유하지 말고 오류 코드와 doctor 결과를 전달하세요. 인증 확인은 키 권한 요청만 확인하며 실제 모델 실행과 구분합니다. Windows 사내망에서 실제 동작은 사용자 환경에서 확인해야 합니다. 이번 구현 검증은 Mac의 로컬 모의 프록시입니다.
+
+Node fetch는 명시적 Undici dispatcher를 사용하므로 Node 24.0에서 시작 후 `NODE_USE_ENV_PROXY` 변경에 의존하지 않습니다. Chromium은 별도 Playwright proxy 옵션을 사용합니다. HTTP/HTTPS 프록시가 다르면 브라우저는 시작 대상 URL의 scheme에 맞는 프록시를 사용하며 해당 탐색의 다른 외부 리소스에도 같은 브라우저 프록시가 적용됩니다. PAC/OS 자동 프록시·NTLM/Kerberos 자동 인증은 지원 범위가 아닙니다. URL의 기본 인증은 지원합니다. 사내 인증서의 Chromium 신뢰는 Windows/브라우저 신뢰 저장소에 별도로 설치해야 하며 `NODE_EXTRA_CA_CERTS`는 Node용입니다. TLS 검증을 끄는 설정은 사용하지 않습니다.
+
+근거: [Node의 프록시 지원과 시작 시점](https://nodejs.org/docs/latest-v24.x/api/http.html#built-in-proxy-support), [Undici EnvHttpProxyAgent](https://github.com/nodejs/undici/blob/main/docs/docs/api/EnvHttpProxyAgent.md), [Playwright proxy 옵션](https://playwright.dev/docs/api/class-browsertype#browser-type-launch-option-proxy). 테스트 전용 자체 서명 인증서/키는 `apps/platform/server/test-fixtures/`에 있으며 격리된 모의 TLS 서버에서만 신뢰합니다. 실제 API 인증값이 아니고 개발 환경의 전역 신뢰 저장소에 설치하지 않습니다.

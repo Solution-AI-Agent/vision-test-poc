@@ -1,3 +1,5 @@
+import { diagnose, phaseLabels, SafeExecutionError, type ExecutionPhase, type RunDiagnostic } from "./diagnostics";
+import { networkFetch, browserProxy } from "./network";
 import { chromium, type Browser, type Page } from "playwright";
 import { PlaywrightAgent } from "@midscene/web/playwright";
 import { mkdir, writeFile, readFile } from "node:fs/promises";
@@ -41,6 +43,7 @@ export type Runtime = {
   controller: AbortController;
   browser?: Browser;
   stopReason?: "stopped" | "limited";
+  providerFailure?: RunDiagnostic;
 };
 export async function executeAction(
   page: Page,
@@ -107,7 +110,7 @@ export function providerClient(settings: Settings) {
     timeout: 30000,
     fetch: async (input, init) => {
       try {
-        const response = await fetch(input, init);
+        const response = await networkFetch(input, init);
         if (!response.ok)
           return new Response(
             JSON.stringify({
@@ -119,8 +122,9 @@ export function providerClient(settings: Settings) {
             },
           );
         return response;
-      } catch {
-        throw new Error("Model network request failed");
+      } catch (error) {
+        if (error instanceof SafeExecutionError) throw error;
+        throw new SafeExecutionError("MODEL_NETWORK_FAILED");
       }
     },
   });
@@ -172,11 +176,13 @@ export function instrumentClient(client: any, run: Run, runtime: Runtime) {
         },
       );
     } catch (error: any) {
-      throw new Error(
-        typeof error?.status === "number"
-          ? `Model API error (${error.status})`
-          : "Model request failed",
+      const cause = error instanceof SafeExecutionError ? error : error?.cause;
+      const safe = cause instanceof SafeExecutionError ? cause : new SafeExecutionError(
+        typeof error?.status === "number" ? "MODEL_API_FAILED" : error?.name === "APITimeoutError" ? "MODEL_TIMEOUT" : "MODEL_NETWORK_FAILED",
+        typeof error?.status === "number" ? error.status : undefined,
       );
+      runtime.providerFailure = diagnose(safe, run.executionPhase ?? "model-plan");
+      throw safe;
     }
     const message = response.choices?.[0]?.message;
     const content = message?.content;
@@ -214,17 +220,20 @@ export async function runVision(
   dependencies: {
     launchBrowser?: () => Promise<Browser>;
     createClient?: (settings: Settings) => any;
+    navigateTarget?: (page: Page, url: string) => Promise<unknown>;
   } = {},
 ) {
   let page: Page | undefined;
   const folder = path.join(artifactsDir, run.id);
-  await mkdir(folder, { recursive: true });
+  const phase = (value: ExecutionPhase) => { run.executionPhase = value; };
+  const save = async () => { try { await persist(); } catch { phase("persistence"); throw new SafeExecutionError("ARTIFACT_WRITE_FAILED"); } };
   const timeout = setTimeout(() => {
     runtime.stopReason = "limited";
     runtime.controller.abort();
     void runtime.browser?.close();
   }, settings.maxSeconds * 1000);
   const capture = async (label: string) => {
+    phase("screenshot");
     const name = `${label}.png`;
     await page!.screenshot({ path: path.join(folder, name) });
     run.screenshot = `/artifacts/${run.id}/${name}`;
@@ -232,10 +241,15 @@ export async function runVision(
   };
   try {
     runtime.controller.signal.throwIfAborted();
+    phase("artifact-prepare");
+    await mkdir(folder, { recursive: true });
+    phase("target-validation");
     const url = validateTarget(run.input.url);
+    phase("browser-launch");
     runtime.browser = await (dependencies.launchBrowser?.() ??
-      chromium.launch({ headless: true }));
+      chromium.launch({ headless: true, proxy: browserProxy(url) }));
     runtime.controller.signal.throwIfAborted();
+    phase("video-context");
     const context = await runtime.browser.newContext({
       viewport: { width: 1280, height: 720 },
       deviceScaleFactor: 1,
@@ -259,11 +273,13 @@ export async function runVision(
     });
     page = await context.newPage();
     page.setDefaultTimeout(12000);
-    await page.goto(url, { waitUntil: "domcontentloaded", timeout: 30000 });
+    phase("target-navigation");
+    await (dependencies.navigateTarget ? dependencies.navigateTarget(page, url) : page.goto(url, { waitUntil: "domcontentloaded", timeout: 30000 }));
     await page.waitForTimeout(1000);
     if (run.input.mode === "baseline") {
-      await runBaseline(page, run, capture, persist, runtime);
+      await runBaseline(page, run, capture, save, runtime);
     } else {
+      phase("model-initialization");
       const agent = new PlaywrightAgent(page, {
         generateReport: false,
         persistExecutionDump: false,
@@ -298,12 +314,13 @@ export async function runVision(
           ? "무진전 · 다른 테스트 가설 재계획"
           : "화면에서 테스트 가설 선택";
         await capture(`goal-${run.goals?.length ?? 0}-before`);
-        await persist();
+        await save();
         const query =
           goalPrompt(run.input.url) +
           (replan
             ? ` Prior chosen goal: ${JSON.stringify(goal)}. The last ${unchangedCount} actions produced identical before/after screenshots. Prior model observations are unverified. An inputConfirmation other than verified means input success was NOT established; do not assume text exists. Choose a different permitted test or a genuinely different method; do not repeat the same ineffective action. History: ${JSON.stringify(run.steps.map((s) => ({ action: s.plan.action, observation: s.plan.observation, unchanged: s.unchanged, inputConfirmation: s.inputConfirmation })))}`
             : "");
+        phase("goal-selection");
         const selected = goalSchema.parse(
           await agent.aiQuery(query, {
             domIncluded: false,
@@ -317,15 +334,16 @@ export async function runVision(
           at: new Date().toISOString(),
         };
         (run.goals ??= []).push(goal);
-        await persist();
+        await save();
       };
       if (run.input.mode === "autonomous") await selectGoal();
       for (let index = 0; index <= settings.maxActions; index++) {
         if (runtime.controller.signal.aborted) throw new Error("실행 중지됨");
         run.stage = "화면 관찰 · 다음 QA 계획";
         const before = await capture(`${index}-before`);
-        await persist();
+        await save();
         const getPlan = async (feedback = "") => {
+          phase("model-plan");
           try {
             const output = await agent.aiQuery(
               planPrompt(run.input, run.steps, goal) + feedback,
@@ -339,6 +357,7 @@ export async function runVision(
             return planSchema.safeParse(output);
           } catch (error) {
             if (
+              error instanceof SafeExecutionError || runtime.providerFailure ||
               runtime.controller.signal.aborted ||
               !run.transport.at(-1)?.requestId ||
               run.calls >= settings.maxCalls
@@ -357,7 +376,7 @@ export async function runVision(
             .join(", ");
           run.transport.at(-1)!.validationError = paths;
           run.stage = "모델 응답 형식 교정 · 행동 미실행";
-          await persist();
+          await save();
           parsed = await getPlan(
             ` Previous structured output failed validation at: ${paths}. No action was executed for that output. Return a corrected object matching EXACTLY the requested schema. Previous output: ${JSON.stringify(run.transport.at(-1)?.parsedOutput)}`,
           );
@@ -418,6 +437,7 @@ export async function runVision(
           break;
         }
         run.stage = "Playwright 좌표 행동 실행";
+        phase("action");
         try {
           step.toolCalls = [];
           await executeAction(page, plan.action, (action, completed) => {
@@ -443,7 +463,8 @@ export async function runVision(
           unchangedCount = step.unchanged ? unchangedCount + 1 : 0;
           if (plan.action.type === "type") {
             run.stage = "도구 완료 · 입력 결과를 새 화면에서 확인";
-            await persist();
+            await save();
+            phase("input-confirmation");
             const confirmation = inputConfirmationSchema.safeParse(
               await agent.aiQuery(inputConfirmationPrompt(plan.action), {
                 domIncluded: false,
@@ -478,15 +499,13 @@ export async function runVision(
           }
           for (const finding of run.findings.filter((f) => f.step === index))
             finding.after = step.after;
-        } catch {
+        } catch (error) {
           step.error = step.executed
             ? "도구는 완료했으나 입력 결과 시각 확인 실패 · 제품 결함 아님"
             : "행동 실행 실패 · 제품 결함 아님";
-          throw new Error(
-            step.executed ? "INPUT_CONFIRMATION_FAILED" : step.error,
-          );
+          throw error;
         }
-        await persist();
+        await save();
         const inputFailed =
           step.inputConfirmation &&
           step.inputConfirmation.status !== "verified";
@@ -513,30 +532,21 @@ export async function runVision(
         }
       }
     }
+    phase("video-finalization");
     const video = page.video();
     await context.close();
     if (video)
       run.video = `/artifacts/${run.id}/${path.basename(await video.path())}`;
   } catch (error: any) {
     const interrupted = runtime.stopReason;
-    const apiStatus = String(error?.message).match(
-      /Model API error \((\d+)\)/,
-    )?.[1];
     run.status = interrupted ?? "failed";
-    // Provider errors can include credentials or request bodies. Expose only a category.
-    run.error = interrupted
-      ? interrupted === "limited"
-        ? "시간 또는 모델 호출 한도 도달"
-        : "사용자가 실행 중지"
-      : apiStatus
-        ? `모델 API 오류 (${apiStatus}) · ${apiStatus === "401" ? "인증 키" : apiStatus === "402" ? "계정 잔액" : apiStatus === "429" ? "공급자 요청 한도" : "모델·이미지 지원"}를 확인하세요`
-        : error?.message === "MODEL_OUTPUT_TRUNCATED"
-          ? "모델 응답이 출력 토큰 한도에서 잘려 판단할 수 없습니다"
-          : error?.message === "INPUT_CONFIRMATION_FAILED"
-            ? "도구 완료 후 입력 결과 시각 확인 실패 · 판단 불가"
-            : error?.name === "ZodError"
-              ? `모델 응답 형식 검증 실패 · ${error.issues?.map((issue: any) => issue.path.join(".")).join(", ") ?? "schema"}`
-              : "브라우저 또는 모델 실행 실패 · 환경과 설정을 확인하세요";
+    if (interrupted) {
+      run.error = interrupted === "limited" ? "시간 또는 모델 호출 한도 도달" : "사용자가 실행 중지";
+    } else {
+      run.failureStage = run.stage;
+      run.diagnostic = runtime.providerFailure ?? diagnose(error, run.executionPhase ?? "artifact-prepare");
+      run.error = `${run.diagnostic.message}${run.diagnostic.httpStatus ? ` (HTTP ${run.diagnostic.httpStatus})` : ""}`;
+    }
     run.outcome = run.error;
   } finally {
     clearTimeout(timeout);
@@ -547,8 +557,8 @@ export async function runVision(
       } catch {}
     }
     run.endedAt = new Date().toISOString();
-    run.stage = "종료";
-    await persist();
+    run.stage = run.diagnostic ? `실패 · ${phaseLabels[run.diagnostic.phase]}` : "종료";
+    await save();
   }
 }
 async function runBaseline(
@@ -598,6 +608,7 @@ async function runBaseline(
     const before = await capture(`${index}-before`);
     run.stage = op.description;
     await persist();
+    run.executionPhase = "action";
     await op.action();
     run.actions++;
     run.steps.push({

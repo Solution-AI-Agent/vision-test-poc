@@ -1,3 +1,4 @@
+import type { ExecutionPhase, RunDiagnostic } from "./diagnostics";
 import { z } from "zod";
 export const limitsSchema = z.object({
   maxActions: z.number().int().min(1).max(40),
@@ -155,6 +156,9 @@ export type Run = {
   status: "running" | "completed" | "stopped" | "limited" | "failed";
   outcome: string;
   stage: string;
+  executionPhase?: ExecutionPhase;
+  failureStage?: string;
+  diagnostic?: RunDiagnostic;
   calls: number;
   actions: number;
   tokens: number;
