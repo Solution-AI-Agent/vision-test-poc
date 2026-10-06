@@ -1271,6 +1271,7 @@ export default function App() {
                                   </a>
                                 </div>
                               )}
+                              {s.completionCheck && <div className="mt-3 flex flex-col gap-2"><Badge variant="outline">{s.completionCheck.verified ? "업무 완료 별도 확인 · 모델 판독" : "업무 완료 미확인"}</Badge><QaText label="확인 근거" text={s.completionCheck.reason}/><a className="text-xs underline" href={s.completionCheck.screenshot} target="_blank" rel="noreferrer">완료 확인의 실제 요청 이미지 · 호출 {s.completionCheck.call}</a></div>}
                               {s.error && (
                                 <p className="text-destructive text-sm">
                                   {s.error}

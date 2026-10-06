@@ -23,10 +23,12 @@ const sourceVersion = {
     .update(readFileSync(path.join(repoRoot, "apps/platform/server/runner.ts")))
     .update(readFileSync(path.join(repoRoot, "apps/platform/server/visual-qa.ts")))
     .digest("hex"),
-  promptVersion: "goal-first-v9-korean-input-grounding",
+  promptVersion: "goal-first-v10-independent-completion",
 };
 import {
   planPrompt,
+  completionPrompt,
+  completionSchema,
   goalPrompt,
   goalSchema,
   inputConfirmationSchema,
@@ -497,7 +499,7 @@ export async function runVision(
         run.steps.push(step);
         // A fresh decision-time screen must follow the actual model-input image, including finish/limit decisions.
         step.after = await capture(`${index}-decision`);
-        if (plan.verdict === "candidate" && plan.finding) {
+        if (plan.verdict === "candidate" && plan.finding && plan.finding.observed.trim() !== plan.finding.expected.trim()) {
           const duplicate = run.findings.some(
             (f) =>
               f.title.trim().toLowerCase() ===
@@ -515,6 +517,19 @@ export async function runVision(
             });
         }
         if (plan.action.type === "finish" || plan.verdict === "pass") {
+          if (plan.verdict === "pass") {
+            if (run.calls >= settings.maxCalls) {
+              run.status="limited";run.outcome="업무 완료 독립 확인 한도 부족 · 완료 미확인";break;
+            }
+            run.stage="업무 완료 독립 화면 확인";phase("model-plan");
+            const output=await agent.aiQuery(completionPrompt(goal?.task ?? run.input.task,goal?.expected ?? run.input.expected),{domIncluded:false,screenshotIncluded:true,abortSignal:runtime.controller.signal});
+            const record=run.transport.at(-1)!;record.parsedOutput=output;
+            const checked=completionSchema.safeParse(output);
+            step.completionCheck={verified:checked.success&&checked.data.verified,reason:checked.success?checked.data.reason:"완료 확인 응답 형식 오류",screenshot:record.screenshot!,call:run.calls};
+            if (!step.completionCheck.verified) {
+              run.status="limited";run.outcome="업무 완료 미확인 · "+step.completionCheck.reason;await save();break;
+            }
+          }
           await inspect("업무 종료 화면");
           run.status = "completed";
           run.outcome =

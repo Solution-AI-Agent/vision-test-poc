@@ -1,5 +1,6 @@
 import { visualCriteria } from "./visual-qa";
 function auditStub(body: unknown) {
+  if(JSON.stringify(body).includes("TASK_COMPLETION_CHECK")) return {choices:[{index:0,finish_reason:"stop",message:{role:"assistant",content:'<data-json>{"verified":true,"reason":"로컬 검증 완료 화면"}</data-json>'}}]};
   if (!JSON.stringify(body).includes("VISUAL_QA_REVIEW_V1")) return;
   return { id: "stub-audit", model: "stub", choices: [{ index: 0, finish_reason: "stop", message: { role: "assistant", content: `<data-json>${JSON.stringify({ checks: visualCriteria.map(criterion => ({ criterion, result: "clear", evidence: "Local stub screen" })), issues: [] })}</data-json>` } }], usage: { total_tokens: 42 } };
 }
@@ -147,12 +148,13 @@ it("provider error bodies are sanitized before SDK or Midscene logging", async (
   }
 });
 
-for (const { mode, malformed } of [
-  { mode: "scenario", malformed: false },
+for (const { mode, malformed, falseCompletion = false } of [
+  { mode: "scenario", malformed: false, falseCompletion:false },
+  { mode: "scenario", malformed: false, falseCompletion:true },
   { mode: "autonomous", malformed: false },
   { mode: "scenario", malformed: true },
 ] as const) {
-  it(`${mode}${malformed ? " with schema correction" : ""} runner preserves request-image/plan/action linkage and a fresh finish image (local fixture, stub VLM)`, async () => {
+  it(`${mode}${falseCompletion ? " rejects false completion" : ""}${malformed ? " with schema correction" : ""} runner preserves request-image/plan/action linkage and a fresh finish image (local fixture, stub VLM)`, async () => {
     const { runVision, artifactsDir } = await import("./runner");
     const { readFile, stat, writeFile } = await import("node:fs/promises");
     const path = await import("node:path");
@@ -199,6 +201,11 @@ for (const { mode, malformed } of [
           chat: {
             completions: {
               create: async (body: any) => {
+                if (falseCompletion && JSON.stringify(body).includes("TASK_COMPLETION_CHECK")) {
+                  expect(JSON.stringify(body)).not.toContain("History:");
+                  expect(JSON.stringify(body)).not.toContain("HIDDEN_DOM_RUNNER_SENTINEL");
+                  return {choices:[{index:0,finish_reason:"stop",message:{role:"assistant",content:'<data-json>{"verified":false,"reason":"최종 업무 결과를 확인하지 못함"}</data-json>'}}]};
+                }
                 const audit = auditStub(body); if (audit) return audit;
                 expect(JSON.stringify(body)).not.toContain(
                   "HIDDEN_DOM_RUNNER_SENTINEL",
@@ -291,11 +298,13 @@ for (const { mode, malformed } of [
         }),
       },
     );
-    expect(run.status).toBe("completed");
+    expect(run.status).toBe(falseCompletion ? "limited" : "completed");
+    expect(run.steps[1].completionCheck?.verified).toBe(!falseCompletion);
+    if(falseCompletion)expect(run.outcome).toContain("업무 완료 미확인");
     expect(run.actions).toBe(1);
     const offset = mode === "autonomous" || malformed ? 1 : 0;
     if (malformed) expect(run.transport.filter(r => r.phase !== "visual-review")[0].validationError).toContain("action");
-    expect(run.calls).toBe(2 + offset + run.visualAudits!.filter(a => a.call > 0).length);
+    expect(run.calls).toBe(3 + offset + run.visualAudits!.filter(a => a.call > 0).length);
     if (mode === "autonomous") {
       expect(run.goals?.[0].screenshot).toBe(run.transport.filter(r => r.phase !== "visual-review")[0].screenshot);
       expect(run.goals?.[0].task).toBe("Click the visible button");
@@ -542,7 +551,7 @@ for (const missingFocus of [false, true]) {
       expect(actualText).toBe("sample");
       expect(run.steps[0].inputConfirmation?.status).toBe("verified");
       expect(run.status).toBe("completed");
-      expect(run.calls).toBe(4 + run.visualAudits!.filter(a => a.call > 0).length);
+      expect(run.calls).toBe(5 + run.visualAudits!.filter(a => a.call > 0).length);
     }
     expect(run.findings).toHaveLength(0);
   }, 30000);

@@ -37,7 +37,7 @@ for (const variant of ["reproduced","normal","disagrees","invalid","budget"] as 
           images.push(body.messages.flatMap((m:any)=>Array.isArray(m.content)?m.content:[]).find((b:any)=>b.type==="image_url").image_url.url);
           output=variant === "normal" || (variant === "disagrees" && audits>1) ? clear() : defect();
           if (variant === "invalid") output={...defect(),issues:[{...issue,box:{x:900,y:100,width:20,height:40}}]};
-        } else { plans++;output={observation:"주문 완료",rationale:"업무 결과",action:{type:"finish"},verdict:"pass",finding:null}; }
+        } else if(demand.includes("TASK_COMPLETION_CHECK")) { output={verified:true,reason:"로컬 업무 완료 화면"}; } else { plans++;output={observation:"주문 완료",rationale:"업무 결과",action:{type:"finish"},verdict:"pass",finding:null}; }
         return {id:`stub-${audits}-${plans}`,model:"stub-vlm",choices:[{index:0,finish_reason:"stop",message:{role:"assistant",content:`<data-json>${JSON.stringify(output)}</data-json>`}}],usage:{total_tokens:32}};
       }}} }),
     });
