@@ -1,0 +1,46 @@
+[
+  {
+    "site": "a",
+    "candidates": [],
+    "warnings": []
+  },
+  {
+    "site": "d",
+    "candidates": [
+      {
+        "id": "region-1",
+        "box": {
+          "x": 820.125,
+          "y": 393.09375,
+          "width": 220,
+          "height": 158
+        },
+        "front": {
+          "x": 696.265625,
+          "y": 393.09375,
+          "width": 467.71875,
+          "height": 190
+        },
+        "context": {
+          "x": 696.265625,
+          "y": 297.390625,
+          "width": 467.71875,
+          "height": 285.703125
+        },
+        "regions": 6,
+        "coveredPoints": 48
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "site": "f",
+    "candidates": [],
+    "warnings": []
+  },
+  {
+    "site": "g",
+    "candidates": [],
+    "warnings": []
+  }
+]

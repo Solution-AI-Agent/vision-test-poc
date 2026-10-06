@@ -1,0 +1,71 @@
+[
+  {
+    "id": "01-a",
+    "runId": "c45db87c-a88f-4d12-8cad-7eee2d70d8a9",
+    "calls": 1,
+    "cost": 0.00050115,
+    "status": "limited",
+    "candidates": 0,
+    "warnings": []
+  },
+  {
+    "id": "02-d",
+    "runId": "131401e1-2713-48af-a3c7-45675073518e",
+    "calls": 1,
+    "cost": 0.0006973,
+    "status": "limited",
+    "candidates": 1,
+    "reason": "화면 검토 실패/형식 불일치. 위치 기반 의심을 보존했습니다.",
+    "warnings": []
+  },
+  {
+    "id": "03-a",
+    "runId": "4c70333f-1e27-4ea7-8087-a5001caf9d44",
+    "calls": 1,
+    "cost": 0.00108451,
+    "status": "limited",
+    "candidates": 0,
+    "warnings": []
+  },
+  {
+    "id": "04-d",
+    "runId": "e4a84d61-d88a-498a-bff5-311f013b1984",
+    "calls": 1,
+    "cost": 0.0009693,
+    "status": "limited",
+    "candidates": 1,
+    "review": {
+      "regions": [
+        {
+          "id": "region-1",
+          "verdict": "visible-overlap",
+          "occluder": "빨간 컵 이미지",
+          "affected": "이번 달 인기 상품 비율, 노트 - 80%, 머그 - 20%",
+          "evidence": "빨간 컵 이미지가 비율 정보를 부분적으로 가리고 있음",
+          "impact": "사용자가 비율 정보를 완전히 확인할 수 없음",
+          "alternative": "비율 정보가 일부 가려졌지만, 전체적인 내용은 파악 가능할 수 있음"
+        }
+      ]
+    },
+    "warnings": []
+  },
+  {
+    "id": "05-a",
+    "runId": "69bb0a83-e522-45a3-9648-1b4c03e44700",
+    "calls": 1,
+    "cost": 0.0007396,
+    "status": "limited",
+    "candidates": 0,
+    "warnings": []
+  },
+  {
+    "id": "06-d",
+    "runId": "33fca7fb-b844-49ac-8896-2b81638937c5",
+    "calls": 1,
+    "cost": 0.0005841,
+    "status": "limited",
+    "candidates": 1,
+    "reason": "화면 검토 실패/형식 불일치. 위치 기반 의심을 보존했습니다.",
+    "warnings": []
+  }
+]

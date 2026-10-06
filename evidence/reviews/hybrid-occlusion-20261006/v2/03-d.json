@@ -1,0 +1,178 @@
+{
+  "id": "dbc65e07-2dab-483d-bef6-375139a9231e",
+  "input": {
+    "mode": "autonomous",
+    "url": "http://127.0.0.1:4311/store/d",
+    "task": "",
+    "expected": "",
+    "query": "Midscene AI demo"
+  },
+  "settings": {
+    "agentInstructions": "",
+    "providerSort": "default",
+    "layoutAssist": true,
+    "model": "qwen/qwen3-vl-30b-a3b-instruct",
+    "family": "qwen3-vl",
+    "maxActions": 1,
+    "maxCalls": 1,
+    "maxSeconds": 120,
+    "maxTokens": 2048
+  },
+  "startedAt": "2026-10-06T07:03:34.563Z",
+  "status": "limited",
+  "outcome": "모델 호출 한도 도달 (1회)",
+  "stage": "종료",
+  "calls": 1,
+  "actions": 0,
+  "tokens": 2932,
+  "cost": 0.00054465,
+  "steps": [],
+  "findings": [
+    {
+      "id": "e5646fab-e1c3-4ffe-a74e-1f8d12e714b1",
+      "status": "candidate",
+      "reviewNote": "",
+      "step": -1,
+      "title": "화면 가림 후보 · 모델 관찰 있음",
+      "observed": "빨간 컵 이미지가 텍스트와 차트 위에 위치하여 일부를 가리고 있음",
+      "expected": "중요한 내용이 다른 구성요소에 가려지지 않아야 합니다.",
+      "basis": "혼합 검사: 위치 후보 + Midscene 화면 판독. 사람의 확정 판정과 별개.",
+      "reproduction": [
+        "검사 시점: 첫 화면"
+      ],
+      "before": "/artifacts/dbc65e07-2dab-483d-bef6-375139a9231e/layout-ee1ef643-bfe7-48ea-bad5-f2963a2e824b.png",
+      "after": "/artifacts/dbc65e07-2dab-483d-bef6-375139a9231e/layout-ee1ef643-bfe7-48ea-bad5-f2963a2e824b.png",
+      "layout": {
+        "auditId": "ee1ef643-bfe7-48ea-bad5-f2963a2e824b",
+        "regionId": "region-1",
+        "fingerprint": "b46a30f1f0795e773f21b4d391ae1cd701eace23450d538c1029b7ecb9503fc1",
+        "box": {
+          "x": 820.125,
+          "y": 393.09375,
+          "width": 220,
+          "height": 158
+        },
+        "verdict": "visible-overlap",
+        "annotated": "/artifacts/dbc65e07-2dab-483d-bef6-375139a9231e/layout-ee1ef643-bfe7-48ea-bad5-f2963a2e824b.svg",
+        "review": {
+          "id": "region-1",
+          "verdict": "visible-overlap",
+          "order": "measured",
+          "occluder": "빨간 컵 이미지",
+          "affected": "이번 달 인기 상품 비율 텍스트와 차트",
+          "evidence": "빨간 컵 이미지가 텍스트와 차트 위에 위치하여 일부를 가리고 있음",
+          "impact": "사용자가 정보를 완전히 읽지 못할 수 있음",
+          "alternative": "디자인적으로 의도된 요소일 수 있음"
+        }
+      }
+    }
+  ],
+  "engine": "Midscene aiInput · aiAct · aiString · aiAssert / 1.14.0",
+  "transport": [
+    {
+      "phase": "visual-review",
+      "providerSort": "default",
+      "images": 2,
+      "texts": 5,
+      "screenshots": [
+        "/artifacts/dbc65e07-2dab-483d-bef6-375139a9231e/model-request-1.png",
+        "/artifacts/dbc65e07-2dab-483d-bef6-375139a9231e/model-request-1-image-2.jpg"
+      ],
+      "screenshot": "/artifacts/dbc65e07-2dab-483d-bef6-375139a9231e/model-request-1.png",
+      "parsedOutput": {
+        "raw": "<observation>현재 전체 화면에서 region-1은 주문 요약 섹션에 위치하며, 빨간 컵 이미지가 상단에 있고, 그 아래에 '이번 달 인기 상품 비율'이라는 텍스트와 함께 노트, 머그의 비율이 표시된 차트가 있다. 이 영역은 빨간 컵 이미지에 의해 일부 가려져 있다.</observation>\n<data-json>\n{\n  \"String\": \"{\\\"regions\\\":[{\\\"id\\\":\\\"region-1\\\",\\\"verdict\\\":\\\"visible-overlap\\\",\\\"order\\\":\\\"measured\\\",\\\"occluder\\\":\\\"빨간 컵 이미지\\\",\\\"affected\\\":\\\"이번 달 인기 상품 비율 텍스트와 차트\\\",\\\"evidence\\\":\\\"빨간 컵 이미지가 텍스트와 차트 위에 위치하여 일부를 가리고 있음\\\",\\\"impact\\\":\\\"사용자가 정보를 완전히 읽지 못할 수 있음\\\",\\\"alternative\\\":\\\"디자인적으로 의도된 요소일 수 있음\\\"}]}\"\n}\n</data-json>"
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 502,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 13461,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "provider": "DeepInfra",
+      "usage": {
+        "promptTokens": 2699,
+        "completionTokens": 233,
+        "cachedTokens": 0,
+        "cost": 0.00054465
+      },
+      "requestId": "gen-1791270215-8vcNRWVn8rGVMVtREtaH"
+    }
+  ],
+  "visualAudits": [
+    {
+      "id": "ef59cce3-645d-4088-8460-8a0445f0aa7c",
+      "at": "2026-10-06T07:03:49.365Z",
+      "checkpoint": "첫 화면",
+      "screenshot": "/artifacts/dbc65e07-2dab-483d-bef6-375139a9231e/visual-0-screen.png",
+      "call": 0,
+      "status": "inconclusive",
+      "promptVersion": "visual-qa-v1-independent-checklist",
+      "reason": "실행 한도로 시각 검사 미실행 · 통과 아님"
+    }
+  ],
+  "visualComplete": false,
+  "sourceVersion": {
+    "commit": "90a422b34767415c5b1a36b2179591280b1d54ee",
+    "dirty": false,
+    "sourceHash": "fa26f69b257f4c25fec422198b0b513eeea8c6d0e50e5d9183e79ddd55e47ec6",
+    "promptVersion": "midscene-native-workflow-v1"
+  },
+  "executionPhase": "goal-selection",
+  "layoutAudits": [
+    {
+      "id": "ee1ef643-bfe7-48ea-bad5-f2963a2e824b",
+      "promptVersion": "hybrid-occlusion-v2",
+      "checkpoint": "첫 화면",
+      "screenshot": "/artifacts/dbc65e07-2dab-483d-bef6-375139a9231e/layout-ee1ef643-bfe7-48ea-bad5-f2963a2e824b.png",
+      "stable": true,
+      "candidates": [
+        {
+          "id": "region-1",
+          "box": {
+            "x": 820.125,
+            "y": 393.09375,
+            "width": 220,
+            "height": 158
+          },
+          "front": {
+            "x": 696.265625,
+            "y": 393.09375,
+            "width": 467.71875,
+            "height": 190
+          },
+          "context": {
+            "x": 696.265625,
+            "y": 297.390625,
+            "width": 467.71875,
+            "height": 285.703125
+          },
+          "regions": 6,
+          "coveredPoints": 48
+        }
+      ],
+      "warnings": [],
+      "annotated": "/artifacts/dbc65e07-2dab-483d-bef6-375139a9231e/layout-ee1ef643-bfe7-48ea-bad5-f2963a2e824b.svg",
+      "call": 1,
+      "review": {
+        "regions": [
+          {
+            "id": "region-1",
+            "verdict": "visible-overlap",
+            "order": "measured",
+            "occluder": "빨간 컵 이미지",
+            "affected": "이번 달 인기 상품 비율 텍스트와 차트",
+            "evidence": "빨간 컵 이미지가 텍스트와 차트 위에 위치하여 일부를 가리고 있음",
+            "impact": "사용자가 정보를 완전히 읽지 못할 수 있음",
+            "alternative": "디자인적으로 의도된 요소일 수 있음"
+          }
+        ]
+      }
+    }
+  ],
+  "screenshot": "/artifacts/dbc65e07-2dab-483d-bef6-375139a9231e/visual-0-screen.png",
+  "error": "모델 호출 한도 도달 (1회)",
+  "video": "/artifacts/dbc65e07-2dab-483d-bef6-375139a9231e/page@dce699f3910ee37ef13d1b4e1d65e3d0.webm",
+  "endedAt": "2026-10-06T07:03:49.406Z"
+}

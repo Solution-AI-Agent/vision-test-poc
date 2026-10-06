@@ -1,0 +1,40 @@
+<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>웹 겹침 혼합 검사 · 실측과 한계</title><style>body{max-width:1100px;margin:40px auto;padding:0 22px;background:#0b1820;color:#e8f0f4;font:17px/1.7 system-ui}a{color:#85dccb}section{border:1px solid #385360;border-radius:16px;padding:22px;margin:24px 0}img{width:100%;height:auto}pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:14px}strong{color:#ffcd82}</style><h1>겹침을 검토 목록에서 놓치지 않기</h1><p>브라우저 위치 후보 + Midscene 화면 검토. 순수 Vision 결과와 구분합니다.</p><section><h2>독립 판단</h2><p>D의 실제 가림 영역은 최종 3/3 의심으로 보존했습니다. 정상 A는 초기 교차 시험 3/3 위치 후보가 없었고 기존 시각 검사도 후보가 없었습니다. 최종 로컬 A/F/G에서도 겹침 후보는 없습니다.</p><p><strong>모델 판독 신뢰성은 해결되지 않았습니다.</strong> 최종 D는 1회 정상 오판, 2회 컵이 차트를 가린다는 역방향 설명입니다. 실제로는 차트가 컵 하단과 주문 정보를 가립니다. 올바른 모델 설명은 0/3으로 판정했습니다. 붉은 박스는 모델의 주장 표시이며 확인된 결함을 의미하지 않습니다.</p><p>총9요청·보고비용 $0.00677097. 첫 화면만 검사했고 호출1회 제한으로 종료했습니다. 전체 주문 성공 결과가 아닙니다. 모델 호출 전 런처 실패6건/0요청과 수정 전 결과도 보존했습니다.</p><a href="INDEPENDENT_REVIEW.json">독립 검토·실제 이미지 해시 대조</a></section><section><h2>정상 대조</h2><img src="local/a.png" alt="정상 A"><p><a href="local/RESULTS.json">A/D/F/G 로컬 위치 검사</a> · <a href="fixed/SUMMARY.json">첫 실제 교차 결과</a> · <a href="v2/SUMMARY.json">보완 후 결과</a></p></section><section><h2>D 01-d: 위치 후보 보존 / 모델 설명 독립 미수락</h2><p><a href="v2/01-d.json">원장</a> · <a href="v2/01-d-request.json">실제 요청(이미지는 해시 참조)</a></p><img src="runs/88ca141e-bd67-4d3c-aa52-0670f6c9abad/layout-bb2f0c80-b6f6-4d79-bdeb-1f3baef3fa66.svg" alt="측정 겹침 영역 표시"><pre>{
+  &quot;regions&quot;: [
+    {
+      &quot;id&quot;: &quot;region-1&quot;,
+      &quot;verdict&quot;: &quot;clear&quot;,
+      &quot;order&quot;: &quot;measured&quot;,
+      &quot;occluder&quot;: &quot;빨간 컵 이미지&quot;,
+      &quot;affected&quot;: &quot;이번 달 인기 상품 비율 텍스트와 비율 정보&quot;,
+      &quot;evidence&quot;: &quot;빨간 컵 이미지와 이 영역 사이에 충분한 간격이 존재하여 가림이 발생하지 않음&quot;,
+      &quot;impact&quot;: &quot;사용자에게 정보를 명확하게 전달할 수 있음&quot;,
+      &quot;alternative&quot;: &quot;가림이 발생할 수 있다는 추정이 가능하나, 실제 화면에서 간격이 충분하여 clear로 판단&quot;
+    }
+  ]
+}</pre></section><section><h2>D 02-d: 위치 후보 보존 / 모델 설명 독립 미수락</h2><p><a href="v2/02-d.json">원장</a> · <a href="v2/02-d-request.json">실제 요청(이미지는 해시 참조)</a></p><img src="runs/85c987cd-be6d-4b99-8a82-53761287a7dc/layout-2623c58c-dd8f-4b26-8998-e2e7281cc478.svg" alt="측정 겹침 영역 표시"><pre>{
+  &quot;regions&quot;: [
+    {
+      &quot;id&quot;: &quot;region-1&quot;,
+      &quot;verdict&quot;: &quot;visible-overlap&quot;,
+      &quot;order&quot;: &quot;measured&quot;,
+      &quot;occluder&quot;: &quot;빨간 컵 이미지&quot;,
+      &quot;affected&quot;: &quot;이번 달 인기 상품 비율 텍스트와 차트&quot;,
+      &quot;evidence&quot;: &quot;빨간 컵 이미지가 텍스트와 차트 위에 위치하여 일부를 가리고 있음&quot;,
+      &quot;impact&quot;: &quot;사용자가 정보를 완전히 읽지 못할 수 있음&quot;,
+      &quot;alternative&quot;: &quot;디자인적으로 의도된 요소일 수 있음&quot;
+    }
+  ]
+}</pre></section><section><h2>D 03-d: 위치 후보 보존 / 모델 설명 독립 미수락</h2><p><a href="v2/03-d.json">원장</a> · <a href="v2/03-d-request.json">실제 요청(이미지는 해시 참조)</a></p><img src="runs/dbc65e07-2dab-483d-bef6-375139a9231e/layout-ee1ef643-bfe7-48ea-bad5-f2963a2e824b.svg" alt="측정 겹침 영역 표시"><pre>{
+  &quot;regions&quot;: [
+    {
+      &quot;id&quot;: &quot;region-1&quot;,
+      &quot;verdict&quot;: &quot;visible-overlap&quot;,
+      &quot;order&quot;: &quot;measured&quot;,
+      &quot;occluder&quot;: &quot;빨간 컵 이미지&quot;,
+      &quot;affected&quot;: &quot;이번 달 인기 상품 비율 텍스트와 차트&quot;,
+      &quot;evidence&quot;: &quot;빨간 컵 이미지가 텍스트와 차트 위에 위치하여 일부를 가리고 있음&quot;,
+      &quot;impact&quot;: &quot;사용자가 정보를 완전히 읽지 못할 수 있음&quot;,
+      &quot;alternative&quot;: &quot;디자인적으로 의도된 요소일 수 있음&quot;
+    }
+  ]
+}</pre></section><section><h2>제품 화면 검수</h2><p>실제 저장 응답의 UI 재생이며 새 모델 실행이 아닙니다. 측정 사실과 모델 주장을 구분합니다.</p><img src="ui/FINDING.png" alt="후보 카드"><a href="ui/REPORT.json">UI 검수</a> · <a href="TESTS.txt">전체 회귀</a> · <a href="BUILD.txt">빌드</a></section></html>

@@ -1,0 +1,9 @@
+
+ RUN  v5.0.3 /Users/zpro/.buzz/REPOS/vision-test-delivery/apps/platform
+
+
+ Test Files  1 passed (1)
+      Tests  11 passed (11)
+   Start at  16:05:05
+   Duration  10.01s (tests 96%, import 4%, transform 1%)
+

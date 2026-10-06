@@ -1,0 +1,121 @@
+
+> vision-qa-lab@0.1.0 test
+> npm run test --workspaces
+
+
+> @vision-qa/ui@0.1.0 test
+> tsc --noEmit -p tsconfig.json
+
+
+> @vision-qa/platform@0.1.0 test
+> vitest run
+
+
+ RUN  v5.0.3 /Users/zpro/.buzz/REPOS/vision-test-delivery/apps/platform
+
+stderr | server/layout-qa.test.ts > hybrid visible-overlap preserves candidate, exact image evidence and explicit provenance
+[Midscene] call AI error Error: 모델 호출 한도 도달 (1회)
+    at Object.client.chat.completions.create (/Users/zpro/.buzz/REPOS/vision-test-delivery/apps/platform/server/runner.ts:158:13)
+    at callChatCompletionNonStreaming (file:///Users/zpro/.buzz/REPOS/vision-test-delivery/node_modules/@midscene/core/dist/es/ai-model/service-caller/openai/chat-completion/non-stream.mjs:5:37)
+    at callChatCompletion (file:///Users/zpro/.buzz/REPOS/vision-test-delivery/node_modules/@midscene/core/dist/es/ai-model/service-caller/openai/chat-completion/chat-completion.mjs:50:57)
+    at callOpenAI (file:///Users/zpro/.buzz/REPOS/vision-test-delivery/node_modules/@midscene/core/dist/es/ai-model/service-caller/openai/call-openai.mjs:32:33)
+    at runWithAbortSignal (file:///Users/zpro/.buzz/REPOS/vision-test-delivery/node_modules/@midscene/core/dist/es/ai-model/service-caller/request-timeout.mjs:69:16)
+    at callModelOnce (file:///Users/zpro/.buzz/REPOS/vision-test-delivery/node_modules/@midscene/core/dist/es/ai-model/service-caller/call-ai.mjs:157:16)
+    at callModelWithRetry (file:///Users/zpro/.buzz/REPOS/vision-test-delivery/node_modules/@midscene/core/dist/es/ai-model/service-caller/call-ai.mjs:100:28)
+    at callAI (file:///Users/zpro/.buzz/REPOS/vision-test-delivery/node_modules/@midscene/core/dist/es/ai-model/service-caller/call-ai.mjs:51:20)
+    at callAndParseOnce (file:///Users/zpro/.buzz/REPOS/vision-test-delivery/node_modules/@midscene/core/dist/es/ai-model/service-caller/semantic-retry.mjs:18:26)
+    at Service.extract (file:///Users/zpro/.buzz/REPOS/vision-test-delivery/node_modules/@midscene/core/dist/es/service/index.mjs:204:28)
+
+stderr | server/layout-qa.test.ts > hybrid clear preserves candidate, exact image evidence and explicit provenance
+[Midscene] call AI error Error: 모델 호출 한도 도달 (1회)
+    at Object.client.chat.completions.create (/Users/zpro/.buzz/REPOS/vision-test-delivery/apps/platform/server/runner.ts:158:13)
+    at callChatCompletionNonStreaming (file:///Users/zpro/.buzz/REPOS/vision-test-delivery/node_modules/@midscene/core/dist/es/ai-model/service-caller/openai/chat-completion/non-stream.mjs:5:37)
+    at callChatCompletion (file:///Users/zpro/.buzz/REPOS/vision-test-delivery/node_modules/@midscene/core/dist/es/ai-model/service-caller/openai/chat-completion/chat-completion.mjs:50:57)
+    at callOpenAI (file:///Users/zpro/.buzz/REPOS/vision-test-delivery/node_modules/@midscene/core/dist/es/ai-model/service-caller/openai/call-openai.mjs:32:33)
+    at runWithAbortSignal (file:///Users/zpro/.buzz/REPOS/vision-test-delivery/node_modules/@midscene/core/dist/es/ai-model/service-caller/request-timeout.mjs:69:16)
+    at callModelOnce (file:///Users/zpro/.buzz/REPOS/vision-test-delivery/node_modules/@midscene/core/dist/es/ai-model/service-caller/call-ai.mjs:157:16)
+    at callModelWithRetry (file:///Users/zpro/.buzz/REPOS/vision-test-delivery/node_modules/@midscene/core/dist/es/ai-model/service-caller/call-ai.mjs:100:28)
+    at callAI (file:///Users/zpro/.buzz/REPOS/vision-test-delivery/node_modules/@midscene/core/dist/es/ai-model/service-caller/call-ai.mjs:51:20)
+    at callAndParseOnce (file:///Users/zpro/.buzz/REPOS/vision-test-delivery/node_modules/@midscene/core/dist/es/ai-model/service-caller/semantic-retry.mjs:18:26)
+    at Service.extract (file:///Users/zpro/.buzz/REPOS/vision-test-delivery/node_modules/@midscene/core/dist/es/service/index.mjs:204:28)
+
+ ❯ server/layout-qa.test.ts (7 tests | 3 failed) 6810ms
+   × generic overlap scan distinguishes solid cover from nested UI, transparent decoration and intentional modal 499ms
+   × hybrid visible-overlap preserves candidate, exact image evidence and explicit provenance 1331ms
+   × hybrid clear preserves candidate, exact image evidence and explicit provenance 1311ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  server/layout-qa.test.ts > generic overlap scan distinguishes solid cover from nested UI, transparent decoration and intentional modal
+AssertionError: expected [ { id: 'region-1', …(3) } ] to have a length of +0 but got 1
+
+- Expected
++ Received
+
+- 0
++ 1
+
+ ❯ server/layout-qa.test.ts:17:177
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  server/layout-qa.test.ts > hybrid visible-overlap preserves candidate, exact image evidence and explicit provenance
+AssertionError: expected 'not-checked' to be 'visible-overlap' // Object.is equality
+
+Expected: "visible-overlap"
+Received: "not-checked"
+
+ ❯ server/layout-qa.test.ts:42:28
+     40|  if(verdict==='disabled'){expect(hybrid).toBe(0);expect(run.layoutAudi…
+     41|  expect(run.findings).toHaveLength(1);const f=run.findings[0];expect(f…
+     42|  expect(f.layout?.verdict).toBe(['invalid','budget'].includes(verdict)…
+       |                            ^
+     43|  const audit=run.layoutAudits![0];expect(audit.stable).toBe(true);
+     44|  const source=await readFile(path.join(artifactsDir,audit.screenshot.r…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  server/layout-qa.test.ts > hybrid clear preserves candidate, exact image evidence and explicit provenance
+AssertionError: expected 'not-checked' to be 'clear' // Object.is equality
+
+Expected: "clear"
+Received: "not-checked"
+
+ ❯ server/layout-qa.test.ts:42:28
+     40|  if(verdict==='disabled'){expect(hybrid).toBe(0);expect(run.layoutAudi…
+     41|  expect(run.findings).toHaveLength(1);const f=run.findings[0];expect(f…
+     42|  expect(f.layout?.verdict).toBe(['invalid','budget'].includes(verdict)…
+       |                            ^
+     43|  const audit=run.layoutAudits![0];expect(audit.stable).toBe(true);
+     44|  const source=await readFile(path.join(artifactsDir,audit.screenshot.r…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  1 failed | 9 passed (10)
+      Tests  3 failed | 48 passed (51)
+   Start at  15:50:08
+   Duration  39.72s (tests 85%, import 14%, transform 1%)
+
+npm error Lifecycle script `test` failed with error:
+npm error code 1
+npm error path /Users/zpro/.buzz/REPOS/vision-test-delivery/apps/platform
+npm error workspace @vision-qa/platform@0.1.0
+npm error location /Users/zpro/.buzz/REPOS/vision-test-delivery/apps/platform
+npm error command failed
+npm error command sh -c vitest run
+
+
+> @vision-qa/sample@0.1.0 test
+> vitest run
+
+
+ RUN  v5.0.3 /Users/zpro/.buzz/REPOS/vision-test-delivery/sample-site
+
+
+ Test Files  1 passed (1)
+      Tests  2 passed (2)
+   Start at  15:50:48
+   Duration  94ms (import 56%, transform 32%, tests 8%, worker 4%)
+

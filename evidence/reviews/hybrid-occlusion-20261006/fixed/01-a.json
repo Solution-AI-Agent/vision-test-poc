@@ -1,0 +1,154 @@
+{
+  "id": "c45db87c-a88f-4d12-8cad-7eee2d70d8a9",
+  "input": {
+    "mode": "autonomous",
+    "url": "http://127.0.0.1:4311/store/a",
+    "task": "",
+    "expected": "",
+    "query": "Midscene AI demo"
+  },
+  "settings": {
+    "agentInstructions": "",
+    "providerSort": "default",
+    "layoutAssist": true,
+    "model": "qwen/qwen3-vl-30b-a3b-instruct",
+    "family": "qwen3-vl",
+    "maxActions": 1,
+    "maxCalls": 1,
+    "maxSeconds": 120,
+    "maxTokens": 2048
+  },
+  "startedAt": "2026-10-06T06:58:51.379Z",
+  "status": "limited",
+  "outcome": "모델 호출 한도 도달 (1회)",
+  "stage": "종료",
+  "calls": 1,
+  "actions": 0,
+  "tokens": 2703,
+  "cost": 0.00050115,
+  "steps": [],
+  "findings": [],
+  "engine": "Midscene aiInput · aiAct · aiString · aiAssert / 1.14.0",
+  "transport": [
+    {
+      "phase": "visual-review",
+      "providerSort": "default",
+      "images": 1,
+      "texts": 3,
+      "screenshots": [
+        "/artifacts/c45db87c-a88f-4d12-8cad-7eee2d70d8a9/model-request-1.jpg"
+      ],
+      "screenshot": "/artifacts/c45db87c-a88f-4d12-8cad-7eee2d70d8a9/model-request-1.jpg",
+      "parsedOutput": {
+        "checks": [
+          {
+            "criterion": "readability",
+            "result": "clear",
+            "evidence": "모든 텍스트가 완전하고 읽기 쉬운 상태로 표시됨."
+          },
+          {
+            "criterion": "geometry",
+            "result": "clear",
+            "evidence": "모든 요소와 텍스트가 비율 유지하며 정상적인 형태로 표시됨."
+          },
+          {
+            "criterion": "occlusion",
+            "result": "clear",
+            "evidence": "모든 컴포넌트가 서로 겹치거나 가리지 않음."
+          },
+          {
+            "criterion": "image-meaning",
+            "result": "clear",
+            "evidence": "사진과 그 옆의 텍스트 설명이 일치함."
+          },
+          {
+            "criterion": "chart-meaning",
+            "result": "clear",
+            "evidence": "차트 레이블 값과 막대의 길이가 일치함."
+          }
+        ],
+        "issues": []
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 876,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 5020,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "provider": "Alibaba",
+      "usage": {
+        "promptTokens": 2319,
+        "completionTokens": 384,
+        "cachedTokens": 0,
+        "cost": 0.00050115
+      },
+      "requestId": "gen-1791269933-7lkb45iulmQmixYh2XbW"
+    }
+  ],
+  "visualAudits": [
+    {
+      "id": "7419f66f-2017-4d1a-b2c9-31e00f2a4108",
+      "at": "2026-10-06T06:58:52.657Z",
+      "checkpoint": "첫 화면",
+      "screenshot": "/artifacts/c45db87c-a88f-4d12-8cad-7eee2d70d8a9/model-request-1.jpg",
+      "call": 1,
+      "status": "reviewed",
+      "promptVersion": "visual-qa-v1-independent-checklist",
+      "result": {
+        "checks": [
+          {
+            "criterion": "readability",
+            "result": "clear",
+            "evidence": "모든 텍스트가 완전하고 읽기 쉬운 상태로 표시됨."
+          },
+          {
+            "criterion": "geometry",
+            "result": "clear",
+            "evidence": "모든 요소와 텍스트가 비율 유지하며 정상적인 형태로 표시됨."
+          },
+          {
+            "criterion": "occlusion",
+            "result": "clear",
+            "evidence": "모든 컴포넌트가 서로 겹치거나 가리지 않음."
+          },
+          {
+            "criterion": "image-meaning",
+            "result": "clear",
+            "evidence": "사진과 그 옆의 텍스트 설명이 일치함."
+          },
+          {
+            "criterion": "chart-meaning",
+            "result": "clear",
+            "evidence": "차트 레이블 값과 막대의 길이가 일치함."
+          }
+        ],
+        "issues": []
+      }
+    }
+  ],
+  "visualComplete": true,
+  "sourceVersion": {
+    "commit": "c81cf511895a7014f7dc8c1429d60199bafd3cb1",
+    "dirty": false,
+    "sourceHash": "f763066bfc7e7c9061555101abbfe9915634c9d9d41e7ab452280a585f5825dc",
+    "promptVersion": "midscene-native-workflow-v1"
+  },
+  "executionPhase": "goal-selection",
+  "layoutAudits": [
+    {
+      "id": "5fd9897a-a937-4d63-a9f1-91c1b37bb648",
+      "promptVersion": "hybrid-occlusion-v1",
+      "checkpoint": "첫 화면",
+      "screenshot": "/artifacts/c45db87c-a88f-4d12-8cad-7eee2d70d8a9/layout-5fd9897a-a937-4d63-a9f1-91c1b37bb648.png",
+      "stable": true,
+      "candidates": [],
+      "warnings": []
+    }
+  ],
+  "screenshot": "/artifacts/c45db87c-a88f-4d12-8cad-7eee2d70d8a9/visual-0-screen.png",
+  "error": "모델 호출 한도 도달 (1회)",
+  "video": "/artifacts/c45db87c-a88f-4d12-8cad-7eee2d70d8a9/page@47467bf297d5a8fdfdd639337b1f9a58.webm",
+  "endedAt": "2026-10-06T06:58:57.817Z"
+}

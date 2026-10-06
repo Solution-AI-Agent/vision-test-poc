@@ -1,0 +1,32 @@
+{
+  "records": [
+    "85c987cd-be6d-4b99-8a82-53761287a7dc",
+    "88ca141e-bd67-4d3c-aa52-0670f6c9abad"
+  ],
+  "mode": "UI replay of original stored model responses, not a new live run",
+  "settings": "selection only; persistence is covered by SettingsStore regression",
+  "errors": [],
+  "links": [
+    {
+      "src": "/artifacts/85c987cd-be6d-4b99-8a82-53761287a7dc/layout-2623c58c-dd8f-4b26-8998-e2e7281cc478.svg",
+      "loaded": true
+    },
+    {
+      "src": "/artifacts/85c987cd-be6d-4b99-8a82-53761287a7dc/visual-0-screen.png",
+      "loaded": true
+    },
+    {
+      "src": "/artifacts/85c987cd-be6d-4b99-8a82-53761287a7dc/layout-2623c58c-dd8f-4b26-8998-e2e7281cc478.svg",
+      "loaded": true
+    },
+    {
+      "src": "/artifacts/85c987cd-be6d-4b99-8a82-53761287a7dc/layout-2623c58c-dd8f-4b26-8998-e2e7281cc478.png",
+      "loaded": true
+    },
+    {
+      "src": "/artifacts/85c987cd-be6d-4b99-8a82-53761287a7dc/layout-2623c58c-dd8f-4b26-8998-e2e7281cc478.png",
+      "loaded": true
+    }
+  ],
+  "mobileHorizontalOverflow": false
+}

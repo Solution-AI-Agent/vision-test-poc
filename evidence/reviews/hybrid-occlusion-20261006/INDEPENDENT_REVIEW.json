@@ -1,0 +1,217 @@
+{
+  "implementation": "8b114b5",
+  "liveV2Code": "90a422b",
+  "model": "qwen/qwen3-vl-30b-a3b-instruct",
+  "requests": 9,
+  "reportedCost": 0.00677097,
+  "preflightFailureRuns": 6,
+  "preflightModelCalls": 0,
+  "geometry": {
+    "initialNormalA": "0 candidates in 3/3",
+    "finalD": "1 merged candidate in 3/3; 6 content fragments, 48 hit samples",
+    "finalLocalControls": "A,F,G each no overlap candidate; F/G have other defects"
+  },
+  "modelFinalD": {
+    "clear": 1,
+    "visibleOverlapClaim": 2,
+    "independentCorrectDescriptions": 0,
+    "finding": "Both positive claims reversed the true occluder relationship. The chart covers the lower mug and order text, not the reverse. Model clear was a miss."
+  },
+  "scope": "First viewport only. One-call capped diagnostics, status limited by design. No task completion claims. Red boxes are model assertions on measured candidate regions, not independent confirmations. Pure vision results are separate from geometry assistance.",
+  "hashChecks": [
+    {
+      "runId": "4f5f0978-ae58-42e3-bf9f-68acb5392a4d",
+      "code": {
+        "commit": "ad6ff2fec0714e95971b17cb7cbca285b75553c1",
+        "dirty": false,
+        "sourceHash": "cbdf8e4fca22314561559a0b15ffd1c8231799ff22d358fee4fbefaf72d709ec",
+        "promptVersion": "midscene-native-workflow-v1"
+      },
+      "calls": 0,
+      "exactFullImage": []
+    },
+    {
+      "runId": "8e34c2e6-699a-428a-a30e-98c10023ecc7",
+      "code": {
+        "commit": "ad6ff2fec0714e95971b17cb7cbca285b75553c1",
+        "dirty": false,
+        "sourceHash": "cbdf8e4fca22314561559a0b15ffd1c8231799ff22d358fee4fbefaf72d709ec",
+        "promptVersion": "midscene-native-workflow-v1"
+      },
+      "calls": 0,
+      "exactFullImage": []
+    },
+    {
+      "runId": "9fa9e96a-57e5-4180-aa6f-1bfcc1daacfc",
+      "code": {
+        "commit": "ad6ff2fec0714e95971b17cb7cbca285b75553c1",
+        "dirty": false,
+        "sourceHash": "cbdf8e4fca22314561559a0b15ffd1c8231799ff22d358fee4fbefaf72d709ec",
+        "promptVersion": "midscene-native-workflow-v1"
+      },
+      "calls": 0,
+      "exactFullImage": []
+    },
+    {
+      "runId": "a52bf2e7-7f37-4ede-a9be-5cff18058adb",
+      "code": {
+        "commit": "ad6ff2fec0714e95971b17cb7cbca285b75553c1",
+        "dirty": false,
+        "sourceHash": "cbdf8e4fca22314561559a0b15ffd1c8231799ff22d358fee4fbefaf72d709ec",
+        "promptVersion": "midscene-native-workflow-v1"
+      },
+      "calls": 0,
+      "exactFullImage": []
+    },
+    {
+      "runId": "a7ed38e7-a662-42fd-89b3-f83d98f37e89",
+      "code": {
+        "commit": "ad6ff2fec0714e95971b17cb7cbca285b75553c1",
+        "dirty": false,
+        "sourceHash": "cbdf8e4fca22314561559a0b15ffd1c8231799ff22d358fee4fbefaf72d709ec",
+        "promptVersion": "midscene-native-workflow-v1"
+      },
+      "calls": 0,
+      "exactFullImage": []
+    },
+    {
+      "runId": "3de6a6b0-2f92-4754-8110-39063d4bae47",
+      "code": {
+        "commit": "ad6ff2fec0714e95971b17cb7cbca285b75553c1",
+        "dirty": false,
+        "sourceHash": "cbdf8e4fca22314561559a0b15ffd1c8231799ff22d358fee4fbefaf72d709ec",
+        "promptVersion": "midscene-native-workflow-v1"
+      },
+      "calls": 0,
+      "exactFullImage": []
+    },
+    {
+      "runId": "c45db87c-a88f-4d12-8cad-7eee2d70d8a9",
+      "code": {
+        "commit": "c81cf511895a7014f7dc8c1429d60199bafd3cb1",
+        "dirty": false,
+        "sourceHash": "f763066bfc7e7c9061555101abbfe9915634c9d9d41e7ab452280a585f5825dc",
+        "promptVersion": "midscene-native-workflow-v1"
+      },
+      "calls": 1,
+      "exactFullImage": []
+    },
+    {
+      "runId": "131401e1-2713-48af-a3c7-45675073518e",
+      "code": {
+        "commit": "c81cf511895a7014f7dc8c1429d60199bafd3cb1",
+        "dirty": false,
+        "sourceHash": "f763066bfc7e7c9061555101abbfe9915634c9d9d41e7ab452280a585f5825dc",
+        "promptVersion": "midscene-native-workflow-v1"
+      },
+      "calls": 1,
+      "exactFullImage": []
+    },
+    {
+      "runId": "4c70333f-1e27-4ea7-8087-a5001caf9d44",
+      "code": {
+        "commit": "c81cf511895a7014f7dc8c1429d60199bafd3cb1",
+        "dirty": false,
+        "sourceHash": "f763066bfc7e7c9061555101abbfe9915634c9d9d41e7ab452280a585f5825dc",
+        "promptVersion": "midscene-native-workflow-v1"
+      },
+      "calls": 1,
+      "exactFullImage": []
+    },
+    {
+      "runId": "e4a84d61-d88a-498a-bff5-311f013b1984",
+      "code": {
+        "commit": "c81cf511895a7014f7dc8c1429d60199bafd3cb1",
+        "dirty": false,
+        "sourceHash": "f763066bfc7e7c9061555101abbfe9915634c9d9d41e7ab452280a585f5825dc",
+        "promptVersion": "midscene-native-workflow-v1"
+      },
+      "calls": 1,
+      "exactFullImage": [
+        {
+          "actualRequest": "/artifacts/e4a84d61-d88a-498a-bff5-311f013b1984/model-request-1.png",
+          "original": "/artifacts/e4a84d61-d88a-498a-bff5-311f013b1984/layout-5c519f87-a0b0-49f7-a7b2-63a775ed2fb2.png",
+          "sha256": "b46a30f1f0795e773f21b4d391ae1cd701eace23450d538c1029b7ecb9503fc1",
+          "identical": true
+        }
+      ]
+    },
+    {
+      "runId": "69bb0a83-e522-45a3-9648-1b4c03e44700",
+      "code": {
+        "commit": "c81cf511895a7014f7dc8c1429d60199bafd3cb1",
+        "dirty": false,
+        "sourceHash": "f763066bfc7e7c9061555101abbfe9915634c9d9d41e7ab452280a585f5825dc",
+        "promptVersion": "midscene-native-workflow-v1"
+      },
+      "calls": 1,
+      "exactFullImage": []
+    },
+    {
+      "runId": "33fca7fb-b844-49ac-8896-2b81638937c5",
+      "code": {
+        "commit": "c81cf511895a7014f7dc8c1429d60199bafd3cb1",
+        "dirty": false,
+        "sourceHash": "f763066bfc7e7c9061555101abbfe9915634c9d9d41e7ab452280a585f5825dc",
+        "promptVersion": "midscene-native-workflow-v1"
+      },
+      "calls": 1,
+      "exactFullImage": []
+    },
+    {
+      "runId": "88ca141e-bd67-4d3c-aa52-0670f6c9abad",
+      "code": {
+        "commit": "90a422b34767415c5b1a36b2179591280b1d54ee",
+        "dirty": false,
+        "sourceHash": "fa26f69b257f4c25fec422198b0b513eeea8c6d0e50e5d9183e79ddd55e47ec6",
+        "promptVersion": "midscene-native-workflow-v1"
+      },
+      "calls": 1,
+      "exactFullImage": [
+        {
+          "actualRequest": "/artifacts/88ca141e-bd67-4d3c-aa52-0670f6c9abad/model-request-1.png",
+          "original": "/artifacts/88ca141e-bd67-4d3c-aa52-0670f6c9abad/layout-bb2f0c80-b6f6-4d79-bdeb-1f3baef3fa66.png",
+          "sha256": "b46a30f1f0795e773f21b4d391ae1cd701eace23450d538c1029b7ecb9503fc1",
+          "identical": true
+        }
+      ]
+    },
+    {
+      "runId": "85c987cd-be6d-4b99-8a82-53761287a7dc",
+      "code": {
+        "commit": "90a422b34767415c5b1a36b2179591280b1d54ee",
+        "dirty": false,
+        "sourceHash": "fa26f69b257f4c25fec422198b0b513eeea8c6d0e50e5d9183e79ddd55e47ec6",
+        "promptVersion": "midscene-native-workflow-v1"
+      },
+      "calls": 1,
+      "exactFullImage": [
+        {
+          "actualRequest": "/artifacts/85c987cd-be6d-4b99-8a82-53761287a7dc/model-request-1.png",
+          "original": "/artifacts/85c987cd-be6d-4b99-8a82-53761287a7dc/layout-2623c58c-dd8f-4b26-8998-e2e7281cc478.png",
+          "sha256": "b46a30f1f0795e773f21b4d391ae1cd701eace23450d538c1029b7ecb9503fc1",
+          "identical": true
+        }
+      ]
+    },
+    {
+      "runId": "dbc65e07-2dab-483d-bef6-375139a9231e",
+      "code": {
+        "commit": "90a422b34767415c5b1a36b2179591280b1d54ee",
+        "dirty": false,
+        "sourceHash": "fa26f69b257f4c25fec422198b0b513eeea8c6d0e50e5d9183e79ddd55e47ec6",
+        "promptVersion": "midscene-native-workflow-v1"
+      },
+      "calls": 1,
+      "exactFullImage": [
+        {
+          "actualRequest": "/artifacts/dbc65e07-2dab-483d-bef6-375139a9231e/model-request-1.png",
+          "original": "/artifacts/dbc65e07-2dab-483d-bef6-375139a9231e/layout-ee1ef643-bfe7-48ea-bad5-f2963a2e824b.png",
+          "sha256": "b46a30f1f0795e773f21b4d391ae1cd701eace23450d538c1029b7ecb9503fc1",
+          "identical": true
+        }
+      ]
+    }
+  ],
+  "ui": "Stored original responses replayed through actual UI; no fresh model call, no user runtime-data mutation. Desktop/mobile images loaded and page errors 0. Settings persistence covered separately by SettingsStore regression."
+}

@@ -1,0 +1,154 @@
+{
+  "id": "69bb0a83-e522-45a3-9648-1b4c03e44700",
+  "input": {
+    "mode": "autonomous",
+    "url": "http://127.0.0.1:4311/store/a",
+    "task": "",
+    "expected": "",
+    "query": "Midscene AI demo"
+  },
+  "settings": {
+    "agentInstructions": "",
+    "providerSort": "default",
+    "layoutAssist": true,
+    "model": "qwen/qwen3-vl-30b-a3b-instruct",
+    "family": "qwen3-vl",
+    "maxActions": 1,
+    "maxCalls": 1,
+    "maxSeconds": 120,
+    "maxTokens": 2048
+  },
+  "startedAt": "2026-10-06T06:59:49.518Z",
+  "status": "limited",
+  "outcome": "모델 호출 한도 도달 (1회)",
+  "stage": "종료",
+  "calls": 1,
+  "actions": 0,
+  "tokens": 2713,
+  "cost": 0.0007396,
+  "steps": [],
+  "findings": [],
+  "engine": "Midscene aiInput · aiAct · aiString · aiAssert / 1.14.0",
+  "transport": [
+    {
+      "phase": "visual-review",
+      "providerSort": "default",
+      "images": 1,
+      "texts": 3,
+      "screenshots": [
+        "/artifacts/69bb0a83-e522-45a3-9648-1b4c03e44700/model-request-1.jpg"
+      ],
+      "screenshot": "/artifacts/69bb0a83-e522-45a3-9648-1b4c03e44700/model-request-1.jpg",
+      "parsedOutput": {
+        "checks": [
+          {
+            "criterion": "readability",
+            "result": "clear",
+            "evidence": "모든 텍스트가 완전히 보이며 읽기 어렵지 않다."
+          },
+          {
+            "criterion": "geometry",
+            "result": "clear",
+            "evidence": "모든 요소와 텍스트가 적절한 비율로 표시되며, 왜곡이나 축소되지 않았다."
+          },
+          {
+            "criterion": "occlusion",
+            "result": "clear",
+            "evidence": "모든 구성 요소가 서로 겹치거나 가리지 않고 명확하게 보인다."
+          },
+          {
+            "criterion": "image-meaning",
+            "result": "clear",
+            "evidence": "빨간 머그잔 이미지와 관련된 설명이 일치한다."
+          },
+          {
+            "criterion": "chart-meaning",
+            "result": "not-applicable",
+            "evidence": "차트 또는 그래프 요소가 화면에 존재하지 않아 비교할 수 없다."
+          }
+        ],
+        "issues": []
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 919,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 4698,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "provider": "Novita",
+      "usage": {
+        "promptTokens": 2319,
+        "completionTokens": 394,
+        "cachedTokens": 0,
+        "cost": 0.0007396
+      },
+      "requestId": "gen-1791269990-rJ1MBhSTgPNVIX0yck6g"
+    }
+  ],
+  "visualAudits": [
+    {
+      "id": "030e23f9-7694-495b-a903-96d8865bf290",
+      "at": "2026-10-06T06:59:50.744Z",
+      "checkpoint": "첫 화면",
+      "screenshot": "/artifacts/69bb0a83-e522-45a3-9648-1b4c03e44700/model-request-1.jpg",
+      "call": 1,
+      "status": "reviewed",
+      "promptVersion": "visual-qa-v1-independent-checklist",
+      "result": {
+        "checks": [
+          {
+            "criterion": "readability",
+            "result": "clear",
+            "evidence": "모든 텍스트가 완전히 보이며 읽기 어렵지 않다."
+          },
+          {
+            "criterion": "geometry",
+            "result": "clear",
+            "evidence": "모든 요소와 텍스트가 적절한 비율로 표시되며, 왜곡이나 축소되지 않았다."
+          },
+          {
+            "criterion": "occlusion",
+            "result": "clear",
+            "evidence": "모든 구성 요소가 서로 겹치거나 가리지 않고 명확하게 보인다."
+          },
+          {
+            "criterion": "image-meaning",
+            "result": "clear",
+            "evidence": "빨간 머그잔 이미지와 관련된 설명이 일치한다."
+          },
+          {
+            "criterion": "chart-meaning",
+            "result": "not-applicable",
+            "evidence": "차트 또는 그래프 요소가 화면에 존재하지 않아 비교할 수 없다."
+          }
+        ],
+        "issues": []
+      }
+    }
+  ],
+  "visualComplete": true,
+  "sourceVersion": {
+    "commit": "c81cf511895a7014f7dc8c1429d60199bafd3cb1",
+    "dirty": false,
+    "sourceHash": "f763066bfc7e7c9061555101abbfe9915634c9d9d41e7ab452280a585f5825dc",
+    "promptVersion": "midscene-native-workflow-v1"
+  },
+  "executionPhase": "goal-selection",
+  "layoutAudits": [
+    {
+      "id": "09110677-3fe2-416f-95de-959703f167b1",
+      "promptVersion": "hybrid-occlusion-v1",
+      "checkpoint": "첫 화면",
+      "screenshot": "/artifacts/69bb0a83-e522-45a3-9648-1b4c03e44700/layout-09110677-3fe2-416f-95de-959703f167b1.png",
+      "stable": true,
+      "candidates": [],
+      "warnings": []
+    }
+  ],
+  "screenshot": "/artifacts/69bb0a83-e522-45a3-9648-1b4c03e44700/visual-0-screen.png",
+  "error": "모델 호출 한도 도달 (1회)",
+  "video": "/artifacts/69bb0a83-e522-45a3-9648-1b4c03e44700/page@e96849ea85439201f032108a194e8e48.webm",
+  "endedAt": "2026-10-06T06:59:55.538Z"
+}

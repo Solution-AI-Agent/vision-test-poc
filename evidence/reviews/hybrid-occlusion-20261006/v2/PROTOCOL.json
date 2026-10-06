@@ -1,0 +1,14 @@
+{
+  "commit": "90a422b34767415c5b1a36b2179591280b1d54ee",
+  "order": [
+    "d",
+    "d",
+    "d"
+  ],
+  "model": "qwen/qwen3-vl-30b-a3b-instruct",
+  "maxTotalRequests": 3,
+  "maxRequestsPerRun": 1,
+  "maxSeconds": 120,
+  "maxTokens": 2048,
+  "scope": "First screen diagnostic, intentionally no task actions. A has no geometry candidates: independent visual QA uses its one request. D hybrid review has priority; remaining QA/task stages are incomplete. No per-page defect labels or expected answers in prompts. No retry after batch."
+}

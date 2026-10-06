@@ -1,0 +1,52 @@
+{
+  "id": "8e34c2e6-699a-428a-a30e-98c10023ecc7",
+  "input": {
+    "mode": "autonomous",
+    "url": "http://127.0.0.1:4311/store/d",
+    "task": "",
+    "expected": "",
+    "query": "Midscene AI demo"
+  },
+  "settings": {
+    "agentInstructions": "",
+    "providerSort": "default",
+    "layoutAssist": true,
+    "model": "qwen/qwen3-vl-30b-a3b-instruct",
+    "family": "qwen3-vl",
+    "maxActions": 1,
+    "maxCalls": 1,
+    "maxSeconds": 120,
+    "maxTokens": 2048
+  },
+  "startedAt": "2026-10-06T06:56:53.404Z",
+  "status": "failed",
+  "outcome": "Vision 모델 초기화에 실패했습니다.",
+  "stage": "실패 · Vision 모델 초기화",
+  "calls": 0,
+  "actions": 0,
+  "tokens": 0,
+  "cost": null,
+  "steps": [],
+  "findings": [],
+  "engine": "Midscene aiInput · aiAct · aiString · aiAssert / 1.14.0",
+  "transport": [],
+  "visualAudits": [],
+  "visualComplete": false,
+  "sourceVersion": {
+    "commit": "ad6ff2fec0714e95971b17cb7cbca285b75553c1",
+    "dirty": false,
+    "sourceHash": "cbdf8e4fca22314561559a0b15ffd1c8231799ff22d358fee4fbefaf72d709ec",
+    "promptVersion": "midscene-native-workflow-v1"
+  },
+  "executionPhase": "model-initialization",
+  "failureStage": "브라우저 준비",
+  "diagnostic": {
+    "code": "MODEL_INITIALIZATION_FAILED",
+    "phase": "model-initialization",
+    "message": "Vision 모델 초기화에 실패했습니다.",
+    "action": "설정한 모델 ID·Midscene 모델 family와 환경을 확인하세요."
+  },
+  "error": "Vision 모델 초기화에 실패했습니다.",
+  "video": "/artifacts/8e34c2e6-699a-428a-a30e-98c10023ecc7/page@56dad95d5d917e87feab2b4656aaa700.webm",
+  "endedAt": "2026-10-06T06:56:54.609Z"
+}

@@ -1,0 +1,3 @@
+import {chromium} from 'playwright';import {scanLayout} from '../../apps/platform/server/layout-qa';import {mkdir,writeFile}from'node:fs/promises';
+const out='artifacts/hybrid-occlusion-20261006/local';await mkdir(out,{recursive:true});const b=await chromium.launch();const report=[];
+try{const p=await b.newPage({viewport:{width:1280,height:720}});for(const site of ['a','d','f','g']){await p.goto('http://127.0.0.1:4311/store/'+site);await p.evaluate(()=>document.fonts.ready);await p.waitForTimeout(300);const scan=await scanLayout(p);await p.screenshot({path:out+'/'+site+'.png'});report.push({site,...scan});}await writeFile(out+'/RESULTS.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report));}finally{await b.close();}

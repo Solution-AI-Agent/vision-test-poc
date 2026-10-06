@@ -1,0 +1,71 @@
+[
+  {
+    "id": "01-d",
+    "runId": "88ca141e-bd67-4d3c-aa52-0670f6c9abad",
+    "calls": 1,
+    "cost": 0.00110571,
+    "status": "limited",
+    "candidates": 1,
+    "review": {
+      "regions": [
+        {
+          "id": "region-1",
+          "verdict": "clear",
+          "order": "measured",
+          "occluder": "빨간 컵 이미지",
+          "affected": "이번 달 인기 상품 비율 텍스트와 비율 정보",
+          "evidence": "빨간 컵 이미지와 이 영역 사이에 충분한 간격이 존재하여 가림이 발생하지 않음",
+          "impact": "사용자에게 정보를 명확하게 전달할 수 있음",
+          "alternative": "가림이 발생할 수 있다는 추정이 가능하나, 실제 화면에서 간격이 충분하여 clear로 판단"
+        }
+      ]
+    },
+    "warnings": []
+  },
+  {
+    "id": "02-d",
+    "runId": "85c987cd-be6d-4b99-8a82-53761287a7dc",
+    "calls": 1,
+    "cost": 0.00054465,
+    "status": "limited",
+    "candidates": 1,
+    "review": {
+      "regions": [
+        {
+          "id": "region-1",
+          "verdict": "visible-overlap",
+          "order": "measured",
+          "occluder": "빨간 컵 이미지",
+          "affected": "이번 달 인기 상품 비율 텍스트와 차트",
+          "evidence": "빨간 컵 이미지가 텍스트와 차트 위에 위치하여 일부를 가리고 있음",
+          "impact": "사용자가 정보를 완전히 읽지 못할 수 있음",
+          "alternative": "디자인적으로 의도된 요소일 수 있음"
+        }
+      ]
+    },
+    "warnings": []
+  },
+  {
+    "id": "03-d",
+    "runId": "dbc65e07-2dab-483d-bef6-375139a9231e",
+    "calls": 1,
+    "cost": 0.00054465,
+    "status": "limited",
+    "candidates": 1,
+    "review": {
+      "regions": [
+        {
+          "id": "region-1",
+          "verdict": "visible-overlap",
+          "order": "measured",
+          "occluder": "빨간 컵 이미지",
+          "affected": "이번 달 인기 상품 비율 텍스트와 차트",
+          "evidence": "빨간 컵 이미지가 텍스트와 차트 위에 위치하여 일부를 가리고 있음",
+          "impact": "사용자가 정보를 완전히 읽지 못할 수 있음",
+          "alternative": "디자인적으로 의도된 요소일 수 있음"
+        }
+      ]
+    },
+    "warnings": []
+  }
+]
