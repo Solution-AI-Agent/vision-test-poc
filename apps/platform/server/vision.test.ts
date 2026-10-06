@@ -418,7 +418,7 @@ for (const missingFocus of [false, true]) {
       apiKey: "stub-key",
       family: "gpt-5" as const, // This stub returns browser pixels; Qwen's normalized contract has a separate test.
       maxActions: 3,
-      maxCalls: 6,
+      maxCalls: 7,
     };
     const run = makeRun(
       inputSchema.parse({
@@ -464,6 +464,10 @@ for (const missingFocus of [false, true]) {
               create: async (body: any) => {
                 const audit = auditStub(body); if (audit) return audit;
                 const demand = JSON.stringify(body.messages);
+                if (demand.includes("INPUT_TARGET_LOCATE")) {
+                  expect(demand).not.toContain("INPUT_HIDDEN_SENTINEL");
+                  return { choices: [{ message: { role: "assistant", content: '<data-json>{"visible":true,"x":200,"y":125,"reason":"화면의 입력칸 내부"}</data-json>' }, finish_reason: "stop", index: 0 }] };
+                }
                 requests.push(demand);
                 expect(demand).not.toContain("INPUT_HIDDEN_SENTINEL");
                 attempt++;
@@ -485,7 +489,7 @@ for (const missingFocus of [false, true]) {
                         rationale: "Fixture",
                         action:
                           attempt === 1
-                            ? { type: "type", text: "sample", x: 200, y: 125 }
+                            ? { type: "type", text: "sample", x: 10, y: 10, target: "Visible field" }
                             : { type: "finish" },
                         verdict: attempt === 1 ? "continue" : "pass",
                         finding: null,
@@ -511,6 +515,7 @@ for (const missingFocus of [false, true]) {
         }),
       },
     );
+    expect(run.steps[0].inputLocation).toMatchObject({x: 200, y: 125});
     expect(run.actions).toBe(3); // Focus, selection and replacement are counted separately.
     expect(
       run.steps[0].toolCalls?.map((t) => [t.action.type, t.completed]),
@@ -522,7 +527,7 @@ for (const missingFocus of [false, true]) {
     expect(requests[1]).toContain("independent visual input check");
     expect(requests[1]).not.toContain("History:");
     expect(run.steps[0].inputConfirmation?.screenshot).toBe(
-      run.transport.filter(r => r.phase !== "visual-review")[1].screenshot,
+      run.transport.find(r => r.phase === "input-confirmation")!.screenshot,
     );
     expect(run.steps[0].inputConfirmation?.call).toBe(run.transport.findIndex(r => r.phase === "input-confirmation") + 1);
     if (missingFocus) {
@@ -531,13 +536,13 @@ for (const missingFocus of [false, true]) {
       expect(run.steps[0].inputConfirmation?.status).toBe("not-visible");
       expect(run.status).toBe("limited");
       expect(run.outcome).toContain("입력 결과");
-      expect(run.calls).toBe(2 + run.visualAudits!.filter(a => a.call > 0).length);
+      expect(run.calls).toBe(3 + run.visualAudits!.filter(a => a.call > 0).length);
       expect(run.steps).toHaveLength(1); // Never accept a subsequent pass or submit on silent loss.
     } else {
       expect(actualText).toBe("sample");
       expect(run.steps[0].inputConfirmation?.status).toBe("verified");
       expect(run.status).toBe("completed");
-      expect(run.calls).toBe(3 + run.visualAudits!.filter(a => a.call > 0).length);
+      expect(run.calls).toBe(4 + run.visualAudits!.filter(a => a.call > 0).length);
     }
     expect(run.findings).toHaveLength(0);
   }, 30000);
