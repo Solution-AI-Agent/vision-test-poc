@@ -2,17 +2,60 @@
 
 Local Web Vision QA feasibility app for `vision-test`. The implementation is in the `poc-maker/vision-qa` worktree. Original uncommitted files in `REPOS/vision-test` are preserved.
 
-## Run
+## Install and run the monorepo
 
-Node 24 and npm are required.
+Requires Node 24 and npm. One root lockfile installs all three npm workspaces:
+
+| Workspace | Source | Purpose |
+|---|---|---|
+| `@vision-qa/platform` | `apps/platform/` | QA application, server and platform tests |
+| `@vision-qa/sample` | `sample-site/` | Independent test-target store and order tests |
+| `@vision-qa/ui` | `packages/ui/` | Shared shadcn components, utility and existing theme |
+
+From a fresh clone, in the repository root:
 
 ```sh
 npm ci
 npx playwright install chromium
-npm run dev
+npm test
+npm run build
 ```
 
-Open **http://127.0.0.1:4310**. For a production build: `npm run build`, then `npm start`. `PORT` can override 4310. This is a local single-user PoC, bound to loopback; not a multi-user hosted service.
+`npm test` runs every workspace: all platform and sample tests, plus shared UI type checking. `npm run build` type-checks the repository and builds both apps and shared UI. Dependencies are resolved by npm workspaces, not copied manually between apps.
+
+Start the QA platform in one terminal:
+
+```sh
+npm start
+# equivalent: npm run start --workspace @vision-qa/platform
+```
+
+Open **http://127.0.0.1:4310**. Start the independent sample in another terminal:
+
+```sh
+npm run sample:start
+# equivalent: npm run start --workspace @vision-qa/sample
+```
+
+Open **http://127.0.0.1:4311/order**; presentation controls are separately at **http://127.0.0.1:4311/operator**. Stop either app independently; the sample does not require the QA platform. Both bind loopback for this local single-user PoC. Production start uses a Node launcher rather than shell environment assignment; it has been executed on macOS. Windows cmd execution remains untested, and this does not add a Windows Native QA driver.
+
+Development: `npm run dev` for platform, `npm run sample:dev` for sample. App-only builds: `npm run platform:build` and `npm run sample:build`. Existing root start/dev/sample commands remain supported. `PORT` overrides platform 4310; `SAMPLE_PORT` overrides sample 4311, but the platform target allowlist remains the exact default sample URL.
+
+With both servers running, `npm run sample:test` runs the same functional suite against all six sample states. `npx playwright test --config evaluation/playwright.config.ts` checks the older platform screenshot fixtures; these do not invoke a paid model.
+
+### Runtime data and evidence restoration
+
+All platform launch commands read/write **repository-root `.data/` and `artifacts/`**, independent of workspace working directory. Existing local data stays in place. Recorded `/demo` responses are loaded from `.data/demo-evidence.json`; original run files referenced by `/artifacts/<run-id>/...` must be restored under `artifacts/<run-id>/...`. Restoring evidence must not relocate them into `apps/platform/`. The root `evidence/` and `media/` publication bundle is maintained separately. Once that delivery bundle is present, run:
+
+```sh
+npm run evidence:check    # verify preserved source checksums
+npm run evidence:restore  # import artifacts/ and .data/, no model calls
+npm run media:serve       # http://127.0.0.1:4312/media/index.html
+```
+
+The evidence commands call `evidence/restore.mjs` (check uses `--check`), supplied by the delivery bundle. Existing different runtime files are not overwritten by that importer. The media server mounts only `/media` and `/evidence` to those publication directories; `/` redirects to `/media/index.html`. Relative source links stay valid. It does not serve the repository root or `.data/`, and does not need either application running. Without restored records, the app shows that recorded evaluation is unavailable. Evidence/media content and restore verification are integrated separately; the monorepo migration itself does not alter those directories.
+
+Build outputs are `apps/platform/dist/` and `sample-site/dist/`. Do not copy old root `dist/` as a deployment build. The independent app's business logic and visible states are unchanged. No new paid evaluation or model-detection claim is part of the monorepo migration.
 
 1. Open **모델 & 설정**, enter an OpenRouter API key, a vision-capable model ID and its Midscene family, and apply limits.
 2. **인증 연결 확인** tests the authentication endpoint only. It does not call an image model.
@@ -52,7 +95,7 @@ npx tsx scripts/youtube-check.ts  # real public YouTube locator comparison, no V
 npx tsx scripts/lifecycle-check.ts # missing-key session only: action cap and immediate stop
 ```
 
-`server/vision.test.ts` uses a **stub model**, checks the actual Midscene request for an image and absence of a hidden DOM sentinel, forbids DOM extraction, executes the returned coordinate against a real local button and verifies the call cap. It does not prove OpenRouter compatibility or QA judgment quality.
+`apps/platform/server/vision.test.ts` uses a **stub model**, checks the actual Midscene request for an image and absence of a hidden DOM sentinel, forbids DOM extraction, executes the returned coordinate against a real local button and verifies the call cap. It does not prove OpenRouter compatibility or QA judgment quality.
 
 UI validation outputs: `artifacts/ui-check/RESULT.json`, screenshots and raw WebM. YouTube baseline output: `artifacts/youtube-check/RESULT.json` and the referenced run directory. Further facts and limitations are recorded in `HANDOFF.md`.
 

@@ -3,6 +3,9 @@ import { expect } from "@playwright/test";
 import { mkdir, writeFile } from "node:fs/promises";
 import { execFileSync } from "node:child_process";
 import { sampleBaseline } from "./sample-baseline";
+import { fileURLToPath } from "node:url";
+// Keep functional recordings at repository root even when npm enters the sample workspace.
+process.chdir(fileURLToPath(new URL("../", import.meta.url)));
 const commit=execFileSync("git",["rev-parse","HEAD"],{encoding:"utf8"}).trim();
 const folder=`artifacts/standalone-sample-${new Date().toISOString().replace(/[:.]/g,"-")}`;
 await mkdir(folder,{recursive:true});const browser=await chromium.launch();const results:any[]=[];

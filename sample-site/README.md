@@ -11,7 +11,7 @@ npm run sample:build
 npm run sample:start
 ```
 
-For development: `npm run sample:dev`. Separately `npm run build && npm start` runs the existing QA platform on 4310. Both can run at once; stop either process independently. Default sample port 4311 (`SAMPLE_PORT` can override for development, but platform allowlisting remains exact 4311/order). Build output sample-site/dist is separate from platform dist.
+For development: `npm run sample:dev`. Separately `npm run build && npm start` runs the existing QA platform on 4310. Both can run at once; stop either process independently. Default sample port 4311 (`SAMPLE_PORT` can override for development, but platform allowlisting remains exact 4311/order). Build output sample-site/dist is separate from platform apps/platform/dist.
 
 In operator, select presentation and open/reload the neutral /order URL. Default is normal on process restart. Reset to normal button restores it. Checkout chooses Red mug ($12), notebook ($32) or clips ($8), quantity 1–5, valid recipient/email. POST /api/orders validates and computes cents on the sample server; no client-supplied price accepted, no payment, no external mutation or order persistence. Start another order resets the confirmation; reload starts a fresh checkout. Presentation is local process-wide, suitable for one operator at a time.
 
@@ -37,3 +37,7 @@ Only that exact origin/path, with no credentials/query/hash, is added. Arbitrary
 `npm test`: full repository unit/SDK stub suite, including authoritative totals, invalid inputs and exact platform scope. `npm run build` and `npm run sample:build`: both typechecked apps. `npm run sample:test`: same meaningful real-browser suite, unchanged across all six states: invalid email/quantity, product selection, price recalculation, selected Red mug identity/image accessible text, 80/20 chart DOM data, server 201 response/calculated amounts, recipient/order/receipt/instruction content, reset. Invalid API input=400, foreign operator origin=403, no page errors.
 
 Captures at 1280×720 viewport are full-page browser screenshots (not model input). Checkout and confirmation are both recorded per state, with WebM and separate RESULTS.json. No pixel/color/bar-size assertions are hidden in the functional suite. Screenshot comparisons or purpose-built image/chart checks can detect these faults too; this is not a claim that Playwright cannot.
+
+## npm workspace
+
+This app is `@vision-qa/sample`. Install once with `npm ci` at the repository root. Direct app commands are `npm run dev --workspace @vision-qa/sample`, `npm run build --workspace @vision-qa/sample`, `npm run start --workspace @vision-qa/sample`, and `npm run test --workspace @vision-qa/sample`. Shared UI imports resolve through the local `@vision-qa/ui` workspace; they do not import the platform application. Root compatibility commands above remain valid.
