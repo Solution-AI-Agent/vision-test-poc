@@ -84,15 +84,13 @@ Keys live only in the server process memory and are not returned to the client, 
 
 React/Vite + Tailwind v4 and official shadcn/ui Radix Nova components form the UI. A local Express server owns session settings, scenario storage, execution and evidence. Only one run is active at once.
 
-`Screenshot → Midscene aiQuery(domIncluded:false) → Zod plan validation → Playwright mouse/keyboard → next screenshot`
+`Screenshot → Midscene aiQuery 업무 분해 → aiInput / aiAct → aiString 값 확인 → aiAssert 결과 확인`
 
-Midscene 1.14.0 first selects a concrete screenshot-grounded hypothesis/task/expected result in autonomous mode, then extracts one-step action plans and judgments from screenshots and observation history. Goal selection is logged and does not receive the registered scenario or search term. We deliberately orchestrate steps instead of unbounded `aiAct`, so external requests and coordinate actions have measurable independent limits. This is a Midscene-based planner, **not** a claim that its default `aiAct` loop has been benchmarked.
+Midscene 1.14.0이 화면에서 직접 입력칸을 찾고(`aiInput`, `deepLocate:true`, `mode:replace`), 클릭·스크롤은 `aiAct`로 수행합니다. 자체 좌표 클릭 루프는 현재 실행 경로에서 제거했습니다. 자율 모드의 업무 선택과 등록 시나리오는 같은 실행기를 사용합니다. 실행 목록의 입력을 확인하지 못하면 다음 단계로 넘어가지 않습니다. 입력 후 `aiString`에는 기대값을 주지 않고 실제 보이는 값만 읽게 하며 코드에서 비교합니다. 마지막 `aiAssert`는 원래 업무와 결과를 현재 화면에 대조합니다. 이것도 모델 판단이므로 무오류 보증은 아닙니다.
 
-The product vision path never calls locators or requests DOM/accessibility trees. The exact image passed in each model request is saved as `model-request-N.png/jpg`. Each step links that image and its post-action screenshot. Brief visible observations/action reasons are recorded; hidden reasoning is not exported. Actual response model, request ID, duration, reported token use and reported cost are recorded when available. Costs are provider-response sums, not guaranteed billing totals. Missing costs are shown as unavailable, not zero.
+The production Vision path disables DOM extraction and has no locator fallback. Midscene owns localization and execution. Every transmitted image, including deep-locate crops, is saved without re-encoding as `model-request-N[-image-M].jpg/png`. Request count, duration, response usage/cost, SDK actions and before/after frames are retained. Native XML responses are preserved with the transport record; historical runs keep their original engine/version.
 
-The OpenRouter SDK has no automatic retries; Midscene parse/API retries are disabled. The app permits one explicit structured-output correction request per run, still within the actual request cap. Two identical before/after PNG screens trigger one autonomous goal replan; continued stagnation ends with an explicit inconclusive result. Dynamic content can prevent exact-byte stagnation detection, so hard limits remain the backstop. Actual outgoing request count, time, response tokens per call and actions are bounded. There is no dollar-denominated budget enforcement. Provider error bodies are replaced with a generic error before SDK/Midscene logging. Model compatibility, especially coordinate accuracy, remains model-specific.
-
-Text plans must include screenshot-selected input coordinates. The executor clicks that target, selects existing content, and replaces it; these are three separately counted tool actions. Qwen planner coordinates use an explicit 0–1000 contract and are converted once to the 1280×720 browser viewport. Other model families retain pixel coordinates. The raw model response and executed pixel coordinates are recorded separately. A fresh image-only request checks the visible field value without prior action history. Tool completion, model visual confirmation and independent QA remain distinct. Missing/mismatching/uncertain confirmation or unchanged input screenshots prevent silent submission/success and cause a bounded replan or explicit inconclusive stop. This is a model visual read with a conservative unchanged-image guard, not an independent OCR guarantee. Confirmation requests and focus actions consume the same existing limits.
+Every actual model request and SDK action consumes the configured limits. An `Input` counts as one SDK action (including its internal focus/replacement), unlike the historical custom executor's three calls. Stop/time limits abort provider requests and close Chromium. Provider retries and caches are disabled. Midscene can replan only within the same request/action/time limits. There is no dollar-denominated budget enforcement. Raw provider error bodies are redacted. Independent visual QA remains a separate reviewer and does not inherit task completion as visual correctness.
 
 Public HTTPS YouTube hosts and exact local targets `http://127.0.0.1:4310/fixture/order`, `http://127.0.0.1:4310/demo/order`, and `http://127.0.0.1:4311/order` are the current target scope. Other local ports/paths, fixture query/hash and the operator route are rejected for Vision navigation. Top-level navigation is restricted to those hosts. Chromium uses an isolated unauthenticated context. The planning instructions allow only reversible search/browse/playback/scroll actions and forbid account changes. This is a PoC prompt boundary, not a general adversarial browsing security guarantee.
 
@@ -225,13 +223,8 @@ Node fetch는 명시적 Undici dispatcher를 사용하므로 Node 24.0에서 시
 
 `실행 종료`는 전체 QA 합격이 아닙니다. `검사한 화면에서 시각 후보 없음`도 사이트 전체의 정상 보증이 아닙니다. 이 추가 경로는 모의 공급자로 정상·후보 재현·불일치·잘못된 좌표·한도를 검증했습니다. 2026-10-06 실제 재현에서 기존 단일 화면 검사는 C/D/G를 놓쳤습니다. 정상 기준 이미지를 제공한 별도 비교는 일부 차이를 지적했지만 미탐·오탐도 남았습니다. 기능 수정·붉은 박스 표시 지원은 검출 신뢰성의 입증과 다릅니다.
 
-### 한국어 요약과 입력 동작
+### 한국어 요약과 Midscene 입력 동작
 
-새 모델 요청은 관찰·업무·결함 설명을 간단한 한국어로 작성하도록 지정합니다. 화면에는 짧은 요약과 한국어 행동명을 보여주고 긴 문장·기술 좌표는 펼쳐 봅니다. 과거 외국어 원문은 자동 번역한 것처럼 바꾸지 않고 원문으로 보존합니다. 입력은 포커스 → 전체 선택 → 값 교체를 각각 집계하고, 선택 직후 캡처와 입력 후 캡처를 대조합니다. 포커스나 선택 강조만 바뀐 것을 값 입력 성공으로 보지 않으며, 새 모델 화면 확인도 계속 수행합니다.
+새 관찰·업무·후보는 간단한 한국어로 요청하고 과거 외국어 원문은 보존합니다. 실행 화면의 **Midscene 업무 진행**에서 대기/수행/입력값 확인/미확인을 구분합니다. 위치 찾기·값 읽기·결과 확인·시각 QA는 모두 호출 한도에 포함됩니다. 여러 필드와 제출을 수행하려면 충분한 호출 한도를 설정해야 합니다.
 
-
-입력 전에는 새 화면에서 필드의 라벨과 편집 가능한 내부 위치를 별도로 찾습니다. Qwen 계열의 행동 좌표는 명시한 0~1000 좌표 계약에서 브라우저 픽셀로 한 번 변환합니다. 입력 위치 확인·값 확인·시각 QA는 모두 기존 호출 한도에 포함되므로, 여러 입력과 제출을 요구하는 업무는 행동/호출 한도가 필요합니다. 예를 들어 세 필드를 채우는 동작만 포커스·전체 선택·입력으로 최소 9개 도구 행동을 사용합니다.
-
-모델의 `pass`는 새 화면과 원래 업무 요구만 받는 별도 완료 검사로 재확인합니다. 확인 실패·형식 오류·남은 호출 부족은 `업무 완료 미확인`으로 종료하고, 화면의 주문 미리보기를 제출 완료로 취급하지 않도록 합니다. 이 검사도 같은 모델이므로 완벽한 보증은 아니며, 실제 최종 화면 검수가 필요합니다. 관찰과 기대 상태가 똑같은 업무 성공 응답은 결함 후보로 올리지 않습니다.
-
-2026-10-06 전체 주문 실측에서는 독립 완료 검사도 빈 입력칸을 입력됐다고 오판했습니다. 현재 모델의 장기 업무 완료는 입증되지 않았습니다. `pass`와 미실행 클릭·입력 등이 함께 있는 모순은 코드에서 `업무 완료 미확인`으로 차단합니다. 수량 교체 성공과 전체 주문 완료는 구분하며 [전체 실제 실패 원장](evidence/recordings/lead-live-authorized-20261006/SUMMARY.json)을 보존합니다.
+이전 자체 좌표 실행기의 수량 개선과 전체 주문 실패는 [이전 원장](evidence/recordings/lead-live-authorized-20261006/SUMMARY.json)에 그대로 보존합니다. 새 native 실행 결과와 합쳐 성공률을 계산하지 않습니다. 시각 결함 미탐은 행동 API 교체만으로 해결됐다고 주장하지 않습니다.

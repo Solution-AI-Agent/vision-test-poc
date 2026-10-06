@@ -983,6 +983,15 @@ export default function App() {
                           <summary>이 실행에 적용한 Agent 지침</summary>
                           <p className="whitespace-pre-wrap break-words text-sm text-muted-foreground">{current.settings.agentInstructions || "공통 지침 없음 (기본 계획·판단 기준 사용)"}</p>
                         </details>
+                        {current.workflow && <section className="mb-5 rounded-lg border p-4 space-y-2">
+                          <h3 className="font-medium">Midscene 업무 진행</h3>
+                          {current.workflow.steps.map((step,index)=><div key={index} className="text-sm">
+                            <span className="font-medium">{index+1}. {step.description}</span>{" · "}
+                            {{pending:"대기",running:"수행 중",verified:"입력값 확인",unverified:"입력 미확인",executed:"행동 수행"}[step.status]}
+                          </div>)}
+                          {current.workflow.assertion && <p className="text-sm">결과 확인: {current.workflow.assertion.pass ? "모델 확인" : "미확인"} · {current.workflow.assertion.reason}</p>}
+                          <p className="text-xs text-muted-foreground">입력은 화면에서 값을 다시 읽어 확인합니다. 행동 수행과 최종 업무 결과·시각 QA 판정은 구분합니다.</p>
+                        </section>}
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
                           <StatusRow label="결과" value={current.outcome} />
                           <StatusRow

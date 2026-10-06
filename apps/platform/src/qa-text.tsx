@@ -12,6 +12,7 @@ export function QaText({text,label="관찰"}:{text:string;label?:string}) {
 }
 export function actionLabel(action:Action) {
   switch(action.type){
+    case "midscene":return action.description;
     case "click":return `화면 클릭 (${action.x}, ${action.y})`;
     case "type":return `입력값을 ‘${action.text.length>40?action.text.slice(0,40)+"…":action.text}’로 변경`;
     case "key":return action.key==="ControlOrMeta+A"?"입력 내용 전체 선택":`${action.key} 키 누르기`;
