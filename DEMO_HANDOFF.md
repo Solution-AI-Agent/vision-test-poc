@@ -7,7 +7,7 @@ Open **http://127.0.0.1:4310/demo**. Select normal or rendering fault, then clic
 Frozen confirmation source **373ecad3216c92f9ace7785df91c7c59ed9dcb6e**, same qwen/qwen3-vl-30b-a3b-instruct. One current screenshot plus common readability requirement, no DOM, fault flag, expected answer, history or reference image. Same meaningful baseline assertions for both states (only target URL differs): entered recipient, items/quantities/prices, semantic total, order completion, full instruction DOM text, rendered receipt element visibility.
 
 - Normal: 3/3 DOM PASS, 3/3 actual Vision PASS.
-- Selected blank-panel fault: 3/3 DOM PASS, 3/3 actual Vision candidate with location and unreadable receipt reason, matching originals. Candidate is not automatically a confirmed production defect; independent POC-LEAD review pending.
+- Selected blank-panel fault: 3/3 DOM PASS, 3/3 actual Vision candidate with location and unreadable receipt reason, matching originals. This selected demo was independently accepted; it is not a confirmed production defect.
 - Six confirmation requests, provider-reported cost **$0.00255091**, 3.550–6.123 seconds/trial.
 - Additional case-selection phase total **9 requests / $0.00356816**: normal probe once, first smaller promotional-panel candidate once (missed), second larger blank-panel candidate once (detected), six confirmation calls. No format retry or extra calls. `.data/demo-call-ledger.json` prevents more within this phase. Cost is response-reported, not audited billing.
 - Real Playwright reference screenshot suite detects this selected fault too. The demonstrated value is supplementing DOM/function assertions with current-screen natural-language judgment without a reference image; not something Playwright itself cannot test.
@@ -25,12 +25,20 @@ This is a selected, intentionally injected demo case. It is not held-out defect 
 
 ## Re-run without a key
 
-`npm install`, `npm run build`, `npm start`. Default server 127.0.0.1:4310. Restore local evidence manifest from preserved artifacts:
+From the repository root:
 
-```
-npx tsx scripts/demo-publish.ts artifacts/demo-probe-2026-10-05T01-20-29-400Z artifacts/demo-candidate-2026-10-05T01-21-26-894Z artifacts/demo-verify-2026-10-05T01-22-24-239Z
+```sh
+npm ci
+npx playwright install chromium
+npm run build
+npm run evidence:restore
+npm start
 ```
 
-Manifest is a projection of actual records, not a hardcoded pass/fail decision. Evidence is local/ignored; source checkout without the artifact bundle shows empty state. API key is not needed to open or switch the demo. Bundle excludes API keys/settings. Run complete `npm test` and `npm run build`; actual screenshot comparison `npx playwright test --config evaluation/playwright.config.ts`. Tests launch local Chromium. UI check `npx tsx scripts/demo-ui-check.ts` records desktop/mobile, toggles, order confirmation and evidence links. No paid calls in these commands.
+The included `evidence/recordings/` snapshot contains the raw logs, exact input JPEGs and WebM recordings. Restoration checks the manifest hashes, copies them to root `artifacts/`, and creates `.data/demo-evidence.json` from the original three batches. Existing different local runtime data is not overwritten. No API key or model call is needed to view the recorded demo. See [evidence/README.md](evidence/README.md).
+
+Final videos, scripts and HTML are in [media/index.html](media/index.html); run `npm run media:serve` and open http://127.0.0.1:4312/media/index.html. v5 describes this historical integrated demo, not a Vision validation of the later separate 4311 site.
+
+Run complete `npm test` and `npm run build`; actual screenshot comparison is `npx playwright test --config evaluation/playwright.config.ts`. UI check `npx tsx scripts/demo-ui-check.ts` records desktop/mobile, toggles, order confirmation and evidence links. These checks make no paid calls.
 
 Only exact `/fixture/order` and `/demo/order` at 127.0.0.1:4310 are additional agent targets; dashboard/operator/arbitrary localhost/query strings remain excluded. A new live evaluation needs explicit new scope: this phase's 9-call cap is exhausted. Same scripts retain cap and no retries.

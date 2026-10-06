@@ -1,6 +1,10 @@
 # Vision QA Lab
 
-Local Web Vision QA feasibility app for `vision-test`. The implementation is in the `poc-maker/vision-qa` worktree. Original uncommitted files in `REPOS/vision-test` are preserved.
+Vision 기반 Web QA 플랫폼, 독립 테스트용 샘플사이트, 실험 데이터와 영상·HTML 자료를 함께 제공하는 npm workspaces 모노리포입니다. API 키 없이 샘플사이트·저장된 실험 결과·영상을 확인할 수 있습니다. 새로운 Vision 실행에만 OpenRouter 설정이 필요합니다.
+
+- 플랫폼: `apps/platform/` · 독립 샘플사이트: `sample-site/` · 공통 UI: `packages/ui/`
+- [테스트 데이터·복원 안내](evidence/README.md) · [영상/HTML 자료](media/index.html)
+- GitHub에서는 HTML 원문으로 보일 수 있습니다. 아래 `npm run media:serve` 명령으로 브라우저에서 열어주세요.
 
 ## Install and run the monorepo
 
@@ -19,6 +23,7 @@ npm ci
 npx playwright install chromium
 npm test
 npm run build
+npm run evidence:restore  # 저장된 테스트 결과와 /demo 원본 링크 복원
 ```
 
 `npm test` runs every workspace: all platform and sample tests, plus shared UI type checking. `npm run build` type-checks the repository and builds both apps and shared UI. Dependencies are resolved by npm workspaces, not copied manually between apps.
@@ -45,7 +50,7 @@ With both servers running, `npm run sample:test` runs the same functional suite 
 
 ### Runtime data and evidence restoration
 
-All platform launch commands read/write **repository-root `.data/` and `artifacts/`**, independent of workspace working directory. Existing local data stays in place. Recorded `/demo` responses are loaded from `.data/demo-evidence.json`; original run files referenced by `/artifacts/<run-id>/...` must be restored under `artifacts/<run-id>/...`. Restoring evidence must not relocate them into `apps/platform/`. The root `evidence/` and `media/` publication bundle is maintained separately. Once that delivery bundle is present, run:
+All platform launch commands read/write **repository-root `.data/` and `artifacts/`**, independent of workspace working directory. Existing local data stays in place. Recorded `/demo` responses are loaded from `.data/demo-evidence.json`; original run files referenced by `/artifacts/<run-id>/...` must be restored under `artifacts/<run-id>/...`. Restoring evidence must not relocate them into `apps/platform/`. The committed `evidence/` and `media/` directories contain the recorded data, final videos, HTML pages and source manifests. Run:
 
 ```sh
 npm run evidence:check    # verify preserved source checksums
@@ -53,7 +58,7 @@ npm run evidence:restore  # import artifacts/ and .data/, no model calls
 npm run media:serve       # http://127.0.0.1:4312/media/index.html
 ```
 
-The evidence commands call `evidence/restore.mjs` (check uses `--check`), supplied by the delivery bundle. Existing different runtime files are not overwritten by that importer. The media server mounts only `/media` and `/evidence` to those publication directories; `/` redirects to `/media/index.html`. Relative source links stay valid. It does not serve the repository root or `.data/`, and does not need either application running. Without restored records, the app shows that recorded evaluation is unavailable. Evidence/media content and restore verification are integrated separately; the monorepo migration itself does not alter those directories.
+The evidence commands call the included `evidence/restore.mjs` (check uses `--check`). Existing different runtime files are not overwritten by that importer. The media server mounts only `/media` and `/evidence` to those publication directories; `/` redirects to `/media/index.html`. Relative source links stay valid. It does not serve the repository root or `.data/`, and does not need either application running. Without restored records, the app shows that recorded evaluation is unavailable. The importer verifies 2,634 preserved files before restoring recorded data; it does not call a model. The media pages use relative links and need no files outside this clone.
 
 Build outputs are `apps/platform/dist/` and `sample-site/dist/`. Do not copy old root `dist/` as a deployment build. The independent app's business logic and visible states are unchanged. No new paid evaluation or model-detection claim is part of the monorepo migration.
 
@@ -63,7 +68,7 @@ Build outputs are `apps/platform/dist/` and `sample-site/dist/`. Do not copy old
 4. Review the current screenshot and step log. Stop interrupts the pending model request and closes Chromium.
 5. In **증거 & 검토**, inspect model-input and post-action screenshots, candidate observations, expected-behavior basis and reproduction steps. Human confirmation requires a review note. Export JSON or download the raw video.
 
-Keys live only in the server process memory and are not returned to the client, written to disk or exported. Settings must be re-entered after server restart. Scenarios and reports persist in `.data/`; images and WebM recordings persist in `artifacts/`. These directories are gitignored. Treat exported reports and screenshots as potentially containing the target site's content. The UI clears key inputs after saving.
+Keys live only in the server process memory and are not returned to the client, written to disk or exported. Settings must be re-entered after server restart. Scenarios and reports persist in `.data/`; images and WebM recordings persist in `artifacts/`. These live runtime directories are gitignored. The reviewed historical snapshot is committed in `evidence/`; restore it with `npm run evidence:restore`. Treat exported reports and screenshots as potentially containing the target site's content. The UI clears key inputs after saving.
 
 ## Architecture and boundaries
 
@@ -79,7 +84,7 @@ The OpenRouter SDK has no automatic retries; Midscene parse/API retries are disa
 
 Text plans must include screenshot-selected input coordinates. The executor clicks that target, then types; these are two separately counted tool actions. A fresh image-only request checks the visible field value without prior action history. Tool completion, model visual confirmation and independent QA remain distinct. Missing/mismatching/uncertain confirmation or unchanged input screenshots prevent silent submission/success and cause a bounded replan or explicit inconclusive stop. This is a model visual read with a conservative unchanged-image guard, not an independent OCR guarantee. Confirmation requests and focus actions consume the same existing limits.
 
-Public HTTPS YouTube hosts and the exact local `http://127.0.0.1:4310/fixture/order` URL are the current target scope. Other local ports/paths, fixture query/hash and the operator route are rejected for Vision navigation. Top-level navigation is restricted to those hosts. Chromium uses an isolated unauthenticated context. The planning instructions allow only reversible search/browse/playback/scroll actions and forbid account changes. This is a PoC prompt boundary, not a general adversarial browsing security guarantee.
+Public HTTPS YouTube hosts and exact local targets `http://127.0.0.1:4310/fixture/order`, `http://127.0.0.1:4310/demo/order`, and `http://127.0.0.1:4311/order` are the current target scope. Other local ports/paths, fixture query/hash and the operator route are rejected for Vision navigation. Top-level navigation is restricted to those hosts. Chromium uses an isolated unauthenticated context. The planning instructions allow only reversible search/browse/playback/scroll actions and forbid account changes. This is a PoC prompt boundary, not a general adversarial browsing security guarantee.
 
 The fixed comparison path is separate: homepage → `Midscene AI demo` search → visible results, using Playwright role/placeholder locators and a YouTube result-renderer boundary. It makes zero model calls. Compare it only to the default registered **search** scenario, not arbitrary workflows or autonomous exploration. No locator fallback exists in vision mode.
 
@@ -99,7 +104,11 @@ npx tsx scripts/lifecycle-check.ts # missing-key session only: action cap and im
 
 UI validation outputs: `artifacts/ui-check/RESULT.json`, screenshots and raw WebM. YouTube baseline output: `artifacts/youtube-check/RESULT.json` and the referenced run directory. Further facts and limitations are recorded in `HANDOFF.md`.
 
-## Earlier fixed-code live snapshot
+## Historical experiments (recorded before this monorepo delivery)
+
+The following sections preserve experiment versions and outcomes. Local `OUTBOX/` paths refer to the original workspace; portable copies are now under `evidence/` and `media/`. Final videos v4/v5 are included. The separate 4311 sample has functional tests and screenshots, but no new live Vision evaluation.
+
+### Earlier fixed-code live snapshot
 
 The user supplied a temporary key and requested `qwen/qwen3-vl-30b-a3b-instruct`. Final live runs used clean code commit `8fcac127a2e76abb5da45ecad8913367f9d33267`, prompt `goal-first-v3-protocol-and-replan`, and limits of 6 actions / 8 actual requests / 120 seconds / 2048 response tokens per request.
 
