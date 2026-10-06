@@ -1,0 +1,166 @@
+[
+  {
+    "scene": 1,
+    "start": 0,
+    "end": 10,
+    "kind": "hook",
+    "title": "화면을 읽고, 실제 주문까지",
+    "sources": [
+      "SOURCES/NATIVE_RUN.json",
+      "SOURCES/NATIVE_REVIEW.json"
+    ],
+    "editorial": "Original captures are cropped/enlarged; diagrams, cards, subtitles and annotations are editorial, not model UI."
+  },
+  {
+    "scene": 2,
+    "start": 10,
+    "end": 22,
+    "kind": "goal",
+    "title": "목표는 사람이 쓰는 말로",
+    "sources": [
+      "SOURCES/NATIVE_RUN.json",
+      "SOURCES/NATIVE_REVIEW.json"
+    ],
+    "editorial": "Original captures are cropped/enlarged; diagrams, cards, subtitles and annotations are editorial, not model UI."
+  },
+  {
+    "scene": 3,
+    "start": 22,
+    "end": 34,
+    "kind": "quantity",
+    "title": "어디에 입력할지 화면에서 찾습니다",
+    "sources": [
+      "SOURCES/NATIVE_RUN.json",
+      "SOURCES/NATIVE_REVIEW.json"
+    ],
+    "editorial": "Original captures are cropped/enlarged; diagrams, cards, subtitles and annotations are editorial, not model UI."
+  },
+  {
+    "scene": 4,
+    "start": 34,
+    "end": 48,
+    "kind": "form",
+    "title": "작은 입력칸도, 서로 다른 항목도",
+    "sources": [
+      "SOURCES/NATIVE_RUN.json",
+      "SOURCES/NATIVE_REVIEW.json"
+    ],
+    "editorial": "Original captures are cropped/enlarged; diagrams, cards, subtitles and annotations are editorial, not model UI."
+  },
+  {
+    "scene": 5,
+    "start": 48,
+    "end": 60,
+    "kind": "submit",
+    "title": "버튼이 화면 밖이면, 찾아서 이동합니다",
+    "sources": [
+      "SOURCES/NATIVE_RUN.json",
+      "SOURCES/NATIVE_REVIEW.json"
+    ],
+    "editorial": "Original captures are cropped/enlarged; diagrams, cards, subtitles and annotations are editorial, not model UI."
+  },
+  {
+    "scene": 6,
+    "start": 60,
+    "end": 72,
+    "kind": "result",
+    "title": "클릭 성공보다 중요한 것은 결과입니다",
+    "sources": [
+      "SOURCES/NATIVE_RUN.json",
+      "SOURCES/NATIVE_REVIEW.json"
+    ],
+    "editorial": "Original captures are cropped/enlarged; diagrams, cards, subtitles and annotations are editorial, not model UI."
+  },
+  {
+    "scene": 7,
+    "start": 72,
+    "end": 84,
+    "kind": "loop",
+    "title": "관찰 → 행동 → 다시 확인",
+    "sources": [
+      "SOURCES/NATIVE_RUN.json",
+      "SOURCES/NATIVE_REVIEW.json"
+    ],
+    "editorial": "Original captures are cropped/enlarged; diagrams, cards, subtitles and annotations are editorial, not model UI."
+  },
+  {
+    "scene": 8,
+    "start": 84,
+    "end": 96,
+    "kind": "scope",
+    "title": "기능이 맞아도, 읽을 수 없는 화면",
+    "sources": [
+      "SOURCES/OLD_RESULTS.json",
+      "SOURCES/OLD_ACCEPTANCE.md"
+    ],
+    "editorial": "Original captures are cropped/enlarged; diagrams, cards, subtitles and annotations are editorial, not model UI."
+  },
+  {
+    "scene": 9,
+    "start": 96,
+    "end": 110,
+    "kind": "oldresult",
+    "title": "화면에 보이는 문제를 실제로 지적했습니다",
+    "sources": [
+      "SOURCES/OLD_RESULTS.json",
+      "SOURCES/OLD_ACCEPTANCE.md"
+    ],
+    "editorial": "Original captures are cropped/enlarged; diagrams, cards, subtitles and annotations are editorial, not model UI."
+  },
+  {
+    "scene": 10,
+    "start": 110,
+    "end": 122,
+    "kind": "current",
+    "title": "현재 한국어 앱의 겹침도 확인했습니다",
+    "sources": [
+      "SOURCES/HYBRID_RUN.json",
+      "SOURCES/HYBRID_REVIEW.json"
+    ],
+    "editorial": "Original captures are cropped/enlarged; diagrams, cards, subtitles and annotations are editorial, not model UI."
+  },
+  {
+    "scene": 11,
+    "start": 122,
+    "end": 138,
+    "kind": "hybrid",
+    "title": "근거가 있으면, 확인할 후보로 남깁니다",
+    "sources": [
+      "SOURCES/HYBRID_RUN.json",
+      "SOURCES/HYBRID_REVIEW.json"
+    ],
+    "editorial": "Original captures are cropped/enlarged; diagrams, cards, subtitles and annotations are editorial, not model UI."
+  },
+  {
+    "scene": 12,
+    "start": 138,
+    "end": 150,
+    "kind": "limits",
+    "title": "POC에서 확인한 가치와 남은 과제",
+    "sources": [
+      "SOURCES/NATIVE_RUN.json",
+      "SOURCES/NATIVE_REVIEW.json",
+      "SOURCES/OLD_RESULTS.json",
+      "SOURCES/OLD_ACCEPTANCE.md",
+      "SOURCES/HYBRID_RUN.json",
+      "SOURCES/HYBRID_REVIEW.json"
+    ],
+    "editorial": "Original captures are cropped/enlarged; diagrams, cards, subtitles and annotations are editorial, not model UI."
+  },
+  {
+    "scene": 13,
+    "start": 150,
+    "end": 160,
+    "kind": "end",
+    "title": "읽고, 행동하고, 근거를 남깁니다",
+    "sources": [
+      "SOURCES/NATIVE_RUN.json",
+      "SOURCES/NATIVE_REVIEW.json",
+      "SOURCES/OLD_RESULTS.json",
+      "SOURCES/OLD_ACCEPTANCE.md",
+      "SOURCES/HYBRID_RUN.json",
+      "SOURCES/HYBRID_REVIEW.json"
+    ],
+    "editorial": "Original captures are cropped/enlarged; diagrams, cards, subtitles and annotations are editorial, not model UI."
+  }
+]

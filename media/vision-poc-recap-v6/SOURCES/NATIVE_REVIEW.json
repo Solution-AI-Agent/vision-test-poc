@@ -1,0 +1,27 @@
+{
+  "code": "07d3b39",
+  "tests": {
+    "platform": 37,
+    "sample": 2,
+    "builds": [
+      "platform",
+      "sample"
+    ],
+    "ui": "Actual final run replay in real Chromium, desktop and mobile, zero page errors"
+  },
+  "actualOrder": {
+    "run": "3e1ef9cc-2620-4536-b77d-453f31320a85",
+    "source": "INTEGRATED_V3.json",
+    "quantity": 2,
+    "name": "테스터",
+    "email": "qa@example.test",
+    "totalUSD": 24,
+    "apiStatus": 201,
+    "independentScreens": [
+      "../3e1ef9cc-2620-4536-b77d-453f31320a85/native-2-after.png",
+      "../3e1ef9cc-2620-4536-b77d-453f31320a85/native-4-after.png"
+    ]
+  },
+  "visualQa": "Normal chart was falsely reported blurred/occluded. Retained as raw model candidate; independent reviewer rejects this finding. Not a visual QA reliability acceptance.",
+  "scope": "One successful final integrated scenario, no claim of general reliability or Windows verification. Prior failures preserved."
+}

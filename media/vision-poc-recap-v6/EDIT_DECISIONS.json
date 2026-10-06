@@ -1,0 +1,52 @@
+{
+  "video": "ASSETS/order.webm",
+  "segments": [
+    {
+      "scene": 3,
+      "source_seconds": [
+        24,
+        36
+      ],
+      "speed": 1,
+      "crop": [
+        110,
+        398,
+        1060,
+        157
+      ]
+    },
+    {
+      "scene": 4,
+      "source_seconds": [
+        37,
+        65
+      ],
+      "speed": 2,
+      "crop": [
+        112,
+        407,
+        548,
+        148
+      ]
+    },
+    {
+      "scene": 5,
+      "source_seconds": [
+        77,
+        101
+      ],
+      "speed": 2,
+      "crop": [
+        0,
+        0,
+        1280,
+        720
+      ]
+    }
+  ],
+  "source_sampling_fps": 6,
+  "output_fps": 24,
+  "audio": false,
+  "source_preserved": true,
+  "annotations": "Hybrid amber dashed box uses saved region-1 geometry, not an independently confirmed defect."
+}

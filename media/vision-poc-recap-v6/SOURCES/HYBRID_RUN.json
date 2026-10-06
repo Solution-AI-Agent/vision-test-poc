@@ -1,0 +1,178 @@
+{
+  "id": "88ca141e-bd67-4d3c-aa52-0670f6c9abad",
+  "input": {
+    "mode": "autonomous",
+    "url": "http://127.0.0.1:4311/store/d",
+    "task": "",
+    "expected": "",
+    "query": "Midscene AI demo"
+  },
+  "settings": {
+    "agentInstructions": "",
+    "providerSort": "default",
+    "layoutAssist": true,
+    "model": "qwen/qwen3-vl-30b-a3b-instruct",
+    "family": "qwen3-vl",
+    "maxActions": 1,
+    "maxCalls": 1,
+    "maxSeconds": 120,
+    "maxTokens": 2048
+  },
+  "startedAt": "2026-10-06T07:03:00.200Z",
+  "status": "limited",
+  "outcome": "모델 호출 한도 도달 (1회)",
+  "stage": "종료",
+  "calls": 1,
+  "actions": 0,
+  "tokens": 3022,
+  "cost": 0.00110571,
+  "steps": [],
+  "findings": [
+    {
+      "id": "09f50f83-4ff2-4967-9a6a-f6db1a422441",
+      "status": "candidate",
+      "reviewNote": "",
+      "step": -1,
+      "title": "겹침 의심 · 위치와 모델 판단 불일치",
+      "observed": "빨간 컵 이미지와 이 영역 사이에 충분한 간격이 존재하여 가림이 발생하지 않음",
+      "expected": "중요한 내용이 다른 구성요소에 가려지지 않아야 합니다.",
+      "basis": "혼합 검사: 위치 후보 + Midscene 화면 판독. 사람의 확정 판정과 별개.",
+      "reproduction": [
+        "검사 시점: 첫 화면"
+      ],
+      "before": "/artifacts/88ca141e-bd67-4d3c-aa52-0670f6c9abad/layout-bb2f0c80-b6f6-4d79-bdeb-1f3baef3fa66.png",
+      "after": "/artifacts/88ca141e-bd67-4d3c-aa52-0670f6c9abad/layout-bb2f0c80-b6f6-4d79-bdeb-1f3baef3fa66.png",
+      "layout": {
+        "auditId": "bb2f0c80-b6f6-4d79-bdeb-1f3baef3fa66",
+        "regionId": "region-1",
+        "fingerprint": "b46a30f1f0795e773f21b4d391ae1cd701eace23450d538c1029b7ecb9503fc1",
+        "box": {
+          "x": 820.125,
+          "y": 393.09375,
+          "width": 220,
+          "height": 158
+        },
+        "verdict": "clear",
+        "annotated": "/artifacts/88ca141e-bd67-4d3c-aa52-0670f6c9abad/layout-bb2f0c80-b6f6-4d79-bdeb-1f3baef3fa66.svg",
+        "review": {
+          "id": "region-1",
+          "verdict": "clear",
+          "order": "measured",
+          "occluder": "빨간 컵 이미지",
+          "affected": "이번 달 인기 상품 비율 텍스트와 비율 정보",
+          "evidence": "빨간 컵 이미지와 이 영역 사이에 충분한 간격이 존재하여 가림이 발생하지 않음",
+          "impact": "사용자에게 정보를 명확하게 전달할 수 있음",
+          "alternative": "가림이 발생할 수 있다는 추정이 가능하나, 실제 화면에서 간격이 충분하여 clear로 판단"
+        }
+      }
+    }
+  ],
+  "engine": "Midscene aiInput · aiAct · aiString · aiAssert / 1.14.0",
+  "transport": [
+    {
+      "phase": "visual-review",
+      "providerSort": "default",
+      "images": 2,
+      "texts": 5,
+      "screenshots": [
+        "/artifacts/88ca141e-bd67-4d3c-aa52-0670f6c9abad/model-request-1.png",
+        "/artifacts/88ca141e-bd67-4d3c-aa52-0670f6c9abad/model-request-1-image-2.jpg"
+      ],
+      "screenshot": "/artifacts/88ca141e-bd67-4d3c-aa52-0670f6c9abad/model-request-1.png",
+      "parsedOutput": {
+        "raw": "<observation>현재 전체 화면과 주변 영역 이미지를 비교한 결과, 'region-1' 영역은 주문 요약 섹션에 위치하며, 빨간 컵 이미지 아래에 '이번 달 인기 상품 비율'이라는 텍스트와 함께 노트(80%), 머그(20%)의 비율이 표시되어 있다. 이 영역은 빨간 컵 이미지 아래에 위치해 있으며, 빨간 컵 이미지가 이 영역을 가리고 있는 것으로 보인다. 그러나 빨간 컵 이미지와 이 영역 사이의 간격이 충분하여 실제로 가림이 발생하지 않는 것으로 판단된다.</observation>\n<data-json>\n{\n  \"String\": \"{\\\"regions\\\":[{\\\"id\\\":\\\"region-1\\\",\\\"verdict\\\":\\\"clear\\\",\\\"order\\\":\\\"measured\\\",\\\"occluder\\\":\\\"빨간 컵 이미지\\\",\\\"affected\\\":\\\"이번 달 인기 상품 비율 텍스트와 비율 정보\\\",\\\"evidence\\\":\\\"빨간 컵 이미지와 이 영역 사이에 충분한 간격이 존재하여 가림이 발생하지 않음\\\",\\\"impact\\\":\\\"사용자에게 정보를 명확하게 전달할 수 있음\\\",\\\"alternative\\\":\\\"가림이 발생할 수 있다는 추정이 가능하나, 실제 화면에서 간격이 충분하여 clear로 판단\\\"}]}\"\n}\n</data-json>\n<errors>[]</errors>"
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 660,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 18144,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "provider": "SiliconFlow",
+      "usage": {
+        "promptTokens": 2699,
+        "completionTokens": 323,
+        "cachedTokens": 0,
+        "cost": 0.00110571
+      },
+      "requestId": "gen-1791270182-UWJrpvn2kD4zc74pBB6F"
+    }
+  ],
+  "visualAudits": [
+    {
+      "id": "de4bbcf2-80a7-496a-bfc6-42e08b6388f3",
+      "at": "2026-10-06T07:03:20.031Z",
+      "checkpoint": "첫 화면",
+      "screenshot": "/artifacts/88ca141e-bd67-4d3c-aa52-0670f6c9abad/visual-0-screen.png",
+      "call": 0,
+      "status": "inconclusive",
+      "promptVersion": "visual-qa-v1-independent-checklist",
+      "reason": "실행 한도로 시각 검사 미실행 · 통과 아님"
+    }
+  ],
+  "visualComplete": false,
+  "sourceVersion": {
+    "commit": "90a422b34767415c5b1a36b2179591280b1d54ee",
+    "dirty": false,
+    "sourceHash": "fa26f69b257f4c25fec422198b0b513eeea8c6d0e50e5d9183e79ddd55e47ec6",
+    "promptVersion": "midscene-native-workflow-v1"
+  },
+  "executionPhase": "goal-selection",
+  "layoutAudits": [
+    {
+      "id": "bb2f0c80-b6f6-4d79-bdeb-1f3baef3fa66",
+      "promptVersion": "hybrid-occlusion-v2",
+      "checkpoint": "첫 화면",
+      "screenshot": "/artifacts/88ca141e-bd67-4d3c-aa52-0670f6c9abad/layout-bb2f0c80-b6f6-4d79-bdeb-1f3baef3fa66.png",
+      "stable": true,
+      "candidates": [
+        {
+          "id": "region-1",
+          "box": {
+            "x": 820.125,
+            "y": 393.09375,
+            "width": 220,
+            "height": 158
+          },
+          "front": {
+            "x": 696.265625,
+            "y": 393.09375,
+            "width": 467.71875,
+            "height": 190
+          },
+          "context": {
+            "x": 696.265625,
+            "y": 297.390625,
+            "width": 467.71875,
+            "height": 285.703125
+          },
+          "regions": 6,
+          "coveredPoints": 48
+        }
+      ],
+      "warnings": [],
+      "annotated": "/artifacts/88ca141e-bd67-4d3c-aa52-0670f6c9abad/layout-bb2f0c80-b6f6-4d79-bdeb-1f3baef3fa66.svg",
+      "call": 1,
+      "review": {
+        "regions": [
+          {
+            "id": "region-1",
+            "verdict": "clear",
+            "order": "measured",
+            "occluder": "빨간 컵 이미지",
+            "affected": "이번 달 인기 상품 비율 텍스트와 비율 정보",
+            "evidence": "빨간 컵 이미지와 이 영역 사이에 충분한 간격이 존재하여 가림이 발생하지 않음",
+            "impact": "사용자에게 정보를 명확하게 전달할 수 있음",
+            "alternative": "가림이 발생할 수 있다는 추정이 가능하나, 실제 화면에서 간격이 충분하여 clear로 판단"
+          }
+        ]
+      }
+    }
+  ],
+  "screenshot": "/artifacts/88ca141e-bd67-4d3c-aa52-0670f6c9abad/visual-0-screen.png",
+  "error": "모델 호출 한도 도달 (1회)",
+  "video": "/artifacts/88ca141e-bd67-4d3c-aa52-0670f6c9abad/page@21967dc717a541b0c010d11a2b30799f.webm",
+  "endedAt": "2026-10-06T07:03:20.079Z"
+}

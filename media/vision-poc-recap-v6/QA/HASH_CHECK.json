@@ -1,0 +1,70 @@
+[
+  {
+    "path": "ASSETS/order-before.png",
+    "match": true
+  },
+  {
+    "path": "ASSETS/quantity-after.png",
+    "match": true
+  },
+  {
+    "path": "ASSETS/form-after.png",
+    "match": true
+  },
+  {
+    "path": "ASSETS/order-after.png",
+    "match": true
+  },
+  {
+    "path": "ASSETS/order.webm",
+    "match": true
+  },
+  {
+    "path": "ASSETS/old-fault.jpg",
+    "match": true
+  },
+  {
+    "path": "ASSETS/old-normal.jpg",
+    "match": true
+  },
+  {
+    "path": "ASSETS/current-normal.png",
+    "match": true
+  },
+  {
+    "path": "ASSETS/current-overlap.png",
+    "match": true
+  },
+  {
+    "path": "SOURCES/NATIVE_RUN.json",
+    "match": true
+  },
+  {
+    "path": "SOURCES/NATIVE_REVIEW.json",
+    "match": true
+  },
+  {
+    "path": "SOURCES/HYBRID_REVIEW.json",
+    "match": true
+  },
+  {
+    "path": "SOURCES/HYBRID_RUN.json",
+    "match": true
+  },
+  {
+    "path": "SOURCES/OLD_SCRIPT.txt",
+    "match": true
+  },
+  {
+    "path": "SOURCES/OLD_MANIFEST.json",
+    "match": true
+  },
+  {
+    "path": "SOURCES/OLD_RESULTS.json",
+    "match": true
+  },
+  {
+    "path": "SOURCES/OLD_ACCEPTANCE.md",
+    "match": true
+  }
+]

@@ -1,0 +1,6 @@
+{
+  "localSha256": "4b533d417f51150358dd8738d9a4761385b1878aa31b1235272a15528a457d38",
+  "uploadReportedSha256": "4b533d417f51150358dd8738d9a4761385b1878aa31b1235272a15528a457d38",
+  "match": true,
+  "unauthenticatedDownload": "HTTP 401 from Buzz media; no claim of independent download hash"
+}

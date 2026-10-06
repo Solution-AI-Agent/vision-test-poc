@@ -1,0 +1,71 @@
+{
+  "metadata": {
+    "duration": 160,
+    "width": 1280,
+    "height": 720
+  },
+  "seek": {
+    "time": 23.663781,
+    "paused": false,
+    "error": null
+  },
+  "images": 13,
+  "linked": [
+    {
+      "url": "VISION_POC_RECAP_V6.mp4",
+      "status": 200
+    },
+    {
+      "url": "CAPTIONS_KO.srt",
+      "status": 200
+    },
+    {
+      "url": "SCRIPT_STORYBOARD.txt",
+      "status": 200
+    },
+    {
+      "url": "SCENE_SOURCES.json",
+      "status": 200
+    },
+    {
+      "url": "ASSETS/order.webm",
+      "status": 200
+    },
+    {
+      "url": "SOURCES/NATIVE_RUN.json",
+      "status": 200
+    },
+    {
+      "url": "SOURCES/NATIVE_REVIEW.json",
+      "status": 200
+    },
+    {
+      "url": "SOURCES/OLD_RESULTS.json",
+      "status": 200
+    },
+    {
+      "url": "SOURCES/OLD_ACCEPTANCE.md",
+      "status": 200
+    },
+    {
+      "url": "SOURCES/HYBRID_RUN.json",
+      "status": 200
+    },
+    {
+      "url": "SOURCES/HYBRID_REVIEW.json",
+      "status": 200
+    },
+    {
+      "url": "MANIFEST.json",
+      "status": 200
+    },
+    {
+      "url": "EDIT_DECISIONS.json",
+      "status": 200
+    }
+  ],
+  "pageErrors": [],
+  "mobilePageOverflow": false,
+  "externalRequests": "none required",
+  "scope": "HTML desktop/mobile, chapter seek and programmatic play; not a continuous GUI video watch"
+}

@@ -1,0 +1,87 @@
+[
+  {
+    "path": "ASSETS/order-before.png",
+    "source": "REPOS/vision-test-delivery/evidence/recordings/3e1ef9cc-2620-4536-b77d-453f31320a85/native-0-before.png",
+    "sha256": "921ceb7a80cc3ff82e48e58e7240bff2d50f1853a50b08121bef6cf9ef6b6024"
+  },
+  {
+    "path": "ASSETS/quantity-after.png",
+    "source": "REPOS/vision-test-delivery/evidence/recordings/3e1ef9cc-2620-4536-b77d-453f31320a85/native-0-after.png",
+    "sha256": "375bf3ce19b00bfebc44a68398f5559ac00dfe00dded6f6fc12eb4c1eeb5ff64"
+  },
+  {
+    "path": "ASSETS/form-after.png",
+    "source": "REPOS/vision-test-delivery/evidence/recordings/3e1ef9cc-2620-4536-b77d-453f31320a85/native-2-after.png",
+    "sha256": "3f8d4a62a500ee933bd0627761e35f87765766ebcd73d292a00adb7d2eb5a0b8"
+  },
+  {
+    "path": "ASSETS/order-after.png",
+    "source": "REPOS/vision-test-delivery/evidence/recordings/3e1ef9cc-2620-4536-b77d-453f31320a85/native-4-after.png",
+    "sha256": "304b0d5d6c788adc45b55d051a944b00423c5ada20407edde123657d9db784e5"
+  },
+  {
+    "path": "ASSETS/order.webm",
+    "source": "REPOS/vision-test-delivery/evidence/recordings/3e1ef9cc-2620-4536-b77d-453f31320a85/page@e4a667ced38ddba1cacb31929c89d7c2.webm",
+    "sha256": "6ef0344f35bacea764fd9886f56af41793cf3c025481a3be5e7aa595ef4a26bf"
+  },
+  {
+    "path": "ASSETS/old-fault.jpg",
+    "source": "REPOS/vision-test-delivery/media/v5/ASSETS/fault.jpg",
+    "sha256": "35e98c23f0d76e47715837099582f4f6f4b0f5d9d7dc1943839faa36bd20acc6"
+  },
+  {
+    "path": "ASSETS/old-normal.jpg",
+    "source": "REPOS/vision-test-delivery/media/v5/ASSETS/normal.jpg",
+    "sha256": "2660fa0f032c19643be8aae0cc79d4a4406c1d20c8d00fea59737dc74cc1598f"
+  },
+  {
+    "path": "ASSETS/current-normal.png",
+    "source": "REPOS/vision-test-delivery/evidence/reviews/hybrid-occlusion-20261006/local/a.png",
+    "sha256": "921ceb7a80cc3ff82e48e58e7240bff2d50f1853a50b08121bef6cf9ef6b6024"
+  },
+  {
+    "path": "ASSETS/current-overlap.png",
+    "source": "REPOS/vision-test-delivery/evidence/reviews/hybrid-occlusion-20261006/local/d.png",
+    "sha256": "b46a30f1f0795e773f21b4d391ae1cd701eace23450d538c1029b7ecb9503fc1"
+  },
+  {
+    "path": "SOURCES/NATIVE_RUN.json",
+    "source": "REPOS/vision-test-delivery/evidence/recordings/midscene-native-20261006/INTEGRATED_V3.json",
+    "sha256": "91e0556b2764e4e3dbe127d3e5ce4c1d8882de5b2c75686828154cae53336ebf"
+  },
+  {
+    "path": "SOURCES/NATIVE_REVIEW.json",
+    "source": "REPOS/vision-test-delivery/evidence/recordings/midscene-native-20261006/INDEPENDENT_REVIEW.json",
+    "sha256": "b5fdea4889c9b5322f8a63651e3f64237887d24749226c1c48e326943bf3bc43"
+  },
+  {
+    "path": "SOURCES/HYBRID_REVIEW.json",
+    "source": "REPOS/vision-test-delivery/evidence/reviews/hybrid-occlusion-20261006/INDEPENDENT_REVIEW.json",
+    "sha256": "95e4e9851d36b9e5f6bcf76cef8d07b53c41064e4e43df384781cfc9fae74a62"
+  },
+  {
+    "path": "SOURCES/HYBRID_RUN.json",
+    "source": "REPOS/vision-test-delivery/evidence/reviews/hybrid-occlusion-20261006/v2/01-d.json",
+    "sha256": "b4ec2ef0770f1570624321d4b457ee9ebc1d7b25345d9dcd24c0b90c9e3571af"
+  },
+  {
+    "path": "SOURCES/OLD_SCRIPT.txt",
+    "source": "REPOS/vision-test-delivery/media/v5/SCRIPT_STORYBOARD.txt",
+    "sha256": "e54bdacd7d7928e2d1a29b03054e623944b97bc48d90b2ca9b45190eea4b1843"
+  },
+  {
+    "path": "SOURCES/OLD_MANIFEST.json",
+    "source": "REPOS/vision-test-delivery/media/v5/EVIDENCE_MANIFEST.json",
+    "sha256": "3be8d50848f698116e610243ef607e7444da7d003e2ce75cfd763ac80ac3cf38"
+  },
+  {
+    "path": "SOURCES/OLD_RESULTS.json",
+    "source": "REPOS/vision-test-delivery/media/v5/SOURCES/RESULTS.json",
+    "sha256": "e0dd66a1b6a8bf879e9651c7e3d055d01f0a5157d89dd1497888f4e1db349c33"
+  },
+  {
+    "path": "SOURCES/OLD_ACCEPTANCE.md",
+    "source": "REPOS/vision-test-delivery/media/v5/SOURCES/VISION_QA_WORKING_DEMO_ACCEPTANCE_2026_10_05.md",
+    "sha256": "c00d4c54b0bab253a31778baf57c2fc2c5f90f555c7a7362d9d17bd1f90dd8ee"
+  }
+]

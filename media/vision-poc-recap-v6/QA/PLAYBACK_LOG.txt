@@ -1,0 +1,25 @@
+PLAYBACK 10 / 160 decoded samples 241
+PLAYBACK 20 / 160 decoded samples 481
+PLAYBACK 30 / 160 decoded samples 721
+PLAYBACK 40 / 160 decoded samples 961
+PLAYBACK 50 / 160 decoded samples 1201
+PLAYBACK 60 / 160 decoded samples 1441
+PLAYBACK 70 / 160 decoded samples 1681
+PLAYBACK 80 / 160 decoded samples 1921
+PLAYBACK 90 / 160 decoded samples 2161
+PLAYBACK 100 / 160 decoded samples 2401
+PLAYBACK 110 / 160 decoded samples 2641
+PLAYBACK 120 / 160 decoded samples 2881
+PLAYBACK 130 / 160 decoded samples 3121
+PLAYBACK 140 / 160 decoded samples 3361
+PLAYBACK 150 / 160 decoded samples 3601
+{
+  "completed" : true,
+  "expected_duration_seconds" : 160,
+  "file" : "\/Users\/zpro\/.buzz\/OUTBOX\/VISION_POC_RECAP_V6\/VISION_POC_RECAP_V6.mp4",
+  "full_GUI_watch" : false,
+  "last_time_seconds" : 159.99376404200001,
+  "method" : "AVPlayer real-time playback with AVPlayerItemVideoOutput; no GUI window",
+  "sampled_decoded_buffers" : 3840,
+  "wall_seconds" : 160.15209901332855
+}

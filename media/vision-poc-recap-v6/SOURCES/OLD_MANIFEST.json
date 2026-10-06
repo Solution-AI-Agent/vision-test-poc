@@ -1,0 +1,170 @@
+{
+  "project": "vision-test",
+  "version": "v5-final-review-01",
+  "sources": [
+    {
+      "original": "REPOS/vision-test-maker/artifacts/b7181596-c25a-4eb9-be43-56e76d685802/model-request-1.jpg",
+      "copy": "ASSETS/normal.jpg",
+      "sha256": "2660fa0f032c19643be8aae0cc79d4a4406c1d20c8d00fea59737dc74cc1598f",
+      "kind": "actual 1280x720 model input; unchanged"
+    },
+    {
+      "original": "REPOS/vision-test-maker/artifacts/ae75c703-b63f-477b-84a0-0c9e753dd31a/model-request-1.jpg",
+      "copy": "ASSETS/fault.jpg",
+      "sha256": "35e98c23f0d76e47715837099582f4f6f4b0f5d9d7dc1943839faa36bd20acc6",
+      "kind": "actual 1280x720 model input; unchanged"
+    },
+    {
+      "original": "REPOS/vision-test-maker/artifacts/demo-verify-2026-10-05T01-22-24-239Z/RESULTS.json",
+      "copy": "SOURCES/RESULTS.json",
+      "sha256": "e0dd66a1b6a8bf879e9651c7e3d055d01f0a5157d89dd1497888f4e1db349c33",
+      "kind": "original record/review snapshot"
+    },
+    {
+      "original": "REPOS/vision-test-maker/artifacts/demo-verify-2026-10-05T01-22-24-239Z/MAKER_REVIEW.json",
+      "copy": "SOURCES/MAKER_REVIEW.json",
+      "sha256": "705318aac700712ff72dc1a2cc44ac4f3d46baa8f20c19d82665c33c2b573963",
+      "kind": "original record/review snapshot"
+    },
+    {
+      "original": "WORK_LOGS/VISION_QA_WORKING_DEMO_ACCEPTANCE_2026_10_05.md",
+      "copy": "SOURCES/VISION_QA_WORKING_DEMO_ACCEPTANCE_2026_10_05.md",
+      "sha256": "c00d4c54b0bab253a31778baf57c2fc2c5f90f555c7a7362d9d17bd1f90dd8ee",
+      "kind": "original record/review snapshot"
+    },
+    {
+      "original": "REPOS/vision-test-maker/DEMO_HANDOFF.md",
+      "copy": "SOURCES/DEMO_HANDOFF.md",
+      "sha256": "36d00dd6a8bcf17893ecda0b378ba744d410df1430fd4ccd103f6d086e50b9f5",
+      "kind": "original record/review snapshot"
+    },
+    {
+      "original": "REPOS/vision-test-maker/artifacts/demo-ui-3163da8/normal.png",
+      "copy": "ASSETS/maker-ui-normal.png",
+      "sha256": "4a71940ac9b28e82527be9f2145de127648e4aec1b153e18dc89daba312b413d",
+      "kind": "responsive demo UI; not model input"
+    },
+    {
+      "original": "REPOS/vision-test-maker/artifacts/demo-ui-3163da8/fault.png",
+      "copy": "ASSETS/maker-ui-fault.png",
+      "sha256": "23d940ad6b372d8ceeab48463c1d99951560e52e9d0bc4d4852320b394a91f98",
+      "kind": "responsive demo UI; not model input"
+    },
+    {
+      "original": "OUTBOX/VISION_QA_CONTROLLED_INDEPENDENT_REVIEW_2026_10_05.json",
+      "copy": "APPENDIX/VISION_QA_CONTROLLED_INDEPENDENT_REVIEW_2026_10_05.json",
+      "sha256": "6d373f95a409e6eb23fef71ae6bcae3d713826fa554bfab9d5d3ce4a04b6a9d5",
+      "kind": "prior experiment/selection disclosure; not pooled with current six trials"
+    },
+    {
+      "original": "WORK_LOGS/VISION_QA_CONTROLLED_RESULT_REVIEW_2026_10_05.md",
+      "copy": "APPENDIX/VISION_QA_CONTROLLED_RESULT_REVIEW_2026_10_05.md",
+      "sha256": "2babf15a2fe3378330307efd02e64ff726abfa589f3218fdfea523fd00f031c9",
+      "kind": "prior experiment/selection disclosure; not pooled with current six trials"
+    },
+    {
+      "original": "PLANS/VISION_QA_WORKING_DEMO_PRIORITY_2026_10_05.md",
+      "copy": "APPENDIX/VISION_QA_WORKING_DEMO_PRIORITY_2026_10_05.md",
+      "sha256": "358aa4f199de1a28e751b730b2abd6d725cf20263bba64b95221c84292c6ce2f",
+      "kind": "prior experiment/selection disclosure; not pooled with current six trials"
+    },
+    {
+      "original": "WORKFLOW/fault-before.png",
+      "copy": "ASSETS/ui-fault-before.png",
+      "sha256": "d1138bb44a64d0553d63750c2ad357066a9f88245dd15b3a1c14154d15645ec6",
+      "kind": "actual responsive UI workflow capture; not model input"
+    },
+    {
+      "original": "WORKFLOW/fault-confirmed.png",
+      "copy": "ASSETS/ui-fault-confirmed.png",
+      "sha256": "23d940ad6b372d8ceeab48463c1d99951560e52e9d0bc4d4852320b394a91f98",
+      "kind": "actual responsive UI workflow capture; not model input"
+    },
+    {
+      "original": "WORKFLOW/fault-input-link.png",
+      "copy": "ASSETS/ui-fault-input-link.png",
+      "sha256": "2d500a6cc1cbc0a05cba684c6e6c8fb63fb5002daf5f4b52d9d0c5a3a7eae1ac",
+      "kind": "actual responsive UI workflow capture; not model input"
+    },
+    {
+      "original": "WORKFLOW/normal-before.png",
+      "copy": "ASSETS/ui-normal-before.png",
+      "sha256": "5a7eff0da6e6b0ca1662e968e985a1c6a437203a4e5ba0109a0c40b9e904034c",
+      "kind": "actual responsive UI workflow capture; not model input"
+    },
+    {
+      "original": "WORKFLOW/normal-confirmed.png",
+      "copy": "ASSETS/ui-normal-confirmed.png",
+      "sha256": "4a71940ac9b28e82527be9f2145de127648e4aec1b153e18dc89daba312b413d",
+      "kind": "actual responsive UI workflow capture; not model input"
+    },
+    {
+      "original": "REPOS/vision-test-maker/evaluation/demo-screenshot.pw.ts-snapshots/order-darwin.png",
+      "copy": "ASSETS/screenshot-reference.png",
+      "sha256": "ccf8abe5116da1c7fd11534f1f7c6ea315834450a3e6b49fd65c53c82ce2debb",
+      "kind": "actual Playwright normal reference PNG"
+    },
+    {
+      "original": "REPOS/vision-test-maker/evaluation/demo-screenshot.pw.ts",
+      "copy": "SOURCES/demo-screenshot.pw.ts",
+      "sha256": "eb06f5ba4bfb02e1dbaf27118d17d9264da7f51a7676d3a93c3e52cc5c080a66",
+      "kind": "actual screenshot assertion source"
+    },
+    {
+      "original": "REPOS/vision-test-maker/artifacts/demo-probe-2026-10-05T01-20-29-400Z/RESULTS.json",
+      "copy": "APPENDIX/selection-probe-RESULTS.json",
+      "sha256": "6f64a880a9496e13f83be05d02c793ebfed26b0fef8aecdac5b6e4f536589a82",
+      "kind": "separate experiment raw matrix"
+    },
+    {
+      "original": "REPOS/vision-test-maker/artifacts/demo-candidate-2026-10-05T01-21-26-894Z/RESULTS.json",
+      "copy": "APPENDIX/selection-candidate-RESULTS.json",
+      "sha256": "3e0a60aa6e439fe037bd2294138a82b086274b9e3ef6cd93550f63d50d733da2",
+      "kind": "separate experiment raw matrix"
+    },
+    {
+      "original": "REPOS/vision-test-maker/artifacts/blind-extraction-2026-10-05T01-15-09-254Z/RESULTS.json",
+      "copy": "APPENDIX/blind-diagnostic-RESULTS.json",
+      "sha256": "91941e6d4f85c09c5bcb15ee062c4ed1ee9f601ae623d2aa835012465e68e591",
+      "kind": "separate experiment raw matrix"
+    }
+  ],
+  "source": {
+    "commit": "373ecad3216c92f9ace7785df91c7c59ed9dcb6e",
+    "dirty": false,
+    "promptHash": "255b832d36984f07b9f41169b7944af8efd3b6bad47473ece6c15516e882435a",
+    "criteria": "demo-readable-receipt-v1",
+    "baselineHash": "67190d1f94dd0581d0b79b321863a77062d0b18fe0ac7b4a95d12c542db08e7c"
+  },
+  "all_six_actual_input_hashes_verified": true,
+  "all_six_request_texts_identical": true,
+  "opening": {
+    "fault_run": "ae75c703-b63f-477b-84a0-0c9e753dd31a",
+    "model_image": "ASSETS/fault.jpg",
+    "dom_field": "SOURCES/FAULT_RUN.json:domSuite",
+    "issue_field": "SOURCES/FAULT_RUN.json:output.issues[0]",
+    "normal_run": "b7181596-c25a-4eb9-be43-56e76d685802",
+    "normal_image": "ASSETS/normal.jpg",
+    "normal_field": "SOURCES/NORMAL_RUN.json:output.status"
+  },
+  "fixed_confirmation": {
+    "calls": 6,
+    "reported_cost": "0.00255091",
+    "normal": "3/3 pass",
+    "defect": "3/3 candidate",
+    "dom": "6/6 PASS"
+  },
+  "selection": {
+    "calls": 9,
+    "reported_cost": "0.00356816",
+    "includes": "normal probe, missed smaller candidate, detected larger candidate, six fixed confirmations",
+    "not_pooled": true,
+    "raw_nine_calls_and_cost_verified": true
+  },
+  "blind_extraction": "separate earlier diagnostic, not current direct-judgment success",
+  "second_collection_issue": "not used as precise localization evidence",
+  "scope": "selected injected case; registered criteria; no autonomous/general/Windows/mobile Vision claim",
+  "demo_url": "http://127.0.0.1:4310/demo",
+  "workflow_record": "WORKFLOW/CAPTURE_REPORT.json",
+  "screenshot_reference": "ASSETS/screenshot-reference.png"
+}
