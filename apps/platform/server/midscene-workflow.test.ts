@@ -35,5 +35,6 @@ for(const mode of ['normal','mismatch','budget','aborted','assertion-failed','un
 it('workflow asks for commitments, not coordinates or per-page answers',()=>{
  const text=workflowPrompt('이름과 수량 입력 후 주문','완료','CUSTOM_INSTRUCTIONS','http://127.0.0.1:4311/store/a');
  expect(text).toContain('CUSTOM_INSTRUCTIONS');expect(text).toContain('모든 필수 입력');
+ expect(workflowSchema.parse([{kind:'action',description:'화면 탐색'}]).steps).toHaveLength(1);
  expect(workflowSchema.safeParse({steps:[{kind:'input',value:'2',description:'입력'}]}).success).toBe(false);
 });
