@@ -6,8 +6,34 @@ function auditStub(body: unknown) {
 import { it, expect } from "vitest";
 import { chromium } from "playwright";
 import { PlaywrightAgent } from "@midscene/web/playwright";
-import { defaults, inputSchema, planSchema, planPrompt } from "./domain";
+import { defaults, inputSchema, planSchema, planPrompt, parseModelPlan } from "./domain";
 import { instrumentClient, makeRun, executeAction } from "./runner";
+it("Qwen's declared 0..1000 coordinates are converted once, without guessing from magnitude", () => {
+  const raw={observation:"수량은 1",rationale:"2로 변경",action:{type:"type",text:"2",x:305,y:618},verdict:"continue",finding:null};
+  const qwen=parseModelPlan(raw,"qwen3-vl");
+  expect(qwen.success&&qwen.data.action).toEqual({type:"type",text:"2",x:390,y:445});
+  expect(raw.action.x).toBe(305);
+  expect(parseModelPlan(raw,"gpt-5")).toMatchObject({success:true,data:{action:{x:305,y:618}}});
+  expect(parseModelPlan({...raw,action:{...raw.action,x:[305,618],y:undefined}},"qwen3-vl")).toMatchObject({success:true,data:{action:{x:390,y:445}}});
+  expect(parseModelPlan({...raw,action:{...raw.action,x:1001}},"qwen3-vl").success).toBe(false);
+  expect(parseModelPlan({...raw,action:{...raw.action,y:undefined}},"qwen3-vl").success).toBe(false);
+});
+it("screenshot coordinates and replacement typing update quantity and its calculated total, rather than append", async () => {
+  const browser=await chromium.launch({headless:true});
+  try {
+    const page=await browser.newPage({viewport:{width:1280,height:720}});
+    await page.setContent('<input type="number" value="1" style="position:absolute;left:100px;top:420px;width:600px;height:50px" oninput="document.querySelector(\'output\').textContent=Number(this.value)*12"><output>12</output>');
+    await page.mouse.click(390,445);await page.keyboard.press("End");await page.keyboard.insertText("2");
+    expect(await page.locator('input').inputValue()).toBe('12'); // Actual former append behavior.
+    const plan=parseModelPlan({observation:"수량 12",rationale:"2로 교체",action:{type:"type",text:"2",x:305,y:618},verdict:"continue",finding:null},"qwen3-vl");
+    if(!plan.success)throw plan.error;
+    const calls:string[]=[];
+    await executeAction(page,plan.data.action,(action,completed)=>{if(!completed)calls.push(action.type)});
+    expect(await page.locator('input').inputValue()).toBe('2');
+    expect(await page.locator('output').textContent()).toBe('24');
+    expect(calls).toEqual(['click','key','type']);
+  } finally {await browser.close();}
+},30000);
 it("Midscene transports screenshots without hidden DOM and executes the validated coordinate plan (stub provider)", async () => {
   const browser = await chromium.launch({ headless: true });
   try {
@@ -390,7 +416,8 @@ for (const missingFocus of [false, true]) {
     const settings = {
       ...defaults,
       apiKey: "stub-key",
-      maxActions: 2,
+      family: "gpt-5" as const, // This stub returns browser pixels; Qwen's normalized contract has a separate test.
+      maxActions: 3,
       maxCalls: 6,
     };
     const run = makeRun(
@@ -484,11 +511,12 @@ for (const missingFocus of [false, true]) {
         }),
       },
     );
-    expect(run.actions).toBe(2); // Focus click and insertText each counted, never one compound action.
+    expect(run.actions).toBe(3); // Focus, selection and replacement are counted separately.
     expect(
       run.steps[0].toolCalls?.map((t) => [t.action.type, t.completed]),
     ).toEqual([
       ["click", true],
+      ["key", true],
       ["type", true],
     ]);
     expect(requests[1]).toContain("independent visual input check");

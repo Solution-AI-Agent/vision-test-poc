@@ -1,4 +1,5 @@
 import { visualSummary } from "../server/visual-qa";
+import { QaText, briefKorean, actionLabel, criterionNames } from "./qa-text";
 import { useEffect, useState, type ReactNode } from "react";
 import {
   Eye,
@@ -843,10 +844,7 @@ export default function App() {
                             초
                           </span>
                         </div>
-                        <p className="text-sm text-muted-foreground">
-                          {current.steps.at(-1)?.plan.observation ??
-                            "화면을 관찰하고 있습니다."}
-                        </p>
+                        <QaText text={current.steps.at(-1)?.plan.observation ?? "화면을 관찰하고 있습니다."} />
                       </div>
                     ) : (
                       <Empty className="screen-empty">
@@ -1067,7 +1065,7 @@ export default function App() {
                         <Card key={f.id}>
                           <CardHeader>
                             <div className="flex items-center justify-between">
-                              <CardTitle>{f.title}</CardTitle>
+                              <CardTitle>{briefKorean(f.title,`${criterionNames[f.visual?.criterion??""]??"결함"} 후보`)}</CardTitle>
                               <StateBadge value={f.status} />
                             </div>
                             <CardDescription>
@@ -1079,21 +1077,18 @@ export default function App() {
                             <div className="flex flex-col gap-4">
                               {f.visual && <>
                                 <Badge variant="destructive">{f.visual.uncertain ? "의심 · 판독에 불확실성 있음" : f.visual.verification === "reproduced" ? "반복 관찰된 결함 후보" : f.visual.verification === "not-reproduced" ? "의심 · 재확인에서 불일치" : "의심 · 재확인 미완료"}</Badge>
-                                <p className="text-sm">사용자 영향: {f.visual.impact}<br/>다른 해석 검토: {f.visual.alternative}</p>
+                                <QaText label="사용자 영향" text={f.visual.impact}/><QaText label="다른 해석" text={f.visual.alternative}/>
                                 <a href={f.visual.annotated} target="_blank" rel="noreferrer"><img className="screen-preview" src={f.visual.annotated} alt="모델이 관찰한 결함 의심 영역을 붉은 박스로 표시한 캡처" /></a>
                                 <p className="text-xs text-muted-foreground">붉은 박스는 원본 모델 입력에 좌표를 표시한 주석입니다. 모델 재관찰은 사람의 결함 확정과 다릅니다. <a href={f.visual.annotated} download>주석 캡처 SVG 저장</a> · <a href={f.before} target="_blank" rel="noreferrer">원본 보기</a></p>
                               </>}
-                              <p>{f.observed}</p>
-                              <p className="text-sm text-muted-foreground">
-                                기대: {f.expected}
-                                <br />
-                                근거: {f.basis}
-                              </p>
-                              <ol className="list-decimal pl-5 text-sm">
+                              <QaText text={f.observed}/>
+                              <QaText label="기대 상태" text={f.expected}/>
+                              <QaText label="판정 근거" text={f.basis}/>
+                              <details><summary className="text-sm">재현 절차 원문</summary><ol className="list-decimal pl-5 text-sm">
                                 {f.reproduction.map((text, i) => (
                                   <li key={i}>{text}</li>
                                 ))}
-                              </ol>
+                              </ol></details>
                               <div className="grid grid-cols-2 gap-3">
                                 <img
                                   className="screen-preview"
@@ -1161,16 +1156,13 @@ export default function App() {
                       <Card key={i}>
                         <CardHeader>
                           <CardTitle>자율 선택 테스트 가설</CardTitle>
-                          <CardDescription>{goal.hypothesis}</CardDescription>
+                          <CardDescription>{briefKorean(goal.hypothesis,"화면에서 선택한 테스트 업무")}</CardDescription>
                         </CardHeader>
                         <CardContent>
                           <div className="flex flex-col gap-3">
-                            <p className="text-sm">업무: {goal.task}</p>
-                            <p className="text-sm text-muted-foreground">
-                              기대: {goal.expected}
-                              <br />
-                              화면 근거: {goal.basis}
-                            </p>
+                            <QaText label="업무" text={goal.task}/>
+                            <QaText label="기대 결과" text={goal.expected}/>
+                            <QaText label="화면 근거" text={goal.basis}/>
                             <img
                               className="screen-preview"
                               src={goal.screenshot}
@@ -1213,15 +1205,10 @@ export default function App() {
                                       : "미실행"}
                                 </span>
                               </div>
-                              <p className="text-sm mt-3">
-                                {s.plan.observation}
-                              </p>
-                              <p className="text-xs text-muted-foreground mt-2">
-                                {s.plan.rationale}
-                              </p>
-                              <code className="action-code">
-                                {JSON.stringify(s.plan.action)}
-                              </code>
+                              <p className="text-sm font-medium mt-3">{actionLabel(s.plan.action)}</p>
+                              <QaText text={s.plan.observation}/>
+                              <QaText label="행동 이유" text={s.plan.rationale}/>
+                              <details className="text-xs"><summary>행동 좌표·원본</summary><code className="action-code">{JSON.stringify(s.plan.action)}</code></details>
                               <div className="grid grid-cols-2 gap-3 mt-3">
                                 <a
                                   href={s.before}
