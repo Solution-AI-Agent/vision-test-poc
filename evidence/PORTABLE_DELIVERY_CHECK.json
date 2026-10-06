@@ -1,0 +1,77 @@
+{
+  "commit": "aa3946fc08752646611f7cc9748a868189673d1b",
+  "modelCalls": 0,
+  "functional": [
+    {
+      "state": "normal",
+      "result": "PASS",
+      "suite": "scripts/sample-baseline.ts; only goto origin adapted to isolated port"
+    },
+    {
+      "state": "misaligned",
+      "result": "PASS",
+      "suite": "scripts/sample-baseline.ts; only goto origin adapted to isolated port"
+    },
+    {
+      "state": "occluded",
+      "result": "PASS",
+      "suite": "scripts/sample-baseline.ts; only goto origin adapted to isolated port"
+    },
+    {
+      "state": "clipped",
+      "result": "PASS",
+      "suite": "scripts/sample-baseline.ts; only goto origin adapted to isolated port"
+    },
+    {
+      "state": "product-image",
+      "result": "PASS",
+      "suite": "scripts/sample-baseline.ts; only goto origin adapted to isolated port"
+    },
+    {
+      "state": "chart",
+      "result": "PASS",
+      "suite": "scripts/sample-baseline.ts; only goto origin adapted to isolated port"
+    }
+  ],
+  "demo": [
+    {
+      "state": "정상",
+      "imageStatus": 200,
+      "rawStatus": 200
+    },
+    {
+      "state": "렌더링 결함",
+      "imageStatus": 200,
+      "rawStatus": 200
+    }
+  ],
+  "media": {
+    "videos": [
+      {
+        "src": "v5/VISION_TEST_LUMEN_V5.mp4",
+        "duration": 160,
+        "width": 1280,
+        "height": 720
+      },
+      {
+        "src": "v4/VISION_TEST_LUMEN_ROUGHCUT_V4.mp4",
+        "duration": 168,
+        "width": 1280,
+        "height": 720
+      }
+    ],
+    "playback": {
+      "currentTime": 31.201053,
+      "readyState": 4
+    },
+    "galleryImages": 6,
+    "privatePathStatus": 404
+  },
+  "ports": {
+    "platform": 14310,
+    "sample": 14311,
+    "media": 4312
+  },
+  "errors": [],
+  "restoredRunCount": 13
+}
