@@ -12,7 +12,7 @@ await mkdir(folder, { recursive: true });
 const browser = await chromium.launch();
 const results: any[] = [];
 try {
-  for (const version of ["a", "b"]) {
+  for (const version of ["a", "b", "c", "d", "e", "f", "g"]) {
     const context = await browser.newContext({ viewport: { width: 1280, height: 720 }, recordVideo: { dir: folder, size: { width: 1280, height: 720 } } });
     const page = await context.newPage(); const requests: string[] = []; const errors: string[] = [];
     page.on("request", r => requests.push(r.url())); page.on("pageerror", e => errors.push(e.message));

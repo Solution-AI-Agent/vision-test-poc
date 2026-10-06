@@ -12,8 +12,8 @@ await mkdir(folder,{recursive:true});const browser=await chromium.launch();const
 try {
 
  // First, direct visits: no operator setup, platform access, routing, CSS/DOM injection or init scripts.
- for(const route of ["/store/a","/store/b"]){
-  const name=route.endsWith("/a")?"store-a":"store-b";
+ for(const route of ["/store/a","/store/b","/store/c","/store/d","/store/e","/store/f","/store/g"]){
+  const name=`store-${route.slice(-1)}`;
   const context=await browser.newContext({viewport:{width:1280,height:720},recordVideo:{dir:folder,size:{width:1280,height:720}}});
   const page=await context.newPage();const requests:string[]=[];const errors:string[]=[];
   page.on("request",r=>requests.push(r.url()));page.on("pageerror",e=>errors.push(e.message));

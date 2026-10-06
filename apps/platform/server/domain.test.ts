@@ -7,6 +7,7 @@ import {
   defaults,
   planPrompt,
   actionSchema,
+  actionScope,
   goalPrompt,
 } from "./domain";
 describe("execution boundaries", () => {
@@ -29,6 +30,13 @@ describe("execution boundaries", () => {
     expect(validateTarget("http://127.0.0.1:4310/fixture/order")).toBe(
       "http://127.0.0.1:4310/fixture/order",
     );
+    for (const suffix of ["a","b","c","d","e","f","g"]) {
+      const url = `http://127.0.0.1:4311/store/${suffix}`;
+      expect(validateTarget(url)).toBe(url);
+      expect(actionScope(url)).toContain("simulated order site");
+      expect(() => validateTarget(url + "?state=normal")).toThrow();
+    }
+    expect(() => validateTarget("http://127.0.0.1:4311/store/h")).toThrow();
     expect(validateTarget("http://127.0.0.1:4311/order")).toBe("http://127.0.0.1:4311/order");
     for (const url of [
       "http://127.0.0.1:4311/operator",

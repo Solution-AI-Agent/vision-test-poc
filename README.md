@@ -194,3 +194,10 @@ npm run sample:start
 Node fetch는 명시적 Undici dispatcher를 사용하므로 Node 24.0에서 시작 후 `NODE_USE_ENV_PROXY` 변경에 의존하지 않습니다. Chromium은 별도 Playwright proxy 옵션을 사용합니다. HTTP/HTTPS 프록시가 다르면 브라우저는 시작 대상 URL의 scheme에 맞는 프록시를 사용하며 해당 탐색의 다른 외부 리소스에도 같은 브라우저 프록시가 적용됩니다. PAC/OS 자동 프록시·NTLM/Kerberos 자동 인증은 지원 범위가 아닙니다. URL의 기본 인증은 지원합니다. 사내 인증서의 Chromium 신뢰는 Windows/브라우저 신뢰 저장소에 별도로 설치해야 하며 `NODE_EXTRA_CA_CERTS`는 Node용입니다. TLS 검증을 끄는 설정은 사용하지 않습니다.
 
 근거: [Node의 프록시 지원과 시작 시점](https://nodejs.org/docs/latest-v24.x/api/http.html#built-in-proxy-support), [Undici EnvHttpProxyAgent](https://github.com/nodejs/undici/blob/main/docs/docs/api/EnvHttpProxyAgent.md), [Playwright proxy 옵션](https://playwright.dev/docs/api/class-browsertype#browser-type-launch-option-proxy). 테스트 전용 자체 서명 인증서/키는 `apps/platform/server/test-fixtures/`에 있으며 격리된 모의 TLS 서버에서만 신뢰합니다. 실제 API 인증값이 아니고 개발 환경의 전역 신뢰 저장소에 설치하지 않습니다.
+
+
+### 결함별 한국어 직접 테스트 주소
+
+정상 [매장 A](http://127.0.0.1:4311/store/a)와 기존 [복합 매장 B](http://127.0.0.1:4311/store/b)는 유지합니다. 개별 테스트는 [C: 크기/배치 뒤틀림](http://127.0.0.1:4311/store/c), [D: 실제 차트 겹침](http://127.0.0.1:4311/store/d), [E: 필수 안내 잘림](http://127.0.0.1:4311/store/e), [F: 상품 이미지 불일치](http://127.0.0.1:4311/store/f), [G: 차트 의미 불일치](http://127.0.0.1:4311/store/g)입니다. 각 페이지에는 한 종류만 적용되며 첫 방문부터 나타납니다. 플랫폼·운영자 호출·테스트 주입 없이 앱 자체 소스에서 재현됩니다.
+
+실행: `npm run sample:build` → `npm run sample:start`. 사례 목록은 별도 [운영자 화면](http://127.0.0.1:4311/operator), 소스 발생 지점·정상 비교·검사 범위는 [샘플 안내](sample-site/README.md#개별-결함-직접-url-현재-버전)를 참고하세요. 같은 기능 suite는 `npm run sample:test`로 직접 7주소+운영자 6상태를 확인합니다. 새 페이지의 실제 Vision 검출은 미검증이며 추가 유료 호출은 없습니다.

@@ -4,6 +4,7 @@ export async function sampleBaseline(page: Page, beforeSubmit?: () => Promise<vo
  await page.goto(url);
  await expect(page.locator("html")).toHaveAttribute("lang","ko");
  await page.waitForLoadState("networkidle");
+ await expect(page.getByTestId("instructions")).toHaveText("영업일 기준 2일 안에 배송됩니다.수령 가능 시간은 48시간입니다.수령할 때 사진이 있는 신분증이 필요합니다.");
  await expect(page.getByRole("button",{name:"주문 확정하기"})).toBeDisabled();
  await page.getByLabel("받는 분").fill("김민수");
  await page.getByLabel("이메일 주소").fill("invalid");
