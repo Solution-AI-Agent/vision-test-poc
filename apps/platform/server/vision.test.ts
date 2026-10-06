@@ -1,3 +1,8 @@
+import { visualCriteria } from "./visual-qa";
+function auditStub(body: unknown) {
+  if (!JSON.stringify(body).includes("VISUAL_QA_REVIEW_V1")) return;
+  return { id: "stub-audit", model: "stub", choices: [{ index: 0, finish_reason: "stop", message: { role: "assistant", content: `<data-json>${JSON.stringify({ checks: visualCriteria.map(criterion => ({ criterion, result: "clear", evidence: "Local stub screen" })), issues: [] })}</data-json>` } }], usage: { total_tokens: 42 } };
+}
 import { it, expect } from "vitest";
 import { chromium } from "playwright";
 import { PlaywrightAgent } from "@midscene/web/playwright";
@@ -78,9 +83,9 @@ it("Midscene transports screenshots without hidden DOM and executes the validate
     expect(serialized).not.toContain("HIDDEN_DOM_SENTINEL");
     expect(serialized).toContain("image_url");
     expect(run.calls).toBe(1);
-    expect(run.transport[0].images).toBeGreaterThan(0);
+    expect(run.transport.filter(r => r.phase !== "visual-review")[0].images).toBeGreaterThan(0);
     expect(run.tokens).toBe(42);
-    expect(run.transport[0].responseFormat?.normalizedPlainJson).toBe(true);
+    expect(run.transport.filter(r => r.phase !== "visual-review")[0].responseFormat?.normalizedPlainJson).toBe(true);
     await executeAction(page, returned.action);
     expect(await page.getByRole("button").textContent()).toBe("Clicked");
     await expect(
@@ -168,6 +173,7 @@ for (const { mode, malformed } of [
           chat: {
             completions: {
               create: async (body: any) => {
+                const audit = auditStub(body); if (audit) return audit;
                 expect(JSON.stringify(body)).not.toContain(
                   "HIDDEN_DOM_RUNNER_SENTINEL",
                 );
@@ -262,16 +268,16 @@ for (const { mode, malformed } of [
     expect(run.status).toBe("completed");
     expect(run.actions).toBe(1);
     const offset = mode === "autonomous" || malformed ? 1 : 0;
-    if (malformed) expect(run.transport[0].validationError).toContain("action");
-    expect(run.calls).toBe(2 + offset);
+    if (malformed) expect(run.transport.filter(r => r.phase !== "visual-review")[0].validationError).toContain("action");
+    expect(run.calls).toBe(2 + offset + run.visualAudits!.filter(a => a.call > 0).length);
     if (mode === "autonomous") {
-      expect(run.goals?.[0].screenshot).toBe(run.transport[0].screenshot);
+      expect(run.goals?.[0].screenshot).toBe(run.transport.filter(r => r.phase !== "visual-review")[0].screenshot);
       expect(run.goals?.[0].task).toBe("Click the visible button");
     }
     expect(run.findings).toHaveLength(0);
     expect(clicked).toBe(true);
-    expect(run.steps[0].before).toBe(run.transport[offset].screenshot);
-    expect(run.steps[1].before).toBe(run.transport[1 + offset].screenshot);
+    expect(run.steps[0].before).toBe(run.transport.filter(r => r.phase !== "visual-review")[offset].screenshot);
+    expect(run.steps[1].before).toBe(run.transport.filter(r => r.phase !== "visual-review")[1 + offset].screenshot);
     expect(run.steps[1].after).toContain("1-decision.png");
     expect(run.steps[1].executed).toBe(false);
     const file = (url: string) =>
@@ -328,6 +334,7 @@ it("unchanged autonomous screens trigger one bounded replan then an explicit inc
         chat: {
           completions: {
             create: async (body: any) => {
+                const audit = auditStub(body); if (audit) return audit;
               outgoingCalls++;
               const demand = JSON.stringify(body.messages);
               const selecting = demand.includes(
@@ -373,7 +380,7 @@ it("unchanged autonomous screens trigger one bounded replan then an explicit inc
   expect(run.status).toBe("limited");
   expect(run.outcome).toContain("판단 불가");
   expect(run.actions).toBe(4);
-  expect(run.calls).toBe(6);
+  expect(run.calls).toBe(6 + run.visualAudits!.filter(a => a.call > 0).length);
   expect(run.steps.every((s) => s.unchanged)).toBe(true);
 }, 30000);
 
@@ -384,7 +391,7 @@ for (const missingFocus of [false, true]) {
       ...defaults,
       apiKey: "stub-key",
       maxActions: 2,
-      maxCalls: 3,
+      maxCalls: 6,
     };
     const run = makeRun(
       inputSchema.parse({
@@ -428,6 +435,7 @@ for (const missingFocus of [false, true]) {
           chat: {
             completions: {
               create: async (body: any) => {
+                const audit = auditStub(body); if (audit) return audit;
                 const demand = JSON.stringify(body.messages);
                 requests.push(demand);
                 expect(demand).not.toContain("INPUT_HIDDEN_SENTINEL");
@@ -486,22 +494,22 @@ for (const missingFocus of [false, true]) {
     expect(requests[1]).toContain("independent visual input check");
     expect(requests[1]).not.toContain("History:");
     expect(run.steps[0].inputConfirmation?.screenshot).toBe(
-      run.transport[1].screenshot,
+      run.transport.filter(r => r.phase !== "visual-review")[1].screenshot,
     );
-    expect(run.steps[0].inputConfirmation?.call).toBe(2);
+    expect(run.steps[0].inputConfirmation?.call).toBe(run.transport.findIndex(r => r.phase === "input-confirmation") + 1);
     if (missingFocus) {
       expect(actualText).toBe("");
       expect(run.steps[0].unchanged).toBe(true);
       expect(run.steps[0].inputConfirmation?.status).toBe("not-visible");
       expect(run.status).toBe("limited");
       expect(run.outcome).toContain("입력 결과");
-      expect(run.calls).toBe(2);
+      expect(run.calls).toBe(2 + run.visualAudits!.filter(a => a.call > 0).length);
       expect(run.steps).toHaveLength(1); // Never accept a subsequent pass or submit on silent loss.
     } else {
       expect(actualText).toBe("sample");
       expect(run.steps[0].inputConfirmation?.status).toBe("verified");
       expect(run.status).toBe("completed");
-      expect(run.calls).toBe(3);
+      expect(run.calls).toBe(3 + run.visualAudits!.filter(a => a.call > 0).length);
     }
     expect(run.findings).toHaveLength(0);
   }, 30000);
@@ -549,6 +557,7 @@ it("controlled screenshot assessment initializes the explicit OpenRouter base UR
           chat: {
             completions: {
               create: async (body: any) => {
+                const audit = auditStub(body); if (audit) return audit;
                 requests++;
                 expect(JSON.stringify(body)).toContain("image_url");
                 expect(JSON.stringify(body)).not.toContain(

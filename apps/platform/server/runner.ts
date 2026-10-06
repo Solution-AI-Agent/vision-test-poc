@@ -1,3 +1,4 @@
+import { visualPrompt, visualPromptVersion, visualSchema, matchingIssue, annotationSvg, type VisualAudit } from "./visual-qa";
 import { diagnose, phaseLabels, SafeExecutionError, type ExecutionPhase, type RunDiagnostic } from "./diagnostics";
 import { networkFetch, browserProxy } from "./network";
 import { chromium, type Browser, type Page } from "playwright";
@@ -20,8 +21,9 @@ const sourceVersion = {
   sourceHash: createHash("sha256")
     .update(readFileSync(path.join(repoRoot, "apps/platform/server/domain.ts")))
     .update(readFileSync(path.join(repoRoot, "apps/platform/server/runner.ts")))
+    .update(readFileSync(path.join(repoRoot, "apps/platform/server/visual-qa.ts")))
     .digest("hex"),
-  promptVersion: "goal-first-v6-user-agent-instructions",
+  promptVersion: "goal-first-v7-independent-visual-qa",
 };
 import {
   planPrompt,
@@ -99,6 +101,7 @@ export function makeRun(input: Input, settings: Settings): Run {
         ? "Playwright locator / 1.63.0"
         : "Midscene aiQuery / 1.14.0 → Playwright coordinates / 1.63.0",
     transport: [],
+    ...(input.mode === "baseline" ? {} : { visualAudits: [], visualComplete: false }),
     sourceVersion,
   };
 }
@@ -142,6 +145,7 @@ export function instrumentClient(client: any, run: Run, runtime: Runtime) {
       Array.isArray(m.content) ? m.content : [{ type: "text" }],
     );
     const record: Run["transport"][number] = {
+      phase: run.executionPhase,
       images: blocks.filter((b: any) => b.type === "image_url").length,
       texts: blocks.filter((b: any) => b.type === "text").length,
     };
@@ -305,6 +309,91 @@ export async function runVision(
             runtime,
           ),
       });
+      // Independent visual QA never sees task history, page identity, or sample answers.
+      // Recheck uses the same neutral prompt on a fresh capture, not the previous allegation.
+      let lastReviewedFrame = "";
+      const audit = async (checkpoint: string, recheck = false): Promise<VisualAudit | undefined> => {
+        run.visualComplete = false;
+        const captured = await capture(`visual-${run.visualAudits!.length}-${recheck ? "recheck" : "screen"}`);
+        const file = (url: string) => path.join(artifactsDir, url.replace("/artifacts/", ""));
+        const fingerprint = createHash("sha256").update(await readFile(file(captured))).digest("hex");
+        if (!recheck && fingerprint === lastReviewedFrame) { run.visualComplete = true; return; }
+        const entry: VisualAudit = {
+          id: randomUUID(), at: new Date().toISOString(), checkpoint, screenshot: captured,
+          call: 0, status: "inconclusive", promptVersion: visualPromptVersion,
+        };
+        run.visualAudits!.push(entry);
+        if (runtime.controller.signal.aborted || run.calls >= settings.maxCalls) {
+          entry.reason = "실행 한도로 시각 검사 미실행 · 통과 아님";
+          await save(); return entry;
+        }
+        run.stage = recheck ? "새 화면으로 시각 결함 독립 재확인" : "공통 기준으로 독립 시각 QA 검사";
+        await save(); phase("visual-review");
+        const startCalls = run.calls;
+        try {
+          const output = await agent.aiQuery(visualPrompt(settings.agentInstructions), {
+            domIncluded: false, screenshotIncluded: true, abortSignal: runtime.controller.signal,
+          });
+          const record = run.transport.at(-1)!;
+          record.parsedOutput = output;
+          entry.call = run.calls;
+          entry.screenshot = record.screenshot ?? captured;
+          const parsed = visualSchema.safeParse(output);
+          if (!parsed.success) {
+            record.validationError = "visual QA response/box invalid";
+            entry.reason = "시각 검사 응답 또는 영역 좌표가 유효하지 않음 · 판단 불가";
+          } else {
+            entry.result = parsed.data; entry.status = "reviewed";
+            lastReviewedFrame = fingerprint; run.visualComplete = true;
+            if (parsed.data.issues.length) {
+              const filename = `visual-${entry.id}.svg`;
+              await writeFile(path.join(folder, filename), annotationSvg(await readFile(file(entry.screenshot)), entry.screenshot.endsWith(".jpg") ? "image/jpeg" : "image/png", parsed.data));
+              entry.annotated = `/artifacts/${run.id}/${filename}`;
+            }
+          }
+        } catch (error) {
+          if (run.calls > startCalls) {
+            entry.call = run.calls; entry.screenshot = run.transport.at(-1)?.screenshot ?? captured;
+          }
+          entry.status = "inconclusive"; delete entry.result; run.visualComplete = false;
+          entry.reason = "시각 검사 요청/판독 실패 · 통과 아님";
+          if (runtime.providerFailure || error instanceof SafeExecutionError || runtime.controller.signal.aborted) throw error;
+        }
+        await save(); return entry;
+      };
+      const inspect = async (checkpoint: string) => {
+        const first = await audit(checkpoint);
+        if (!first?.result?.issues.length) return;
+        const added = first.result.issues.map(issue => {
+          const existing = run.findings.find(f => f.visual && f.status !== "false-positive" && f.observed === issue.observed && matchingIssue(issue, { ...issue, criterion: f.visual.criterion as typeof issue.criterion, box: f.visual.box }));
+          if (existing) return existing;
+          const finding: Run["findings"][number] = {
+            id: randomUUID(), status: "candidate", reviewNote: "", step: run.steps.length - 1,
+            title: issue.title, observed: issue.observed, expected: issue.expected,
+            basis: `${issue.criterion}: ${issue.impact}`,
+            reproduction: [`대상 방문: ${run.input.url}`, ...run.steps.filter(s => s.executed).map(s => JSON.stringify(s.plan.action)), `검사 시점: ${checkpoint}`],
+            before: first.screenshot, after: first.screenshot,
+            visual: { uncertain: first.result!.checks.find(c => c.criterion === issue.criterion)?.result === "uncertain", auditId: first.id, criterion: issue.criterion, box: issue.box, impact: issue.impact, alternative: issue.alternative, annotated: first.annotated!, verification: "not-checked" },
+          };
+          run.findings.push(finding); return finding;
+        });
+        await save();
+        if (added.every(f => f.visual?.verification === "reproduced")) return;
+        await page!.waitForTimeout(350);
+        const second = await audit(`${checkpoint} · 재확인`, true);
+        for (let i = 0; i < added.length; i++) {
+          const f = added[i];
+          if (f.visual!.verification === "reproduced") continue;
+          f.visual!.verificationAuditId = second?.id;
+          if (second?.result) {
+            f.after = second.screenshot;
+            f.visual!.uncertain ||= second.result.checks.find(c => c.criterion === f.visual!.criterion)?.result === "uncertain";
+            f.visual!.verification = second.result.issues.some(issue => matchingIssue(first.result!.issues[i], issue)) ? "reproduced" : "not-reproduced";
+          }
+        }
+        await save();
+      };
+      await inspect("첫 화면");
       let goal: Goal | undefined;
       let replans = 0,
         unchangedCount = 0,
@@ -416,6 +505,7 @@ export async function runVision(
             });
         }
         if (plan.action.type === "finish" || plan.verdict === "pass") {
+          await inspect("업무 종료 화면");
           run.status = "completed";
           run.outcome =
             run.input.mode === "scenario" && plan.verdict === "pass"
@@ -436,6 +526,7 @@ export async function runVision(
           run.outcome = "입력 결과 확인에 필요한 모델 호출 한도 부족 · 미실행";
           break;
         }
+        run.visualComplete = false;
         run.stage = "Playwright 좌표 행동 실행";
         phase("action");
         try {
@@ -497,7 +588,7 @@ export async function runVision(
             };
             run.transport.at(-1)!.parsedOutput = observation;
           }
-          for (const finding of run.findings.filter((f) => f.step === index))
+          for (const finding of run.findings.filter((f) => f.step === index && !f.visual))
             finding.after = step.after;
         } catch (error) {
           step.error = step.executed
@@ -505,6 +596,7 @@ export async function runVision(
             : "행동 실행 실패 · 제품 결함 아님";
           throw error;
         }
+        await inspect(`행동 ${index + 1} 이후`);
         await save();
         const inputFailed =
           step.inputConfirmation &&

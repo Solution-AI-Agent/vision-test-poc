@@ -1,3 +1,4 @@
+import { visualSummary } from "../server/visual-qa";
 import { useEffect, useState, type ReactNode } from "react";
 import {
   Eye,
@@ -90,7 +91,7 @@ const sample = {
 };
 const statuses: Record<string, string> = {
   running: "실행 중",
-  completed: "완료",
+  completed: "실행 종료",
   stopped: "중지됨",
   limited: "한도 도달",
   failed: "실패",
@@ -768,6 +769,7 @@ export default function App() {
                     </FieldGroup>
                   </CardContent>
                   <CardFooter className="flex flex-col items-stretch gap-3">
+                    {mode !== "baseline" && <p className="text-sm text-muted-foreground">공통 시각 QA 기본 실행: 첫 화면·행동 후 가독성, 변형, 겹침, 이미지·차트를 검사합니다. 재확인도 호출·시간 한도에 포함됩니다.</p>}
                     <Button
                       onClick={start}
                       disabled={
@@ -811,6 +813,7 @@ export default function App() {
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
+                    {current && <p className="mb-4 text-sm font-medium" role="status">{visualSummary(current)}</p>}
                     {current?.diagnostic && <Alert variant="destructive" className="mb-4"><AlertTitle>{current.diagnostic.code} · {current.stage}</AlertTitle><AlertDescription><p>{current.error}</p><p>{current.diagnostic.action}</p>{current.failureStage && <p>실패 당시 작업: {current.failureStage}</p>}</AlertDescription></Alert>}
                     {current?.screenshot ? (
                       <div className="flex flex-col gap-4">
@@ -819,6 +822,10 @@ export default function App() {
                           src={current.screenshot}
                           alt="QA 대상의 현재 캡처 화면"
                         />
+                        {current.visualAudits?.some(a => a.annotated) && <div className="flex flex-col gap-2">
+                          <p className="text-sm font-medium">최근 시각 결함 의심 캡처 · 현재 화면과 촬영 시점이 다를 수 있음</p>
+                          <a href={current.visualAudits.filter(a => a.annotated).at(-1)!.annotated} target="_blank" rel="noreferrer"><img className="screen-preview" src={current.visualAudits.filter(a => a.annotated).at(-1)!.annotated} alt="붉은 박스로 표시한 최근 시각 QA 의심 영역" /></a>
+                        </div>}
                         <div className="run-stats">
                           <span>
                             <Cpu className="size-4" />
@@ -1014,6 +1021,19 @@ export default function App() {
                         )}
                       </CardFooter>
                     </Card>
+                    <Card>
+                      <CardHeader><CardTitle>시각 QA 결과</CardTitle><CardDescription>{visualSummary(current)}</CardDescription></CardHeader>
+                      <CardContent className="flex flex-col gap-4">
+                        <p className="text-sm text-muted-foreground">업무 성공과 별도의 검사입니다. 검사한 화면·항목의 근거를 확인하세요. 한도·잘못된 좌표·판독 실패는 통과로 처리하지 않습니다.</p>
+                        {!current.visualAudits?.length && <p>독립 시각 검사 기록이 없습니다.</p>}
+                        {current.visualAudits?.map(a => <details key={a.id} className="rounded-lg border p-3">
+                          <summary className="cursor-pointer text-sm font-medium">{a.checkpoint} · {a.status === "reviewed" ? "관찰 기록" : "판단 불가"} · {a.call ? `요청 ${a.call}` : "호출 없음"}</summary>
+                          {a.reason && <p className="mt-3 text-sm">{a.reason}</p>}
+                          <ul className="mt-3 flex flex-col gap-2 text-sm">{a.result?.checks.map(c => <li key={c.criterion}><strong>{{readability:"가독성",geometry:"변형·깨짐",occlusion:"겹침", "image-meaning":"이미지 일치", "chart-meaning":"차트 일치"}[c.criterion]} · {{clear:"문제 근거 없음",issue:"문제 관찰",uncertain:"불확실", "not-applicable":"해당 없음"}[c.result]}</strong><br/>{c.evidence}</li>)}</ul>
+                          <a href={a.annotated ?? a.screenshot} target="_blank" rel="noreferrer"><img className="screen-preview mt-3" src={a.annotated ?? a.screenshot} alt="해당 시각 검사 요청의 캡처와 영역 주석" /></a>
+                        </details>)}
+                      </CardContent>
+                    </Card>
                     {current.findings.length === 0 ? (
                       <Card>
                         <CardHeader>
@@ -1051,12 +1071,18 @@ export default function App() {
                               <StateBadge value={f.status} />
                             </div>
                             <CardDescription>
-                              단계 {f.step + 1} · 독립 검토:{" "}
+                              {f.visual ? "독립 시각 QA" : `단계 ${f.step + 1}`} · 독립 검토:{" "}
                               {f.reviewNote || "미검토"}
                             </CardDescription>
                           </CardHeader>
                           <CardContent>
                             <div className="flex flex-col gap-4">
+                              {f.visual && <>
+                                <Badge variant="destructive">{f.visual.uncertain ? "의심 · 판독에 불확실성 있음" : f.visual.verification === "reproduced" ? "반복 관찰된 결함 후보" : f.visual.verification === "not-reproduced" ? "의심 · 재확인에서 불일치" : "의심 · 재확인 미완료"}</Badge>
+                                <p className="text-sm">사용자 영향: {f.visual.impact}<br/>다른 해석 검토: {f.visual.alternative}</p>
+                                <a href={f.visual.annotated} target="_blank" rel="noreferrer"><img className="screen-preview" src={f.visual.annotated} alt="모델이 관찰한 결함 의심 영역을 붉은 박스로 표시한 캡처" /></a>
+                                <p className="text-xs text-muted-foreground">붉은 박스는 원본 모델 입력에 좌표를 표시한 주석입니다. 모델 재관찰은 사람의 결함 확정과 다릅니다. <a href={f.visual.annotated} download>주석 캡처 SVG 저장</a> · <a href={f.before} target="_blank" rel="noreferrer">원본 보기</a></p>
+                              </>}
                               <p>{f.observed}</p>
                               <p className="text-sm text-muted-foreground">
                                 기대: {f.expected}

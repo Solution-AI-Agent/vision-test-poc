@@ -1,5 +1,6 @@
-export type ExecutionPhase = "artifact-prepare" | "target-validation" | "browser-launch" | "video-context" | "target-navigation" | "screenshot" | "model-initialization" | "goal-selection" | "model-plan" | "action" | "input-confirmation" | "video-finalization" | "persistence";
+export type ExecutionPhase = "artifact-prepare" | "target-validation" | "browser-launch" | "video-context" | "target-navigation" | "screenshot" | "model-initialization" | "goal-selection" | "model-plan" | "visual-review" | "action" | "input-confirmation" | "video-finalization" | "persistence";
 export const phaseLabels: Record<ExecutionPhase, string> = {
+  "visual-review": "독립 시각 QA 검사",
   "artifact-prepare": "증거 폴더 준비", "target-validation": "대상 주소 검증", "browser-launch": "Chromium 시작", "video-context": "브라우저·동영상 준비", "target-navigation": "대상 페이지 접속", screenshot: "화면 캡처", "model-initialization": "Vision 모델 초기화", "goal-selection": "자율 테스트 가설 선택", "model-plan": "화면 관찰·계획", action: "Playwright 행동 실행", "input-confirmation": "입력 결과 시각 확인", "video-finalization": "동영상 저장", persistence: "실행 기록 저장",
 };
 const advice = {
@@ -48,7 +49,7 @@ export function diagnose(error: unknown, phase: ExecutionPhase): RunDiagnostic {
   else if (phase === "screenshot") code = "SCREENSHOT_FAILED";
   else if (phase === "model-initialization") code = "MODEL_INITIALIZATION_FAILED";
   else if (phase === "action") code = "ACTION_FAILED";
-  else if (["goal-selection", "model-plan", "input-confirmation"].includes(phase)) code = "MODEL_RESPONSE_INVALID";
+  else if (["goal-selection", "model-plan", "visual-review", "input-confirmation"].includes(phase)) code = "MODEL_RESPONSE_INVALID";
   else code = "EXECUTION_FAILED";
   if (httpStatus !== undefined && (!Number.isInteger(httpStatus) || httpStatus < 400 || httpStatus > 599)) httpStatus = undefined;
   const [message, action] = advice[code];

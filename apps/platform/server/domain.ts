@@ -1,3 +1,4 @@
+import type { VisualAudit, VisualBox } from "./visual-qa";
 import type { ExecutionPhase, RunDiagnostic } from "./diagnostics";
 import { z } from "zod";
 export const limitsSchema = z.object({
@@ -120,6 +121,7 @@ export type Finding = NonNullable<Plan["finding"]> & {
   id: string;
   status: "candidate" | "confirmed" | "false-positive" | "inconclusive";
   reviewNote: string;
+  visual?: { uncertain: boolean; auditId: string; criterion: string; box: VisualBox; impact: string; alternative: string; annotated: string; verification: "reproduced" | "not-reproduced" | "not-checked"; verificationAuditId?: string };
   step: number;
   before: string;
   after: string;
@@ -175,6 +177,8 @@ export type Run = {
   error?: string;
   engine: string;
   goals?: Goal[];
+  visualAudits?: VisualAudit[];
+  visualComplete?: boolean;
   sourceVersion?: {
     commit: string;
     sourceHash: string;
@@ -182,6 +186,7 @@ export type Run = {
     dirty: boolean;
   };
   transport: {
+    phase?: ExecutionPhase;
     images: number;
     texts: number;
     screenshot?: string;
