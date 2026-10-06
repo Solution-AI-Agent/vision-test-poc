@@ -132,7 +132,7 @@ for (const { mode, malformed } of [
         task: "Click the visible button",
         expected: "Button says Clicked",
       }),
-      { ...defaults, apiKey: "stub-key" },
+      { ...defaults, apiKey: "stub-key", agentInstructions: "CUSTOM_GUIDANCE_TRANSPORT_SENTINEL" },
     );
     run.engine = "LOCAL FIXTURE / STUB VLM · NOT OPENROUTER";
     const runtime = { controller: new AbortController() };
@@ -142,7 +142,7 @@ for (const { mode, malformed } of [
     let sentImage: string = "";
     await runVision(
       run,
-      { ...defaults, apiKey: "stub-key" },
+      { ...defaults, apiKey: "stub-key", agentInstructions: "CUSTOM_GUIDANCE_TRANSPORT_SENTINEL" },
       runtime,
       async () => {},
       {
@@ -171,6 +171,7 @@ for (const { mode, malformed } of [
                 expect(JSON.stringify(body)).not.toContain(
                   "HIDDEN_DOM_RUNNER_SENTINEL",
                 );
+                expect(JSON.stringify(body)).toContain("CUSTOM_GUIDANCE_TRANSPORT_SENTINEL");
                 attempt++;
                 if (malformed && attempt === 1)
                   return {

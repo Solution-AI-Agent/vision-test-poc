@@ -21,7 +21,7 @@ const sourceVersion = {
     .update(readFileSync(path.join(repoRoot, "apps/platform/server/domain.ts")))
     .update(readFileSync(path.join(repoRoot, "apps/platform/server/runner.ts")))
     .digest("hex"),
-  promptVersion: "goal-first-v5-exact-simulated-order-scope",
+  promptVersion: "goal-first-v6-user-agent-instructions",
 };
 import {
   planPrompt,
@@ -316,7 +316,7 @@ export async function runVision(
         await capture(`goal-${run.goals?.length ?? 0}-before`);
         await save();
         const query =
-          goalPrompt(run.input.url) +
+          goalPrompt(run.input.url, settings.agentInstructions) +
           (replan
             ? ` Prior chosen goal: ${JSON.stringify(goal)}. The last ${unchangedCount} actions produced identical before/after screenshots. Prior model observations are unverified. An inputConfirmation other than verified means input success was NOT established; do not assume text exists. Choose a different permitted test or a genuinely different method; do not repeat the same ineffective action. History: ${JSON.stringify(run.steps.map((s) => ({ action: s.plan.action, observation: s.plan.observation, unchanged: s.unchanged, inputConfirmation: s.inputConfirmation })))}`
             : "");
@@ -346,7 +346,7 @@ export async function runVision(
           phase("model-plan");
           try {
             const output = await agent.aiQuery(
-              planPrompt(run.input, run.steps, goal) + feedback,
+              planPrompt(run.input, run.steps, goal, settings.agentInstructions) + feedback,
               {
                 domIncluded: false,
                 screenshotIncluded: true,

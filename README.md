@@ -1,5 +1,15 @@
 # Vision QA Lab
 
+## 공통 Agent 지침과 로컬 저장
+
+**모델 & 설정 → 공통 Agent 지침**에 일반 검사 기준을 최대 8,000자로 입력한 뒤 **지침·설정 저장**을 누르세요. 등록 시나리오의 화면 계획·판단과 자율 탐색의 목표 선택·재계획·판단에 적용됩니다. 실행 중에는 설정 변경이 차단되며 실행 요약과 JSON에 당시 지침을 보존합니다. 입력 결과의 중립적 전사와 Playwright 고정 비교군에는 지침을 넣지 않습니다.
+
+모델·한도·지침은 `.data/settings.json`에 원자적으로 저장하고 재시작 후 복원합니다. 기존 시나리오·실행·검토 기록은 `.data/`, 이미지·녹화는 `artifacts/`에 유지됩니다. 별도 DB 설치나 기존 파일 이전은 필요 없습니다. API 키는 프로세스 메모리에만 보관하며 재시작 후 다시 입력합니다. 손상된 설정 파일은 덮어쓰지 않고 오류를 알립니다.
+
+예시 지침: “현재 화면에서 읽기·식별을 방해하는 겹침, 잘림, 비정상적 변형과 이미지·문구의 모순을 살펴보고 실제 보이는 위치와 근거를 기록한다. 단순한 디자인 취향만으로 결함을 확정하지 않는다.”
+
+이 기능은 사용자 지침 전달 기능이며 별도의 전면 시각 감사 단계를 추가한 것은 아닙니다. 지침을 넣었다는 사실만으로 모델의 실제 검출 성공을 보장하지 않으며, 실행의 ‘완료’는 선택한 업무의 종료 상태입니다.
+
 Vision 기반 Web QA 플랫폼, 독립 테스트용 샘플사이트, 실험 데이터와 영상·HTML 자료를 함께 제공하는 npm workspaces 모노리포입니다. API 키 없이 샘플사이트·저장된 실험 결과·영상을 확인할 수 있습니다. 새로운 Vision 실행에만 OpenRouter 설정이 필요합니다.
 
 - 플랫폼: `apps/platform/` · 독립 샘플사이트: `sample-site/` · 공통 UI: `packages/ui/`
@@ -68,7 +78,7 @@ Build outputs are `apps/platform/dist/` and `sample-site/dist/`. Do not copy old
 4. Review the current screenshot and step log. Stop interrupts the pending model request and closes Chromium.
 5. In **증거 & 검토**, inspect model-input and post-action screenshots, candidate observations, expected-behavior basis and reproduction steps. Human confirmation requires a review note. Export JSON or download the raw video.
 
-Keys live only in the server process memory and are not returned to the client, written to disk or exported. Settings must be re-entered after server restart. Scenarios and reports persist in `.data/`; images and WebM recordings persist in `artifacts/`. These live runtime directories are gitignored. The reviewed historical snapshot is committed in `evidence/`; restore it with `npm run evidence:restore`. Treat exported reports and screenshots as potentially containing the target site's content. The UI clears key inputs after saving.
+Keys live only in the server process memory and are not returned to the client, written to disk or exported. Model settings, limits and common Agent instructions are saved in `.data/settings.json` and restored on restart; the API key must be re-entered. Scenarios and reports persist in `.data/`; images and WebM recordings persist in `artifacts/`. These live runtime directories are gitignored. The reviewed historical snapshot is committed in `evidence/`; restore it with `npm run evidence:restore`. Treat exported reports and screenshots as potentially containing the target site's content. The UI clears key inputs after saving.
 
 ## Architecture and boundaries
 

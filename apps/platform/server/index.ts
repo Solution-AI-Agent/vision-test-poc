@@ -4,7 +4,6 @@ import path from "node:path";
 import { mkdir, readFile, writeFile, rename } from "node:fs/promises";
 import { randomUUID } from "node:crypto";
 import {
-  defaults,
   settingsSchema,
   scenarioSchema,
   inputSchema,
@@ -15,12 +14,15 @@ import {
 import { artifactsDir, makeRun, runVision, type Runtime } from "./runner";
 import { diagnose, phaseLabels, SafeExecutionError } from "./diagnostics";
 import { networkFetch } from "./network";
+import { SettingsStore } from "./settings-store";
 const app = express();
 const port = Number(process.env.PORT ?? 4310);
 const origin = `http://127.0.0.1:${port}`;
 import { dataDir, platformRoot } from "./paths";
 await mkdir(dataDir, { recursive: true });
-let settings: Settings = { ...defaults };
+const settingsStore = new SettingsStore(dataDir);
+let settings: Settings = await settingsStore.load();
+let settingsUpdating = false;
 let connection: "unconfigured" | "ready" | "connected" | "error" =
   "unconfigured";
 let visionVerified = false;
@@ -103,27 +105,36 @@ const safeSettings = () => {
     visionVerified,
     visionActed,
     keyStorage: "서버 프로세스 메모리 · 재시작 시 삭제",
+    settingsStorage: ".data/settings.json · 재시작 후 복원",
   };
 };
 app.get("/api/settings", (_req, res) => res.json(safeSettings()));
-app.put("/api/settings", (req, res, next) => {
+app.put("/api/settings", async (req, res, next) => {
+  if (settingsUpdating) { res.status(409).json({ error: "설정 저장 중입니다. 잠시 후 다시 시도하세요" }); return; }
+  settingsUpdating = true;
   try {
     if (runtimes.size) throw new Error("실행 종료 후 설정을 변경하세요");
     const updated = settingsSchema.parse(req.body);
-    settings = {
+    const nextSettings = {
       ...updated,
       apiKey: updated.apiKey?.trim() || settings.apiKey,
     };
+    await settingsStore.save(nextSettings).catch(() => {
+      throw new Error("설정을 로컬에 저장하지 못했습니다. 저장 공간과 .data 폴더 쓰기 권한을 확인하세요.");
+    });
+    settings = nextSettings;
     connection = settings.apiKey ? "ready" : "unconfigured";
     visionVerified = false;
     visionActed = false;
     res.json(safeSettings());
   } catch (e) {
     next(e);
+  } finally {
+    settingsUpdating = false;
   }
 });
 app.delete("/api/settings/key", (_req, res, next) => {
-  if (runtimes.size) {
+  if (runtimes.size || settingsUpdating) {
     next(new Error("실행 종료 후 키를 삭제하세요"));
     return;
   }
@@ -185,6 +196,7 @@ app.delete("/api/scenarios/:id", async (req, res) => {
 app.get("/api/runs", (_req, res) => res.json(runs));
 app.post("/api/runs", async (req, res, next) => {
   try {
+    if (settingsUpdating) throw new Error("설정 저장이 끝난 후 실행하세요");
     if (runtimes.size) throw new Error("한 번에 하나의 실행만 지원합니다");
     const input = inputSchema.parse(req.body);
     if (input.mode === "autonomous") {

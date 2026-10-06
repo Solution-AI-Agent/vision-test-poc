@@ -61,6 +61,8 @@ import { Separator } from "@vision-qa/ui/components/separator";
 import type { Run, Finding } from "../server/domain";
 import { cn } from "@vision-qa/ui/utils";
 type Config = {
+  agentInstructions: string;
+  settingsStorage: string;
   model: string;
   family: string;
   maxActions: number;
@@ -215,6 +217,7 @@ export default function App() {
         visionVerified,
         visionActed,
         keyStorage,
+        settingsStorage,
         ...value
       } = config;
       const saved = await api<Config>("/settings", "PUT", {
@@ -223,7 +226,7 @@ export default function App() {
       });
       setConfig(saved);
       setApiKey("");
-      setNotice("설정을 적용했습니다. 키는 서버 메모리에만 보관됩니다.");
+      setNotice("지침과 모델 설정을 로컬에 저장했습니다. API 키는 현재 실행 중에만 유지됩니다.");
     });
   }
   async function start() {
@@ -474,6 +477,38 @@ export default function App() {
                 </CardFooter>
               </Card>
               <div className="flex flex-col gap-5">
+                <Card>
+                  <CardHeader>
+                    <CardTitle>공통 Agent 지침</CardTitle>
+                    <CardDescription>등록 시나리오와 자율 탐색의 목표 선택·화면 판단에 함께 적용합니다.</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <FieldGroup>
+                      <FormField id="agent-instructions" label="Agent 인스트럭션" description="케이스별 정답 대신 공통 검사 기준을 적으세요. 저장 후 시작한 실행부터 적용됩니다. 한도·허용 행동은 유지되며, 지침만으로 결함 검출이 보장되지는 않습니다.">
+                        <Textarea id="agent-instructions" rows={7} maxLength={8000}
+                          value={config.agentInstructions} disabled={active}
+                          placeholder="예: 내용의 식별을 방해하는 뒤틀림·겹침·잘림을 살펴보고, 보이는 위치와 근거를 기록한다. 정상적인 디자인 차이는 결함으로 단정하지 않는다."
+                          onChange={(e) => setConfig({ ...config, agentInstructions: e.target.value })} />
+                      </FormField>
+                      <p className="text-sm text-muted-foreground">{config.agentInstructions.length} / 8,000자</p>
+                    </FieldGroup>
+                  </CardContent>
+                  <CardFooter>
+                    <Button onClick={saveConfig} disabled={busy || active}><Save data-icon="inline-start" />지침·설정 저장</Button>
+                  </CardFooter>
+                </Card>
+                <Card>
+                  <CardHeader><CardTitle>로컬 저장소</CardTitle><CardDescription>이 PC의 저장소 폴더에 보관하며 앱 재시작 후 복원합니다.</CardDescription></CardHeader>
+                  <CardContent>
+                    <div className="flex flex-col gap-3">
+                      <StatusRow label="모델·한도·Agent 지침" value={config.settingsStorage} />
+                      <StatusRow label="시나리오·실행·검토 기록" value=".data/ · 로컬 JSON 파일" />
+                      <StatusRow label="화면·녹화" value="artifacts/ · 로컬 파일" />
+                      <StatusRow label="API 키" value={config.keyStorage} />
+                    </div>
+                  </CardContent>
+                  <CardFooter><p className="text-sm text-muted-foreground">설정과 기록은 Git에 업로드되지 않습니다. 다른 PC로 기록을 옮길 때는 .data와 artifacts를 함께 백업하세요.</p></CardFooter>
+                </Card>
                 <Card>
                   <CardHeader>
                     <CardTitle>실행 한도</CardTitle>
@@ -939,6 +974,10 @@ export default function App() {
                         </CardDescription>
                       </CardHeader>
                       <CardContent>
+                        <details className="mb-4">
+                          <summary>이 실행에 적용한 Agent 지침</summary>
+                          <p className="whitespace-pre-wrap break-words text-sm text-muted-foreground">{current.settings.agentInstructions || "공통 지침 없음 (기본 계획·판단 기준 사용)"}</p>
+                        </details>
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
                           <StatusRow label="결과" value={current.outcome} />
                           <StatusRow
