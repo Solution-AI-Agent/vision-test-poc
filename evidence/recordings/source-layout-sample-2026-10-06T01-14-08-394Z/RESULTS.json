@@ -1,0 +1,164 @@
+{
+  "commit": "b2779f62dd22c9eef04adee5e36a3cc6af695206",
+  "modelCalls": 0,
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "screenshots": "full-page browser capture; not model input",
+  "results": [
+    {
+      "route": "/store/a",
+      "functionalSuite": "PASS",
+      "requests": [
+        "http://127.0.0.1:4311/store/a",
+        "http://127.0.0.1:4311/assets/index-7PPSByce.js",
+        "http://127.0.0.1:4311/assets/index-Bpfyu6Cs.css",
+        "http://127.0.0.1:4311/assets/geist-latin-wght-normal-BgDaEnEv.woff2",
+        "http://127.0.0.1:4311/api/orders"
+      ],
+      "operatorSetup": false,
+      "platformRequests": 0,
+      "pageErrors": [],
+      "video": "/Users/zpro/.buzz/REPOS/vision-test-maker/artifacts/source-layout-sample-2026-10-06T01-14-08-394Z/page@d0536ed3c27aedd699ce03db713de7de.webm"
+    },
+    {
+      "route": "/store/b",
+      "functionalSuite": "PASS",
+      "requests": [
+        "http://127.0.0.1:4311/store/b",
+        "http://127.0.0.1:4311/assets/index-7PPSByce.js",
+        "http://127.0.0.1:4311/assets/index-Bpfyu6Cs.css",
+        "http://127.0.0.1:4311/assets/geist-latin-wght-normal-BgDaEnEv.woff2",
+        "http://127.0.0.1:4311/api/orders"
+      ],
+      "operatorSetup": false,
+      "platformRequests": 0,
+      "pageErrors": [],
+      "video": "/Users/zpro/.buzz/REPOS/vision-test-maker/artifacts/source-layout-sample-2026-10-06T01-14-08-394Z/page@815268637caa02bc1d1bd70bdfee7756.webm"
+    },
+    {
+      "route": "/store/c",
+      "functionalSuite": "PASS",
+      "requests": [
+        "http://127.0.0.1:4311/store/c",
+        "http://127.0.0.1:4311/assets/index-7PPSByce.js",
+        "http://127.0.0.1:4311/assets/index-Bpfyu6Cs.css",
+        "http://127.0.0.1:4311/assets/geist-latin-wght-normal-BgDaEnEv.woff2",
+        "http://127.0.0.1:4311/api/orders"
+      ],
+      "operatorSetup": false,
+      "platformRequests": 0,
+      "pageErrors": [],
+      "video": "/Users/zpro/.buzz/REPOS/vision-test-maker/artifacts/source-layout-sample-2026-10-06T01-14-08-394Z/page@3016cb0d9b28743398c19ce84304af83.webm"
+    },
+    {
+      "route": "/store/d",
+      "functionalSuite": "PASS",
+      "requests": [
+        "http://127.0.0.1:4311/store/d",
+        "http://127.0.0.1:4311/assets/index-7PPSByce.js",
+        "http://127.0.0.1:4311/assets/index-Bpfyu6Cs.css",
+        "http://127.0.0.1:4311/assets/geist-latin-wght-normal-BgDaEnEv.woff2",
+        "http://127.0.0.1:4311/api/orders"
+      ],
+      "operatorSetup": false,
+      "platformRequests": 0,
+      "pageErrors": [],
+      "video": "/Users/zpro/.buzz/REPOS/vision-test-maker/artifacts/source-layout-sample-2026-10-06T01-14-08-394Z/page@c3a3888cedc932fe1d25d32efb7a43c0.webm"
+    },
+    {
+      "route": "/store/e",
+      "functionalSuite": "PASS",
+      "requests": [
+        "http://127.0.0.1:4311/store/e",
+        "http://127.0.0.1:4311/assets/index-7PPSByce.js",
+        "http://127.0.0.1:4311/assets/index-Bpfyu6Cs.css",
+        "http://127.0.0.1:4311/assets/geist-latin-wght-normal-BgDaEnEv.woff2",
+        "http://127.0.0.1:4311/api/orders"
+      ],
+      "operatorSetup": false,
+      "platformRequests": 0,
+      "pageErrors": [],
+      "video": "/Users/zpro/.buzz/REPOS/vision-test-maker/artifacts/source-layout-sample-2026-10-06T01-14-08-394Z/page@9c43244e5ab2aa33e4e2c8e40178829c.webm"
+    },
+    {
+      "route": "/store/f",
+      "functionalSuite": "PASS",
+      "requests": [
+        "http://127.0.0.1:4311/store/f",
+        "http://127.0.0.1:4311/assets/index-7PPSByce.js",
+        "http://127.0.0.1:4311/assets/index-Bpfyu6Cs.css",
+        "http://127.0.0.1:4311/assets/geist-latin-wght-normal-BgDaEnEv.woff2",
+        "http://127.0.0.1:4311/api/orders"
+      ],
+      "operatorSetup": false,
+      "platformRequests": 0,
+      "pageErrors": [],
+      "video": "/Users/zpro/.buzz/REPOS/vision-test-maker/artifacts/source-layout-sample-2026-10-06T01-14-08-394Z/page@cb3aa346037d38ff0d819f252351c786.webm"
+    },
+    {
+      "route": "/store/g",
+      "functionalSuite": "PASS",
+      "requests": [
+        "http://127.0.0.1:4311/store/g",
+        "http://127.0.0.1:4311/assets/index-7PPSByce.js",
+        "http://127.0.0.1:4311/assets/index-Bpfyu6Cs.css",
+        "http://127.0.0.1:4311/assets/geist-latin-wght-normal-BgDaEnEv.woff2",
+        "http://127.0.0.1:4311/api/orders"
+      ],
+      "operatorSetup": false,
+      "platformRequests": 0,
+      "pageErrors": [],
+      "video": "/Users/zpro/.buzz/REPOS/vision-test-maker/artifacts/source-layout-sample-2026-10-06T01-14-08-394Z/page@ef7bfc7cc1b68e3ecebabf581dea26ac.webm"
+    },
+    {
+      "state": "normal",
+      "functionalSuite": "PASS",
+      "invalidApiStatus": 400,
+      "foreignOriginStatus": 403,
+      "pageErrors": [],
+      "video": "/Users/zpro/.buzz/REPOS/vision-test-maker/artifacts/source-layout-sample-2026-10-06T01-14-08-394Z/page@63cfa0f8ac6800f190ac0f6ffc3b8d18.webm"
+    },
+    {
+      "state": "misaligned",
+      "functionalSuite": "PASS",
+      "invalidApiStatus": 400,
+      "foreignOriginStatus": 403,
+      "pageErrors": [],
+      "video": "/Users/zpro/.buzz/REPOS/vision-test-maker/artifacts/source-layout-sample-2026-10-06T01-14-08-394Z/page@51fde8370d7a373399e170fbefd1c39d.webm"
+    },
+    {
+      "state": "occluded",
+      "functionalSuite": "PASS",
+      "invalidApiStatus": 400,
+      "foreignOriginStatus": 403,
+      "pageErrors": [],
+      "video": "/Users/zpro/.buzz/REPOS/vision-test-maker/artifacts/source-layout-sample-2026-10-06T01-14-08-394Z/page@3a31d5d4c72e0f5e4b5b57387fd4eb27.webm"
+    },
+    {
+      "state": "clipped",
+      "functionalSuite": "PASS",
+      "invalidApiStatus": 400,
+      "foreignOriginStatus": 403,
+      "pageErrors": [],
+      "video": "/Users/zpro/.buzz/REPOS/vision-test-maker/artifacts/source-layout-sample-2026-10-06T01-14-08-394Z/page@507021a46fc321de13521624085ccc2c.webm"
+    },
+    {
+      "state": "product-image",
+      "functionalSuite": "PASS",
+      "invalidApiStatus": 400,
+      "foreignOriginStatus": 403,
+      "pageErrors": [],
+      "video": "/Users/zpro/.buzz/REPOS/vision-test-maker/artifacts/source-layout-sample-2026-10-06T01-14-08-394Z/page@b2598c80499ae6847afa9ead92c71834.webm"
+    },
+    {
+      "state": "chart",
+      "functionalSuite": "PASS",
+      "invalidApiStatus": 400,
+      "foreignOriginStatus": 403,
+      "pageErrors": [],
+      "video": "/Users/zpro/.buzz/REPOS/vision-test-maker/artifacts/source-layout-sample-2026-10-06T01-14-08-394Z/page@a13c092af071a326bf2336e738fc1ec0.webm"
+    }
+  ]
+}
