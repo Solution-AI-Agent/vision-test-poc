@@ -160,3 +160,9 @@ The QA platform remains on 4310. A separate ordinary store runs at **http://127.
 The standalone direct store revisions reproduce mistakes from their own CSS/asset/chart source: the real community chart overlaps the real receipt, collection text is clipped, the selected red mug is shown blue, and 80/20 chart widths are reversed. No blank covering panel is rendered by the standalone app and no test runner injects its layout. Stable /store/a and /store/b choose app-source versions; legacy /order operator states remain available. Business logic is identical in both versions.
 
 Platform `/demo` is labelled **previous experiment records** and links to the current separate sample. Stored judgments, media v4/v5 and evidence remain unchanged historical artifacts; they do not establish model detection on the new revisions. No paid model evaluation was performed for this change.
+
+### 한국어 샘플 테스트
+
+현재 /store/a와 /store/b의 상품·입력·영수증·수령 안내·차트·오류·운영자 화면은 한국어입니다. 예시: “빨간 머그 2개를 선택하고 테스트용 이름과 이메일을 입력해 주문을 확정한 뒤, 이미지와 영수증·수령 안내·차트가 일치하고 읽을 수 있는지 확인하세요.” 이전 영어 영상과 모델 판정은 과거 자료로만 보존합니다.
+
+플랫폼을 종료하고 샘플 서버만 실행한 상태에서 `npx tsx scripts/direct-store-capture.ts`를 실행하면 운영자 호출 없는 일반 브라우저 방문·주문 화면을 새 artifacts 폴더에 남깁니다. 캡처는 모델 입력이나 검출 성공 증거가 아닙니다.

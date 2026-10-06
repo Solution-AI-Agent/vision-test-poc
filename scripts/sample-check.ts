@@ -22,7 +22,7 @@ try {
   expect(requests.every(u=>u.startsWith("http://127.0.0.1:4311/"))).toBe(true);
   expect(requests.some(u=>u.includes("/api/operator")||u.includes("/api/presentation"))).toBe(false);
   expect(errors).toEqual([]);
-  await page.getByRole("button",{name:"Start another order"}).click();await expect(page.getByRole("button",{name:"Confirm order"})).toBeEnabled();
+  await page.getByRole("button",{name:"다시 주문하기"}).click();await expect(page.getByRole("button",{name:"주문 확정하기"})).toBeEnabled();
   const video=page.video();await context.close();results.push({route,functionalSuite:"PASS",requests,operatorSetup:false,platformRequests:0,pageErrors:errors,video:await video?.path()});
  }
  for(const state of ["normal","misaligned","occluded","clipped","product-image","chart"]){
@@ -32,10 +32,10 @@ try {
   const bad=await page.request.post("http://127.0.0.1:4311/api/orders",{data:{product:"mug",quantity:0,name:"Alex",email:"invalid"}});expect(bad.status()).toBe(400);
   const guarded=await page.request.put("http://127.0.0.1:4311/api/operator",{headers:{Origin:"http://unrelated.test"},data:{state:"normal"}});expect(guarded.status()).toBe(403);
   await page.screenshot({path:`${folder}/${state}.png`,fullPage:true});
-  await page.getByRole("button",{name:"Start another order"}).click();await expect(page.getByRole("button",{name:"Confirm order"})).toBeEnabled();expect(errors).toEqual([]);
+  await page.getByRole("button",{name:"다시 주문하기"}).click();await expect(page.getByRole("button",{name:"주문 확정하기"})).toBeEnabled();expect(errors).toEqual([]);
   const video=page.video();await context.close();results.push({state,functionalSuite:"PASS",invalidApiStatus:bad.status(),foreignOriginStatus:guarded.status(),pageErrors:errors,video:await video?.path()});
  }
- const page=await browser.newPage({viewport:{width:390,height:844}});await page.goto("http://127.0.0.1:4311/operator");await page.getByRole("radio",{name:"Normal",exact:true}).click();await page.getByRole("button",{name:"Reset to normal"}).click();await page.screenshot({path:`${folder}/operator.png`,fullPage:true});await sampleBaseline(page);await page.screenshot({path:`${folder}/normal-mobile.png`,fullPage:true});await page.close();
+ const page=await browser.newPage({viewport:{width:390,height:844}});await page.goto("http://127.0.0.1:4311/operator");await page.getByRole("radio",{name:"정상",exact:true}).click();await page.getByRole("button",{name:"정상으로 초기화"}).click();await page.screenshot({path:`${folder}/operator.png`,fullPage:true});await sampleBaseline(page);await page.screenshot({path:`${folder}/normal-mobile.png`,fullPage:true});await page.close();
 } finally {
  await fetch("http://127.0.0.1:4311/api/operator",{method:"PUT",headers:{"Content-Type":"application/json"},body:'{"state":"normal"}'});await browser.close();await writeFile(`${folder}/RESULTS.json`,JSON.stringify({commit,modelCalls:0,viewport:{width:1280,height:720},screenshots:"full-page browser capture; not model input",results},null,2));
 }

@@ -11,7 +11,7 @@ const origin = `http://127.0.0.1:${port}`;
 const app = express();
 app.use((req, res, next) => {
   if (req.headers.host !== `127.0.0.1:${port}` || (req.headers.origin && req.headers.origin !== origin)) {
-    res.status(403).json({ error: "Local sample origin required" }); return;
+    res.status(403).json({ error: "샘플 매장과 같은 로컬 출처에서 요청해주세요." }); return;
   }
   next();
 });
@@ -20,7 +20,7 @@ let state = "normal";
 app.get("/api/operator", (_req, res) => res.set("Cache-Control", "no-store").json({ state }));
 app.put("/api/operator", (req, res) => {
   if (!["normal", "misaligned", "occluded", "clipped", "product-image", "chart"].includes(req.body.state)) {
-    res.status(400).json({ error: "Unknown presentation" }); return;
+    res.status(400).json({ error: "지원하지 않는 화면 설정입니다." }); return;
   }
   state = req.body.state;
   res.json({ state });
@@ -41,5 +41,5 @@ if (process.env.NODE_ENV === "production") {
   const vite = await createViteServer({ configFile: path.join(root, "vite.config.ts"), server: { middlewareMode: true, hmr: { server } }, appType: "spa" });
   app.use(vite.middlewares);
 }
-app.use((error: any, _req: express.Request, res: express.Response, _next: express.NextFunction) => res.status(400).json({ error: error.name === "ZodError" ? "Check recipient, email and quantity (1–5)." : "Invalid sample request" }));
+app.use((error: any, _req: express.Request, res: express.Response, _next: express.NextFunction) => res.status(400).json({ error: error.name === "ZodError" ? "받는 분, 이메일 주소와 수량(1~5개)을 확인해주세요." : "잘못된 요청입니다. 입력 내용을 확인해주세요." }));
 server.listen(port, "127.0.0.1", () => console.log(`Standalone sample: ${origin}/order`));

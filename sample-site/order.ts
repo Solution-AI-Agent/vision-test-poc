@@ -1,8 +1,8 @@
 import { z } from "zod";
 export const catalog = [
-  { id: "mug", name: "Red mug", cents: 1200, description: "A bright ceramic companion for your daily ritual." },
-  { id: "notebook", name: "Studio notebook", cents: 3200, description: "A considered space for your next idea." },
-  { id: "clips", name: "Cable clips", cents: 800, description: "Small details for a quieter workspace." },
+  { id: "mug", name: "빨간 머그", cents: 1200, description: "매일의 시간을 밝히는 도자기 머그입니다." },
+  { id: "notebook", name: "스튜디오 노트", cents: 3200, description: "다음 아이디어를 기록할 여유로운 공간입니다." },
+  { id: "clips", name: "케이블 클립", cents: 800, description: "작업 공간의 케이블을 깔끔하게 정리합니다." },
 ] as const;
 export const orderInput = z.object({
   product: z.enum(["mug", "notebook", "clips"]),

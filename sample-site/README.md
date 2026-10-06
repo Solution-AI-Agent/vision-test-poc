@@ -5,7 +5,7 @@ Ordinary direct browser visits (no QA platform, test execution or operator call 
 - **http://127.0.0.1:4311/store/a** — normal source revision
 - **http://127.0.0.1:4311/store/b** — source revision with rendering mistakes
 
-Both show the same store components and use the same input validation, authoritative pricing, order API and submission/reset logic. The page contains no QA result or defect names. Select Red mug, quantity 2, enter a recipient and valid synthetic email, and Confirm order. The rendering differences are already visible before submission (product and chart) and after it (receipt, instructions and chart).
+Both show the same store components and use the same input validation, authoritative pricing, order API and submission/reset logic. The page contains no QA result or defect names. 빨간 머그와 수량 2개를 선택하고, 받는 분과 유효한 테스트용 이메일을 입력한 뒤 **주문 확정하기**를 누르세요. The rendering differences are already visible before submission (product and chart) and after it (receipt, instructions and chart).
 
 ## Install and run
 
@@ -40,7 +40,7 @@ Orders are simulated with no real payment/external mutation or persistence. Red 
 
 ## Platform and historical records
 
-Use the usual URL/scenario fields on 4310 with either direct store URL. Example: “Select Red mug, quantity 2, enter a synthetic recipient/email, confirm the simulated order and review product appearance, receipt, instructions and chart.” Expected: image matches selection; calculations match input; receipt/instructions are readable; chart magnitude agrees with displayed values. Do not supply defect names or answers.
+Use the usual URL/scenario fields on 4310 with either direct store URL. 예시 시나리오: “빨간 머그 2개를 선택하고 테스트용 이름과 이메일을 입력해 모의 주문을 확정하세요. 상품 이미지, 영수증, 수령 안내와 차트를 확인하세요.” 기대 결과: “선택한 상품과 이미지가 일치하고 계산이 정확해야 합니다. 영수증과 필수 수령 안내를 읽을 수 있고, 차트 크기는 표시 값과 일치해야 합니다.” Do not supply defect names or answers.
 
 Only exact 127.0.0.1:4311 paths /order, /store/a and /store/b without query/hash/credentials are allowlisted. Operator, API, other paths/ports and localhost aliases remain rejected. Capture/planning does not modify the sample DOM or CSS. Actual model detection on these new source revisions is **unverified**; this change makes zero paid requests. Platform /demo is explicitly an **older experiment archive**. Its stored results and older videos describe the previous 4310 fixture, not these source revisions.
 
@@ -59,3 +59,7 @@ Each run writes a new `artifacts/source-layout-sample-<timestamp>/` with checkou
 ## npm workspace
 
 This app is `@vision-qa/sample`, sharing `@vision-qa/ui` components and theme without importing the platform application. Root compatibility commands remain supported; direct workspace dev/build/start/test commands work as well.
+
+## 한국어 화면
+
+상품명·입력 라벨/예시·버튼·완료·영수증·수령 안내·차트·검증 오류·운영자 화면은 한국어이며 HTML lang=ko입니다. 한글은 Apple SD Gothic Neo / 맑은 고딕 / Noto Sans KR / 시스템 sans-serif로 표시합니다. 정상 수령 안내는 세 줄이며 잘못된 26px 높이에서는 나머지 한글 안내가 잘립니다. 통화와 계산은 기존 달러/센트 규칙을 유지합니다. 이전 영어 원본·영상은 보존하고 새 한글 화면의 모델 실측으로 사용하지 않습니다.

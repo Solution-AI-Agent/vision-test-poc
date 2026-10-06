@@ -35,3 +35,5 @@
 .sample-chart-grid {display:grid;grid-template-columns:120px 1fr;gap:12px;align-items:center;}
 .sample-chart-grid p {font-size:12px;line-height:42px;white-space:nowrap;}
 .sample-chart canvas {width:100%;height:84px;}
+
+.sample-shell, .sample-operator {font-family:"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;}
