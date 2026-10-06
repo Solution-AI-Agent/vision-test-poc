@@ -58,7 +58,7 @@ npm run evidence:restore  # import artifacts/ and .data/, no model calls
 npm run media:serve       # http://127.0.0.1:4312/media/index.html
 ```
 
-The evidence commands call the included `evidence/restore.mjs` (check uses `--check`). Existing different runtime files are not overwritten by that importer. The media server mounts only `/media` and `/evidence` to those publication directories; `/` redirects to `/media/index.html`. Relative source links stay valid. It does not serve the repository root or `.data/`, and does not need either application running. Without restored records, the app shows that recorded evaluation is unavailable. The importer verifies 2,634 preserved files before restoring recorded data; it does not call a model. The media pages use relative links and need no files outside this clone.
+The evidence commands call the included `evidence/restore.mjs` (check uses `--check`). Existing different runtime files are not overwritten by that importer. The media server mounts only `/media` and `/evidence` to those publication directories; `/` redirects to `/media/index.html`. Relative source links stay valid. It does not serve the repository root or `.data/`, and does not need either application running. Without restored records, the app shows that recorded evaluation is unavailable. The importer verifies all manifest-listed preserved files before restoring recorded data; it does not call a model. The media pages use relative links and need no files outside this clone.
 
 Build outputs are `apps/platform/dist/` and `sample-site/dist/`. Do not copy old root `dist/` as a deployment build. The independent app's business logic and visible states are unchanged. No new paid evaluation or model-detection claim is part of the monorepo migration.
 

@@ -1,0 +1,135 @@
+{
+  "commit": "cdd1c1634ffeff411df3b17b41ae470068364bad",
+  "modelCalls": 0,
+  "platformStarted": false,
+  "renderInjection": false,
+  "port": 14311,
+  "direct": [
+    {
+      "route": "/store/a",
+      "functionalSuite": "PASS",
+      "requests": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:14311/store/a"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:14311/assets/index-C__sG1xs.js"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:14311/assets/index-BrNWFwL5.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:14311/assets/geist-latin-wght-normal-BgDaEnEv.woff2"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:14311/store/a"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:14311/assets/index-C__sG1xs.js"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:14311/assets/index-BrNWFwL5.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:14311/assets/geist-latin-wght-normal-BgDaEnEv.woff2"
+        },
+        {
+          "method": "POST",
+          "url": "http://127.0.0.1:14311/api/orders"
+        }
+      ],
+      "errors": [],
+      "language": "ko",
+      "screenshots": [
+        "normal-direct.png",
+        "normal-checkout.png",
+        "normal-confirmed.png"
+      ],
+      "blankPanelCount": 0
+    },
+    {
+      "route": "/store/b",
+      "functionalSuite": "PASS",
+      "requests": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:14311/store/b"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:14311/assets/index-C__sG1xs.js"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:14311/assets/index-BrNWFwL5.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:14311/assets/geist-latin-wght-normal-BgDaEnEv.woff2"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:14311/store/b"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:14311/assets/index-C__sG1xs.js"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:14311/assets/index-BrNWFwL5.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:14311/assets/geist-latin-wght-normal-BgDaEnEv.woff2"
+        },
+        {
+          "method": "POST",
+          "url": "http://127.0.0.1:14311/api/orders"
+        }
+      ],
+      "errors": [],
+      "language": "ko",
+      "screenshots": [
+        "regression-direct.png",
+        "regression-checkout.png",
+        "regression-confirmed.png"
+      ],
+      "blankPanelCount": 0
+    }
+  ],
+  "operatorCases": [
+    {
+      "state": "normal",
+      "functionalSuite": "PASS"
+    },
+    {
+      "state": "misaligned",
+      "functionalSuite": "PASS"
+    },
+    {
+      "state": "occluded",
+      "functionalSuite": "PASS"
+    },
+    {
+      "state": "clipped",
+      "functionalSuite": "PASS"
+    },
+    {
+      "state": "product-image",
+      "functionalSuite": "PASS"
+    },
+    {
+      "state": "chart",
+      "functionalSuite": "PASS"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "source": "cdd1c1634ffeff411df3b17b41ae470068364bad",
+  "platformStopped": true,
+  "modelCalls": 0,
+  "operatorCalls": 0,
+  "renderingInjection": false,
+  "capture": "direct ordinary-browser visits and form submission; not model input",
+  "language": "ko",
+  "results": [
+    {
+      "version": "a",
+      "requests": [
+        "http://127.0.0.1:4311/store/a",
+        "http://127.0.0.1:4311/assets/index-C__sG1xs.js",
+        "http://127.0.0.1:4311/assets/index-BrNWFwL5.css",
+        "http://127.0.0.1:4311/assets/geist-latin-wght-normal-BgDaEnEv.woff2",
+        "http://127.0.0.1:4311/api/orders"
+      ],
+      "errors": [],
+      "video": "/Users/zpro/.buzz/REPOS/vision-test-maker/artifacts/direct-korean-store-2026-10-06T00-45-17-870Z/page@6c37b526fb839f59b0be569170eaa8d7.webm"
+    },
+    {
+      "version": "b",
+      "requests": [
+        "http://127.0.0.1:4311/store/b",
+        "http://127.0.0.1:4311/assets/index-C__sG1xs.js",
+        "http://127.0.0.1:4311/assets/index-BrNWFwL5.css",
+        "http://127.0.0.1:4311/assets/geist-latin-wght-normal-BgDaEnEv.woff2",
+        "http://127.0.0.1:4311/api/orders"
+      ],
+      "errors": [],
+      "video": "/Users/zpro/.buzz/REPOS/vision-test-maker/artifacts/direct-korean-store-2026-10-06T00-45-17-870Z/page@8dbbc180bd50851183e2bf79c221f123.webm"
+    }
+  ]
+}
