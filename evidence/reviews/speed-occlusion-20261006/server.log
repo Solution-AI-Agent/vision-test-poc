@@ -1,0 +1,9 @@
+
+> vision-qa-lab@0.1.0 start
+> npm run start --workspace @vision-qa/platform
+
+
+> @vision-qa/platform@0.1.0 start
+> node --import tsx ../../scripts/start.mjs platform
+
+Vision QA Lab: http://127.0.0.1:14350

@@ -163,6 +163,7 @@ export function instrumentClient(client: any, run: Run, runtime: Runtime) {
     );
     const record: Run["transport"][number] = {
       phase: run.executionPhase,
+      providerSort: run.settings.providerSort ?? "default",
       images: blocks.filter((b: any) => b.type === "image_url").length,
       texts: blocks.filter((b: any) => b.type === "text").length,
     };
@@ -182,7 +183,9 @@ export function instrumentClient(client: any, run: Run, runtime: Runtime) {
     let response;
     try {
       response = await original(
-        { ...body, max_tokens: run.settings.maxTokens, stream: false },
+        { ...body, ...(run.settings.providerSort && run.settings.providerSort !== "default"
+          ? {provider:{...body.provider,sort:run.settings.providerSort}} : {}),
+          max_tokens: run.settings.maxTokens, stream: false },
         {
           ...options,
           signal: AbortSignal.any([
@@ -223,6 +226,12 @@ export function instrumentClient(client: any, run: Run, runtime: Runtime) {
     }
     record.elapsedMs = Date.now() - started;
     record.responseModel = response.model;
+    if (typeof response.provider === "string") record.provider = response.provider;
+    if (response.usage) record.usage = {
+      promptTokens: response.usage.prompt_tokens ?? 0, completionTokens: response.usage.completion_tokens ?? 0,
+      cachedTokens: response.usage.prompt_tokens_details?.cached_tokens ?? 0,
+      ...(typeof response.usage.cost === "number" ? {cost:response.usage.cost} : {}),
+    };
     record.requestId = response.id;
     run.tokens += response.usage?.total_tokens ?? 0;
     if (typeof response.usage?.cost === "number")

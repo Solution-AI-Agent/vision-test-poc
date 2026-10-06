@@ -64,3 +64,13 @@ it('migrates only the legacy 120-second default once, preserving explicitly save
  await writeFile(file,JSON.stringify({...defaults,maxSeconds:240}));expect((await store.load()).maxSeconds).toBe(240);
  await store.save({...defaults,maxSeconds:0});expect((await store.load()).maxSeconds).toBe(0);
 });
+
+it('persists routing preference and keeps old settings on unchanged provider selection',async()=>{
+ const dir=await directory();const store=new SettingsStore(dir);
+ await store.save({...defaults,providerSort:"throughput"});
+ expect((await new SettingsStore(dir).load()).providerSort).toBe("throughput");
+ const {providerSort,...legacy}=defaults;
+ await writeFile(path.join(dir,'settings.json'),JSON.stringify(legacy));
+ expect((await store.load()).providerSort).toBe("default");
+ expect(()=>settingsSchema.parse({...defaults,providerSort:"unknown"})).toThrow();
+});

@@ -67,6 +67,7 @@ type Config = {
   settingsStorage: string;
   model: string;
   family: string;
+  providerSort: "default" | "throughput" | "latency";
   maxActions: number;
   maxCalls: number;
   maxSeconds: number;
@@ -403,6 +404,18 @@ export default function App() {
                         }
                         disabled={active}
                       />
+                    </FormField>
+                    <FormField id="provider-sort" label="모델 응답 속도 우선순위"
+                      description="같은 모델의 공급자 선택만 바꿉니다. 검사·정밀 조작은 유지합니다. 속도 우선은 공급자 요금이 높아질 수 있으며 빨라짐을 보장하지 않습니다.">
+                      <Select value={config.providerSort ?? "default"} disabled={active}
+                        onValueChange={(providerSort: Config["providerSort"]) => setConfig({ ...config, providerSort })}>
+                        <SelectTrigger id="provider-sort"><SelectValue /></SelectTrigger>
+                        <SelectContent><SelectGroup>
+                          <SelectItem value="default">기존 자동 선택</SelectItem>
+                          <SelectItem value="throughput">응답 생성 속도 우선</SelectItem>
+                          <SelectItem value="latency">첫 응답 대기 시간 우선</SelectItem>
+                        </SelectGroup></SelectContent>
+                      </Select>
                     </FormField>
                     <FormField
                       id="family"

@@ -9,6 +9,7 @@ export const limitsSchema = z.object({
 });
 export const defaults = {
   agentInstructions: "",
+  providerSort: "default" as const,
   model: "qwen/qwen3-vl-235b-a22b-instruct",
   family: "qwen3-vl" as const,
   maxActions: 8,
@@ -17,6 +18,7 @@ export const defaults = {
   maxTokens: 1536,
 };
 export const settingsSchema = limitsSchema.extend({
+  providerSort: z.enum(["default", "throughput", "latency"]).default("default"),
   agentInstructions: z.string().trim().max(8000).default(""),
   apiKey: z.string().max(512).optional(),
   model: z
@@ -227,6 +229,9 @@ export type Run = {
     texts: number;
     screenshot?: string;
     responseModel?: string;
+    provider?: string;
+    providerSort?: Settings["providerSort"];
+    usage?: { promptTokens: number; completionTokens: number; cachedTokens: number; cost?: number };
     requestId?: string;
     elapsedMs?: number;
     parsedOutput?: unknown;

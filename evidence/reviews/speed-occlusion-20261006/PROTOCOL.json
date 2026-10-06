@@ -1,0 +1,18 @@
+{
+  "source": "d3a821f",
+  "model": "qwen/qwen3-vl-30b-a3b-instruct",
+  "maxRequests": 8,
+  "maxTokens": 2048,
+  "perDiagnosticTimeoutSeconds": 90,
+  "order": [
+    "a-default",
+    "a-throughput",
+    "d-throughput",
+    "d-default",
+    "a-throughput",
+    "a-default",
+    "d-default",
+    "d-throughput"
+  ],
+  "note": "Fixed stored screen; no reference image, case label or expected defect supplied. No retries. Routing is the sole changed request field."
+}

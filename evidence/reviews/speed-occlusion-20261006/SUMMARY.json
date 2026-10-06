@@ -1,0 +1,43 @@
+{
+  "sourceCommit": "d3a821fe33e4f8eeb2fce9ec6bb113751a466852",
+  "model": "qwen/qwen3-vl-30b-a3b-instruct",
+  "requests": 12,
+  "reportedCost": 0.009589720000000001,
+  "routing": {
+    "default": {
+      "requests": 4,
+      "meanMs": 11547.25,
+      "elapsedMs": [
+        24091,
+        4501,
+        13601,
+        3996
+      ],
+      "reportedCost": 0.00267022,
+      "providers": [
+        "DeepInfra",
+        "Novita",
+        "Novita",
+        "Alibaba"
+      ]
+    },
+    "throughput": {
+      "requests": 4,
+      "meanMs": 7712.5,
+      "elapsedMs": [
+        4948,
+        13454,
+        5243,
+        7205
+      ],
+      "reportedCost": 0.0030634,
+      "providers": [
+        "Novita",
+        "Novita",
+        "Novita",
+        "Novita"
+      ]
+    }
+  },
+  "overlapReview": "All four D responses in routing comparison have no issues: false negatives. Both A repeats per routing mode have no issues. Rewritten diagnostic is NOT adopted: D responses contain incorrect element relations, nonexistent chart mismatch, out-of-bounds box; these are not validated detections."
+}

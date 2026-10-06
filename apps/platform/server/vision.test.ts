@@ -214,3 +214,19 @@ it("controlled screenshot assessment initializes the explicit OpenRouter base UR
     await browser.close();
   }
 }, 30000);
+
+it("routes every instrumented request without changing its model, image, limits or other provider policy", async () => {
+  for (const providerSort of ["default","throughput","latency"] as const) {
+    const run=makeRun(inputSchema.parse({mode:"autonomous",url:"https://www.youtube.com/"}),{...defaults,providerSort});
+    let sent:any;
+    const client=instrumentClient({chat:{completions:{create:async(body:any)=>{
+      sent=body;return {provider:"local-test-provider",model:body.model,choices:[{message:{content:'{"ok":true}'},finish_reason:"stop"}],usage:{prompt_tokens:10,completion_tokens:3,total_tokens:13,prompt_tokens_details:{cached_tokens:2},cost:0.001}};
+    }}}},run,{controller:new AbortController()});
+    const messages=[{role:"user",content:[{type:"image_url",image_url:{url:"https://example.test/original.jpg"}}]}];
+    await client.chat.completions.create({model:run.settings.model,messages,provider:{data_collection:"deny",allow_fallbacks:false}});
+    expect(sent.provider).toEqual({data_collection:"deny",allow_fallbacks:false,...(providerSort==='default'?{}:{sort:providerSort})});
+    expect(sent.messages).toEqual(messages);expect(sent.model).toBe(defaults.model);expect(sent.max_tokens).toBe(defaults.maxTokens);
+    expect(run.transport[0]).toMatchObject({providerSort,provider:"local-test-provider",usage:{promptTokens:10,completionTokens:3,cachedTokens:2,cost:0.001}});
+    expect(run.calls).toBe(1);
+  }
+});

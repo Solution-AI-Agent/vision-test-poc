@@ -1,0 +1,7 @@
+{
+  "pageErrors": [],
+  "selection": "throughput",
+  "mobileOverflow": false,
+  "persistedSettingsUnchanged": true,
+  "note": "Draft selection only; persistence is covered by SettingsStore regression tests; no model calls."
+}

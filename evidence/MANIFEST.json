@@ -19113,6 +19113,204 @@
       "bytes": 247,
       "sha256": "c6da864c11efe9d38d199f5383527077cc5e731f4ee1ba48eecbfeb80c3c9215",
       "source": "artifacts/runtime-timeout-20261006/UI_REPORT.json"
+    },
+    {
+      "path": "evidence/reviews/speed-occlusion-20261006/01-a-default.json",
+      "source": "REPOS/vision-test-delivery/artifacts/speed-occlusion-20261006/01-a-default.json",
+      "bytes": 11646,
+      "sha256": "649d807768c693d88ebb80863196a597618391782e654f7530182d84d5e11031"
+    },
+    {
+      "path": "evidence/reviews/speed-occlusion-20261006/02-a-throughput.json",
+      "source": "REPOS/vision-test-delivery/artifacts/speed-occlusion-20261006/02-a-throughput.json",
+      "bytes": 11262,
+      "sha256": "576b7ffd3e2b4abccd56c17ef5be19a931d780ebdb7097542e06839cd7179d90"
+    },
+    {
+      "path": "evidence/reviews/speed-occlusion-20261006/03-d-throughput.json",
+      "source": "REPOS/vision-test-delivery/artifacts/speed-occlusion-20261006/03-d-throughput.json",
+      "bytes": 11979,
+      "sha256": "f71bdf649c3767094fc071dc841644b424c0e97965335d498a515785c29aa2a0"
+    },
+    {
+      "path": "evidence/reviews/speed-occlusion-20261006/04-d-default.json",
+      "source": "REPOS/vision-test-delivery/artifacts/speed-occlusion-20261006/04-d-default.json",
+      "bytes": 10986,
+      "sha256": "d2a8bab2f534096b80f222215eb152872ff39faf662d8740e8369c05aa707012"
+    },
+    {
+      "path": "evidence/reviews/speed-occlusion-20261006/05-a-throughput.json",
+      "source": "REPOS/vision-test-delivery/artifacts/speed-occlusion-20261006/05-a-throughput.json",
+      "bytes": 11565,
+      "sha256": "4b0bfed7bcd4d9ed5e4e761ed02cfd25dcb965a18128728b0e684399f77aaf0b"
+    },
+    {
+      "path": "evidence/reviews/speed-occlusion-20261006/06-a-default.json",
+      "source": "REPOS/vision-test-delivery/artifacts/speed-occlusion-20261006/06-a-default.json",
+      "bytes": 11640,
+      "sha256": "3f78496c5e0e516705475dde0967bc57a88cc11b3330d3149f0eb409af0b5143"
+    },
+    {
+      "path": "evidence/reviews/speed-occlusion-20261006/07-d-default.json",
+      "source": "REPOS/vision-test-delivery/artifacts/speed-occlusion-20261006/07-d-default.json",
+      "bytes": 11181,
+      "sha256": "8c13fcc977aeb4bd5343bdc1edf01a7d9e62e76b1d17ee0ef215e7bc928e021f"
+    },
+    {
+      "path": "evidence/reviews/speed-occlusion-20261006/08-d-throughput.json",
+      "source": "REPOS/vision-test-delivery/artifacts/speed-occlusion-20261006/08-d-throughput.json",
+      "bytes": 11102,
+      "sha256": "ffe573b5abbbcdb276bfad759f51629557db5dc4bb307734905cd75a6555dc56"
+    },
+    {
+      "path": "evidence/reviews/speed-occlusion-20261006/DIAGNOSTIC_ENVELOPE.json",
+      "source": "REPOS/vision-test-delivery/artifacts/speed-occlusion-20261006/DIAGNOSTIC_ENVELOPE.json",
+      "bytes": 6861,
+      "sha256": "a4deb8c849ad2835b6605a8d09763e76c6b82e1995ef59fac60a35c38fdacb27"
+    },
+    {
+      "path": "evidence/reviews/speed-occlusion-20261006/ENVELOPE.json",
+      "source": "REPOS/vision-test-delivery/artifacts/speed-occlusion-20261006/ENVELOPE.json",
+      "bytes": 7179,
+      "sha256": "40c36a8e24787098366fb3471618b851b0e588801e27a2d7bf48ca9a40383686"
+    },
+    {
+      "path": "evidence/reviews/speed-occlusion-20261006/PROMPT_DIAGNOSTIC.txt",
+      "source": "REPOS/vision-test-delivery/artifacts/speed-occlusion-20261006/PROMPT_DIAGNOSTIC.txt",
+      "bytes": 2377,
+      "sha256": "aef7fadbb8ee79391868a14211d973eaf2ba866d56cbd5543092a92c921c96d1"
+    },
+    {
+      "path": "evidence/reviews/speed-occlusion-20261006/PROTOCOL.json",
+      "source": "REPOS/vision-test-delivery/artifacts/speed-occlusion-20261006/PROTOCOL.json",
+      "bytes": 462,
+      "sha256": "bc7370c672d0820145ab9f37e92a24c19e2cc4100fe09d81ac9585227f951a73"
+    },
+    {
+      "path": "evidence/reviews/speed-occlusion-20261006/README.md",
+      "source": "REPOS/vision-test-delivery/artifacts/speed-occlusion-20261006/README.md",
+      "bytes": 4078,
+      "sha256": "4a1b808e99593a1309df8dc7b629fccc952a804ac6711938a1a2cebab088c606"
+    },
+    {
+      "path": "evidence/reviews/speed-occlusion-20261006/REVIEW.html",
+      "source": "REPOS/vision-test-delivery/artifacts/speed-occlusion-20261006/REVIEW.html",
+      "bytes": 1697,
+      "sha256": "19de7ef038c51948f2e40749a28167e37684e4605859e0b5511efbfed9671b39"
+    },
+    {
+      "path": "evidence/reviews/speed-occlusion-20261006/SETTINGS.png",
+      "source": "REPOS/vision-test-delivery/artifacts/speed-occlusion-20261006/SETTINGS.png",
+      "bytes": 275756,
+      "sha256": "5029128a5b4e35091b7b598b089009a506bef24cc24658e1bf90915706333915"
+    },
+    {
+      "path": "evidence/reviews/speed-occlusion-20261006/SETTINGS_MOBILE.png",
+      "source": "REPOS/vision-test-delivery/artifacts/speed-occlusion-20261006/SETTINGS_MOBILE.png",
+      "bytes": 252337,
+      "sha256": "ed31d2573c51c9ec4c44160255140694daa4735fd0ba8763f8ef480e05cc6281"
+    },
+    {
+      "path": "evidence/reviews/speed-occlusion-20261006/SUMMARY.json",
+      "source": "REPOS/vision-test-delivery/artifacts/speed-occlusion-20261006/SUMMARY.json",
+      "bytes": 1088,
+      "sha256": "7535b9f2966415e1b243bdac69ab77edbf787d4ab49b87f33f3fce3604bcf0d7"
+    },
+    {
+      "path": "evidence/reviews/speed-occlusion-20261006/UI_REVIEW.json",
+      "source": "REPOS/vision-test-delivery/artifacts/speed-occlusion-20261006/UI_REVIEW.json",
+      "bytes": 225,
+      "sha256": "0a06761cf05db2754e5caa1993ca0a07ba890e0600a6b8f39403473c39179651"
+    },
+    {
+      "path": "evidence/reviews/speed-occlusion-20261006/a.jpg",
+      "source": "REPOS/vision-test-delivery/artifacts/speed-occlusion-20261006/a.jpg",
+      "bytes": 71097,
+      "sha256": "e0747b0d978aaaea3fef88c98c4978f0c0948d5d47dd3f583d92fcc710db9632"
+    },
+    {
+      "path": "evidence/reviews/speed-occlusion-20261006/build.log",
+      "source": "REPOS/vision-test-delivery/artifacts/speed-occlusion-20261006/build.log",
+      "bytes": 2217,
+      "sha256": "a08cced827ca6b69b2e0718bebef12342f5aa95baccc9757d3d96c457303ba4e"
+    },
+    {
+      "path": "evidence/reviews/speed-occlusion-20261006/compare.ts",
+      "source": "REPOS/vision-test-delivery/artifacts/speed-occlusion-20261006/compare.ts",
+      "bytes": 3971,
+      "sha256": "c5a328ab531927833e8055e84ee86957864817f39bef9ab2b3c98d5b6c5e5aa7"
+    },
+    {
+      "path": "evidence/reviews/speed-occlusion-20261006/console.log",
+      "source": "REPOS/vision-test-delivery/artifacts/speed-occlusion-20261006/console.log",
+      "bytes": 5744,
+      "sha256": "80bf73642801a149e49de01fbc51043543a39806380f4aaf6908122d16dd25dd"
+    },
+    {
+      "path": "evidence/reviews/speed-occlusion-20261006/d.jpg",
+      "source": "REPOS/vision-test-delivery/artifacts/speed-occlusion-20261006/d.jpg",
+      "bytes": 69277,
+      "sha256": "534c9e544db54afac028fb664eb0a13ce314b419051fd518623f0e048f84444e"
+    },
+    {
+      "path": "evidence/reviews/speed-occlusion-20261006/diagnostic-01-a-throughput.json",
+      "source": "REPOS/vision-test-delivery/artifacts/speed-occlusion-20261006/diagnostic-01-a-throughput.json",
+      "bytes": 10646,
+      "sha256": "1f375364e3aa6393ac2fd71d10712c1a43987f0e1e9864e3e99b124a89c0876e"
+    },
+    {
+      "path": "evidence/reviews/speed-occlusion-20261006/diagnostic-02-d-throughput.json",
+      "source": "REPOS/vision-test-delivery/artifacts/speed-occlusion-20261006/diagnostic-02-d-throughput.json",
+      "bytes": 13159,
+      "sha256": "9bd5b284853708d7fa95f60c3281724aaf470c1b835dc31c5ed8786452561f66"
+    },
+    {
+      "path": "evidence/reviews/speed-occlusion-20261006/diagnostic-02-d-throughput.svg",
+      "source": "REPOS/vision-test-delivery/artifacts/speed-occlusion-20261006/diagnostic-02-d-throughput.svg",
+      "bytes": 93137,
+      "sha256": "20e006112d4c45363864ede0684782e63679215343c79a60ad3322a442e46a28"
+    },
+    {
+      "path": "evidence/reviews/speed-occlusion-20261006/diagnostic-03-d-throughput.json",
+      "source": "REPOS/vision-test-delivery/artifacts/speed-occlusion-20261006/diagnostic-03-d-throughput.json",
+      "bytes": 16947,
+      "sha256": "152f2fbbe9a5849488d4e5a776f91705cb7106baa6b511c56e5e9a17df98d1ef"
+    },
+    {
+      "path": "evidence/reviews/speed-occlusion-20261006/diagnostic-04-a-throughput.json",
+      "source": "REPOS/vision-test-delivery/artifacts/speed-occlusion-20261006/diagnostic-04-a-throughput.json",
+      "bytes": 10522,
+      "sha256": "dd6fe319b8dcf13eb1c32ecb4ca9f71188e221c01d00c3e87f90251f8ea298e7"
+    },
+    {
+      "path": "evidence/reviews/speed-occlusion-20261006/diagnostic-console.log",
+      "source": "REPOS/vision-test-delivery/artifacts/speed-occlusion-20261006/diagnostic-console.log",
+      "bytes": 5062,
+      "sha256": "9db883877bc7d130c1f353da64e3d3b96ee4eb350d7b9bd4340031c8492992f5"
+    },
+    {
+      "path": "evidence/reviews/speed-occlusion-20261006/diagnostic.ts",
+      "source": "REPOS/vision-test-delivery/artifacts/speed-occlusion-20261006/diagnostic.ts",
+      "bytes": 3243,
+      "sha256": "9bf4828f0cb5d43fb4e8ce5851b4e84a139dd5340b31b893296205e83793f708"
+    },
+    {
+      "path": "evidence/reviews/speed-occlusion-20261006/server.log",
+      "source": "REPOS/vision-test-delivery/artifacts/speed-occlusion-20261006/server.log",
+      "bytes": 205,
+      "sha256": "6e4ffe8101d44004e4f80405d98d3f1150196014808d7551bdc0a9a4cb622c80"
+    },
+    {
+      "path": "evidence/reviews/speed-occlusion-20261006/tests.log",
+      "source": "REPOS/vision-test-delivery/artifacts/speed-occlusion-20261006/tests.log",
+      "bytes": 637,
+      "sha256": "8cf072757b9ee18dd857090acc0401ab4e0af8a55036c7920a7250c1b43cf6be"
+    },
+    {
+      "path": "evidence/reviews/speed-occlusion-20261006/ui-check.ts",
+      "source": "REPOS/vision-test-delivery/artifacts/speed-occlusion-20261006/ui-check.ts",
+      "bytes": 1600,
+      "sha256": "089292fe31e8782afe533b6930471f3c30efe14ee8ea6d4037d07fe280988906"
     }
   ],
   "updates": [
