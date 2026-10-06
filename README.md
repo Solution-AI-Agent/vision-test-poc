@@ -42,11 +42,11 @@ npm run sample:start
 # equivalent: npm run start --workspace @vision-qa/sample
 ```
 
-Open **http://127.0.0.1:4311/order**; presentation controls are separately at **http://127.0.0.1:4311/operator**. Stop either app independently; the sample does not require the QA platform. Both bind loopback for this local single-user PoC. Production start uses a Node launcher rather than shell environment assignment; it has been executed on macOS. Windows cmd execution remains untested, and this does not add a Windows Native QA driver.
+Open the source-defined store revisions directly: **http://127.0.0.1:4311/store/a** (normal) and **http://127.0.0.1:4311/store/b** (rendering mistakes). Neither requires a platform/test/operator call. See [sample source and differences](sample-site/README.md). Legacy **http://127.0.0.1:4311/order** uses separate operator controls at **http://127.0.0.1:4311/operator**. Stop either app independently; the sample does not require the QA platform. Both bind loopback for this local single-user PoC. Production start uses a Node launcher rather than shell environment assignment; it has been executed on macOS. Windows cmd execution remains untested, and this does not add a Windows Native QA driver.
 
 Development: `npm run dev` for platform, `npm run sample:dev` for sample. App-only builds: `npm run platform:build` and `npm run sample:build`. Existing root start/dev/sample commands remain supported. `PORT` overrides platform 4310; `SAMPLE_PORT` overrides sample 4311, but the platform target allowlist remains the exact default sample URL.
 
-With both servers running, `npm run sample:test` runs the same functional suite against all six sample states. `npx playwright test --config evaluation/playwright.config.ts` checks the older platform screenshot fixtures; these do not invoke a paid model.
+With both servers running, `npm run sample:test` runs the same functional suite against both direct source revisions and all six legacy sample states. `npx playwright test --config evaluation/playwright.config.ts` checks the older platform screenshot fixtures; these do not invoke a paid model.
 
 ### Runtime data and evidence restoration
 
@@ -154,3 +154,9 @@ Open http://127.0.0.1:4310/demo and switch normal/fault, then confirm the prefil
 ## Independent sample target (current deliverable)
 
 The QA platform remains on 4310. A separate ordinary store runs at **http://127.0.0.1:4311/order** with its own process/API/build. Operator **http://127.0.0.1:4311/operator** selects normal, misalignment, occlusion, clipping, wrong product image, or reversed chart presentation. Run `npm run sample:build` then `npm run sample:start`; see [sample-site/README.md](sample-site/README.md). The platform can target the exact 4311/order URL through its usual scenario workflow. New sample model detection is unverified; previous /demo evidence and v5 remain historical originals.
+
+## Current sample and older experiment archive
+
+The standalone direct store revisions reproduce mistakes from their own CSS/asset/chart source: the real community chart overlaps the real receipt, collection text is clipped, the selected red mug is shown blue, and 80/20 chart widths are reversed. No blank covering panel is rendered by the standalone app and no test runner injects its layout. Stable /store/a and /store/b choose app-source versions; legacy /order operator states remain available. Business logic is identical in both versions.
+
+Platform `/demo` is labelled **previous experiment records** and links to the current separate sample. Stored judgments, media v4/v5 and evidence remain unchanged historical artifacts; they do not establish model detection on the new revisions. No paid model evaluation was performed for this change.

@@ -1,7 +1,8 @@
 import { expect } from "@playwright/test";
 import type { Page } from "playwright";
-export async function sampleBaseline(page: Page, beforeSubmit?: () => Promise<void>) {
- await page.goto("http://127.0.0.1:4311/order");
+export async function sampleBaseline(page: Page, beforeSubmit?: () => Promise<void>, url = "http://127.0.0.1:4311/order") {
+ await page.goto(url);
+ await page.waitForLoadState("networkidle");
  await expect(page.getByRole("button",{name:"Confirm order"})).toBeDisabled();
  await page.getByLabel("Recipient name").fill("Alex Morgan");
  await page.getByLabel("Email address").fill("invalid");
@@ -22,7 +23,7 @@ export async function sampleBaseline(page: Page, beforeSubmit?: () => Promise<vo
  await expect(page.getByTestId("chart-second")).toHaveText("Mugs · 20%");
  await expect(page.getByRole("img",{name:"Community favourites: notebooks 80%, mugs 20%"})).toBeVisible();
  await expect(page.getByRole("button",{name:"Confirm order"})).toBeEnabled();
- await page.evaluate(()=>document.fonts.ready);
+
  if(beforeSubmit)await beforeSubmit();
  const submitted=page.waitForResponse(r=>r.url().endsWith("/api/orders")&&r.request().method()==="POST");
  await page.getByRole("button",{name:"Confirm order"}).click();

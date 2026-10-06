@@ -1,4 +1,6 @@
-# Working Vision differentiation demo
+# Previous Vision experiment archive
+
+This document preserves the older 4310 fixture evaluation. Current app-source test targets are [Store A](http://127.0.0.1:4311/store/a) and [Store B](http://127.0.0.1:4311/store/b); no new model detection is claimed for them.
 
 Open **http://127.0.0.1:4310/demo**. Select normal or rendering fault, then click Confirm order in the prefilled order site. The same order functionality succeeds; the selected fault leaves a large blank layout panel over receipt/collection content. Right panel shows actual saved model decisions, location/reason, original input image and JSON log. Toggle performs no paid model calls. Full-screen site: `/demo/order`. Original four-state site `/fixture/order` and all prior evidence remain unchanged.
 

@@ -99,7 +99,7 @@ export type Goal = z.infer<typeof goalSchema> & {
   screenshot: string;
   at: string;
 };
-export function isStandaloneSample(url?: string) { return url === "http://127.0.0.1:4311/order"; }
+export function isStandaloneSample(url?: string) { return ["http://127.0.0.1:4311/order", "http://127.0.0.1:4311/store/a", "http://127.0.0.1:4311/store/b"].includes(url ?? ""); }
 export function actionScope(url?: string) {
  return isStandaloneSample(url) ? "This exact target is an isolated simulated order site. You may select products and quantities, enter synthetic recipient data, submit the simulated order and reset it. No real payment or account action is permitted. Never navigate to operator or unrelated local routes." : "Do not sign in, post, like, subscribe, upload, buy, accept permissions or change an account. Only use search, browse, playback, pause, scroll and dismiss overlays.";
 }
@@ -193,7 +193,7 @@ export function validateTarget(raw: string) {
   const url = new URL(raw);
   if (
     ((url.origin === "http://127.0.0.1:4310" && ["/fixture/order", "/demo/order"].includes(url.pathname)) ||
-      (url.origin === "http://127.0.0.1:4311" && url.pathname === "/order")) &&
+      (url.origin === "http://127.0.0.1:4311" && ["/order", "/store/a", "/store/b"].includes(url.pathname))) &&
     !url.search &&
     !url.hash &&
     !url.username &&

@@ -4,6 +4,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { randomUUID } from "node:crypto";
 import { prepareOrder } from "./order";
+import { presentationFor } from "./presentation";
 const root = path.dirname(fileURLToPath(import.meta.url));
 const port = Number(process.env.SAMPLE_PORT ?? 4311);
 const origin = `http://127.0.0.1:${port}`;
@@ -24,8 +25,8 @@ app.put("/api/operator", (req, res) => {
   state = req.body.state;
   res.json({ state });
 });
-// Numerical presentation only. Business rules never read the selected state.
-app.get("/api/presentation", (_req, res) => res.set("Cache-Control", "no-store").json({ angle: state === "misaligned" ? -8 : 0, shift: state === "misaligned" ? 36 : 0, cover: state === "occluded", noticeHeight: state === "clipped" ? 26 : 84, mugColor: state === "product-image" ? "#1467e8" : "#d92b2b", firstBar: state === "chart" ? 20 : 80, secondBar: state === "chart" ? 80 : 20 }));
+// Legacy operator selection uses the same app-source layouts. Direct revisions bypass it.
+app.get("/api/presentation", (_req, res) => res.set("Cache-Control", "no-store").json(presentationFor(state)));
 app.post("/api/orders", (req, res) => {
   const order = prepareOrder(req.body);
   res.status(201).json({ ...order, id: randomUUID() });
@@ -34,7 +35,7 @@ app.get("/", (_req, res) => res.redirect("/order"));
 const server = createServer(app);
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(root, "dist")));
-  app.get(["/order", "/operator"], (_req, res) => res.sendFile("index.html", { root: path.join(root, "dist") }));
+  app.get(["/order", "/operator", "/store/a", "/store/b"], (_req, res) => res.sendFile("index.html", { root: path.join(root, "dist") }));
 } else {
   const { createServer: createViteServer } = await import("vite");
   const vite = await createViteServer({ configFile: path.join(root, "vite.config.ts"), server: { middlewareMode: true, hmr: { server } }, appType: "spa" });

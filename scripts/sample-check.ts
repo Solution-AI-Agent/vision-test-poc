@@ -7,9 +7,24 @@ import { fileURLToPath } from "node:url";
 // Keep functional recordings at repository root even when npm enters the sample workspace.
 process.chdir(fileURLToPath(new URL("../", import.meta.url)));
 const commit=execFileSync("git",["rev-parse","HEAD"],{encoding:"utf8"}).trim();
-const folder=`artifacts/standalone-sample-${new Date().toISOString().replace(/[:.]/g,"-")}`;
+const folder=`artifacts/source-layout-sample-${new Date().toISOString().replace(/[:.]/g,"-")}`;
 await mkdir(folder,{recursive:true});const browser=await chromium.launch();const results:any[]=[];
 try {
+
+ // First, direct visits: no operator setup, platform access, routing, CSS/DOM injection or init scripts.
+ for(const route of ["/store/a","/store/b"]){
+  const name=route.endsWith("/a")?"store-a":"store-b";
+  const context=await browser.newContext({viewport:{width:1280,height:720},recordVideo:{dir:folder,size:{width:1280,height:720}}});
+  const page=await context.newPage();const requests:string[]=[];const errors:string[]=[];
+  page.on("request",r=>requests.push(r.url()));page.on("pageerror",e=>errors.push(e.message));
+  await sampleBaseline(page,()=>page.screenshot({path:`${folder}/${name}-checkout.png`,fullPage:true}).then(()=>{}),`http://127.0.0.1:4311${route}`);
+  await page.screenshot({path:`${folder}/${name}.png`,fullPage:true});
+  expect(requests.every(u=>u.startsWith("http://127.0.0.1:4311/"))).toBe(true);
+  expect(requests.some(u=>u.includes("/api/operator")||u.includes("/api/presentation"))).toBe(false);
+  expect(errors).toEqual([]);
+  await page.getByRole("button",{name:"Start another order"}).click();await expect(page.getByRole("button",{name:"Confirm order"})).toBeEnabled();
+  const video=page.video();await context.close();results.push({route,functionalSuite:"PASS",requests,operatorSetup:false,platformRequests:0,pageErrors:errors,video:await video?.path()});
+ }
  for(const state of ["normal","misaligned","occluded","clipped","product-image","chart"]){
   const context=await browser.newContext({viewport:{width:1280,height:720},recordVideo:{dir:folder,size:{width:1280,height:720}}});const page=await context.newPage();const errors:string[]=[];page.on("pageerror",e=>errors.push(e.message));
   expect((await page.request.put("http://127.0.0.1:4311/api/operator",{data:{state}})).ok()).toBe(true);

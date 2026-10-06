@@ -106,3 +106,15 @@ it("permits simulated submission only for the exact standalone sample target", (
  expect(goalPrompt("https://www.youtube.com/")).not.toContain("submit the simulated order");
  expect(goalPrompt("http://127.0.0.1:4311/operator")).not.toContain("submit the simulated order");
 });
+
+
+it("permits only the two exact direct store revisions with simulated order actions", () => {
+ for (const route of ["/store/a", "/store/b"]) {
+  const url = `http://127.0.0.1:4311${route}`;
+  expect(validateTarget(url)).toBe(url);
+  expect(goalPrompt(url)).toContain("submit the simulated order");
+  for (const suffix of ["?state=normal", "#answer", "/"]) expect(() => validateTarget(url + suffix)).toThrow();
+ }
+ expect(() => validateTarget("http://127.0.0.1:4311/store/c")).toThrow();
+ expect(() => validateTarget("http://localhost:4311/store/b")).toThrow();
+});

@@ -1,43 +1,61 @@
 # Standalone Atelier Goods sample
 
-Target: **http://127.0.0.1:4311/order**. Operator: **http://127.0.0.1:4311/operator**.
-QA platform remains **http://127.0.0.1:4310**. This is a separate Express process, API and Vite build. It reuses installed dependencies and shadcn source primitives/theme from the repository; it makes no request to the platform and needs no model key. Platform shutdown does not affect the sample.
+Ordinary direct browser visits (no QA platform, test execution or operator call required):
 
-From repository root:
+- **http://127.0.0.1:4311/store/a** — normal source revision
+- **http://127.0.0.1:4311/store/b** — source revision with rendering mistakes
 
-```
-npm install
+Both show the same store components and use the same input validation, authoritative pricing, order API and submission/reset logic. The page contains no QA result or defect names. Select Red mug, quantity 2, enter a recipient and valid synthetic email, and Confirm order. The rendering differences are already visible before submission (product and chart) and after it (receipt, instructions and chart).
+
+## Install and run
+
+Node 24 and npm; from repository root:
+
+```sh
+npm ci
 npm run sample:build
 npm run sample:start
 ```
 
-For development: `npm run sample:dev`. Separately `npm run build && npm start` runs the existing QA platform on 4310. Both can run at once; stop either process independently. Default sample port 4311 (`SAMPLE_PORT` can override for development, but platform allowlisting remains exact 4311/order). Build output sample-site/dist is separate from platform apps/platform/dist.
+This separate server and Vite build run on 4311. It does not require the QA platform (4310) or an API key. Development: `npm run sample:dev`. `SAMPLE_PORT` overrides the server port, but platform allowlisting uses the exact default URLs. Build output is sample-site/dist; platform output is apps/platform/dist.
 
-In operator, select presentation and open/reload the neutral /order URL. Default is normal on process restart. Reset to normal button restores it. Checkout chooses Red mug ($12), notebook ($32) or clips ($8), quantity 1–5, valid recipient/email. POST /api/orders validates and computes cents on the sample server; no client-supplied price accepted, no payment, no external mutation or order persistence. Start another order resets the confirmation; reload starts a fresh checkout. Presentation is local process-wide, suitable for one operator at a time.
+## Where the app-source mistakes occur
 
-| Presentation | Only visible defect | Business/DOM |
-|---|---|---|
-| normal | none injected | identical rules |
-| misaligned | receipt rotated/offset | valid order, correct text/data |
-| occluded | blank panel covers receipt/graph after submission | controls, completion and amounts still work |
-| clipped | collection instructions cropped after submission | complete underlying instruction DOM text |
-| product-image | Red mug selection/name shows an unmistakably blue vector mug | identity/price/accessible label and confirmation correct |
-| chart | 20% bar longer than 80% | labels and accessible numerical data remain 80/20 |
+`presentation.ts` contains stable, URL-selected source revisions. Direct revisions initialize locally in `main.tsx`; they never request `/api/presentation` or `/api/operator`. Reloading or changing operator state cannot change /store/a or /store/b.
 
-Target contains ordinary store UI, no fault names, operator controls, QA verdicts or answers. State selection is only /operator. SVG product artwork is a local vector asset. Canvas bars use numeric presentation separately from displayed correct data. Operators do not change the business schema or calculation.
+| Actual UI | Store A | Store B | Source |
+|---|---|---|---|
+| Receipt and community chart | chart follows receipt | wrong negative chart margin pulls the real chart over receipt amounts | `style.css`, `.sample-chart-integrated`; `CollectionChart` in `main.tsx` |
+| Collection instructions | all three lines readable | wrong 26px height clips real instruction content | `presentation.ts` noticeHeight; collection section in `main.tsx` |
+| Selected Red mug artwork | red SVG mug | wrong blue SVG color while selection/name/order remain red mug | `presentation.ts` mugColor; `ProductVisual` in `main.tsx` |
+| Community chart | 80% bar four times longer than 20% | rendering widths reversed while labels/DOM values remain 80/20 | `presentation.ts` firstBar/secondBar; `CollectionChart` Canvas drawing |
 
-## QA platform integration
+The chart section is present in both revisions, with real labels and bars. There is no blank `sample-render-panel` or test-created overlay in this standalone app. This is an application layout/asset/chart regression sample, deliberately authored for demonstration; not a claim of naturally occurring defects. Its functional data is still correct, and screenshot or purpose-built visual assertions could detect these differences.
 
-Use the usual target URL field and registered scenario with `http://127.0.0.1:4311/order`. Example: “Select Red mug, quantity 2, enter a synthetic recipient/email, confirm the simulated order. Review product appearance, receipt and chart.” Expectations: selected product and picture agree; quantities/totals match; receipt and required collection instructions are readable; chart magnitude agrees with displayed values. No defect state or answer must be supplied to the model.
+## Legacy operator compatibility
 
-Only that exact origin/path, with no credentials/query/hash, is added. Arbitrary localhost, /operator, /api and other ports remain rejected. Its planning policy permits reversible simulated form submission only at this exact target; real purchase/account actions on other sites remain outside scope. This enables the existing pipeline; actual model ability on this new site is **not verified**. No paid model request is part of this implementation. Older 4310/demo model success is historical and does not validate these screens.
+**http://127.0.0.1:4311/operator** still selects six source-defined layouts for **/order** only. State changes apply to freshly opened /order pages, reset restores normal. Its occluded state now uses the real chart's erroneous spacing, not a blank covering element. Other individual states are normal, receipt rotation/offset, clipped instructions, blue mug, reversed chart. `/store/a` and `/store/b` ignore this process-wide selection.
 
-## Local verification
+Orders are simulated with no real payment/external mutation or persistence. Red mug $12, notebook $32, clips $8; quantity 1–5. POST /api/orders validates input and calculates cents on the server; supplied prices are rejected. Business code `order.ts` never reads presentation or URL revision.
 
-`npm test`: full repository unit/SDK stub suite, including authoritative totals, invalid inputs and exact platform scope. `npm run build` and `npm run sample:build`: both typechecked apps. `npm run sample:test`: same meaningful real-browser suite, unchanged across all six states: invalid email/quantity, product selection, price recalculation, selected Red mug identity/image accessible text, 80/20 chart DOM data, server 201 response/calculated amounts, recipient/order/receipt/instruction content, reset. Invalid API input=400, foreign operator origin=403, no page errors.
+## Platform and historical records
 
-Captures at 1280×720 viewport are full-page browser screenshots (not model input). Checkout and confirmation are both recorded per state, with WebM and separate RESULTS.json. No pixel/color/bar-size assertions are hidden in the functional suite. Screenshot comparisons or purpose-built image/chart checks can detect these faults too; this is not a claim that Playwright cannot.
+Use the usual URL/scenario fields on 4310 with either direct store URL. Example: “Select Red mug, quantity 2, enter a synthetic recipient/email, confirm the simulated order and review product appearance, receipt, instructions and chart.” Expected: image matches selection; calculations match input; receipt/instructions are readable; chart magnitude agrees with displayed values. Do not supply defect names or answers.
+
+Only exact 127.0.0.1:4311 paths /order, /store/a and /store/b without query/hash/credentials are allowlisted. Operator, API, other paths/ports and localhost aliases remain rejected. Capture/planning does not modify the sample DOM or CSS. Actual model detection on these new source revisions is **unverified**; this change makes zero paid requests. Platform /demo is explicitly an **older experiment archive**. Its stored results and older videos describe the previous 4310 fixture, not these source revisions.
+
+## Verification
+
+```sh
+npm test
+npm run build
+npm run sample:test
+```
+
+The same functional assertions cover both direct URLs first (before any operator setup), then all six legacy states. Visits/inputs/checks only: no DOM/CSS injection, route-response replacement, test init scripts or rendering modifications. Direct requests are recorded and must remain on 4311, without operator/presentation requests. Functional checks cover input rules, product/quantity recalculation, semantic labels/values, actual API 201/calculated data, receipt/instructions DOM, confirmation and reset. There is no hidden color/bar-size/screenshot assertion in the functional suite.
+
+Each run writes a new `artifacts/source-layout-sample-<timestamp>/` with checkout/confirmation PNG, WebM, request list, version and functional results. Captures are full-page browser images at 1280×720 viewport, not model inputs. Older evidence/media are preserved unchanged.
 
 ## npm workspace
 
-This app is `@vision-qa/sample`. Install once with `npm ci` at the repository root. Direct app commands are `npm run dev --workspace @vision-qa/sample`, `npm run build --workspace @vision-qa/sample`, `npm run start --workspace @vision-qa/sample`, and `npm run test --workspace @vision-qa/sample`. Shared UI imports resolve through the local `@vision-qa/ui` workspace; they do not import the platform application. Root compatibility commands above remain valid.
+This app is `@vision-qa/sample`, sharing `@vision-qa/ui` components and theme without importing the platform application. Root compatibility commands remain supported; direct workspace dev/build/start/test commands work as well.
