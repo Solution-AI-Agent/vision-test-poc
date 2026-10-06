@@ -23,7 +23,7 @@ const sourceVersion = {
     .update(readFileSync(path.join(repoRoot, "apps/platform/server/runner.ts")))
     .update(readFileSync(path.join(repoRoot, "apps/platform/server/visual-qa.ts")))
     .digest("hex"),
-  promptVersion: "goal-first-v10-independent-completion",
+  promptVersion: "goal-first-v11-completion-contradiction-guard",
 };
 import {
   planPrompt,
@@ -517,6 +517,11 @@ export async function runVision(
             });
         }
         if (plan.action.type === "finish" || plan.verdict === "pass") {
+          // A completion claim that still proposes input/click/scroll is contradictory.
+          // Preserve it for review without executing it or declaring task success.
+          if (plan.verdict === "pass" && plan.action.type !== "finish") {
+            run.status="limited";run.outcome="업무 완료 미확인 · 완료 응답에 미실행 행동이 남아 있음";await save();break;
+          }
           if (plan.verdict === "pass") {
             if (run.calls >= settings.maxCalls) {
               run.status="limited";run.outcome="업무 완료 독립 확인 한도 부족 · 완료 미확인";break;

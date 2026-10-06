@@ -148,13 +148,14 @@ it("provider error bodies are sanitized before SDK or Midscene logging", async (
   }
 });
 
-for (const { mode, malformed, falseCompletion = false } of [
+for (const { mode, malformed, falseCompletion = false, pendingAction = false } of [
   { mode: "scenario", malformed: false, falseCompletion:false },
   { mode: "scenario", malformed: false, falseCompletion:true },
+  { mode: "scenario", malformed: false, pendingAction:true },
   { mode: "autonomous", malformed: false },
   { mode: "scenario", malformed: true },
 ] as const) {
-  it(`${mode}${falseCompletion ? " rejects false completion" : ""}${malformed ? " with schema correction" : ""} runner preserves request-image/plan/action linkage and a fresh finish image (local fixture, stub VLM)`, async () => {
+  it(`${mode}${pendingAction ? " rejects pass with pending action" : ""}${falseCompletion ? " rejects false completion" : ""}${malformed ? " with schema correction" : ""} runner preserves request-image/plan/action linkage and a fresh finish image (local fixture, stub VLM)`, async () => {
     const { runVision, artifactsDir } = await import("./runner");
     const { readFile, stat, writeFile } = await import("node:fs/promises");
     const path = await import("node:path");
@@ -264,7 +265,7 @@ for (const { mode, malformed, falseCompletion = false } of [
                   action:
                     actionAttempt === 1
                       ? { type: "click", x: 100, y: 70 }
-                      : { type: "wait" },
+                      : { type: pendingAction ? "click" : "finish", ...(pendingAction ? {x:247,y:524} : {}) },
                   verdict: actionAttempt === 1 ? "continue" : "pass",
                   finding:
                     actionAttempt === 2 && mode === "scenario"
@@ -298,13 +299,13 @@ for (const { mode, malformed, falseCompletion = false } of [
         }),
       },
     );
-    expect(run.status).toBe(falseCompletion ? "limited" : "completed");
-    expect(run.steps[1].completionCheck?.verified).toBe(!falseCompletion);
-    if(falseCompletion)expect(run.outcome).toContain("업무 완료 미확인");
+    expect(run.status).toBe(falseCompletion || pendingAction ? "limited" : "completed");
+    expect(run.steps[1].completionCheck?.verified).toBe(pendingAction ? undefined : !falseCompletion);
+    if(falseCompletion || pendingAction)expect(run.outcome).toContain("업무 완료 미확인");
     expect(run.actions).toBe(1);
     const offset = mode === "autonomous" || malformed ? 1 : 0;
     if (malformed) expect(run.transport.filter(r => r.phase !== "visual-review")[0].validationError).toContain("action");
-    expect(run.calls).toBe(3 + offset + run.visualAudits!.filter(a => a.call > 0).length);
+    expect(run.calls).toBe((pendingAction ? 2 : 3) + offset + run.visualAudits!.filter(a => a.call > 0).length);
     if (mode === "autonomous") {
       expect(run.goals?.[0].screenshot).toBe(run.transport.filter(r => r.phase !== "visual-review")[0].screenshot);
       expect(run.goals?.[0].task).toBe("Click the visible button");
