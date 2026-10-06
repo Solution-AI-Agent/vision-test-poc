@@ -3,7 +3,7 @@ import {runMidsceneWorkflow,workflowPrompt,workflowSchema} from './midscene-work
 import {makeRun} from './runner';
 import {defaults,inputSchema} from './domain';
 
-for(const mode of ['normal','mismatch','budget','aborted','assertion-failed'] as const) {
+for(const mode of ['normal','mismatch','budget','aborted','assertion-failed','unchanged'] as const) {
  it(`native workflow ${mode}: input/read/action/assert use Midscene APIs and retain uncompleted obligations`,async()=>{
   const run=makeRun(inputSchema.parse({mode:'scenario',url:'http://127.0.0.1:4311/store/a',task:'값을 2로 입력하고 확인 버튼 클릭',expected:'완료 표시'}),{...defaults,maxActions:mode==='budget'?0:5});
   const runtime={controller:new AbortController(),stopReason:undefined as 'limited'|undefined};
@@ -17,7 +17,7 @@ for(const mode of ['normal','mismatch','budget','aborted','assertion-failed'] as
    aiAssert:async(prompt:string,_message:any,options:any)=>{calls.push(['assert',prompt,options]);record();return {pass:mode!=='assertion-failed',thought:'화면 결과'};},
   };
   if(mode==='aborted')runtime.controller.abort();
-  const perform=()=>runMidsceneWorkflow(agent,run,runtime,async()=>`/test/frame-${++shots}.png`,async()=>{},async()=>{});
+  const perform=()=>runMidsceneWorkflow(agent,run,runtime,async()=>`/test/frame-${++shots}.png`,async()=>{},async()=>{},async()=>mode==='unchanged');
   if(mode==='budget'||mode==='aborted') {
    await expect(perform()).rejects.toThrow();expect(run.actions).toBe(0);
    if(mode==='budget')expect(runtime.stopReason).toBe('limited');
@@ -25,7 +25,8 @@ for(const mode of ['normal','mismatch','budget','aborted','assertion-failed'] as
    await perform();
    expect(calls.find(c=>c[0]==='input')[2]).toMatchObject({value:'2',mode:'replace',deepLocate:true});
    expect(calls.find(c=>c[0]==='read')[2]).toMatchObject({domIncluded:false,screenshotIncluded:true});
-   if(mode==='mismatch'){expect(run.status).toBe('limited');expect(calls.some(c=>c[0]==='act'||c[0]==='assert')).toBe(false);expect(run.workflow!.steps[1].status).toBe('pending');}
+   if(mode==='unchanged'){expect(run.status).toBe('limited');expect(run.workflow!.steps[1].status).toBe('unverified');expect(calls.some(c=>c[0]==='assert')).toBe(false);}
+   else if(mode==='mismatch'){expect(run.status).toBe('limited');expect(calls.some(c=>c[0]==='act'||c[0]==='assert')).toBe(false);expect(run.workflow!.steps[1].status).toBe('pending');}
    else{expect(run.status).toBe(mode==='normal'?'completed':'limited');expect(run.actions).toBe(2);expect(run.steps.every(s=>s.executed&&s.before!==s.after)).toBe(true);expect(calls.find(c=>c[0]==='assert')[2]).toMatchObject({domIncluded:false,keepRawResponse:true});}
   }
   expect(agent.interface.beforeInvokeAction).toBeUndefined();expect(agent.interface.afterInvokeAction).toBeUndefined();
