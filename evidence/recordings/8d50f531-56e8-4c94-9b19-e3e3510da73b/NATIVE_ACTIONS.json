@@ -1,0 +1,92 @@
+[
+  {
+    "name": "Input",
+    "param": {
+      "value": "2",
+      "mode": "replace",
+      "locate": {
+        "center": [
+          385,
+          447
+        ],
+        "description": "수량 라벨 아래의 실제 숫자 입력칸 내부. 라벨이 아니라 값을 편집하는 흰 사각형 중앙.",
+        "rect": {
+          "left": 124,
+          "top": 431,
+          "width": 522,
+          "height": 33
+        }
+      }
+    },
+    "completed": true
+  },
+  {
+    "name": "Input",
+    "param": {
+      "value": "테스터",
+      "mode": "replace",
+      "locate": {
+        "center": [
+          260,
+          512
+        ],
+        "description": "받는 분 라벨 아래의 실제 이름 입력칸 내부. 라벨이 아니라 값을 편집하는 흰 사각형 중앙.",
+        "rect": {
+          "left": 137,
+          "top": 495,
+          "width": 248,
+          "height": 35
+        }
+      }
+    },
+    "completed": true
+  },
+  {
+    "name": "Input",
+    "param": {
+      "value": "qa@example.test",
+      "mode": "replace",
+      "locate": {
+        "center": [
+          256,
+          513
+        ],
+        "description": "이메일 주소 라벨 아래의 실제 이메일 입력칸 내부. 라벨이 아니라 값을 편집하는 흰 사각형 중앙.",
+        "rect": {
+          "left": 128,
+          "top": 495,
+          "width": 257,
+          "height": 37
+        }
+      }
+    },
+    "completed": true
+  },
+  {
+    "name": "Scroll",
+    "param": {
+      "direction": "down",
+      "scrollType": "singleAction"
+    },
+    "completed": true
+  },
+  {
+    "name": "Tap",
+    "param": {
+      "locate": {
+        "center": [
+          170,
+          598
+        ],
+        "description": "주문 확정하기 버튼",
+        "rect": {
+          "left": 115,
+          "top": 587,
+          "width": 110,
+          "height": 22
+        }
+      }
+    },
+    "completed": true
+  }
+]

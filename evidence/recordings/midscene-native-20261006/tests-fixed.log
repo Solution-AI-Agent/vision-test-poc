@@ -1,0 +1,338 @@
+
+> vision-qa-lab@0.1.0 test
+> npm run test --workspaces
+
+
+> @vision-qa/ui@0.1.0 test
+> tsc --noEmit -p tsconfig.json
+
+
+> @vision-qa/platform@0.1.0 test
+> vitest run
+
+
+ RUN  v5.0.3 /Users/zpro/.buzz/REPOS/vision-test-delivery/apps/platform
+
+ ❯ server/visual-qa.test.ts (6 tests | 1 failed) 8237ms
+   × independent QA normal: completion cannot hide findings or unreviewed frames (stub model) 1352ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  server/visual-qa.test.ts > independent QA normal: completion cannot hide findings or unreviewed frames (stub model)
+AssertionError: expected 'limited' to be 'completed' // Object.is equality
+
+Expected: "completed"
+Received: "limited"
+
+ ❯ server/visual-qa.test.ts:46:52
+     44|     expect(run.calls).toBeLessThanOrEqual(settings.maxCalls);
+     45|     expect(run.visualAudits!.length).toBeGreaterThan(0);
+     46|     if (variant === "normal") { expect(run.status).toBe("completed");e…
+       |                                                    ^
+     47|     if (variant === "invalid") { expect(run.findings).toHaveLength(0);…
+     48|     if (variant === "reproduced" || variant === "disagrees" || variant…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 7 passed (8)
+      Tests  1 failed | 35 passed (36)
+   Start at  13:09:25
+   Duration  9.17s (tests 72%, import 25%, transform 2%)
+
+npm error Lifecycle script `test` failed with error:
+npm error code 1
+npm error path /Users/zpro/.buzz/REPOS/vision-test-delivery/apps/platform
+npm error workspace @vision-qa/pl ❯ server/network.test.ts (2 tests | 2 failed) 35016ms
+   × uses env-only proxy for auth and real Midscene provider request without paid calls 20009ms
+   × Node and Chromium respect env proxy, loopback/NO_PROXY, and do not silently fall back 15005ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 13 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  server/blind-extraction.test.ts > Midscene dispatches stored JPEG bytes unchanged and neutral prompt without DOM or oracle
+Error: browserType.launch: Target page, context or browser has been closed
+Browser logs:
+
+<launching> /Users/zpro/Library/Caches/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-mac-arm64/chrome-headless-shell --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=/var/folders/7_/w4ptrm7x1vd05vb72q6bycsh0000gn/T/playwright_chromiumdev_profile-WHMI5j --remote-debugging-pipe --no-startup-window
+<launched> pid=27167
+[pid=27167][err] [1006/130907.481887:ERROR:base/power_monitor/thermal_state_observer_mac.mm:140] ThermalStateObserverMac unable to register to power notifications. Result: 9
+[pid=27167][err] [1006/130907.497443:ERROR:net/dns/dns_config_service_posix.cc:138] DNS config watch failed to start.
+[pid=27167][err] [1006/130907.499582:WARNING:net/dns/dns_config_service_posix.cc:197] Failed to read DnsConfig.
+[pid=27167][err] [1006/130907.505448:FATAL:base/apple/mach_port_rendezvous_mac.cc:159] Check failed: kr == KERN_SUCCESS. bootstrap_check_in org.chromium.Chromium.MachPortRendezvousServer.27167: Permission denied (1100)
+Call log:
+[2m  - <launching> /Users/zpro/Library/Caches/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-mac-arm64/chrome-headless-shell --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=/var/folders/7_/w4ptrm7x1vd05vb72q6bycsh0000gn/T/playwright_chromiumdev_profile-WHMI5j --remote-debugging-pipe --no-startup-window[22m
+[2m  - <launched> pid=27167[22m
+[2m  - [pid=27167][err] [1006/130907.481887:ERROR:base/power_monitor/thermal_state_observer_mac.mm:140] ThermalStateObserverMac unable to register to power notifications. Result: 9[22m
+[2m  - [pid=27167][err] [1006/130907.497443:ERROR:net/dns/dns_config_service_posix.cc:138] DNS config watch failed to start.[22m
+[2m  - [pid=27167][err] [1006/130907.499582:WARNING:net/dns/dns_config_service_posix.cc:197] Failed to read DnsConfig.[22m
+[2m  - [pid=27167][err] [1006/130907.505448:FATAL:base/apple/mach_port_rendezvous_mac.cc:159] Check failed: kr == KERN_SUCCESS. bootstrap_check_in org.chromium.Chromium.MachPortRendezvousServer.27167: Permission denied (1100)[22m
+[2m  - [pid=27167] <gracefully close start>[22m
+[2m  - [pid=27167] <kill>[22m
+[2m  - [pid=27167] <will force kill>[22m
+[2m  - [pid=27167] exception while trying to kill process: Error: kill EPERM[22m
+[2m  - [pid=27167] <process did exit: exitCode=null, signal=SIGTRAP>[22m
+[2m  - [pid=27167] starting temporary directories cleanup[22m
+[2m  - [pid=27167] finished temporary directories cleanup[22m
+[2m  - [pid=27167] <gracefully close end>[22m
+
+ ❯ server/blind-extraction.test.ts:11:134
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/13]⎯
+
+ FAIL  server/diagnostics.test.ts > actual refused navigation preserves target phase with zero model calls
+Error: Test timed out in 15000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ server/diagnostics.test.ts:36:1
+     34|   } finally { await rm(path.join(artifactsDir, run.id), { recursive: t…
+     35| });
+     36| it("actual refused navigation preserves target phase with zero model c…
+       | ^
+     37|   const listener = createServer();
+     38|   await new Promise<void>((resolve) => listener.listen(0, "127.0.0.1",…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/13]⎯
+
+ FAIL  server/diagnostics.test.ts > actual missing FFmpeg is separated from an installed Chromium
+AssertionError: expected { diagnostic: { …(4) }, …(2) } to match object { diagnostic: { …(2) }, …(2) }
+(2 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+    "calls": 0,
+    "diagnostic": {
+-     "code": "VIDEO_NOT_INSTALLED",
+-     "phase": "video-context",
++     "code": "BROWSER_LAUNCH_FAILED",
++     "phase": "browser-launch",
+    },
+    "status": "failed",
+  }
+
+ ❯ server/diagnostics.test.ts:98:30
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/13]⎯
+
+ FAIL  server/network.test.ts > uses env-only proxy for auth and real Midscene provider request without paid calls
+Error: Test timed out in 20000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ server/network.test.ts:23:1
+     21|   await new Promise<void>((resolve) => server.close(() => resolve()));
+     22| }
+     23| it("uses env-only proxy for auth and real Midscene provider request wi…
+       | ^
+     24|   const folder = await mkdtemp(path.join(tmpdir(), "vision-proxy-test-…
+     25|   const sockets = new Set<import("node:stream").Duplex>();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/13]⎯
+
+ FAIL  server/network.test.ts > Node and Chromium respect env proxy, loopback/NO_PROXY, and do not silently fall back
+Error: Test timed out in 15000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ server/network.test.ts:92:1
+     90|   }
+     91| },20000);
+     92| it("Node and Chromium respect env proxy, loopback/NO_PROXY, and do not…
+       | ^
+     93|   let proxyHits=0, directHits=0;
+     94|   const sockets=new Set<import('node:stream').Duplex>();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/13]⎯
+
+ FAIL  server/vision.test.ts > screenshot coordinates and replacement typing update quantity and its calculated total, rather than append
+Error: browserType.launch: Target page, context or browser has been closed
+Browser logs:
+
+<launching> /Users/zpro/Library/Caches/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-mac-arm64/chrome-headless-shell --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=/var/folders/7_/w4ptrm7x1vd05vb72q6bycsh0000gn/T/playwright_chromiumdev_profile-nQPU8w --remote-debugging-pipe --no-startup-window
+<launched> pid=27379
+[pid=27379][err] [1006/130907.509988:ERROR:base/power_monitor/thermal_state_observer_mac.mm:140] ThermalStateObserverMac unable to register to power notifications. Result: 9
+[pid=27379][err] [1006/130907.511476:ERROR:net/dns/dns_config_service_posix.cc:138] DNS config watch failed to start.
+[pid=27379][err] [1006/130907.511909:FATAL:base/apple/mach_port_rendezvous_mac.cc:159] Check failed: kr == KERN_SUCCESS. bootstrap_check_in org.chromium.Chromium.MachPortRendezvousServer.27379: Permission denied (1100)
+Call log:
+[2m  - <launching> /Users/zpro/Library/Caches/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-mac-arm64/chrome-headless-shell --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=/var/folders/7_/w4ptrm7x1vd05vb72q6bycsh0000gn/T/playwright_chromiumdev_profile-nQPU8w --remote-debugging-pipe --no-startup-window[22m
+[2m  - <launched> pid=27379[22m
+[2m  - [pid=27379][err] [1006/130907.509988:ERROR:base/power_monitor/thermal_state_observer_mac.mm:140] ThermalStateObserverMac unable to register to power notifications. Result: 9[22m
+[2m  - [pid=27379][err] [1006/130907.511476:ERROR:net/dns/dns_config_service_posix.cc:138] DNS config watch failed to start.[22m
+[2m  - [pid=27379][err] [1006/130907.511909:FATAL:base/apple/mach_port_rendezvous_mac.cc:159] Check failed: kr == KERN_SUCCESS. bootstrap_check_in org.chromium.Chromium.MachPortRendezvousServer.27379: Permission denied (1100)[22m
+[2m  - [pid=27379] <gracefully close start>[22m
+[2m  - [pid=27379] <kill>[22m
+[2m  - [pid=27379] <will force kill>[22m
+[2m  - [pid=27379] exception while trying to kill process: Error: kill EPERM[22m
+[2m  - [pid=27379] <process did exit: exitCode=null, signal=SIGTRAP>[22m
+[2m  - [pid=27379] starting temporary directories cleanup[22m
+[2m  - [pid=27379] finished temporary directories cleanup[22m
+[2m  - [pid=27379] <gracefully close end>[22m
+
+ ❯ server/vision.test.ts:23:32
+     21| });
+     22| it("screenshot coordinates and replacement typing update quantity and …
+     23|   const browser=await chromium.launch({headless:true});
+       |                                ^
+     24|   try {
+     25|     const page=await browser.newPage({viewport:{width:1280,height:720}…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/13]⎯
+
+ FAIL  server/vision.test.ts > Midscene transports screenshots without hidden DOM and executes the validated coordinate plan (stub provider)
+Error: browserType.launch: Target page, context or browser has been closed
+Browser logs:
+
+<launching> /Users/zpro/Library/Caches/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-mac-arm64/chrome-headless-shell --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=/var/folders/7_/w4ptrm7x1vd05vb72q6bycsh0000gn/T/playwright_chromiumdev_profile-lOtDO8 --remote-debugging-pipe --no-startup-window
+<launched> pid=27382
+[pid=27382][err] [1006/130907.549371:ERROR:base/power_monitor/thermal_state_observer_mac.mm:140] ThermalStateObserverMac unable to register to power notifications. Result: 9
+[pid=27382][err] [1006/130907.550930:ERROR:net/dns/dns_config_service_posix.cc:138] DNS config watch failed to start.
+[pid=27382][err] [1006/130907.551338:FATAL:base/apple/mach_port_rendezvous_mac.cc:159] Check failed: kr == KERN_SUCCESS. bootstrap_check_in org.chromium.Chromium.MachPortRendezvousServer.27382: Permission denied (1100)
+Call log:
+[2m  - <launching> /Users/zpro/Library/Caches/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-mac-arm64/chrome-headless-shell --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=/var/folders/7_/w4ptrm7x1vd05vb72q6bycsh0000gn/T/playwright_chromiumdev_profile-lOtDO8 --remote-debugging-pipe --no-startup-window[22m
+[2m  - <launched> pid=27382[22m
+[2m  - [pid=27382][err] [1006/130907.549371:ERROR:base/power_monitor/thermal_state_observer_mac.mm:140] ThermalStateObserverMac unable to register to power notifications. Result: 9[22m
+[2m  - [pid=27382][err] [1006/130907.550930:ERROR:net/dns/dns_config_service_posix.cc:138] DNS config watch failed to start.[22m
+[2m  - [pid=27382][err] [1006/130907.551338:FATAL:base/apple/mach_port_rendezvous_mac.cc:159] Check failed: kr == KERN_SUCCESS. bootstrap_check_in org.chromium.Chromium.MachPortRendezvousServer.27382: Permission denied (1100)[22m
+[2m  - [pid=27382] <gracefully close start>[22m
+[2m  - [pid=27382] <kill>[22m
+[2m  - [pid=27382] <will force kill>[22m
+[2m  - [pid=27382] exception while trying to kill process: Error: kill EPERM[22m
+[2m  - [pid=27382] <process did exit: exitCode=null, signal=SIGTRAP>[22m
+[2m  - [pid=27382] starting temporary directories cleanup[22m
+[2m  - [pid=27382] finished temporary directories cleanup[22m
+[2m  - [pid=27382] <gracefully close end>[22m
+
+ ❯ server/vision.test.ts:39:34
+     37| },30000);
+     38| it("Midscene transports screenshots without hidden DOM and executes th…
+     39|   const browser = await chromium.launch({ headless: true });
+       |                                  ^
+     40|   try {
+     41|     const page = await browser.newPage({
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/13]⎯
+
+ FAIL  server/vision.test.ts > controlled screenshot assessment initializes the explicit OpenRouter base URL with a stub client, without DOM
+Error: browserType.launch: Target page, context or browser has been closed
+Browser logs:
+
+<launching> /Users/zpro/Library/Caches/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-mac-arm64/chrome-headless-shell --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=/var/folders/7_/w4ptrm7x1vd05vb72q6bycsh0000gn/T/playwright_chromiumdev_profile-8i57rv --remote-debugging-pipe --no-startup-window
+<launched> pid=27389
+[pid=27389][err] [1006/130907.589593:ERROR:base/power_monitor/thermal_state_observer_mac.mm:140] ThermalStateObserverMac unable to register to power notifications. Result: 9
+[pid=27389][err] [1006/130907.591060:ERROR:net/dns/dns_config_service_posix.cc:138] DNS config watch failed to start.
+[pid=27389][err] [1006/130907.591597:FATAL:base/apple/mach_port_rendezvous_mac.cc:159] Check failed: kr == KERN_SUCCESS. bootstrap_check_in org.chromium.Chromium.MachPortRendezvousServer.27389: Permission denied (1100)
+Call log:
+[2m  - <launching> /Users/zpro/Library/Caches/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-mac-arm64/chrome-headless-shell --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=/var/folders/7_/w4ptrm7x1vd05vb72q6bycsh0000gn/T/playwright_chromiumdev_profile-8i57rv --remote-debugging-pipe --no-startup-window[22m
+[2m  - <launched> pid=27389[22m
+[2m  - [pid=27389][err] [1006/130907.589593:ERROR:base/power_monitor/thermal_state_observer_mac.mm:140] ThermalStateObserverMac unable to register to power notifications. Result: 9[22m
+[2m  - [pid=27389][err] [1006/130907.591060:ERROR:net/dns/dns_config_service_posix.cc:138] DNS config watch failed to start.[22m
+[2m  - [pid=27389][err] [1006/130907.591597:FATAL:base/apple/mach_port_rendezvous_mac.cc:159] Check failed: kr == KERN_SUCCESS. bootstrap_check_in org.chromium.Chromium.MachPortRendezvousServer.27389: Permission denied (1100)[22m
+[2m  - [pid=27389] <gracefully close start>[22m
+[2m  - [pid=27389] <kill>[22m
+[2m  - [pid=27389] <will force kill>[22m
+[2m  - [pid=27389] exception while trying to kill process: Error: kill EPERM[22m
+[2m  - [pid=27389] <process did exit: exitCode=null, signal=SIGTRAP>[22m
+[2m  - [pid=27389] starting temporary directories cleanup[22m
+[2m  - [pid=27389] finished temporary directories cleanup[22m
+[2m  - [pid=27389] <gracefully close end>[22m
+
+ ❯ server/vision.test.ts:153:34
+    151| it("controlled screenshot assessment initializes the explicit OpenRout…
+    152|   const { fixtureModelConfig } = await import("./fixture-assessment");
+    153|   const browser = await chromium.launch({ headless: true });
+       |                                  ^
+    154|   try {
+    155|     const page = await browser.newPage({
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/13]⎯
+
+ FAIL  server/visual-qa.test.ts > independent QA reproduced: completion cannot hide findings or unreviewed frames (stub model)
+ FAIL  server/visual-qa.test.ts > independent QA normal: completion cannot hide findings or unreviewed frames (stub model)
+ FAIL  server/visual-qa.test.ts > independent QA disagrees: completion cannot hide findings or unreviewed frames (stub model)
+ FAIL  server/visual-qa.test.ts > independent QA invalid: completion cannot hide findings or unreviewed frames (stub model)
+ FAIL  server/visual-qa.test.ts > independent QA budget: completion cannot hide findings or unreviewed frames (stub model)
+AssertionError: expected 0 to be greater than 0
+ ❯ server/visual-qa.test.ts:45:38
+     43|     });
+     44|     expect(run.calls).toBeLessThanOrEqual(settings.maxCalls);
+     45|     expect(run.visualAudits!.length).toBeGreaterThan(0);
+       |                                      ^
+     46|     if (variant === "normal") { expect(run.status).toBe("completed");e…
+     47|     if (variant === "invalid") { expect(run.findings).toHaveLength(0);…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/13]⎯
+
+⎯⎯⎯⎯⎯⎯ Unhandled Errors ⎯⎯⎯⎯⎯⎯
+
+Vitest caught 3 unhandled errors during the test run.
+This might cause false positive tests. Resolve unhandled errors to make sure your tests are not affected.
+
+⎯⎯⎯⎯⎯ Uncaught Exception ⎯⎯⎯⎯⎯
+Error: listen EPERM: operation not permitted 127.0.0.1
+ ❯ Server.setupListenHandle [as _listen2] node:net:2306:21
+ ❯ listenInCluster node:net:2437:12
+ ❯ node:net:2666:7
+ ❯ processTicksAndRejections node:internal/process/task_queues:90:21
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: 'EPERM', errno: -1, syscall: 'listen', address: '127.0.0.1' }
+This error originated in "server/network.test.ts" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+The last test to run before this error was "uses env-only proxy for auth and real Midscene provider request without paid calls". This means either:
+- the error was thrown while Vitest was running this test, or
+- the error was thrown after the test completed, and this was the most recent test at that point.
+
+⎯⎯⎯⎯⎯ Uncaught Exception ⎯⎯⎯⎯⎯
+Error: listen EPERM: operation not permitted 127.0.0.1
+ ❯ Server.setupListenHandle [as _listen2] node:net:2306:21
+ ❯ listenInCluster node:net:2437:12
+ ❯ node:net:2666:7
+ ❯ processTicksAndRejections node:internal/process/task_queues:90:21
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: 'EPERM', errno: -1, syscall: 'listen', address: '127.0.0.1' }
+This error originated in "server/diagnostics.test.ts" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+The last test to run before this error was "actual refused navigation preserves target phase with zero model calls". This means either:
+- the error was thrown while Vitest was running this test, or
+- the error was thrown after the test completed, and this was the most recent test at that point.
+
+⎯⎯⎯⎯⎯ Uncaught Exception ⎯⎯⎯⎯⎯
+Error: listen EPERM: operation not permitted 127.0.0.1
+ ❯ Server.setupListenHandle [as _listen2] node:net:2306:21
+ ❯ listenInCluster node:net:2437:12
+ ❯ node:net:2666:7
+ ❯ processTicksAndRejections node:internal/process/task_queues:90:21
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: 'EPERM', errno: -1, syscall: 'listen', address: '127.0.0.1' }
+This error originated in "server/network.test.ts" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+The last test to run before this error was "Node and Chromium respect env proxy, loopback/NO_PROXY, and do not silently fall back". This means either:
+- the error was thrown while Vitest was running this test, or
+- the error was thrown after the test completed, and this was the most recent test at that point.
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+
+
+ Test Files  5 failed | 3 passed (8)
+      Tests  13 failed | 23 passed (36)
+     Errors  3 errors
+   Start at  13:09:06
+   Duration  35.41s (tests 92%, import 8%, transform 1%)
+
+npm error Lifecycle script `test` failed with error:
+npm error code 1
+npm error path /Users/zpro/.buzz/REPOS/vision-test-delivery/apps/platform
+npm error workspace @vision-qa/platform@0.1.0
+npm error location /Users/zpro/.buzz/REPOS/vision-test-delivery/apps/platform
+npm error command failed
+npm error command sh -c vitest run
+
+
+> @vision-qa/sample@0.1.0 test
+> vitest run
+
+
+ RUN  v5.0.3 /Users/zpro/.buzz/REPOS/vision-test-delivery/sample-site
+
+
+ Test Files  1 passed (1)
+      Tests  2 passed (2)
+   Start at  13:09:42
+   Duration  93ms (import 57%, transform 31%, tests 8%, worker 4%)
+

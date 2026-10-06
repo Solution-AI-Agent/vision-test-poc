@@ -1,0 +1,82 @@
+{
+  "images": 6,
+  "errors": [],
+  "links": [
+    {
+      "url": "http://127.0.0.1:4312/evidence/recordings/midscene-native-20261006/SUMMARY.json",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4312/evidence/recordings/midscene-native-20261006/PROBE.json",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4312/evidence/recordings/5aaba157-cc0c-4441-8d2e-4cec031a0f31/page@041e56e52c3ec1a6ebfa19f597d9458d.webm",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4312/evidence/recordings/5aaba157-cc0c-4441-8d2e-4cec031a0f31/TEST_ORACLE.json",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4312/evidence/recordings/midscene-native-20261006/INSTANT_PROBE.json",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4312/evidence/recordings/8d50f531-56e8-4c94-9b19-e3e3510da73b/page@e32860a2b0fb96175797f20d56d57706.webm",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4312/evidence/recordings/8d50f531-56e8-4c94-9b19-e3e3510da73b/TEST_ORACLE.json",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4312/evidence/recordings/midscene-native-20261006/DEEP_PROBE.json",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4312/evidence/recordings/49865415-b867-44d2-b342-94eedb316df4/page@e396aa877a2eac953fc01eb4224c3338.webm",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4312/evidence/recordings/49865415-b867-44d2-b342-94eedb316df4/TEST_ORACLE.json",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4312/evidence/recordings/midscene-native-20261006/INTEGRATED_PROBE.json",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4312/evidence/recordings/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/page@6689cb1777fb5bf0f125d4e727d12f0b.webm",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4312/evidence/recordings/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/TEST_ORACLE.json",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4312/evidence/recordings/midscene-native-20261006/INTEGRATED_V2.json",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4312/evidence/recordings/f43796c8-eb5f-440d-9fdd-f91806d88c0a/page@f6a28464b6740494d2910f3644db6c4d.webm",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4312/evidence/recordings/f43796c8-eb5f-440d-9fdd-f91806d88c0a/TEST_ORACLE.json",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4312/evidence/recordings/midscene-native-20261006/INTEGRATED_V3.json",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4312/evidence/recordings/3e1ef9cc-2620-4536-b77d-453f31320a85/page@e4a667ced38ddba1cacb31929c89d7c2.webm",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4312/evidence/recordings/3e1ef9cc-2620-4536-b77d-453f31320a85/TEST_ORACLE.json",
+      "status": 200
+    }
+  ]
+}

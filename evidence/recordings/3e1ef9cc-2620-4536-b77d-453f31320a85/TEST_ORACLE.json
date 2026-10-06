@@ -1,0 +1,20 @@
+{
+  "note": "Independent test-only API response observer; never provided to model or production runner.",
+  "orders": [
+    {
+      "status": 201,
+      "body": {
+        "product": "mug",
+        "quantity": 2,
+        "name": "테스터",
+        "email": "qa@example.test",
+        "productName": "빨간 머그",
+        "unitCents": 1200,
+        "subtotalCents": 2400,
+        "shippingCents": 0,
+        "totalCents": 2400,
+        "id": "e04c1e83-f5b7-4596-8b43-688d9150e2ce"
+      }
+    }
+  ]
+}

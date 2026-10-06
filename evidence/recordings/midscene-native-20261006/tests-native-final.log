@@ -1,0 +1,63 @@
+
+> vision-qa-lab@0.1.0 test
+> npm run test --workspaces
+
+
+> @vision-qa/ui@0.1.0 test
+> tsc --noEmit -p tsconfig.json
+
+
+> @vision-qa/platform@0.1.0 test
+> vitest run
+
+
+ RUN  v5.0.3 /Users/zpro/.buzz/REPOS/vision-test-delivery/apps/platform
+
+ ❯ server/visual-qa.test.ts (6 tests | 1 failed) 8549ms
+   × independent QA normal: completion cannot hide findings or unreviewed frames (stub model) 1493ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  server/visual-qa.test.ts > independent QA normal: completion cannot hide findings or unreviewed frames (stub model)
+AssertionError: expected 'limited' to be 'completed' // Object.is equality
+
+Expected: "completed"
+Received: "limited"
+
+ ❯ server/visual-qa.test.ts:46:52
+     44|     expect(run.calls).toBeLessThanOrEqual(settings.maxCalls);
+     45|     expect(run.visualAudits!.length).toBeGreaterThan(0);
+     46|     if (variant === "normal") { expect(run.status).toBe("completed");e…
+       |                                                    ^
+     47|     if (variant === "invalid") { expect(run.findings).toHaveLength(0);…
+     48|     if (variant === "reproduced" || variant === "disagrees" || variant…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 7 passed (8)
+      Tests  1 failed | 35 passed (36)
+   Start at  13:10:16
+   Duration  9.34s (tests 76%, import 22%, transform 2%)
+
+npm error Lifecycle script `test` failed with error:
+npm error code 1
+npm error path /Users/zpro/.buzz/REPOS/vision-test-delivery/apps/platform
+npm error workspace @vision-qa/platform@0.1.0
+npm error location /Users/zpro/.buzz/REPOS/vision-test-delivery/apps/platform
+npm error command failed
+npm error command sh -c vitest run
+
+
+> @vision-qa/sample@0.1.0 test
+> vitest run
+
+
+ RUN  v5.0.3 /Users/zpro/.buzz/REPOS/vision-test-delivery/sample-site
+
+
+ Test Files  1 passed (1)
+      Tests  2 passed (2)
+   Start at  13:10:26
+   Duration  94ms (import 56%, transform 33%, tests 8%, worker 4%)
+

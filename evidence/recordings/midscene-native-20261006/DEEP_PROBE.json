@@ -1,0 +1,192 @@
+{
+  "id": "49865415-b867-44d2-b342-94eedb316df4",
+  "input": {
+    "mode": "scenario",
+    "url": "http://127.0.0.1:4311/store/a",
+    "task": "수량을 2개로 바꾸고 받는 분은 테스터, 이메일은 qa@example.test로 입력한 다음 주문 확정 버튼을 누르세요.",
+    "expected": "주문 완료 화면과 테스터의 영수증에 빨간 머그 2개, 합계24달러가 표시됩니다.",
+    "query": "Midscene AI demo"
+  },
+  "settings": {
+    "agentInstructions": "",
+    "model": "qwen/qwen3-vl-30b-a3b-instruct",
+    "family": "qwen3-vl",
+    "maxActions": 16,
+    "maxCalls": 24,
+    "maxSeconds": 180,
+    "maxTokens": 2048
+  },
+  "startedAt": "2026-10-06T04:03:33.940Z",
+  "status": "completed",
+  "outcome": "{\"pass\":true,\"thought\":\"화면을 보면 주문 내역과 영수증 모두 빨간 머그 2개가 $24.00으로 표시되어 있다.\"}",
+  "stage": "브라우저 준비",
+  "calls": 10,
+  "actions": 5,
+  "tokens": 40149,
+  "cost": 0.00678819,
+  "steps": [],
+  "findings": [],
+  "engine": "Midscene native aiAct + aiAssert probe",
+  "transport": [
+    {
+      "phase": "model-plan",
+      "images": 1,
+      "texts": 2,
+      "screenshot": "/artifacts/49865415-b867-44d2-b342-94eedb316df4/model-request-1.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 97,
+        "hasDataJson": false,
+        "normalizedPlainJson": true
+      },
+      "elapsedMs": 4304,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791259415-Um0wYUXnaS9k2ZhisEYD"
+    },
+    {
+      "phase": "model-plan",
+      "images": 1,
+      "texts": 2,
+      "screenshot": "/artifacts/49865415-b867-44d2-b342-94eedb316df4/model-request-2.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 49,
+        "hasDataJson": false,
+        "normalizedPlainJson": true
+      },
+      "elapsedMs": 1338,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791259418-zwZ36JYB2lRtr68h0rH0"
+    },
+    {
+      "phase": "model-plan",
+      "images": 1,
+      "texts": 2,
+      "screenshot": "/artifacts/49865415-b867-44d2-b342-94eedb316df4/model-request-3.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 95,
+        "hasDataJson": false,
+        "normalizedPlainJson": true
+      },
+      "elapsedMs": 5540,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791259421-XUwov5xYoQLw70zaAtpd"
+    },
+    {
+      "phase": "model-plan",
+      "images": 1,
+      "texts": 2,
+      "screenshot": "/artifacts/49865415-b867-44d2-b342-94eedb316df4/model-request-4.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 49,
+        "hasDataJson": false,
+        "normalizedPlainJson": true
+      },
+      "elapsedMs": 1682,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791259427-hdVDQpPWsF71ap9vvwA2"
+    },
+    {
+      "phase": "model-plan",
+      "images": 1,
+      "texts": 2,
+      "screenshot": "/artifacts/49865415-b867-44d2-b342-94eedb316df4/model-request-5.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 105,
+        "hasDataJson": false,
+        "normalizedPlainJson": true
+      },
+      "elapsedMs": 4482,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791259430-k27gJS02l8vU5n0C0fa0"
+    },
+    {
+      "phase": "model-plan",
+      "images": 1,
+      "texts": 2,
+      "screenshot": "/artifacts/49865415-b867-44d2-b342-94eedb316df4/model-request-6.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 49,
+        "hasDataJson": false,
+        "normalizedPlainJson": true
+      },
+      "elapsedMs": 1391,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791259434-8ItoXugqqytxp8TWiAvS"
+    },
+    {
+      "phase": "model-plan",
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/49865415-b867-44d2-b342-94eedb316df4/model-request-7.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 365,
+        "hasDataJson": false,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 2804,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791259437-BQ2zZbw0ZmxKAM8cFy0s"
+    },
+    {
+      "phase": "model-plan",
+      "images": 1,
+      "texts": 6,
+      "screenshot": "/artifacts/49865415-b867-44d2-b342-94eedb316df4/model-request-8.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 324,
+        "hasDataJson": false,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 2517,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791259441-6u8uB5oxoYZ0I6psUoIJ"
+    },
+    {
+      "phase": "model-plan",
+      "images": 1,
+      "texts": 9,
+      "screenshot": "/artifacts/49865415-b867-44d2-b342-94eedb316df4/model-request-9.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 291,
+        "hasDataJson": false,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 3018,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791259444-T4xCmUoriQ6ovOVEyCG6"
+    },
+    {
+      "phase": "model-plan",
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/49865415-b867-44d2-b342-94eedb316df4/model-request-10.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 130,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 1523,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791259447-HlrNWtdYg9RSBMAboudR"
+    }
+  ],
+  "visualAudits": [],
+  "visualComplete": false,
+  "sourceVersion": {
+    "commit": "3ee87702378351ba6157d805d6ebb507833fb831",
+    "dirty": false,
+    "sourceHash": "f92c87077fb87ac3feadc54fee1ba67387b9d24258f4c1eaf3b2ab06bb243318",
+    "promptVersion": "goal-first-v11-completion-contradiction-guard"
+  },
+  "executionPhase": "model-plan",
+  "endedAt": "2026-10-06T04:04:39.549Z"
+}

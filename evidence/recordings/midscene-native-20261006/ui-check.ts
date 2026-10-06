@@ -1,0 +1,11 @@
+import {chromium} from 'playwright';
+import {readFile,writeFile} from 'node:fs/promises';
+import assert from 'node:assert/strict';
+const folder='artifacts/midscene-native-20261006';const run=JSON.parse(await readFile(folder+'/INTEGRATED_V3.json','utf8'));
+const browser=await chromium.launch({headless:true});const page=await browser.newPage({viewport:{width:1440,height:1100}});const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
+await page.route('**/api/runs',route=>route.request().method()==='GET'?route.fulfill({json:[run]}):route.abort());
+await page.goto('http://127.0.0.1:14330');await page.getByRole('button',{name:'증거 & 검토'}).click();await page.getByText('Midscene 업무 진행',{exact:true}).waitFor();await page.evaluate(()=>document.fonts.ready);
+assert.equal(await page.getByText('입력값 확인',{exact:false}).count()>0,true);
+await page.getByText('Midscene 업무 진행',{exact:true}).scrollIntoViewIfNeeded();await page.screenshot({path:folder+'/UI_WORKFLOW.png',fullPage:true});
+await page.setViewportSize({width:390,height:844});await page.screenshot({path:folder+'/UI_MOBILE.png',fullPage:true});
+assert.equal(errors.length,0);await writeFile(folder+'/UI_REPORT.json',JSON.stringify({note:'Actual run data replayed through GET /api/runs for UI review; no paid request or fabricated results.',runId:run.id,errors},null,2));await browser.close();

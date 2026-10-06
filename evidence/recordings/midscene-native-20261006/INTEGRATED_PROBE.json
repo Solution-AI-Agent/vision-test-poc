@@ -1,0 +1,1076 @@
+{
+  "id": "6c7315d0-91fe-4c22-91ce-b92f8c3674f8",
+  "input": {
+    "mode": "scenario",
+    "url": "http://127.0.0.1:4311/store/a",
+    "task": "수량을 2개로 바꾸고 받는 분은 테스터, 이메일은 qa@example.test로 입력한 다음 주문 확정 버튼을 누르세요.",
+    "expected": "주문 완료 화면과 테스터의 영수증에 빨간 머그 2개, 합계24달러가 표시됩니다.",
+    "query": "Midscene AI demo"
+  },
+  "settings": {
+    "agentInstructions": "",
+    "model": "qwen/qwen3-vl-30b-a3b-instruct",
+    "family": "qwen3-vl",
+    "maxActions": 16,
+    "maxCalls": 30,
+    "maxSeconds": 240,
+    "maxTokens": 2048
+  },
+  "startedAt": "2026-10-06T04:12:15.277Z",
+  "status": "completed",
+  "outcome": "Midscene 업무 수행·결과 확인 완료 · 시각 QA 판정 별도",
+  "stage": "종료",
+  "calls": 19,
+  "actions": 4,
+  "tokens": 54734,
+  "cost": 0.01130032,
+  "steps": [
+    {
+      "index": 0,
+      "at": "2026-10-06T04:12:33.599Z",
+      "before": "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/native-0-before.png",
+      "after": "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/native-0-after.png",
+      "executed": true,
+      "plan": {
+        "observation": "Midscene이 현재 화면에서 행동 대상을 찾았습니다.",
+        "rationale": "값 입력 · 수량 입력란 · 라벨 글자가 아닌 실제 편집 가능한 입력칸의 내부 중앙",
+        "action": {
+          "type": "midscene",
+          "name": "Input",
+          "description": "값 입력 · 수량 입력란 · 라벨 글자가 아닌 실제 편집 가능한 입력칸의 내부 중앙"
+        },
+        "verdict": "continue",
+        "finding": null
+      },
+      "native": {
+        "name": "Input",
+        "parameters": {
+          "value": "2",
+          "locate": {
+            "center": [
+              385,
+              446
+            ],
+            "description": "수량 입력란 · 라벨 글자가 아닌 실제 편집 가능한 입력칸의 내부 중앙",
+            "rect": {
+              "left": 118,
+              "top": 431.5,
+              "width": 533.5,
+              "height": 28.5
+            }
+          },
+          "mode": "replace"
+        }
+      },
+      "inputConfirmation": {
+        "status": "verified",
+        "visibleText": "2",
+        "reason": "Midscene이 읽은 실제 값과 요구값이 일치합니다.",
+        "screenshot": "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/model-request-5.jpg",
+        "call": 5
+      }
+    },
+    {
+      "index": 1,
+      "at": "2026-10-06T04:12:48.516Z",
+      "before": "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/native-1-before.png",
+      "after": "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/native-1-after.png",
+      "executed": true,
+      "plan": {
+        "observation": "Midscene이 현재 화면에서 행동 대상을 찾았습니다.",
+        "rationale": "값 입력 · 받는 분 이름 입력란 · 라벨 글자가 아닌 실제 편집 가능한 입력칸의 내부 중앙",
+        "action": {
+          "type": "midscene",
+          "name": "Input",
+          "description": "값 입력 · 받는 분 이름 입력란 · 라벨 글자가 아닌 실제 편집 가능한 입력칸의 내부 중앙"
+        },
+        "verdict": "continue",
+        "finding": null
+      },
+      "native": {
+        "name": "Input",
+        "parameters": {
+          "value": "테스터",
+          "locate": {
+            "center": [
+              245,
+              522
+            ],
+            "description": "받는 분 이름 입력란 · 라벨 글자가 아닌 실제 편집 가능한 입력칸의 내부 중앙",
+            "rect": {
+              "left": 111,
+              "top": 507,
+              "width": 268.5,
+              "height": 30
+            }
+          },
+          "mode": "replace"
+        }
+      },
+      "inputConfirmation": {
+        "status": "verified",
+        "visibleText": "테스터",
+        "reason": "Midscene이 읽은 실제 값과 요구값이 일치합니다.",
+        "screenshot": "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/model-request-9.jpg",
+        "call": 9
+      }
+    },
+    {
+      "index": 2,
+      "at": "2026-10-06T04:13:04.698Z",
+      "before": "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/native-2-before.png",
+      "after": "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/native-2-after.png",
+      "executed": true,
+      "plan": {
+        "observation": "Midscene이 현재 화면에서 행동 대상을 찾았습니다.",
+        "rationale": "값 입력 · 이메일 주소 입력란 · 라벨 글자가 아닌 실제 편집 가능한 입력칸의 내부 중앙",
+        "action": {
+          "type": "midscene",
+          "name": "Input",
+          "description": "값 입력 · 이메일 주소 입력란 · 라벨 글자가 아닌 실제 편집 가능한 입력칸의 내부 중앙"
+        },
+        "verdict": "continue",
+        "finding": null
+      },
+      "native": {
+        "name": "Input",
+        "parameters": {
+          "value": "qa@example.test",
+          "locate": {
+            "center": [
+              316,
+              528
+            ],
+            "description": "이메일 주소 입력란 · 라벨 글자가 아닌 실제 편집 가능한 입력칸의 내부 중앙",
+            "rect": {
+              "left": 251.5,
+              "top": 509.5,
+              "width": 130,
+              "height": 37.5
+            }
+          },
+          "mode": "replace"
+        }
+      },
+      "inputConfirmation": {
+        "status": "verified",
+        "visibleText": "qa@example.test",
+        "reason": "Midscene이 읽은 실제 값과 요구값이 일치합니다.",
+        "screenshot": "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/model-request-13.jpg",
+        "call": 13
+      }
+    },
+    {
+      "index": 3,
+      "at": "2026-10-06T04:13:27.782Z",
+      "before": "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/native-3-before.png",
+      "after": "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/native-3-after.png",
+      "executed": true,
+      "plan": {
+        "observation": "Midscene이 현재 화면에서 행동 대상을 찾았습니다.",
+        "rationale": "화면 클릭 · 주문 확정 버튼",
+        "action": {
+          "type": "midscene",
+          "name": "Tap",
+          "description": "화면 클릭 · 주문 확정 버튼"
+        },
+        "verdict": "continue",
+        "finding": null
+      },
+      "native": {
+        "name": "Tap",
+        "parameters": {
+          "locate": {
+            "center": [
+              864,
+              522
+            ],
+            "description": "주문 확정 버튼",
+            "rect": {
+              "left": 768,
+              "top": 504,
+              "width": 193,
+              "height": 37
+            }
+          }
+        }
+      }
+    }
+  ],
+  "findings": [],
+  "engine": "Midscene aiInput · aiAct · aiString · aiAssert / 1.14.0",
+  "transport": [
+    {
+      "phase": "visual-review",
+      "images": 1,
+      "texts": 3,
+      "screenshots": [
+        "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/model-request-1.jpg"
+      ],
+      "screenshot": "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/model-request-1.jpg",
+      "parsedOutput": {
+        "checks": [
+          {
+            "criterion": "readability",
+            "result": "clear",
+            "evidence": "모든 텍스트가 완전히 표시되고 읽기 쉬움."
+          },
+          {
+            "criterion": "geometry",
+            "result": "clear",
+            "evidence": "모든 요소가 정상적인 비율과 형태로 표시됨."
+          },
+          {
+            "criterion": "occlusion",
+            "result": "clear",
+            "evidence": "모든 구성 요소가 서로 겹치거나 가려지지 않음."
+          },
+          {
+            "criterion": "image-meaning",
+            "result": "clear",
+            "evidence": "이미지와 텍스트 설명이 일치함."
+          },
+          {
+            "criterion": "chart-meaning",
+            "result": "clear",
+            "evidence": "차트의 수치와 시각적 표현이 일치함."
+          }
+        ],
+        "issues": []
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 837,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 9452,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791259937-0EOJXGytKLfF8be0RsUO"
+    },
+    {
+      "phase": "model-plan",
+      "images": 1,
+      "texts": 3,
+      "screenshots": [
+        "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/model-request-2.jpg"
+      ],
+      "screenshot": "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/model-request-2.jpg",
+      "parsedOutput": {
+        "steps": [
+          {
+            "kind": "input",
+            "target": "수량 입력란",
+            "value": "2",
+            "description": "수량 입력란에 2를 입력합니다."
+          },
+          {
+            "kind": "input",
+            "target": "받는 분 이름 입력란",
+            "value": "테스터",
+            "description": "받는 분 이름 입력란에 '테스터'를 입력합니다."
+          },
+          {
+            "kind": "input",
+            "target": "이메일 주소 입력란",
+            "value": "qa@example.test",
+            "description": "이메일 주소 입력란에 'qa@example.test'를 입력합니다."
+          },
+          {
+            "kind": "action",
+            "description": "주문 확정 버튼을 클릭합니다."
+          }
+        ]
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 680,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 3657,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791259946-zYZU7Jh438ltqyZvvGJk"
+    },
+    {
+      "phase": "model-plan",
+      "images": 1,
+      "texts": 2,
+      "screenshots": [
+        "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/model-request-3.jpg"
+      ],
+      "screenshot": "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/model-request-3.jpg",
+      "parsedOutput": {
+        "raw": "```json\n{\n  \"bbox_2d\": [97, 598, 504, 638],\n  \"references_bbox_2d\": [\n    [97, 598, 504, 638]\n  ]\n}\n```"
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 103,
+        "hasDataJson": false,
+        "normalizedPlainJson": true
+      },
+      "elapsedMs": 1838,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791259949-cdAHwGAGkDsKGHX38qaR"
+    },
+    {
+      "phase": "model-plan",
+      "images": 1,
+      "texts": 2,
+      "screenshots": [
+        "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/model-request-4.jpg"
+      ],
+      "screenshot": "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/model-request-4.jpg",
+      "parsedOutput": {
+        "raw": "```json\n{\n  \"bbox_2d\": [130, 438, 868, 560]\n}\n```"
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 49,
+        "hasDataJson": false,
+        "normalizedPlainJson": true
+      },
+      "elapsedMs": 1862,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791259951-w39SACrJfsC8eeK31zT3"
+    },
+    {
+      "phase": "input-confirmation",
+      "images": 1,
+      "texts": 3,
+      "screenshots": [
+        "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/model-request-5.jpg"
+      ],
+      "screenshot": "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/model-request-5.jpg",
+      "parsedOutput": {
+        "raw": "<observation>현재 화면에서 수량 입력란을 확인했으며, 이 입력란에는 숫자 '2'가 입력되어 있습니다. 이 값은 라벨이나 플레이스홀더가 아닌 실제 사용자가 입력한 값입니다.</observation>\n<data-json>\n{\n  \"String\": \"2\"\n}\n</data-json>"
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 160,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 3818,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791259954-yX6cAtZkbArRlnZrwhAE"
+    },
+    {
+      "phase": "visual-review",
+      "images": 1,
+      "texts": 3,
+      "screenshots": [
+        "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/model-request-6.jpg"
+      ],
+      "screenshot": "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/model-request-6.jpg",
+      "parsedOutput": {
+        "checks": [
+          {
+            "criterion": "readability",
+            "result": "clear",
+            "evidence": "모든 텍스트가 완전히 보이며, 읽기 어렵거나 잘리지 않은 부분 없음."
+          },
+          {
+            "criterion": "geometry",
+            "result": "clear",
+            "evidence": "모든 구성 요소와 텍스트가 정상적인 비율로 표시되며, 왜곡이나 붕괴 없음."
+          },
+          {
+            "criterion": "occlusion",
+            "result": "clear",
+            "evidence": "모든 요소가 서로 겹치거나 가려지는 현상 없음."
+          },
+          {
+            "criterion": "image-meaning",
+            "result": "clear",
+            "evidence": "그림과 설명 사이에 의미 상의 충돌 없음."
+          },
+          {
+            "criterion": "chart-meaning",
+            "result": "not-applicable",
+            "evidence": "차트 또는 그래프 요소 없음."
+          }
+        ],
+        "issues": []
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 890,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 3945,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791259958-Z00j4uAo1RLSE07hCSDA"
+    },
+    {
+      "phase": "model-plan",
+      "images": 1,
+      "texts": 2,
+      "screenshots": [
+        "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/model-request-7.jpg"
+      ],
+      "screenshot": "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/model-request-7.jpg",
+      "parsedOutput": {
+        "raw": "```json\n{\n  \"bbox_2d\": [107, 685, 300, 735],\n  \"references_bbox_2d\": [\n    [107, 685, 300, 735]\n  ]\n}\n```"
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 105,
+        "hasDataJson": false,
+        "normalizedPlainJson": true
+      },
+      "elapsedMs": 3278,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791259962-Rq3hs3Es5saUdZYDEpSD"
+    },
+    {
+      "phase": "model-plan",
+      "images": 1,
+      "texts": 2,
+      "screenshots": [
+        "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/model-request-8.jpg"
+      ],
+      "screenshot": "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/model-request-8.jpg",
+      "parsedOutput": {
+        "raw": "```json\n{\n  \"bbox_2d\": [202, 484, 688, 584]\n}\n```"
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 49,
+        "hasDataJson": false,
+        "normalizedPlainJson": true
+      },
+      "elapsedMs": 2407,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791259966-HEpLEjdEkChDCzjOQlEt"
+    },
+    {
+      "phase": "input-confirmation",
+      "images": 1,
+      "texts": 3,
+      "screenshots": [
+        "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/model-request-9.jpg"
+      ],
+      "screenshot": "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/model-request-9.jpg",
+      "parsedOutput": {
+        "raw": "<observation>현재 화면을 보면, '받는 분' 입력란에 '테스터'라는 값이 입력되어 있는 것을 확인할 수 있다. 이 값은 라벨이나 플레이스홀더가 아니라 실제 사용자가 입력한 내용이다.</observation>\n<data-json>\n\"테스터\"\n</data-json>"
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 152,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 5548,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791259969-9K4jpxUHqxlJtcUXCivV"
+    },
+    {
+      "phase": "visual-review",
+      "images": 1,
+      "texts": 3,
+      "screenshots": [
+        "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/model-request-10.jpg"
+      ],
+      "screenshot": "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/model-request-10.jpg",
+      "parsedOutput": {
+        "checks": [
+          {
+            "criterion": "readability",
+            "result": "clear",
+            "evidence": "모든 텍스트가 명확하게 보이며, 잘리거나 애매한 부분 없음."
+          },
+          {
+            "criterion": "geometry",
+            "result": "clear",
+            "evidence": "모든 요소가 적절한 비율로 표시되며, 왜곡이나 붕괴 없음."
+          },
+          {
+            "criterion": "occlusion",
+            "result": "clear",
+            "evidence": "요소들이 서로 겹치거나 가리는 경우 없음."
+          },
+          {
+            "criterion": "image-meaning",
+            "result": "clear",
+            "evidence": "제품 이미지와 설명 간의 의미 충돌 없음."
+          },
+          {
+            "criterion": "chart-meaning",
+            "result": "clear",
+            "evidence": "차트의 수치와 시각적 표현이 일치함."
+          }
+        ],
+        "issues": []
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 918,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 4387,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791259975-Wlg9H79vruKuVnOWJeBz"
+    },
+    {
+      "phase": "model-plan",
+      "images": 1,
+      "texts": 2,
+      "screenshots": [
+        "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/model-request-11.jpg"
+      ],
+      "screenshot": "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/model-request-11.jpg",
+      "parsedOutput": {
+        "raw": "```json\n{\n  \"bbox_2d\": [306, 708, 505, 754],\n  \"references_bbox_2d\": [\n    [306, 708, 505, 754]\n  ]\n}\n```"
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 105,
+        "hasDataJson": false,
+        "normalizedPlainJson": true
+      },
+      "elapsedMs": 3396,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791259981-TpywjYfBjivuG6fKgjoE"
+    },
+    {
+      "phase": "model-plan",
+      "images": 1,
+      "texts": 2,
+      "screenshots": [
+        "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/model-request-12.jpg"
+      ],
+      "screenshot": "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/model-request-12.jpg",
+      "parsedOutput": {
+        "raw": "```json\n{\n  \"bbox_2d\": [19, 438, 250, 564]\n}\n```"
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 48,
+        "hasDataJson": false,
+        "normalizedPlainJson": true
+      },
+      "elapsedMs": 1377,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791259983-NFjiCqCa1r4TwrzDv1dZ"
+    },
+    {
+      "phase": "input-confirmation",
+      "images": 1,
+      "texts": 3,
+      "screenshots": [
+        "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/model-request-13.jpg"
+      ],
+      "screenshot": "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/model-request-13.jpg",
+      "parsedOutput": {
+        "raw": "<observation>현재 화면에서 이메일 주소 입력란을 확인한 결과, 입력된 값은 'qa@example.test'입니다. 이는 라벨이나 플레이스홀더가 아닌 실제 사용자가 입력한 값입니다.</observation>\n<data-json>\n\"qa@example.test\"\n</data-json>"
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 163,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 1802,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791259986-DF2zSPtUDjo2Fi7RvWly"
+    },
+    {
+      "phase": "visual-review",
+      "images": 1,
+      "texts": 3,
+      "screenshots": [
+        "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/model-request-14.jpg"
+      ],
+      "screenshot": "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/model-request-14.jpg",
+      "parsedOutput": {
+        "checks": [
+          {
+            "criterion": "readability",
+            "result": "clear",
+            "evidence": "모든 텍스트가 명확하게 읽을 수 있으며, 자르거나 압축된 부분 없음."
+          },
+          {
+            "criterion": "geometry",
+            "result": "clear",
+            "evidence": "모든 요소가 정상적인 비율로 표시되며, 늘어짐, 기울임, 압축 등 없음."
+          },
+          {
+            "criterion": "occlusion",
+            "result": "clear",
+            "evidence": "모든 구성 요소가 서로 겹치지 않으며, 필요한 내용이 가려지지 않음."
+          },
+          {
+            "criterion": "image-meaning",
+            "result": "clear",
+            "evidence": "이미지와 인접한 텍스트 설명이 일치함. 빨간 머그잔이 '빨간 머그 × 2'와 일치."
+          },
+          {
+            "criterion": "chart-meaning",
+            "result": "clear",
+            "evidence": "차트의 수치 레이블과 막대의 크기 및 방향이 일치함. 노트 80%, 머그 20%."
+          }
+        ],
+        "issues": []
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 871,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 16741,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791259987-ZePzQGkJLJxDTkpkZF8g"
+    },
+    {
+      "phase": "model-plan",
+      "images": 1,
+      "texts": 3,
+      "screenshots": [
+        "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/model-request-15.jpg"
+      ],
+      "screenshot": "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/model-request-15.jpg",
+      "parsedOutput": {
+        "raw": "<!-- Step 1: Observe and Plan -->\n<planning>현재 화면은 주문 확인 페이지로, 상품 선택과 수량 입력이 완료된 상태입니다. 주문 요약 영역에 '주문 확정' 버튼이 보이지 않지만, 주문을 진행하기 위해 필요한 최종 확인 단계임을 알 수 있습니다. 사용자의 명령은 '주문 확정 버튼을 클릭합니다.'이며, 이는 주문을 완료하는 마지막 단계입니다. 따라서 주문 확정 버튼을 찾아 클릭해야 합니다.</planning>\n<log>주문 확정 버튼을 클릭합니다.</log>\n<action-type>Tap</action-type>\n<action-param-json>\n{\n  \"locate\": {\n    \"prompt\": \"주문 확정 버튼\",\n    \"bbox_2d\": [600, 700, 750, 750]\n  }\n}\n</action-param-json>"
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 431,
+        "hasDataJson": false,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 3079,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791260004-rsZI9e5h5YM2XLPxMhCM"
+    },
+    {
+      "phase": "screenshot",
+      "images": 1,
+      "texts": 6,
+      "screenshots": [
+        "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/model-request-16.jpg"
+      ],
+      "screenshot": "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/model-request-16.jpg",
+      "parsedOutput": {
+        "raw": "<!-- Step 1: Observe and Plan -->\n<planning>이전에 '주문 확정' 버튼을 클릭한 후, 현재 화면은 주문 확인 페이지로 전환된 상태입니다. 주문 요약 정보가 정확히 표시되고 있으며, 추가적인 입력이나 확인이 필요하지 않아 보입니다. 사용자의 명령은 단지 '주문 확정 버튼을 클릭합니다.'였으며, 이는 이미 수행된 작업입니다. 따라서 모든 작업이 완료되었고, 지시사항이 충족되었습니다.</planning>\n<complete success=\"true\">주문 확정 버튼을 클릭하였습니다.</complete>"
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 298,
+        "hasDataJson": false,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 3538,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791260008-mwzA4RFOXXBLBjjl9ng0"
+    },
+    {
+      "phase": "visual-review",
+      "images": 1,
+      "texts": 3,
+      "screenshots": [
+        "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/model-request-17.jpg"
+      ],
+      "screenshot": "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/model-request-17.jpg",
+      "parsedOutput": {
+        "checks": [
+          {
+            "criterion": "readability",
+            "result": "not-applicable",
+            "evidence": "모든 텍스트가 완전히 표시되고 읽기 쉬움."
+          },
+          {
+            "criterion": "geometry",
+            "result": "not-applicable",
+            "evidence": "모든 요소가 정상적인 비율과 배치로 유지됨."
+          },
+          {
+            "criterion": "occlusion",
+            "result": "not-applicable",
+            "evidence": "모든 구성 요소가 서로 겹치지 않음."
+          },
+          {
+            "criterion": "image-meaning",
+            "result": "not-applicable",
+            "evidence": "이미지와 텍스트 설명이 일치함."
+          },
+          {
+            "criterion": "chart-meaning",
+            "result": "not-applicable",
+            "evidence": "차트와 수치가 일치함."
+          }
+        ],
+        "issues": []
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 945,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 14997,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791260012-Xffi3dMapdkTbYfjRDxd"
+    },
+    {
+      "phase": "input-confirmation",
+      "images": 1,
+      "texts": 3,
+      "screenshots": [
+        "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/model-request-18.jpg"
+      ],
+      "screenshot": "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/model-request-18.jpg",
+      "parsedOutput": {
+        "pass": true,
+        "thought": "현재 화면을 보면, 수량이 2로 설정되어 있고, 받는 분과 이메일이 각각 '테스터', 'qa@example.test'로 입력되어 있다. 주문 요약 부분에는 빨간 머그 2개가 $24.00으로 정확히 표시되어 있다."
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 222,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 5763,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791260027-6tRTmXKJSBVd3g8KPVJ5"
+    },
+    {
+      "phase": "visual-review",
+      "images": 1,
+      "texts": 3,
+      "screenshots": [
+        "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/model-request-19.jpg"
+      ],
+      "screenshot": "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/model-request-19.jpg",
+      "parsedOutput": {
+        "checks": [
+          {
+            "criterion": "readability",
+            "result": "clear",
+            "evidence": "모든 텍스트가 명확하게 읽힐 수 있다."
+          },
+          {
+            "criterion": "geometry",
+            "result": "clear",
+            "evidence": "모든 요소가 적절한 비율로 배치되어 있으며, 왜곡이나 크기 문제 없음."
+          },
+          {
+            "criterion": "occlusion",
+            "result": "not-applicable",
+            "evidence": "오버랩되는 요소가 없으므로 침해 여부 판단 불가."
+          },
+          {
+            "criterion": "image-meaning",
+            "result": "clear",
+            "evidence": "빨간 머그잔 이미지와 '빨간 머그'라는 텍스트가 일치함."
+          },
+          {
+            "criterion": "chart-meaning",
+            "result": "not-applicable",
+            "evidence": "차트 요소가 화면에 존재하지 않음."
+          }
+        ],
+        "issues": []
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 875,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 3935,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791260032-AoEyCr038T4ElgvMo0nP"
+    }
+  ],
+  "visualAudits": [
+    {
+      "id": "38a769b8-e146-4b43-8d59-b88908700901",
+      "at": "2026-10-06T04:12:16.504Z",
+      "checkpoint": "첫 화면",
+      "screenshot": "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/model-request-1.jpg",
+      "call": 1,
+      "status": "reviewed",
+      "promptVersion": "visual-qa-v1-independent-checklist",
+      "result": {
+        "checks": [
+          {
+            "criterion": "readability",
+            "result": "clear",
+            "evidence": "모든 텍스트가 완전히 표시되고 읽기 쉬움."
+          },
+          {
+            "criterion": "geometry",
+            "result": "clear",
+            "evidence": "모든 요소가 정상적인 비율과 형태로 표시됨."
+          },
+          {
+            "criterion": "occlusion",
+            "result": "clear",
+            "evidence": "모든 구성 요소가 서로 겹치거나 가려지지 않음."
+          },
+          {
+            "criterion": "image-meaning",
+            "result": "clear",
+            "evidence": "이미지와 텍스트 설명이 일치함."
+          },
+          {
+            "criterion": "chart-meaning",
+            "result": "clear",
+            "evidence": "차트의 수치와 시각적 표현이 일치함."
+          }
+        ],
+        "issues": []
+      }
+    },
+    {
+      "id": "2433c1a9-6f16-4500-a0ab-b73a683933e8",
+      "at": "2026-10-06T04:12:38.719Z",
+      "checkpoint": "업무 1 후 화면",
+      "screenshot": "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/model-request-6.jpg",
+      "call": 6,
+      "status": "reviewed",
+      "promptVersion": "visual-qa-v1-independent-checklist",
+      "result": {
+        "checks": [
+          {
+            "criterion": "readability",
+            "result": "clear",
+            "evidence": "모든 텍스트가 완전히 보이며, 읽기 어렵거나 잘리지 않은 부분 없음."
+          },
+          {
+            "criterion": "geometry",
+            "result": "clear",
+            "evidence": "모든 구성 요소와 텍스트가 정상적인 비율로 표시되며, 왜곡이나 붕괴 없음."
+          },
+          {
+            "criterion": "occlusion",
+            "result": "clear",
+            "evidence": "모든 요소가 서로 겹치거나 가려지는 현상 없음."
+          },
+          {
+            "criterion": "image-meaning",
+            "result": "clear",
+            "evidence": "그림과 설명 사이에 의미 상의 충돌 없음."
+          },
+          {
+            "criterion": "chart-meaning",
+            "result": "not-applicable",
+            "evidence": "차트 또는 그래프 요소 없음."
+          }
+        ],
+        "issues": []
+      }
+    },
+    {
+      "id": "5f246094-9478-4887-b18a-ecc730b141a3",
+      "at": "2026-10-06T04:12:55.332Z",
+      "checkpoint": "업무 2 후 화면",
+      "screenshot": "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/model-request-10.jpg",
+      "call": 10,
+      "status": "reviewed",
+      "promptVersion": "visual-qa-v1-independent-checklist",
+      "result": {
+        "checks": [
+          {
+            "criterion": "readability",
+            "result": "clear",
+            "evidence": "모든 텍스트가 명확하게 보이며, 잘리거나 애매한 부분 없음."
+          },
+          {
+            "criterion": "geometry",
+            "result": "clear",
+            "evidence": "모든 요소가 적절한 비율로 표시되며, 왜곡이나 붕괴 없음."
+          },
+          {
+            "criterion": "occlusion",
+            "result": "clear",
+            "evidence": "요소들이 서로 겹치거나 가리는 경우 없음."
+          },
+          {
+            "criterion": "image-meaning",
+            "result": "clear",
+            "evidence": "제품 이미지와 설명 간의 의미 충돌 없음."
+          },
+          {
+            "criterion": "chart-meaning",
+            "result": "clear",
+            "evidence": "차트의 수치와 시각적 표현이 일치함."
+          }
+        ],
+        "issues": []
+      }
+    },
+    {
+      "id": "dd5ddfd3-41fb-43a7-abad-3de07168ce71",
+      "at": "2026-10-06T04:13:07.799Z",
+      "checkpoint": "업무 3 후 화면",
+      "screenshot": "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/model-request-14.jpg",
+      "call": 14,
+      "status": "reviewed",
+      "promptVersion": "visual-qa-v1-independent-checklist",
+      "result": {
+        "checks": [
+          {
+            "criterion": "readability",
+            "result": "clear",
+            "evidence": "모든 텍스트가 명확하게 읽을 수 있으며, 자르거나 압축된 부분 없음."
+          },
+          {
+            "criterion": "geometry",
+            "result": "clear",
+            "evidence": "모든 요소가 정상적인 비율로 표시되며, 늘어짐, 기울임, 압축 등 없음."
+          },
+          {
+            "criterion": "occlusion",
+            "result": "clear",
+            "evidence": "모든 구성 요소가 서로 겹치지 않으며, 필요한 내용이 가려지지 않음."
+          },
+          {
+            "criterion": "image-meaning",
+            "result": "clear",
+            "evidence": "이미지와 인접한 텍스트 설명이 일치함. 빨간 머그잔이 '빨간 머그 × 2'와 일치."
+          },
+          {
+            "criterion": "chart-meaning",
+            "result": "clear",
+            "evidence": "차트의 수치 레이블과 막대의 크기 및 방향이 일치함. 노트 80%, 머그 20%."
+          }
+        ],
+        "issues": []
+      }
+    },
+    {
+      "id": "754acb10-ead5-4f2e-b28d-9f2653eda471",
+      "at": "2026-10-06T04:13:31.947Z",
+      "checkpoint": "업무 4 후 화면",
+      "screenshot": "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/model-request-17.jpg",
+      "call": 17,
+      "status": "reviewed",
+      "promptVersion": "visual-qa-v1-independent-checklist",
+      "result": {
+        "checks": [
+          {
+            "criterion": "readability",
+            "result": "not-applicable",
+            "evidence": "모든 텍스트가 완전히 표시되고 읽기 쉬움."
+          },
+          {
+            "criterion": "geometry",
+            "result": "not-applicable",
+            "evidence": "모든 요소가 정상적인 비율과 배치로 유지됨."
+          },
+          {
+            "criterion": "occlusion",
+            "result": "not-applicable",
+            "evidence": "모든 구성 요소가 서로 겹치지 않음."
+          },
+          {
+            "criterion": "image-meaning",
+            "result": "not-applicable",
+            "evidence": "이미지와 텍스트 설명이 일치함."
+          },
+          {
+            "criterion": "chart-meaning",
+            "result": "not-applicable",
+            "evidence": "차트와 수치가 일치함."
+          }
+        ],
+        "issues": []
+      }
+    },
+    {
+      "id": "2bdd47e0-4f6a-45fc-b9a4-cae461136106",
+      "at": "2026-10-06T04:13:52.849Z",
+      "checkpoint": "업무 종료 화면",
+      "screenshot": "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/model-request-19.jpg",
+      "call": 19,
+      "status": "reviewed",
+      "promptVersion": "visual-qa-v1-independent-checklist",
+      "result": {
+        "checks": [
+          {
+            "criterion": "readability",
+            "result": "clear",
+            "evidence": "모든 텍스트가 명확하게 읽힐 수 있다."
+          },
+          {
+            "criterion": "geometry",
+            "result": "clear",
+            "evidence": "모든 요소가 적절한 비율로 배치되어 있으며, 왜곡이나 크기 문제 없음."
+          },
+          {
+            "criterion": "occlusion",
+            "result": "not-applicable",
+            "evidence": "오버랩되는 요소가 없으므로 침해 여부 판단 불가."
+          },
+          {
+            "criterion": "image-meaning",
+            "result": "clear",
+            "evidence": "빨간 머그잔 이미지와 '빨간 머그'라는 텍스트가 일치함."
+          },
+          {
+            "criterion": "chart-meaning",
+            "result": "not-applicable",
+            "evidence": "차트 요소가 화면에 존재하지 않음."
+          }
+        ],
+        "issues": []
+      }
+    }
+  ],
+  "visualComplete": true,
+  "sourceVersion": {
+    "commit": "880c5540d84a27bccb32e1685f6228b757b0ebb7",
+    "dirty": false,
+    "sourceHash": "b0e4f71745907496b61af80548471c9bd17b607f618a9abd3077ea9d45e7e4dd",
+    "promptVersion": "midscene-native-workflow-v1"
+  },
+  "executionPhase": "video-finalization",
+  "screenshot": "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/visual-5-screen.png",
+  "workflow": {
+    "task": "수량을 2개로 바꾸고 받는 분은 테스터, 이메일은 qa@example.test로 입력한 다음 주문 확정 버튼을 누르세요.",
+    "expected": "주문 완료 화면과 테스터의 영수증에 빨간 머그 2개, 합계24달러가 표시됩니다.",
+    "steps": [
+      {
+        "kind": "input",
+        "target": "수량 입력란",
+        "value": "2",
+        "description": "수량 입력란에 2를 입력합니다.",
+        "status": "verified",
+        "actual": "2"
+      },
+      {
+        "kind": "input",
+        "target": "받는 분 이름 입력란",
+        "value": "테스터",
+        "description": "받는 분 이름 입력란에 '테스터'를 입력합니다.",
+        "status": "verified",
+        "actual": "테스터"
+      },
+      {
+        "kind": "input",
+        "target": "이메일 주소 입력란",
+        "value": "qa@example.test",
+        "description": "이메일 주소 입력란에 'qa@example.test'를 입력합니다.",
+        "status": "verified",
+        "actual": "qa@example.test"
+      },
+      {
+        "kind": "action",
+        "description": "주문 확정 버튼을 클릭합니다.",
+        "status": "executed"
+      }
+    ],
+    "assertion": {
+      "pass": true,
+      "reason": "현재 화면을 보면, 수량이 2로 설정되어 있고, 받는 분과 이메일이 각각 '테스터', 'qa@example.test'로 입력되어 있다. 주문 요약 부분에는 빨간 머그 2개가 $24.00으로 정확히 표시되어 있다.",
+      "screenshot": "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/model-request-18.jpg"
+    }
+  },
+  "video": "/artifacts/6c7315d0-91fe-4c22-91ce-b92f8c3674f8/page@6689cb1777fb5bf0f125d4e727d12f0b.webm",
+  "endedAt": "2026-10-06T04:13:57.089Z"
+}

@@ -1,0 +1,84 @@
+
+> vision-qa-lab@0.1.0 test
+> npm run test --workspaces
+
+
+> @vision-qa/ui@0.1.0 test
+> tsc --noEmit -p tsconfig.json
+
+
+> @vision-qa/platform@0.1.0 test
+> vitest run
+
+
+ RUN  v5.0.3 /Users/zpro/.buzz/REPOS/vision-test-delivery/apps/platform
+
+ ❯ server/midscene-workflow.test.ts (6 tests | 2 failed) 17ms
+   × native workflow normal: input/read/action/assert use Midscene APIs and retain uncompleted obligations 12ms
+   × native workflow assertion-failed: input/read/action/assert use Midscene APIs and retain uncompleted obligations 1ms
+ ❯ server/visual-qa.test.ts (6 tests | 1 failed) 7907ms
+   × independent QA normal: completion cannot hide findings or unreviewed frames (stub model) 1319ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  server/midscene-workflow.test.ts > native workflow normal: input/read/action/assert use Midscene APIs and retain uncompleted obligations
+ FAIL  server/midscene-workflow.test.ts > native workflow assertion-failed: input/read/action/assert use Midscene APIs and retain uncompleted obligations
+AssertionError: expected undefined to match object { domIncluded: false, …(1) }
+
+- Expected:
+{
+  "domIncluded": false,
+  "keepRawResponse": true,
+}
+
++ Received:
+undefined
+
+ ❯ server/midscene-workflow.test.ts:29:212
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  server/visual-qa.test.ts > independent QA normal: completion cannot hide findings or unreviewed frames (stub model)
+AssertionError: expected 'failed' to be 'completed' // Object.is equality
+
+Expected: "completed"
+Received: "failed"
+
+ ❯ server/visual-qa.test.ts:46:52
+     44|     expect(run.calls).toBeLessThanOrEqual(settings.maxCalls);
+     45|     expect(run.visualAudits!.length).toBeGreaterThan(0);
+     46|     if (variant === "normal") { expect(run.status).toBe("completed");e…
+       |                                                    ^
+     47|     if (variant === "invalid") { expect(run.findings).toHaveLength(0);…
+     48|     if (variant === "reproduced" || variant === "disagrees" || variant…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+
+ Test Files  2 failed | 6 passed (8)
+      Tests  3 failed | 33 passed (36)
+   Start at  13:06:05
+   Duration  8.91s (tests 70%, import 28%, transform 2%)
+
+npm error Lifecycle script `test` failed with error:
+npm error code 1
+npm error path /Users/zpro/.buzz/REPOS/vision-test-delivery/apps/platform
+npm error workspace @vision-qa/platform@0.1.0
+npm error location /Users/zpro/.buzz/REPOS/vision-test-delivery/apps/platform
+npm error command failed
+npm error command sh -c vitest run
+
+
+> @vision-qa/sample@0.1.0 test
+> vitest run
+
+
+ RUN  v5.0.3 /Users/zpro/.buzz/REPOS/vision-test-delivery/sample-site
+
+
+ Test Files  1 passed (1)
+      Tests  2 passed (2)
+   Start at  13:06:14
+   Duration  93ms (import 56%, transform 32%, tests 8%, worker 4%)
+

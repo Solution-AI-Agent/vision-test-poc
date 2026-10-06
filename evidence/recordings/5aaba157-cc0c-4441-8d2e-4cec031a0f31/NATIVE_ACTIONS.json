@@ -1,0 +1,138 @@
+[
+  {
+    "name": "Tap",
+    "param": {
+      "locate": {
+        "center": [
+          385,
+          446
+        ],
+        "description": "수량 입력 필드",
+        "rect": {
+          "left": 124,
+          "top": 431,
+          "width": 522,
+          "height": 31
+        }
+      }
+    },
+    "completed": true
+  },
+  {
+    "name": "Input",
+    "param": {
+      "value": "2",
+      "locate": {
+        "center": [
+          385,
+          446
+        ],
+        "description": "수량 입력 필드",
+        "rect": {
+          "left": 124,
+          "top": 431,
+          "width": 522,
+          "height": 31
+        }
+      }
+    },
+    "completed": true
+  },
+  {
+    "name": "Tap",
+    "param": {
+      "locate": {
+        "center": [
+          254,
+          510
+        ],
+        "description": "받는 분 입력 필드",
+        "rect": {
+          "left": 124,
+          "top": 495,
+          "width": 261,
+          "height": 32
+        }
+      }
+    },
+    "completed": true
+  },
+  {
+    "name": "Input",
+    "param": {
+      "value": "테스터",
+      "locate": {
+        "center": [
+          254,
+          510
+        ],
+        "description": "받는 분 입력 필드",
+        "rect": {
+          "left": 124,
+          "top": 495,
+          "width": 261,
+          "height": 32
+        }
+      }
+    },
+    "completed": true
+  },
+  {
+    "name": "Tap",
+    "param": {
+      "locate": {
+        "center": [
+          515,
+          510
+        ],
+        "description": "이메일 입력 필드",
+        "rect": {
+          "left": 384,
+          "top": 495,
+          "width": 262,
+          "height": 32
+        }
+      }
+    },
+    "completed": true
+  },
+  {
+    "name": "Input",
+    "param": {
+      "value": "qa@example.test",
+      "locate": {
+        "center": [
+          515,
+          510
+        ],
+        "description": "이메일 입력 필드",
+        "rect": {
+          "left": 384,
+          "top": 495,
+          "width": 262,
+          "height": 32
+        }
+      }
+    },
+    "completed": true
+  },
+  {
+    "name": "Tap",
+    "param": {
+      "locate": {
+        "center": [
+          254,
+          634
+        ],
+        "description": "주문 확정 버튼",
+        "rect": {
+          "left": 124,
+          "top": 619,
+          "width": 261,
+          "height": 30
+        }
+      }
+    },
+    "completed": true
+  }
+]

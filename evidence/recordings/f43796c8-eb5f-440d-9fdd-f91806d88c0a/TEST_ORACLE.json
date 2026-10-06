@@ -1,0 +1,4 @@
+{
+  "note": "Independent test-only API response observer; never provided to model or production runner.",
+  "orders": []
+}

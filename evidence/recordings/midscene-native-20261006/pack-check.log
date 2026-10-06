@@ -1,0 +1,5 @@
+
+> vision-qa-lab@0.1.0 evidence:check
+> node evidence/restore.mjs --check
+
+Verified 3152 preserved source files.

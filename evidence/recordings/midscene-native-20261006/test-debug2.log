@@ -1,0 +1,44 @@
+
+> @vision-qa/platform@0.1.0 test
+> vitest run --testNamePattern=QA normal
+
+
+ RUN  v5.0.3 /Users/zpro/.buzz/REPOS/vision-test-delivery/apps/platform
+
+stdout | server/visual-qa.test.ts > independent QA normal: completion cannot hide findings or unreviewed frames (stub model)
+{"status":"limited","outcome":"Midscene 업무 결과 확인 실패 · 완료 미확인","workflow":{"task":"Observe the completed order","expected":"Order completed","steps":[{"kind":"action","description":"완료 화면 관찰","status":"executed"}],"assertion":{"pass":false,"reason":"Assertion failed: 원래 업무: Observe the completed order. 요구 결과: Order completed. 현재 화면에서 모든 요구 결과가 실제로 완료되어 보인다. 입력 중인 미리보기와 제출 완료는 구분하고, 빈 필드의 placeholder는 입력값으로 취급하지 않는다.\nReason: No result in query data","screenshot":"/artifacts/4e6097c8-60fa-4dc3-88e3-5091ec179b1b/model-request-4.jpg"}},"transport":[{"phase":"visual-review","images":1,"texts":3,"screenshots":["/artifacts/4e6097c8-60fa-4dc3-88e3-5091ec179b1b/model-request-1.jpg"],"screenshot":"/artifacts/4e6097c8-60fa-4dc3-88e3-5091ec179b1b/model-request-1.jpg","parsedOutput":{"checks":[{"criterion":"readability","result":"clear","evidence":"검사한 영역에서 문제 근거 없음"},{"criterion":"geometry","result":"clear","evidence":"검사한 영역에서 문제 근거 없음"},{"criterion":"occlusion","result":"clear","evidence":"검사한 영역에서 문제 근거 없음"},{"criterion":"image-meaning","result":"clear","evidence":"검사한 영역에서 문제 근거 없음"},{"criterion":"chart-meaning","result":"clear","evidence":"검사한 영역에서 문제 근거 없음"}],"issues":[]},"responseFormat":{"finishReason":"stop","chars":467,"hasDataJson":true,"normalizedPlainJson":false},"elapsedMs":1,"responseModel":"stub-vlm","requestId":"stub-1-0"},{"phase":"model-plan","images":1,"texts":3,"screenshots":["/artifacts/4e6097c8-60fa-4dc3-88e3-5091ec179b1b/model-request-2.jpg"],"screenshot":"/artifacts/4e6097c8-60fa-4dc3-88e3-5091ec179b1b/model-request-2.jpg","parsedOutput":{"steps":[{"kind":"action","description":"완료 화면 관찰"}]},"responseFormat":{"finishReason":"stop","chars":118,"hasDataJson":true,"normalizedPlainJson":false},"elapsedMs":0,"responseModel":"stub-vlm","requestId":"stub-1-1"},{"phase":"model-plan","images":1,"texts":3,"screenshots":["/artifacts/4e6097c8-60fa-4dc3-88e3-5091ec179b1b/model-request-3.jpg"],"screenshot":"/artifacts/4e6097c8-60fa-4dc3-88e3-5091ec179b1b/model-request-3.jpg","parsedOutput":{"raw":"<complete success=\"true\">로컬 완료</complete><data-json>{\"action\":{\"type\":\"Finished\",\"param\":null},\"log\":\"로컬 완료\",\"finalizeSuccess\":true,\"pass\":true,\"thought\":\"로컬 완료 화면\"}</data-json>"},"responseFormat":{"finishReason":"stop","chars":177,"hasDataJson":true,"normalizedPlainJson":false},"elapsedMs":1,"responseModel":"stub-vlm","requestId":"stub-1-1"},{"phase":"input-confirmation","images":1,"texts":3,"screenshots":["/artifacts/4e6097c8-60fa-4dc3-88e3-5091ec179b1b/model-request-4.jpg"],"screenshot":"/artifacts/4e6097c8-60fa-4dc3-88e3-5091ec179b1b/model-request-4.jpg","parsedOutput":{"pass":false,"message":"Assertion failed: 원래 업무: Observe the completed order. 요구 결과: Order completed. 현재 화면에서 모든 요구 결과가 실제로 완료되어 보인다. 입력 중인 미리보기와 제출 완료는 구분하고, 빈 필드의 placeholder는 입력값으로 취급하지 않는다.\nReason: No result in query data"},"responseFormat":{"finishReason":"stop","chars":177,"hasDataJson":true,"normalizedPlainJson":false},"elapsedMs":0,"responseModel":"stub-vlm","requestId":"stub-1-1"}]}
+
+ ❯ server/visual-qa.test.ts (6 tests | 1 failed | 5 skipped) 1692ms
+   × independent QA normal: completion cannot hide findings or unreviewed frames (stub model) 1691ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  server/visual-qa.test.ts > independent QA normal: completion cannot hide findings or unreviewed frames (stub model)
+AssertionError: expected 'limited' to be 'completed' // Object.is equality
+
+Expected: "completed"
+Received: "limited"
+
+ ❯ server/visual-qa.test.ts:47:52
+     45|     expect(run.calls).toBeLessThanOrEqual(settings.maxCalls);
+     46|     expect(run.visualAudits!.length).toBeGreaterThan(0);
+     47|     if (variant === "normal") { expect(run.status).toBe("completed");e…
+       |                                                    ^
+     48|     if (variant === "invalid") { expect(run.findings).toHaveLength(0);…
+     49|     if (variant === "reproduced" || variant === "disagrees" || variant…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 7 skipped (8)
+      Tests  1 failed | 35 skipped (36)
+   Start at  13:11:15
+   Duration  2.35s (import 63%, tests 32%, transform 5%)
+
+npm error Lifecycle script `test` failed with error:
+npm error code 1
+npm error path /Users/zpro/.buzz/REPOS/vision-test-delivery/apps/platform
+npm error workspace @vision-qa/platform@0.1.0
+npm error location /Users/zpro/.buzz/REPOS/vision-test-delivery/apps/platform
+npm error command failed
+npm error command sh -c vitest run '--testNamePattern=QA normal'

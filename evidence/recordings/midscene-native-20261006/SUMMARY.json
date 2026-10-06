@@ -1,0 +1,69 @@
+{
+  "note": "Development attempts, not a common success rate. Raw model completed status is separated from independent actual order result. No new visual defect accuracy claim. First three SDK probes preserved first image only; integrated runs preserve all model input images. API observer is test-only and never supplied to agent.",
+  "visualQaReview": "Final normal A run produced a repeated blur/occlusion candidate over the chart. Direct original-image review shows clear content; classified as false positive. Raw candidate is retained, not accepted as a defect.",
+  "code": "07d3b39",
+  "runs": [
+    {
+      "source": "PROBE.json",
+      "id": "5aaba157-cc0c-4441-8d2e-4cec031a0f31",
+      "modelStatus": "completed",
+      "independentReview": "실패 · 주문 미제출, 모델은 완료로 오판",
+      "calls": 9,
+      "sdkActions": 7,
+      "reportedCost": 0.01435988,
+      "version": null
+    },
+    {
+      "source": "INSTANT_PROBE.json",
+      "id": "8d50f531-56e8-4c94-9b19-e3e3510da73b",
+      "modelStatus": "completed",
+      "independentReview": "실패 · 이메일을 다른 필드에 입력, 모델은 완료로 오판",
+      "calls": 7,
+      "sdkActions": 5,
+      "reportedCost": 0.00670002,
+      "version": null
+    },
+    {
+      "source": "DEEP_PROBE.json",
+      "id": "49865415-b867-44d2-b342-94eedb316df4",
+      "modelStatus": "completed",
+      "independentReview": "성공 · SDK 직접 시험, 원본에서 주문 완료 확인",
+      "calls": 10,
+      "sdkActions": 5,
+      "reportedCost": 0.00678819,
+      "version": null
+    },
+    {
+      "source": "INTEGRATED_PROBE.json",
+      "id": "6c7315d0-91fe-4c22-91ce-b92f8c3674f8",
+      "modelStatus": "completed",
+      "independentReview": "실패 · 통합 시험, 이메일 오입력·주문 미제출",
+      "calls": 19,
+      "sdkActions": 4,
+      "reportedCost": 0.01130032,
+      "version": null
+    },
+    {
+      "source": "INTEGRATED_V2.json",
+      "id": "f43796c8-eb5f-440d-9fdd-f91806d88c0a",
+      "modelStatus": "failed",
+      "independentReview": "실행 실패 · 목록 포장 형식 오류, 행동 전 종료",
+      "calls": 2,
+      "sdkActions": 0,
+      "reportedCost": 0.00115845,
+      "version": null
+    },
+    {
+      "source": "INTEGRATED_V3.json",
+      "id": "3e1ef9cc-2620-4536-b77d-453f31320a85",
+      "modelStatus": "completed",
+      "independentReview": "성공 · 통합 실행의 주문 완료 화면과 API 201 확인",
+      "calls": 21,
+      "sdkActions": 5,
+      "reportedCost": 0.01177221,
+      "version": null
+    }
+  ],
+  "totalRequests": 68,
+  "totalReportedCost": 0.05207907
+}

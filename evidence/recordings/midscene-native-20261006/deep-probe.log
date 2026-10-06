@@ -1,0 +1,2 @@
+[Midscene] [midscene:warning] waitForNetworkIdle is skipped for Playwright. Playwright does not provide an equivalent underlying capability for the intended post-action network idle behavior here.
+{"id":"49865415-b867-44d2-b342-94eedb316df4","status":"completed","calls":10,"actions":5,"cost":0.00678819,"outcome":"{\"pass\":true,\"thought\":\"화면을 보면 주문 내역과 영수증 모두 빨간 머그 2개가 $24.00으로 표시되어 있다.\"}"}

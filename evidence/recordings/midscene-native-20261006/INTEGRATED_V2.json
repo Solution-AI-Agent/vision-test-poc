@@ -1,0 +1,161 @@
+{
+  "id": "f43796c8-eb5f-440d-9fdd-f91806d88c0a",
+  "input": {
+    "mode": "scenario",
+    "url": "http://127.0.0.1:4311/store/a",
+    "task": "수량을 2개로 바꾸고 받는 분은 테스터, 이메일은 qa@example.test로 입력한 다음 주문 확정 버튼을 누르세요.",
+    "expected": "주문 완료 화면과 테스터의 영수증에 빨간 머그 2개, 합계24달러가 표시됩니다.",
+    "query": "Midscene AI demo"
+  },
+  "settings": {
+    "agentInstructions": "",
+    "model": "qwen/qwen3-vl-30b-a3b-instruct",
+    "family": "qwen3-vl",
+    "maxActions": 16,
+    "maxCalls": 30,
+    "maxSeconds": 240,
+    "maxTokens": 2048
+  },
+  "startedAt": "2026-10-06T04:15:30.626Z",
+  "status": "failed",
+  "outcome": "모델 응답을 계획 형식으로 검증하지 못했습니다.",
+  "stage": "실패 · 화면 관찰·계획",
+  "calls": 2,
+  "actions": 0,
+  "tokens": 5305,
+  "cost": 0.00115845,
+  "steps": [],
+  "findings": [],
+  "engine": "Midscene aiInput · aiAct · aiString · aiAssert / 1.14.0",
+  "transport": [
+    {
+      "phase": "visual-review",
+      "images": 1,
+      "texts": 3,
+      "screenshots": [
+        "/artifacts/f43796c8-eb5f-440d-9fdd-f91806d88c0a/model-request-1.jpg"
+      ],
+      "screenshot": "/artifacts/f43796c8-eb5f-440d-9fdd-f91806d88c0a/model-request-1.jpg",
+      "parsedOutput": {
+        "checks": [
+          {
+            "criterion": "readability",
+            "result": "clear",
+            "evidence": "모든 텍스트가 명확하게 읽을 수 있으며, 자르거나 흐릿한 부분 없음."
+          },
+          {
+            "criterion": "geometry",
+            "result": "clear",
+            "evidence": "모든 요소가 정상적인 비율로 표시되며, 늘어짐, 비뚤어짐, 압축된 부분 없음."
+          },
+          {
+            "criterion": "occlusion",
+            "result": "clear",
+            "evidence": "모든 요소가 서로 겹치지 않으며, 필요한 내용이나 컨트롤이 가려지지 않음."
+          },
+          {
+            "criterion": "image-meaning",
+            "result": "clear",
+            "evidence": "이미지와 텍스트 설명이 일치하며, 컵 이미지가 빨간 머그를 나타냄."
+          },
+          {
+            "criterion": "chart-meaning",
+            "result": "clear",
+            "evidence": "비율 표시와 차트의 크기 및 방향이 일치하며, 80%와 20%가 정확히 반영됨."
+          }
+        ],
+        "issues": []
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 1093,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 28915,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791260132-OOwaNUvMUe2FLAmjuyEM"
+    },
+    {
+      "phase": "model-plan",
+      "images": 1,
+      "texts": 3,
+      "screenshots": [
+        "/artifacts/f43796c8-eb5f-440d-9fdd-f91806d88c0a/model-request-2.jpg"
+      ],
+      "screenshot": "/artifacts/f43796c8-eb5f-440d-9fdd-f91806d88c0a/model-request-2.jpg",
+      "parsedOutput": {
+        "raw": "<observation>현재 화면은 주문 페이지로, 빨간 머그의 수량을 조정하고 받는 분 정보를 입력할 수 있는 UI가 보입니다. 사용자 업무는 수량을 2개로 변경하고, 받는 분을 '테스터', 이메일을 'qa@example.test'로 입력한 후 주문 확정 버튼을 누르는 것입니다.</observation>\n<data-json>\n[\n  {\n    \"kind\": \"input\",\n    \"target\": \"수량 입력칸\",\n    \"value\": \"2\",\n    \"description\": \"수량 입력란에 2를 입력합니다.\"\n  },\n  {\n    \"kind\": \"input\",\n    \"target\": \"받는 분의 이름 입력칸\",\n    \"value\": \"테스터\",\n    \"description\": \"받는 분의 이름 입력란에 '테스터'를 입력합니다.\"\n  },\n  {\n    \"kind\": \"input\",\n    \"target\": \"이메일 주소 입력칸\",\n    \"value\": \"qa@example.test\",\n    \"description\": \"이메일 주소 입력란에 'qa@example.test'를 입력합니다.\"\n  },\n  {\n    \"kind\": \"action\",\n    \"description\": \"주문 확정 버튼을 클릭합니다.\"\n  }\n]\n</data-json>\n<errors>[]</errors>"
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 677,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 14550,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791260161-4D9IsSIXQHfc28mI33oU"
+    }
+  ],
+  "visualAudits": [
+    {
+      "id": "d889e5c7-54df-434a-aa25-7e911a515270",
+      "at": "2026-10-06T04:15:31.859Z",
+      "checkpoint": "첫 화면",
+      "screenshot": "/artifacts/f43796c8-eb5f-440d-9fdd-f91806d88c0a/model-request-1.jpg",
+      "call": 1,
+      "status": "reviewed",
+      "promptVersion": "visual-qa-v1-independent-checklist",
+      "result": {
+        "checks": [
+          {
+            "criterion": "readability",
+            "result": "clear",
+            "evidence": "모든 텍스트가 명확하게 읽을 수 있으며, 자르거나 흐릿한 부분 없음."
+          },
+          {
+            "criterion": "geometry",
+            "result": "clear",
+            "evidence": "모든 요소가 정상적인 비율로 표시되며, 늘어짐, 비뚤어짐, 압축된 부분 없음."
+          },
+          {
+            "criterion": "occlusion",
+            "result": "clear",
+            "evidence": "모든 요소가 서로 겹치지 않으며, 필요한 내용이나 컨트롤이 가려지지 않음."
+          },
+          {
+            "criterion": "image-meaning",
+            "result": "clear",
+            "evidence": "이미지와 텍스트 설명이 일치하며, 컵 이미지가 빨간 머그를 나타냄."
+          },
+          {
+            "criterion": "chart-meaning",
+            "result": "clear",
+            "evidence": "비율 표시와 차트의 크기 및 방향이 일치하며, 80%와 20%가 정확히 반영됨."
+          }
+        ],
+        "issues": []
+      }
+    }
+  ],
+  "visualComplete": true,
+  "sourceVersion": {
+    "commit": "7869f454bce379c57143de8a982d1c3e129681a8",
+    "dirty": false,
+    "sourceHash": "f1125d72b3041793dec113337b02b4246930664bf464fa8f649b57ee6adde508",
+    "promptVersion": "midscene-native-workflow-v1"
+  },
+  "executionPhase": "model-plan",
+  "screenshot": "/artifacts/f43796c8-eb5f-440d-9fdd-f91806d88c0a/visual-0-screen.png",
+  "failureStage": "Midscene 실행할 업무 항목 정리",
+  "diagnostic": {
+    "code": "MODEL_RESPONSE_INVALID",
+    "phase": "model-plan",
+    "message": "모델 응답을 계획 형식으로 검증하지 못했습니다.",
+    "action": "모델의 구조화된 응답 지원과 출력 토큰 설정을 확인하세요. 이 실패는 제품 결함 판정이 아닙니다."
+  },
+  "error": "모델 응답을 계획 형식으로 검증하지 못했습니다.",
+  "video": "/artifacts/f43796c8-eb5f-440d-9fdd-f91806d88c0a/page@f6a28464b6740494d2910f3644db6c4d.webm",
+  "endedAt": "2026-10-06T04:16:15.517Z"
+}

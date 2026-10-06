@@ -1,0 +1,30 @@
+
+ RUN  v5.0.3 /Users/zpro/.buzz/REPOS/vision-test-delivery/apps/platform
+
+ ❯ server/visual-qa.test.ts (6 tests | 1 failed | 5 skipped) 1416ms
+   × independent QA normal: completion cannot hide findings or unreviewed frames (stub model) 1416ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  server/visual-qa.test.ts > independent QA normal: completion cannot hide findings or unreviewed frames (stub model)
+AssertionError: expected 'limited' to be 'completed' // Object.is equality
+
+Expected: "completed"
+Received: "limited"
+
+ ❯ server/visual-qa.test.ts:46:52
+     44|     expect(run.calls).toBeLessThanOrEqual(settings.maxCalls);
+     45|     expect(run.visualAudits!.length).toBeGreaterThan(0);
+     46|     if (variant === "normal") { expect(run.status).toBe("completed");e…
+       |                                                    ^
+     47|     if (variant === "invalid") { expect(run.findings).toHaveLength(0);…
+     48|     if (variant === "reproduced" || variant === "disagrees" || variant…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 5 skipped (6)
+   Start at  13:11:04
+   Duration  1.86s (tests 79%, import 19%, transform 2%)
+

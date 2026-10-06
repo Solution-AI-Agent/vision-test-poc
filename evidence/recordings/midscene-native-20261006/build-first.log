@@ -1,0 +1,9 @@
+
+> vision-qa-lab@0.1.0 build
+> tsc --noEmit && npm run build --workspaces
+
+apps/platform/server/midscene-workflow.ts(48,17): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(locatePrompt: string | ({ prompt: string; } & { images?: { name: string; url: string; }[] | undefined; convertHttpImage2Base64?: boolean | undefined; }), opt: LocateOption & { ...; } & { ...; }): Promise<...>', gave the following error.
+    Object literal may only specify known properties, and 'abortSignal' does not exist in type 'LocateOption & { autoDismissKeyboard?: boolean | undefined; keyboardTypeDelay?: number | undefined; inputStrategy?: "legacy" | "sequential" | "bulk" | undefined; mode?: "clear" | ... 3 more ... | undefined; } & { ...; }'.
+  Overload 2 of 2, '(value: string | number, locatePrompt: string | ({ prompt: string; } & { images?: { name: string; url: string; }[] | undefined; convertHttpImage2Base64?: boolean | undefined; }), opt?: AgentInputOption | undefined): Promise<...>', gave the following error.
+    Object literal may only specify known properties, and 'value' does not exist in type '{ prompt: string; } & { images?: { name: string; url: string; }[] | undefined; convertHttpImage2Base64?: boolean | undefined; }'.
