@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="화면을 보고 행동하는 Vision Agent. 앱 화면을 직접 바꿔보며 관찰·행동·결과 확인을 쉽게 이해하세요.">
+<title>Vision Agent — 화면을 읽는 AI, 직접 이해하기</title>
+<link rel="stylesheet" href="explainer.css">
+</head>
+<body>
+<svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+<symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></symbol>
+<symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6"/></symbol>
+<symbol id="i-gear" viewBox="0 0 24 24"><path d="m9 3-.6 2.5-2.2 1L4 6l-2 3 1.7 1.8v2.4L2 15l2 3 2.2-.5 2.2 1L9 21h6l.6-2.5 2.2-1 2.2.5 2-3-1.7-1.8v-2.4L22 9l-2-3-2.2.5-2.2-1L15 3Z"/><circle cx="12" cy="12" r="3"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+<symbol id="i-pointer" viewBox="0 0 24 24"><path d="m5 3 14 9-7 1-3 7Z"/></symbol>
+<symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 10a6 6 0 0 1 12 0v5l2 3H4l2-3Zm4 11h4"/></symbol>
+<symbol id="i-file" viewBox="0 0 24 24"><path d="M5 3h9l5 5v13H5Zm9 0v6h5M8 13h8m-8 4h6"/></symbol>
+<symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol>
+<symbol id="i-play" viewBox="0 0 24 24"><path d="m8 4 12 8-12 8Z"/></symbol>
+<symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 9a8 8 0 1 0 0 7M20 3v6h-6"/></symbol>
+</defs></svg>
+<a class="skip-link" href="#experience">체험으로 바로가기</a>
+<header class="site-header"><a class="brand" href="#"><span class="brand-mark"><svg><use href="#i-eye"/></svg></span>Vision <span>Agent</span></a><nav aria-label="페이지 메뉴"><a href="#experience">직접 체험</a><a href="#difference">무엇이 다른가요?</a><a href="#watch" class="nav-video">영상 보기 <span>↗</span></a></nav></header>
+<main>
+<section class="hero wrap">
+ <div class="hero-copy"><p class="eyebrow"><span></span> 눈으로 이해하는 AI</p><h1>화면을 읽고,<br>다음 행동을<br><em>고르는 Agent.</em></h1><p class="hero-lead">“알림을 꺼 줘”라는 한마디.<br>Agent는 화면에서 설정을 찾고, 조작한 뒤,<br class="desktop-break"> 정말 꺼졌는지 다시 확인합니다.</p><a class="primary-link" href="#experience">화면을 바꾸며 이해하기 <svg><use href="#i-arrow"/></svg></a><p class="fine">약 2분 · 설치 없이 직접 체험</p></div>
+ <div class="hero-art" aria-label="목표를 받아 화면을 보고 행동하며 결과를 확인하는 과정">
+  <div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div>
+  <div class="goal-bubble"><span class="avatar">나</span><span>알림을 꺼 줘.</span><span class="bubble-dot"></span></div>
+  <div class="art-screen"><div class="screen-top"><span class="traffic"><i></i><i></i><i></i></span><span>현재 화면</span></div><div class="art-settings"><div class="art-icon"><svg><use href="#i-bell"/></svg></div><div><strong>새 소식 알림</strong><small>중요한 업데이트를 받아요</small></div><span class="mini-toggle"><i></i></span></div><div class="scan-corners"><i></i><i></i><i></i><i></i></div><div class="art-cursor"><svg><use href="#i-pointer"/></svg></div></div>
+  <div class="art-response"><span class="tick"><svg><use href="#i-check"/></svg></span><div><strong>화면에서 결과까지 확인</strong><small>행동 요청과 실제 결과를 구분합니다.</small></div></div>
+  <span class="floating-label">화면 → 판단 → 행동 → 새 화면</span>
+ </div>
+</section>
+<div class="concept-note wrap"><span class="note-dot"></span> 이 페이지는 이해를 돕는 개념 시연입니다. 실제 AI 호출이나 성능 측정은 하지 않습니다.</div>
+<section id="experience" class="experience-section">
+ <div class="wrap"><div class="section-intro"><div><p class="eyebrow">01 / 직접 움직여 보기</p><h2>화면이 달라지면,<br>다음 행동도 달라집니다.</h2></div><p>같은 목표를 서로 다른 화면에서 수행해보세요.<br>어디를 보고, 무엇을 누르는지 따라갈 수 있습니다.</p></div>
+ <div class="demo-shell">
+  <div class="demo-toolbar"><div class="task-chip"><span>목표</span> 새 소식 알림 끄기</div><span class="demo-label">동작을 미리 구성한 개념 시연</span></div>
+  <div class="scenario-picker" role="group" aria-label="시작 화면 선택"><button type="button" class="scenario active" data-scenario="base" aria-pressed="true"><span>01</span> 기본 화면</button><button type="button" class="scenario" data-scenario="moved" aria-pressed="false"><span>02</span> 설정 위치 변경</button><button type="button" class="scenario" data-scenario="modal" aria-pressed="false"><span>03</span> 팝업 등장</button></div>
+  <div class="demo-body">
+   <div class="mock-window" id="mock-window">
+    <div class="mock-bar"><span class="traffic"><i></i><i></i><i></i></span><span>note.space / workspace</span><svg class="bar-grid"><use href="#i-grid"/></svg></div>
+    <div class="app-top"><div class="app-logo"><span>N</span> Note Space</div><button class="mock-setting top-setting" type="button" aria-label="상단 설정" hidden><svg><use href="#i-gear"/></svg><span>설정</span></button><span class="profile">지</span></div>
+    <div class="app-layout"><aside class="app-sidebar"><span class="side-current"><svg><use href="#i-grid"/></svg><span>내 공간</span></span><span class="side-item"><svg><use href="#i-file"/></svg><span>문서</span></span><span class="side-item"><svg><use href="#i-bell"/></svg><span>새 소식</span></span><button class="mock-setting bottom-setting" type="button" aria-label="사이드바 설정"><svg><use href="#i-gear"/></svg><span>설정</span></button></aside>
+     <div class="app-content"><div id="home-panel"><p class="app-overline">MY WORKSPACE</p><h3>안녕하세요, 지민님.</h3><p class="app-sub">오늘의 생각을 한 곳에 모아보세요.</p><div class="document-grid"><div class="document"><span class="doc-icon coral"><svg><use href="#i-file"/></svg></span><strong>이번 주 할 일</strong><small>방금 수정함</small><div class="doc-lines"><i></i><i></i><i></i></div></div><div class="document"><span class="doc-icon blue"><svg><use href="#i-file"/></svg></span><strong>여행 아이디어</strong><small>어제 수정함</small><div class="doc-lines"><i></i><i></i><i></i></div></div></div><div class="recent-row"><span class="avatar small-avatar">민</span><span>민서님이 새 문서를 공유했어요.</span><small>2분 전</small></div></div>
+      <div id="settings-panel" hidden><p class="app-overline">PREFERENCES</p><h3>알림 설정</h3><p class="app-sub">필요한 소식만 받아보세요.</p><div class="notification-row"><span class="bell-box"><svg><use href="#i-bell"/></svg></span><div><strong>새 소식 알림</strong><small id="setting-description">새 소식이 오면 알려드려요.</small></div><button id="notification-toggle" type="button" role="switch" aria-label="새 소식 알림" aria-checked="true"><span></span></button></div><p class="app-status" id="app-status">현재 알림이 켜져 있습니다.</p><div class="setting-ghost"><span>이메일 수신</span><span>매주 요약</span></div><div class="setting-ghost"><span>방해 금지 시간</span><span>설정 안 함</span></div></div>
+     </div>
+    </div>
+    <div class="app-modal" id="popup" hidden><div class="popup-card"><span class="popup-art">✦</span><h3>더 넓어진 내 공간</h3><p>새로운 기능을 확인해보세요.</p><button type="button" id="dismiss-popup">나중에 보기</button></div></div>
+    <span class="focus-tag" id="focus-tag" hidden>화면에서 찾은 대상</span>
+   </div>
+   <div class="agent-panel"><div class="agent-heading"><span class="agent-logo"><svg><use href="#i-eye"/></svg></span><div><strong>Agent의 진행 과정</strong><small>선택한 화면을 따라가 보세요</small></div></div>
+    <ol class="steps"><li id="step-0"><span class="step-number">1</span><div><strong>화면 보기</strong><p>목표와 관련 있는 대상을 찾습니다.</p></div></li><li id="step-1"><span class="step-number">2</span><div><strong>필요한 행동 선택</strong><p>클릭할 위치와 순서를 정합니다.</p></div></li><li id="step-2"><span class="step-number">3</span><div><strong>새 화면으로 확인</strong><p>목표가 실제로 이루어졌는지 봅니다.</p></div></li></ol>
+    <div class="agent-observation" role="status" aria-live="polite"><span id="observation-label">체험 준비</span><p id="observation">아래 버튼을 누르면 화면에서 대상을 찾는 과정을 볼 수 있어요.</p></div>
+    <button type="button" id="run-demo" class="run-button"><svg><use href="#i-play"/></svg><span>Agent 흐름 보기</span></button><button type="button" id="reset-demo" class="reset-button"><svg><use href="#i-refresh"/></svg>처음 화면으로</button>
+   </div>
+  </div>
+  <div class="demo-takeaway"><span>이 장면의 핵심</span><p id="takeaway">목표만 받아도, 화면에서 관련 메뉴를 찾아 행동을 계획할 수 있습니다.</p></div>
+ </div>
+ <p class="footnote">이 체험의 경로는 설명을 위해 작성한 코드입니다. 실제 Agent의 선택·정확도·속도를 보여주는 실험이 아닙니다.</p>
+ </div>
+</section>
+<section id="difference" class="wrap differences">
+ <div class="section-intro"><div><p class="eyebrow">02 / 무엇이 다른가요?</p><h2>기능의 이름뿐 아니라,<br><em>보이는 단서</em>를 사용합니다.</h2></div><p>화면의 모양, 주변 관계, 현재 상태를<br>목표와 연결해 해석하는 것이 핵심입니다.</p></div>
+ <div class="clue-grid">
+  <article class="clue-card"><div class="clue-visual icon-visual" aria-hidden="true"><span class="v-search">⌕</span><span class="v-gear"><svg><use href="#i-gear"/></svg></span><span class="v-menu">☰</span><span class="meaning-label">모양 + 주변 맥락</span></div><span class="card-index">A. 모양</span><h3>글자가 없어도 단서를 찾습니다.</h3><p>“설정을 열어 줘.”<br>톱니 모양과 주변 화면을 함께 보고 대상을 찾을 수 있습니다.</p></article>
+  <article class="clue-card"><div class="clue-visual relation-visual" aria-hidden="true"><span class="memo">여행<br>메모</span><span class="relation-arrow">→</span><span class="folder"></span><span class="meaning-label">오른쪽에 있는 폴더</span></div><span class="card-index">B. 관계</span><h3>‘어디에 있는지’도 이해합니다.</h3><p>“노란 메모 오른쪽 폴더를 열어 줘.”<br>같은 모양이 여럿이어도 위치와 관계가 선택의 단서가 됩니다.</p></article>
+  <article class="clue-card"><div class="clue-visual state-visual" aria-hidden="true"><span class="state-pill">저장 중 <span class="loading-dots">•••</span></span><span class="state-arrow">↓</span><span class="state-pill state-saved"><svg><use href="#i-check"/></svg>저장 완료</span></div><span class="card-index">C. 상태</span><h3>진행 중인지, 끝났는지 봅니다.</h3><p>“저장이 끝나면 다음으로 가 줘.”<br>버튼을 누른 기록에 그치지 않고, 달라진 화면을 확인합니다.</p></article>
+ </div>
+</section>
+<section class="verify-section"><div class="wrap verify-layout"><div class="verify-copy"><p class="eyebrow">03 / 그래서, 확인이 중요합니다</p><h2>클릭했다고<br><em>끝난 건 아닙니다.</em></h2><p>“알림 끄기”를 눌렀어도 변경이 반영되지 않을 수 있습니다. Agent는 행동 뒤의 화면을 보고 계속할지, 다시 시도할지 판단해야 합니다.</p><p class="verify-prompt">오른쪽에서 두 결과를 비교해보세요. <span>↗</span></p></div><div class="verify-card"><div class="verify-options" role="group" aria-label="행동 뒤 결과 선택"><button type="button" data-result="unchanged" class="active" aria-pressed="true">변경이 안 됐을 때</button><button type="button" data-result="changed" aria-pressed="false">변경이 됐을 때</button></div><div class="verify-screen"><span>행동 뒤 다시 본 화면</span><div><strong>새 소식 알림</strong><span id="result-toggle" class="result-toggle on"><i></i></span></div><p id="result-state">켜짐</p></div><div class="verify-verdict" id="verify-verdict" role="status" aria-live="polite"><span id="verdict-symbol">!</span><div><strong id="verdict-title">아직 목표를 이루지 못했어요.</strong><p id="verdict-body">스위치가 여전히 켜져 있습니다. 성공으로 끝내지 않고 원인을 확인해야 합니다.</p></div></div></div></div></section>
+<section class="wrap comparison"><p class="eyebrow">04 / 기존 자동화와 함께 쓰기</p><h2>검사할 대상에 맞춰,<br>잘하는 방법을 조합합니다.</h2><div class="comparison-grid"><article><span class="method-icon">&lt;/&gt;</span><h3>DOM · API 기반 검사</h3><p class="method-lead">구조와 데이터를 정확하게</p><ul><li>주문 금액, 상태값, API 응답 확인</li><li>명확하게 정의된 규칙을 반복 검증</li><li>role·label로 위치가 바뀐 요소도 찾기</li></ul></article><article class="vision-method"><span class="method-icon"><svg><use href="#i-eye"/></svg></span><h3>Vision 기반 판단</h3><p class="method-lead">사용자에게 보이는 화면을 해석</p><ul><li>아이콘·그림·Canvas의 시각적 단서 활용</li><li>화면 변화에 맞춰 다음 행동 선택</li><li>현재 화면과 자연어 요구를 대조</li></ul></article></div><p class="comparison-note"><strong>시각 검사는 Vision만 가능한가요?</strong> 아닙니다. Playwright도 기준 스크린샷 비교를 제공합니다. Vision은 기준 이미지 없이 자연어와 현재 화면을 연결하는 방식을 더합니다.</p></section>
+<section class="wrap limits"><div class="limits-mark">?</div><div><h2>화면을 읽는 AI도 틀릴 수 있습니다.</h2><p>작은 글자, 비슷한 아이콘, 가려진 요소는 오판할 수 있습니다. 확실하지 않다면 멈추고, 중요한 결과에는 화면과 판단 근거를 남겨야 합니다. Web·모바일·데스크톱을 조작하려면 각각의 실행 도구와 권한도 필요합니다.</p></div></section>
+<section class="wrap video-section" id="watch"><div><p class="eyebrow">영상으로 이어 보기</p><h2>관찰하고, 행동하고,<br>다시 확인하는 흐름.</h2><p>기존 개념 설명 영상 · 2분 48초 · 무음 한국어 자막</p><a href="SCRIPT_STORYBOARD.txt">영상 대본 읽기 ↗</a></div><video controls preload="none" poster="video-poster.png" playsinline aria-label="Vision Agent 개념 설명 영상"><source src="VISION_AGENT_CONCEPT_V1.mp4" type="video/mp4"><track kind="subtitles" srclang="ko" label="한국어" src="CAPTIONS_KO.vtt">브라우저에서 영상을 재생할 수 없습니다. <a href="VISION_AGENT_CONCEPT_V1.mp4">영상 다운로드</a></video></section>
+<section class="wrap source-section"><details><summary>더 알아보기 · 출처와 설명 범위</summary><p>이 페이지는 일반 개념을 설명하는 인터랙티브 자료입니다. 특정 모델의 성공률이나 실제 프로젝트 실험 결과를 포함하지 않습니다. 체험의 화면과 판단 문구는 이해를 위해 미리 구성했습니다.</p><ul><li><a href="https://www.midscenejs.com/introduction">Midscene 공식 소개</a> — 화면 기반 조작과 자연어 검증</li><li><a href="https://arxiv.org/abs/2402.07945">ScreenAgent 연구</a> — 계획·행동·관찰의 반복 구조</li><li><a href="https://playwright.dev/docs/locators">Playwright Locators</a> — 구조 기반 대상 찾기</li><li><a href="https://playwright.dev/docs/test-snapshots">Playwright Visual comparisons</a> — 기준 이미지 비교</li></ul><p>개념 영상: LUMEN · 인터랙티브 설명 페이지 V2: POC-LEAD · 2026.10</p></details></section>
+</main><footer class="wrap site-footer"><a class="brand" href="#"><span class="brand-mark"><svg><use href="#i-eye"/></svg></span>Vision <span>Agent</span></a><span>화면을 읽는 방식부터, 쉽게 이해하기.</span><a href="#">맨 위로 ↑</a></footer>
+<script src="explainer.js"></script>
+</body></html>

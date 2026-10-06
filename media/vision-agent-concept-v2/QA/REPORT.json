@@ -1,0 +1,33 @@
+{
+  "threeScenarios": true,
+  "resetCancelsFlow": true,
+  "directManualControls": true,
+  "resultComparison": true,
+  "widths": [
+    {
+      "viewport": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "viewport": 1024,
+      "scrollWidth": 1024
+    },
+    {
+      "viewport": 768,
+      "scrollWidth": 768
+    },
+    {
+      "viewport": 390,
+      "scrollWidth": 390
+    },
+    {
+      "viewport": 320,
+      "scrollWidth": 320
+    }
+  ],
+  "videoDuration": 168,
+  "playback": true,
+  "pageErrors": [],
+  "failedResponses": [],
+  "modelCalls": 0
+}
