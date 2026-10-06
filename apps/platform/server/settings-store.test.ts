@@ -17,12 +17,12 @@ it("restores Korean settings after a new store instance, excludes credentials, a
   const dir = await directory();
   const store = new SettingsStore(dir);
   expect(await store.load()).toEqual(defaults);
-  const settings = { ...defaults, agentInstructions: "겹침과 뒤틀림을 화면 근거로 검토한다.", model: "qwen/test", apiKey: "private-test-sentinel" };
+  const settings = { ...defaults, agentInstructions: "겹침과 뒤틀림을 화면 근거로 검토한다.", model: "qwen/test", layoutAssist: true, apiKey: "private-test-sentinel" };
   await store.save(settings);
   const raw = await readFile(path.join(dir, "settings.json"), "utf8");
   expect(raw).not.toContain("private-test-sentinel");
   expect(raw).not.toContain("apiKey");
-  expect(await new SettingsStore(dir).load()).toEqual({ ...defaults, agentInstructions: settings.agentInstructions, model: settings.model });
+  expect(await new SettingsStore(dir).load()).toEqual({ ...defaults, agentInstructions: settings.agentInstructions, model: settings.model, layoutAssist: true });
   await Promise.all([store.save(settings), store.save({ ...defaults, agentInstructions: "" })]);
   expect((await new SettingsStore(dir).load()).agentInstructions).toBe("");
 });

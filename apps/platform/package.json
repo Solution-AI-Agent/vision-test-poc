@@ -10,6 +10,7 @@
     "test": "vitest run"
   },
   "dependencies": {
+    "@midscene/shared": "1.14.0",
     "@midscene/web": "1.14.0",
     "@vision-qa/ui": "0.1.0",
     "express": "^5.1.0",

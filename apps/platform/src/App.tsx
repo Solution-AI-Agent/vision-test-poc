@@ -1,3 +1,4 @@
+import {layoutSummary} from "../server/layout-summary";
 import { visualSummary } from "../server/visual-qa";
 import { QaText, briefKorean, actionLabel, criterionNames } from "./qa-text";
 import { useEffect, useState, type ReactNode } from "react";
@@ -68,6 +69,7 @@ type Config = {
   model: string;
   family: string;
   providerSort: "default" | "throughput" | "latency";
+  layoutAssist: boolean;
   maxActions: number;
   maxCalls: number;
   maxSeconds: number;
@@ -404,6 +406,16 @@ export default function App() {
                         }
                         disabled={active}
                       />
+                    </FormField>
+                    <FormField id="layout-assist" label="웹 겹침 보조 검사" description="혼합 검사는 웹 요소의 위치로 후보를 찾고 Midscene이 화면을 검토합니다. 순수 Vision과 구분되며 화면별 추가 모델 요청이 발생할 수 있습니다.">
+                      <Select value={config.layoutAssist ? "hybrid" : "vision"} disabled={active}
+                        onValueChange={(value) => setConfig({ ...config, layoutAssist: value === "hybrid" })}>
+                        <SelectTrigger id="layout-assist"><SelectValue /></SelectTrigger>
+                        <SelectContent><SelectGroup>
+                          <SelectItem value="vision">화면 기반 검사만</SelectItem>
+                          <SelectItem value="hybrid">웹 위치 + 화면 혼합 검사</SelectItem>
+                        </SelectGroup></SelectContent>
+                      </Select>
                     </FormField>
                     <FormField id="provider-sort" label="모델 응답 속도 우선순위"
                       description="같은 모델의 공급자 선택만 바꿉니다. 검사·정밀 조작은 유지합니다. 속도 우선은 공급자 요금이 높아질 수 있으며 빨라짐을 보장하지 않습니다.">
@@ -827,7 +839,7 @@ export default function App() {
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
-                    {current && <p className="mb-4 text-sm font-medium" role="status">{visualSummary(current)}</p>}
+                    {current && <div className="mb-4 text-sm font-medium" role="status"><p>{visualSummary(current)}</p><p>{layoutSummary(current)}</p></div>}
                     {current?.diagnostic && <Alert variant="destructive" className="mb-4"><AlertTitle>{current.diagnostic.code} · {current.stage}</AlertTitle><AlertDescription><p>{current.error}</p><p>{current.diagnostic.action}</p>{current.failureStage && <p>실패 당시 작업: {current.failureStage}</p>}</AlertDescription></Alert>}
                     {current?.screenshot ? (
                       <div className="flex flex-col gap-4">
@@ -839,6 +851,10 @@ export default function App() {
                         {current.visualAudits?.some(a => a.annotated) && <div className="flex flex-col gap-2">
                           <p className="text-sm font-medium">최근 시각 결함 의심 캡처 · 현재 화면과 촬영 시점이 다를 수 있음</p>
                           <a href={current.visualAudits.filter(a => a.annotated).at(-1)!.annotated} target="_blank" rel="noreferrer"><img className="screen-preview" src={current.visualAudits.filter(a => a.annotated).at(-1)!.annotated} alt="붉은 박스로 표시한 최근 시각 QA 의심 영역" /></a>
+                        </div>}
+                        {current.layoutAudits?.some(a => a.annotated) && <div className="flex flex-col gap-2">
+                          <p className="text-sm font-medium">혼합 겹침 검사 · 빨간 실선: 모델도 가림 관찰 / 주황 점선: 확인 필요</p>
+                          <a href={current.layoutAudits.filter(a => a.annotated).at(-1)!.annotated} target="_blank" rel="noreferrer"><img className="screen-preview" src={current.layoutAudits.filter(a => a.annotated).at(-1)!.annotated} alt="웹 위치 후보와 화면 판단을 구분한 캡처" /></a>
                         </div>}
                         <div className="run-stats">
                           <span>
@@ -1045,6 +1061,13 @@ export default function App() {
                       <CardHeader><CardTitle>시각 QA 결과</CardTitle><CardDescription>{visualSummary(current)}</CardDescription></CardHeader>
                       <CardContent className="flex flex-col gap-4">
                         <p className="text-sm text-muted-foreground">업무 성공과 별도의 검사입니다. 검사한 화면·항목의 근거를 확인하세요. 한도·잘못된 좌표·판독 실패는 통과로 처리하지 않습니다.</p>
+                        <p className="text-sm font-medium">{layoutSummary(current)}</p>
+                        {current.layoutAudits?.map(a => <details key={a.id} className="rounded-lg border p-3">
+                          <summary className="cursor-pointer text-sm font-medium">혼합 검사 · {a.checkpoint} · 후보 영역 {a.candidates.length}개</summary>
+                          {a.reason && <p>{a.reason}</p>}{a.warnings.map((w,i)=><p key={i} className="text-sm">{w}</p>)}
+                          {a.review?.regions.map(r=><p key={r.id} className="text-sm">{r.id} · {{"visible-overlap":"모델도 가림 관찰",clear:"위치/모델 판단 불일치",uncertain:"판독 불확실"}[r.verdict]} · {r.evidence}</p>)}
+                          <a href={a.annotated??a.screenshot} target="_blank" rel="noreferrer"><img className="screen-preview mt-3" src={a.annotated??a.screenshot} alt="혼합 검사 당시 캡처" /></a>
+                        </details>)}
                         {!current.visualAudits?.length && <p>독립 시각 검사 기록이 없습니다.</p>}
                         {current.visualAudits?.map(a => <details key={a.id} className="rounded-lg border p-3">
                           <summary className="cursor-pointer text-sm font-medium">{a.checkpoint} · {a.status === "reviewed" ? "관찰 기록" : "판단 불가"} · {a.call ? `요청 ${a.call}` : "호출 없음"}</summary>
@@ -1097,6 +1120,12 @@ export default function App() {
                           </CardHeader>
                           <CardContent>
                             <div className="flex flex-col gap-4">
+                              {f.layout && <div className="flex flex-col gap-2">
+                                <Badge variant="outline">혼합 검사 · {{"not-checked":"위치 후보 · 모델 확인 전","visible-overlap":"모델도 가림 관찰 · 검토 필요",clear:"위치와 모델 판단 불일치",uncertain:"화면 판독 불확실"}[f.layout.verdict]}</Badge>
+                                {f.layout.review && <><QaText label="사용자 영향" text={f.layout.review.impact}/><QaText label="다른 해석" text={f.layout.review.alternative}/></>}
+                                <a href={f.layout.annotated} target="_blank" rel="noreferrer"><img className="screen-preview" src={f.layout.annotated} alt="브라우저 위치 후보를 표시한 원본 캡처" /></a>
+                                <p className="text-xs text-muted-foreground">위치는 브라우저에서 측정했습니다. 빨간 실선은 모델도 가림을 관찰한 후보, 주황 점선은 미확인/불일치입니다. 사람의 결함 확정과 다릅니다. <a href={f.layout.annotated} download>표시 SVG 저장</a> · <a href={f.before} target="_blank" rel="noreferrer">원본 보기</a></p>
+                              </div>}
                               {f.visual && <>
                                 <Badge variant="destructive">{f.visual.uncertain ? "의심 · 판독에 불확실성 있음" : f.visual.verification === "reproduced" ? "반복 관찰된 결함 후보" : f.visual.verification === "not-reproduced" ? "의심 · 재확인에서 불일치" : "의심 · 재확인 미완료"}</Badge>
                                 <QaText label="사용자 영향" text={f.visual.impact}/><QaText label="다른 해석" text={f.visual.alternative}/>

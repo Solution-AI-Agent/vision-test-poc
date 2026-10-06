@@ -1,3 +1,4 @@
+import type {LayoutAudit, PixelBox, LayoutReview} from "./layout-qa";
 import type { VisualAudit, VisualBox } from "./visual-qa";
 import type { ExecutionPhase, RunDiagnostic } from "./diagnostics";
 import { z } from "zod";
@@ -10,6 +11,7 @@ export const limitsSchema = z.object({
 export const defaults = {
   agentInstructions: "",
   providerSort: "default" as const,
+  layoutAssist: false,
   model: "qwen/qwen3-vl-235b-a22b-instruct",
   family: "qwen3-vl" as const,
   maxActions: 8,
@@ -18,6 +20,7 @@ export const defaults = {
   maxTokens: 1536,
 };
 export const settingsSchema = limitsSchema.extend({
+  layoutAssist: z.boolean().default(false),
   providerSort: z.enum(["default", "throughput", "latency"]).default("default"),
   agentInstructions: z.string().trim().max(8000).default(""),
   apiKey: z.string().max(512).optional(),
@@ -146,6 +149,7 @@ export type Finding = NonNullable<Plan["finding"]> & {
   id: string;
   status: "candidate" | "confirmed" | "false-positive" | "inconclusive";
   reviewNote: string;
+  layout?: {auditId:string;regionId:string;fingerprint:string;box:PixelBox;verdict:"not-checked"|"visible-overlap"|"clear"|"uncertain";annotated:string;review?:LayoutReview["regions"][number]};
   visual?: { uncertain: boolean; auditId: string; criterion: string; box: VisualBox; impact: string; alternative: string; annotated: string; verification: "reproduced" | "not-reproduced" | "not-checked"; verificationAuditId?: string };
   step: number;
   before: string;
@@ -215,6 +219,7 @@ export type Run = {
   engine: string;
   goals?: Goal[];
   visualAudits?: VisualAudit[];
+  layoutAudits?: LayoutAudit[];
   visualComplete?: boolean;
   sourceVersion?: {
     commit: string;

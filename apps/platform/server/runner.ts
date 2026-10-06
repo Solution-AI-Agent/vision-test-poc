@@ -1,3 +1,4 @@
+import {createLayoutInspector} from "./layout-qa";
 import {runMidsceneWorkflow} from "./midscene-workflow";
 import { visualPrompt, visualPromptVersion, visualSchema, matchingIssue, annotationSvg, type VisualAudit } from "./visual-qa";
 import { diagnose, phaseLabels, SafeExecutionError, type ExecutionPhase, type RunDiagnostic } from "./diagnostics";
@@ -23,6 +24,7 @@ const sourceVersion = {
     .update(readFileSync(path.join(repoRoot, "apps/platform/server/domain.ts")))
     .update(readFileSync(path.join(repoRoot, "apps/platform/server/runner.ts")))
     .update(readFileSync(path.join(repoRoot, "apps/platform/server/visual-qa.ts")))
+    .update(readFileSync(path.join(repoRoot, "apps/platform/server/layout-qa.ts")))
     .update(readFileSync(path.join(repoRoot, "apps/platform/server/midscene-workflow.ts")))
     .digest("hex"),
   promptVersion: "midscene-native-workflow-v1",
@@ -392,7 +394,7 @@ export async function runVision(
         }
         await save(); return entry;
       };
-      const inspect = async (checkpoint: string) => {
+      const inspectVisual = async (checkpoint: string) => {
         const first = await audit(checkpoint);
         if (!first?.result?.issues.length) return;
         const added = first.result.issues.map(issue => {
@@ -424,6 +426,8 @@ export async function runVision(
         }
         await save();
       };
+      const inspectLayout = createLayoutInspector(page,agent,run,runtime,folder,save);
+      const inspect = async (checkpoint:string) => {await inspectLayout(checkpoint);await inspectVisual(checkpoint);};
       await inspect("첫 화면");
       await runMidsceneWorkflow(agent,run,runtime,capture,inspect,save);
     }
