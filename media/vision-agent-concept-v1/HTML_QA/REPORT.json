@@ -1,0 +1,32 @@
+{
+  "desktop": [
+    1440,
+    1100
+  ],
+  "mobile": {
+    "width": 390,
+    "body": 390,
+    "chapterCount": 12
+  },
+  "sceneScreens": [
+    "화면을 이해하는 Agent",
+    "목표와 화면을 하나로 연결",
+    "레이아웃이 바뀌면 다시 관찰",
+    "행동은 관찰의 다음 단계",
+    "예상 밖 화면에서도 경로를 조정",
+    "의미 정보가 적은 화면도 다룰 수 있음",
+    "화면에 드러난 상태를 확인합니다",
+    "관계와 맥락으로 대상을 구분",
+    "화면은 서로 다른 앱의 공통 관찰 입력",
+    "시도와 결과를 따로 확인",
+    "기존 자동화와 역할을 나눕니다",
+    "차별점은 관찰을 통한 선택과 확인"
+  ],
+  "position_variation_changes_frame": true,
+  "play_advances": true,
+  "pause_holds": true,
+  "scrub": true,
+  "pageErrors": [],
+  "externalRequests": [],
+  "mode": "local standalone file; no model calls"
+}

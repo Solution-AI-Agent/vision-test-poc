@@ -1,0 +1,58 @@
+{
+  "video": {
+    "file": "VISION_AGENT_CONCEPT_V1.mp4",
+    "sha256": "0dcb7d4fde67a4af629caf6ab097e356fff79c16df83c807c567f6406573f859",
+    "url": "https://orangestandard.communities.buzz.xyz/media/0dcb7d4fde67a4af629caf6ab097e356fff79c16df83c807c567f6406573f859.mp4",
+    "duration": 168,
+    "frames": 4032,
+    "fps": 24,
+    "resolution": [
+      1280,
+      720
+    ],
+    "audio": "none",
+    "faststart": true
+  },
+  "html": {
+    "file": "VISION_AGENT_CONCEPT.html",
+    "sha256": "6c626b68ed8dd7c6021e65e0a20b81da503df7b8dcd0269574bdf4fb461412c1",
+    "standalone": true,
+    "relay_upload": "rejected unsupported text/html; local file provided"
+  },
+  "scope": "general conceptual explainer; project tests and real model outputs excluded",
+  "actual_model_calls": 0,
+  "html_video_titles_and_captions_match": true,
+  "visual_decoded_indices": [
+    2,
+    5,
+    8,
+    11,
+    14,
+    17,
+    20,
+    23,
+    26,
+    29,
+    32,
+    35,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43
+  ],
+  "visual_reduced_indices": [
+    8,
+    11,
+    20,
+    23,
+    32,
+    35
+  ],
+  "GUI_full_watch": false,
+  "decoder_report": "VIDEO_QA/DECODE_REPORT.json",
+  "playback_report": "PLAYBACK_REPORT.json",
+  "html_report": "HTML_QA/REPORT.json"
+}

@@ -1,0 +1,27 @@
+{
+  "checked": "2026-10-06",
+  "sources": [
+    {
+      "title": "Midscene: vision-driven GUI interaction and visual assertions",
+      "url": "https://www.midscenejs.com/introduction",
+      "supports": "화면의 모양/위치를 통한 대상 찾기, 자연어 작업 및 시각 확인, 플랫폼별 실행 어댑터"
+    },
+    {
+      "title": "ScreenAgent research: planning, acting and reflecting",
+      "url": "https://arxiv.org/abs/2402.07945",
+      "supports": "관찰·계획·행동·재확인의 개념 구조; 특정 제품 성능으로 일반화하지 않음"
+    },
+    {
+      "title": "Playwright: Locators",
+      "url": "https://playwright.dev/docs/locators",
+      "supports": "role/label/test ID 등 구조 기반 위치 찾기; 레이아웃 변화에도 locator가 작동할 수 있음"
+    },
+    {
+      "title": "Playwright: Visual comparisons",
+      "url": "https://playwright.dev/docs/test-snapshots",
+      "supports": "기준 스크린샷 비교 기능; 시각 검증은 Vision만의 독점 기능이 아님"
+    }
+  ],
+  "illustration": "All screens, motions and apparent agent choices are authored concept illustrations, not observed model outputs.",
+  "scope": "No test results, screen captures, model costs, customer claims or data from the vision-test PoC."
+}
