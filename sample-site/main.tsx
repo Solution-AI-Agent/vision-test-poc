@@ -1,15 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { ShoppingBag, PackageCheck, Check } from "lucide-react";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
-import { Separator } from "@/components/ui/separator";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@vision-qa/ui/components/card";
+import { Button } from "@vision-qa/ui/components/button";
+import { Input } from "@vision-qa/ui/components/input";
+import { Field, FieldGroup, FieldLabel } from "@vision-qa/ui/components/field";
+import { ToggleGroup, ToggleGroupItem } from "@vision-qa/ui/components/toggle-group";
+import { Alert, AlertTitle, AlertDescription } from "@vision-qa/ui/components/alert";
+import { Separator } from "@vision-qa/ui/components/separator";
 import { catalog, money, orderInput, type Order } from "./order";
-import "../src/index.css";
+import "@vision-qa/ui/theme.css";
 import "./style.css";
 type Presentation = { angle: number; shift: number; cover: boolean; noticeHeight: number; mugColor: string; firstBar: number; secondBar: number };
 async function api(url: string, options?: RequestInit) {

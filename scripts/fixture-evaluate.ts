@@ -4,10 +4,10 @@ import { z } from "zod";
 import { readFile, mkdir, writeFile } from "node:fs/promises";
 import { createHash } from "node:crypto";
 import { execFileSync } from "node:child_process";
-import { defaults, inputSchema } from "../server/domain";
-import { makeRun, providerClient, instrumentClient } from "../server/runner";
+import { defaults, inputSchema } from "../apps/platform/server/domain";
+import { makeRun, providerClient, instrumentClient } from "../apps/platform/server/runner";
 import { fixtureBaseline } from "./fixture-baseline";
-import { fixtureModelConfig } from "../server/fixture-assessment";
+import { fixtureModelConfig } from "../apps/platform/server/fixture-assessment";
 const apiKey = process.env.OPENROUTER_API_KEY;
 if (!apiKey)
   throw new Error(
