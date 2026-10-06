@@ -1065,7 +1065,7 @@ export default function App() {
                         {current.layoutAudits?.map(a => <details key={a.id} className="rounded-lg border p-3">
                           <summary className="cursor-pointer text-sm font-medium">혼합 검사 · {a.checkpoint} · 후보 영역 {a.candidates.length}개</summary>
                           {a.reason && <p>{a.reason}</p>}{a.warnings.map((w,i)=><p key={i} className="text-sm">{w}</p>)}
-                          {a.review?.regions.map(r=><p key={r.id} className="text-sm">{r.id} · {{"visible-overlap":"모델도 가림 관찰",clear:"위치/모델 판단 불일치",uncertain:"판독 불확실"}[r.verdict]} · {r.evidence}</p>)}
+                          {a.review?.regions.map(r=><p key={r.id} className="text-sm">{r.id} · {r.verdict === "visible-overlap" && r.order !== "measured" ? "앞뒤 관계 불일치/불확실" : {"visible-overlap":"모델도 가림 관찰",clear:"위치/모델 판단 불일치",uncertain:"판독 불확실"}[r.verdict]} · {r.evidence}</p>)}
                           <a href={a.annotated??a.screenshot} target="_blank" rel="noreferrer"><img className="screen-preview mt-3" src={a.annotated??a.screenshot} alt="혼합 검사 당시 캡처" /></a>
                         </details>)}
                         {!current.visualAudits?.length && <p>독립 시각 검사 기록이 없습니다.</p>}

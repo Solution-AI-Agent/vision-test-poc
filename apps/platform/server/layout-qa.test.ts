@@ -21,9 +21,9 @@ it('generic overlap scan distinguishes solid cover from nested UI, transparent d
 });
 it('old settings keep hybrid off and incomplete model observations cannot become positive overlap',()=>{
  const {layoutAssist,...old}=defaults;expect(settingsSchema.parse(old).layoutAssist).toBe(false);
- expect(layoutReviewSchema.safeParse({regions:[{id:'region-1',verdict:'visible-overlap',evidence:'guess',occluder:'',affected:'',impact:'',alternative:''}]}).success).toBe(false);
+ expect(layoutReviewSchema.safeParse({regions:[{id:'region-1',verdict:'visible-overlap',order:'measured',evidence:'guess',occluder:'',affected:'',impact:'',alternative:''}]}).success).toBe(false);
 });
-for(const verdict of ['visible-overlap','clear','invalid','budget','disabled'] as const){
+for(const verdict of ['visible-overlap','clear','direct','reverse','invalid','budget','disabled'] as const){
  it(`hybrid ${verdict} preserves candidate, exact image evidence and explicit provenance`,async()=>{
  const settings={...defaults,apiKey:'local-only',model:'stub-vlm',agentInstructions:'TASK_HISTORY_SENTINEL',layoutAssist:verdict!=='disabled',maxCalls:1};
  const run=makeRun(inputSchema.parse({mode:'autonomous',url:'http://127.0.0.1:4311/store/d'}),settings);
@@ -31,21 +31,21 @@ for(const verdict of ['visible-overlap','clear','invalid','budget','disabled'] a
  let hybrid=0;let full='';
  await runVision(run,settings,{controller:new AbortController()},async()=>{}, {navigateTarget:async page=>{await page.setContent(fixture(opaque));},createClient:()=>({chat:{completions:{create:async(body:any)=>{
  const prompt=JSON.stringify(body);expect(prompt).not.toContain('HIDDEN_DOM_TEXT_SENTINEL');
- if(prompt.includes('HYBRID_OCCLUSION_REVIEW_V1')){
+ if(prompt.includes('HYBRID_OCCLUSION_REVIEW_V2')){
  expect(prompt).not.toContain('TASK_HISTORY_SENTINEL');expect(prompt).not.toContain('/store/d');hybrid++;const images=body.messages.flatMap((m:any)=>Array.isArray(m.content)?m.content:[]).filter((c:any)=>c.type==='image_url');expect(images.length).toBe(2);full=images[0].image_url.url;
- const result={regions:[{id:'region-1',verdict:verdict==='visible-overlap'?'visible-overlap':'clear',occluder:'패널',affected:'정보 영역',evidence:'로컬 모의 화면 판독',impact:'정보 식별 제한',alternative:'의도된 UI 가능성'}]};
- return {choices:[{message:{content:'<data-json>'+JSON.stringify({String:verdict==='invalid'?'invalid-json':JSON.stringify(result)})+'</data-json>'},finish_reason:'stop'}]};
+ const result={regions:[{id:'region-1',verdict:['visible-overlap','direct','reverse'].includes(verdict)?'visible-overlap':'clear',order:verdict==='reverse'?'reverse':'measured',occluder:'패널',affected:'정보 영역',evidence:'로컬 모의 화면 판독',impact:'정보 식별 제한',alternative:'의도된 UI 가능성'}]};
+ return {choices:[{message:{content:'<data-json>'+JSON.stringify(verdict==='direct'?result:{String:verdict==='invalid'?'invalid-json':JSON.stringify(result)})+'</data-json>'},finish_reason:'stop'}]};
  }
  return {choices:[{message:{content:'<data-json>{}</data-json>'},finish_reason:'stop'}]};
  }}}})});
  if(verdict==='disabled'){expect(hybrid).toBe(0);expect(run.layoutAudits).toBeUndefined();return;}
  expect(run.findings).toHaveLength(1);const f=run.findings[0];expect(f.status).toBe('candidate');expect(layoutSummary(run)).toContain('의심 1건');
- expect(f.layout?.verdict).toBe(['invalid','budget'].includes(verdict)?'not-checked':verdict);
+ expect(f.layout?.verdict).toBe(['invalid','budget'].includes(verdict)?'not-checked':verdict==='direct'?'visible-overlap':verdict==='reverse'?'uncertain':verdict);
  const audit=run.layoutAudits![0];expect(audit.stable).toBe(true);
  const source=await readFile(path.join(artifactsDir,audit.screenshot.replace('/artifacts/','')));
  const svg=await readFile(path.join(artifactsDir,f.layout!.annotated.replace('/artifacts/','')),'utf8');expect(svg).toContain(source.toString('base64'));
  if(verdict!=='budget')expect(source.equals(Buffer.from(full.split(',')[1],'base64'))).toBe(true);
- expect(svg.includes('stroke="#e11d48"')).toBe(verdict==='visible-overlap');expect(svg.includes('stroke-dasharray')).toBe(verdict!=='visible-overlap');
+ expect(svg.includes('stroke="#e11d48"')).toBe(['visible-overlap','direct'].includes(verdict));expect(svg.includes('stroke-dasharray')).toBe(!['visible-overlap','direct'].includes(verdict));
  if(verdict==='budget'){expect(hybrid).toBe(0);expect(audit.reason).toContain('미실행');}
  if(verdict==='invalid')expect(audit.reason).toContain('실패');
  },30000);
