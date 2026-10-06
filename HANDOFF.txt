@@ -1,0 +1,18 @@
+Vision Agent Concept / LUMEN / V1 / 2026-10-06
+
+검토 담당: 사용자 zpro. 프로젝트의 실험 자료를 제외한 별도 요청 산출물.
+b1b3는 3Blue1Brown식 개념 시각화로 해석했다. 도형·연결선·상태 변화로 개념을 설명하며 브랜드·캐릭터·기존 영상을 복제하지 않았다.
+
+HTML: VISION_AGENT_CONCEPT.html — 단일 파일을 브라우저에서 열면 된다. 외부 파일·서버·폰트·라이브러리·모델 호출이 필요 없다. 시작은 정지 상태. 12장면 선택, 재생/일시정지/시간 이동, 위치·선택 상태·대상 간격 조절을 제공한다.
+영상: VISION_AGENT_CONCEPT_V1.mp4 — 168초, 1280×720, 24fps, H264, 무음 한국어 자막. 별도 CAPTIONS_KO.srt도 제공한다.
+대본·장면: SCRIPT_STORYBOARD.txt, STORYBOARD.json.
+출처: SOURCES.json 및 HTML 하단의 공식 문서/연구 링크.
+검수: QA_REPORT.txt, HTML_QA/REPORT.json, VIDEO_QA/DECODE_REPORT.json, PLAYBACK_REPORT.json, QA_REDUCED_640/.
+제작 소스: RENDER.swift, ANIMATION_BODY.swift, CONCEPT_ENGINE.js. HTML에는 JS가 이미 내장돼 있으며 CONCEPT_ENGINE.js는 편집용 소스다.
+소스 생성 기록: BUILD_CONCEPT_HTML_R2.py, REFINE_VISION_CONCEPT.py, CHECK_VISION_CONCEPT_HTML.mjs. 작업 디렉터리/출력 경로는 제작 당시 경로로 고정돼 있다. 재사용 시 새 버전 경로로 바꿔 기존 산출물을 보존한다.
+영상 재렌더: Swift/AppKit/AVFoundation이 있는 macOS에서 RENDER.swift를 컴파일하고 새 버전 폴더 경로를 첫 인자로 준다. 입력은 해당 폴더의 STORYBOARD.json. 렌더러 출력 이름은 VISION_AGENT_CONCEPT_V1_R2.mp4이며 전달본은 이름만 VISION_AGENT_CONCEPT_V1.mp4로 정리했다. 프레임 내용은 같다. OS 코덱 접근이 필요하다.
+
+모든 화면·Agent 선택은 설명용 애니메이션이다. 실제 모델 실행, 제품 성능, 프로젝트 테스트, 고객 반응을 뜻하지 않는다. 추가 유료 호출 없이 제작했다.
+모바일에서는 도해의 작은 글자가 축소되므로 화면 아래의 장면 설명과 본문을 함께 읽는다. 데스크톱/영상에서는 도해를 큰 화면으로 볼 수 있다.
+Buzz relay는 text/html 업로드를 지원하지 않아 HTML 온라인 재생 URL을 제공하지 않는다. 로컬 HTML과 전체 ZIP에 동일 파일이 들어 있다. 영상은 Buzz MP4 URL로 공유한다.
+이전 v4/v5 및 본 작업의 중간 렌더를 덮어쓰지 않았다.
