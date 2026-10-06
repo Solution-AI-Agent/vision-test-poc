@@ -94,14 +94,13 @@ it("Midscene transports screenshots without hidden DOM and executes the validate
 
 it("provider error bodies are sanitized before SDK or Midscene logging", async () => {
   const { providerClient } = await import("./runner");
-  const originalFetch = globalThis.fetch;
-  globalThis.fetch = async () =>
+  const request: typeof globalThis.fetch = async () =>
     new Response(
       JSON.stringify({ error: { message: "SENSITIVE_KEY_FROM_PROVIDER" } }),
       { status: 401, headers: { "content-type": "application/json" } },
     );
   try {
-    const client = providerClient({ ...defaults, apiKey: "stub-key" });
+    const client = providerClient({ ...defaults, apiKey: "stub-key" }, request);
     try {
       await client.chat.completions.create({
         model: "stub",
@@ -113,7 +112,7 @@ it("provider error bodies are sanitized before SDK or Midscene logging", async (
       expect(error.message).not.toContain("SENSITIVE_KEY_FROM_PROVIDER");
     }
   } finally {
-    globalThis.fetch = originalFetch;
+    // The explicit request seam never reaches a real provider.
   }
 });
 

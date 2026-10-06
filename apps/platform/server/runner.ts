@@ -102,7 +102,7 @@ export function makeRun(input: Input, settings: Settings): Run {
     sourceVersion,
   };
 }
-export function providerClient(settings: Settings) {
+export function providerClient(settings: Settings, request: typeof globalThis.fetch = networkFetch) {
   return new OpenAI({
     apiKey: settings.apiKey!,
     baseURL: "https://openrouter.ai/api/v1",
@@ -110,7 +110,7 @@ export function providerClient(settings: Settings) {
     timeout: 30000,
     fetch: async (input, init) => {
       try {
-        const response = await networkFetch(input, init);
+        const response = await request(input, init);
         if (!response.ok)
           return new Response(
             JSON.stringify({
