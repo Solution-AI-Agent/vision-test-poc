@@ -853,7 +853,7 @@ export default function App() {
                           <a href={current.visualAudits.filter(a => a.annotated).at(-1)!.annotated} target="_blank" rel="noreferrer"><img className="screen-preview" src={current.visualAudits.filter(a => a.annotated).at(-1)!.annotated} alt="붉은 박스로 표시한 최근 시각 QA 의심 영역" /></a>
                         </div>}
                         {current.layoutAudits?.some(a => a.annotated) && <div className="flex flex-col gap-2">
-                          <p className="text-sm font-medium">혼합 겹침 검사 · 빨간 실선: 모델도 가림 관찰 / 주황 점선: 확인 필요</p>
+                          <p className="text-sm font-medium">혼합 겹침 검사 · 빨간 실선: 모델 지적 있음(미확정) / 주황 점선: 불일치·확인 필요</p>
                           <a href={current.layoutAudits.filter(a => a.annotated).at(-1)!.annotated} target="_blank" rel="noreferrer"><img className="screen-preview" src={current.layoutAudits.filter(a => a.annotated).at(-1)!.annotated} alt="웹 위치 후보와 화면 판단을 구분한 캡처" /></a>
                         </div>}
                         <div className="run-stats">
@@ -1065,7 +1065,7 @@ export default function App() {
                         {current.layoutAudits?.map(a => <details key={a.id} className="rounded-lg border p-3">
                           <summary className="cursor-pointer text-sm font-medium">혼합 검사 · {a.checkpoint} · 후보 영역 {a.candidates.length}개</summary>
                           {a.reason && <p>{a.reason}</p>}{a.warnings.map((w,i)=><p key={i} className="text-sm">{w}</p>)}
-                          {a.review?.regions.map(r=><p key={r.id} className="text-sm">{r.id} · {r.verdict === "visible-overlap" && r.order !== "measured" ? "앞뒤 관계 불일치/불확실" : {"visible-overlap":"모델도 가림 관찰",clear:"위치/모델 판단 불일치",uncertain:"판독 불확실"}[r.verdict]} · {r.evidence}</p>)}
+                          {a.review?.regions.map(r=><p key={r.id} className="text-sm">{r.id} · {r.verdict === "visible-overlap" && r.order !== "measured" ? "앞뒤 관계 불일치/불확실" : {"visible-overlap":"모델 지적 있음 · 미확정",clear:"위치/모델 판단 불일치",uncertain:"판독 불확실"}[r.verdict]} · {r.evidence}</p>)}
                           <a href={a.annotated??a.screenshot} target="_blank" rel="noreferrer"><img className="screen-preview mt-3" src={a.annotated??a.screenshot} alt="혼합 검사 당시 캡처" /></a>
                         </details>)}
                         {!current.visualAudits?.length && <p>독립 시각 검사 기록이 없습니다.</p>}
@@ -1110,21 +1110,21 @@ export default function App() {
                         <Card key={f.id}>
                           <CardHeader>
                             <div className="flex items-center justify-between">
-                              <CardTitle>{briefKorean(f.title,`${criterionNames[f.visual?.criterion??""]??"결함"} 후보`)}</CardTitle>
+                              <CardTitle>{f.layout ? "웹 겹침 의심 · 위치 후보" : briefKorean(f.title,`${criterionNames[f.visual?.criterion??""]??"결함"} 후보`)}</CardTitle>
                               <StateBadge value={f.status} />
                             </div>
                             <CardDescription>
-                              {f.visual ? "독립 시각 QA" : `단계 ${f.step + 1}`} · 독립 검토:{" "}
+                              {f.layout ? "웹 위치 + 화면 혼합 검사" : f.visual ? "독립 시각 QA" : `단계 ${f.step + 1}`} · 독립 검토:{" "}
                               {f.reviewNote || "미검토"}
                             </CardDescription>
                           </CardHeader>
                           <CardContent>
                             <div className="flex flex-col gap-4">
                               {f.layout && <div className="flex flex-col gap-2">
-                                <Badge variant="outline">혼합 검사 · {{"not-checked":"위치 후보 · 모델 확인 전","visible-overlap":"모델도 가림 관찰 · 검토 필요",clear:"위치와 모델 판단 불일치",uncertain:"화면 판독 불확실"}[f.layout.verdict]}</Badge>
-                                {f.layout.review && <><QaText label="사용자 영향" text={f.layout.review.impact}/><QaText label="다른 해석" text={f.layout.review.alternative}/></>}
+                                <Badge variant="outline">혼합 검사 · {{"not-checked":"위치 후보 · 모델 확인 전","visible-overlap":"모델 지적 있음 · 검토 필요",clear:"위치와 모델 판단 불일치",uncertain:"화면 판독 불확실"}[f.layout.verdict]}</Badge>
+                                {f.layout.review && <><QaText label="모델 주장 · 관찰" text={f.layout.review.evidence}/><QaText label="모델 주장 · 영향" text={f.layout.review.impact}/><QaText label="다른 해석" text={f.layout.review.alternative}/></>}
                                 <a href={f.layout.annotated} target="_blank" rel="noreferrer"><img className="screen-preview" src={f.layout.annotated} alt="브라우저 위치 후보를 표시한 원본 캡처" /></a>
-                                <p className="text-xs text-muted-foreground">위치는 브라우저에서 측정했습니다. 빨간 실선은 모델도 가림을 관찰한 후보, 주황 점선은 미확인/불일치입니다. 사람의 결함 확정과 다릅니다. <a href={f.layout.annotated} download>표시 SVG 저장</a> · <a href={f.before} target="_blank" rel="noreferrer">원본 보기</a></p>
+                                <p className="text-xs text-muted-foreground">위치는 브라우저에서 측정했습니다. 빨간 실선은 모델이 가림을 주장한 후보, 주황 점선은 미확인/불일치입니다. 사람의 결함 확정과 다릅니다. <a href={f.layout.annotated} download>표시 SVG 저장</a> · <a href={f.before} target="_blank" rel="noreferrer">원본 보기</a></p>
                               </div>}
                               {f.visual && <>
                                 <Badge variant="destructive">{f.visual.uncertain ? "의심 · 판독에 불확실성 있음" : f.visual.verification === "reproduced" ? "반복 관찰된 결함 후보" : f.visual.verification === "not-reproduced" ? "의심 · 재확인에서 불일치" : "의심 · 재확인 미완료"}</Badge>
@@ -1132,7 +1132,7 @@ export default function App() {
                                 <a href={f.visual.annotated} target="_blank" rel="noreferrer"><img className="screen-preview" src={f.visual.annotated} alt="모델이 관찰한 결함 의심 영역을 붉은 박스로 표시한 캡처" /></a>
                                 <p className="text-xs text-muted-foreground">붉은 박스는 원본 모델 입력에 좌표를 표시한 주석입니다. 모델 재관찰은 사람의 결함 확정과 다릅니다. <a href={f.visual.annotated} download>주석 캡처 SVG 저장</a> · <a href={f.before} target="_blank" rel="noreferrer">원본 보기</a></p>
                               </>}
-                              <QaText text={f.observed}/>
+                              <QaText label={f.layout ? "브라우저 측정 근거" : undefined} text={f.layout ? "여러 내용 영역의 표본 지점에서 다른 불투명 구성요소가 앞에 측정되었습니다. 표시 영역은 위치 기반 의심이며 모델 설명과 별개입니다." : f.observed}/>
                               <QaText label="기대 상태" text={f.expected}/>
                               <QaText label="판정 근거" text={f.basis}/>
                               <details><summary className="text-sm">재현 절차 원문</summary><ol className="list-decimal pl-5 text-sm">

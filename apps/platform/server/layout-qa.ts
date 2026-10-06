@@ -122,8 +122,8 @@ export function createLayoutInspector(page:Page,agent:PlaywrightAgent,run:Run,ru
    if(parsed.regions.length!==scan.candidates.length||new Set(parsed.regions.map(r=>r.id)).size!==scan.candidates.length||parsed.regions.some(r=>!scan.candidates.some(c=>c.id===r.id)))throw Error('Incomplete region review');
    audit.review=parsed;
    for(const f of findings){const r=parsed.regions.find(r=>r.id===f.layout!.regionId)!;f.layout!.verdict=r.verdict==='visible-overlap'&&r.order!=='measured'?'uncertain':r.verdict;f.layout!.review=r;
-    f.title=f.layout!.verdict==='visible-overlap'?'화면 가림 후보 · 모델 관찰 있음':r.verdict==='clear'?'겹침 의심 · 위치와 모델 판단 불일치':'겹침 의심 · 화면 판독 불확실';
-    f.observed=r.evidence;f.basis='혼합 검사: 위치 후보 + Midscene 화면 판독. 사람의 확정 판정과 별개.';
+    f.title=f.layout!.verdict==='visible-overlap'?'웹 겹침 의심 · 모델 지적 있음':r.verdict==='clear'?'겹침 의심 · 위치와 모델 판단 불일치':'겹침 의심 · 화면 판독 불확실';
+    f.basis='혼합 검사: 위치 후보 + Midscene 화면 판독. 사람의 확정 판정과 별개.';
    }
    await writeFile(path.join(folder,base+'.svg'),layoutAnnotation(second,scan.candidates,parsed));
   }catch(error){audit.call=run.calls>startCalls?run.calls:undefined;audit.reason='화면 검토 실패/형식 불일치. 위치 기반 의심을 보존했습니다.';await save();if(runtime.controller.signal.aborted||runtime.providerFailure)throw error;}
