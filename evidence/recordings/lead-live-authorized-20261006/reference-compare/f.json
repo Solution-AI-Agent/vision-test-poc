@@ -1,0 +1,82 @@
+{
+  "site": "f",
+  "model": "qwen/qwen3-vl-235b-a22b-instruct",
+  "sourceRun": "fe4e16e5-8f0c-4be1-84ec-302656fc1001",
+  "screenshot": "/artifacts/fe4e16e5-8f0c-4be1-84ec-302656fc1001/model-request-1.jpg",
+  "reference": "/artifacts/594a8eae-e521-4adb-aa2b-22a056b614b1/model-request-1.jpg",
+  "inputSha256": "abcaf1b9b71e8b48eb6ae700451178e6e0fbab67450724b6e7fd911a9eec4485",
+  "referenceSha256": "e0747b0d978aaaea3fef88c98c4978f0c0948d5d47dd3f583d92fcc710db9632",
+  "elapsedMs": 4530,
+  "response": {
+    "id": "gen-1791256308-dEVkaa7EjIn5mAQJ2K5Z",
+    "object": "chat.completion",
+    "created": 1791256308,
+    "model": "qwen/qwen3-vl-235b-a22b-instruct",
+    "provider": "Alibaba",
+    "system_fingerprint": null,
+    "service_tier": null,
+    "choices": [
+      {
+        "index": 0,
+        "logprobs": null,
+        "finish_reason": "stop",
+        "native_finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"differences\": [\n    {\n      \"observed\": \"주문 요약 섹션의 컵 아이콘이 빨간색에서 파란색으로 변경됨\",\n      \"impact\": \"시각적 일관성에 영향을 줄 수 있으나, 기능이나 정보 전달에는 영향 없음\",\n      \"verdict\": \"suspected\",\n      \"bbox_1000\": [650, 430, 800, 600]\n    }\n  ],\n  \"summary\": \"주문 요약의 컵 아이콘 색상만 다름. 기능적 문제는 없으나 시각적 일관성 의심.\"\n}",
+          "refusal": null,
+          "reasoning": null
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 2149,
+      "completion_tokens": 156,
+      "total_tokens": 2305,
+      "cost": 0.00072098,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.00072098,
+        "upstream_inference_prompt_cost": 0.00055874,
+        "upstream_inference_completions_cost": 0.00016224
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    }
+  },
+  "parsed": {
+    "differences": [
+      {
+        "observed": "주문 요약 섹션의 컵 아이콘이 빨간색에서 파란색으로 변경됨",
+        "impact": "시각적 일관성에 영향을 줄 수 있으나, 기능이나 정보 전달에는 영향 없음",
+        "verdict": "suspected",
+        "bbox_1000": [
+          650,
+          430,
+          800,
+          600
+        ]
+      }
+    ],
+    "summary": "주문 요약의 컵 아이콘 색상만 다름. 기능적 문제는 없으나 시각적 일관성 의심."
+  },
+  "localized": [
+    {
+      "box": {
+        "x": 0.65,
+        "y": 0.43,
+        "width": 0.15,
+        "height": 0.17
+      }
+    }
+  ]
+}

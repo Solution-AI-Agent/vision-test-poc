@@ -1,0 +1,55 @@
+{
+  "site": "e",
+  "model": "qwen/qwen3-vl-30b-a3b-instruct",
+  "sourceRun": "b06c512d-32e2-4a02-8ecc-3559f1020cfa",
+  "screenshot": "/artifacts/b06c512d-32e2-4a02-8ecc-3559f1020cfa/model-request-1.jpg",
+  "inputSha256": "457e792ec2480e6069f888550203d772afbdd9b90591570e383f7e8172934eea",
+  "promptSha256": "3494384495ce4cc81deb82063a8bf8731eac84e3fdd89a4fa7494bb80367f4d8",
+  "elapsedMs": 9343,
+  "response": {
+    "id": "gen-1791256099-tFrBg1Zfxl2fudZFuC7S",
+    "object": "chat.completion",
+    "created": 1791256099,
+    "model": "qwen/qwen3-vl-30b-a3b-instruct",
+    "provider": "Alibaba",
+    "system_fingerprint": null,
+    "service_tier": null,
+    "choices": [
+      {
+        "index": 0,
+        "logprobs": null,
+        "finish_reason": "stop",
+        "native_finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "```json\n{\n    \"regions\": [\n        {\n            \"name\": \"상단 헤더\",\n            \"visible\": \"왼쪽 상단에 'ATELIER / GOODS'라는 로고와 Instagram 아이콘이 있습니다. 오른쪽 상단에는 '일상을 위한 작은 도구들.'이라는 문구가 있습니다.\"\n        },\n        {\n            \"name\": \"페이지 제목 영역\",\n            \"visible\": \"헤더 아래에 '일상 도구 / 주문하기'라는 경로 표시가 있고, 그 아래 큰 글씨로 '작은 주문으로, 더 나은 일상.'이라는 문구가 있습니다. 그 아래 작은 글씨로 '필요한 물건을 골라주세요. 정성껏 준비하겠습니다.'라고 쓰여 있습니다.\"\n        },\n        {\n            \"name\": \"좌측 상품 선택 영역\",\n            \"visible\": \"이 영역은 '나만의 물건 고르기'라는 제목 아래에 있습니다. '모든 주문은 배송비가 무료입니다.'라는 안내가 있고, '상품 선택' 섹션에서 '빨간 머그', '스튜디오 노트', '케이블 클립'이라는 세 가지 옵션이 있습니다. '빨간 머그'가 선택된 상태입니다. '매일의 시간을 밝히는 도자기 머그입니다. · $12.00 / 개'라는 설명과 가격이 있습니다. '수량' 입력란(현재 값은 1)과 '받는 분', '이메일 주소' 입력란(예: minsu@example.test)이 있습니다. 하단에는 '수령 안내' 섹션이 있으며, '영업일 기준 2일 안에 배송됩니다.'라고 씁니다. 이 영역의 가장 아래에는 '주문 확정하기' 버튼이 있습니다.\"\n        },\n        {\n            \"name\": \"우측 주문 요약 영역\",\n            \"visible\": \"이 영역은 '주문 요약'이라는 제목 아래에 있습니다. '일상에 꼭 필요한 물건을 정성껏 준비합니다.'라는 문구가 있고, 빨간 머그의 그림이 있습니다. 제품명은 '빨간 머그 x 1'이고, 가격은 '$12.00'입니다. '무료 배송 포함'이라고 씁니다. 그 아래 '이번 달 인기 상품 비율'이라는 제목 아래에 '노트 · 80%'와 '머그 · 20%'라는 항목이 있으며, 각각 검은색 막대 그래프가 있습니다. 막대의 길이는 '노트'가 '머그'보다 길며, 대략 4배 정도 긴 것처럼 보입니다.\"\n        }\n    ],\n    \"comparisons\": [\n        {\n            \"textSays\": \"주문 요약 영역에서 '빨간 머그 x 1'과 가격 '$12.00'이 표시됨\",\n            \"pictureShows\": \"주문 요약 영역에서 빨간 머그의 그림이 보임\",\n            \"relation\": \"일치\"\n        },\n        {\n            \"textSays\": \"주문 요약 영역에서 '노트 · 80%', '머그 · 20%'라는 비율이 표시됨\",\n            \"pictureShows\": \"주문 요약 영역에서 '노트'의 막대가 '머그'의 막대보다 길며, 대략 4배 정도 긴 것으로 보임\",\n            \"relation\": \"불일치\"\n        }\n    ],\n    \"suspicions\": [\n        {\n            \"kind\": \"시각적 모순\",\n            \"observed\": \"주문 요약 영역의 막대그래프에서 '노트'의 비율은 80%이고 '머그'는 20%로 표시되어 있으나, 시각적으로는 '노트'의 막대가 '머그'의 막대보다 약 4배 길어 보입니다. 이는 80% 대 20%의 비율과 맞지 않습니다.\",\n            \"impact\": \"사용자는 주문 요약의 데이터를 신뢰하지 못할 수 있으며, '노트'의 인기가 실제로 얼마나 높은지를 잘못 이해하게 됩니다.\",\n            \"alternative\": \"막대 그래프의 축 스케일이 왜곡되었거나, 막대의 길이가 비율을 정확히 반영하지 않았을 수 있습니다.\",\n            \"region\": \"우측 주문 요약 영역\"\n        }\n    ]\n}\n```",
+          "refusal": null,
+          "reasoning": null
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 1318,
+      "completion_tokens": 1037,
+      "total_tokens": 2355,
+      "cost": 0.00071058,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.00071058,
+        "upstream_inference_prompt_cost": 0.00017134,
+        "upstream_inference_completions_cost": 0.00053924
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    }
+  }
+}

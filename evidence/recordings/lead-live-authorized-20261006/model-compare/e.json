@@ -1,0 +1,85 @@
+{
+  "site": "e",
+  "model": "qwen/qwen3-vl-235b-a22b-instruct",
+  "sourceRun": "b06c512d-32e2-4a02-8ecc-3559f1020cfa",
+  "screenshot": "/artifacts/b06c512d-32e2-4a02-8ecc-3559f1020cfa/model-request-1.jpg",
+  "inputSha256": "457e792ec2480e6069f888550203d772afbdd9b90591570e383f7e8172934eea",
+  "elapsedMs": 8625,
+  "response": {
+    "id": "gen-1791256161-x3YtB1FqlZxGZTER8duE",
+    "object": "chat.completion",
+    "created": 1791256161,
+    "model": "qwen/qwen3-vl-235b-a22b-instruct",
+    "provider": "Alibaba",
+    "system_fingerprint": null,
+    "service_tier": null,
+    "choices": [
+      {
+        "index": 0,
+        "logprobs": null,
+        "finish_reason": "stop",
+        "native_finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "<observation>Reviewed the screenshot as a QA reviewer for visual defects. Scanned all regions for readability, geometry, occlusion, image-meaning, and chart-meaning issues. Text is fully legible with no cutoff or compression. Components are aligned without stretching, skewing, or overflow. No overlapping elements obscure necessary content. The red mug image matches its label “빨간 머그 × 1” and price. The bar chart shows “노트 · 80%” and “머그 · 20%” with proportional bar lengths — no numeric-label vs. chart-size conflict. All visible elements appear intentional and functional. No concrete visual defects found.</observation>\n<data-json>\n{\n  \"checks\": [\n    {\n      \"criterion\": \"readability\",\n      \"result\": \"clear\",\n      \"evidence\": \"All text including product names, prices, and form fields is fully legible and not cut off.\"\n    },\n    {\n      \"criterion\": \"geometry\",\n      \"result\": \"clear\",\n      \"evidence\": \"No stretched, skewed, or crushed components; layout maintains consistent proportions.\"\n    },\n    {\n      \"criterion\": \"occlusion\",\n      \"result\": \"clear\",\n      \"evidence\": \"No overlapping elements obscure any controls or essential content.\"\n    },\n    {\n      \"criterion\": \"image-meaning\",\n      \"result\": \"clear\",\n      \"evidence\": \"The red mug image correctly corresponds to the item labeled '빨간 머그 × 1'.\"\n    },\n    {\n      \"criterion\": \"chart-meaning\",\n      \"result\": \"clear\",\n      \"evidence\": \"Bar chart visually matches labels: '노트 · 80%' has longer bar, '머그 · 20%' shorter — proportional.\"\n    }\n  ],\n  \"issues\": []\n}\n</data-json>",
+          "refusal": null,
+          "reasoning": null
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 2133,
+      "completion_tokens": 387,
+      "total_tokens": 2520,
+      "cost": 0.00095706,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.00095706,
+        "upstream_inference_prompt_cost": 0.00055458,
+        "upstream_inference_completions_cost": 0.00040248
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    }
+  },
+  "parsed": {
+    "checks": [
+      {
+        "criterion": "readability",
+        "result": "clear",
+        "evidence": "All text including product names, prices, and form fields is fully legible and not cut off."
+      },
+      {
+        "criterion": "geometry",
+        "result": "clear",
+        "evidence": "No stretched, skewed, or crushed components; layout maintains consistent proportions."
+      },
+      {
+        "criterion": "occlusion",
+        "result": "clear",
+        "evidence": "No overlapping elements obscure any controls or essential content."
+      },
+      {
+        "criterion": "image-meaning",
+        "result": "clear",
+        "evidence": "The red mug image correctly corresponds to the item labeled '빨간 머그 × 1'."
+      },
+      {
+        "criterion": "chart-meaning",
+        "result": "clear",
+        "evidence": "Bar chart visually matches labels: '노트 · 80%' has longer bar, '머그 · 20%' shorter — proportional."
+      }
+    ],
+    "issues": []
+  },
+  "valid": true
+}

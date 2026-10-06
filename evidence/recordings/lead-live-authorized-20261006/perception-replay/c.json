@@ -1,0 +1,55 @@
+{
+  "site": "c",
+  "model": "qwen/qwen3-vl-30b-a3b-instruct",
+  "sourceRun": "c25be3cc-76b8-4f48-b964-0a7b54552c85",
+  "screenshot": "/artifacts/c25be3cc-76b8-4f48-b964-0a7b54552c85/model-request-1.jpg",
+  "inputSha256": "b71327b3ac5206ff7707fe4977657dcd38106cf735951e098ddc81e25a5bcd69",
+  "promptSha256": "3494384495ce4cc81deb82063a8bf8731eac84e3fdd89a4fa7494bb80367f4d8",
+  "elapsedMs": 10452,
+  "response": {
+    "id": "gen-1791256056-lqUwBe3FDd7bNDjXU43Q",
+    "object": "chat.completion",
+    "created": 1791256056,
+    "model": "qwen/qwen3-vl-30b-a3b-instruct",
+    "provider": "Alibaba",
+    "system_fingerprint": null,
+    "service_tier": null,
+    "choices": [
+      {
+        "index": 0,
+        "logprobs": null,
+        "finish_reason": "stop",
+        "native_finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "```json\n{\n    \"regions\": [\n        {\n            \"name\": \"상단 헤더\",\n            \"visible\": \"왼쪽 상단에 'ATELIER / GOODS'라는 로고와 그 왼쪽에 카메라 아이콘이 있습니다. 오른쪽 상단에는 '일상을 위한 작은 도구들.'이라는 문구가 적혀 있습니다.\"\n        },\n        {\n            \"name\": \"페이지 제목 영역\",\n            \"visible\": \"헤더 아래에 '일상 도구 / 주문하기'라는 서브타이틀과, 그 아래에 굵은 글씨로 '작은 주문으로, 더 나은 일상.'이라는 메인 타이틀이 있습니다. 그 아래로 '필요한 물건을 골라주세요. 정성껏 준비하겠습니다.'라는 안내 문구가 있습니다.\"\n        },\n        {\n            \"name\": \"주문 정보 입력 영역\",\n            \"visible\": \"페이지 제목 아래의 왼쪽 영역입니다. '나만의 물건 고르기'라는 제목 아래 '모든 주문은 배송비가 무료입니다.'라는 문구가 있습니다. '상품 선택' 섹션에는 '빨간 머그', '스튜디오 노트', '케이블 클립'이라는 버튼이 있습니다. '매일의 시간을 밝히는 도자기 머그입니다. · $12.00 / 개'라는 설명과 가격이 있습니다. 수량 입력란(1), 받는 분 이름 입력란('받는 분의 이름'), 이메일 주소 입력란('예: minsu@example.test')이 있습니다. 하단에는 '수령 안내' 섹션이 있으며, '영업일 기준 2일 안에 배송됩니다.', '수령 가능 시간은 48시간입니다.', '수령할 때 사진이 있는 신분증이 필요합니다.'라는 정보가 포함되어 있습니다.\"\n        },\n        {\n            \"name\": \"주문 요약 영역\",\n            \"visible\": \"페이지 제목 아래의 오른쪽 영역입니다. '주문 요약'이라는 제목 아래 '일상에 꼭 필요한 물건을 정성껏 준비합니다.'라는 문구가 있습니다. 그 아래에는 빨간 머그 컵의 그림이 있고, '빨간 머그 x 1', '$12.00', '무료 배송 포함'이라는 텍스트가 겹쳐져 있습니다. 그 아래 '이번 달 인기 상품 비율'이라는 제목 아래 '노트 · 80%', '머그 · 20%'라는 텍스트와 함께 막대 그래프 형태의 시각적 요소가 있습니다.\"\n        }\n    ],\n    \"comparisons\": [\n        {\n            \"textSays\": \"$12.00\",\n            \"pictureShows\": \"빨간 머그 컵 그림 위에 '$12.00'이라는 텍스트가 크게 표시되어 있고, 이는 '무료 배송 포함'이라는 문구와 함께 표시됨.\",\n            \"relation\": \"일치\"\n        },\n        {\n            \"textSays\": \"노트 · 80%\",\n            \"pictureShows\": \"텍스트 '노트 · 80%' 아래에 검은색 수평 막대가 그려져 있으며, 이 막대는 전체 너비의 약 80%를 차지하는 것으로 보임.\",\n            \"relation\": \"일치\"\n        },\n        {\n            \"textSays\": \"머그 · 20%\",\n            \"pictureShows\": \"텍스트 '머그 · 20%' 아래에 검은색 수평 막대가 그려져 있으며, 이 막대는 전체 너비의 약 20%를 차지하는 것으로 보임.\",\n            \"relation\": \"일치\"\n        }\n    ],\n    \"suspicions\": [\n        {\n            \"kind\": \"글자와 그림의 모순\",\n            \"observed\": \"주문 요약 영역에서 '빨간 머그 x 1'이라는 텍스트와 함께 빨간 머그 컵의 그림이 표시되어 있습니다. 그러나 입력 영역에서는 '스튜디오 노트'와 '케이블 클립'도 선택 가능한 항목으로 보이며, '주문 요약'은 '머그' 하나만을 반영하고 있습니다. 사용자가 실제로 어떤 제품을 주문했는지에 대한 명확한 시각적 확인이 부족합니다. 또한, '노트'와 '머그'의 판매 비율이 막대그래프로 표현되어 있지만, 이 비율이 실제 주문 내역인지 아니면 다른 의미인지 불명확합니다.\",\n            \"impact\": \"사용자가 자신이 선택한 제품과 주문 요약의 내용이 일치하는지 확인하기 어려워, 실수를 할 가능성이 있습니다.\",\n            \"alternative\": \"주문 요약 부분은 '주문된 상품 목록'으로 변경되어야 하며, 각 상품에 대한 이미지, 이름, 수량, 가격이 명확하게 표시되어야 합니다. 막대그래프는 '이번 달 인기 상품'이라는 제목처럼 일반적인 통계 데이터일 수 있으므로, 주문 페이지에 이 정보를 표시하는 것이 사용자에게 혼동을 줄 수 있습니다.\",\n            \"region\": \"주문 요약 영역\"\n        }\n    ]\n}\n```",
+          "refusal": null,
+          "reasoning": null
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 1318,
+      "completion_tokens": 1206,
+      "total_tokens": 2524,
+      "cost": 0.00079846,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.00079846,
+        "upstream_inference_prompt_cost": 0.00017134,
+        "upstream_inference_completions_cost": 0.00062712
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    }
+  }
+}

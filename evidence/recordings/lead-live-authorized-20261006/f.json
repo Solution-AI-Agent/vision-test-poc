@@ -1,0 +1,69 @@
+{
+  "id": "fe4e16e5-8f0c-4be1-84ec-302656fc1001",
+  "input": {
+    "mode": "autonomous",
+    "url": "http://127.0.0.1:4311/store/f",
+    "task": "",
+    "expected": "",
+    "query": "Midscene AI demo"
+  },
+  "settings": {
+    "agentInstructions": "",
+    "model": "qwen/qwen3-vl-30b-a3b-instruct",
+    "family": "qwen3-vl",
+    "maxActions": 1,
+    "maxCalls": 4,
+    "maxSeconds": 60,
+    "maxTokens": 1536
+  },
+  "startedAt": "2026-10-06T03:05:42.953Z",
+  "status": "failed",
+  "outcome": "모델 공급자에 연결하지 못했습니다.",
+  "stage": "실패 · 독립 시각 QA 검사",
+  "calls": 1,
+  "actions": 0,
+  "tokens": 0,
+  "cost": null,
+  "steps": [],
+  "findings": [],
+  "engine": "Midscene aiQuery / 1.14.0 → Playwright coordinates / 1.63.0",
+  "transport": [
+    {
+      "phase": "visual-review",
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/fe4e16e5-8f0c-4be1-84ec-302656fc1001/model-request-1.jpg"
+    }
+  ],
+  "visualAudits": [
+    {
+      "id": "7f8bca1a-c1de-4b23-8bd2-351b7141736a",
+      "at": "2026-10-06T03:05:44.139Z",
+      "checkpoint": "첫 화면",
+      "screenshot": "/artifacts/fe4e16e5-8f0c-4be1-84ec-302656fc1001/model-request-1.jpg",
+      "call": 1,
+      "status": "inconclusive",
+      "promptVersion": "visual-qa-v1-independent-checklist",
+      "reason": "시각 검사 요청/판독 실패 · 통과 아님"
+    }
+  ],
+  "visualComplete": false,
+  "sourceVersion": {
+    "commit": "3e1138a0afb37287f5e656cb0a422e0d4ba22e16",
+    "dirty": false,
+    "sourceHash": "3e08dc1c29657644103fd73726873a688af091404e679411edfec6a97a4e49db",
+    "promptVersion": "goal-first-v7-independent-visual-qa"
+  },
+  "executionPhase": "visual-review",
+  "screenshot": "/artifacts/fe4e16e5-8f0c-4be1-84ec-302656fc1001/visual-0-screen.png",
+  "failureStage": "공통 기준으로 독립 시각 QA 검사",
+  "diagnostic": {
+    "code": "MODEL_NETWORK_FAILED",
+    "phase": "visual-review",
+    "message": "모델 공급자에 연결하지 못했습니다.",
+    "action": "OpenRouter 네트워크·프록시·방화벽을 확인하세요. 키 연결 확인과 실제 이미지 요청은 별개입니다."
+  },
+  "error": "모델 공급자에 연결하지 못했습니다.",
+  "video": "/artifacts/fe4e16e5-8f0c-4be1-84ec-302656fc1001/page@7051f1517e4008d3282f9087019907e7.webm",
+  "endedAt": "2026-10-06T03:06:14.193Z"
+}

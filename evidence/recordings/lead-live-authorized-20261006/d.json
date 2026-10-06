@@ -1,0 +1,257 @@
+{
+  "id": "7bb40569-8097-4677-b7d4-257c7bcc6b3e",
+  "input": {
+    "mode": "autonomous",
+    "url": "http://127.0.0.1:4311/store/d",
+    "task": "",
+    "expected": "",
+    "query": "Midscene AI demo"
+  },
+  "settings": {
+    "agentInstructions": "",
+    "model": "qwen/qwen3-vl-30b-a3b-instruct",
+    "family": "qwen3-vl",
+    "maxActions": 1,
+    "maxCalls": 4,
+    "maxSeconds": 60,
+    "maxTokens": 1536
+  },
+  "startedAt": "2026-10-06T03:04:31.326Z",
+  "status": "limited",
+  "outcome": "행동 한도 도달 · 포커스와 입력도 각각 포함",
+  "stage": "종료",
+  "calls": 4,
+  "actions": 1,
+  "tokens": 9368,
+  "cost": 0.001967,
+  "steps": [
+    {
+      "index": 0,
+      "at": "2026-10-06T03:04:58.392Z",
+      "before": "/artifacts/7bb40569-8097-4677-b7d4-257c7bcc6b3e/model-request-3.jpg",
+      "after": "/artifacts/7bb40569-8097-4677-b7d4-257c7bcc6b3e/0-after.png",
+      "plan": {
+        "observation": "The screenshot shows a form with a quantity input field set to '1', a name input field, and an email input field. The submit button is not visible.",
+        "rationale": "To proceed with the task, I need to enter a quantity of 2 in the quantity field and then submit the order. The first step is to click on the quantity input field to focus it.",
+        "action": {
+          "type": "click",
+          "x": 305,
+          "y": 618
+        },
+        "verdict": "continue",
+        "finding": null
+      },
+      "executed": true,
+      "toolCalls": [
+        {
+          "action": {
+            "type": "click",
+            "x": 305,
+            "y": 618
+          },
+          "completed": true,
+          "at": "2026-10-06T03:04:58.415Z"
+        }
+      ],
+      "unchanged": true
+    },
+    {
+      "index": 1,
+      "at": "2026-10-06T03:05:07.213Z",
+      "before": "/artifacts/7bb40569-8097-4677-b7d4-257c7bcc6b3e/model-request-4.jpg",
+      "after": "/artifacts/7bb40569-8097-4677-b7d4-257c7bcc6b3e/1-decision.png",
+      "plan": {
+        "observation": "The quantity input field is focused and ready for text input.",
+        "rationale": "The previous click action successfully focused the quantity input field, allowing for text entry. The next logical step is to type the desired quantity, '2', to proceed with the order submission process.",
+        "action": {
+          "type": "type",
+          "text": "2",
+          "x": 305,
+          "y": 618
+        },
+        "verdict": "continue",
+        "finding": null
+      },
+      "executed": false
+    }
+  ],
+  "findings": [],
+  "engine": "Midscene aiQuery / 1.14.0 → Playwright coordinates / 1.63.0",
+  "transport": [
+    {
+      "phase": "visual-review",
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/7bb40569-8097-4677-b7d4-257c7bcc6b3e/model-request-1.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 1438,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 13419,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791255872-nrKIpgsT6MnE0VHJaAUK",
+      "parsedOutput": {
+        "checks": [
+          {
+            "criterion": "readability",
+            "result": "clear",
+            "evidence": "All text is fully visible and legible, with no cutoff or compression issues."
+          },
+          {
+            "criterion": "geometry",
+            "result": "clear",
+            "evidence": "Components and text are properly aligned without any stretching, skewing, or crushing."
+          },
+          {
+            "criterion": "occlusion",
+            "result": "clear",
+            "evidence": "No components overlap or obscure necessary content or controls."
+          },
+          {
+            "criterion": "image-meaning",
+            "result": "clear",
+            "evidence": "The product description matches the visual content of the red mug image."
+          },
+          {
+            "criterion": "chart-meaning",
+            "result": "clear",
+            "evidence": "The numeric labels correspond to the size of the bars in the chart."
+          }
+        ],
+        "issues": []
+      }
+    },
+    {
+      "phase": "goal-selection",
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/7bb40569-8097-4677-b7d4-257c7bcc6b3e/model-request-2.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 1009,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 9029,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791255886-8FdfgKtrzp9KgNI06xM7"
+    },
+    {
+      "phase": "model-plan",
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/7bb40569-8097-4677-b7d4-257c7bcc6b3e/model-request-3.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 880,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 3156,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791255895-FqZfjMGnb6ZkoEOGv3nA",
+      "parsedOutput": {
+        "observation": "The screenshot shows a form with a quantity input field set to '1', a name input field, and an email input field. The submit button is not visible.",
+        "rationale": "To proceed with the task, I need to enter a quantity of 2 in the quantity field and then submit the order. The first step is to click on the quantity input field to focus it.",
+        "action": {
+          "type": "click",
+          "x": 305,
+          "y": 618
+        },
+        "verdict": "continue",
+        "finding": null
+      }
+    },
+    {
+      "phase": "model-plan",
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/7bb40569-8097-4677-b7d4-257c7bcc6b3e/model-request-4.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 847,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 7927,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791255899-vhVcgRh8Umogi0B0DjcG",
+      "parsedOutput": {
+        "observation": "The quantity input field is focused and ready for text input.",
+        "rationale": "The previous click action successfully focused the quantity input field, allowing for text entry. The next logical step is to type the desired quantity, '2', to proceed with the order submission process.",
+        "action": {
+          "type": "type",
+          "text": "2",
+          "x": 305,
+          "y": 618
+        },
+        "verdict": "continue",
+        "finding": null
+      }
+    }
+  ],
+  "visualAudits": [
+    {
+      "id": "789bb0fa-9a93-4986-868e-458b79ce4100",
+      "at": "2026-10-06T03:04:32.523Z",
+      "checkpoint": "첫 화면",
+      "screenshot": "/artifacts/7bb40569-8097-4677-b7d4-257c7bcc6b3e/model-request-1.jpg",
+      "call": 1,
+      "status": "reviewed",
+      "promptVersion": "visual-qa-v1-independent-checklist",
+      "result": {
+        "checks": [
+          {
+            "criterion": "readability",
+            "result": "clear",
+            "evidence": "All text is fully visible and legible, with no cutoff or compression issues."
+          },
+          {
+            "criterion": "geometry",
+            "result": "clear",
+            "evidence": "Components and text are properly aligned without any stretching, skewing, or crushing."
+          },
+          {
+            "criterion": "occlusion",
+            "result": "clear",
+            "evidence": "No components overlap or obscure necessary content or controls."
+          },
+          {
+            "criterion": "image-meaning",
+            "result": "clear",
+            "evidence": "The product description matches the visual content of the red mug image."
+          },
+          {
+            "criterion": "chart-meaning",
+            "result": "clear",
+            "evidence": "The numeric labels correspond to the size of the bars in the chart."
+          }
+        ],
+        "issues": []
+      }
+    }
+  ],
+  "visualComplete": true,
+  "sourceVersion": {
+    "commit": "3e1138a0afb37287f5e656cb0a422e0d4ba22e16",
+    "dirty": false,
+    "sourceHash": "3e08dc1c29657644103fd73726873a688af091404e679411edfec6a97a4e49db",
+    "promptVersion": "goal-first-v7-independent-visual-qa"
+  },
+  "executionPhase": "video-finalization",
+  "screenshot": "/artifacts/7bb40569-8097-4677-b7d4-257c7bcc6b3e/1-decision.png",
+  "goals": [
+    {
+      "hypothesis": "The order submission process works correctly.",
+      "task": "Enter a quantity of 2 in the quantity field and submit the order.",
+      "expected": "The order is submitted successfully and a confirmation message is displayed.",
+      "basis": "The presence of the quantity input field and the submit button on the page.",
+      "screenshot": "/artifacts/7bb40569-8097-4677-b7d4-257c7bcc6b3e/model-request-2.jpg",
+      "at": "2026-10-06T03:04:55.128Z"
+    }
+  ],
+  "video": "/artifacts/7bb40569-8097-4677-b7d4-257c7bcc6b3e/page@42377d5a7b6693b8449cd2baa7b1b8cf.webm",
+  "endedAt": "2026-10-06T03:05:07.716Z"
+}

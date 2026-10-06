@@ -1,0 +1,105 @@
+{
+  "date": "2026-10-06",
+  "protocols": [
+    {
+      "name": "배포 코드 단일 화면 QA",
+      "source": "3e1138a0afb37287f5e656cb0a422e0d4ba22e16",
+      "model": "qwen/qwen3-vl-30b-a3b-instruct",
+      "attempts": 21,
+      "reportedCost": 0.01005781,
+      "result": "첫 화면 A/C/D/E/G 후보 없음; F 네트워크 실패. C/D/G 실제 미탐. E는 화면 밖 필수 안내 기준 필요."
+    },
+    {
+      "name": "관찰 우선 30B",
+      "model": "qwen/qwen3-vl-30b-a3b-instruct",
+      "attempts": 6,
+      "reportedCost": 0.00472276,
+      "result": "F 이미지 모순 지적; 정상 A 오탐, C/D/G 미탐. 미채택."
+    },
+    {
+      "name": "동일 QA 요청 235B",
+      "model": "qwen/qwen3-vl-235b-a22b-instruct",
+      "attempts": 6,
+      "reportedCost": 0.00580476,
+      "result": "6개 모두 issues=[]; 모델 크기 변경만으로 해결 안 됨."
+    },
+    {
+      "name": "정상 참조 + 현재 화면 235B",
+      "model": "qwen/qwen3-vl-235b-a22b-instruct",
+      "attempts": 6,
+      "reportedCost": 0.00437153,
+      "result": "A 정상; C 뒤틀림·D 겹침 지적; F 색차 의심(의미 설명 부족); E 안내 미탐+버튼 오탐; G 미탐. 오프라인 실험이며 제품 기능 아님."
+    }
+  ],
+  "actionTrials": [
+    {
+      "folder": "quantity-check",
+      "id": "ba99c639-7005-4bb5-8432-2d9bfe2727d0",
+      "source": {
+        "commit": "64dc09802bf0a60fac431f9ee7a0a775bedd4d90",
+        "dirty": false,
+        "sourceHash": "e7ae3623d948981721ac7ea08ce4d749497f5a870a8dffe5a5d38081dc2e7d1f",
+        "promptVersion": "goal-first-v8-explicit-coordinates-korean-replace"
+      },
+      "status": "completed",
+      "outcome": "기대 결과 관찰됨 · 독립 검토 필요",
+      "calls": 6,
+      "actions": 3,
+      "reportedCost": 0.00302541,
+      "findingCount": 1,
+      "humanReview": "수량2/$24 실제 확인. 정상 헤더 오탐 있음."
+    },
+    {
+      "folder": "order-check",
+      "id": "ea83d83f-482e-4a13-9e1c-c5a2ba589687",
+      "source": {
+        "commit": "64dc09802bf0a60fac431f9ee7a0a775bedd4d90",
+        "dirty": false,
+        "sourceHash": "e7ae3623d948981721ac7ea08ce4d749497f5a870a8dffe5a5d38081dc2e7d1f",
+        "promptVersion": "goal-first-v8-explicit-coordinates-korean-replace"
+      },
+      "status": "failed",
+      "outcome": "모델 공급자에 연결하지 못했습니다.",
+      "calls": 7,
+      "actions": 6,
+      "reportedCost": 0.00254425,
+      "findingCount": 0,
+      "humanReview": "수량 변경 성공; 이름 입력 유실 후 네트워크 실패. 전체 주문 미완료."
+    },
+    {
+      "folder": "order-grounded-check",
+      "id": "b5939ee3-6993-4f18-81c7-ae73a2dd635e",
+      "source": {
+        "commit": "e00a387a1ed62dd813562fe04a2947df7b1338f3",
+        "dirty": false,
+        "sourceHash": "1e00d7909f9ad334baef68bd0315e0715208be20c50260d46657b5c859bfef45",
+        "promptVersion": "goal-first-v9-korean-input-grounding"
+      },
+      "status": "completed",
+      "outcome": "기대 결과 관찰됨 · 독립 검토 필요",
+      "calls": 10,
+      "actions": 6,
+      "reportedCost": 0.004795140000000001,
+      "findingCount": 1,
+      "humanReview": "수량·이메일 입력 성공, 한국어 응답 확인. 이름 공란·미제출인데 raw completed: 사람 검수는 업무 실패. 동일 관찰/기대의 정상 응답이 후보로 오르는 문제도 후속 수정."
+    },
+    {
+      "folder": "order-final-check",
+      "id": "27e69a2c-7b90-4359-9d29-1cd1e1debbb1",
+      "source": {
+        "commit": "9b7040f8b8cfebc9d5ac82accc0ea950f9a21b48",
+        "dirty": false,
+        "sourceHash": "97d95e377c79ee8eea2c140250c7c2f16bb61385b71319874a5befa69396231f",
+        "promptVersion": "goal-first-v10-independent-completion"
+      },
+      "status": "completed",
+      "outcome": "기대 결과 관찰됨 · 독립 검토 필요",
+      "calls": 7,
+      "actions": 3,
+      "reportedCost": 0.0032782799999999997,
+      "findingCount": 0,
+      "humanReview": "수량2/$24 확인. 이름·이메일 공란·미제출인데 planner와 독립 완료 검사 모두 잘못 완료 판단. 사람 검수 업무 실패. 후속 코드에서 pass+미실행 click 모순을 제한 종료로 막음; 추가 실호출 없음."
+    }
+  ],
+  "note": "서로 다른 실험/버전의 성공률을 합산하지 않습니다. 비용은 응답 보고값이며 실패 요청 비용 미확인. 미탐과 오탐 원본 보존. 정상 참조 비교는 제품에 배포하지 않은 오프라인 진단입니다."
+}

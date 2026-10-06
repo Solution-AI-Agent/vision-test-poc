@@ -1,0 +1,257 @@
+{
+  "id": "594a8eae-e521-4adb-aa2b-22a056b614b1",
+  "input": {
+    "mode": "autonomous",
+    "url": "http://127.0.0.1:4311/store/a",
+    "task": "",
+    "expected": "",
+    "query": "Midscene AI demo"
+  },
+  "settings": {
+    "agentInstructions": "",
+    "model": "qwen/qwen3-vl-30b-a3b-instruct",
+    "family": "qwen3-vl",
+    "maxActions": 1,
+    "maxCalls": 4,
+    "maxSeconds": 60,
+    "maxTokens": 1536
+  },
+  "startedAt": "2026-10-06T03:03:43.531Z",
+  "status": "limited",
+  "outcome": "행동 한도 도달 · 포커스와 입력도 각각 포함",
+  "stage": "종료",
+  "calls": 4,
+  "actions": 1,
+  "tokens": 9686,
+  "cost": 0.00215432,
+  "steps": [
+    {
+      "index": 0,
+      "at": "2026-10-06T03:03:59.457Z",
+      "before": "/artifacts/594a8eae-e521-4adb-aa2b-22a056b614b1/model-request-3.jpg",
+      "after": "/artifacts/594a8eae-e521-4adb-aa2b-22a056b614b1/0-after.png",
+      "plan": {
+        "observation": "The user is on a product ordering page for ATELIER / GOODS. The Red Mug is selected with a quantity of 1, and the email field contains 'minsu@example.test'. The order has not been submitted yet as there is no confirmation message.",
+        "rationale": "The task requires selecting the Red Mug, setting the quantity to 2, entering 'test@example.com' in the email field, and submitting the order. Currently, the quantity is 1 and the email is incorrect. The next step should be to update the quantity to 2.",
+        "action": {
+          "type": "click",
+          "x": 305,
+          "y": 618
+        },
+        "verdict": "continue",
+        "finding": null
+      },
+      "executed": true,
+      "toolCalls": [
+        {
+          "action": {
+            "type": "click",
+            "x": 305,
+            "y": 618
+          },
+          "completed": true,
+          "at": "2026-10-06T03:03:59.493Z"
+        }
+      ],
+      "unchanged": true
+    },
+    {
+      "index": 1,
+      "at": "2026-10-06T03:04:03.926Z",
+      "before": "/artifacts/594a8eae-e521-4adb-aa2b-22a056b614b1/model-request-4.jpg",
+      "after": "/artifacts/594a8eae-e521-4adb-aa2b-22a056b614b1/1-decision.png",
+      "plan": {
+        "observation": "The user is on a product ordering page for ATELIER / GOODS. The Red Mug is selected with a quantity of 1, and the email field contains 'minsu@example.test'. The order has not been submitted yet as there is no confirmation message. The quantity input field is currently focused, indicating an intention to change the quantity.",
+        "rationale": "The task requires setting the quantity to 2. The quantity input field is already focused, so the next step is to type '2' into this field.",
+        "action": {
+          "type": "type",
+          "text": "2",
+          "x": 305,
+          "y": 618
+        },
+        "verdict": "continue",
+        "finding": null
+      },
+      "executed": false
+    }
+  ],
+  "findings": [],
+  "engine": "Midscene aiQuery / 1.14.0 → Playwright coordinates / 1.63.0",
+  "transport": [
+    {
+      "phase": "visual-review",
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/594a8eae-e521-4adb-aa2b-22a056b614b1/model-request-1.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 1553,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 6789,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791255826-yn2SFIE6QQXiDggBNtS4",
+      "parsedOutput": {
+        "checks": [
+          {
+            "criterion": "readability",
+            "result": "clear",
+            "evidence": "All text is fully visible and legible, including product details, pricing, and delivery information."
+          },
+          {
+            "criterion": "geometry",
+            "result": "clear",
+            "evidence": "Components are proportionally sized and aligned; no stretching, skewing, or crushing observed."
+          },
+          {
+            "criterion": "occlusion",
+            "result": "clear",
+            "evidence": "No overlapping elements obscure content; all controls and information are accessible."
+          },
+          {
+            "criterion": "image-meaning",
+            "result": "clear",
+            "evidence": "The image of the red mug matches the product description '빨간 머그' (Red Mug)."
+          },
+          {
+            "criterion": "chart-meaning",
+            "result": "not-applicable",
+            "evidence": "There are no charts present in the screenshot to evaluate for numeric label conflicts."
+          }
+        ],
+        "issues": []
+      }
+    },
+    {
+      "phase": "goal-selection",
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/594a8eae-e521-4adb-aa2b-22a056b614b1/model-request-2.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 896,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 2929,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791255832-yF9Mc3mp61wTUDidhCV6"
+    },
+    {
+      "phase": "model-plan",
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/594a8eae-e521-4adb-aa2b-22a056b614b1/model-request-3.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 1333,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 4387,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791255835-M4OLcevaf4U1LqejvgBv",
+      "parsedOutput": {
+        "observation": "The user is on a product ordering page for ATELIER / GOODS. The Red Mug is selected with a quantity of 1, and the email field contains 'minsu@example.test'. The order has not been submitted yet as there is no confirmation message.",
+        "rationale": "The task requires selecting the Red Mug, setting the quantity to 2, entering 'test@example.com' in the email field, and submitting the order. Currently, the quantity is 1 and the email is incorrect. The next step should be to update the quantity to 2.",
+        "action": {
+          "type": "click",
+          "x": 305,
+          "y": 618
+        },
+        "verdict": "continue",
+        "finding": null
+      }
+    },
+    {
+      "phase": "model-plan",
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/594a8eae-e521-4adb-aa2b-22a056b614b1/model-request-4.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 1010,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 3556,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791255840-O4d7UnJNNQaPqed9AP5g",
+      "parsedOutput": {
+        "observation": "The user is on a product ordering page for ATELIER / GOODS. The Red Mug is selected with a quantity of 1, and the email field contains 'minsu@example.test'. The order has not been submitted yet as there is no confirmation message. The quantity input field is currently focused, indicating an intention to change the quantity.",
+        "rationale": "The task requires setting the quantity to 2. The quantity input field is already focused, so the next step is to type '2' into this field.",
+        "action": {
+          "type": "type",
+          "text": "2",
+          "x": 305,
+          "y": 618
+        },
+        "verdict": "continue",
+        "finding": null
+      }
+    }
+  ],
+  "visualAudits": [
+    {
+      "id": "56ddc5e6-fd80-4f31-8e6b-c46af5510192",
+      "at": "2026-10-06T03:03:45.036Z",
+      "checkpoint": "첫 화면",
+      "screenshot": "/artifacts/594a8eae-e521-4adb-aa2b-22a056b614b1/model-request-1.jpg",
+      "call": 1,
+      "status": "reviewed",
+      "promptVersion": "visual-qa-v1-independent-checklist",
+      "result": {
+        "checks": [
+          {
+            "criterion": "readability",
+            "result": "clear",
+            "evidence": "All text is fully visible and legible, including product details, pricing, and delivery information."
+          },
+          {
+            "criterion": "geometry",
+            "result": "clear",
+            "evidence": "Components are proportionally sized and aligned; no stretching, skewing, or crushing observed."
+          },
+          {
+            "criterion": "occlusion",
+            "result": "clear",
+            "evidence": "No overlapping elements obscure content; all controls and information are accessible."
+          },
+          {
+            "criterion": "image-meaning",
+            "result": "clear",
+            "evidence": "The image of the red mug matches the product description '빨간 머그' (Red Mug)."
+          },
+          {
+            "criterion": "chart-meaning",
+            "result": "not-applicable",
+            "evidence": "There are no charts present in the screenshot to evaluate for numeric label conflicts."
+          }
+        ],
+        "issues": []
+      }
+    }
+  ],
+  "visualComplete": true,
+  "sourceVersion": {
+    "commit": "3e1138a0afb37287f5e656cb0a422e0d4ba22e16",
+    "dirty": false,
+    "sourceHash": "3e08dc1c29657644103fd73726873a688af091404e679411edfec6a97a4e49db",
+    "promptVersion": "goal-first-v7-independent-visual-qa"
+  },
+  "executionPhase": "video-finalization",
+  "screenshot": "/artifacts/594a8eae-e521-4adb-aa2b-22a056b614b1/1-decision.png",
+  "goals": [
+    {
+      "hypothesis": "The user can successfully place an order by selecting a product and entering a valid email address.",
+      "task": "Select the Red Mug, set the quantity to 2, enter 'test@example.com' in the email field, and submit the order.",
+      "expected": "The order is successfully submitted, and a confirmation message is displayed.",
+      "basis": "The interface allows selection of a product, setting the quantity, and entering an email address, which are typical steps for placing an order on a website.",
+      "screenshot": "/artifacts/594a8eae-e521-4adb-aa2b-22a056b614b1/model-request-2.jpg",
+      "at": "2026-10-06T03:03:54.974Z"
+    }
+  ],
+  "video": "/artifacts/594a8eae-e521-4adb-aa2b-22a056b614b1/page@a659233bc273caf95408fc137b74ea3e.webm",
+  "endedAt": "2026-10-06T03:04:04.220Z"
+}

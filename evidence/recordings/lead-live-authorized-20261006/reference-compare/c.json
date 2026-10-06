@@ -1,0 +1,82 @@
+{
+  "site": "c",
+  "model": "qwen/qwen3-vl-235b-a22b-instruct",
+  "sourceRun": "c25be3cc-76b8-4f48-b964-0a7b54552c85",
+  "screenshot": "/artifacts/c25be3cc-76b8-4f48-b964-0a7b54552c85/model-request-1.jpg",
+  "reference": "/artifacts/594a8eae-e521-4adb-aa2b-22a056b614b1/model-request-1.jpg",
+  "inputSha256": "b71327b3ac5206ff7707fe4977657dcd38106cf735951e098ddc81e25a5bcd69",
+  "referenceSha256": "e0747b0d978aaaea3fef88c98c4978f0c0948d5d47dd3f583d92fcc710db9632",
+  "elapsedMs": 8252,
+  "response": {
+    "id": "gen-1791256289-mH0EgAYpZ0NDsD7zdfb6",
+    "object": "chat.completion",
+    "created": 1791256289,
+    "model": "qwen/qwen3-vl-235b-a22b-instruct",
+    "provider": "Venice",
+    "system_fingerprint": null,
+    "service_tier": null,
+    "choices": [
+      {
+        "index": 0,
+        "logprobs": null,
+        "finish_reason": "stop",
+        "native_finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"differences\": [\n    {\n      \"observed\": \"둘째 이미지의 주문 요약 영역에서 빨간 머그 이미지와 가격 정보가 기울어져 표시됨. 정상 화면에서는 수평으로 정렬되어 있음.\",\n      \"impact\": \"시각적으로 불안정해 보이며, 사용자가 정보를 정확히 인식하는 데 혼란을 줄 수 있음. 특히 가격과 제품 이미지가 기울어지면 신뢰도 저하 가능성 있음.\",\n      \"verdict\": \"defect\",\n      \"bbox_1000\": [540, 416, 900, 750]\n    }\n  ],\n  \"summary\": \"주문 요약 영역의 이미지와 텍스트가 기울어져 표시되는 시각적 결함 있음.\"\n}",
+          "refusal": null,
+          "reasoning": null
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 2149,
+      "completion_tokens": 201,
+      "total_tokens": 2350,
+      "cost": 0.00083319,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.00083319,
+        "upstream_inference_prompt_cost": 0.00045129,
+        "upstream_inference_completions_cost": 0.0003819
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    }
+  },
+  "parsed": {
+    "differences": [
+      {
+        "observed": "둘째 이미지의 주문 요약 영역에서 빨간 머그 이미지와 가격 정보가 기울어져 표시됨. 정상 화면에서는 수평으로 정렬되어 있음.",
+        "impact": "시각적으로 불안정해 보이며, 사용자가 정보를 정확히 인식하는 데 혼란을 줄 수 있음. 특히 가격과 제품 이미지가 기울어지면 신뢰도 저하 가능성 있음.",
+        "verdict": "defect",
+        "bbox_1000": [
+          540,
+          416,
+          900,
+          750
+        ]
+      }
+    ],
+    "summary": "주문 요약 영역의 이미지와 텍스트가 기울어져 표시되는 시각적 결함 있음."
+  },
+  "localized": [
+    {
+      "box": {
+        "x": 0.54,
+        "y": 0.416,
+        "width": 0.36,
+        "height": 0.334
+      }
+    }
+  ]
+}

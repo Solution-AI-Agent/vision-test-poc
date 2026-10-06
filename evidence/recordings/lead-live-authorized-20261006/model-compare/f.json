@@ -1,0 +1,85 @@
+{
+  "site": "f",
+  "model": "qwen/qwen3-vl-235b-a22b-instruct",
+  "sourceRun": "fe4e16e5-8f0c-4be1-84ec-302656fc1001",
+  "screenshot": "/artifacts/fe4e16e5-8f0c-4be1-84ec-302656fc1001/model-request-1.jpg",
+  "inputSha256": "abcaf1b9b71e8b48eb6ae700451178e6e0fbab67450724b6e7fd911a9eec4485",
+  "elapsedMs": 8675,
+  "response": {
+    "id": "gen-1791256170-fqQ7DXRTl1GAGIJKLxnZ",
+    "object": "chat.completion",
+    "created": 1791256170,
+    "model": "qwen/qwen3-vl-235b-a22b-instruct",
+    "provider": "Alibaba",
+    "system_fingerprint": null,
+    "service_tier": null,
+    "choices": [
+      {
+        "index": 0,
+        "logprobs": null,
+        "finish_reason": "stop",
+        "native_finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "<observation>Reviewed the screenshot as a QA reviewer for visual defects. Scanned text legibility, component geometry, occlusion, image-meaning alignment, and chart-meaning consistency. All visible text is fully legible with no cutoff or compression. Components are aligned and proportioned without stretching, skewing, or overflow. No overlapping elements obscure necessary content or controls. The blue mug image matches its label “빨간 머그” (Red Mug) — possible color mismatch but uncertain if intentional design or translation artifact. Bar chart shows “노트: 80%” and “머그: 20%” with proportional bars; no numeric-label vs. bar-size conflict. No evidence of broken layout or unreadable content.</observation>\n<data-json>\n{\n  \"checks\": [\n    {\n      \"criterion\": \"readability\",\n      \"result\": \"clear\",\n      \"evidence\": \"All text is fully visible and legible; no cutoff, compression, or illegibility.\"\n    },\n    {\n      \"criterion\": \"geometry\",\n      \"result\": \"clear\",\n      \"evidence\": \"Components are properly sized and aligned; no stretching, skewing, or overflow.\"\n    },\n    {\n      \"criterion\": \"occlusion\",\n      \"result\": \"clear\",\n      \"evidence\": \"No overlapping elements obscure content or controls.\"\n    },\n    {\n      \"criterion\": \"image-meaning\",\n      \"result\": \"uncertain\",\n      \"evidence\": \"Blue mug image labeled '빨간 머그' (Red Mug); uncertain if color mismatch is intentional or error.\"\n    },\n    {\n      \"criterion\": \"chart-meaning\",\n      \"result\": \"clear\",\n      \"evidence\": \"Bar chart labels ('노트: 80%', '머그: 20%') match bar proportions visually.\"\n    }\n  ],\n  \"issues\": []\n}\n</data-json>",
+          "refusal": null,
+          "reasoning": null
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 2133,
+      "completion_tokens": 397,
+      "total_tokens": 2530,
+      "cost": 0.00096746,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.00096746,
+        "upstream_inference_prompt_cost": 0.00055458,
+        "upstream_inference_completions_cost": 0.00041288
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    }
+  },
+  "parsed": {
+    "checks": [
+      {
+        "criterion": "readability",
+        "result": "clear",
+        "evidence": "All text is fully visible and legible; no cutoff, compression, or illegibility."
+      },
+      {
+        "criterion": "geometry",
+        "result": "clear",
+        "evidence": "Components are properly sized and aligned; no stretching, skewing, or overflow."
+      },
+      {
+        "criterion": "occlusion",
+        "result": "clear",
+        "evidence": "No overlapping elements obscure content or controls."
+      },
+      {
+        "criterion": "image-meaning",
+        "result": "uncertain",
+        "evidence": "Blue mug image labeled '빨간 머그' (Red Mug); uncertain if color mismatch is intentional or error."
+      },
+      {
+        "criterion": "chart-meaning",
+        "result": "clear",
+        "evidence": "Bar chart labels ('노트: 80%', '머그: 20%') match bar proportions visually."
+      }
+    ],
+    "issues": []
+  },
+  "valid": true
+}

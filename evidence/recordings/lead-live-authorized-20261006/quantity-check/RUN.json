@@ -1,0 +1,507 @@
+{
+  "id": "ba99c639-7005-4bb5-8432-2d9bfe2727d0",
+  "input": {
+    "mode": "scenario",
+    "url": "http://127.0.0.1:4311/store/a",
+    "task": "선택된 상품의 수량을 2개로 바꾸고 주문 요약에 수량과 금액이 반영되는지 확인하세요. 주문 제출은 하지 마세요.",
+    "expected": "수량 입력값과 주문 요약의 개수가 모두 2이며 합계가 단가의 두 배로 표시됩니다.",
+    "query": "Midscene AI demo"
+  },
+  "settings": {
+    "agentInstructions": "",
+    "model": "qwen/qwen3-vl-30b-a3b-instruct",
+    "family": "qwen3-vl",
+    "maxActions": 6,
+    "maxCalls": 8,
+    "maxSeconds": 120,
+    "maxTokens": 1536
+  },
+  "startedAt": "2026-10-06T03:23:35.844Z",
+  "status": "completed",
+  "outcome": "기대 결과 관찰됨 · 독립 검토 필요",
+  "stage": "종료",
+  "calls": 6,
+  "actions": 3,
+  "tokens": 15461,
+  "cost": 0.00302541,
+  "steps": [
+    {
+      "index": 0,
+      "at": "2026-10-06T03:23:48.102Z",
+      "before": "/artifacts/ba99c639-7005-4bb5-8432-2d9bfe2727d0/model-request-2.jpg",
+      "after": "/artifacts/ba99c639-7005-4bb5-8432-2d9bfe2727d0/0-after.png",
+      "plan": {
+        "observation": "상품 수량 입력 필드가 보이며, 이 필드는 주문 요약 영역과 연결되어 있다.",
+        "rationale": "수량을 2로 변경하면 주문 요약에 반영되어야 하므로, 입력 필드를 선택하고 값을 변경해야 한다.",
+        "action": {
+          "type": "type",
+          "text": "2",
+          "x": 378,
+          "y": 435
+        },
+        "verdict": "continue",
+        "finding": null
+      },
+      "executed": true,
+      "toolCalls": [
+        {
+          "action": {
+            "type": "click",
+            "x": 378,
+            "y": 435
+          },
+          "completed": true,
+          "at": "2026-10-06T03:23:48.137Z"
+        },
+        {
+          "action": {
+            "type": "key",
+            "key": "ControlOrMeta+A"
+          },
+          "completed": true,
+          "at": "2026-10-06T03:23:48.145Z"
+        },
+        {
+          "action": {
+            "type": "type",
+            "text": "2",
+            "x": 378,
+            "y": 435
+          },
+          "completed": true,
+          "at": "2026-10-06T03:23:48.201Z"
+        }
+      ],
+      "inputBefore": "/artifacts/ba99c639-7005-4bb5-8432-2d9bfe2727d0/0-input-ready.png",
+      "unchanged": false,
+      "inputConfirmation": {
+        "status": "verified",
+        "visibleText": "2",
+        "reason": "목표 좌표 (295, 604)에 위치한 수량 입력 필드에서 '2'라는 값이 실제 보여지고 있다.",
+        "screenshot": "/artifacts/ba99c639-7005-4bb5-8432-2d9bfe2727d0/model-request-3.jpg",
+        "call": 3
+      }
+    },
+    {
+      "index": 1,
+      "at": "2026-10-06T03:24:08.068Z",
+      "before": "/artifacts/ba99c639-7005-4bb5-8432-2d9bfe2727d0/model-request-6.jpg",
+      "after": "/artifacts/ba99c639-7005-4bb5-8432-2d9bfe2727d0/1-decision.png",
+      "plan": {
+        "observation": "수량 입력 필드에 '2'가 입력되어 있고, 주문 요약 영역에서도 수량이 '2'로 반영되어 금액이 '$24.00'으로 표시되고 있다.",
+        "rationale": "수량 입력 필드에 '2'를 입력한 후 주문 요약 영역을 확인했을 때 수량과 금액이 정확히 반영되어 있어 기대 결과와 일치한다.",
+        "action": {
+          "type": "finish"
+        },
+        "verdict": "pass",
+        "finding": null
+      },
+      "executed": false
+    }
+  ],
+  "findings": [
+    {
+      "id": "6f401c5d-3e82-48b0-b015-b9217ba1aca7",
+      "status": "candidate",
+      "reviewNote": "",
+      "step": 0,
+      "title": "Partially cut-off header text",
+      "observed": "The text '일상 도구 / 주문하기' is partially cut off at the top-left of the page.",
+      "expected": "The full header text should be visible without any truncation.",
+      "basis": "readability: Users may not be able to clearly identify the current section or page title, leading to confusion about their location on the site.",
+      "reproduction": [
+        "대상 방문: http://127.0.0.1:4311/store/a",
+        "{\"type\":\"type\",\"text\":\"2\",\"x\":378,\"y\":435}",
+        "검사 시점: 행동 1 이후"
+      ],
+      "before": "/artifacts/ba99c639-7005-4bb5-8432-2d9bfe2727d0/model-request-4.jpg",
+      "after": "/artifacts/ba99c639-7005-4bb5-8432-2d9bfe2727d0/model-request-5.jpg",
+      "visual": {
+        "uncertain": false,
+        "auditId": "e20e5a1c-a620-48b7-ac5a-897854c2b1a6",
+        "criterion": "readability",
+        "box": {
+          "x": 0.07,
+          "y": 0.11,
+          "width": 0.15,
+          "height": 0.03
+        },
+        "impact": "Users may not be able to clearly identify the current section or page title, leading to confusion about their location on the site.",
+        "alternative": "The header text should be adjusted to ensure it is fully visible, possibly by reducing font size or adjusting the layout.",
+        "annotated": "/artifacts/ba99c639-7005-4bb5-8432-2d9bfe2727d0/visual-e20e5a1c-a620-48b7-ac5a-897854c2b1a6.svg",
+        "verification": "not-reproduced",
+        "verificationAuditId": "d4a6b5b2-3f62-408e-9ebb-97cb93d230d4"
+      }
+    }
+  ],
+  "engine": "Midscene aiQuery / 1.14.0 → Playwright coordinates / 1.63.0",
+  "transport": [
+    {
+      "phase": "visual-review",
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/ba99c639-7005-4bb5-8432-2d9bfe2727d0/model-request-1.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 1314,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 4497,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791257018-fiyOz3YyyO1qJFA9D8FF",
+      "parsedOutput": {
+        "checks": [
+          {
+            "criterion": "readability",
+            "result": "clear",
+            "evidence": "All text on the page, including product descriptions and pricing, is fully visible and legible."
+          },
+          {
+            "criterion": "geometry",
+            "result": "clear",
+            "evidence": "Components such as input fields, buttons, and images are proportionally sized and not distorted."
+          },
+          {
+            "criterion": "occlusion",
+            "result": "clear",
+            "evidence": "No elements overlap or obscure any content; all parts of the interface are accessible."
+          },
+          {
+            "criterion": "image-meaning",
+            "result": "clear",
+            "evidence": "The image of the red mug matches the product description '빨간 머그' and its quantity."
+          },
+          {
+            "criterion": "chart-meaning",
+            "result": "not-applicable",
+            "evidence": "There are no charts or graphical representations of data present on the page."
+          }
+        ],
+        "issues": []
+      }
+    },
+    {
+      "phase": "model-plan",
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/ba99c639-7005-4bb5-8432-2d9bfe2727d0/model-request-2.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 398,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 6347,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791257021-hALPq5ahV0J7ne6Yxnnu",
+      "parsedOutput": {
+        "observation": "상품 수량 입력 필드가 보이며, 이 필드는 주문 요약 영역과 연결되어 있다.",
+        "rationale": "수량을 2로 변경하면 주문 요약에 반영되어야 하므로, 입력 필드를 선택하고 값을 변경해야 한다.",
+        "action": {
+          "type": "type",
+          "text": "2",
+          "x": 295,
+          "y": 604
+        },
+        "verdict": "continue",
+        "finding": null
+      }
+    },
+    {
+      "phase": "input-confirmation",
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/ba99c639-7005-4bb5-8432-2d9bfe2727d0/model-request-3.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 279,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 2092,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791257029-pIu7a52QmEscgBlN2tCi",
+      "parsedOutput": {
+        "status": "verified",
+        "visibleText": "2",
+        "reason": "목표 좌표 (295, 604)에 위치한 수량 입력 필드에서 '2'라는 값이 실제 보여지고 있다."
+      }
+    },
+    {
+      "phase": "visual-review",
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/ba99c639-7005-4bb5-8432-2d9bfe2727d0/model-request-4.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 2145,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 5337,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791257031-xruK5MA4ZIwaV1VHdpRN",
+      "parsedOutput": {
+        "checks": [
+          {
+            "criterion": "readability",
+            "result": "issue",
+            "evidence": "The text '일상 도구 / 주문하기' at the top-left is partially cut off and not fully visible."
+          },
+          {
+            "criterion": "geometry",
+            "result": "not-applicable",
+            "evidence": "All components and text are properly proportioned and aligned within their respective containers."
+          },
+          {
+            "criterion": "occlusion",
+            "result": "not-applicable",
+            "evidence": "No components overlap or obscure necessary content or controls."
+          },
+          {
+            "criterion": "image-meaning",
+            "result": "clear",
+            "evidence": "The image of a red mug matches the description '빨간 머그 x 2' in the order summary."
+          },
+          {
+            "criterion": "chart-meaning",
+            "result": "clear",
+            "evidence": "The bar chart accurately represents the proportions stated in the labels (note: 80%, mug: 20%)."
+          }
+        ],
+        "issues": [
+          {
+            "criterion": "readability",
+            "title": "Partially cut-off header text",
+            "observed": "The text '일상 도구 / 주문하기' is partially cut off at the top-left of the page.",
+            "expected": "The full header text should be visible without any truncation.",
+            "impact": "Users may not be able to clearly identify the current section or page title, leading to confusion about their location on the site.",
+            "alternative": "The header text should be adjusted to ensure it is fully visible, possibly by reducing font size or adjusting the layout.",
+            "box": {
+              "x": 0.07,
+              "y": 0.11,
+              "width": 0.15,
+              "height": 0.03
+            }
+          }
+        ]
+      }
+    },
+    {
+      "phase": "visual-review",
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/ba99c639-7005-4bb5-8432-2d9bfe2727d0/model-request-5.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 1446,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 4641,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791257037-LwyahUZzyMp1yI4vcez5",
+      "parsedOutput": {
+        "checks": [
+          {
+            "criterion": "readability",
+            "result": "clear",
+            "evidence": "All text is fully visible and legible, including product descriptions, prices, and instructions."
+          },
+          {
+            "criterion": "geometry",
+            "result": "clear",
+            "evidence": "Components are proportionally sized and aligned without stretching or skewing."
+          },
+          {
+            "criterion": "occlusion",
+            "result": "clear",
+            "evidence": "No components overlap or obscure content; all elements are clearly separated."
+          },
+          {
+            "criterion": "image-meaning",
+            "result": "clear",
+            "evidence": "The red mug image matches the description '빨간 머그 x 2' in the order summary."
+          },
+          {
+            "criterion": "chart-meaning",
+            "result": "not-applicable",
+            "evidence": "There are no charts or graphical representations of data to evaluate for meaning conflicts."
+          }
+        ],
+        "issues": []
+      }
+    },
+    {
+      "phase": "model-plan",
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/ba99c639-7005-4bb5-8432-2d9bfe2727d0/model-request-6.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 391,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 6319,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791257041-MX2ubThOtXs5VsKJ2Bwp",
+      "parsedOutput": {
+        "observation": "수량 입력 필드에 '2'가 입력되어 있고, 주문 요약 영역에서도 수량이 '2'로 반영되어 금액이 '$24.00'으로 표시되고 있다.",
+        "rationale": "수량 입력 필드에 '2'를 입력한 후 주문 요약 영역을 확인했을 때 수량과 금액이 정확히 반영되어 있어 기대 결과와 일치한다.",
+        "action": {
+          "type": "finish"
+        },
+        "verdict": "pass",
+        "finding": null
+      }
+    }
+  ],
+  "visualAudits": [
+    {
+      "id": "f9da527a-de14-4270-924d-48a2ad4d91af",
+      "at": "2026-10-06T03:23:37.058Z",
+      "checkpoint": "첫 화면",
+      "screenshot": "/artifacts/ba99c639-7005-4bb5-8432-2d9bfe2727d0/model-request-1.jpg",
+      "call": 1,
+      "status": "reviewed",
+      "promptVersion": "visual-qa-v1-independent-checklist",
+      "result": {
+        "checks": [
+          {
+            "criterion": "readability",
+            "result": "clear",
+            "evidence": "All text on the page, including product descriptions and pricing, is fully visible and legible."
+          },
+          {
+            "criterion": "geometry",
+            "result": "clear",
+            "evidence": "Components such as input fields, buttons, and images are proportionally sized and not distorted."
+          },
+          {
+            "criterion": "occlusion",
+            "result": "clear",
+            "evidence": "No elements overlap or obscure any content; all parts of the interface are accessible."
+          },
+          {
+            "criterion": "image-meaning",
+            "result": "clear",
+            "evidence": "The image of the red mug matches the product description '빨간 머그' and its quantity."
+          },
+          {
+            "criterion": "chart-meaning",
+            "result": "not-applicable",
+            "evidence": "There are no charts or graphical representations of data present on the page."
+          }
+        ],
+        "issues": []
+      }
+    },
+    {
+      "id": "e20e5a1c-a620-48b7-ac5a-897854c2b1a6",
+      "at": "2026-10-06T03:23:51.139Z",
+      "checkpoint": "행동 1 이후",
+      "screenshot": "/artifacts/ba99c639-7005-4bb5-8432-2d9bfe2727d0/model-request-4.jpg",
+      "call": 4,
+      "status": "reviewed",
+      "promptVersion": "visual-qa-v1-independent-checklist",
+      "result": {
+        "checks": [
+          {
+            "criterion": "readability",
+            "result": "issue",
+            "evidence": "The text '일상 도구 / 주문하기' at the top-left is partially cut off and not fully visible."
+          },
+          {
+            "criterion": "geometry",
+            "result": "not-applicable",
+            "evidence": "All components and text are properly proportioned and aligned within their respective containers."
+          },
+          {
+            "criterion": "occlusion",
+            "result": "not-applicable",
+            "evidence": "No components overlap or obscure necessary content or controls."
+          },
+          {
+            "criterion": "image-meaning",
+            "result": "clear",
+            "evidence": "The image of a red mug matches the description '빨간 머그 x 2' in the order summary."
+          },
+          {
+            "criterion": "chart-meaning",
+            "result": "clear",
+            "evidence": "The bar chart accurately represents the proportions stated in the labels (note: 80%, mug: 20%)."
+          }
+        ],
+        "issues": [
+          {
+            "criterion": "readability",
+            "title": "Partially cut-off header text",
+            "observed": "The text '일상 도구 / 주문하기' is partially cut off at the top-left of the page.",
+            "expected": "The full header text should be visible without any truncation.",
+            "impact": "Users may not be able to clearly identify the current section or page title, leading to confusion about their location on the site.",
+            "alternative": "The header text should be adjusted to ensure it is fully visible, possibly by reducing font size or adjusting the layout.",
+            "box": {
+              "x": 0.07,
+              "y": 0.11,
+              "width": 0.15,
+              "height": 0.03
+            }
+          }
+        ]
+      },
+      "annotated": "/artifacts/ba99c639-7005-4bb5-8432-2d9bfe2727d0/visual-e20e5a1c-a620-48b7-ac5a-897854c2b1a6.svg"
+    },
+    {
+      "id": "d4a6b5b2-3f62-408e-9ebb-97cb93d230d4",
+      "at": "2026-10-06T03:23:56.946Z",
+      "checkpoint": "행동 1 이후 · 재확인",
+      "screenshot": "/artifacts/ba99c639-7005-4bb5-8432-2d9bfe2727d0/model-request-5.jpg",
+      "call": 5,
+      "status": "reviewed",
+      "promptVersion": "visual-qa-v1-independent-checklist",
+      "result": {
+        "checks": [
+          {
+            "criterion": "readability",
+            "result": "clear",
+            "evidence": "All text is fully visible and legible, including product descriptions, prices, and instructions."
+          },
+          {
+            "criterion": "geometry",
+            "result": "clear",
+            "evidence": "Components are proportionally sized and aligned without stretching or skewing."
+          },
+          {
+            "criterion": "occlusion",
+            "result": "clear",
+            "evidence": "No components overlap or obscure content; all elements are clearly separated."
+          },
+          {
+            "criterion": "image-meaning",
+            "result": "clear",
+            "evidence": "The red mug image matches the description '빨간 머그 x 2' in the order summary."
+          },
+          {
+            "criterion": "chart-meaning",
+            "result": "not-applicable",
+            "evidence": "There are no charts or graphical representations of data to evaluate for meaning conflicts."
+          }
+        ],
+        "issues": []
+      }
+    }
+  ],
+  "visualComplete": true,
+  "sourceVersion": {
+    "commit": "64dc09802bf0a60fac431f9ee7a0a775bedd4d90",
+    "dirty": false,
+    "sourceHash": "e7ae3623d948981721ac7ea08ce4d749497f5a870a8dffe5a5d38081dc2e7d1f",
+    "promptVersion": "goal-first-v8-explicit-coordinates-korean-replace"
+  },
+  "executionPhase": "video-finalization",
+  "screenshot": "/artifacts/ba99c639-7005-4bb5-8432-2d9bfe2727d0/visual-3-screen.png",
+  "video": "/artifacts/ba99c639-7005-4bb5-8432-2d9bfe2727d0/page@a25b3561c591772593119941e5efee66.webm",
+  "endedAt": "2026-10-06T03:24:08.199Z"
+}

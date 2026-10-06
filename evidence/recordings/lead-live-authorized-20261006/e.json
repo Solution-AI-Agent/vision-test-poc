@@ -1,0 +1,257 @@
+{
+  "id": "b06c512d-32e2-4a02-8ecc-3559f1020cfa",
+  "input": {
+    "mode": "autonomous",
+    "url": "http://127.0.0.1:4311/store/e",
+    "task": "",
+    "expected": "",
+    "query": "Midscene AI demo"
+  },
+  "settings": {
+    "agentInstructions": "",
+    "model": "qwen/qwen3-vl-30b-a3b-instruct",
+    "family": "qwen3-vl",
+    "maxActions": 1,
+    "maxCalls": 4,
+    "maxSeconds": 60,
+    "maxTokens": 1536
+  },
+  "startedAt": "2026-10-06T03:05:07.717Z",
+  "status": "limited",
+  "outcome": "행동 한도 도달 · 포커스와 입력도 각각 포함",
+  "stage": "종료",
+  "calls": 4,
+  "actions": 1,
+  "tokens": 9552,
+  "cost": 0.0017875200000000001,
+  "steps": [
+    {
+      "index": 0,
+      "at": "2026-10-06T03:05:39.478Z",
+      "before": "/artifacts/b06c512d-32e2-4a02-8ecc-3559f1020cfa/model-request-3.jpg",
+      "after": "/artifacts/b06c512d-32e2-4a02-8ecc-3559f1020cfa/0-after.png",
+      "plan": {
+        "observation": "The recipient name field is visible and ready for input.",
+        "rationale": "The task requires entering 'John Doe' as the recipient name. The first step is to click on the recipient name field to focus it for typing.",
+        "action": {
+          "type": "click",
+          "x": 199,
+          "y": 707
+        },
+        "verdict": "continue",
+        "finding": null
+      },
+      "executed": true,
+      "toolCalls": [
+        {
+          "action": {
+            "type": "click",
+            "x": 199,
+            "y": 707
+          },
+          "completed": true,
+          "at": "2026-10-06T03:05:39.515Z"
+        }
+      ],
+      "unchanged": true
+    },
+    {
+      "index": 1,
+      "at": "2026-10-06T03:05:42.713Z",
+      "before": "/artifacts/b06c512d-32e2-4a02-8ecc-3559f1020cfa/model-request-4.jpg",
+      "after": "/artifacts/b06c512d-32e2-4a02-8ecc-3559f1020cfa/1-decision.png",
+      "plan": {
+        "observation": "The recipient name field is focused and ready for text input.",
+        "rationale": "To proceed with the task, I need to enter the recipient's name as specified. The field is already selected, so typing the name will update the input correctly.",
+        "action": {
+          "type": "type",
+          "text": "John Doe",
+          "x": 199,
+          "y": 707
+        },
+        "verdict": "continue",
+        "finding": null
+      },
+      "executed": false
+    }
+  ],
+  "findings": [],
+  "engine": "Midscene aiQuery / 1.14.0 → Playwright coordinates / 1.63.0",
+  "transport": [
+    {
+      "phase": "visual-review",
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/b06c512d-32e2-4a02-8ecc-3559f1020cfa/model-request-1.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 1613,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 15466,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791255909-YA51ur7jVW7ejAvs3D1Y",
+      "parsedOutput": {
+        "checks": [
+          {
+            "criterion": "readability",
+            "result": "clear",
+            "evidence": "All text is legible and fully visible, with no cutoff or compression issues."
+          },
+          {
+            "criterion": "geometry",
+            "result": "clear",
+            "evidence": "Components are properly proportioned and not stretched, skewed, or crushed."
+          },
+          {
+            "criterion": "occlusion",
+            "result": "clear",
+            "evidence": "No components overlap or obscure necessary content or controls."
+          },
+          {
+            "criterion": "image-meaning",
+            "result": "clear",
+            "evidence": "The product image (red mug) matches the description (빨간 머그)."
+          },
+          {
+            "criterion": "chart-meaning",
+            "result": "not-applicable",
+            "evidence": "There are no charts or graphs present in the screenshot."
+          }
+        ],
+        "issues": []
+      }
+    },
+    {
+      "phase": "goal-selection",
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/b06c512d-32e2-4a02-8ecc-3559f1020cfa/model-request-2.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 1225,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 3319,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791255924-gg8w8rLmE6g03KAdB3uP"
+    },
+    {
+      "phase": "model-plan",
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/b06c512d-32e2-4a02-8ecc-3559f1020cfa/model-request-3.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 1016,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 11530,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791255928-4Q2P5XmUlBTkWHwnMYwE",
+      "parsedOutput": {
+        "observation": "The recipient name field is visible and ready for input.",
+        "rationale": "The task requires entering 'John Doe' as the recipient name. The first step is to click on the recipient name field to focus it for typing.",
+        "action": {
+          "type": "click",
+          "x": 199,
+          "y": 707
+        },
+        "verdict": "continue",
+        "finding": null
+      }
+    },
+    {
+      "phase": "model-plan",
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/b06c512d-32e2-4a02-8ecc-3559f1020cfa/model-request-4.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 574,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 2322,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791255940-otWke81ruR5KVpupXCrl",
+      "parsedOutput": {
+        "observation": "The recipient name field is focused and ready for text input.",
+        "rationale": "To proceed with the task, I need to enter the recipient's name as specified. The field is already selected, so typing the name will update the input correctly.",
+        "action": {
+          "type": "type",
+          "text": "John Doe",
+          "x": 199,
+          "y": 707
+        },
+        "verdict": "continue",
+        "finding": null
+      }
+    }
+  ],
+  "visualAudits": [
+    {
+      "id": "a15fb4be-b2b4-45f2-9c07-2615659c1c84",
+      "at": "2026-10-06T03:05:08.906Z",
+      "checkpoint": "첫 화면",
+      "screenshot": "/artifacts/b06c512d-32e2-4a02-8ecc-3559f1020cfa/model-request-1.jpg",
+      "call": 1,
+      "status": "reviewed",
+      "promptVersion": "visual-qa-v1-independent-checklist",
+      "result": {
+        "checks": [
+          {
+            "criterion": "readability",
+            "result": "clear",
+            "evidence": "All text is legible and fully visible, with no cutoff or compression issues."
+          },
+          {
+            "criterion": "geometry",
+            "result": "clear",
+            "evidence": "Components are properly proportioned and not stretched, skewed, or crushed."
+          },
+          {
+            "criterion": "occlusion",
+            "result": "clear",
+            "evidence": "No components overlap or obscure necessary content or controls."
+          },
+          {
+            "criterion": "image-meaning",
+            "result": "clear",
+            "evidence": "The product image (red mug) matches the description (빨간 머그)."
+          },
+          {
+            "criterion": "chart-meaning",
+            "result": "not-applicable",
+            "evidence": "There are no charts or graphs present in the screenshot."
+          }
+        ],
+        "issues": []
+      }
+    }
+  ],
+  "visualComplete": true,
+  "sourceVersion": {
+    "commit": "3e1138a0afb37287f5e656cb0a422e0d4ba22e16",
+    "dirty": false,
+    "sourceHash": "3e08dc1c29657644103fd73726873a688af091404e679411edfec6a97a4e49db",
+    "promptVersion": "goal-first-v7-independent-visual-qa"
+  },
+  "executionPhase": "video-finalization",
+  "screenshot": "/artifacts/b06c512d-32e2-4a02-8ecc-3559f1020cfa/1-decision.png",
+  "goals": [
+    {
+      "hypothesis": "The order can be successfully submitted with valid input.",
+      "task": "Enter 'John Doe' as the recipient name, 'johndoe@example.com' as the email, set the quantity to 2, and click the 'Confirm Order' button.",
+      "expected": "The order is submitted successfully, and a confirmation message or success indicator appears on the screen.",
+      "basis": "The interface provides fields for entering recipient details and selecting quantity, along with a clear 'Confirm Order' button, indicating that submission is possible. The task is specific enough to execute and verify the expected outcome.",
+      "screenshot": "/artifacts/b06c512d-32e2-4a02-8ecc-3559f1020cfa/model-request-2.jpg",
+      "at": "2026-10-06T03:05:27.846Z"
+    }
+  ],
+  "video": "/artifacts/b06c512d-32e2-4a02-8ecc-3559f1020cfa/page@9cea66981794f5798dfb109321c7630f.webm",
+  "endedAt": "2026-10-06T03:05:42.952Z"
+}

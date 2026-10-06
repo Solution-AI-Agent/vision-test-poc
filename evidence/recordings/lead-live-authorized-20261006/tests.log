@@ -1,0 +1,66 @@
+
+> vision-qa-lab@0.1.0 test
+> npm run test --workspaces
+
+
+> @vision-qa/ui@0.1.0 test
+> tsc --noEmit -p tsconfig.json
+
+
+> @vision-qa/platform@0.1.0 test
+> vitest run
+
+
+ RUN  v5.0.3 /Users/zpro/.buzz/REPOS/vision-test-delivery/apps/platform
+
+ ❯ server/vision.test.ts (12 tests | 1 failed) 20958ms
+   × focus and screenshot input confirmation reject silent input loss despite a false model claim within tool/request limits 2479ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  server/vision.test.ts > focus and screenshot input confirmation reject silent input loss despite a false model claim within tool/request limits
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ server/vision.test.ts:530:38
+    528|     if (missingFocus) {
+    529|       expect(actualText).toBe("");
+    530|       expect(run.steps[0].unchanged).toBe(true);
+       |                                      ^
+    531|       expect(run.steps[0].inputConfirmation?.status).toBe("not-visible…
+    532|       expect(run.status).toBe("limited");
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 6 passed (7)
+      Tests  1 failed | 36 passed (37)
+   Start at  12:17:07
+   Duration  21.80s (tests 89%, import 10%, transform 1%)
+
+npm error Lifecycle script `test` failed with error:
+npm error code 1
+npm error path /Users/zpro/.buzz/REPOS/vision-test-delivery/apps/platform
+npm error workspace @vision-qa/platform@0.1.0
+npm error location /Users/zpro/.buzz/REPOS/vision-test-delivery/apps/platform
+npm error command failed
+npm error command sh -c vitest run
+
+
+> @vision-qa/sample@0.1.0 test
+> vitest run
+
+
+ RUN  v5.0.3 /Users/zpro/.buzz/REPOS/vision-test-delivery/sample-site
+
+
+ Test Files  1 passed (1)
+      Tests  2 passed (2)
+   Start at  12:17:29
+   Duration  94ms (import 56%, transform 33%, tests 8%, worker 4%)
+

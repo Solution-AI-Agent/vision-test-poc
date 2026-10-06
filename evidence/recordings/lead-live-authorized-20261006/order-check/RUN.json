@@ -1,0 +1,446 @@
+{
+  "id": "ea83d83f-482e-4a13-9e1c-c5a2ba589687",
+  "input": {
+    "mode": "scenario",
+    "url": "http://127.0.0.1:4311/store/a",
+    "task": "빨간 머그의 수량을 2개로 바꾸고 받는 분은 테스터, 이메일은 qa@example.test로 입력한 다음 주문을 확정하세요. 화면의 주문 완료와 영수증을 확인하세요.",
+    "expected": "테스터의 주문이 완료되고 영수증에 빨간 머그 2개, 합계 24달러가 표시됩니다.",
+    "query": "Midscene AI demo"
+  },
+  "settings": {
+    "agentInstructions": "",
+    "model": "qwen/qwen3-vl-30b-a3b-instruct",
+    "family": "qwen3-vl",
+    "maxActions": 16,
+    "maxCalls": 18,
+    "maxSeconds": 180,
+    "maxTokens": 1536
+  },
+  "startedAt": "2026-10-06T03:25:03.622Z",
+  "status": "failed",
+  "outcome": "모델 공급자에 연결하지 못했습니다.",
+  "stage": "실패 · 독립 시각 QA 검사",
+  "calls": 7,
+  "actions": 6,
+  "tokens": 14724,
+  "cost": 0.00254425,
+  "steps": [
+    {
+      "index": 0,
+      "at": "2026-10-06T03:25:19.745Z",
+      "before": "/artifacts/ea83d83f-482e-4a13-9e1c-c5a2ba589687/model-request-2.jpg",
+      "after": "/artifacts/ea83d83f-482e-4a13-9e1c-c5a2ba589687/0-after.png",
+      "plan": {
+        "observation": "The quantity input field for the red mug is visible with a current value of 1. The recipient and email input fields are also visible.",
+        "rationale": "To proceed with the user's task, the quantity must be updated to 2, and the recipient and email fields need to be filled with the specified values before submitting the order.",
+        "action": {
+          "type": "type",
+          "text": "2",
+          "x": 384,
+          "y": 444
+        },
+        "verdict": "continue",
+        "finding": null
+      },
+      "executed": true,
+      "toolCalls": [
+        {
+          "action": {
+            "type": "click",
+            "x": 384,
+            "y": 444
+          },
+          "completed": true,
+          "at": "2026-10-06T03:25:19.779Z"
+        },
+        {
+          "action": {
+            "type": "key",
+            "key": "ControlOrMeta+A"
+          },
+          "completed": true,
+          "at": "2026-10-06T03:25:19.787Z"
+        },
+        {
+          "action": {
+            "type": "type",
+            "text": "2",
+            "x": 384,
+            "y": 444
+          },
+          "completed": true,
+          "at": "2026-10-06T03:25:19.832Z"
+        }
+      ],
+      "inputBefore": "/artifacts/ea83d83f-482e-4a13-9e1c-c5a2ba589687/0-input-ready.png",
+      "unchanged": false,
+      "inputConfirmation": {
+        "status": "verified",
+        "visibleText": "2",
+        "reason": "목표 좌표(300, 617)에 위치한 수량 입력 필드에서 '2'라는 값이 정확히 표시되고 있음",
+        "screenshot": "/artifacts/ea83d83f-482e-4a13-9e1c-c5a2ba589687/model-request-3.jpg",
+        "call": 3
+      }
+    },
+    {
+      "index": 1,
+      "at": "2026-10-06T03:25:31.859Z",
+      "before": "/artifacts/ea83d83f-482e-4a13-9e1c-c5a2ba589687/model-request-5.jpg",
+      "after": "/artifacts/ea83d83f-482e-4a13-9e1c-c5a2ba589687/1-after.png",
+      "plan": {
+        "observation": "The quantity input field shows '2', and the recipient and email fields are visible. The quantity is already set to 2.",
+        "rationale": "The user has already entered '2' in the quantity field, and the next step is to enter the recipient and email information.",
+        "action": {
+          "type": "type",
+          "text": "테스터",
+          "x": 256,
+          "y": 509
+        },
+        "verdict": "continue",
+        "finding": null
+      },
+      "executed": true,
+      "toolCalls": [
+        {
+          "action": {
+            "type": "click",
+            "x": 256,
+            "y": 509
+          },
+          "completed": true,
+          "at": "2026-10-06T03:25:31.895Z"
+        },
+        {
+          "action": {
+            "type": "key",
+            "key": "ControlOrMeta+A"
+          },
+          "completed": true,
+          "at": "2026-10-06T03:25:31.899Z"
+        },
+        {
+          "action": {
+            "type": "type",
+            "text": "테스터",
+            "x": 256,
+            "y": 509
+          },
+          "completed": true,
+          "at": "2026-10-06T03:25:31.942Z"
+        }
+      ],
+      "inputBefore": "/artifacts/ea83d83f-482e-4a13-9e1c-c5a2ba589687/1-input-ready.png",
+      "unchanged": false,
+      "inputConfirmation": {
+        "status": "not-visible",
+        "visibleText": "",
+        "reason": "입력 필드에 '테스터'라는 값이 보이지 않음",
+        "screenshot": "/artifacts/ea83d83f-482e-4a13-9e1c-c5a2ba589687/model-request-6.jpg",
+        "call": 6
+      }
+    }
+  ],
+  "findings": [],
+  "engine": "Midscene aiQuery / 1.14.0 → Playwright coordinates / 1.63.0",
+  "transport": [
+    {
+      "phase": "visual-review",
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/ea83d83f-482e-4a13-9e1c-c5a2ba589687/model-request-1.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 1219,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 12128,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791257105-HxeoK4XjaIx7MyxqKhMP",
+      "parsedOutput": {
+        "checks": [
+          {
+            "criterion": "readability",
+            "result": "clear",
+            "evidence": "All text is fully visible and legible, including product details, pricing, and instructions."
+          },
+          {
+            "criterion": "geometry",
+            "result": "clear",
+            "evidence": "All components are properly proportioned and aligned; no stretching or crushing is visible."
+          },
+          {
+            "criterion": "occlusion",
+            "result": "clear",
+            "evidence": "No overlapping occurs between components; all elements are clearly separated."
+          },
+          {
+            "criterion": "image-meaning",
+            "result": "clear",
+            "evidence": "The image of the red mug matches the product description '빨간 머그' and the quantity."
+          },
+          {
+            "criterion": "chart-meaning",
+            "result": "not-applicable",
+            "evidence": "There are no charts or graphs present on the page."
+          }
+        ],
+        "issues": []
+      }
+    },
+    {
+      "phase": "model-plan",
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/ea83d83f-482e-4a13-9e1c-c5a2ba589687/model-request-2.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 595,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 2573,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791257117-9HjbJRp3uxo5vbxQVRox",
+      "parsedOutput": {
+        "observation": "The quantity input field for the red mug is visible with a current value of 1. The recipient and email input fields are also visible.",
+        "rationale": "To proceed with the user's task, the quantity must be updated to 2, and the recipient and email fields need to be filled with the specified values before submitting the order.",
+        "action": {
+          "type": "type",
+          "text": "2",
+          "x": 300,
+          "y": 617
+        },
+        "verdict": "continue",
+        "finding": null
+      }
+    },
+    {
+      "phase": "input-confirmation",
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/ea83d83f-482e-4a13-9e1c-c5a2ba589687/model-request-3.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 291,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 2193,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791257120-vnT0wvGqMwAmmX5Z50qL",
+      "parsedOutput": {
+        "status": "verified",
+        "visibleText": "2",
+        "reason": "목표 좌표(300, 617)에 위치한 수량 입력 필드에서 '2'라는 값이 정확히 표시되고 있음"
+      }
+    },
+    {
+      "phase": "visual-review",
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/ea83d83f-482e-4a13-9e1c-c5a2ba589687/model-request-4.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 1434,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 3736,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791257122-LPTIBENyjF1lb7zcI0OR",
+      "parsedOutput": {
+        "checks": [
+          {
+            "criterion": "readability",
+            "result": "clear",
+            "evidence": "All text on the page is fully visible and legible, including headings, labels, and numerical values."
+          },
+          {
+            "criterion": "geometry",
+            "result": "clear",
+            "evidence": "Components are properly proportioned and aligned; no stretching or distortion is observed in any element."
+          },
+          {
+            "criterion": "occlusion",
+            "result": "clear",
+            "evidence": "No overlapping occurs between components; all elements are clearly distinguishable from one another."
+          },
+          {
+            "criterion": "image-meaning",
+            "result": "clear",
+            "evidence": "The image of the red mug matches the described product '빨간 머그' (red mug) in the order summary."
+          },
+          {
+            "criterion": "chart-meaning",
+            "result": "not-applicable",
+            "evidence": "There are no charts or graphical representations of data present on the page."
+          }
+        ],
+        "issues": []
+      }
+    },
+    {
+      "phase": "model-plan",
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/ea83d83f-482e-4a13-9e1c-c5a2ba589687/model-request-5.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 531,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 5125,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791257126-I35yliLMPeIZOtBWbc7r",
+      "parsedOutput": {
+        "observation": "The quantity input field shows '2', and the recipient and email fields are visible. The quantity is already set to 2.",
+        "rationale": "The user has already entered '2' in the quantity field, and the next step is to enter the recipient and email information.",
+        "action": {
+          "type": "type",
+          "text": "테스터",
+          "x": 200,
+          "y": 707
+        },
+        "verdict": "continue",
+        "finding": null
+      }
+    },
+    {
+      "phase": "input-confirmation",
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/ea83d83f-482e-4a13-9e1c-c5a2ba589687/model-request-6.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 279,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 2323,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791257132-dTdBEfhNaUg32G2N0iBo",
+      "parsedOutput": {
+        "status": "not-visible",
+        "visibleText": "",
+        "reason": "입력 필드에 '테스터'라는 값이 보이지 않음"
+      }
+    },
+    {
+      "phase": "visual-review",
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/ea83d83f-482e-4a13-9e1c-c5a2ba589687/model-request-7.jpg"
+    }
+  ],
+  "visualAudits": [
+    {
+      "id": "3fba93ed-fb9a-46c9-a8db-9459d4264cc8",
+      "at": "2026-10-06T03:25:04.835Z",
+      "checkpoint": "첫 화면",
+      "screenshot": "/artifacts/ea83d83f-482e-4a13-9e1c-c5a2ba589687/model-request-1.jpg",
+      "call": 1,
+      "status": "reviewed",
+      "promptVersion": "visual-qa-v1-independent-checklist",
+      "result": {
+        "checks": [
+          {
+            "criterion": "readability",
+            "result": "clear",
+            "evidence": "All text is fully visible and legible, including product details, pricing, and instructions."
+          },
+          {
+            "criterion": "geometry",
+            "result": "clear",
+            "evidence": "All components are properly proportioned and aligned; no stretching or crushing is visible."
+          },
+          {
+            "criterion": "occlusion",
+            "result": "clear",
+            "evidence": "No overlapping occurs between components; all elements are clearly separated."
+          },
+          {
+            "criterion": "image-meaning",
+            "result": "clear",
+            "evidence": "The image of the red mug matches the product description '빨간 머그' and the quantity."
+          },
+          {
+            "criterion": "chart-meaning",
+            "result": "not-applicable",
+            "evidence": "There are no charts or graphs present on the page."
+          }
+        ],
+        "issues": []
+      }
+    },
+    {
+      "id": "332f0da5-d1b9-4fef-8557-3412c368d09e",
+      "at": "2026-10-06T03:25:22.846Z",
+      "checkpoint": "행동 1 이후",
+      "screenshot": "/artifacts/ea83d83f-482e-4a13-9e1c-c5a2ba589687/model-request-4.jpg",
+      "call": 4,
+      "status": "reviewed",
+      "promptVersion": "visual-qa-v1-independent-checklist",
+      "result": {
+        "checks": [
+          {
+            "criterion": "readability",
+            "result": "clear",
+            "evidence": "All text on the page is fully visible and legible, including headings, labels, and numerical values."
+          },
+          {
+            "criterion": "geometry",
+            "result": "clear",
+            "evidence": "Components are properly proportioned and aligned; no stretching or distortion is observed in any element."
+          },
+          {
+            "criterion": "occlusion",
+            "result": "clear",
+            "evidence": "No overlapping occurs between components; all elements are clearly distinguishable from one another."
+          },
+          {
+            "criterion": "image-meaning",
+            "result": "clear",
+            "evidence": "The image of the red mug matches the described product '빨간 머그' (red mug) in the order summary."
+          },
+          {
+            "criterion": "chart-meaning",
+            "result": "not-applicable",
+            "evidence": "There are no charts or graphical representations of data present on the page."
+          }
+        ],
+        "issues": []
+      }
+    },
+    {
+      "id": "c6537a67-2574-4b97-8d18-be1eb884fbc9",
+      "at": "2026-10-06T03:25:35.098Z",
+      "checkpoint": "행동 2 이후",
+      "screenshot": "/artifacts/ea83d83f-482e-4a13-9e1c-c5a2ba589687/model-request-7.jpg",
+      "call": 7,
+      "status": "inconclusive",
+      "promptVersion": "visual-qa-v1-independent-checklist",
+      "reason": "시각 검사 요청/판독 실패 · 통과 아님"
+    }
+  ],
+  "visualComplete": false,
+  "sourceVersion": {
+    "commit": "64dc09802bf0a60fac431f9ee7a0a775bedd4d90",
+    "dirty": false,
+    "sourceHash": "e7ae3623d948981721ac7ea08ce4d749497f5a870a8dffe5a5d38081dc2e7d1f",
+    "promptVersion": "goal-first-v8-explicit-coordinates-korean-replace"
+  },
+  "executionPhase": "visual-review",
+  "screenshot": "/artifacts/ea83d83f-482e-4a13-9e1c-c5a2ba589687/visual-2-screen.png",
+  "failureStage": "공통 기준으로 독립 시각 QA 검사",
+  "diagnostic": {
+    "code": "MODEL_NETWORK_FAILED",
+    "phase": "visual-review",
+    "message": "모델 공급자에 연결하지 못했습니다.",
+    "action": "OpenRouter 네트워크·프록시·방화벽을 확인하세요. 키 연결 확인과 실제 이미지 요청은 별개입니다."
+  },
+  "error": "모델 공급자에 연결하지 못했습니다.",
+  "video": "/artifacts/ea83d83f-482e-4a13-9e1c-c5a2ba589687/page@cc4052b1b109dada7c7f55134daba27d.webm",
+  "endedAt": "2026-10-06T03:26:05.156Z"
+}

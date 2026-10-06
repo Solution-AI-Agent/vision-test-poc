@@ -1,0 +1,82 @@
+{
+  "site": "e",
+  "model": "qwen/qwen3-vl-235b-a22b-instruct",
+  "sourceRun": "b06c512d-32e2-4a02-8ecc-3559f1020cfa",
+  "screenshot": "/artifacts/b06c512d-32e2-4a02-8ecc-3559f1020cfa/model-request-1.jpg",
+  "reference": "/artifacts/594a8eae-e521-4adb-aa2b-22a056b614b1/model-request-1.jpg",
+  "inputSha256": "457e792ec2480e6069f888550203d772afbdd9b90591570e383f7e8172934eea",
+  "referenceSha256": "e0747b0d978aaaea3fef88c98c4978f0c0948d5d47dd3f583d92fcc710db9632",
+  "elapsedMs": 4136,
+  "response": {
+    "id": "gen-1791256304-YU7JcTtIoAuVZ1e1OXB2",
+    "object": "chat.completion",
+    "created": 1791256304,
+    "model": "qwen/qwen3-vl-235b-a22b-instruct",
+    "provider": "Alibaba",
+    "system_fingerprint": null,
+    "service_tier": null,
+    "choices": [
+      {
+        "index": 0,
+        "logprobs": null,
+        "finish_reason": "stop",
+        "native_finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"differences\": [\n    {\n      \"observed\": \"둘째 이미지 하단에 '주문 확정하기' 버튼이 추가됨. 첫째 이미지에는 없음.\",\n      \"impact\": \"사용자가 주문을 최종 확인하고 진행할 수 있는 액션 버튼이 생겼음. 기능적으로 필수일 수 있음.\",\n      \"verdict\": \"suspected\",\n      \"bbox_1000\": [86, 925, 187, 975]\n    }\n  ],\n  \"summary\": \"하단에 '주문 확정하기' 버튼이 추가되었으나, 이는 기능적 필요에 따른 변경일 수 있어 결함으로 단정할 수 없음.\"\n}",
+          "refusal": null,
+          "reasoning": null
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 2149,
+      "completion_tokens": 171,
+      "total_tokens": 2320,
+      "cost": 0.00073658,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.00073658,
+        "upstream_inference_prompt_cost": 0.00055874,
+        "upstream_inference_completions_cost": 0.00017784
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    }
+  },
+  "parsed": {
+    "differences": [
+      {
+        "observed": "둘째 이미지 하단에 '주문 확정하기' 버튼이 추가됨. 첫째 이미지에는 없음.",
+        "impact": "사용자가 주문을 최종 확인하고 진행할 수 있는 액션 버튼이 생겼음. 기능적으로 필수일 수 있음.",
+        "verdict": "suspected",
+        "bbox_1000": [
+          86,
+          925,
+          187,
+          975
+        ]
+      }
+    ],
+    "summary": "하단에 '주문 확정하기' 버튼이 추가되었으나, 이는 기능적 필요에 따른 변경일 수 있어 결함으로 단정할 수 없음."
+  },
+  "localized": [
+    {
+      "box": {
+        "x": 0.086,
+        "y": 0.925,
+        "width": 0.101,
+        "height": 0.05
+      }
+    }
+  ]
+}

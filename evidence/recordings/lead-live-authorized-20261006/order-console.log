@@ -1,0 +1,9 @@
+[Midscene] call AI error SafeExecutionError: MODEL_NETWORK_FAILED
+    at Completions.client.chat.completions.create (/Users/zpro/.buzz/REPOS/vision-test-delivery/apps/platform/server/runner.ts:192:66)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async callChatCompletionNonStreaming (/Users/zpro/.buzz/REPOS/vision-test-delivery/node_modules/@midscene/core/src/ai-model/service-caller/openai/chat-completion/non-stream.ts:16:18)
+    at async callOpenAI (/Users/zpro/.buzz/REPOS/vision-test-delivery/node_modules/@midscene/core/src/ai-model/service-caller/openai/call-openai.ts:65:11) {
+  code: 'MODEL_NETWORK_FAILED',
+  httpStatus: undefined
+}
+{"id":"ea83d83f-482e-4a13-9e1c-c5a2ba589687","status":"failed","outcome":"모델 공급자에 연결하지 못했습니다.","calls":7,"actions":6,"cost":0.00254425,"steps":[{"action":{"type":"type","text":"2","x":384,"y":444},"executed":true,"confirmation":{"status":"verified","visibleText":"2","reason":"목표 좌표(300, 617)에 위치한 수량 입력 필드에서 '2'라는 값이 정확히 표시되고 있음","screenshot":"/artifacts/ea83d83f-482e-4a13-9e1c-c5a2ba589687/model-request-3.jpg","call":3},"observation":"The quantity input field for the red mug is visible with a current value of 1. The recipient and email input fields are also visible."},{"action":{"type":"type","text":"테스터","x":256,"y":509},"executed":true,"confirmation":{"status":"not-visible","visibleText":"","reason":"입력 필드에 '테스터'라는 값이 보이지 않음","screenshot":"/artifacts/ea83d83f-482e-4a13-9e1c-c5a2ba589687/model-request-6.jpg","call":6},"observation":"The quantity input field shows '2', and the recipient and email fields are visible. The quantity is already set to 2."}],"diagnostic":{"code":"MODEL_NETWORK_FAILED","phase":"visual-review","message":"모델 공급자에 연결하지 못했습니다.","action":"OpenRouter 네트워크·프록시·방화벽을 확인하세요. 키 연결 확인과 실제 이미지 요청은 별개입니다."}}

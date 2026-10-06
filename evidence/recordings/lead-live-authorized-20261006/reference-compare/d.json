@@ -1,0 +1,101 @@
+{
+  "site": "d",
+  "model": "qwen/qwen3-vl-235b-a22b-instruct",
+  "sourceRun": "7bb40569-8097-4677-b7d4-257c7bcc6b3e",
+  "screenshot": "/artifacts/7bb40569-8097-4677-b7d4-257c7bcc6b3e/model-request-1.jpg",
+  "reference": "/artifacts/594a8eae-e521-4adb-aa2b-22a056b614b1/model-request-1.jpg",
+  "inputSha256": "534c9e544db54afac028fb664eb0a13ce314b419051fd518623f0e048f84444e",
+  "referenceSha256": "e0747b0d978aaaea3fef88c98c4978f0c0948d5d47dd3f583d92fcc710db9632",
+  "elapsedMs": 6695,
+  "response": {
+    "id": "gen-1791256298-6094QquhH693KVmOpPV8",
+    "object": "chat.completion",
+    "created": 1791256298,
+    "model": "qwen/qwen3-vl-235b-a22b-instruct",
+    "provider": "Alibaba",
+    "system_fingerprint": null,
+    "service_tier": null,
+    "choices": [
+      {
+        "index": 0,
+        "logprobs": null,
+        "finish_reason": "stop",
+        "native_finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"differences\": [\n    {\n      \"observed\": \"주문 요약 영역에서 상품 이미지 아래에 있던 가격($12.00)과 '무료 배송 포함' 문구가 사라졌고, 그 자리에 '정성껏 포장해 일상으로 보내드립니다.' 문구가 추가됨.\",\n      \"impact\": \"사용자는 주문 금액을 즉시 확인할 수 없어 결제 전 혼란을 겪을 수 있음. 무료 배송 여부도 명시되지 않아 불확실성 유발.\",\n      \"verdict\": \"defect\",\n      \"bbox_1000\": [530, 650, 900, 780]\n    },\n    {\n      \"observed\": \"이번 달 인기 상품 비율 섹션의 위치가 상품 이미지 바로 아래로 이동했으며, 기존 가격 영역을 덮음.\",\n      \"impact\": \"정보 순서가 변경되어 사용자가 예상한 위치에서 정보를 찾지 못할 수 있음. 시각적 흐름 방해.\",\n      \"verdict\": \"suspected\",\n      \"bbox_1000\": [530, 550, 900, 750]\n    }\n  ],\n  \"summary\": \"가격 및 무료 배송 정보 누락은 결함, 정보 배치 변경은 의심 사항.\"\n}",
+          "refusal": null,
+          "reasoning": null
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 2149,
+      "completion_tokens": 327,
+      "total_tokens": 2476,
+      "cost": 0.00089882,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.00089882,
+        "upstream_inference_prompt_cost": 0.00055874,
+        "upstream_inference_completions_cost": 0.00034008
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    }
+  },
+  "parsed": {
+    "differences": [
+      {
+        "observed": "주문 요약 영역에서 상품 이미지 아래에 있던 가격($12.00)과 '무료 배송 포함' 문구가 사라졌고, 그 자리에 '정성껏 포장해 일상으로 보내드립니다.' 문구가 추가됨.",
+        "impact": "사용자는 주문 금액을 즉시 확인할 수 없어 결제 전 혼란을 겪을 수 있음. 무료 배송 여부도 명시되지 않아 불확실성 유발.",
+        "verdict": "defect",
+        "bbox_1000": [
+          530,
+          650,
+          900,
+          780
+        ]
+      },
+      {
+        "observed": "이번 달 인기 상품 비율 섹션의 위치가 상품 이미지 바로 아래로 이동했으며, 기존 가격 영역을 덮음.",
+        "impact": "정보 순서가 변경되어 사용자가 예상한 위치에서 정보를 찾지 못할 수 있음. 시각적 흐름 방해.",
+        "verdict": "suspected",
+        "bbox_1000": [
+          530,
+          550,
+          900,
+          750
+        ]
+      }
+    ],
+    "summary": "가격 및 무료 배송 정보 누락은 결함, 정보 배치 변경은 의심 사항."
+  },
+  "localized": [
+    {
+      "box": {
+        "x": 0.53,
+        "y": 0.65,
+        "width": 0.37,
+        "height": 0.13
+      }
+    },
+    {
+      "box": {
+        "x": 0.53,
+        "y": 0.55,
+        "width": 0.37,
+        "height": 0.2
+      }
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+
+> vision-qa-lab@0.1.0 build
+> tsc --noEmit && npm run build --workspaces
+
+
+> @vision-qa/ui@0.1.0 build
+> tsc --noEmit -p tsconfig.json
+
+
+> @vision-qa/platform@0.1.0 build
+> tsc --noEmit -p tsconfig.json && vite build
+
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 1788 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                              0.35 kB │ gzip:   0.26 kB
+dist/assets/geist-cyrillic-ext-wght-normal-DjL33-gN.woff2    7.42 kB
+dist/assets/geist-vietnamese-wght-normal-6IgcOCM7.woff2      8.00 kB
+dist/assets/geist-cyrillic-wght-normal-BEAKL7Jp.woff2       15.08 kB
+dist/assets/geist-latin-ext-wght-normal-DC-KSUi6.woff2      16.51 kB
+dist/assets/geist-latin-wght-normal-BgDaEnEv.woff2          29.40 kB
+dist/assets/index-BGXQ4Pzc.css                              63.58 kB │ gzip:  11.74 kB
+dist/assets/index-8BnfhR9u.js                              503.94 kB │ gzip: 156.98 kB
+
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 207ms
+
+> @vision-qa/sample@0.1.0 build
+> tsc --noEmit -p tsconfig.json && vite build
+
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 1779 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                              0.38 kB │ gzip:   0.30 kB
+dist/assets/geist-cyrillic-ext-wght-normal-DjL33-gN.woff2    7.42 kB
+dist/assets/geist-vietnamese-wght-normal-6IgcOCM7.woff2      8.00 kB
+dist/assets/geist-cyrillic-wght-normal-BEAKL7Jp.woff2       15.08 kB
+dist/assets/geist-latin-ext-wght-normal-DC-KSUi6.woff2      16.51 kB
+dist/assets/geist-latin-wght-normal-BgDaEnEv.woff2          29.40 kB
+dist/assets/index-CaVain3o.css                              64.25 kB │ gzip:  11.82 kB
+dist/assets/index-DjwfJ9R-.js                              379.39 kB │ gzip: 118.88 kB
+
+✓ built in 135ms

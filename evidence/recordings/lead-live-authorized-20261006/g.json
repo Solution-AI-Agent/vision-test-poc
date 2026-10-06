@@ -1,0 +1,216 @@
+{
+  "id": "e6133493-dcce-4af5-b6fd-a069b8d8a8a7",
+  "input": {
+    "mode": "autonomous",
+    "url": "http://127.0.0.1:4311/store/g",
+    "task": "",
+    "expected": "",
+    "query": "Midscene AI demo"
+  },
+  "settings": {
+    "agentInstructions": "",
+    "model": "qwen/qwen3-vl-30b-a3b-instruct",
+    "family": "qwen3-vl",
+    "maxActions": 1,
+    "maxCalls": 4,
+    "maxSeconds": 60,
+    "maxTokens": 1536
+  },
+  "startedAt": "2026-10-06T03:06:14.194Z",
+  "status": "failed",
+  "outcome": "모델 응답을 계획 형식으로 검증하지 못했습니다.",
+  "stage": "실패 · 화면 관찰·계획",
+  "calls": 4,
+  "actions": 0,
+  "tokens": 9743,
+  "cost": 0.00209032,
+  "steps": [],
+  "findings": [],
+  "engine": "Midscene aiQuery / 1.14.0 → Playwright coordinates / 1.63.0",
+  "transport": [
+    {
+      "phase": "visual-review",
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/e6133493-dcce-4af5-b6fd-a069b8d8a8a7/model-request-1.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 1990,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 5988,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791255976-9rozbfn5HTSRsEbPgwti",
+      "parsedOutput": {
+        "checks": [
+          {
+            "criterion": "readability",
+            "result": "clear",
+            "evidence": "All text is fully visible and legible, with no truncation or compression."
+          },
+          {
+            "criterion": "geometry",
+            "result": "clear",
+            "evidence": "Components and text are proportionally sized and aligned without distortion."
+          },
+          {
+            "criterion": "occlusion",
+            "result": "not-applicable",
+            "evidence": "No overlapping elements obscure content or controls."
+          },
+          {
+            "criterion": "image-meaning",
+            "result": "clear",
+            "evidence": "The image of the red mug matches the product description."
+          },
+          {
+            "criterion": "chart-meaning",
+            "result": "not-applicable",
+            "evidence": "There are no charts or graphical data representations in the screenshot."
+          }
+        ],
+        "issues": []
+      }
+    },
+    {
+      "phase": "goal-selection",
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/e6133493-dcce-4af5-b6fd-a069b8d8a8a7/model-request-2.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 1324,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 10994,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791255981-z1VkA2CUwp11YwL2OAPf"
+    },
+    {
+      "phase": "model-plan",
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/e6133493-dcce-4af5-b6fd-a069b8d8a8a7/model-request-3.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 770,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 2849,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791255992-Z8FS8d6RceIzyucF7ui6",
+      "parsedOutput": {
+        "observation": "The product '빨간 머그' is selected, quantity is set to 1, and the email field is ready for input.",
+        "rationale": "The task requires selecting the product, setting the quantity, entering the correct email, and submitting the order. The product and quantity are already correctly set. The next step is to update the email field.",
+        "action": {
+          "type": "click",
+          "x": 194,
+          "y": 730
+        },
+        "verdict": "continue",
+        "finding": null
+      },
+      "validationError": "action.y"
+    },
+    {
+      "phase": "model-plan",
+      "images": 1,
+      "texts": 3,
+      "screenshot": "/artifacts/e6133493-dcce-4af5-b6fd-a069b8d8a8a7/model-request-4.jpg",
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 767,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 8749,
+      "responseModel": "qwen/qwen3-vl-30b-a3b-instruct",
+      "requestId": "gen-1791255995-32FEriHf6IEWyJHmpdLM",
+      "parsedOutput": {
+        "observation": "The product '빨간 머그' is selected, quantity is set to 1, and the email field is ready for input.",
+        "rationale": "The task requires selecting the product, setting the quantity, entering the correct email, and submitting the order. The product and quantity are already correctly set. The next step is to update the email field.",
+        "action": {
+          "type": "type",
+          "text": "test@example.com",
+          "x": 194,
+          "y": 730
+        },
+        "verdict": "continue",
+        "finding": null
+      }
+    }
+  ],
+  "visualAudits": [
+    {
+      "id": "d35f93ef-4f0b-422b-9731-5154e7ffd294",
+      "at": "2026-10-06T03:06:15.378Z",
+      "checkpoint": "첫 화면",
+      "screenshot": "/artifacts/e6133493-dcce-4af5-b6fd-a069b8d8a8a7/model-request-1.jpg",
+      "call": 1,
+      "status": "reviewed",
+      "promptVersion": "visual-qa-v1-independent-checklist",
+      "result": {
+        "checks": [
+          {
+            "criterion": "readability",
+            "result": "clear",
+            "evidence": "All text is fully visible and legible, with no truncation or compression."
+          },
+          {
+            "criterion": "geometry",
+            "result": "clear",
+            "evidence": "Components and text are proportionally sized and aligned without distortion."
+          },
+          {
+            "criterion": "occlusion",
+            "result": "not-applicable",
+            "evidence": "No overlapping elements obscure content or controls."
+          },
+          {
+            "criterion": "image-meaning",
+            "result": "clear",
+            "evidence": "The image of the red mug matches the product description."
+          },
+          {
+            "criterion": "chart-meaning",
+            "result": "not-applicable",
+            "evidence": "There are no charts or graphical data representations in the screenshot."
+          }
+        ],
+        "issues": []
+      }
+    }
+  ],
+  "visualComplete": true,
+  "sourceVersion": {
+    "commit": "3e1138a0afb37287f5e656cb0a422e0d4ba22e16",
+    "dirty": false,
+    "sourceHash": "3e08dc1c29657644103fd73726873a688af091404e679411edfec6a97a4e49db",
+    "promptVersion": "goal-first-v7-independent-visual-qa"
+  },
+  "executionPhase": "model-plan",
+  "screenshot": "/artifacts/e6133493-dcce-4af5-b6fd-a069b8d8a8a7/0-before.png",
+  "goals": [
+    {
+      "hypothesis": "The order form is functional and allows users to select a product, enter recipient information, and submit the order.",
+      "task": "Select the product '빨간 머그', set the quantity to 1, enter the email 'test@example.com' in the recipient field, and submit the order.",
+      "expected": "The order is successfully submitted, and a confirmation message is displayed.",
+      "basis": "The page provides a clear interface for selecting a product, entering recipient information, and submitting the order. The presence of a submit button and the ability to enter an email address indicate that the form is functional.",
+      "screenshot": "/artifacts/e6133493-dcce-4af5-b6fd-a069b8d8a8a7/model-request-2.jpg",
+      "at": "2026-10-06T03:06:32.503Z"
+    }
+  ],
+  "failureStage": "모델 응답 형식 교정 · 행동 미실행",
+  "diagnostic": {
+    "code": "MODEL_RESPONSE_INVALID",
+    "phase": "model-plan",
+    "message": "모델 응답을 계획 형식으로 검증하지 못했습니다.",
+    "action": "모델의 구조화된 응답 지원과 출력 토큰 설정을 확인하세요. 이 실패는 제품 결함 판정이 아닙니다."
+  },
+  "error": "모델 응답을 계획 형식으로 검증하지 못했습니다.",
+  "video": "/artifacts/e6133493-dcce-4af5-b6fd-a069b8d8a8a7/page@c886616822e372dc4d54f3ce2ae7607d.webm",
+  "endedAt": "2026-10-06T03:06:44.290Z"
+}
