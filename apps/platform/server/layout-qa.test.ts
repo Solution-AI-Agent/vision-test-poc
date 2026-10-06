@@ -1,3 +1,4 @@
+import {execFileSync} from 'node:child_process';
 import {it,expect} from 'vitest';
 import {chromium} from 'playwright';
 import {readFile,mkdtemp,rm} from 'node:fs/promises';
@@ -68,3 +69,9 @@ it('unstable capture never gets an evidence box, and abort preserves already sav
   expect(saved).toBeGreaterThan(0);expect(aborted.findings).toHaveLength(1);expect(aborted.findings[0].layout?.verdict).toBe('not-checked');expect(aborted.layoutAudits![0].reason).toContain('의심을 보존');
  }finally{await b.close();await rm(folder,{recursive:true,force:true});}
 },30000);
+
+it('read-only scanner also works under the production tsx launcher',()=>{
+ const code=`import {chromium} from 'playwright';import {scanLayout} from './server/layout-qa.ts';const b=await chromium.launch();try{const p=await b.newPage({viewport:{width:1280,height:720}});await p.setContent(${JSON.stringify(fixture(opaque))});console.log(JSON.stringify(await scanLayout(p)));}finally{await b.close();}`;
+ const output=execFileSync(process.execPath,['--import','tsx','--input-type=module','-e',code],{encoding:'utf8',timeout:20000});
+ expect(JSON.parse(output).candidates).toHaveLength(1);
+},25000);

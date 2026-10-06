@@ -22,7 +22,7 @@ export function layoutPrompt(candidates:LayoutCandidate[]) {
 }
 // Read-only geometry assistance, explicitly distinct from image-only QA.
 export async function scanLayout(page:Page):Promise<{candidates:LayoutCandidate[];warnings:string[]}> {
- return page.evaluate(()=>{
+ const scan=()=>{
   const warnings=new Set<string>();const groups=new Map<Element,{box:PixelBox;regions:number;coveredPoints:number}>();
   const union=(a:PixelBox,b:PixelBox)=>({x:Math.min(a.x,b.x),y:Math.min(a.y,b.y),width:Math.max(a.x+a.width,b.x+b.width)-Math.min(a.x,b.x),height:Math.max(a.y+a.height,b.y+b.height)-Math.min(a.y,b.y)});
   const visible=(el:Element)=>{for(let n:Element|null=el;n;n=n.parentElement){const s=getComputedStyle(n);if(s.display==='none'||s.visibility!=='visible'||+s.opacity<.95)return false;}return true;};
@@ -63,7 +63,10 @@ export async function scanLayout(page:Page):Promise<{candidates:LayoutCandidate[
   const candidates=[...groups.values()].sort((a,b)=>b.coveredPoints-a.coveredPoints).slice(0,3).map((c,i)=>({id:`region-${i+1}`,...c}));
   if(groups.size>3)warnings.add('후보가 3개를 초과해 일부 영역은 검사하지 못했습니다.');
   return {candidates,warnings:[...warnings]};
- });
+ };
+ // tsx adds a name helper to nested callbacks; keep it local to this read-only evaluation.
+ // This wrapper defines no page globals and changes no DOM or styles.
+ return page.evaluate(`((__name) => (${scan.toString()})())((fn) => fn)`);
 }
 export function layoutAnnotation(image:Buffer,candidates:LayoutCandidate[],review?:LayoutReview){
  return `<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720"><image href="data:image/png;base64,${image.toString('base64')}" width="1280" height="720"/>${candidates.map((c,i)=>{const positive=review?.regions.find(r=>r.id===c.id)?.verdict==='visible-overlap';return `<rect x="${c.box.x}" y="${c.box.y}" width="${c.box.width}" height="${c.box.height}" fill="none" stroke="${positive?'#e11d48':'#d97706'}" stroke-width="4" ${positive?'':'stroke-dasharray="8 5"'}/><text x="${c.box.x+4}" y="${c.box.y+18}" fill="${positive?'#e11d48':'#d97706'}" font-family="sans-serif" font-size="18">${i+1}</text>`;}).join('')}</svg>`;
