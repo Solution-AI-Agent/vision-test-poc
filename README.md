@@ -86,6 +86,8 @@ React/Vite + Tailwind v4 and official shadcn/ui Radix Nova components form the U
 
 `Screenshot → Midscene aiQuery 업무 분해 → aiInput / aiAct → aiString 값 확인 → aiAssert 결과 확인`
 
+선택과 문자 입력을 분리합니다. 입력/선택 전에 현재 화면에서 컨트롤 종류와 값을 다시 확인하고, 편집 가능한 칸만 `aiInput`으로 보냅니다. 라디오·항목 버튼·드롭다운은 선택 행동으로 처리하며 이미 선택된 값은 상태 확인으로 완료합니다. 종류가 불분명하거나 선택 결과가 다르면 중단합니다. 이 확인도 모델 요청 한도에 포함되며 모델 오판 가능성은 남습니다.
+
 Midscene 1.14.0이 화면에서 직접 입력칸을 찾고(`aiInput`, `deepLocate:true`, `mode:replace`), 클릭·스크롤은 `aiAct`로 수행합니다. 자체 좌표 클릭 루프는 현재 실행 경로에서 제거했습니다. 자율 모드의 업무 선택과 등록 시나리오는 같은 실행기를 사용합니다. 실행 목록의 입력을 확인하지 못하면 다음 단계로 넘어가지 않습니다. 입력 후 `aiString`에는 기대값을 주지 않고 실제 보이는 값만 읽게 하며 코드에서 비교합니다. 마지막 `aiAssert`는 원래 업무와 결과를 현재 화면에 대조합니다. 이것도 모델 판단이므로 무오류 보증은 아닙니다.
 
 The production Vision path disables DOM extraction and has no locator fallback. Midscene owns localization and execution. Every transmitted image, including deep-locate crops, is saved without re-encoding as `model-request-N[-image-M].jpg/png`. Request count, duration, response usage/cost, SDK actions and before/after frames are retained. Native XML responses are preserved with the transport record; historical runs keep their original engine/version.

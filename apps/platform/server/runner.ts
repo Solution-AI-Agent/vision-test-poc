@@ -27,7 +27,7 @@ const sourceVersion = {
     .update(readFileSync(path.join(repoRoot, "apps/platform/server/layout-qa.ts")))
     .update(readFileSync(path.join(repoRoot, "apps/platform/server/midscene-workflow.ts")))
     .digest("hex"),
-  promptVersion: "midscene-native-workflow-v1",
+  promptVersion: "midscene-native-workflow-v2-control-guard",
 };
 import {
   actionScope,
