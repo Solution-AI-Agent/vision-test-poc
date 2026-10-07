@@ -1,0 +1,107 @@
+{
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "modelCalls": 0,
+  "operatorPaths": [
+    "/store/a",
+    "/store/b",
+    "/store/c",
+    "/store/d",
+    "/store/e",
+    "/store/f",
+    "/store/g",
+    "/store/h",
+    "/store/i",
+    "/store/j",
+    "/store/k"
+  ],
+  "results": [
+    {
+      "route": "/store/a",
+      "functionalSuite": "PASS",
+      "pageErrors": [],
+      "requests": [
+        "http://127.0.0.1:14311/store/a",
+        "http://127.0.0.1:14311/assets/index-DMAju1d8.js",
+        "http://127.0.0.1:14311/assets/index-CYr6ITvr.css",
+        "http://127.0.0.1:14311/assets/geist-latin-wght-normal-BgDaEnEv.woff2",
+        "http://127.0.0.1:14311/store/a",
+        "http://127.0.0.1:14311/assets/index-DMAju1d8.js",
+        "http://127.0.0.1:14311/assets/index-CYr6ITvr.css",
+        "http://127.0.0.1:14311/assets/geist-latin-wght-normal-BgDaEnEv.woff2",
+        "http://127.0.0.1:14311/api/orders"
+      ],
+      "operatorCalls": 0
+    },
+    {
+      "route": "/store/h",
+      "functionalSuite": "PASS",
+      "pageErrors": [],
+      "requests": [
+        "http://127.0.0.1:14311/store/h",
+        "http://127.0.0.1:14311/assets/index-DMAju1d8.js",
+        "http://127.0.0.1:14311/assets/index-CYr6ITvr.css",
+        "http://127.0.0.1:14311/assets/geist-latin-wght-normal-BgDaEnEv.woff2",
+        "http://127.0.0.1:14311/store/h",
+        "http://127.0.0.1:14311/assets/index-DMAju1d8.js",
+        "http://127.0.0.1:14311/assets/index-CYr6ITvr.css",
+        "http://127.0.0.1:14311/assets/geist-latin-wght-normal-BgDaEnEv.woff2",
+        "http://127.0.0.1:14311/api/orders"
+      ],
+      "operatorCalls": 0
+    },
+    {
+      "route": "/store/i",
+      "functionalSuite": "PASS",
+      "pageErrors": [],
+      "requests": [
+        "http://127.0.0.1:14311/store/i",
+        "http://127.0.0.1:14311/assets/index-DMAju1d8.js",
+        "http://127.0.0.1:14311/assets/index-CYr6ITvr.css",
+        "http://127.0.0.1:14311/assets/geist-latin-wght-normal-BgDaEnEv.woff2",
+        "http://127.0.0.1:14311/store/i",
+        "http://127.0.0.1:14311/assets/index-DMAju1d8.js",
+        "http://127.0.0.1:14311/assets/index-CYr6ITvr.css",
+        "http://127.0.0.1:14311/assets/geist-latin-wght-normal-BgDaEnEv.woff2",
+        "http://127.0.0.1:14311/api/orders"
+      ],
+      "operatorCalls": 0
+    },
+    {
+      "route": "/store/j",
+      "functionalSuite": "PASS",
+      "pageErrors": [],
+      "requests": [
+        "http://127.0.0.1:14311/store/j",
+        "http://127.0.0.1:14311/assets/index-DMAju1d8.js",
+        "http://127.0.0.1:14311/assets/index-CYr6ITvr.css",
+        "http://127.0.0.1:14311/assets/geist-latin-wght-normal-BgDaEnEv.woff2",
+        "http://127.0.0.1:14311/store/j",
+        "http://127.0.0.1:14311/assets/index-DMAju1d8.js",
+        "http://127.0.0.1:14311/assets/index-CYr6ITvr.css",
+        "http://127.0.0.1:14311/assets/geist-latin-wght-normal-BgDaEnEv.woff2",
+        "http://127.0.0.1:14311/api/orders"
+      ],
+      "operatorCalls": 0
+    },
+    {
+      "route": "/store/k",
+      "functionalSuite": "PASS",
+      "pageErrors": [],
+      "requests": [
+        "http://127.0.0.1:14311/store/k",
+        "http://127.0.0.1:14311/assets/index-DMAju1d8.js",
+        "http://127.0.0.1:14311/assets/index-CYr6ITvr.css",
+        "http://127.0.0.1:14311/assets/geist-latin-wght-normal-BgDaEnEv.woff2",
+        "http://127.0.0.1:14311/store/k",
+        "http://127.0.0.1:14311/assets/index-DMAju1d8.js",
+        "http://127.0.0.1:14311/assets/index-CYr6ITvr.css",
+        "http://127.0.0.1:14311/assets/geist-latin-wght-normal-BgDaEnEv.woff2",
+        "http://127.0.0.1:14311/api/orders"
+      ],
+      "operatorCalls": 0
+    }
+  ]
+}

@@ -1,0 +1,269 @@
+{
+  "commit": "33eddf2ddb2c861cb26cf53d78fff8e6bd636a7f",
+  "sampleOrigin": "http://127.0.0.1:14311",
+  "modelCalls": 0,
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "screenshots": "full-page browser capture; not model input",
+  "results": [
+    {
+      "route": "/store/a",
+      "functionalSuite": "PASS",
+      "requests": [
+        "http://127.0.0.1:14311/store/a",
+        "http://127.0.0.1:14311/assets/index-DMAju1d8.js",
+        "http://127.0.0.1:14311/assets/index-CYr6ITvr.css",
+        "http://127.0.0.1:14311/assets/geist-latin-wght-normal-BgDaEnEv.woff2",
+        "http://127.0.0.1:14311/store/a",
+        "http://127.0.0.1:14311/assets/index-DMAju1d8.js",
+        "http://127.0.0.1:14311/assets/index-CYr6ITvr.css",
+        "http://127.0.0.1:14311/assets/geist-latin-wght-normal-BgDaEnEv.woff2",
+        "http://127.0.0.1:14311/api/orders"
+      ],
+      "operatorSetup": false,
+      "platformRequests": 0,
+      "pageErrors": [],
+      "video": "/Users/zpro/.buzz/REPOS/vision-test-delivery/artifacts/source-layout-sample-2026-10-07T02-22-10-779Z/page@f610e6b4edb21b96a5825b3698c203b7.webm"
+    },
+    {
+      "route": "/store/b",
+      "functionalSuite": "PASS",
+      "requests": [
+        "http://127.0.0.1:14311/store/b",
+        "http://127.0.0.1:14311/assets/index-DMAju1d8.js",
+        "http://127.0.0.1:14311/assets/index-CYr6ITvr.css",
+        "http://127.0.0.1:14311/assets/geist-latin-wght-normal-BgDaEnEv.woff2",
+        "http://127.0.0.1:14311/store/b",
+        "http://127.0.0.1:14311/assets/index-DMAju1d8.js",
+        "http://127.0.0.1:14311/assets/index-CYr6ITvr.css",
+        "http://127.0.0.1:14311/assets/geist-latin-wght-normal-BgDaEnEv.woff2",
+        "http://127.0.0.1:14311/api/orders"
+      ],
+      "operatorSetup": false,
+      "platformRequests": 0,
+      "pageErrors": [],
+      "video": "/Users/zpro/.buzz/REPOS/vision-test-delivery/artifacts/source-layout-sample-2026-10-07T02-22-10-779Z/page@ba1b96e179b0b448e4490f2669edb095.webm"
+    },
+    {
+      "route": "/store/c",
+      "functionalSuite": "PASS",
+      "requests": [
+        "http://127.0.0.1:14311/store/c",
+        "http://127.0.0.1:14311/assets/index-DMAju1d8.js",
+        "http://127.0.0.1:14311/assets/index-CYr6ITvr.css",
+        "http://127.0.0.1:14311/assets/geist-latin-wght-normal-BgDaEnEv.woff2",
+        "http://127.0.0.1:14311/store/c",
+        "http://127.0.0.1:14311/assets/index-DMAju1d8.js",
+        "http://127.0.0.1:14311/assets/index-CYr6ITvr.css",
+        "http://127.0.0.1:14311/assets/geist-latin-wght-normal-BgDaEnEv.woff2",
+        "http://127.0.0.1:14311/api/orders"
+      ],
+      "operatorSetup": false,
+      "platformRequests": 0,
+      "pageErrors": [],
+      "video": "/Users/zpro/.buzz/REPOS/vision-test-delivery/artifacts/source-layout-sample-2026-10-07T02-22-10-779Z/page@56ccf396ca745cb9f48bbbdb9c8c3111.webm"
+    },
+    {
+      "route": "/store/d",
+      "functionalSuite": "PASS",
+      "requests": [
+        "http://127.0.0.1:14311/store/d",
+        "http://127.0.0.1:14311/assets/index-DMAju1d8.js",
+        "http://127.0.0.1:14311/assets/index-CYr6ITvr.css",
+        "http://127.0.0.1:14311/assets/geist-latin-wght-normal-BgDaEnEv.woff2",
+        "http://127.0.0.1:14311/store/d",
+        "http://127.0.0.1:14311/assets/index-DMAju1d8.js",
+        "http://127.0.0.1:14311/assets/index-CYr6ITvr.css",
+        "http://127.0.0.1:14311/assets/geist-latin-wght-normal-BgDaEnEv.woff2",
+        "http://127.0.0.1:14311/api/orders"
+      ],
+      "operatorSetup": false,
+      "platformRequests": 0,
+      "pageErrors": [],
+      "video": "/Users/zpro/.buzz/REPOS/vision-test-delivery/artifacts/source-layout-sample-2026-10-07T02-22-10-779Z/page@3c12bf6f8888151c30f43b6159381ad7.webm"
+    },
+    {
+      "route": "/store/e",
+      "functionalSuite": "PASS",
+      "requests": [
+        "http://127.0.0.1:14311/store/e",
+        "http://127.0.0.1:14311/assets/index-DMAju1d8.js",
+        "http://127.0.0.1:14311/assets/index-CYr6ITvr.css",
+        "http://127.0.0.1:14311/assets/geist-latin-wght-normal-BgDaEnEv.woff2",
+        "http://127.0.0.1:14311/store/e",
+        "http://127.0.0.1:14311/assets/index-DMAju1d8.js",
+        "http://127.0.0.1:14311/assets/index-CYr6ITvr.css",
+        "http://127.0.0.1:14311/assets/geist-latin-wght-normal-BgDaEnEv.woff2",
+        "http://127.0.0.1:14311/api/orders"
+      ],
+      "operatorSetup": false,
+      "platformRequests": 0,
+      "pageErrors": [],
+      "video": "/Users/zpro/.buzz/REPOS/vision-test-delivery/artifacts/source-layout-sample-2026-10-07T02-22-10-779Z/page@b0a7d48b9f3d9aaebb50c73db2569d79.webm"
+    },
+    {
+      "route": "/store/f",
+      "functionalSuite": "PASS",
+      "requests": [
+        "http://127.0.0.1:14311/store/f",
+        "http://127.0.0.1:14311/assets/index-DMAju1d8.js",
+        "http://127.0.0.1:14311/assets/index-CYr6ITvr.css",
+        "http://127.0.0.1:14311/assets/geist-latin-wght-normal-BgDaEnEv.woff2",
+        "http://127.0.0.1:14311/store/f",
+        "http://127.0.0.1:14311/assets/index-DMAju1d8.js",
+        "http://127.0.0.1:14311/assets/index-CYr6ITvr.css",
+        "http://127.0.0.1:14311/assets/geist-latin-wght-normal-BgDaEnEv.woff2",
+        "http://127.0.0.1:14311/api/orders"
+      ],
+      "operatorSetup": false,
+      "platformRequests": 0,
+      "pageErrors": [],
+      "video": "/Users/zpro/.buzz/REPOS/vision-test-delivery/artifacts/source-layout-sample-2026-10-07T02-22-10-779Z/page@262039a50d4b076ed7b6f213f7b325ed.webm"
+    },
+    {
+      "route": "/store/g",
+      "functionalSuite": "PASS",
+      "requests": [
+        "http://127.0.0.1:14311/store/g",
+        "http://127.0.0.1:14311/assets/index-DMAju1d8.js",
+        "http://127.0.0.1:14311/assets/index-CYr6ITvr.css",
+        "http://127.0.0.1:14311/assets/geist-latin-wght-normal-BgDaEnEv.woff2",
+        "http://127.0.0.1:14311/store/g",
+        "http://127.0.0.1:14311/assets/index-DMAju1d8.js",
+        "http://127.0.0.1:14311/assets/index-CYr6ITvr.css",
+        "http://127.0.0.1:14311/assets/geist-latin-wght-normal-BgDaEnEv.woff2",
+        "http://127.0.0.1:14311/api/orders"
+      ],
+      "operatorSetup": false,
+      "platformRequests": 0,
+      "pageErrors": [],
+      "video": "/Users/zpro/.buzz/REPOS/vision-test-delivery/artifacts/source-layout-sample-2026-10-07T02-22-10-779Z/page@1a976a599b451919670601b08eb283a5.webm"
+    },
+    {
+      "route": "/store/h",
+      "functionalSuite": "PASS",
+      "requests": [
+        "http://127.0.0.1:14311/store/h",
+        "http://127.0.0.1:14311/assets/index-DMAju1d8.js",
+        "http://127.0.0.1:14311/assets/index-CYr6ITvr.css",
+        "http://127.0.0.1:14311/assets/geist-latin-wght-normal-BgDaEnEv.woff2",
+        "http://127.0.0.1:14311/store/h",
+        "http://127.0.0.1:14311/assets/index-DMAju1d8.js",
+        "http://127.0.0.1:14311/assets/index-CYr6ITvr.css",
+        "http://127.0.0.1:14311/assets/geist-latin-wght-normal-BgDaEnEv.woff2",
+        "http://127.0.0.1:14311/api/orders"
+      ],
+      "operatorSetup": false,
+      "platformRequests": 0,
+      "pageErrors": [],
+      "video": "/Users/zpro/.buzz/REPOS/vision-test-delivery/artifacts/source-layout-sample-2026-10-07T02-22-10-779Z/page@a0c5029e135090bb51e4038e47fdb422.webm"
+    },
+    {
+      "route": "/store/i",
+      "functionalSuite": "PASS",
+      "requests": [
+        "http://127.0.0.1:14311/store/i",
+        "http://127.0.0.1:14311/assets/index-DMAju1d8.js",
+        "http://127.0.0.1:14311/assets/index-CYr6ITvr.css",
+        "http://127.0.0.1:14311/assets/geist-latin-wght-normal-BgDaEnEv.woff2",
+        "http://127.0.0.1:14311/store/i",
+        "http://127.0.0.1:14311/assets/index-DMAju1d8.js",
+        "http://127.0.0.1:14311/assets/index-CYr6ITvr.css",
+        "http://127.0.0.1:14311/assets/geist-latin-wght-normal-BgDaEnEv.woff2",
+        "http://127.0.0.1:14311/api/orders"
+      ],
+      "operatorSetup": false,
+      "platformRequests": 0,
+      "pageErrors": [],
+      "video": "/Users/zpro/.buzz/REPOS/vision-test-delivery/artifacts/source-layout-sample-2026-10-07T02-22-10-779Z/page@11899c1a01410821d125400a307849bc.webm"
+    },
+    {
+      "route": "/store/j",
+      "functionalSuite": "PASS",
+      "requests": [
+        "http://127.0.0.1:14311/store/j",
+        "http://127.0.0.1:14311/assets/index-DMAju1d8.js",
+        "http://127.0.0.1:14311/assets/index-CYr6ITvr.css",
+        "http://127.0.0.1:14311/assets/geist-latin-wght-normal-BgDaEnEv.woff2",
+        "http://127.0.0.1:14311/store/j",
+        "http://127.0.0.1:14311/assets/index-DMAju1d8.js",
+        "http://127.0.0.1:14311/assets/index-CYr6ITvr.css",
+        "http://127.0.0.1:14311/assets/geist-latin-wght-normal-BgDaEnEv.woff2",
+        "http://127.0.0.1:14311/api/orders"
+      ],
+      "operatorSetup": false,
+      "platformRequests": 0,
+      "pageErrors": [],
+      "video": "/Users/zpro/.buzz/REPOS/vision-test-delivery/artifacts/source-layout-sample-2026-10-07T02-22-10-779Z/page@8df7f4a0eaf6c62d96403d13c7d56800.webm"
+    },
+    {
+      "route": "/store/k",
+      "functionalSuite": "PASS",
+      "requests": [
+        "http://127.0.0.1:14311/store/k",
+        "http://127.0.0.1:14311/assets/index-DMAju1d8.js",
+        "http://127.0.0.1:14311/assets/index-CYr6ITvr.css",
+        "http://127.0.0.1:14311/assets/geist-latin-wght-normal-BgDaEnEv.woff2",
+        "http://127.0.0.1:14311/store/k",
+        "http://127.0.0.1:14311/assets/index-DMAju1d8.js",
+        "http://127.0.0.1:14311/assets/index-CYr6ITvr.css",
+        "http://127.0.0.1:14311/assets/geist-latin-wght-normal-BgDaEnEv.woff2",
+        "http://127.0.0.1:14311/api/orders"
+      ],
+      "operatorSetup": false,
+      "platformRequests": 0,
+      "pageErrors": [],
+      "video": "/Users/zpro/.buzz/REPOS/vision-test-delivery/artifacts/source-layout-sample-2026-10-07T02-22-10-779Z/page@eee768b0811fa79613005ff09fa020a3.webm"
+    },
+    {
+      "state": "normal",
+      "functionalSuite": "PASS",
+      "invalidApiStatus": 400,
+      "foreignOriginStatus": 403,
+      "pageErrors": [],
+      "video": "/Users/zpro/.buzz/REPOS/vision-test-delivery/artifacts/source-layout-sample-2026-10-07T02-22-10-779Z/page@9adc579ac22b441ce935015f56a3f97e.webm"
+    },
+    {
+      "state": "misaligned",
+      "functionalSuite": "PASS",
+      "invalidApiStatus": 400,
+      "foreignOriginStatus": 403,
+      "pageErrors": [],
+      "video": "/Users/zpro/.buzz/REPOS/vision-test-delivery/artifacts/source-layout-sample-2026-10-07T02-22-10-779Z/page@85462b7a486c2506cc5b293bce483fe3.webm"
+    },
+    {
+      "state": "occluded",
+      "functionalSuite": "PASS",
+      "invalidApiStatus": 400,
+      "foreignOriginStatus": 403,
+      "pageErrors": [],
+      "video": "/Users/zpro/.buzz/REPOS/vision-test-delivery/artifacts/source-layout-sample-2026-10-07T02-22-10-779Z/page@9bbb0e920fce411f595df936ba1c207c.webm"
+    },
+    {
+      "state": "clipped",
+      "functionalSuite": "PASS",
+      "invalidApiStatus": 400,
+      "foreignOriginStatus": 403,
+      "pageErrors": [],
+      "video": "/Users/zpro/.buzz/REPOS/vision-test-delivery/artifacts/source-layout-sample-2026-10-07T02-22-10-779Z/page@dbbe497fbd298e7b246d6c90d464c5d4.webm"
+    },
+    {
+      "state": "product-image",
+      "functionalSuite": "PASS",
+      "invalidApiStatus": 400,
+      "foreignOriginStatus": 403,
+      "pageErrors": [],
+      "video": "/Users/zpro/.buzz/REPOS/vision-test-delivery/artifacts/source-layout-sample-2026-10-07T02-22-10-779Z/page@96d39e17194878c476bd621c04352284.webm"
+    },
+    {
+      "state": "chart",
+      "functionalSuite": "PASS",
+      "invalidApiStatus": 400,
+      "foreignOriginStatus": 403,
+      "pageErrors": [],
+      "video": "/Users/zpro/.buzz/REPOS/vision-test-delivery/artifacts/source-layout-sample-2026-10-07T02-22-10-779Z/page@a4e4c6d82e8cdaa539cf0f4c40c60b2c.webm"
+    }
+  ]
+}

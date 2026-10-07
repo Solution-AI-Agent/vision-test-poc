@@ -1,0 +1,417 @@
+[
+  {
+    "path": "ACCEPTANCE.md",
+    "bytes": 2170,
+    "sha256": "0a86fdb9c0217c536bbd0e64704e95f4c696c7a3aecced3ecb6f5a06cc36cc13"
+  },
+  {
+    "path": "BUILD.log",
+    "bytes": 2217,
+    "sha256": "8ca028f2a2cc225d1b7aba7286263fc4e83065da750602b1d72feb4d95d1c6fd"
+  },
+  {
+    "path": "GALLERY_CHECK.json",
+    "bytes": 81,
+    "sha256": "2ea34629b87388fd7171f8c39b81184125ee01468f415c4774b3a5e3ac0c3b1c"
+  },
+  {
+    "path": "REVIEW.html",
+    "bytes": 6481,
+    "sha256": "ff28103417be7aba06acffc74a2dbf2cc0573d185cb23181ead11f2627987720"
+  },
+  {
+    "path": "REVIEW.json",
+    "bytes": 708,
+    "sha256": "9772fbb70f9222ec0bd84fd53e075c8c95f168fe261a204ea5ce5428e0c0ac8f"
+  },
+  {
+    "path": "TEST.log",
+    "bytes": 639,
+    "sha256": "d66074335c951dc451e9ef7063f32d2b66552d2327472a090cfb7241ded4fab8"
+  },
+  {
+    "path": "desktop/RESULTS.json",
+    "bytes": 11792,
+    "sha256": "e90868f47371dbed461c0775a5eeaa3d9acbbbede690cb8d9b42f58be20cbeab"
+  },
+  {
+    "path": "desktop/chart-checkout.png",
+    "bytes": 79809,
+    "sha256": "cc5f2309b2535599a9a71373bffc869ac461aff143b9c94fdfcfefba7c09df3e"
+  },
+  {
+    "path": "desktop/chart.png",
+    "bytes": 72808,
+    "sha256": "7bc6e30c6e476a8a4115eda1fb46a2d502230ce3b513f70304df8cc9dcbdd2aa"
+  },
+  {
+    "path": "desktop/clipped-checkout.png",
+    "bytes": 73344,
+    "sha256": "7fea74a792fd06151ce0e63f8c4f9ebfe252729bf2146a7f00d948b973138421"
+  },
+  {
+    "path": "desktop/clipped.png",
+    "bytes": 66247,
+    "sha256": "f4720e3427f20cb24461881a40c8d86b0fea6db40d7d9b510fd7acd9aadfee86"
+  },
+  {
+    "path": "desktop/misaligned-checkout.png",
+    "bytes": 83333,
+    "sha256": "7d86de4723d47300d3e50326a6baa378ffb4ae31cf95688198f665d4888fa807"
+  },
+  {
+    "path": "desktop/misaligned.png",
+    "bytes": 76348,
+    "sha256": "59f6e95d6a5e475a56384272fcb1493ebef2780cdb3750c955c8d32cd1beb6a2"
+  },
+  {
+    "path": "desktop/normal-checkout.png",
+    "bytes": 79781,
+    "sha256": "62866f3fc1914f0c552d4868f9e12a2d82d8662a6889b2007e2bb86af60d94d2"
+  },
+  {
+    "path": "desktop/normal-mobile.png",
+    "bytes": 64791,
+    "sha256": "f2ce5ac7eb2690d0c858afd05a5382c9b02045a20afeda1dfc9190720042d018"
+  },
+  {
+    "path": "desktop/normal.png",
+    "bytes": 72809,
+    "sha256": "a8b9427adf41a734dfa353c0730f4da62820dc91329b6af4f25e78761e2907e7"
+  },
+  {
+    "path": "desktop/occluded-checkout.png",
+    "bytes": 73690,
+    "sha256": "ebd779d6271d333ccfe5cba357cf86efc94b13d0f20ff7183938551851bee3b7"
+  },
+  {
+    "path": "desktop/occluded.png",
+    "bytes": 66276,
+    "sha256": "875e8ef8821ae5ab678b436e448a06843c65cbec73026e1f3aabbf1ef9c569bd"
+  },
+  {
+    "path": "desktop/operator.png",
+    "bytes": 53504,
+    "sha256": "26fe682458915a6437409662044a2615112dbf27dbfd229e8bbc6685c82f7a5e"
+  },
+  {
+    "path": "desktop/page@11899c1a01410821d125400a307849bc.webm",
+    "bytes": 296278,
+    "sha256": "2919e1634f5f02451cfd2d0e826a9a2e4304638c98fa6ac0f301c38ecdf1a602"
+  },
+  {
+    "path": "desktop/page@1a976a599b451919670601b08eb283a5.webm",
+    "bytes": 304685,
+    "sha256": "3dc8539c49ffa798387e4e4fc0f6382743985eeaa1ecd1486b7b4b44d0dfb452"
+  },
+  {
+    "path": "desktop/page@262039a50d4b076ed7b6f213f7b325ed.webm",
+    "bytes": 254789,
+    "sha256": "d7cf2446ffe23887c6bd496248ef64898672e3ceff06065baadf5171e594dba3"
+  },
+  {
+    "path": "desktop/page@3c12bf6f8888151c30f43b6159381ad7.webm",
+    "bytes": 177954,
+    "sha256": "28555b265745bdac973e7fcb867f5a290673f6656e08d7fece3bfa1af3429e01"
+  },
+  {
+    "path": "desktop/page@56ccf396ca745cb9f48bbbdb9c8c3111.webm",
+    "bytes": 252759,
+    "sha256": "e22c58232ffae15ce9a38a3c03da335404d1244532dc4c43d9a9a5c806ea1d49"
+  },
+  {
+    "path": "desktop/page@85462b7a486c2506cc5b293bce483fe3.webm",
+    "bytes": 222057,
+    "sha256": "4193d0e0c73e60ea6b66724bb3011ad754a7cb5a44d597327f88c5e77dfba7f8"
+  },
+  {
+    "path": "desktop/page@8df7f4a0eaf6c62d96403d13c7d56800.webm",
+    "bytes": 284085,
+    "sha256": "98c3e54d067122c47cd0c5c21a757ff3a6ad09dfb99e2f5df671d1210d932383"
+  },
+  {
+    "path": "desktop/page@96d39e17194878c476bd621c04352284.webm",
+    "bytes": 224658,
+    "sha256": "a5b7219bbd476446c90d8e47766be7152bff29bf51be7ea3bc5247e3ce900601"
+  },
+  {
+    "path": "desktop/page@9adc579ac22b441ce935015f56a3f97e.webm",
+    "bytes": 234141,
+    "sha256": "6a0c2fd8a52bb13795b18ceb3cc0806ce307004fdecadd8cfd222732b4a11ca8"
+  },
+  {
+    "path": "desktop/page@9bbb0e920fce411f595df936ba1c207c.webm",
+    "bytes": 208972,
+    "sha256": "0d689748d31a0eaf620fd416ea3aa7607da3b29c6fbd8cb0754482742d7c29a3"
+  },
+  {
+    "path": "desktop/page@a0c5029e135090bb51e4038e47fdb422.webm",
+    "bytes": 290280,
+    "sha256": "5a2980fbcab25a2a1caa6fd3b401d9f5cc85298ecc23e816f9cdf3b59da452b1"
+  },
+  {
+    "path": "desktop/page@a4e4c6d82e8cdaa539cf0f4c40c60b2c.webm",
+    "bytes": 244327,
+    "sha256": "cffe94bdd86674bdca802cc759069ebd9ac9d024222df28f8debe8b31fe09834"
+  },
+  {
+    "path": "desktop/page@b0a7d48b9f3d9aaebb50c73db2569d79.webm",
+    "bytes": 183470,
+    "sha256": "bbf870d46654ab305d7c1344832b0e29a0672f0fe99b1577e2eee00790033770"
+  },
+  {
+    "path": "desktop/page@ba1b96e179b0b448e4490f2669edb095.webm",
+    "bytes": 231045,
+    "sha256": "532f86de0c245931df58a387ad4037670ebd58abbd8f762ddbe3b26c4155f078"
+  },
+  {
+    "path": "desktop/page@dbbe497fbd298e7b246d6c90d464c5d4.webm",
+    "bytes": 213654,
+    "sha256": "c6b593fce418d767cc445152ea2c18eb4286ad1af996a79ed692456b28ec32d9"
+  },
+  {
+    "path": "desktop/page@eee768b0811fa79613005ff09fa020a3.webm",
+    "bytes": 203628,
+    "sha256": "2ea84f739598462fb269a78e540f3bc1c0a2920229993637b55f1e6dc6cae270"
+  },
+  {
+    "path": "desktop/page@f610e6b4edb21b96a5825b3698c203b7.webm",
+    "bytes": 303988,
+    "sha256": "2c89f104036da062883827076393247368e9d1b237a0d30f271f979d2cd50eee"
+  },
+  {
+    "path": "desktop/product-image-checkout.png",
+    "bytes": 79989,
+    "sha256": "951679753bb8c4d459c66930225088661cd1e4e64edcf36d8913fba0f5b940ff"
+  },
+  {
+    "path": "desktop/product-image.png",
+    "bytes": 72863,
+    "sha256": "53ebacaf4e5f5bfb8354d9f3ac2e5f97b3e998ad62592ba92d95b52113b00d17"
+  },
+  {
+    "path": "desktop/store-a-checkout.png",
+    "bytes": 79781,
+    "sha256": "62866f3fc1914f0c552d4868f9e12a2d82d8662a6889b2007e2bb86af60d94d2"
+  },
+  {
+    "path": "desktop/store-a-initial.png",
+    "bytes": 80147,
+    "sha256": "2c5a7329d26aa0a7fd72c86a675e51a0d2b58e081a99765ee23a0050bbb7d4a1"
+  },
+  {
+    "path": "desktop/store-a.png",
+    "bytes": 72809,
+    "sha256": "a8b9427adf41a734dfa353c0730f4da62820dc91329b6af4f25e78761e2907e7"
+  },
+  {
+    "path": "desktop/store-b-checkout.png",
+    "bytes": 67265,
+    "sha256": "004a6c1158a8abdf21f0b795704b727518d7d6e0da37660488b9a92640cdb8e3"
+  },
+  {
+    "path": "desktop/store-b-initial.png",
+    "bytes": 67972,
+    "sha256": "61eff20658beef617660ade51bcf1c9dfeaf4050d38dc14e4d711baf99f1f6ee"
+  },
+  {
+    "path": "desktop/store-b.png",
+    "bytes": 59588,
+    "sha256": "c2ec6acfbd50df1f99db6e45d14251e3ac4020289877c2d729d98ccb3b3d99cd"
+  },
+  {
+    "path": "desktop/store-c-checkout.png",
+    "bytes": 83333,
+    "sha256": "7d86de4723d47300d3e50326a6baa378ffb4ae31cf95688198f665d4888fa807"
+  },
+  {
+    "path": "desktop/store-c-initial.png",
+    "bytes": 83834,
+    "sha256": "e1f83ddbb9081b7a3c2c0a385c6fd52cfc003ce519266012a46a6b2af33c8430"
+  },
+  {
+    "path": "desktop/store-c.png",
+    "bytes": 76348,
+    "sha256": "59f6e95d6a5e475a56384272fcb1493ebef2780cdb3750c955c8d32cd1beb6a2"
+  },
+  {
+    "path": "desktop/store-d-checkout.png",
+    "bytes": 73690,
+    "sha256": "ebd779d6271d333ccfe5cba357cf86efc94b13d0f20ff7183938551851bee3b7"
+  },
+  {
+    "path": "desktop/store-d-initial.png",
+    "bytes": 74413,
+    "sha256": "fcc8247f1447c2ea18d9e88f8a7dae98c78305951526e5d1cb22ac37b92d3b94"
+  },
+  {
+    "path": "desktop/store-d.png",
+    "bytes": 66276,
+    "sha256": "875e8ef8821ae5ab678b436e448a06843c65cbec73026e1f3aabbf1ef9c569bd"
+  },
+  {
+    "path": "desktop/store-e-checkout.png",
+    "bytes": 73387,
+    "sha256": "92f53d7abbf171febd72c134f9eae47298e376689e4b4b19a1a1d73ba55babf0"
+  },
+  {
+    "path": "desktop/store-e-initial.png",
+    "bytes": 73689,
+    "sha256": "d25f50fe73b2882f95f984713171f120490467b77f3bb2646cc9a69f04da59d1"
+  },
+  {
+    "path": "desktop/store-e.png",
+    "bytes": 66247,
+    "sha256": "f4720e3427f20cb24461881a40c8d86b0fea6db40d7d9b510fd7acd9aadfee86"
+  },
+  {
+    "path": "desktop/store-f-checkout.png",
+    "bytes": 79989,
+    "sha256": "951679753bb8c4d459c66930225088661cd1e4e64edcf36d8913fba0f5b940ff"
+  },
+  {
+    "path": "desktop/store-f-initial.png",
+    "bytes": 80358,
+    "sha256": "b2296da38ae0ac2445ea185bfcb619a2e7ba94ae5d2019c94a8019673a65bd52"
+  },
+  {
+    "path": "desktop/store-f.png",
+    "bytes": 72863,
+    "sha256": "53ebacaf4e5f5bfb8354d9f3ac2e5f97b3e998ad62592ba92d95b52113b00d17"
+  },
+  {
+    "path": "desktop/store-g-checkout.png",
+    "bytes": 79809,
+    "sha256": "cc5f2309b2535599a9a71373bffc869ac461aff143b9c94fdfcfefba7c09df3e"
+  },
+  {
+    "path": "desktop/store-g-initial.png",
+    "bytes": 80148,
+    "sha256": "c8bd7c1bfdd467a5d287429e7549ca42d4a66f104e4e5df3d1036817bae0d36b"
+  },
+  {
+    "path": "desktop/store-g.png",
+    "bytes": 72808,
+    "sha256": "7bc6e30c6e476a8a4115eda1fb46a2d502230ce3b513f70304df8cc9dcbdd2aa"
+  },
+  {
+    "path": "desktop/store-h-checkout.png",
+    "bytes": 76992,
+    "sha256": "f7b4164ee15051f849d4d61f758c501c1d2f9f5b687c2ab29a912cc321efc167"
+  },
+  {
+    "path": "desktop/store-h-initial.png",
+    "bytes": 77454,
+    "sha256": "19b5317b1c540a9e826c12d8a3f997eb560a7b47fd485faf46b3e681125195d2"
+  },
+  {
+    "path": "desktop/store-h.png",
+    "bytes": 67880,
+    "sha256": "0def56533ec32821797d315518941e3a1a1615108bfea5999cde072a5da98198"
+  },
+  {
+    "path": "desktop/store-i-checkout.png",
+    "bytes": 79362,
+    "sha256": "44535ac1bcdea0f0ce635ed6b8ddccee0ff9c34a7e4c240def7d4a898f070f42"
+  },
+  {
+    "path": "desktop/store-i-initial.png",
+    "bytes": 79724,
+    "sha256": "04ce45bc46c9f2897dee199da2757a2b075bd7985fdf4c8facc5feed5386113d"
+  },
+  {
+    "path": "desktop/store-i.png",
+    "bytes": 72379,
+    "sha256": "6970c134be69a721447ea7484953b326cb66fbda7c98b607ddc9fcd57dd218f7"
+  },
+  {
+    "path": "desktop/store-j-checkout.png",
+    "bytes": 83100,
+    "sha256": "a46ff4a73c1ac0ff15b355b3af22476441859d60c4ab65bc854226f0ec588a7d"
+  },
+  {
+    "path": "desktop/store-j-initial.png",
+    "bytes": 83428,
+    "sha256": "6b4435a6f2aba896e44c5fbd39592440267f83b822ebeb933a94ccf33bde7f41"
+  },
+  {
+    "path": "desktop/store-j.png",
+    "bytes": 74049,
+    "sha256": "eee0b92c1cc851fb4f9ed5ea55c33ff5ddb60661267e287b70e4a8bca303ecc3"
+  },
+  {
+    "path": "desktop/store-k-checkout.png",
+    "bytes": 80702,
+    "sha256": "1b3f471074e55251c2cecb9d468022e315ec34940db924f9ef934f2221ed19bf"
+  },
+  {
+    "path": "desktop/store-k-initial.png",
+    "bytes": 81065,
+    "sha256": "5e9fd0b2041d4c8448fa8575b61b9332a3064e23d01a309845c4005ec1673bca"
+  },
+  {
+    "path": "desktop/store-k.png",
+    "bytes": 73728,
+    "sha256": "7fe152b907875c43b7a90926fa79ee83582b658a490fae3d95f98631ff7e5f25"
+  },
+  {
+    "path": "mobile/RESULTS.json",
+    "bytes": 3683,
+    "sha256": "df1f2f14597990832f46c1dbd6eba033759fe288e71f5d88911a59c916927195"
+  },
+  {
+    "path": "mobile/a-confirmed.png",
+    "bytes": 64791,
+    "sha256": "f2ce5ac7eb2690d0c858afd05a5382c9b02045a20afeda1dfc9190720042d018"
+  },
+  {
+    "path": "mobile/a-initial.png",
+    "bytes": 72928,
+    "sha256": "8af8ef801a70fc98e3bfefdb833082f64aab1acb0a8a265b0ff855cafcde5d38"
+  },
+  {
+    "path": "mobile/h-confirmed.png",
+    "bytes": 60337,
+    "sha256": "0c0cf3e07bb2d932bcae28de1f69575abff17b40753e2e97b96edf2077ada073"
+  },
+  {
+    "path": "mobile/h-initial.png",
+    "bytes": 70357,
+    "sha256": "649e41eb3777445269bb2dd358526635472380d1676e03a2e82839faa7a6a27b"
+  },
+  {
+    "path": "mobile/i-confirmed.png",
+    "bytes": 64323,
+    "sha256": "b3a1f2f1a227e74d86065f3b757d333a0c44416a66831a435452240700ed266f"
+  },
+  {
+    "path": "mobile/i-initial.png",
+    "bytes": 72481,
+    "sha256": "b7c76471c0e01395c5c84758aa5847635fa1f9cc8e2732db3931856a18101ea7"
+  },
+  {
+    "path": "mobile/j-confirmed.png",
+    "bytes": 65753,
+    "sha256": "df3588463a753ee960d0c9b645febfd320a2960b6d68d3f94bfe581815547a75"
+  },
+  {
+    "path": "mobile/j-initial.png",
+    "bytes": 75472,
+    "sha256": "0ea60859d1591b9cc6a6a891746b1af1067c971596c035187a8c736105cab607"
+  },
+  {
+    "path": "mobile/k-confirmed.png",
+    "bytes": 65610,
+    "sha256": "f28991d048dfc5470169a84761296797e0d8e20695d35cdb4399b420dd41aff0"
+  },
+  {
+    "path": "mobile/k-initial.png",
+    "bytes": 73745,
+    "sha256": "db297a4127aafd9bdd301b12724a6581e28599e54c97509b1a9d267235eb2887"
+  },
+  {
+    "path": "mobile/operator.png",
+    "bytes": 52012,
+    "sha256": "e32a0dd62c80a8f61f1d35a5fa9bf09f8eda31070396a16c273f40ef0a453804"
+  }
+]
