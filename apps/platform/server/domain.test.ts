@@ -30,13 +30,13 @@ describe("execution boundaries", () => {
     expect(validateTarget("http://127.0.0.1:4310/fixture/order")).toBe(
       "http://127.0.0.1:4310/fixture/order",
     );
-    for (const suffix of ["a","b","c","d","e","f","g"]) {
+    for (const suffix of ["a","b","c","d","e","f","g","h","i","j","k"]) {
       const url = `http://127.0.0.1:4311/store/${suffix}`;
       expect(validateTarget(url)).toBe(url);
       expect(actionScope(url)).toContain("simulated order site");
       expect(() => validateTarget(url + "?state=normal")).toThrow();
     }
-    expect(() => validateTarget("http://127.0.0.1:4311/store/h")).toThrow();
+    expect(() => validateTarget("http://127.0.0.1:4311/store/l")).toThrow();
     expect(validateTarget("http://127.0.0.1:4311/order")).toBe("http://127.0.0.1:4311/order");
     for (const url of [
       "http://127.0.0.1:4311/operator",
@@ -116,13 +116,13 @@ it("permits simulated submission only for the exact standalone sample target", (
 });
 
 
-it("permits only the seven exact direct store revisions with simulated order actions", () => {
- for (const route of ["/store/a", "/store/b", "/store/c", "/store/d", "/store/e", "/store/f", "/store/g"]) {
+it("permits only the eleven exact direct store revisions with simulated order actions", () => {
+ for (const route of ["/store/a", "/store/b", "/store/c", "/store/d", "/store/e", "/store/f", "/store/g", "/store/h", "/store/i", "/store/j", "/store/k"]) {
   const url = `http://127.0.0.1:4311${route}`;
   expect(validateTarget(url)).toBe(url);
   expect(goalPrompt(url)).toContain("submit the simulated order");
   for (const suffix of ["?state=normal", "#answer", "/"]) expect(() => validateTarget(url + suffix)).toThrow();
  }
- expect(() => validateTarget("http://127.0.0.1:4311/store/h")).toThrow();
+ expect(() => validateTarget("http://127.0.0.1:4311/store/l")).toThrow();
  expect(() => validateTarget("http://localhost:4311/store/b")).toThrow();
 });

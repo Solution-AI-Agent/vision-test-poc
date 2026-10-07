@@ -110,7 +110,7 @@ export type Goal = z.infer<typeof goalSchema> & {
   screenshot: string;
   at: string;
 };
-export function isStandaloneSample(url?: string) { return ["http://127.0.0.1:4311/order", "http://127.0.0.1:4311/store/a", "http://127.0.0.1:4311/store/b", "http://127.0.0.1:4311/store/c", "http://127.0.0.1:4311/store/d", "http://127.0.0.1:4311/store/e", "http://127.0.0.1:4311/store/f", "http://127.0.0.1:4311/store/g"].includes(url ?? ""); }
+export function isStandaloneSample(url?: string) { return ["http://127.0.0.1:4311/order", "http://127.0.0.1:4311/store/a", "http://127.0.0.1:4311/store/b", "http://127.0.0.1:4311/store/c", "http://127.0.0.1:4311/store/d", "http://127.0.0.1:4311/store/e", "http://127.0.0.1:4311/store/f", "http://127.0.0.1:4311/store/g", "http://127.0.0.1:4311/store/h", "http://127.0.0.1:4311/store/i", "http://127.0.0.1:4311/store/j", "http://127.0.0.1:4311/store/k"].includes(url ?? ""); }
 export function actionScope(url?: string) {
  return isStandaloneSample(url) ? "This exact target is an isolated simulated order site. You may select products and quantities, enter synthetic recipient data, submit the simulated order and reset it. No real payment or account action is permitted. Never navigate to operator or unrelated local routes." : "Do not sign in, post, like, subscribe, upload, buy, accept permissions or change an account. Only use search, browse, playback, pause, scroll and dismiss overlays.";
 }
@@ -253,7 +253,7 @@ export function validateTarget(raw: string) {
   const url = new URL(raw);
   if (
     ((url.origin === "http://127.0.0.1:4310" && ["/fixture/order", "/demo/order"].includes(url.pathname)) ||
-      (url.origin === "http://127.0.0.1:4311" && ["/order", "/store/a", "/store/b", "/store/c", "/store/d", "/store/e", "/store/f", "/store/g"].includes(url.pathname))) &&
+      (url.origin === "http://127.0.0.1:4311" && ["/order", "/store/a", "/store/b", "/store/c", "/store/d", "/store/e", "/store/f", "/store/g", "/store/h", "/store/i", "/store/j", "/store/k"].includes(url.pathname))) &&
     !url.search &&
     !url.hash &&
     !url.username &&

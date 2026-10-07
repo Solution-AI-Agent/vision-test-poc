@@ -42,3 +42,17 @@
 .sample-layout-distorted {width:125%;margin-left:-10%;border-radius:0;box-shadow:0 0 0 2px var(--border);}
 .sample-collection {margin-top:18px;}
 .sample-case-links {display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;}
+
+/* H–K: isolated source-level rendering mistakes. Order logic and controls are unchanged. */
+.sample-type-crowded .sample-intro h1,
+.sample-type-crowded .sample-preview > p,
+.sample-type-crowded .sample-preview > strong,
+.sample-type-crowded .sample-receipt > h2,
+.sample-type-crowded .sample-receipt > .sample-line,
+.sample-type-crowded .sample-receipt > p {
+  width:100%;text-align:right;letter-spacing:-2.5px;transform:scaleX(.45);transform-origin:right center;
+}
+.sample-lines-collapsed .sample-collection p {line-height:8px;font-size:18px;}
+.sample-object-offset .sample-preview > svg {transform:translate(38%,12px) rotate(18deg);}
+.sample-object-offset .sample-confirmed-product {transform:translate(25px,12px) rotate(18deg);}
+.sample-label-drift .sample-chart-grid > div {transform:translate(18px,24px) rotate(-12deg);transform-origin:left top;}

@@ -35,7 +35,7 @@ app.get("/", (_req, res) => res.redirect("/order"));
 const server = createServer(app);
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(root, "dist")));
-  app.get(["/order", "/operator", "/store/a", "/store/b", "/store/c", "/store/d", "/store/e", "/store/f", "/store/g"], (_req, res) => res.sendFile("index.html", { root: path.join(root, "dist") }));
+  app.get(["/order", "/operator", "/store/a", "/store/b", "/store/c", "/store/d", "/store/e", "/store/f", "/store/g", "/store/h", "/store/i", "/store/j", "/store/k"], (_req, res) => res.sendFile("index.html", { root: path.join(root, "dist") }));
 } else {
   const { createServer: createViteServer } = await import("vite");
   const vite = await createViteServer({ configFile: path.join(root, "vite.config.ts"), server: { middlewareMode: true, hmr: { server } }, appType: "spa" });

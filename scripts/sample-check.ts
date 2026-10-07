@@ -6,20 +6,23 @@ import { sampleBaseline } from "./sample-baseline";
 import { fileURLToPath } from "node:url";
 // Keep functional recordings at repository root even when npm enters the sample workspace.
 process.chdir(fileURLToPath(new URL("../", import.meta.url)));
+const sampleOrigin = process.env.SAMPLE_ORIGIN ?? "http://127.0.0.1:4311";
 const commit=execFileSync("git",["rev-parse","HEAD"],{encoding:"utf8"}).trim();
 const folder=`artifacts/source-layout-sample-${new Date().toISOString().replace(/[:.]/g,"-")}`;
 await mkdir(folder,{recursive:true});const browser=await chromium.launch();const results:any[]=[];
 try {
 
  // First, direct visits: no operator setup, platform access, routing, CSS/DOM injection or init scripts.
- for(const route of ["/store/a","/store/b","/store/c","/store/d","/store/e","/store/f","/store/g"]){
+ for(const route of ["/store/a","/store/b","/store/c","/store/d","/store/e","/store/f","/store/g", "/store/h", "/store/i", "/store/j", "/store/k"]){
   const name=`store-${route.slice(-1)}`;
   const context=await browser.newContext({viewport:{width:1280,height:720},recordVideo:{dir:folder,size:{width:1280,height:720}}});
   const page=await context.newPage();const requests:string[]=[];const errors:string[]=[];
   page.on("request",r=>requests.push(r.url()));page.on("pageerror",e=>errors.push(e.message));
-  await sampleBaseline(page,()=>page.screenshot({path:`${folder}/${name}-checkout.png`,fullPage:true}).then(()=>{}),`http://127.0.0.1:4311${route}`);
+  await page.goto(`${sampleOrigin}${route}`);await page.waitForLoadState("networkidle");
+  await page.screenshot({path:`${folder}/${name}-initial.png`,fullPage:true});
+  await sampleBaseline(page,()=>page.screenshot({path:`${folder}/${name}-checkout.png`,fullPage:true}).then(()=>{}),`${sampleOrigin}${route}`);
   await page.screenshot({path:`${folder}/${name}.png`,fullPage:true});
-  expect(requests.every(u=>u.startsWith("http://127.0.0.1:4311/"))).toBe(true);
+  expect(requests.every(u=>u.startsWith(`${sampleOrigin}/`))).toBe(true);
   expect(requests.some(u=>u.includes("/api/operator")||u.includes("/api/presentation"))).toBe(false);
   expect(errors).toEqual([]);
   await page.getByRole("button",{name:"다시 주문하기"}).click();await expect(page.getByRole("button",{name:"주문 확정하기"})).toBeEnabled();
@@ -27,16 +30,16 @@ try {
  }
  for(const state of ["normal","misaligned","occluded","clipped","product-image","chart"]){
   const context=await browser.newContext({viewport:{width:1280,height:720},recordVideo:{dir:folder,size:{width:1280,height:720}}});const page=await context.newPage();const errors:string[]=[];page.on("pageerror",e=>errors.push(e.message));
-  expect((await page.request.put("http://127.0.0.1:4311/api/operator",{data:{state}})).ok()).toBe(true);
-  await sampleBaseline(page,()=>page.screenshot({path:`${folder}/${state}-checkout.png`,fullPage:true}).then(()=>{}));
-  const bad=await page.request.post("http://127.0.0.1:4311/api/orders",{data:{product:"mug",quantity:0,name:"Alex",email:"invalid"}});expect(bad.status()).toBe(400);
-  const guarded=await page.request.put("http://127.0.0.1:4311/api/operator",{headers:{Origin:"http://unrelated.test"},data:{state:"normal"}});expect(guarded.status()).toBe(403);
+  expect((await page.request.put(`${sampleOrigin}/api/operator`,{data:{state}})).ok()).toBe(true);
+  await sampleBaseline(page,()=>page.screenshot({path:`${folder}/${state}-checkout.png`,fullPage:true}).then(()=>{}),`${sampleOrigin}/order`);
+  const bad=await page.request.post(`${sampleOrigin}/api/orders`,{data:{product:"mug",quantity:0,name:"Alex",email:"invalid"}});expect(bad.status()).toBe(400);
+  const guarded=await page.request.put(`${sampleOrigin}/api/operator`,{headers:{Origin:"http://unrelated.test"},data:{state:"normal"}});expect(guarded.status()).toBe(403);
   await page.screenshot({path:`${folder}/${state}.png`,fullPage:true});
   await page.getByRole("button",{name:"다시 주문하기"}).click();await expect(page.getByRole("button",{name:"주문 확정하기"})).toBeEnabled();expect(errors).toEqual([]);
   const video=page.video();await context.close();results.push({state,functionalSuite:"PASS",invalidApiStatus:bad.status(),foreignOriginStatus:guarded.status(),pageErrors:errors,video:await video?.path()});
  }
- const page=await browser.newPage({viewport:{width:390,height:844}});await page.goto("http://127.0.0.1:4311/operator");await page.getByRole("radio",{name:"정상",exact:true}).click();await page.getByRole("button",{name:"정상으로 초기화"}).click();await page.screenshot({path:`${folder}/operator.png`,fullPage:true});await sampleBaseline(page);await page.screenshot({path:`${folder}/normal-mobile.png`,fullPage:true});await page.close();
+ const page=await browser.newPage({viewport:{width:390,height:844}});await page.goto(`${sampleOrigin}/operator`);await page.getByRole("radio",{name:"정상",exact:true}).click();await page.getByRole("button",{name:"정상으로 초기화"}).click();await page.screenshot({path:`${folder}/operator.png`,fullPage:true});await sampleBaseline(page,undefined,`${sampleOrigin}/order`);await page.screenshot({path:`${folder}/normal-mobile.png`,fullPage:true});await page.close();
 } finally {
- await fetch("http://127.0.0.1:4311/api/operator",{method:"PUT",headers:{"Content-Type":"application/json"},body:'{"state":"normal"}'});await browser.close();await writeFile(`${folder}/RESULTS.json`,JSON.stringify({commit,modelCalls:0,viewport:{width:1280,height:720},screenshots:"full-page browser capture; not model input",results},null,2));
+ await fetch(`${sampleOrigin}/api/operator`,{method:"PUT",headers:{"Content-Type":"application/json"},body:'{"state":"normal"}'});await browser.close();await writeFile(`${folder}/RESULTS.json`,JSON.stringify({commit,sampleOrigin,modelCalls:0,viewport:{width:1280,height:720},screenshots:"full-page browser capture; not model input",results},null,2));
 }
 console.log(folder);
