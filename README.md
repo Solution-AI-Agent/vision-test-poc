@@ -1,5 +1,18 @@
 # Vision QA Lab
 
+## UI-TARS 1.5 7B 전환
+
+신규 기본 모델은 OpenRouter `bytedance/ui-tars-1.5-7b`, 앱의 모델 계열은 `ui-tars-1.5`입니다. **모델 & 설정 → UI-TARS 1.5 7B 설정 불러오기 → 설정 적용**으로 모델명과 계열을 함께 바꿀 수 있습니다. API 키는 재시작 후 다시 입력하세요.
+
+업데이트 후 처음 시작할 때 이전 기본 조합 `qwen/qwen3-vl-235b-a22b-instruct` / `qwen3-vl`만 UI-TARS로 한 번 전환합니다. 기존 설정은 키를 제외하고 `.data/settings.before-ui-tars-v3.json`에 백업하며, 공통 지침·혼합 검사·행동/호출/시간 한도는 유지합니다. 다른 사용자 모델은 자동 변경하지 않습니다. 이후 Qwen 모델명/계열을 직접 저장하면 다시 자동 전환하지 않습니다. UI-TARS의 응답 한도는 공급자 최대값인 2,048토큰 이내입니다.
+
+공개 UI-TARS 1.5 7B와 Doubao UI-TARS의 좌표 방식은 다릅니다. 앱 계열 `ui-tars-1.5`는 **같은 UI-TARS 모델**을 사용하면서, Midscene의 Qwen2.5-VL 이미지/위치 어댑터와 UI-TARS 행동 계획 어댑터를 연결합니다. 행동 응답의 공개 1.5 픽셀 좌표는 ByteDance 공식 `@ui-tars/action-parser`의 1.5 모드로 해석한 뒤 SDK 형식으로 변환합니다. UI-TARS의 `aiAct`는 SDK의 전용 계획 경로를 사용하며 `deepLocate` 옵션을 지원하지 않습니다. `aiInput`의 정밀 위치 탐색은 유지합니다. 원응답과 변환값을 모두 기록하며, 화면 밖 좌표는 실행하지 않습니다. 위치가 유효하다는 것과 올바른 필드를 선택했다는 것은 별개입니다.
+
+검증 범위는 모의 모델을 통한 SDK 요청·좌표 변환·실제 브라우저 조작과 설정 저장입니다. 이 전환 자체가 한국어 주문 성공 또는 결함 검출 성능 개선을 입증하지는 않습니다. 과거 Qwen 실측은 그대로 보존합니다.
+
+- [OpenRouter 모델](https://openrouter.ai/bytedance/ui-tars-1.5-7b)
+- [공개 UI-TARS 좌표 규격](https://github.com/bytedance/UI-TARS/blob/main/README_coordinates.md)
+
 ## 공통 Agent 지침과 로컬 저장
 
 **모델 & 설정 → 공통 Agent 지침**에 일반 검사 기준을 최대 8,000자로 입력한 뒤 **지침·설정 저장**을 누르세요. 등록 시나리오의 화면 계획·판단과 자율 탐색의 목표 선택·재계획·판단에 적용됩니다. 실행 중에는 설정 변경이 차단되며 실행 요약과 JSON에 당시 지침을 보존합니다. 입력 결과의 중립적 전사와 Playwright 고정 비교군에는 지침을 넣지 않습니다.

@@ -1,3 +1,4 @@
+import {uiTarsModelConfig, normalizeUiTarsAction} from "./ui-tars";
 import {createLayoutInspector} from "./layout-qa";
 import {runMidsceneWorkflow} from "./midscene-workflow";
 import { visualPrompt, visualPromptVersion, visualSchema, matchingIssue, annotationSvg, type VisualAudit } from "./visual-qa";
@@ -26,6 +27,7 @@ const sourceVersion = {
     .update(readFileSync(path.join(repoRoot, "apps/platform/server/visual-qa.ts")))
     .update(readFileSync(path.join(repoRoot, "apps/platform/server/layout-qa.ts")))
     .update(readFileSync(path.join(repoRoot, "apps/platform/server/midscene-workflow.ts")))
+    .update(readFileSync(path.join(repoRoot, "apps/platform/server/ui-tars.ts")))
     .digest("hex"),
   promptVersion: "midscene-native-workflow-v2-control-guard",
 };
@@ -151,6 +153,9 @@ export function providerClient(settings: Settings, request: typeof globalThis.fe
 export function instrumentClient(client: any, run: Run, runtime: Runtime) {
   const original = client.chat.completions.create.bind(client.chat.completions);
   client.chat.completions.create = async (body: any, options: any) => {
+    const uiTarsAction = body.visionQaUiTarsAction === true;
+    const {visionQaUiTarsAction: _internal, ...providerBody} = body;
+    body = providerBody;
     if (runtime.controller.signal.aborted) throw new Error("실행 중지됨");
     if (run.calls >= run.settings.maxCalls) {
       runtime.stopReason = "limited";
@@ -187,7 +192,7 @@ export function instrumentClient(client: any, run: Run, runtime: Runtime) {
       response = await original(
         { ...body, ...(run.settings.providerSort && run.settings.providerSort !== "default"
           ? {provider:{...body.provider,sort:run.settings.providerSort}} : {}),
-          max_tokens: run.settings.maxTokens, stream: false },
+          max_tokens: run.settings.family === "ui-tars-1.5" ? Math.min(run.settings.maxTokens, 2048) : run.settings.maxTokens, stream: false },
         {
           ...options,
           signal: AbortSignal.any([
@@ -238,6 +243,10 @@ export function instrumentClient(client: any, run: Run, runtime: Runtime) {
     run.tokens += response.usage?.total_tokens ?? 0;
     if (typeof response.usage?.cost === "number")
       run.cost = (run.cost ?? 0) + response.usage.cost;
+    if (typeof content === "string" && run.settings.family === "ui-tars-1.5" && uiTarsAction) {
+      message.content = await normalizeUiTarsAction(content, body.messages);
+      record.parsedOutput = {raw:content, sdkNormalizedAction:message.content};
+    }
     return response;
   };
   return client;
@@ -326,7 +335,7 @@ export async function runVision(
           MIDSCENE_MODEL_API_KEY: settings.apiKey!,
           MIDSCENE_MODEL_BASE_URL: "https://openrouter.ai/api/v1",
           MIDSCENE_MODEL_NAME: settings.model,
-          MIDSCENE_MODEL_FAMILY: settings.family,
+          ...uiTarsModelConfig(settings),
           MIDSCENE_MODEL_RETRY_COUNT: 0,
           MIDSCENE_MODEL_TIMEOUT: 0,
           MIDSCENE_MODEL_INIT_CONFIG_JSON: JSON.stringify({ maxRetries: 0 }),

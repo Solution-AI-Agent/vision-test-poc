@@ -12,8 +12,8 @@ export const defaults = {
   agentInstructions: "",
   providerSort: "default" as const,
   layoutAssist: false,
-  model: "qwen/qwen3-vl-235b-a22b-instruct",
-  family: "qwen3-vl" as const,
+  model: "bytedance/ui-tars-1.5-7b",
+  family: "ui-tars-1.5" as const,
   maxActions: 8,
   maxCalls: 10,
   maxSeconds: 900,
@@ -37,6 +37,7 @@ export const settingsSchema = limitsSchema.extend({
     "gpt-5",
     "doubao-vision",
     "vlm-ui-tars",
+    "ui-tars-1.5",
   ]),
 });
 export const scenarioSchema = z.object({

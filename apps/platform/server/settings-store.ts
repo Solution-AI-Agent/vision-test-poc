@@ -13,11 +13,22 @@ export class SettingsStore {
     try {
       const raw = JSON.parse(await readFile(path.join(this.directory, "settings.json"), "utf8"));
       const settings = storedSchema.parse(raw);
-      if (raw.settingsVersion !== 2 && settings.maxSeconds === 120) {
+      let migrated = false;
+      if ((raw.settingsVersion ?? 1) < 2 && settings.maxSeconds === 120) {
         await writeFile(path.join(this.directory, "settings.before-timeout-v2.json"), JSON.stringify(settings, null, 2), {flag:"wx",mode:0o600}).catch(error=>{if(error.code!=="EEXIST")throw error;});
         settings.maxSeconds = defaults.maxSeconds;
-        await this.save(settings);
+        migrated = true;
       }
+      if ((raw.settingsVersion ?? 1) < 3) {
+        if (settings.model === "qwen/qwen3-vl-235b-a22b-instruct" && settings.family === "qwen3-vl") {
+          await writeFile(path.join(this.directory, "settings.before-ui-tars-v3.json"), JSON.stringify(storedSchema.parse(raw), null, 2), {flag:"wx",mode:0o600}).catch(error=>{if(error.code!=="EEXIST")throw error;});
+          settings.model = defaults.model;
+          settings.family = defaults.family;
+          settings.maxTokens = Math.min(settings.maxTokens, 2048);
+        }
+        migrated = true;
+      }
+      if (migrated) await this.save(settings);
       return settings;
     } catch (error: any) {
       if (error.code === "ENOENT") return { ...defaults };
@@ -26,7 +37,7 @@ export class SettingsStore {
   }
 
   save(settings: Settings): Promise<void> {
-    const contents = JSON.stringify({ ...storedSchema.parse(settings), settingsVersion: 2 }, null, 2);
+    const contents = JSON.stringify({ ...storedSchema.parse(settings), settingsVersion: 3 }, null, 2);
     const operation = this.writing.catch(() => {}).then(async () => {
       await mkdir(this.directory, { recursive: true });
       const temporary = path.join(this.directory, `settings-${randomUUID()}.tmp`);

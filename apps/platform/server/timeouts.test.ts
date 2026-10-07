@@ -15,7 +15,7 @@ it('actual Midscene + provider + network accept a response beyond the former 30-
  });});
  await new Promise<void>(resolve=>server.listen(0,'127.0.0.1',resolve));
  const url=`http://127.0.0.1:${(server.address() as any).port}`;
- const settings={...defaults,model:'stub-vlm',apiKey:'stub-key',maxSeconds:60};
+ const settings={...defaults,family:'qwen3-vl' as const,model:'stub-vlm',apiKey:'stub-key',maxSeconds:60};
  const run=makeRun(inputSchema.parse({mode:'scenario',url:'http://127.0.0.1:4311/store/a',task:'완료 화면 확인',expected:'완료'}),settings);
  try{
   await runVision(run,settings,{controller:new AbortController()},async()=>{}, {

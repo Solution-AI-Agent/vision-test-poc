@@ -407,6 +407,9 @@ export default function App() {
                         disabled={active}
                       />
                     </FormField>
+                    <Button variant="outline" disabled={active} onClick={() => setConfig({ ...config, model: "bytedance/ui-tars-1.5-7b", family: "ui-tars-1.5", maxTokens: Math.min(config.maxTokens, 2048) })}>
+                      UI-TARS 1.5 7B 설정 불러오기
+                    </Button>
                     <FormField id="layout-assist" label="웹 겹침 보조 검사" description="혼합 검사는 웹 요소의 위치로 후보를 찾고 Midscene이 화면을 검토합니다. 순수 Vision과 구분되며 화면별 추가 모델 요청이 발생할 수 있습니다.">
                       <Select value={config.layoutAssist ? "hybrid" : "vision"} disabled={active}
                         onValueChange={(value) => setConfig({ ...config, layoutAssist: value === "hybrid" })}>
@@ -453,6 +456,7 @@ export default function App() {
                               "gpt-5",
                               "doubao-vision",
                               "vlm-ui-tars",
+                              "ui-tars-1.5",
                             ].map((f) => (
                               <SelectItem key={f} value={f}>
                                 {f}

@@ -22,7 +22,7 @@ it("validates complete QA criteria, consistent findings and bounded normalized b
 
 for (const variant of ["reproduced","normal","disagrees","invalid","budget"] as const) {
   it(`independent QA ${variant}: completion cannot hide findings or unreviewed frames (stub model)`, async () => {
-    const settings = {...defaults,model:"stub-vlm",apiKey:"stub-key",maxCalls:variant === "budget" ? 1 : 6};
+    const settings = {...defaults,family:"qwen3-vl" as const,model:"stub-vlm",apiKey:"stub-key",maxCalls:variant === "budget" ? 1 : 6};
     const run = makeRun(inputSchema.parse({mode:"scenario",url:"http://127.0.0.1:4311/store/c",task:"Observe the completed order",expected:"Order completed"}), settings);
     run.engine = "LOCAL STUB QA PIPELINE TEST · 실제 모델 검출 아님";
     let audits = 0, plans = 0; const prompts: string[] = [], images: string[] = [];

@@ -59,7 +59,7 @@ it('migrates only the legacy 120-second default once, preserving explicitly save
  await writeFile(file,JSON.stringify({...defaults,maxSeconds:120}));
  expect((await store.load()).maxSeconds).toBe(900);
  expect(JSON.parse(await readFile(path.join(dir,'settings.before-timeout-v2.json'),'utf8')).maxSeconds).toBe(120);
- expect(JSON.parse(await readFile(file,'utf8')).settingsVersion).toBe(2);
+ expect(JSON.parse(await readFile(file,'utf8')).settingsVersion).toBe(3);
  await store.save({...defaults,maxSeconds:120});expect((await store.load()).maxSeconds).toBe(120);
  await writeFile(file,JSON.stringify({...defaults,maxSeconds:240}));expect((await store.load()).maxSeconds).toBe(240);
  await store.save({...defaults,maxSeconds:0});expect((await store.load()).maxSeconds).toBe(0);
@@ -73,4 +73,14 @@ it('persists routing preference and keeps old settings on unchanged provider sel
  await writeFile(path.join(dir,'settings.json'),JSON.stringify(legacy));
  expect((await store.load()).providerSort).toBe("default");
  expect(()=>settingsSchema.parse({...defaults,providerSort:"unknown"})).toThrow();
+});
+
+it("switches the former default pair once, preserves limits/instructions and allows a saved rollback", async () => {
+ const dir=await directory(), file=path.join(dir,"settings.json"), store=new SettingsStore(dir);
+ const old={...defaults,model:"qwen/qwen3-vl-235b-a22b-instruct",family:"qwen3-vl" as const,maxTokens:4096,maxCalls:40,layoutAssist:true,agentInstructions:"가독성 검사",settingsVersion:2};
+ await writeFile(file,JSON.stringify({...old,apiKey:"must-not-backup"}));
+ expect(await store.load()).toMatchObject({model:defaults.model,family:defaults.family,maxTokens:2048,maxCalls:40,layoutAssist:true,agentInstructions:"가독성 검사"});
+ expect(await readFile(path.join(dir,"settings.before-ui-tars-v3.json"),"utf8")).not.toContain("must-not-backup");
+ await store.save(old);expect((await store.load()).model).toBe(old.model);
+ await writeFile(file,JSON.stringify({...old,model:"custom/model"}));expect((await store.load()).model).toBe("custom/model");
 });
