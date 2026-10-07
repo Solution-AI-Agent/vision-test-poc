@@ -1,0 +1,43 @@
+{
+  "runId": "8d482bdf-79ef-4377-a545-916128822731",
+  "codeCommit": "0105ac9d250643c08ec80cc98b69337cdec78018",
+  "settings": {
+    "model": "qwen/qwen3-vl-235b-a22b-instruct",
+    "family": "qwen3-vl",
+    "layoutAssist": true,
+    "maxCalls": 40,
+    "maxActions": 16,
+    "maxSeconds": 900,
+    "maxTokens": 2048
+  },
+  "attempts": 1,
+  "requests": 31,
+  "sdkActions": 5,
+  "providerReportedCostUSD": 0.02784105,
+  "elapsedSeconds": 173.229,
+  "appStatus": "completed",
+  "independentReview": "FAIL: email entered into recipient field; email field empty; no order submission; model assertion falsely reports completion",
+  "orderApiResponses": 0,
+  "functionalResults": {
+    "productSelection": "verified on screenshot",
+    "quantity2": "verified on screenshot",
+    "recipient": "initially correct, overwritten by email input",
+    "email": "wrong field; independent model read incorrectly accepted it",
+    "orderSubmission": "not performed; button disabled"
+  },
+  "visualResults": {
+    "visionAudits": 6,
+    "visionIssues": 0,
+    "geometryCandidateRecords": 5,
+    "distinctDefectMeaning": "Repeated observations of same overlap, not five distinct defects",
+    "hybridModelVerdicts": [
+      "clear",
+      "clear",
+      "clear",
+      "clear",
+      "uncertain"
+    ],
+    "correctOverlapExplanation": false
+  },
+  "privacy": "User-supplied recipient/email and full raw screenshots stay in local artifacts; public summary omits those values. Initial screenshot below predates their entry."
+}
