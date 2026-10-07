@@ -1,0 +1,9 @@
+{
+  "model": "bytedance/ui-tars-1.5-7b",
+  "family": "ui-tars-1.5",
+  "migration": true,
+  "preset": true,
+  "saveReload": true,
+  "errors": [],
+  "restartRestored": true
+}

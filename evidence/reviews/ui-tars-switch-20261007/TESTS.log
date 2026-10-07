@@ -1,0 +1,33 @@
+
+> vision-qa-lab@0.1.0 test
+> npm run test --workspaces
+
+
+> @vision-qa/ui@0.1.0 test
+> tsc --noEmit -p tsconfig.json
+
+
+> @vision-qa/platform@0.1.0 test
+> vitest run
+
+
+ RUN  v5.0.3 /Users/zpro/.buzz/REPOS/vision-test-delivery/apps/platform
+
+
+ Test Files  11 passed (11)
+      Tests  61 passed (61)
+   Start at  16:05:15
+   Duration  39.63s (tests 86%, import 13%, transform 1%)
+
+
+> @vision-qa/sample@0.1.0 test
+> vitest run
+
+
+ RUN  v5.0.3 /Users/zpro/.buzz/REPOS/vision-test-delivery/sample-site
+
+
+ Test Files  2 passed (2)
+      Tests  3 passed (3)
+   Start at  16:05:55
+   Duration  102ms (import 45%, transform 42%, tests 8%, worker 5%)
