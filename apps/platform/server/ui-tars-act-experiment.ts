@@ -23,15 +23,37 @@ const nfc = (v:string) => v.normalize("NFC").trim();
 // target with an extra default-model (qwen2.5-vl bbox JSON) call. Here UI-TARS is the default slot with
 // Midscene's vlm-ui-tars adapter, so its own planned point is executed (includeLocateInPlanning). Only planning
 // requests carry the public UI-TARS 1.5 pixel->1000 coordinate adapter flag; insight requests (aiAssert) do not.
+//
+// Midscene stores getSummary(response) as the assistant history, and that response is already the adapter's
+// 0-1000 normalized text, so later requests showed UI-TARS normalized points next to its own resized-pixel
+// points (live run e4c62a7f: name click (175,532) was replayed as [136,731], then the email click came back
+// as (465,731), off screen). The model gets back its own raw answer; the executor keeps the normalized one.
+// Exact match only: an assistant turn this run did not produce fails the request instead of being guessed.
+const uiTarsSummary = (text:string) => text.replace(/Reflection:[\s\S]*?(?=Action_Summary:|Action:|$)/g,"").trim(); // Midscene ui-tars getSummary
 export function uiTarsActAgentOptions(settings:Settings,run:Run,runtime:Runtime,createClient:(settings:Settings)=>any) {
   const base = midsceneAgentOptions(settings,run,runtime,createClient);
+  const rawByNormalized = new Map<string,string>();
+  const rawHistory = (content:unknown) => {
+    const raw = typeof content==="string" ? rawByNormalized.get(content) : undefined;
+    if (raw===undefined) throw new Error("UI-TARS 행동 이력의 원 좌표를 찾을 수 없습니다.");
+    return raw;
+  };
   const modelConfig = Object.fromEntries(Object.entries(base.modelConfig).filter(([key])=>!key.startsWith("MIDSCENE_PLANNING_MODEL_")));
   return {...base,modelConfig:{...modelConfig,MIDSCENE_MODEL_FAMILY:"vlm-ui-tars"},
     createOpenAIClient:async () => {
       const client = await base.createOpenAIClient();
       const create = client.chat.completions.create;
-      client.chat.completions.create = (body:any,opts:any) =>
-        create({...body,...(JSON.stringify(body.messages).includes("## Action Space") ? {visionQaUiTarsAction:true} : {})},opts);
+      client.chat.completions.create = async (body:any,opts:any) => {
+        if (!JSON.stringify(body.messages).includes("## Action Space")) return create(body,opts);
+        const response = await create({...body,messages:body.messages.map((m:any)=>m.role==="assistant" ? {...m,content:rawHistory(m.content)} : m),visionQaUiTarsAction:true},opts);
+        const output = run.transport.at(-1)?.parsedOutput as {raw?:string;sdkNormalizedAction?:string}|undefined;
+        if (output?.raw && output.sdkNormalizedAction) {
+          const key = uiTarsSummary(output.sdkNormalizedAction), raw = uiTarsSummary(output.raw);
+          if (raw !== (rawByNormalized.get(key) ?? raw)) throw new Error("UI-TARS 행동 이력의 원 좌표를 구분할 수 없습니다.");
+          rawByNormalized.set(key,raw);
+        }
+        return response;
+      };
       return client;
     }};
 }

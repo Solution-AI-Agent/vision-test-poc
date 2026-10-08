@@ -4,7 +4,9 @@ import path from "node:path";
 import type {Page} from "playwright";
 import {defaults} from "./domain";
 import {artifactsDir} from "./runner";
-import {experimentLimits,orderScenario,runUiTarsActExperiment} from "./ui-tars-act-experiment";
+import {experimentLimits,orderScenario,runUiTarsActExperiment,uiTarsActAgentOptions} from "./ui-tars-act-experiment";
+import {inputSchema} from "./domain";
+import {makeRun} from "./runner";
 
 // Local stand-in for the order form. Test-only DOM reads below check the page; the runner never reads DOM.
 const fixture = `<style>*{margin:0}body{font:16px sans-serif}button,input{position:absolute;width:160px;height:40px}</style>
@@ -142,3 +144,29 @@ it("an action execution error stops instead of letting Midscene replan", async (
   expect(report.reason).toMatch(/행동 실행 오류로 중지/);
   expect(report.counts.calls).toBe(1);
 }, 60000);
+
+it("follow-up requests replay UI-TARS' own pixel coordinates in the assistant history, while the SDK executes normalized ones", async () => {
+  // Live run e4c62a7f call 8: raw click (175,532) -> SDK [136,731,136,731] on a 1280x720 screen (1288x728 resized pixels).
+  const plans = ["Thought: 받는 분 칸 클릭\nAction: click(start_box='(175,532)')","Thought: 이름 입력\nAction: type(content='김성지')",
+    "Thought: 완료\nAction: finished(content='완료')"];
+  const mock = provider(plans);
+  const {report} = await run(mock);
+  const planning = mock.bodies.filter(b=>JSON.stringify(b).includes("## Action Space"));
+  const history = planning.map(b=>b.messages.filter((m:any)=>m.role==="assistant").map((m:any)=>m.content));
+  expect(history).toEqual([[],[plans[0]],[plans[0],plans[1]]]);
+  expect(JSON.stringify(planning)).not.toContain("136,731");
+  // The executor still receives the SDK-normalized point: (175,532) on 1288x728 -> (174,526) on 1280x720.
+  expect(report.transport[0].parsedOutput).toMatchObject({raw:plans[0],sdkNormalizedAction:expect.stringContaining("[136,731,136,731]")});
+  expect(report.steps[0]).toMatchObject({name:"Tap",parameters:{locate:{center:[174,526]}},executed:true});
+  expect(report.steps[1]).toMatchObject({name:"Input",parameters:{value:"김성지"}});
+}, 60000);
+
+it("an assistant history turn this run did not produce fails the planning request instead of being sent or guessed", async () => {
+  const mock = provider(happy);
+  const settingsUiTars = {...settings,family:"ui-tars-1.5" as const};
+  const options = uiTarsActAgentOptions(settingsUiTars,makeRun(inputSchema.parse({mode:"scenario",url:orderScenario.url,task:orderScenario.task,expected:orderScenario.expected}),settingsUiTars),{controller:new AbortController()},mock.client);
+  const client = await options.createOpenAIClient();
+  await expect(client.chat.completions.create({model:"m",messages:[{role:"user",content:"## Action Space"},
+    {role:"assistant",content:"Thought: x\nAction: click(start_box='[136,731,136,731]')"}]},{})).rejects.toThrow("원 좌표를 찾을 수 없습니다");
+  expect(mock.bodies).toHaveLength(0);
+});
