@@ -1,0 +1,269 @@
+{
+  "experiment": "ui-tars-direct-aiAct",
+  "runId": "2fb1b1db-a7cc-43a3-af06-fe8a6e3e67ed",
+  "scenario": {
+    "url": "http://127.0.0.1:4311/store/d",
+    "task": "수량을 2로 입력한다.",
+    "expected": "수량 칸의 값이 2로 보인다.",
+    "requiredInputs": [
+      "2"
+    ]
+  },
+  "prompt": {
+    "variant": "baseline",
+    "userTask": "수량을 2로 입력한다.",
+    "generalGuidance": null
+  },
+  "limits": {
+    "maxCalls": 6,
+    "maxActions": 4,
+    "maxSeconds": 90,
+    "maxTokens": 1536
+  },
+  "sdk": {
+    "planningModelFamily": "vlm-ui-tars",
+    "planningKind": "custom",
+    "deepLocate": {
+      "supportedForAiAct": false,
+      "requested": false
+    },
+    "planningSlot": "default",
+    "includeLocateInPlanning": true,
+    "replanningCycleLimit": 4
+  },
+  "aiAct": {
+    "status": "error",
+    "error": "task runner is in error state, cannot append task"
+  },
+  "modelFinished": {
+    "declared": false
+  },
+  "inputs": {
+    "stepwiseVisualConfirmation": "not-performed",
+    "note": "직접 aiAct 경로에는 기존 단계별 aiString 입력값 확인이 없습니다. typedValues는 모델이 요청한 type 내용이며 화면 확인값이 아닙니다.",
+    "typedValues": [
+      "2",
+      "2"
+    ],
+    "requiredTyped": {
+      "2": true
+    },
+    "otherTypedValues": []
+  },
+  "orderCompletion": {
+    "status": "needs-independent-review",
+    "note": "코드/모델로 판정하지 않음. finalScreenshot·video로 독립 검토."
+  },
+  "assertion": {
+    "status": "not-run"
+  },
+  "initialScreenshot": "/artifacts/2fb1b1db-a7cc-43a3-af06-fe8a6e3e67ed/act-initial.png",
+  "executionError": "Error executing running tasks: error in running beforeInvokeAction for KeyboardPress: 행동 한도 도달 (4회)",
+  "finalScreenshot": "/artifacts/2fb1b1db-a7cc-43a3-af06-fe8a6e3e67ed/act-final.png",
+  "video": "/artifacts/2fb1b1db-a7cc-43a3-af06-fe8a6e3e67ed/page@8567f14b70e69be2a42cc17bbd86b502.webm",
+  "status": "limited-incomplete",
+  "reason": "행동 한도 도달 (4회)",
+  "counts": {
+    "calls": 4,
+    "actions": 4,
+    "executedActions": 4,
+    "tokens": 14868,
+    "cost": 0.00152,
+    "startedAt": "2026-10-08T02:55:59.495Z",
+    "endedAt": "2026-10-08T02:56:12.037Z"
+  },
+  "steps": [
+    {
+      "index": 0,
+      "name": "Tap",
+      "parameters": {
+        "locate": {
+          "center": [
+            136,
+            445
+          ],
+          "description": "주문서에서 수량을 수정해야 하는데, 이 부분이挺棘手的。我看到页面上有个数字\"1\"，这应该就是当前的购买数量了。要把它改成2的话，我得先点击这个数字，这样才能输入新的数值。"
+        }
+      },
+      "executed": true,
+      "before": "/artifacts/2fb1b1db-a7cc-43a3-af06-fe8a6e3e67ed/act-0-before.png",
+      "after": "/artifacts/2fb1b1db-a7cc-43a3-af06-fe8a6e3e67ed/act-0-after.png",
+      "afterModelCall": 1
+    },
+    {
+      "index": 1,
+      "name": "Input",
+      "parameters": {
+        "value": "2",
+        "mode": "replace"
+      },
+      "executed": true,
+      "before": "/artifacts/2fb1b1db-a7cc-43a3-af06-fe8a6e3e67ed/act-1-before.png",
+      "after": "/artifacts/2fb1b1db-a7cc-43a3-af06-fe8a6e3e67ed/act-1-after.png",
+      "afterModelCall": 2
+    },
+    {
+      "index": 2,
+      "name": "Input",
+      "parameters": {
+        "value": "2",
+        "mode": "replace"
+      },
+      "executed": true,
+      "before": "/artifacts/2fb1b1db-a7cc-43a3-af06-fe8a6e3e67ed/act-2-before.png",
+      "after": "/artifacts/2fb1b1db-a7cc-43a3-af06-fe8a6e3e67ed/act-2-after.png",
+      "afterModelCall": 3
+    },
+    {
+      "index": 3,
+      "name": "KeyboardPress",
+      "parameters": {
+        "keyName": "Meta+A"
+      },
+      "executed": true,
+      "plannedKeyName": "Meta+A",
+      "before": "/artifacts/2fb1b1db-a7cc-43a3-af06-fe8a6e3e67ed/act-3-before.png",
+      "after": "/artifacts/2fb1b1db-a7cc-43a3-af06-fe8a6e3e67ed/act-3-after.png",
+      "afterModelCall": 4
+    }
+  ],
+  "transport": [
+    {
+      "phase": "action",
+      "providerSort": "default",
+      "images": 1,
+      "texts": 1,
+      "screenshots": [
+        "/artifacts/2fb1b1db-a7cc-43a3-af06-fe8a6e3e67ed/model-request-1.jpg"
+      ],
+      "screenshot": "/artifacts/2fb1b1db-a7cc-43a3-af06-fe8a6e3e67ed/model-request-1.jpg",
+      "parsedOutput": {
+        "raw": "Thought: 주문서에서 수량을 수정해야 하는데, 이 부분이挺棘手的。我看到页面上有个数字\"1\"，这应该就是当前的购买数量了。要把它改成2的话，我得先点击这个数字，这样才能输入新的数值。\nAction: click(start_box='(137,450)')",
+        "sdkNormalizedAction": "Thought: 주문서에서 수량을 수정해야 하는데, 이 부분이挺棘手的。我看到页面上有个数字\"1\"，这应该就是当前的购买数量了。要把它改成2的话，我得先点击这个数字，这样才能输入新的数值。\nAction: click(start_box='[106,618,106,618]')"
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 134,
+        "hasDataJson": false,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 1735,
+      "responseModel": "bytedance/ui-tars-1.5-7b",
+      "provider": "Parasail",
+      "usage": {
+        "promptTokens": 1629,
+        "completionTokens": 78,
+        "cachedTokens": 0,
+        "cost": 0.0001785
+      },
+      "requestId": "gen-1791428161-f1byfxk9IxrD1kRVEuR5",
+      "currentScreenshot": "/artifacts/2fb1b1db-a7cc-43a3-af06-fe8a6e3e67ed/model-request-1.jpg"
+    },
+    {
+      "phase": "action",
+      "providerSort": "default",
+      "images": 2,
+      "texts": 3,
+      "screenshots": [
+        "/artifacts/2fb1b1db-a7cc-43a3-af06-fe8a6e3e67ed/model-request-2.jpg",
+        "/artifacts/2fb1b1db-a7cc-43a3-af06-fe8a6e3e67ed/model-request-2-image-2.jpg"
+      ],
+      "screenshot": "/artifacts/2fb1b1db-a7cc-43a3-af06-fe8a6e3e67ed/model-request-2.jpg",
+      "parsedOutput": {
+        "raw": "Thought: 수량 입력란이 선택된 상태에서, 저는 \"2\"를 입력해야 합니다. 이렇게 하면 주문량이 2개로 변경됩니다. 단순한 숫자 입력일 뿐, 이는 단순한 주문 시뮬레이션에 불과합니다.\nAction: type(content='2')",
+        "sdkNormalizedAction": "Thought: 수량 입력란이 선택된 상태에서, 저는 \"2\"를 입력해야 합니다. 이렇게 하면 주문량이 2개로 변경됩니다. 단순한 숫자 입력일 뿐, 이는 단순한 주문 시뮬레이션에 불과합니다.\nAction: type(content='2')"
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 131,
+        "hasDataJson": false,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 2204,
+      "responseModel": "bytedance/ui-tars-1.5-7b",
+      "provider": "Parasail",
+      "usage": {
+        "promptTokens": 2968,
+        "completionTokens": 70,
+        "cachedTokens": 1680,
+        "cost": 0.0003108
+      },
+      "requestId": "gen-1791428163-FUJgSD5lYCokUq3ncVyK",
+      "currentScreenshot": "/artifacts/2fb1b1db-a7cc-43a3-af06-fe8a6e3e67ed/model-request-2-image-2.jpg"
+    },
+    {
+      "phase": "action",
+      "providerSort": "default",
+      "images": 3,
+      "texts": 5,
+      "screenshots": [
+        "/artifacts/2fb1b1db-a7cc-43a3-af06-fe8a6e3e67ed/model-request-3.jpg",
+        "/artifacts/2fb1b1db-a7cc-43a3-af06-fe8a6e3e67ed/model-request-3-image-2.jpg",
+        "/artifacts/2fb1b1db-a7cc-43a3-af06-fe8a6e3e67ed/model-request-3-image-3.jpg"
+      ],
+      "screenshot": "/artifacts/2fb1b1db-a7cc-43a3-af06-fe8a6e3e67ed/model-request-3.jpg",
+      "parsedOutput": {
+        "raw": "Thought: 수량 입력란에 \"2\"를 입력했지만, 이상한 현상이 발생했습니다. 입력된 숫자가 \"21\"으로 변환된 것이죠. 아마도 이는 입력 방식에 문제가 있는 것 같습니다. 다시 한 번 \"2\"를 입력해 보도록 하겠습니다.\nAction: type(content='2')",
+        "sdkNormalizedAction": "Thought: 수량 입력란에 \"2\"를 입력했지만, 이상한 현상이 발생했습니다. 입력된 숫자가 \"21\"으로 변환된 것이죠. 아마도 이는 입력 방식에 문제가 있는 것 같습니다. 다시 한 번 \"2\"를 입력해 보도록 하겠습니다.\nAction: type(content='2')"
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 150,
+        "hasDataJson": false,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 2072,
+      "responseModel": "bytedance/ui-tars-1.5-7b",
+      "provider": "Parasail",
+      "usage": {
+        "promptTokens": 4301,
+        "completionTokens": 74,
+        "cachedTokens": 3024,
+        "cost": 0.0004449
+      },
+      "requestId": "gen-1791428166-mPEnD985aKxk9Aw47HuK",
+      "currentScreenshot": "/artifacts/2fb1b1db-a7cc-43a3-af06-fe8a6e3e67ed/model-request-3-image-3.jpg"
+    },
+    {
+      "phase": "action",
+      "providerSort": "default",
+      "images": 4,
+      "texts": 7,
+      "screenshots": [
+        "/artifacts/2fb1b1db-a7cc-43a3-af06-fe8a6e3e67ed/model-request-4.jpg",
+        "/artifacts/2fb1b1db-a7cc-43a3-af06-fe8a6e3e67ed/model-request-4-image-2.jpg",
+        "/artifacts/2fb1b1db-a7cc-43a3-af06-fe8a6e3e67ed/model-request-4-image-3.jpg",
+        "/artifacts/2fb1b1db-a7cc-43a3-af06-fe8a6e3e67ed/model-request-4-image-4.jpg"
+      ],
+      "screenshot": "/artifacts/2fb1b1db-a7cc-43a3-af06-fe8a6e3e67ed/model-request-4.jpg",
+      "parsedOutput": {
+        "raw": "Thought: 수량 입력란에 \"221\"이 표시되어 있는 것을 보니, 이전에 입력한 숫자가 누적되어 있는 것 같습니다. 문제의 원인은 단순한 숫자 입력 방식에 있는 것 같습니다. 이번에는 \"2\"를 입력하기 전에, 입력란에 있는 기존 내용을 먼저 삭제해야 합니다. 이렇게 하면 정확한 수량을 입력할 수 있을 것입니다.\nAction: hotkey(key='ctrl a')\n\nhotkey(key='backspace')",
+        "sdkNormalizedAction": "Thought: 수량 입력란에 \"221\"이 표시되어 있는 것을 보니, 이전에 입력한 숫자가 누적되어 있는 것 같습니다. 문제의 원인은 단순한 숫자 입력 방식에 있는 것 같습니다. 이번에는 \"2\"를 입력하기 전에, 입력란에 있는 기존 내용을 먼저 삭제해야 합니다. 이렇게 하면 정확한 수량을 입력할 수 있을 것입니다.\nAction: hotkey(key='ctrl a')\n\nhotkey(key='backspace')"
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 230,
+        "hasDataJson": false,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 2803,
+      "responseModel": "bytedance/ui-tars-1.5-7b",
+      "provider": "Parasail",
+      "usage": {
+        "promptTokens": 5638,
+        "completionTokens": 110,
+        "cachedTokens": 4368,
+        "cost": 0.0005858
+      },
+      "requestId": "gen-1791428168-NWucEpCJ3n3ttXlytGMj",
+      "currentScreenshot": "/artifacts/2fb1b1db-a7cc-43a3-af06-fe8a6e3e67ed/model-request-4-image-4.jpg"
+    }
+  ],
+  "transportNote": "screenshot=요청의 첫 이미지(이력이 쌓이면 가장 오래된 화면), currentScreenshot=요청의 마지막 이미지(모델이 판단한 현재 화면)",
+  "sourceVersion": {
+    "commit": "e210a623aa320c94c883d51372b5288125c60ea4",
+    "dirty": false,
+    "sourceHash": "0b4ee5d1f93fa47cc7f8296de90e53184ec8621daa37394a9c10ff91a1d7e736",
+    "promptVersion": "midscene-native-workflow-v2-control-guard"
+  }
+}

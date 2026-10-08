@@ -1,0 +1,506 @@
+[
+  {
+    "id": "ad5f5b5d-87db-4561-94dc-b22405caf588",
+    "input": {
+      "mode": "scenario",
+      "url": "http://127.0.0.1:4311/store/d",
+      "task": "Select Red mug, quantity 2. Enter a synthetic recipient and email, confirm the simulated order and review its appearance, receipt and community chart.",
+      "expected": "Product appearance matches selection. Calculations and confirmation match input. Receipt and collection instructions are readable. Chart magnitude agrees with displayed values.",
+      "query": "Midscene AI demo"
+    },
+    "startedAt": "2026-10-08T02:00:41.678Z",
+    "status": "failed",
+    "outcome": "모델 응답을 계획 형식으로 검증하지 못했습니다.",
+    "stage": "실패 · 화면 관찰·계획",
+    "calls": 2,
+    "actions": 0,
+    "tokens": 5556,
+    "cost": 0.0005946,
+    "steps": [],
+    "findings": [],
+    "engine": "Midscene aiInput · aiAct · aiString · aiAssert / 1.14.0",
+    "transport": [
+      {
+        "phase": "visual-review",
+        "providerSort": "default",
+        "images": 1,
+        "texts": 3,
+        "screenshots": [
+          "/artifacts/ad5f5b5d-87db-4561-94dc-b22405caf588/model-request-1.jpg"
+        ],
+        "screenshot": "/artifacts/ad5f5b5d-87db-4561-94dc-b22405caf588/model-request-1.jpg",
+        "parsedOutput": {
+          "checks": [
+            {
+              "criterion": "readability",
+              "result": "clear",
+              "evidence": "The text is clear and easy to read."
+            },
+            {
+              "criterion": "geometry",
+              "result": "clear",
+              "evidence": "All components are properly aligned and not stretched or skewed."
+            },
+            {
+              "criterion": "occlusion",
+              "result": "not-applicable",
+              "evidence": "There is no overlap of components or obscured content."
+            },
+            {
+              "criterion": "image-meaning",
+              "result": "clear",
+              "evidence": "The product images and descriptions match the adjacent pictures."
+            },
+            {
+              "criterion": "chart-meaning",
+              "result": "not-applicable",
+              "evidence": "There are no charts present in the image."
+            }
+          ],
+          "issues": []
+        },
+        "responseFormat": {
+          "finishReason": "stop",
+          "chars": 949,
+          "hasDataJson": true,
+          "normalizedPlainJson": false
+        },
+        "elapsedMs": 9329,
+        "responseModel": "bytedance/ui-tars-1.5-7b",
+        "provider": "Parasail",
+        "usage": {
+          "promptTokens": 2635,
+          "completionTokens": 281,
+          "cachedTokens": 0,
+          "cost": 0.0003197
+        },
+        "requestId": "gen-1791424843-R3HQOqlqOWgJC3hnpv1g"
+      },
+      {
+        "phase": "model-plan",
+        "providerSort": "default",
+        "images": 1,
+        "texts": 3,
+        "screenshots": [
+          "/artifacts/ad5f5b5d-87db-4561-94dc-b22405caf588/model-request-2.jpg"
+        ],
+        "screenshot": "/artifacts/ad5f5b5d-87db-4561-94dc-b22405caf588/model-request-2.jpg",
+        "parsedOutput": {
+          "raw": "<observation>이 화면은 ATELIER GOODS의 가상 주문 시스템입니다. 사용자는 빨간 머그를 선택하고 수량을 2개로 설정해야 합니다. 수령인과 이메일 주소를 입력해야 하며, 주문을 제출하고 결과를 확인해야 합니다. 화면은 주문 과정을 단계별로 안내하며, 각 단계에서 필요한 정보를 입력해야 합니다.</observation>\n<errors></errors>"
+        },
+        "responseFormat": {
+          "finishReason": "stop",
+          "chars": 206,
+          "hasDataJson": false,
+          "normalizedPlainJson": false
+        },
+        "elapsedMs": 5940,
+        "responseModel": "bytedance/ui-tars-1.5-7b",
+        "provider": "Parasail",
+        "usage": {
+          "promptTokens": 2531,
+          "completionTokens": 109,
+          "cachedTokens": 2064,
+          "cost": 0.0002749
+        },
+        "requestId": "gen-1791424852-Hl7C5P0OboVcUJtx7XLN"
+      }
+    ],
+    "visualAudits": [
+      {
+        "id": "1998f321-2241-4188-a05a-feac0f6b3bc5",
+        "at": "2026-10-08T02:00:43.283Z",
+        "checkpoint": "첫 화면",
+        "screenshot": "/artifacts/ad5f5b5d-87db-4561-94dc-b22405caf588/model-request-1.jpg",
+        "call": 1,
+        "status": "reviewed",
+        "promptVersion": "visual-qa-v1-independent-checklist",
+        "result": {
+          "checks": [
+            {
+              "criterion": "readability",
+              "result": "clear",
+              "evidence": "The text is clear and easy to read."
+            },
+            {
+              "criterion": "geometry",
+              "result": "clear",
+              "evidence": "All components are properly aligned and not stretched or skewed."
+            },
+            {
+              "criterion": "occlusion",
+              "result": "not-applicable",
+              "evidence": "There is no overlap of components or obscured content."
+            },
+            {
+              "criterion": "image-meaning",
+              "result": "clear",
+              "evidence": "The product images and descriptions match the adjacent pictures."
+            },
+            {
+              "criterion": "chart-meaning",
+              "result": "not-applicable",
+              "evidence": "There are no charts present in the image."
+            }
+          ],
+          "issues": []
+        }
+      }
+    ],
+    "visualComplete": true,
+    "sourceVersion": {
+      "commit": "72520e0421d14519a21212800e066677c10693a4",
+      "dirty": false,
+      "sourceHash": "f5632f54d1415c5973e040df1809b90595c02c8cf45def27609532361733b20a",
+      "promptVersion": "midscene-native-workflow-v2-control-guard"
+    },
+    "executionPhase": "model-plan",
+    "screenshot": "/artifacts/ad5f5b5d-87db-4561-94dc-b22405caf588/visual-0-screen.png",
+    "failureStage": "Midscene 실행할 업무 항목 정리",
+    "diagnostic": {
+      "code": "MODEL_RESPONSE_INVALID",
+      "phase": "model-plan",
+      "message": "모델 응답을 계획 형식으로 검증하지 못했습니다.",
+      "action": "모델의 구조화된 응답 지원과 출력 토큰 설정을 확인하세요. 이 실패는 제품 결함 판정이 아닙니다."
+    },
+    "error": "모델 응답을 계획 형식으로 검증하지 못했습니다.",
+    "video": "/artifacts/ad5f5b5d-87db-4561-94dc-b22405caf588/page@d24cfd2c6467e9e1907a9bcc585196a3.webm",
+    "endedAt": "2026-10-08T02:00:58.773Z"
+  },
+  {
+    "id": "150bf07d-c806-4ec0-b565-5b16a4f8ffba",
+    "input": {
+      "mode": "scenario",
+      "url": "http://127.0.0.1:4311/store/d",
+      "task": "Select Red mug, quantity 2. Enter a synthetic recipient and email, confirm the simulated order and review its appearance, receipt and community chart.",
+      "expected": "Product appearance matches selection. Calculations and confirmation match input. Receipt and collection instructions are readable. Chart magnitude agrees with displayed values.",
+      "query": "Midscene AI demo"
+    },
+    "startedAt": "2026-10-08T00:18:16.689Z",
+    "status": "failed",
+    "outcome": "모델 응답을 계획 형식으로 검증하지 못했습니다.",
+    "stage": "실패 · 화면 관찰·계획",
+    "calls": 2,
+    "actions": 0,
+    "tokens": 5563,
+    "cost": 0.000596,
+    "steps": [],
+    "findings": [],
+    "engine": "Midscene aiInput · aiAct · aiString · aiAssert / 1.14.0",
+    "transport": [
+      {
+        "phase": "visual-review",
+        "providerSort": "default",
+        "images": 1,
+        "texts": 3,
+        "screenshots": [
+          "/artifacts/150bf07d-c806-4ec0-b565-5b16a4f8ffba/model-request-1.jpg"
+        ],
+        "screenshot": "/artifacts/150bf07d-c806-4ec0-b565-5b16a4f8ffba/model-request-1.jpg",
+        "parsedOutput": {
+          "checks": [
+            {
+              "criterion": "readability",
+              "result": "clear",
+              "evidence": "The text is clear and easy to read."
+            },
+            {
+              "criterion": "geometry",
+              "result": "clear",
+              "evidence": "The text is not stretched, skewed, or compressed."
+            },
+            {
+              "criterion": "occlusion",
+              "result": "not-applicable",
+              "evidence": "There are no overlapping components."
+            },
+            {
+              "criterion": "image-meaning",
+              "result": "clear",
+              "evidence": "The image meaning is consistent with the text description."
+            },
+            {
+              "criterion": "chart-meaning",
+              "result": "not-applicable",
+              "evidence": "There is no chart present."
+            }
+          ],
+          "issues": []
+        },
+        "responseFormat": {
+          "finishReason": "stop",
+          "chars": 902,
+          "hasDataJson": true,
+          "normalizedPlainJson": false
+        },
+        "elapsedMs": 4263,
+        "responseModel": "bytedance/ui-tars-1.5-7b",
+        "provider": "Parasail",
+        "usage": {
+          "promptTokens": 2635,
+          "completionTokens": 288,
+          "cachedTokens": 2624,
+          "cost": 0.0003211
+        },
+        "requestId": "gen-1791418698-KZei9O2hbHnWghFDFyW8"
+      },
+      {
+        "phase": "model-plan",
+        "providerSort": "default",
+        "images": 1,
+        "texts": 3,
+        "screenshots": [
+          "/artifacts/150bf07d-c806-4ec0-b565-5b16a4f8ffba/model-request-2.jpg"
+        ],
+        "screenshot": "/artifacts/150bf07d-c806-4ec0-b565-5b16a4f8ffba/model-request-2.jpg",
+        "parsedOutput": {
+          "raw": "<observation>이 화면은 ATELIER GOODS의 가상 주문 시스템입니다. 사용자는 빨간 머그를 선택하고 수량을 2개로 설정해야 합니다. 수령인과 이메일 주소를 입력해야 하며, 주문을 제출하고 결과를 확인해야 합니다. 화면은 주문 과정을 단계별로 안내하며, 각 단계에서 필요한 정보를 입력해야 합니다.</observation>\n<errors></errors>"
+        },
+        "responseFormat": {
+          "finishReason": "stop",
+          "chars": 206,
+          "hasDataJson": false,
+          "normalizedPlainJson": false
+        },
+        "elapsedMs": 2233,
+        "responseModel": "bytedance/ui-tars-1.5-7b",
+        "provider": "Parasail",
+        "usage": {
+          "promptTokens": 2531,
+          "completionTokens": 109,
+          "cachedTokens": 2528,
+          "cost": 0.0002749
+        },
+        "requestId": "gen-1791418702-vV0BqbS3kBjNNapmoGTd"
+      }
+    ],
+    "visualAudits": [
+      {
+        "id": "bbd87a80-433e-42a1-8a62-45baa4f7b6c1",
+        "at": "2026-10-08T00:18:17.940Z",
+        "checkpoint": "첫 화면",
+        "screenshot": "/artifacts/150bf07d-c806-4ec0-b565-5b16a4f8ffba/model-request-1.jpg",
+        "call": 1,
+        "status": "reviewed",
+        "promptVersion": "visual-qa-v1-independent-checklist",
+        "result": {
+          "checks": [
+            {
+              "criterion": "readability",
+              "result": "clear",
+              "evidence": "The text is clear and easy to read."
+            },
+            {
+              "criterion": "geometry",
+              "result": "clear",
+              "evidence": "The text is not stretched, skewed, or compressed."
+            },
+            {
+              "criterion": "occlusion",
+              "result": "not-applicable",
+              "evidence": "There are no overlapping components."
+            },
+            {
+              "criterion": "image-meaning",
+              "result": "clear",
+              "evidence": "The image meaning is consistent with the text description."
+            },
+            {
+              "criterion": "chart-meaning",
+              "result": "not-applicable",
+              "evidence": "There is no chart present."
+            }
+          ],
+          "issues": []
+        }
+      }
+    ],
+    "visualComplete": true,
+    "sourceVersion": {
+      "commit": "72520e0421d14519a21212800e066677c10693a4",
+      "dirty": false,
+      "sourceHash": "f5632f54d1415c5973e040df1809b90595c02c8cf45def27609532361733b20a",
+      "promptVersion": "midscene-native-workflow-v2-control-guard"
+    },
+    "executionPhase": "model-plan",
+    "screenshot": "/artifacts/150bf07d-c806-4ec0-b565-5b16a4f8ffba/visual-0-screen.png",
+    "failureStage": "Midscene 실행할 업무 항목 정리",
+    "diagnostic": {
+      "code": "MODEL_RESPONSE_INVALID",
+      "phase": "model-plan",
+      "message": "모델 응답을 계획 형식으로 검증하지 못했습니다.",
+      "action": "모델의 구조화된 응답 지원과 출력 토큰 설정을 확인하세요. 이 실패는 제품 결함 판정이 아닙니다."
+    },
+    "error": "모델 응답을 계획 형식으로 검증하지 못했습니다.",
+    "video": "/artifacts/150bf07d-c806-4ec0-b565-5b16a4f8ffba/page@1b10a18ab70770ed317718d7a8da8673.webm",
+    "endedAt": "2026-10-08T00:18:24.558Z"
+  },
+  {
+    "id": "e5336604-1853-42e7-b644-2d5c4b6715a9",
+    "input": {
+      "mode": "scenario",
+      "url": "http://127.0.0.1:4311/store/d",
+      "task": "Select Red mug, quantity 2. Enter a synthetic recipient and email, confirm the simulated order and review its appearance, receipt and community chart.",
+      "expected": "Product appearance matches selection. Calculations and confirmation match input. Receipt and collection instructions are readable. Chart magnitude agrees with displayed values.",
+      "query": "Midscene AI demo"
+    },
+    "startedAt": "2026-10-08T00:17:31.926Z",
+    "status": "failed",
+    "outcome": "모델 응답을 계획 형식으로 검증하지 못했습니다.",
+    "stage": "실패 · 화면 관찰·계획",
+    "calls": 2,
+    "actions": 0,
+    "tokens": 5557,
+    "cost": 0.0005948,
+    "steps": [],
+    "findings": [],
+    "engine": "Midscene aiInput · aiAct · aiString · aiAssert / 1.14.0",
+    "transport": [
+      {
+        "phase": "visual-review",
+        "providerSort": "default",
+        "images": 1,
+        "texts": 3,
+        "screenshots": [
+          "/artifacts/e5336604-1853-42e7-b644-2d5c4b6715a9/model-request-1.jpg"
+        ],
+        "screenshot": "/artifacts/e5336604-1853-42e7-b644-2d5c4b6715a9/model-request-1.jpg",
+        "parsedOutput": {
+          "checks": [
+            {
+              "criterion": "readability",
+              "result": "clear",
+              "evidence": "The text is clear and easy to read."
+            },
+            {
+              "criterion": "geometry",
+              "result": "clear",
+              "evidence": "All components are properly aligned and not stretched or skewed."
+            },
+            {
+              "criterion": "occlusion",
+              "result": "not-applicable",
+              "evidence": "There is no overlap or obstruction of necessary content or controls."
+            },
+            {
+              "criterion": "image-meaning",
+              "result": "clear",
+              "evidence": "The product/legend descriptions match the adjacent picture."
+            },
+            {
+              "criterion": "chart-meaning",
+              "result": "not-applicable",
+              "evidence": "No charts are present in the image."
+            }
+          ],
+          "issues": []
+        },
+        "responseFormat": {
+          "finishReason": "stop",
+          "chars": 952,
+          "hasDataJson": true,
+          "normalizedPlainJson": false
+        },
+        "elapsedMs": 5963,
+        "responseModel": "bytedance/ui-tars-1.5-7b",
+        "provider": "Parasail",
+        "usage": {
+          "promptTokens": 2635,
+          "completionTokens": 282,
+          "cachedTokens": 0,
+          "cost": 0.0003199
+        },
+        "requestId": "gen-1791418653-tZPel7lNFglV5GsTRaxq"
+      },
+      {
+        "phase": "model-plan",
+        "providerSort": "default",
+        "images": 1,
+        "texts": 3,
+        "screenshots": [
+          "/artifacts/e5336604-1853-42e7-b644-2d5c4b6715a9/model-request-2.jpg"
+        ],
+        "screenshot": "/artifacts/e5336604-1853-42e7-b644-2d5c4b6715a9/model-request-2.jpg",
+        "parsedOutput": {
+          "raw": "<observation>이 화면은 ATELIER GOODS의 가상 주문 시스템입니다. 사용자는 빨간 머그를 선택하고 수량을 2개로 설정해야 합니다. 수령인과 이메일 주소를 입력해야 하며, 주문을 제출하고 결과를 확인해야 합니다. 화면은 주문 과정을 단계별로 안내하며, 각 단계에서 필요한 정보를 입력해야 합니다.</observation>\n<errors></errors>"
+        },
+        "responseFormat": {
+          "finishReason": "stop",
+          "chars": 206,
+          "hasDataJson": false,
+          "normalizedPlainJson": false
+        },
+        "elapsedMs": 2179,
+        "responseModel": "bytedance/ui-tars-1.5-7b",
+        "provider": "Parasail",
+        "usage": {
+          "promptTokens": 2531,
+          "completionTokens": 109,
+          "cachedTokens": 2064,
+          "cost": 0.0002749
+        },
+        "requestId": "gen-1791418659-bkdQNIlM5ypDVTvTLU32"
+      }
+    ],
+    "visualAudits": [
+      {
+        "id": "4eca4451-ee6d-475d-9fd5-18b052bb0cc7",
+        "at": "2026-10-08T00:17:33.434Z",
+        "checkpoint": "첫 화면",
+        "screenshot": "/artifacts/e5336604-1853-42e7-b644-2d5c4b6715a9/model-request-1.jpg",
+        "call": 1,
+        "status": "reviewed",
+        "promptVersion": "visual-qa-v1-independent-checklist",
+        "result": {
+          "checks": [
+            {
+              "criterion": "readability",
+              "result": "clear",
+              "evidence": "The text is clear and easy to read."
+            },
+            {
+              "criterion": "geometry",
+              "result": "clear",
+              "evidence": "All components are properly aligned and not stretched or skewed."
+            },
+            {
+              "criterion": "occlusion",
+              "result": "not-applicable",
+              "evidence": "There is no overlap or obstruction of necessary content or controls."
+            },
+            {
+              "criterion": "image-meaning",
+              "result": "clear",
+              "evidence": "The product/legend descriptions match the adjacent picture."
+            },
+            {
+              "criterion": "chart-meaning",
+              "result": "not-applicable",
+              "evidence": "No charts are present in the image."
+            }
+          ],
+          "issues": []
+        }
+      }
+    ],
+    "visualComplete": true,
+    "sourceVersion": {
+      "commit": "72520e0421d14519a21212800e066677c10693a4",
+      "dirty": false,
+      "sourceHash": "f5632f54d1415c5973e040df1809b90595c02c8cf45def27609532361733b20a",
+      "promptVersion": "midscene-native-workflow-v2-control-guard"
+    },
+    "executionPhase": "model-plan",
+    "screenshot": "/artifacts/e5336604-1853-42e7-b644-2d5c4b6715a9/visual-0-screen.png",
+    "failureStage": "Midscene 실행할 업무 항목 정리",
+    "diagnostic": {
+      "code": "MODEL_RESPONSE_INVALID",
+      "phase": "model-plan",
+      "message": "모델 응답을 계획 형식으로 검증하지 못했습니다.",
+      "action": "모델의 구조화된 응답 지원과 출력 토큰 설정을 확인하세요. 이 실패는 제품 결함 판정이 아닙니다."
+    },
+    "error": "모델 응답을 계획 형식으로 검증하지 못했습니다.",
+    "video": "/artifacts/e5336604-1853-42e7-b644-2d5c4b6715a9/page@6e041fd394a7b703475c5195678c6ffe.webm",
+    "endedAt": "2026-10-08T00:17:41.769Z"
+  }
+]

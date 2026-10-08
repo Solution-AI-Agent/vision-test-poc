@@ -1,0 +1,141 @@
+{
+  "experiment": "ui-tars-direct-aiAct",
+  "runId": "640d9772-9ac2-4f6d-b5c5-3e89d46f659d",
+  "scenario": {
+    "url": "http://127.0.0.1:4311/store/d",
+    "task": "수량을 2로 입력한다.",
+    "expected": "수량 칸의 값이 2로 보인다.",
+    "requiredInputs": [
+      "2"
+    ]
+  },
+  "prompt": {
+    "variant": "baseline",
+    "userTask": "수량을 2로 입력한다.",
+    "generalGuidance": null
+  },
+  "limits": {
+    "maxCalls": 6,
+    "maxActions": 4,
+    "maxSeconds": 90,
+    "maxTokens": 1536
+  },
+  "sdk": {
+    "planningModelFamily": "vlm-ui-tars",
+    "planningKind": "custom",
+    "deepLocate": {
+      "supportedForAiAct": false,
+      "requested": false
+    },
+    "planningSlot": "default",
+    "includeLocateInPlanning": true,
+    "replanningCycleLimit": 4
+  },
+  "aiAct": {
+    "status": "returned"
+  },
+  "modelFinished": {
+    "declared": true,
+    "action": "finished(content='mock')"
+  },
+  "inputs": {
+    "stepwiseVisualConfirmation": "not-performed",
+    "note": "직접 aiAct 경로에는 기존 단계별 aiString 입력값 확인이 없습니다. typedValues는 모델이 요청한 type 내용이며 화면 확인값이 아닙니다.",
+    "typedValues": [],
+    "requiredTyped": {
+      "2": false
+    },
+    "otherTypedValues": []
+  },
+  "orderCompletion": {
+    "status": "needs-independent-review",
+    "note": "코드/모델로 판정하지 않음. finalScreenshot·video로 독립 검토."
+  },
+  "assertion": {
+    "status": "fail",
+    "reason": "Assertion failed: 원래 업무: 수량을 2로 입력한다.. 요구 결과: 수량 칸의 값이 2로 보인다.. 현재 화면에서 모든 요구 결과가 실제로 보인다. 입력 중인 미리보기와 제출 완료는 구분하고, 빈 필드의 placeholder는 입력값으로 취급하지 않는다.\nReason: (no_reason)",
+    "raw": "<thought>mock</thought>\n<data-json>{\"StatementIsTruthy\": false}</data-json>",
+    "call": 2,
+    "screenshot": "/artifacts/640d9772-9ac2-4f6d-b5c5-3e89d46f659d/model-request-2.jpg"
+  },
+  "initialScreenshot": "/artifacts/640d9772-9ac2-4f6d-b5c5-3e89d46f659d/act-initial.png",
+  "finalScreenshot": "/artifacts/640d9772-9ac2-4f6d-b5c5-3e89d46f659d/act-final.png",
+  "video": "/artifacts/640d9772-9ac2-4f6d-b5c5-3e89d46f659d/page@1b64e2383701cfb030a172f09323f1fa.webm",
+  "status": "model-finished-needs-review",
+  "counts": {
+    "calls": 2,
+    "actions": 0,
+    "executedActions": 0,
+    "tokens": 0,
+    "cost": null,
+    "startedAt": "2026-10-08T02:55:57.967Z",
+    "endedAt": "2026-10-08T02:55:59.482Z"
+  },
+  "steps": [],
+  "transport": [
+    {
+      "phase": "action",
+      "providerSort": "default",
+      "images": 1,
+      "texts": 1,
+      "screenshots": [
+        "/artifacts/640d9772-9ac2-4f6d-b5c5-3e89d46f659d/model-request-1.jpg"
+      ],
+      "screenshot": "/artifacts/640d9772-9ac2-4f6d-b5c5-3e89d46f659d/model-request-1.jpg",
+      "parsedOutput": {
+        "raw": "Thought: mock\nAction: finished(content='mock')",
+        "sdkNormalizedAction": "Thought: mock\nAction: finished(content='mock')"
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 46,
+        "hasDataJson": false,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 0,
+      "responseModel": "bytedance/ui-tars-1.5-7b",
+      "usage": {
+        "promptTokens": 0,
+        "completionTokens": 0,
+        "cachedTokens": 0
+      },
+      "requestId": "mock",
+      "currentScreenshot": "/artifacts/640d9772-9ac2-4f6d-b5c5-3e89d46f659d/model-request-1.jpg"
+    },
+    {
+      "phase": "input-confirmation",
+      "providerSort": "default",
+      "images": 1,
+      "texts": 3,
+      "screenshots": [
+        "/artifacts/640d9772-9ac2-4f6d-b5c5-3e89d46f659d/model-request-2.jpg"
+      ],
+      "screenshot": "/artifacts/640d9772-9ac2-4f6d-b5c5-3e89d46f659d/model-request-2.jpg",
+      "parsedOutput": {
+        "raw": "<thought>mock</thought>\n<data-json>{\"StatementIsTruthy\": false}</data-json>"
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 75,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 0,
+      "responseModel": "bytedance/ui-tars-1.5-7b",
+      "usage": {
+        "promptTokens": 0,
+        "completionTokens": 0,
+        "cachedTokens": 0
+      },
+      "requestId": "mock",
+      "currentScreenshot": "/artifacts/640d9772-9ac2-4f6d-b5c5-3e89d46f659d/model-request-2.jpg"
+    }
+  ],
+  "transportNote": "screenshot=요청의 첫 이미지(이력이 쌓이면 가장 오래된 화면), currentScreenshot=요청의 마지막 이미지(모델이 판단한 현재 화면)",
+  "sourceVersion": {
+    "commit": "e210a623aa320c94c883d51372b5288125c60ea4",
+    "dirty": false,
+    "sourceHash": "0b4ee5d1f93fa47cc7f8296de90e53184ec8621daa37394a9c10ff91a1d7e736",
+    "promptVersion": "midscene-native-workflow-v2-control-guard"
+  }
+}

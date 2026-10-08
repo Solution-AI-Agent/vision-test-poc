@@ -1,0 +1,772 @@
+{
+  "experiment": "ui-tars-direct-aiAct",
+  "runId": "aac844ec-7522-43b7-bbd8-381ca7a249f2",
+  "scenario": {
+    "url": "http://127.0.0.1:4311/store/d",
+    "task": "상품선택에서 빨간 머그를 선택하고 수량을 2로 입력한다. 받는 사람에 “김성지”를 입력하고 이메일 주소에 “test@gmail.com”을 입력하고 주문 확정을 클릭한다.",
+    "expected": "우측 주문요약에 선택한 숭품의 이미지와 수량,단가,배송비 여부가 보여진다.",
+    "requiredInputs": [
+      "2",
+      "김성지",
+      "test@gmail.com"
+    ]
+  },
+  "prompt": {
+    "variant": "input-guidance",
+    "userTask": "상품선택에서 빨간 머그를 선택하고 수량을 2로 입력한다. 받는 사람에 “김성지”를 입력하고 이메일 주소에 “test@gmail.com”을 입력하고 주문 확정을 클릭한다.",
+    "generalGuidance": "입력칸 공통 규칙: 입력칸 안의 흐린 예시 문구(placeholder)는 입력값이 아니며 그 칸은 빈 칸이다. 요구된 값을 직접 입력하기 전에는 입력을 완료했다고 판단하지 않는다. 삭제한 뒤에도 같은 예시 문구가 보이면 삭제를 반복하지 말고 요구된 값을 입력한다."
+  },
+  "limits": {
+    "maxCalls": 20,
+    "maxActions": 12,
+    "maxSeconds": 180,
+    "maxTokens": 1536
+  },
+  "sdk": {
+    "planningModelFamily": "vlm-ui-tars",
+    "planningKind": "custom",
+    "deepLocate": {
+      "supportedForAiAct": false,
+      "requested": false
+    },
+    "planningSlot": "default",
+    "includeLocateInPlanning": true,
+    "replanningCycleLimit": 12
+  },
+  "aiAct": {
+    "status": "error",
+    "error": "task runner is in error state, cannot append task"
+  },
+  "modelFinished": {
+    "declared": false
+  },
+  "inputs": {
+    "stepwiseVisualConfirmation": "not-performed",
+    "note": "직접 aiAct 경로에는 기존 단계별 aiString 입력값 확인이 없습니다. typedValues는 모델이 요청한 type 내용이며 화면 확인값이 아닙니다.",
+    "typedValues": [],
+    "requiredTyped": {
+      "2": false,
+      "김성지": false,
+      "test@gmail.com": false
+    },
+    "otherTypedValues": []
+  },
+  "orderCompletion": {
+    "status": "needs-independent-review",
+    "note": "코드/모델로 판정하지 않음. finalScreenshot·video로 독립 검토."
+  },
+  "assertion": {
+    "status": "not-run"
+  },
+  "initialScreenshot": "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/act-initial.png",
+  "executionError": "Error executing running tasks: error in running beforeInvokeAction for Tap: 행동 한도 도달 (12회)",
+  "finalScreenshot": "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/act-final.png",
+  "video": "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/page@7e4c73985862792c197efb0b0ed48751.webm",
+  "status": "limited-incomplete",
+  "reason": "행동 한도 도달 (12회)",
+  "counts": {
+    "calls": 13,
+    "actions": 12,
+    "executedActions": 12,
+    "tokens": 128399,
+    "cost": 0.012932299999999999,
+    "startedAt": "2026-10-08T02:48:52.409Z",
+    "endedAt": "2026-10-08T02:49:48.264Z"
+  },
+  "steps": [
+    {
+      "index": 0,
+      "name": "Tap",
+      "parameters": {
+        "locate": {
+          "center": [
+            154,
+            339
+          ],
+          "description": "페이지를 살펴보니, 상품 선택에서 빨간 머그를 찾을 수 있습니다. 이 머그는 $12.00이라는 가격표시가 붙어 있습니다. 저는 먼저 이 빨간 머그를 선택해야 하며, 수량은 2개로 설정해야 합니다. 다음으로 받는 사람의 이름인 \"김성지\"와 이메일 주소인 \"test@gmail.com\"을 입력해야 합니다. 마지막으로 주문을 확정화해야 합니다. 이렇게 하면 주문 과정을 완료할 수 있습니다."
+        }
+      },
+      "executed": true,
+      "before": "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/act-0-before.png",
+      "after": "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/act-0-after.png",
+      "afterModelCall": 1
+    },
+    {
+      "index": 1,
+      "name": "Tap",
+      "parameters": {
+        "locate": {
+          "center": [
+            136,
+            446
+          ],
+          "description": "빨간 머그를 선택한 후, 수량을 2개로 설정해야 합니다. 수량 입력란이 보이지 않으니, 수량 입력란이 있는 부분을 찾아야 합니다."
+        }
+      },
+      "executed": true,
+      "before": "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/act-1-before.png",
+      "after": "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/act-1-after.png",
+      "afterModelCall": 2
+    },
+    {
+      "index": 2,
+      "name": "Tap",
+      "parameters": {
+        "locate": {
+          "center": [
+            136,
+            446
+          ],
+          "description": "수량을 2개로 설정해야 하는데, 이 부분이 좀 어려운 것 같습니다. 수량 입력란이 보이지 않아서, 다른 방법으로 찾아야 할 것 같습니다."
+        }
+      },
+      "executed": true,
+      "before": "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/act-2-before.png",
+      "after": "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/act-2-after.png",
+      "afterModelCall": 3
+    },
+    {
+      "index": 3,
+      "name": "Tap",
+      "parameters": {
+        "locate": {
+          "center": [
+            136,
+            446
+          ],
+          "description": "수량을 2개로 설정해야 하는데, 이 부분이 좀 어려운 것 같습니다. 수량 입력란이 보이지 않아서, 다른 방법으로 찾아야 할 것 같습니다."
+        }
+      },
+      "executed": true,
+      "before": "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/act-3-before.png",
+      "after": "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/act-3-after.png",
+      "afterModelCall": 4
+    },
+    {
+      "index": 4,
+      "name": "Tap",
+      "parameters": {
+        "locate": {
+          "center": [
+            136,
+            446
+          ],
+          "description": "수량을 2개로 설정해야 하는데, 이 부분이 좀 어려운 것 같습니다. 수량 입력란이 보이지 않아서, 다른 방법으로 찾아야 할 것 같습니다."
+        }
+      },
+      "executed": true,
+      "before": "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/act-4-before.png",
+      "after": "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/act-4-after.png",
+      "afterModelCall": 5
+    },
+    {
+      "index": 5,
+      "name": "Tap",
+      "parameters": {
+        "locate": {
+          "center": [
+            136,
+            446
+          ],
+          "description": "수량을 2개로 설정해야 하는데, 이 부분이 좀 어려운 것 같습니다. 수량 입력란이 보이지 않아서, 다른 방법으로 찾아야 할 것 같습니다."
+        }
+      },
+      "executed": true,
+      "before": "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/act-5-before.png",
+      "after": "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/act-5-after.png",
+      "afterModelCall": 6
+    },
+    {
+      "index": 6,
+      "name": "Tap",
+      "parameters": {
+        "locate": {
+          "center": [
+            136,
+            446
+          ],
+          "description": "수량을 2개로 설정해야 하는데, 이 부분이 좀 어려운 것 같습니다. 수량 입력란이 보이지 않아서, 다른 방법으로 찾아야 할 것 같습니다."
+        }
+      },
+      "executed": true,
+      "before": "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/act-6-before.png",
+      "after": "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/act-6-after.png",
+      "afterModelCall": 7
+    },
+    {
+      "index": 7,
+      "name": "Tap",
+      "parameters": {
+        "locate": {
+          "center": [
+            136,
+            446
+          ],
+          "description": "수량을 2개로 설정해야 하는데, 이 부분이 좀 어려운 것 같습니다. 수량 입력란이 보이지 않아서, 다른 방법으로 찾아야 할 것 같습니다."
+        }
+      },
+      "executed": true,
+      "before": "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/act-7-before.png",
+      "after": "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/act-7-after.png",
+      "afterModelCall": 8
+    },
+    {
+      "index": 8,
+      "name": "Tap",
+      "parameters": {
+        "locate": {
+          "center": [
+            136,
+            446
+          ],
+          "description": "수량을 2개로 설정해야 하는데, 이 부분이 좀 어려운 것 같습니다. 수량 입력란이 보이지 않아서, 다른 방법으로 찾아야 할 것 같습니다."
+        }
+      },
+      "executed": true,
+      "before": "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/act-8-before.png",
+      "after": "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/act-8-after.png",
+      "afterModelCall": 9
+    },
+    {
+      "index": 9,
+      "name": "Tap",
+      "parameters": {
+        "locate": {
+          "center": [
+            136,
+            446
+          ],
+          "description": "수량을 2개로 설정해야 하는데, 이 부분이 좀 어려운 것 같습니다. 수량 입력란이 보이지 않아서, 다른 방법으로 찾아야 할 것 같습니다."
+        }
+      },
+      "executed": true,
+      "before": "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/act-9-before.png",
+      "after": "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/act-9-after.png",
+      "afterModelCall": 10
+    },
+    {
+      "index": 10,
+      "name": "Tap",
+      "parameters": {
+        "locate": {
+          "center": [
+            136,
+            446
+          ],
+          "description": "수량을 2개로 설정해야 하는데, 이 부분이 좀 어려운 것 같습니다. 수량 입력란이 보이지 않아서, 다른 방법으로 찾아야 할 것 같습니다."
+        }
+      },
+      "executed": true,
+      "before": "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/act-10-before.png",
+      "after": "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/act-10-after.png",
+      "afterModelCall": 11
+    },
+    {
+      "index": 11,
+      "name": "Tap",
+      "parameters": {
+        "locate": {
+          "center": [
+            136,
+            446
+          ],
+          "description": "수량을 2개로 설정해야 하는데, 이 부분이 좀 어려운 것 같습니다. 수량 입력란이 보이지 않아서, 다른 방법으로 찾아야 할 것 같습니다."
+        }
+      },
+      "executed": true,
+      "before": "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/act-11-before.png",
+      "after": "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/act-11-after.png",
+      "afterModelCall": 12
+    }
+  ],
+  "transport": [
+    {
+      "phase": "action",
+      "providerSort": "default",
+      "images": 1,
+      "texts": 1,
+      "screenshots": [
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-1.jpg"
+      ],
+      "screenshot": "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-1.jpg",
+      "parsedOutput": {
+        "raw": "Thought: 페이지를 살펴보니, 상품 선택에서 빨간 머그를 찾을 수 있습니다. 이 머그는 $12.00이라는 가격표시가 붙어 있습니다. 저는 먼저 이 빨간 머그를 선택해야 하며, 수량은 2개로 설정해야 합니다. 다음으로 받는 사람의 이름인 \"김성지\"와 이메일 주소인 \"test@gmail.com\"을 입력해야 합니다. 마지막으로 주문을 확정화해야 합니다. 이렇게 하면 주문 과정을 완료할 수 있습니다.\nAction: click(start_box='(155,343)')",
+        "sdkNormalizedAction": "Thought: 페이지를 살펴보니, 상품 선택에서 빨간 머그를 찾을 수 있습니다. 이 머그는 $12.00이라는 가격표시가 붙어 있습니다. 저는 먼저 이 빨간 머그를 선택해야 하며, 수량은 2개로 설정해야 합니다. 다음으로 받는 사람의 이름인 \"김성지\"와 이메일 주소인 \"test@gmail.com\"을 입력해야 합니다. 마지막으로 주문을 확정화해야 합니다. 이렇게 하면 주문 과정을 완료할 수 있습니다.\nAction: click(start_box='[120,471,120,471]')"
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 261,
+        "hasDataJson": false,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 2236,
+      "responseModel": "bytedance/ui-tars-1.5-7b",
+      "provider": "Parasail",
+      "usage": {
+        "promptTokens": 1767,
+        "completionTokens": 151,
+        "cachedTokens": 0,
+        "cost": 0.0002069
+      },
+      "requestId": "gen-1791427734-mYIznsPJdzVI7IqElvi7",
+      "currentScreenshot": "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-1.jpg"
+    },
+    {
+      "phase": "action",
+      "providerSort": "default",
+      "images": 2,
+      "texts": 3,
+      "screenshots": [
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-2.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-2-image-2.jpg"
+      ],
+      "screenshot": "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-2.jpg",
+      "parsedOutput": {
+        "raw": "Thought: 빨간 머그를 선택한 후, 수량을 2개로 설정해야 합니다. 수량 입력란이 보이지 않으니, 수량 입력란이 있는 부분을 찾아야 합니다. \nAction: click(start_box='(137,451)')",
+        "sdkNormalizedAction": "Thought: 빨간 머그를 선택한 후, 수량을 2개로 설정해야 합니다. 수량 입력란이 보이지 않으니, 수량 입력란이 있는 부분을 찾아야 합니다.\nAction: click(start_box='[106,620,106,620]')"
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 119,
+        "hasDataJson": false,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 2313,
+      "responseModel": "bytedance/ui-tars-1.5-7b",
+      "provider": "Parasail",
+      "usage": {
+        "promptTokens": 3179,
+        "completionTokens": 69,
+        "cachedTokens": 1904,
+        "cost": 0.0003317
+      },
+      "requestId": "gen-1791427737-T0akRmUhX3QJYo2IMhZW",
+      "currentScreenshot": "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-2-image-2.jpg"
+    },
+    {
+      "phase": "action",
+      "providerSort": "default",
+      "images": 3,
+      "texts": 5,
+      "screenshots": [
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-3.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-3-image-2.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-3-image-3.jpg"
+      ],
+      "screenshot": "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-3.jpg",
+      "parsedOutput": {
+        "raw": "Thought: 수량을 2개로 설정해야 하는데, 이 부분이 좀 어려운 것 같습니다. 수량 입력란이 보이지 않아서, 다른 방법으로 찾아야 할 것 같습니다. \nAction: click(start_box='(137,451)')",
+        "sdkNormalizedAction": "Thought: 수량을 2개로 설정해야 하는데, 이 부분이 좀 어려운 것 같습니다. 수량 입력란이 보이지 않아서, 다른 방법으로 찾아야 할 것 같습니다.\nAction: click(start_box='[106,620,106,620]')"
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 123,
+        "hasDataJson": false,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 2270,
+      "responseModel": "bytedance/ui-tars-1.5-7b",
+      "provider": "Parasail",
+      "usage": {
+        "promptTokens": 4509,
+        "completionTokens": 64,
+        "cachedTokens": 3232,
+        "cost": 0.0004637
+      },
+      "requestId": "gen-1791427740-ALdYzRz2e5B57g0WCGXa",
+      "currentScreenshot": "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-3-image-3.jpg"
+    },
+    {
+      "phase": "action",
+      "providerSort": "default",
+      "images": 4,
+      "texts": 7,
+      "screenshots": [
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-4.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-4-image-2.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-4-image-3.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-4-image-4.jpg"
+      ],
+      "screenshot": "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-4.jpg",
+      "parsedOutput": {
+        "raw": "Thought: 수량을 2개로 설정해야 하는데, 이 부분이 좀 어려운 것 같습니다. 수량 입력란이 보이지 않아서, 다른 방법으로 찾아야 할 것 같습니다. \nAction: click(start_box='(137,451)')",
+        "sdkNormalizedAction": "Thought: 수량을 2개로 설정해야 하는데, 이 부분이 좀 어려운 것 같습니다. 수량 입력란이 보이지 않아서, 다른 방법으로 찾아야 할 것 같습니다.\nAction: click(start_box='[106,620,106,620]')"
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 123,
+        "hasDataJson": false,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 2212,
+      "responseModel": "bytedance/ui-tars-1.5-7b",
+      "provider": "Parasail",
+      "usage": {
+        "promptTokens": 5835,
+        "completionTokens": 64,
+        "cachedTokens": 4560,
+        "cost": 0.0005963
+      },
+      "requestId": "gen-1791427742-pq2MPDK2s8UV4b5PNHOY",
+      "currentScreenshot": "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-4-image-4.jpg"
+    },
+    {
+      "phase": "action",
+      "providerSort": "default",
+      "images": 5,
+      "texts": 9,
+      "screenshots": [
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-5.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-5-image-2.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-5-image-3.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-5-image-4.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-5-image-5.jpg"
+      ],
+      "screenshot": "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-5.jpg",
+      "parsedOutput": {
+        "raw": "Thought: 수량을 2개로 설정해야 하는데, 이 부분이 좀 어려운 것 같습니다. 수량 입력란이 보이지 않아서, 다른 방법으로 찾아야 할 것 같습니다. \nAction: click(start_box='(137,451)')",
+        "sdkNormalizedAction": "Thought: 수량을 2개로 설정해야 하는데, 이 부분이 좀 어려운 것 같습니다. 수량 입력란이 보이지 않아서, 다른 방법으로 찾아야 할 것 같습니다.\nAction: click(start_box='[106,620,106,620]')"
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 123,
+        "hasDataJson": false,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 2862,
+      "responseModel": "bytedance/ui-tars-1.5-7b",
+      "provider": "Parasail",
+      "usage": {
+        "promptTokens": 7161,
+        "completionTokens": 64,
+        "cachedTokens": 5888,
+        "cost": 0.0007289
+      },
+      "requestId": "gen-1791427745-yKfCPHqagRs9PPMTnbuM",
+      "currentScreenshot": "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-5-image-5.jpg"
+    },
+    {
+      "phase": "action",
+      "providerSort": "default",
+      "images": 6,
+      "texts": 11,
+      "screenshots": [
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-6.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-6-image-2.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-6-image-3.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-6-image-4.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-6-image-5.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-6-image-6.jpg"
+      ],
+      "screenshot": "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-6.jpg",
+      "parsedOutput": {
+        "raw": "Thought: 수량을 2개로 설정해야 하는데, 이 부분이 좀 어려운 것 같습니다. 수량 입력란이 보이지 않아서, 다른 방법으로 찾아야 할 것 같습니다. \nAction: click(start_box='(137,451)')",
+        "sdkNormalizedAction": "Thought: 수량을 2개로 설정해야 하는데, 이 부분이 좀 어려운 것 같습니다. 수량 입력란이 보이지 않아서, 다른 방법으로 찾아야 할 것 같습니다.\nAction: click(start_box='[106,620,106,620]')"
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 123,
+        "hasDataJson": false,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 2753,
+      "responseModel": "bytedance/ui-tars-1.5-7b",
+      "provider": "Parasail",
+      "usage": {
+        "promptTokens": 8487,
+        "completionTokens": 64,
+        "cachedTokens": 7216,
+        "cost": 0.0008615
+      },
+      "requestId": "gen-1791427749-NaLYfhtwk1Eip4KopJV8",
+      "currentScreenshot": "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-6-image-6.jpg"
+    },
+    {
+      "phase": "action",
+      "providerSort": "default",
+      "images": 7,
+      "texts": 13,
+      "screenshots": [
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-7.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-7-image-2.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-7-image-3.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-7-image-4.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-7-image-5.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-7-image-6.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-7-image-7.jpg"
+      ],
+      "screenshot": "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-7.jpg",
+      "parsedOutput": {
+        "raw": "Thought: 수량을 2개로 설정해야 하는데, 이 부분이 좀 어려운 것 같습니다. 수량 입력란이 보이지 않아서, 다른 방법으로 찾아야 할 것 같습니다. \nAction: click(start_box='(137,451)')",
+        "sdkNormalizedAction": "Thought: 수량을 2개로 설정해야 하는데, 이 부분이 좀 어려운 것 같습니다. 수량 입력란이 보이지 않아서, 다른 방법으로 찾아야 할 것 같습니다.\nAction: click(start_box='[106,620,106,620]')"
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 123,
+        "hasDataJson": false,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 2986,
+      "responseModel": "bytedance/ui-tars-1.5-7b",
+      "provider": "Parasail",
+      "usage": {
+        "promptTokens": 9813,
+        "completionTokens": 64,
+        "cachedTokens": 8544,
+        "cost": 0.0009941
+      },
+      "requestId": "gen-1791427753-9wPRBmUA055QZet1dAxx",
+      "currentScreenshot": "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-7-image-7.jpg"
+    },
+    {
+      "phase": "action",
+      "providerSort": "default",
+      "images": 8,
+      "texts": 15,
+      "screenshots": [
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-8.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-8-image-2.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-8-image-3.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-8-image-4.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-8-image-5.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-8-image-6.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-8-image-7.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-8-image-8.jpg"
+      ],
+      "screenshot": "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-8.jpg",
+      "parsedOutput": {
+        "raw": "Thought: 수량을 2개로 설정해야 하는데, 이 부분이 좀 어려운 것 같습니다. 수량 입력란이 보이지 않아서, 다른 방법으로 찾아야 할 것 같습니다. \nAction: click(start_box='(137,451)')",
+        "sdkNormalizedAction": "Thought: 수량을 2개로 설정해야 하는데, 이 부분이 좀 어려운 것 같습니다. 수량 입력란이 보이지 않아서, 다른 방법으로 찾아야 할 것 같습니다.\nAction: click(start_box='[106,620,106,620]')"
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 123,
+        "hasDataJson": false,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 3995,
+      "responseModel": "bytedance/ui-tars-1.5-7b",
+      "provider": "Parasail",
+      "usage": {
+        "promptTokens": 11139,
+        "completionTokens": 64,
+        "cachedTokens": 9872,
+        "cost": 0.0011267
+      },
+      "requestId": "gen-1791427757-wTwI0WYr87aCTiE9Ka9g",
+      "currentScreenshot": "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-8-image-8.jpg"
+    },
+    {
+      "phase": "action",
+      "providerSort": "default",
+      "images": 9,
+      "texts": 17,
+      "screenshots": [
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-9.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-9-image-2.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-9-image-3.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-9-image-4.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-9-image-5.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-9-image-6.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-9-image-7.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-9-image-8.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-9-image-9.jpg"
+      ],
+      "screenshot": "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-9.jpg",
+      "parsedOutput": {
+        "raw": "Thought: 수량을 2개로 설정해야 하는데, 이 부분이 좀 어려운 것 같습니다. 수량 입력란이 보이지 않아서, 다른 방법으로 찾아야 할 것 같습니다. \nAction: click(start_box='(137,451)')",
+        "sdkNormalizedAction": "Thought: 수량을 2개로 설정해야 하는데, 이 부분이 좀 어려운 것 같습니다. 수량 입력란이 보이지 않아서, 다른 방법으로 찾아야 할 것 같습니다.\nAction: click(start_box='[106,620,106,620]')"
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 123,
+        "hasDataJson": false,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 5025,
+      "responseModel": "bytedance/ui-tars-1.5-7b",
+      "provider": "Parasail",
+      "usage": {
+        "promptTokens": 12465,
+        "completionTokens": 64,
+        "cachedTokens": 11200,
+        "cost": 0.0012593
+      },
+      "requestId": "gen-1791427762-gXJ4SonwTdhQ3wqD2ci6",
+      "currentScreenshot": "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-9-image-9.jpg"
+    },
+    {
+      "phase": "action",
+      "providerSort": "default",
+      "images": 10,
+      "texts": 19,
+      "screenshots": [
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-10.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-10-image-2.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-10-image-3.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-10-image-4.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-10-image-5.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-10-image-6.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-10-image-7.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-10-image-8.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-10-image-9.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-10-image-10.jpg"
+      ],
+      "screenshot": "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-10.jpg",
+      "parsedOutput": {
+        "raw": "Thought: 수량을 2개로 설정해야 하는데, 이 부분이 좀 어려운 것 같습니다. 수량 입력란이 보이지 않아서, 다른 방법으로 찾아야 할 것 같습니다. \nAction: click(start_box='(137,451)')",
+        "sdkNormalizedAction": "Thought: 수량을 2개로 설정해야 하는데, 이 부분이 좀 어려운 것 같습니다. 수량 입력란이 보이지 않아서, 다른 방법으로 찾아야 할 것 같습니다.\nAction: click(start_box='[106,620,106,620]')"
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 123,
+        "hasDataJson": false,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 5212,
+      "responseModel": "bytedance/ui-tars-1.5-7b",
+      "provider": "Parasail",
+      "usage": {
+        "promptTokens": 13791,
+        "completionTokens": 64,
+        "cachedTokens": 12512,
+        "cost": 0.0013919
+      },
+      "requestId": "gen-1791427769-oq18MNmgurdAncpEc9Hi",
+      "currentScreenshot": "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-10-image-10.jpg"
+    },
+    {
+      "phase": "action",
+      "providerSort": "default",
+      "images": 11,
+      "texts": 21,
+      "screenshots": [
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-11.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-11-image-2.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-11-image-3.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-11-image-4.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-11-image-5.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-11-image-6.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-11-image-7.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-11-image-8.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-11-image-9.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-11-image-10.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-11-image-11.jpg"
+      ],
+      "screenshot": "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-11.jpg",
+      "parsedOutput": {
+        "raw": "Thought: 수량을 2개로 설정해야 하는데, 이 부분이 좀 어려운 것 같습니다. 수량 입력란이 보이지 않아서, 다른 방법으로 찾아야 할 것 같습니다. \nAction: click(start_box='(137,451)')",
+        "sdkNormalizedAction": "Thought: 수량을 2개로 설정해야 하는데, 이 부분이 좀 어려운 것 같습니다. 수량 입력란이 보이지 않아서, 다른 방법으로 찾아야 할 것 같습니다.\nAction: click(start_box='[106,620,106,620]')"
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 123,
+        "hasDataJson": false,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 4960,
+      "responseModel": "bytedance/ui-tars-1.5-7b",
+      "provider": "Parasail",
+      "usage": {
+        "promptTokens": 15117,
+        "completionTokens": 64,
+        "cachedTokens": 13840,
+        "cost": 0.0015245
+      },
+      "requestId": "gen-1791427773-hOYaWu3zrsvD9NwnhRH5",
+      "currentScreenshot": "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-11-image-11.jpg"
+    },
+    {
+      "phase": "action",
+      "providerSort": "default",
+      "images": 12,
+      "texts": 23,
+      "screenshots": [
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-12.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-12-image-2.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-12-image-3.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-12-image-4.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-12-image-5.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-12-image-6.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-12-image-7.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-12-image-8.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-12-image-9.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-12-image-10.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-12-image-11.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-12-image-12.jpg"
+      ],
+      "screenshot": "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-12.jpg",
+      "parsedOutput": {
+        "raw": "Thought: 수량을 2개로 설정해야 하는데, 이 부분이 좀 어려운 것 같습니다. 수량 입력란이 보이지 않아서, 다른 방법으로 찾아야 할 것 같습니다. \nAction: click(start_box='(137,451)')",
+        "sdkNormalizedAction": "Thought: 수량을 2개로 설정해야 하는데, 이 부분이 좀 어려운 것 같습니다. 수량 입력란이 보이지 않아서, 다른 방법으로 찾아야 할 것 같습니다.\nAction: click(start_box='[106,620,106,620]')"
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 123,
+        "hasDataJson": false,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 5053,
+      "responseModel": "bytedance/ui-tars-1.5-7b",
+      "provider": "Parasail",
+      "usage": {
+        "promptTokens": 16443,
+        "completionTokens": 64,
+        "cachedTokens": 15168,
+        "cost": 0.0016571
+      },
+      "requestId": "gen-1791427780-3x7aa9LOtu0eVJdWO5qw",
+      "currentScreenshot": "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-12-image-12.jpg"
+    },
+    {
+      "phase": "action",
+      "providerSort": "default",
+      "images": 13,
+      "texts": 25,
+      "screenshots": [
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-13.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-13-image-2.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-13-image-3.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-13-image-4.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-13-image-5.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-13-image-6.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-13-image-7.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-13-image-8.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-13-image-9.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-13-image-10.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-13-image-11.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-13-image-12.jpg",
+        "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-13-image-13.jpg"
+      ],
+      "screenshot": "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-13.jpg",
+      "parsedOutput": {
+        "raw": "Thought: 수량을 2개로 설정해야 하는데, 이 부분이 좀 어려운 것 같습니다. 수량 입력란이 보이지 않아서, 다른 방법으로 찾아야 할 것 같습니다. \nAction: click(start_box='(137,451)')",
+        "sdkNormalizedAction": "Thought: 수량을 2개로 설정해야 하는데, 이 부분이 좀 어려운 것 같습니다. 수량 입력란이 보이지 않아서, 다른 방법으로 찾아야 할 것 같습니다.\nAction: click(start_box='[106,620,106,620]')"
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 123,
+        "hasDataJson": false,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 5221,
+      "responseModel": "bytedance/ui-tars-1.5-7b",
+      "provider": "Parasail",
+      "usage": {
+        "promptTokens": 17769,
+        "completionTokens": 64,
+        "cachedTokens": 16000,
+        "cost": 0.0017897
+      },
+      "requestId": "gen-1791427785-1NZ1mxsXAhcFBHvlVu90",
+      "currentScreenshot": "/artifacts/aac844ec-7522-43b7-bbd8-381ca7a249f2/model-request-13-image-13.jpg"
+    }
+  ],
+  "transportNote": "screenshot=요청의 첫 이미지(이력이 쌓이면 가장 오래된 화면), currentScreenshot=요청의 마지막 이미지(모델이 판단한 현재 화면)",
+  "sourceVersion": {
+    "commit": "930693b6b22375170f2e72790947c4b233a791cb",
+    "dirty": false,
+    "sourceHash": "0b4ee5d1f93fa47cc7f8296de90e53184ec8621daa37394a9c10ff91a1d7e736",
+    "promptVersion": "midscene-native-workflow-v2-control-guard"
+  }
+}

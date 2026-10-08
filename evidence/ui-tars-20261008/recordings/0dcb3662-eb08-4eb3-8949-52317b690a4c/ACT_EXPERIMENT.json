@@ -1,0 +1,145 @@
+{
+  "experiment": "ui-tars-direct-aiAct",
+  "runId": "0dcb3662-eb08-4eb3-8949-52317b690a4c",
+  "scenario": {
+    "url": "http://127.0.0.1:4311/store/d",
+    "task": "상품선택에서 빨간 머그를 선택하고 수량을 2로 입력한다. 받는 사람에 “김성지”를 입력하고 이메일 주소에 “test@gmail.com”을 입력하고 주문 확정을 클릭한다.",
+    "expected": "우측 주문요약에 선택한 숭품의 이미지와 수량,단가,배송비 여부가 보여진다.",
+    "requiredInputs": [
+      "2",
+      "김성지",
+      "test@gmail.com"
+    ]
+  },
+  "prompt": {
+    "variant": "input-guidance",
+    "userTask": "상품선택에서 빨간 머그를 선택하고 수량을 2로 입력한다. 받는 사람에 “김성지”를 입력하고 이메일 주소에 “test@gmail.com”을 입력하고 주문 확정을 클릭한다.",
+    "generalGuidance": "입력칸 공통 규칙: 입력칸 안의 흐린 예시 문구(placeholder)는 입력값이 아니며 그 칸은 빈 칸이다. 요구된 값을 직접 입력하기 전에는 입력을 완료했다고 판단하지 않는다. 삭제한 뒤에도 같은 예시 문구가 보이면 삭제를 반복하지 말고 요구된 값을 입력한다."
+  },
+  "limits": {
+    "maxCalls": 20,
+    "maxActions": 12,
+    "maxSeconds": 180,
+    "maxTokens": 1536
+  },
+  "sdk": {
+    "planningModelFamily": "vlm-ui-tars",
+    "planningKind": "custom",
+    "deepLocate": {
+      "supportedForAiAct": false,
+      "requested": false
+    },
+    "planningSlot": "default",
+    "includeLocateInPlanning": true,
+    "replanningCycleLimit": 12
+  },
+  "aiAct": {
+    "status": "returned"
+  },
+  "modelFinished": {
+    "declared": true,
+    "action": "finished(content='mock')"
+  },
+  "inputs": {
+    "stepwiseVisualConfirmation": "not-performed",
+    "note": "직접 aiAct 경로에는 기존 단계별 aiString 입력값 확인이 없습니다. typedValues는 모델이 요청한 type 내용이며 화면 확인값이 아닙니다.",
+    "typedValues": [],
+    "requiredTyped": {
+      "2": false,
+      "김성지": false,
+      "test@gmail.com": false
+    },
+    "otherTypedValues": []
+  },
+  "orderCompletion": {
+    "status": "needs-independent-review",
+    "note": "코드/모델로 판정하지 않음. finalScreenshot·video로 독립 검토."
+  },
+  "assertion": {
+    "status": "fail",
+    "reason": "Assertion failed: 원래 업무: 상품선택에서 빨간 머그를 선택하고 수량을 2로 입력한다. 받는 사람에 “김성지”를 입력하고 이메일 주소에 “test@gmail.com”을 입력하고 주문 확정을 클릭한다.. 요구 결과: 우측 주문요약에 선택한 숭품의 이미지와 수량,단가,배송비 여부가 보여진다.. 현재 화면에서 모든 요구 결과가 실제로 보인다. 입력 중인 미리보기와 제출 완료는 구분하고, 빈 필드의 placeholder는 입력값으로 취급하지 않는다.\nReason: (no_reason)",
+    "raw": "<thought>mock</thought>\n<data-json>{\"StatementIsTruthy\": false}</data-json>",
+    "call": 2,
+    "screenshot": "/artifacts/0dcb3662-eb08-4eb3-8949-52317b690a4c/model-request-2.jpg"
+  },
+  "initialScreenshot": "/artifacts/0dcb3662-eb08-4eb3-8949-52317b690a4c/act-initial.png",
+  "finalScreenshot": "/artifacts/0dcb3662-eb08-4eb3-8949-52317b690a4c/act-final.png",
+  "video": "/artifacts/0dcb3662-eb08-4eb3-8949-52317b690a4c/page@d93d7b20311e615889ad112fc6fb91b0.webm",
+  "status": "model-finished-needs-review",
+  "counts": {
+    "calls": 2,
+    "actions": 0,
+    "executedActions": 0,
+    "tokens": 0,
+    "cost": null,
+    "startedAt": "2026-10-08T02:48:50.626Z",
+    "endedAt": "2026-10-08T02:48:52.395Z"
+  },
+  "steps": [],
+  "transport": [
+    {
+      "phase": "action",
+      "providerSort": "default",
+      "images": 1,
+      "texts": 1,
+      "screenshots": [
+        "/artifacts/0dcb3662-eb08-4eb3-8949-52317b690a4c/model-request-1.jpg"
+      ],
+      "screenshot": "/artifacts/0dcb3662-eb08-4eb3-8949-52317b690a4c/model-request-1.jpg",
+      "parsedOutput": {
+        "raw": "Thought: mock\nAction: finished(content='mock')",
+        "sdkNormalizedAction": "Thought: mock\nAction: finished(content='mock')"
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 46,
+        "hasDataJson": false,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 0,
+      "responseModel": "bytedance/ui-tars-1.5-7b",
+      "usage": {
+        "promptTokens": 0,
+        "completionTokens": 0,
+        "cachedTokens": 0
+      },
+      "requestId": "mock",
+      "currentScreenshot": "/artifacts/0dcb3662-eb08-4eb3-8949-52317b690a4c/model-request-1.jpg"
+    },
+    {
+      "phase": "input-confirmation",
+      "providerSort": "default",
+      "images": 1,
+      "texts": 3,
+      "screenshots": [
+        "/artifacts/0dcb3662-eb08-4eb3-8949-52317b690a4c/model-request-2.jpg"
+      ],
+      "screenshot": "/artifacts/0dcb3662-eb08-4eb3-8949-52317b690a4c/model-request-2.jpg",
+      "parsedOutput": {
+        "raw": "<thought>mock</thought>\n<data-json>{\"StatementIsTruthy\": false}</data-json>"
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 75,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 1,
+      "responseModel": "bytedance/ui-tars-1.5-7b",
+      "usage": {
+        "promptTokens": 0,
+        "completionTokens": 0,
+        "cachedTokens": 0
+      },
+      "requestId": "mock",
+      "currentScreenshot": "/artifacts/0dcb3662-eb08-4eb3-8949-52317b690a4c/model-request-2.jpg"
+    }
+  ],
+  "transportNote": "screenshot=요청의 첫 이미지(이력이 쌓이면 가장 오래된 화면), currentScreenshot=요청의 마지막 이미지(모델이 판단한 현재 화면)",
+  "sourceVersion": {
+    "commit": "930693b6b22375170f2e72790947c4b233a791cb",
+    "dirty": false,
+    "sourceHash": "0b4ee5d1f93fa47cc7f8296de90e53184ec8621daa37394a9c10ff91a1d7e736",
+    "promptVersion": "midscene-native-workflow-v2-control-guard"
+  }
+}

@@ -1,0 +1,137 @@
+{
+  "experiment": "ui-tars-direct-aiAct",
+  "runId": "057c0e07-7da3-40f1-a174-1ecd88e4b3c0",
+  "scenario": {
+    "url": "http://127.0.0.1:4311/store/d",
+    "task": "상품선택에서 빨간 머그를 선택하고 수량을 2로 입력한다. 받는 사람에 “김성지”를 입력하고 이메일 주소에 “test@gmail.com”을 입력하고 주문 확정을 클릭한다.",
+    "expected": "우측 주문요약에 선택한 숭품의 이미지와 수량,단가,배송비 여부가 보여진다.",
+    "requiredInputs": [
+      "2",
+      "김성지",
+      "test@gmail.com"
+    ]
+  },
+  "limits": {
+    "maxCalls": 20,
+    "maxActions": 12,
+    "maxSeconds": 180,
+    "maxTokens": 1536
+  },
+  "sdk": {
+    "planningModelFamily": "vlm-ui-tars",
+    "planningKind": "custom",
+    "deepLocate": {
+      "supportedForAiAct": false,
+      "requested": false
+    },
+    "planningSlot": "default",
+    "includeLocateInPlanning": true,
+    "replanningCycleLimit": 12
+  },
+  "aiAct": {
+    "status": "returned"
+  },
+  "modelFinished": {
+    "declared": true,
+    "action": "finished(content='mock')"
+  },
+  "inputs": {
+    "stepwiseVisualConfirmation": "not-performed",
+    "note": "직접 aiAct 경로에는 기존 단계별 aiString 입력값 확인이 없습니다. typedValues는 모델이 요청한 type 내용이며 화면 확인값이 아닙니다.",
+    "typedValues": [],
+    "requiredTyped": {
+      "2": false,
+      "김성지": false,
+      "test@gmail.com": false
+    },
+    "otherTypedValues": []
+  },
+  "orderCompletion": {
+    "status": "needs-independent-review",
+    "note": "코드/모델로 판정하지 않음. finalScreenshot·video로 독립 검토."
+  },
+  "assertion": {
+    "status": "fail",
+    "reason": "Assertion failed: 원래 업무: 상품선택에서 빨간 머그를 선택하고 수량을 2로 입력한다. 받는 사람에 “김성지”를 입력하고 이메일 주소에 “test@gmail.com”을 입력하고 주문 확정을 클릭한다.. 요구 결과: 우측 주문요약에 선택한 숭품의 이미지와 수량,단가,배송비 여부가 보여진다.. 현재 화면에서 모든 요구 결과가 실제로 보인다. 입력 중인 미리보기와 제출 완료는 구분하고, 빈 필드의 placeholder는 입력값으로 취급하지 않는다.\nReason: (no_reason)",
+    "raw": "<thought>mock</thought>\n<data-json>{\"StatementIsTruthy\": false}</data-json>",
+    "call": 2,
+    "screenshot": "/artifacts/057c0e07-7da3-40f1-a174-1ecd88e4b3c0/model-request-2.jpg"
+  },
+  "initialScreenshot": "/artifacts/057c0e07-7da3-40f1-a174-1ecd88e4b3c0/act-initial.png",
+  "finalScreenshot": "/artifacts/057c0e07-7da3-40f1-a174-1ecd88e4b3c0/act-final.png",
+  "video": "/artifacts/057c0e07-7da3-40f1-a174-1ecd88e4b3c0/page@8def2877689dea6d08b304119b7955ae.webm",
+  "status": "model-finished-needs-review",
+  "counts": {
+    "calls": 2,
+    "actions": 0,
+    "executedActions": 0,
+    "tokens": 0,
+    "cost": null,
+    "startedAt": "2026-10-08T02:32:45.619Z",
+    "endedAt": "2026-10-08T02:32:47.123Z"
+  },
+  "steps": [],
+  "transport": [
+    {
+      "phase": "action",
+      "providerSort": "default",
+      "images": 1,
+      "texts": 1,
+      "screenshots": [
+        "/artifacts/057c0e07-7da3-40f1-a174-1ecd88e4b3c0/model-request-1.jpg"
+      ],
+      "screenshot": "/artifacts/057c0e07-7da3-40f1-a174-1ecd88e4b3c0/model-request-1.jpg",
+      "parsedOutput": {
+        "raw": "Thought: mock\nAction: finished(content='mock')",
+        "sdkNormalizedAction": "Thought: mock\nAction: finished(content='mock')"
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 46,
+        "hasDataJson": false,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 0,
+      "responseModel": "bytedance/ui-tars-1.5-7b",
+      "usage": {
+        "promptTokens": 0,
+        "completionTokens": 0,
+        "cachedTokens": 0
+      },
+      "requestId": "mock"
+    },
+    {
+      "phase": "input-confirmation",
+      "providerSort": "default",
+      "images": 1,
+      "texts": 3,
+      "screenshots": [
+        "/artifacts/057c0e07-7da3-40f1-a174-1ecd88e4b3c0/model-request-2.jpg"
+      ],
+      "screenshot": "/artifacts/057c0e07-7da3-40f1-a174-1ecd88e4b3c0/model-request-2.jpg",
+      "parsedOutput": {
+        "raw": "<thought>mock</thought>\n<data-json>{\"StatementIsTruthy\": false}</data-json>"
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 75,
+        "hasDataJson": true,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 0,
+      "responseModel": "bytedance/ui-tars-1.5-7b",
+      "usage": {
+        "promptTokens": 0,
+        "completionTokens": 0,
+        "cachedTokens": 0
+      },
+      "requestId": "mock"
+    }
+  ],
+  "sourceVersion": {
+    "commit": "00370aa0de4c02647b3ab72bebeab53e4932f4c1",
+    "dirty": false,
+    "sourceHash": "0b4ee5d1f93fa47cc7f8296de90e53184ec8621daa37394a9c10ff91a1d7e736",
+    "promptVersion": "midscene-native-workflow-v2-control-guard"
+  }
+}

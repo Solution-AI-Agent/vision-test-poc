@@ -1,0 +1,655 @@
+{
+  "experiment": "ui-tars-direct-aiAct",
+  "runId": "9ed22220-8753-45bf-a49d-77e23d4d3bd3",
+  "scenario": {
+    "url": "http://127.0.0.1:4311/store/d",
+    "task": "상품선택에서 빨간 머그를 선택하고 수량을 2로 입력한다. 받는 사람에 “김성지”를 입력하고 이메일 주소에 “test@gmail.com”을 입력하고 주문 확정을 클릭한다.",
+    "expected": "우측 주문요약에 선택한 숭품의 이미지와 수량,단가,배송비 여부가 보여진다.",
+    "requiredInputs": [
+      "2",
+      "김성지",
+      "test@gmail.com"
+    ]
+  },
+  "limits": {
+    "maxCalls": 20,
+    "maxActions": 12,
+    "maxSeconds": 180,
+    "maxTokens": 1536
+  },
+  "sdk": {
+    "planningModelFamily": "vlm-ui-tars",
+    "planningKind": "custom",
+    "deepLocate": {
+      "supportedForAiAct": false,
+      "requested": false
+    },
+    "planningSlot": "default",
+    "includeLocateInPlanning": true,
+    "replanningCycleLimit": 12
+  },
+  "aiAct": {
+    "status": "error",
+    "error": "task runner is in error state, cannot append task"
+  },
+  "modelFinished": {
+    "declared": false
+  },
+  "inputs": {
+    "stepwiseVisualConfirmation": "not-performed",
+    "note": "직접 aiAct 경로에는 기존 단계별 aiString 입력값 확인이 없습니다. typedValues는 모델이 요청한 type 내용이며 화면 확인값이 아닙니다.",
+    "typedValues": [
+      "2",
+      "김성지"
+    ],
+    "requiredTyped": {
+      "2": true,
+      "김성지": true,
+      "test@gmail.com": false
+    },
+    "otherTypedValues": []
+  },
+  "orderCompletion": {
+    "status": "needs-independent-review",
+    "note": "코드/모델로 판정하지 않음. finalScreenshot·video로 독립 검토."
+  },
+  "assertion": {
+    "status": "not-run"
+  },
+  "initialScreenshot": "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/act-initial.png",
+  "executionError": "Error executing running tasks: error in running beforeInvokeAction for KeyboardPress: 행동 한도 도달 (12회)",
+  "finalScreenshot": "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/act-final.png",
+  "video": "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/page@3fceed485cb1b3126de874a63fe34796.webm",
+  "status": "limited-incomplete",
+  "reason": "행동 한도 도달 (12회)",
+  "counts": {
+    "calls": 11,
+    "actions": 12,
+    "executedActions": 12,
+    "tokens": 94331,
+    "cost": 0.0095477,
+    "startedAt": "2026-10-08T02:39:55.848Z",
+    "endedAt": "2026-10-08T02:40:42.629Z"
+  },
+  "steps": [
+    {
+      "index": 0,
+      "name": "Tap",
+      "parameters": {
+        "locate": {
+          "center": [
+            145,
+            341
+          ],
+          "description": "빨간 머그를 선택해야 하는데, 이건 상품 선택 부분에 있습니다. 제품 이미지가 보이는 부분에서, 빨간 머그를 클릭하면 됩니다. 이 제품은 $12.00이며, 80% 할인된 가격으로 판매됩니다. 일단 이걸 선택해야 수량과 수령인의 정보를 입력할 수 있습니다."
+        }
+      },
+      "executed": true,
+      "before": "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/act-0-before.png",
+      "after": "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/act-0-after.png",
+      "afterModelCall": 1
+    },
+    {
+      "index": 1,
+      "name": "Tap",
+      "parameters": {
+        "locate": {
+          "center": [
+            129,
+            443
+          ],
+          "description": "빨간 머그를 선택한 후, 수량을 2개로 설정해야 합니다. 현재 수량은 1개로 표시되어 있는 상태입니다. 수량 입력란이 보이므로, 이곳에 2를 입력하면 됩니다. 이렇게 하면 주문할 제품의 양을 정확하게 설정할 수 있습니다."
+        }
+      },
+      "executed": true,
+      "before": "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/act-1-before.png",
+      "after": "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/act-1-after.png",
+      "afterModelCall": 2
+    },
+    {
+      "index": 2,
+      "name": "KeyboardPress",
+      "parameters": {
+        "keyName": "Meta+A"
+      },
+      "executed": true,
+      "plannedKeyName": "Meta+A",
+      "before": "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/act-2-before.png",
+      "after": "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/act-2-after.png",
+      "afterModelCall": 3
+    },
+    {
+      "index": 3,
+      "name": "Input",
+      "parameters": {
+        "value": "2",
+        "mode": "replace"
+      },
+      "executed": true,
+      "before": "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/act-3-before.png",
+      "after": "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/act-3-after.png",
+      "afterModelCall": 4
+    },
+    {
+      "index": 4,
+      "name": "Tap",
+      "parameters": {
+        "locate": {
+          "center": [
+            174,
+            524
+          ],
+          "description": "빨간 머그를 두 개, 수량을 2개로 설정했습니다. 이제 받는 사람의 이름을 입력해야 합니다. 받는 분 이름 입력란이 보이는데, 여기에 \"김성지\"를 입력하면 됩니다. 이렇게 하면 주문 정보가 조금씩 채워지기 시작합니다."
+        }
+      },
+      "executed": true,
+      "before": "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/act-4-before.png",
+      "after": "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/act-4-after.png",
+      "afterModelCall": 5
+    },
+    {
+      "index": 5,
+      "name": "Input",
+      "parameters": {
+        "value": "김성지",
+        "mode": "replace"
+      },
+      "executed": true,
+      "before": "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/act-5-before.png",
+      "after": "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/act-5-after.png",
+      "afterModelCall": 6
+    },
+    {
+      "index": 6,
+      "name": "Tap",
+      "parameters": {
+        "locate": {
+          "center": [
+            472,
+            524
+          ],
+          "description": "이름은 입력했고, 수량도 2개로 정했습니다. 이제 마지막으로 이메일 주소를 입력해야 합니다. 이메일 입력란이 보이는데, 여기에 test@gmail.com을 입력하면 됩니다. 이렇게 하면 주문 정보가 완전히 채워지게 됩니다."
+        }
+      },
+      "executed": true,
+      "before": "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/act-6-before.png",
+      "after": "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/act-6-after.png",
+      "afterModelCall": 7
+    },
+    {
+      "index": 7,
+      "name": "Tap",
+      "parameters": {
+        "locate": {
+          "center": [
+            736,
+            524
+          ],
+          "description": "주문 정보를 거의 다 입력했습니다. 빨간 머그를 2개, 받는 분은 김성지, 이메일은 test@gmail.com으로 모두 설정했습니다. 마지막으로 주문을 완료하는 단계입니다. 주문 정보가 모두 정확하게 입력된 상태에서, 주문을 확인하고 확인 버튼을 클릭하면 됩니다."
+        }
+      },
+      "executed": true,
+      "before": "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/act-7-before.png",
+      "after": "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/act-7-after.png",
+      "afterModelCall": 8
+    },
+    {
+      "index": 8,
+      "name": "Tap",
+      "parameters": {
+        "locate": {
+          "center": [
+            472,
+            524
+          ],
+          "description": "빨간 머그를 두 개, 김성지에게 보내는 것, 그리고 test@gmail.com으로 이메일을 보내는 것까지 모두 입력했습니다. 그런데 이메일 주소란에 \"예: minsu@example.test\"가 아직 남아있네요. 이 부분을 수정해야 합니다. 이메일 주소란을 클릭해서 \"예: minsu@example.test\"를 지우고, \"test@gmail.com\"을 입력해야 합니다."
+        }
+      },
+      "executed": true,
+      "before": "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/act-8-before.png",
+      "after": "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/act-8-after.png",
+      "afterModelCall": 9
+    },
+    {
+      "index": 9,
+      "name": "KeyboardPress",
+      "parameters": {
+        "keyName": "Meta+A"
+      },
+      "executed": true,
+      "plannedKeyName": "Meta+A",
+      "before": "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/act-9-before.png",
+      "after": "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/act-9-after.png",
+      "afterModelCall": 10
+    },
+    {
+      "index": 10,
+      "name": "KeyboardPress",
+      "parameters": {
+        "keyName": "Backspace"
+      },
+      "executed": true,
+      "plannedKeyName": "Backspace",
+      "before": "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/act-10-before.png",
+      "after": "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/act-10-after.png",
+      "afterModelCall": 10
+    },
+    {
+      "index": 11,
+      "name": "KeyboardPress",
+      "parameters": {
+        "keyName": "Meta+A"
+      },
+      "executed": true,
+      "plannedKeyName": "Meta+A",
+      "before": "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/act-11-before.png",
+      "after": "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/act-11-after.png",
+      "afterModelCall": 11
+    }
+  ],
+  "transport": [
+    {
+      "phase": "action",
+      "providerSort": "default",
+      "images": 1,
+      "texts": 1,
+      "screenshots": [
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-1.jpg"
+      ],
+      "screenshot": "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-1.jpg",
+      "parsedOutput": {
+        "raw": "Thought: 빨간 머그를 선택해야 하는데, 이건 상품 선택 부분에 있습니다. 제품 이미지가 보이는 부분에서, 빨간 머그를 클릭하면 됩니다. 이 제품은 $12.00이며, 80% 할인된 가격으로 판매됩니다. 일단 이걸 선택해야 수량과 수령인의 정보를 입력할 수 있습니다.\nAction: click(start_box='(145,344)')",
+        "sdkNormalizedAction": "Thought: 빨간 머그를 선택해야 하는데, 이건 상품 선택 부분에 있습니다. 제품 이미지가 보이는 부분에서, 빨간 머그를 클릭하면 됩니다. 이 제품은 $12.00이며, 80% 할인된 가격으로 판매됩니다. 일단 이걸 선택해야 수량과 수령인의 정보를 입력할 수 있습니다.\nAction: click(start_box='[113,473,113,473]')"
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 188,
+        "hasDataJson": false,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 2487,
+      "responseModel": "bytedance/ui-tars-1.5-7b",
+      "provider": "Parasail",
+      "usage": {
+        "promptTokens": 1679,
+        "completionTokens": 110,
+        "cachedTokens": 0,
+        "cost": 0.0001899
+      },
+      "requestId": "gen-1791427197-RcsQ3Q54pPAmmstYtqfM",
+      "currentScreenshot": "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-1.jpg"
+    },
+    {
+      "phase": "action",
+      "providerSort": "default",
+      "images": 2,
+      "texts": 3,
+      "screenshots": [
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-2.jpg",
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-2-image-2.jpg"
+      ],
+      "screenshot": "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-2.jpg",
+      "parsedOutput": {
+        "raw": "Thought: 빨간 머그를 선택한 후, 수량을 2개로 설정해야 합니다. 현재 수량은 1개로 표시되어 있는 상태입니다. 수량 입력란이 보이므로, 이곳에 2를 입력하면 됩니다. 이렇게 하면 주문할 제품의 양을 정확하게 설정할 수 있습니다.\nAction: click(start_box='(130,448)')",
+        "sdkNormalizedAction": "Thought: 빨간 머그를 선택한 후, 수량을 2개로 설정해야 합니다. 현재 수량은 1개로 표시되어 있는 상태입니다. 수량 입력란이 보이므로, 이곳에 2를 입력하면 됩니다. 이렇게 하면 주문할 제품의 양을 정확하게 설정할 수 있습니다.\nAction: click(start_box='[101,615,101,615]')"
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 169,
+        "hasDataJson": false,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 2594,
+      "responseModel": "bytedance/ui-tars-1.5-7b",
+      "provider": "Parasail",
+      "usage": {
+        "promptTokens": 3050,
+        "completionTokens": 98,
+        "cachedTokens": 1776,
+        "cost": 0.0003246
+      },
+      "requestId": "gen-1791427200-zO64NgZjdY5nDSpt2sw5",
+      "currentScreenshot": "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-2-image-2.jpg"
+    },
+    {
+      "phase": "action",
+      "providerSort": "default",
+      "images": 3,
+      "texts": 5,
+      "screenshots": [
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-3.jpg",
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-3-image-2.jpg",
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-3-image-3.jpg"
+      ],
+      "screenshot": "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-3.jpg",
+      "parsedOutput": {
+        "raw": "Thought: 수량을 2개로 설정해야 하는데, 이 부분이挺棘手的。我看到输入框里显示的是1，要改成2的话，得先把这个1清掉。让我用ctrl+a全选一下当前的数值，这样输入新的数字会更方便。\nAction: hotkey(key='ctrl a')",
+        "sdkNormalizedAction": "Thought: 수량을 2개로 설정해야 하는데, 이 부분이挺棘手的。我看到输入框里显示的是1，要改成2的话，得先把这个1清掉。让我用ctrl+a全选一下当前的数值，这样输入新的数字会更方便。\nAction: hotkey(key='ctrl a')"
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 127,
+        "hasDataJson": false,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 2364,
+      "responseModel": "bytedance/ui-tars-1.5-7b",
+      "provider": "Parasail",
+      "usage": {
+        "promptTokens": 4409,
+        "completionTokens": 72,
+        "cachedTokens": 3120,
+        "cost": 0.0004553
+      },
+      "requestId": "gen-1791427203-KpVzqqjtuEGXAZ6GTNnL",
+      "currentScreenshot": "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-3-image-3.jpg"
+    },
+    {
+      "phase": "action",
+      "providerSort": "default",
+      "images": 4,
+      "texts": 7,
+      "screenshots": [
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-4.jpg",
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-4-image-2.jpg",
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-4-image-3.jpg",
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-4-image-4.jpg"
+      ],
+      "screenshot": "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-4.jpg",
+      "parsedOutput": {
+        "raw": "Thought: 수량이 1개로 표시되어 있는 상태에서, 이 1을 어떻게 처리해야 할까요? 그냥 2를 입력하면 되는 거죠. 하지만 이전에 1을 선택한 상태였기 때문에, 그냥 2를 입력하면 1이 먼저 지워지고 2가 자동으로 입력됩니다. 이렇게 하면 수량이 2개로 변경됩니다.\nAction: type(content='2')",
+        "sdkNormalizedAction": "Thought: 수량이 1개로 표시되어 있는 상태에서, 이 1을 어떻게 처리해야 할까요? 그냥 2를 입력하면 되는 거죠. 하지만 이전에 1을 선택한 상태였기 때문에, 그냥 2를 입력하면 1이 먼저 지워지고 2가 자동으로 입력됩니다. 이렇게 하면 수량이 2개로 변경됩니다.\nAction: type(content='2')"
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 177,
+        "hasDataJson": false,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 2864,
+      "responseModel": "bytedance/ui-tars-1.5-7b",
+      "provider": "Parasail",
+      "usage": {
+        "promptTokens": 5744,
+        "completionTokens": 94,
+        "cachedTokens": 4480,
+        "cost": 0.0005932
+      },
+      "requestId": "gen-1791427206-uECWM0eo36Y4iuC7Y0mJ",
+      "currentScreenshot": "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-4-image-4.jpg"
+    },
+    {
+      "phase": "action",
+      "providerSort": "default",
+      "images": 5,
+      "texts": 9,
+      "screenshots": [
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-5.jpg",
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-5-image-2.jpg",
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-5-image-3.jpg",
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-5-image-4.jpg",
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-5-image-5.jpg"
+      ],
+      "screenshot": "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-5.jpg",
+      "parsedOutput": {
+        "raw": "Thought: 빨간 머그를 두 개, 수량을 2개로 설정했습니다. 이제 받는 사람의 이름을 입력해야 합니다. 받는 분 이름 입력란이 보이는데, 여기에 \"김성지\"를 입력하면 됩니다. 이렇게 하면 주문 정보가 조금씩 채워지기 시작합니다.\nAction: click(start_box='(175,530)')",
+        "sdkNormalizedAction": "Thought: 빨간 머그를 두 개, 수량을 2개로 설정했습니다. 이제 받는 사람의 이름을 입력해야 합니다. 받는 분 이름 입력란이 보이는데, 여기에 \"김성지\"를 입력하면 됩니다. 이렇게 하면 주문 정보가 조금씩 채워지기 시작합니다.\nAction: click(start_box='[136,728,136,728]')"
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 167,
+        "hasDataJson": false,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 2902,
+      "responseModel": "bytedance/ui-tars-1.5-7b",
+      "provider": "Parasail",
+      "usage": {
+        "promptTokens": 7101,
+        "completionTokens": 94,
+        "cachedTokens": 5824,
+        "cost": 0.0007289
+      },
+      "requestId": "gen-1791427210-kjoYFutZLugv0ibtioEc",
+      "currentScreenshot": "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-5-image-5.jpg"
+    },
+    {
+      "phase": "action",
+      "providerSort": "default",
+      "images": 6,
+      "texts": 11,
+      "screenshots": [
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-6.jpg",
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-6-image-2.jpg",
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-6-image-3.jpg",
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-6-image-4.jpg",
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-6-image-5.jpg",
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-6-image-6.jpg"
+      ],
+      "screenshot": "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-6.jpg",
+      "parsedOutput": {
+        "raw": "Thought: 받는 분 이름 입력란이 빈 공간으로 놓여있는데, \"김성지\"를 입력해야 합니다. 이메일 주소는 test@gmail.com으로 설정해야 하며, 이 두 가지 정보가 모두 입력되면 주문을 완료할 수 있습니다. 우선은 이름을 입력하는 것이 가장 우선이며, 이메일은 다음에 입력할 예정입니다.\nAction: type(content='김성지')",
+        "sdkNormalizedAction": "Thought: 받는 분 이름 입력란이 빈 공간으로 놓여있는데, \"김성지\"를 입력해야 합니다. 이메일 주소는 test@gmail.com으로 설정해야 하며, 이 두 가지 정보가 모두 입력되면 주문을 완료할 수 있습니다. 우선은 이름을 입력하는 것이 가장 우선이며, 이메일은 다음에 입력할 예정입니다.\nAction: type(content='김성지')"
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 194,
+        "hasDataJson": false,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 3082,
+      "responseModel": "bytedance/ui-tars-1.5-7b",
+      "provider": "Parasail",
+      "usage": {
+        "promptTokens": 8457,
+        "completionTokens": 97,
+        "cachedTokens": 7184,
+        "cost": 0.0008651
+      },
+      "requestId": "gen-1791427213-2paAxD6kSpNe5ijshBMK",
+      "currentScreenshot": "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-6-image-6.jpg"
+    },
+    {
+      "phase": "action",
+      "providerSort": "default",
+      "images": 7,
+      "texts": 13,
+      "screenshots": [
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-7.jpg",
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-7-image-2.jpg",
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-7-image-3.jpg",
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-7-image-4.jpg",
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-7-image-5.jpg",
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-7-image-6.jpg",
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-7-image-7.jpg"
+      ],
+      "screenshot": "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-7.jpg",
+      "parsedOutput": {
+        "raw": "Thought: 이름은 입력했고, 수량도 2개로 정했습니다. 이제 마지막으로 이메일 주소를 입력해야 합니다. 이메일 입력란이 보이는데, 여기에 test@gmail.com을 입력하면 됩니다. 이렇게 하면 주문 정보가 완전히 채워지게 됩니다.\nAction: click(start_box='(475,530)')",
+        "sdkNormalizedAction": "Thought: 이름은 입력했고, 수량도 2개로 정했습니다. 이제 마지막으로 이메일 주소를 입력해야 합니다. 이메일 입력란이 보이는데, 여기에 test@gmail.com을 입력하면 됩니다. 이렇게 하면 주문 정보가 완전히 채워지게 됩니다.\nAction: click(start_box='[369,728,369,728]')"
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 170,
+        "hasDataJson": false,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 3521,
+      "responseModel": "bytedance/ui-tars-1.5-7b",
+      "provider": "Parasail",
+      "usage": {
+        "promptTokens": 9817,
+        "completionTokens": 90,
+        "cachedTokens": 8544,
+        "cost": 0.0009997
+      },
+      "requestId": "gen-1791427217-n4Z8e7U8B9tgA4scBxXu",
+      "currentScreenshot": "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-7-image-7.jpg"
+    },
+    {
+      "phase": "action",
+      "providerSort": "default",
+      "images": 8,
+      "texts": 15,
+      "screenshots": [
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-8.jpg",
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-8-image-2.jpg",
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-8-image-3.jpg",
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-8-image-4.jpg",
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-8-image-5.jpg",
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-8-image-6.jpg",
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-8-image-7.jpg",
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-8-image-8.jpg"
+      ],
+      "screenshot": "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-8.jpg",
+      "parsedOutput": {
+        "raw": "Thought: 주문 정보를 거의 다 입력했습니다. 빨간 머그를 2개, 받는 분은 김성지, 이메일은 test@gmail.com으로 모두 설정했습니다. 마지막으로 주문을 완료하는 단계입니다. 주문 정보가 모두 정확하게 입력된 상태에서, 주문을 확인하고 확인 버튼을 클릭하면 됩니다.\nAction: click(start_box='(740,530)')",
+        "sdkNormalizedAction": "Thought: 주문 정보를 거의 다 입력했습니다. 빨간 머그를 2개, 받는 분은 김성지, 이메일은 test@gmail.com으로 모두 설정했습니다. 마지막으로 주문을 완료하는 단계입니다. 주문 정보가 모두 정확하게 입력된 상태에서, 주문을 확인하고 확인 버튼을 클릭하면 됩니다.\nAction: click(start_box='[575,728,575,728]')"
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 193,
+        "hasDataJson": false,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 5008,
+      "responseModel": "bytedance/ui-tars-1.5-7b",
+      "provider": "Parasail",
+      "usage": {
+        "promptTokens": 11169,
+        "completionTokens": 102,
+        "cachedTokens": 9904,
+        "cost": 0.0011373
+      },
+      "requestId": "gen-1791427223-lxCK5NEc9SnyqLtQ3jSy",
+      "currentScreenshot": "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-8-image-8.jpg"
+    },
+    {
+      "phase": "action",
+      "providerSort": "default",
+      "images": 9,
+      "texts": 17,
+      "screenshots": [
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-9.jpg",
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-9-image-2.jpg",
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-9-image-3.jpg",
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-9-image-4.jpg",
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-9-image-5.jpg",
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-9-image-6.jpg",
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-9-image-7.jpg",
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-9-image-8.jpg",
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-9-image-9.jpg"
+      ],
+      "screenshot": "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-9.jpg",
+      "parsedOutput": {
+        "raw": "Thought: 빨간 머그를 두 개, 김성지에게 보내는 것, 그리고 test@gmail.com으로 이메일을 보내는 것까지 모두 입력했습니다. 그런데 이메일 주소란에 \"예: minsu@example.test\"가 아직 남아있네요. 이 부분을 수정해야 합니다. 이메일 주소란을 클릭해서 \"예: minsu@example.test\"를 지우고, \"test@gmail.com\"을 입력해야 합니다.\nAction: click(start_box='(475,530)')",
+        "sdkNormalizedAction": "Thought: 빨간 머그를 두 개, 김성지에게 보내는 것, 그리고 test@gmail.com으로 이메일을 보내는 것까지 모두 입력했습니다. 그런데 이메일 주소란에 \"예: minsu@example.test\"가 아직 남아있네요. 이 부분을 수정해야 합니다. 이메일 주소란을 클릭해서 \"예: minsu@example.test\"를 지우고, \"test@gmail.com\"을 입력해야 합니다.\nAction: click(start_box='[369,728,369,728]')"
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 251,
+        "hasDataJson": false,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 4025,
+      "responseModel": "bytedance/ui-tars-1.5-7b",
+      "provider": "Parasail",
+      "usage": {
+        "promptTokens": 12533,
+        "completionTokens": 119,
+        "cachedTokens": 11264,
+        "cost": 0.0012771
+      },
+      "requestId": "gen-1791427227-keVyp0MXzSzN66ykaMxI",
+      "currentScreenshot": "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-9-image-9.jpg"
+    },
+    {
+      "phase": "action",
+      "providerSort": "default",
+      "images": 10,
+      "texts": 19,
+      "screenshots": [
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-10.jpg",
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-10-image-2.jpg",
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-10-image-3.jpg",
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-10-image-4.jpg",
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-10-image-5.jpg",
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-10-image-6.jpg",
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-10-image-7.jpg",
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-10-image-8.jpg",
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-10-image-9.jpg",
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-10-image-10.jpg"
+      ],
+      "screenshot": "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-10.jpg",
+      "parsedOutput": {
+        "raw": "Thought: 주문 정보를 입력하는 과정이 거의 끝났습니다. 빨간 머그를 두 개, 김성지에게 보내는 것, 그리고 test@gmail.com으로 이메일을 보내는 것까지 모두 입력했습니다. 그런데 이메일 주소란에 \"예: minsu@example.test\"가 아직 남아있네요. 이 부분을 수정해야 합니다. 이메일 주소란을 클릭해서 \"예: minsu@example.test\"를 지우고, \"test@gmail.com\"을 입력해야 합니다.\nAction: hotkey(key='ctrl a')\n\nhotkey(key='backspace')",
+        "sdkNormalizedAction": "Thought: 주문 정보를 입력하는 과정이 거의 끝났습니다. 빨간 머그를 두 개, 김성지에게 보내는 것, 그리고 test@gmail.com으로 이메일을 보내는 것까지 모두 입력했습니다. 그런데 이메일 주소란에 \"예: minsu@example.test\"가 아직 남아있네요. 이 부분을 수정해야 합니다. 이메일 주소란을 클릭해서 \"예: minsu@example.test\"를 지우고, \"test@gmail.com\"을 입력해야 합니다.\nAction: hotkey(key='ctrl a')\n\nhotkey(key='backspace')"
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 294,
+        "hasDataJson": false,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 4774,
+      "responseModel": "bytedance/ui-tars-1.5-7b",
+      "provider": "Parasail",
+      "usage": {
+        "promptTokens": 13914,
+        "completionTokens": 135,
+        "cachedTokens": 12576,
+        "cost": 0.0014184
+      },
+      "requestId": "gen-1791427232-90pBl22attyphjGeSpdP",
+      "currentScreenshot": "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-10-image-10.jpg"
+    },
+    {
+      "phase": "action",
+      "providerSort": "default",
+      "images": 11,
+      "texts": 21,
+      "screenshots": [
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-11.jpg",
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-11-image-2.jpg",
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-11-image-3.jpg",
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-11-image-4.jpg",
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-11-image-5.jpg",
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-11-image-6.jpg",
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-11-image-7.jpg",
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-11-image-8.jpg",
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-11-image-9.jpg",
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-11-image-10.jpg",
+        "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-11-image-11.jpg"
+      ],
+      "screenshot": "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-11.jpg",
+      "parsedOutput": {
+        "raw": "Thought: 주문 정보를 입력하는 과정이 거의 끝났습니다. 빨간 머그를 두 개, 김성지에게 보내는 것, 그리고 test@gmail.com으로 이메일을 보내는 것까지 모두 입력했습니다. 그런데 이메일 주소란에 \"예: minsu@example.test\"가 아직 남아있네요. 이 부분을 수정해야 합니다. 이메일 주소란을 클릭해서 \"예: minsu@example.test\"를 지우고, \"test@gmail.com\"을 입력해야 합니다.\nAction: hotkey(key='ctrl a')\n\nhotkey(key='backspace')",
+        "sdkNormalizedAction": "Thought: 주문 정보를 입력하는 과정이 거의 끝났습니다. 빨간 머그를 두 개, 김성지에게 보내는 것, 그리고 test@gmail.com으로 이메일을 보내는 것까지 모두 입력했습니다. 그런데 이메일 주소란에 \"예: minsu@example.test\"가 아직 남아있네요. 이 부분을 수정해야 합니다. 이메일 주소란을 클릭해서 \"예: minsu@example.test\"를 지우고, \"test@gmail.com\"을 입력해야 합니다.\nAction: hotkey(key='ctrl a')\n\nhotkey(key='backspace')"
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 294,
+        "hasDataJson": false,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 4600,
+      "responseModel": "bytedance/ui-tars-1.5-7b",
+      "provider": "Parasail",
+      "usage": {
+        "promptTokens": 15312,
+        "completionTokens": 135,
+        "cachedTokens": 14048,
+        "cost": 0.0015582
+      },
+      "requestId": "gen-1791427239-o6JxZkW7NyZW064hN76R",
+      "currentScreenshot": "/artifacts/9ed22220-8753-45bf-a49d-77e23d4d3bd3/model-request-11-image-11.jpg"
+    }
+  ],
+  "transportNote": "screenshot=요청의 첫 이미지(이력이 쌓이면 가장 오래된 화면), currentScreenshot=요청의 마지막 이미지(모델이 판단한 현재 화면)",
+  "sourceVersion": {
+    "commit": "a534d2764c31a988e153e384fc7b15133a71c686",
+    "dirty": false,
+    "sourceHash": "0b4ee5d1f93fa47cc7f8296de90e53184ec8621daa37394a9c10ff91a1d7e736",
+    "promptVersion": "midscene-native-workflow-v2-control-guard"
+  }
+}

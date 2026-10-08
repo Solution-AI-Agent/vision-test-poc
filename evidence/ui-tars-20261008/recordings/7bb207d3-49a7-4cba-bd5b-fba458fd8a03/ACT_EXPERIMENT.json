@@ -1,0 +1,220 @@
+{
+  "experiment": "ui-tars-direct-aiAct",
+  "runId": "7bb207d3-49a7-4cba-bd5b-fba458fd8a03",
+  "scenario": {
+    "url": "http://127.0.0.1:4311/store/d",
+    "task": "상품선택에서 빨간 머그를 선택하고 수량을 2로 입력한다. 받는 사람에 “김성지”를 입력하고 이메일 주소에 “test@gmail.com”을 입력하고 주문 확정을 클릭한다.",
+    "expected": "우측 주문요약에 선택한 숭품의 이미지와 수량,단가,배송비 여부가 보여진다.",
+    "requiredInputs": [
+      "2",
+      "김성지",
+      "test@gmail.com"
+    ]
+  },
+  "limits": {
+    "maxCalls": 20,
+    "maxActions": 12,
+    "maxSeconds": 180,
+    "maxTokens": 1536
+  },
+  "sdk": {
+    "planningModelFamily": "vlm-ui-tars",
+    "planningKind": "custom",
+    "deepLocate": {
+      "supportedForAiAct": false,
+      "requested": false
+    },
+    "planningSlot": "default",
+    "includeLocateInPlanning": true,
+    "replanningCycleLimit": 12
+  },
+  "aiAct": {
+    "status": "error",
+    "error": "task runner is in error state, cannot append task"
+  },
+  "modelFinished": {
+    "declared": false
+  },
+  "inputs": {
+    "stepwiseVisualConfirmation": "not-performed",
+    "note": "직접 aiAct 경로에는 기존 단계별 aiString 입력값 확인이 없습니다. typedValues는 모델이 요청한 type 내용이며 화면 확인값이 아닙니다.",
+    "typedValues": [],
+    "requiredTyped": {
+      "2": false,
+      "김성지": false,
+      "test@gmail.com": false
+    },
+    "otherTypedValues": []
+  },
+  "orderCompletion": {
+    "status": "needs-independent-review",
+    "note": "코드/모델로 판정하지 않음. finalScreenshot·video로 독립 검토."
+  },
+  "assertion": {
+    "status": "not-run"
+  },
+  "initialScreenshot": "/artifacts/7bb207d3-49a7-4cba-bd5b-fba458fd8a03/act-initial.png",
+  "executionError": "Error executing running tasks: keyboard.down: Unknown key: \"up\"",
+  "finalScreenshot": "/artifacts/7bb207d3-49a7-4cba-bd5b-fba458fd8a03/act-final.png",
+  "video": "/artifacts/7bb207d3-49a7-4cba-bd5b-fba458fd8a03/page@1f0567b56f5fa8fef3b2193bb0d094e5.webm",
+  "status": "limited-incomplete",
+  "reason": "행동 실행 오류로 중지 (재계획 없음)",
+  "counts": {
+    "calls": 3,
+    "actions": 3,
+    "executedActions": 2,
+    "tokens": 9416,
+    "cost": 0.0009694,
+    "startedAt": "2026-10-08T02:32:47.136Z",
+    "endedAt": "2026-10-08T02:32:57.839Z"
+  },
+  "steps": [
+    {
+      "index": 0,
+      "name": "Tap",
+      "parameters": {
+        "locate": {
+          "center": [
+            145,
+            341
+          ],
+          "description": "빨간 머그를 선택해야 하는데, 이건 상품 선택 부분에 있습니다. 제품 이미지가 보이는 부분에서, 빨간 머그를 클릭하면 됩니다. 이 제품은 $12.00이며, 80% 할인된 가격으로 판매됩니다. 일단 이걸 선택해야 수량과 수령인의 정보를 입력할 수 있습니다."
+        }
+      },
+      "executed": true,
+      "before": "/artifacts/7bb207d3-49a7-4cba-bd5b-fba458fd8a03/act-0-before.png",
+      "after": "/artifacts/7bb207d3-49a7-4cba-bd5b-fba458fd8a03/act-0-after.png",
+      "afterModelCall": 1
+    },
+    {
+      "index": 1,
+      "name": "Tap",
+      "parameters": {
+        "locate": {
+          "center": [
+            131,
+            443
+          ],
+          "description": "빨간 머그를 선택한 후, 수량을 2개로 설정해야 합니다. 현재 수량은 1개로 표시되어 있는 상태입니다. 수량 입력란이 보이므로, 이곳에 2를 입력하면 됩니다. 이렇게 하면 주문할 제품의 양을 정확하게 설정할 수 있습니다."
+        }
+      },
+      "executed": true,
+      "before": "/artifacts/7bb207d3-49a7-4cba-bd5b-fba458fd8a03/act-1-before.png",
+      "after": "/artifacts/7bb207d3-49a7-4cba-bd5b-fba458fd8a03/act-1-after.png",
+      "afterModelCall": 2
+    },
+    {
+      "index": 2,
+      "name": "KeyboardPress",
+      "parameters": {
+        "keyName": "up"
+      },
+      "executed": false,
+      "error": "Error executing running tasks: keyboard.down: Unknown key: \"up\"",
+      "before": "/artifacts/7bb207d3-49a7-4cba-bd5b-fba458fd8a03/act-2-before.png",
+      "after": "/artifacts/7bb207d3-49a7-4cba-bd5b-fba458fd8a03/act-2-before.png",
+      "afterModelCall": 3
+    }
+  ],
+  "transport": [
+    {
+      "phase": "action",
+      "providerSort": "default",
+      "images": 1,
+      "texts": 1,
+      "screenshots": [
+        "/artifacts/7bb207d3-49a7-4cba-bd5b-fba458fd8a03/model-request-1.jpg"
+      ],
+      "screenshot": "/artifacts/7bb207d3-49a7-4cba-bd5b-fba458fd8a03/model-request-1.jpg",
+      "parsedOutput": {
+        "raw": "Thought: 빨간 머그를 선택해야 하는데, 이건 상품 선택 부분에 있습니다. 제품 이미지가 보이는 부분에서, 빨간 머그를 클릭하면 됩니다. 이 제품은 $12.00이며, 80% 할인된 가격으로 판매됩니다. 일단 이걸 선택해야 수량과 수령인의 정보를 입력할 수 있습니다.\nAction: click(start_box='(145,344)')",
+        "sdkNormalizedAction": "Thought: 빨간 머그를 선택해야 하는데, 이건 상품 선택 부분에 있습니다. 제품 이미지가 보이는 부분에서, 빨간 머그를 클릭하면 됩니다. 이 제품은 $12.00이며, 80% 할인된 가격으로 판매됩니다. 일단 이걸 선택해야 수량과 수령인의 정보를 입력할 수 있습니다.\nAction: click(start_box='[113,473,113,473]')"
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 188,
+        "hasDataJson": false,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 3234,
+      "responseModel": "bytedance/ui-tars-1.5-7b",
+      "provider": "Parasail",
+      "usage": {
+        "promptTokens": 1679,
+        "completionTokens": 110,
+        "cachedTokens": 0,
+        "cost": 0.0001899
+      },
+      "requestId": "gen-1791426768-Wq0ORglGJspXXqvQsFrA"
+    },
+    {
+      "phase": "action",
+      "providerSort": "default",
+      "images": 2,
+      "texts": 3,
+      "screenshots": [
+        "/artifacts/7bb207d3-49a7-4cba-bd5b-fba458fd8a03/model-request-2.jpg",
+        "/artifacts/7bb207d3-49a7-4cba-bd5b-fba458fd8a03/model-request-2-image-2.jpg"
+      ],
+      "screenshot": "/artifacts/7bb207d3-49a7-4cba-bd5b-fba458fd8a03/model-request-2.jpg",
+      "parsedOutput": {
+        "raw": "Thought: 빨간 머그를 선택한 후, 수량을 2개로 설정해야 합니다. 현재 수량은 1개로 표시되어 있는 상태입니다. 수량 입력란이 보이므로, 이곳에 2를 입력하면 됩니다. 이렇게 하면 주문할 제품의 양을 정확하게 설정할 수 있습니다.\nAction: click(start_box='(132,448)')",
+        "sdkNormalizedAction": "Thought: 빨간 머그를 선택한 후, 수량을 2개로 설정해야 합니다. 현재 수량은 1개로 표시되어 있는 상태입니다. 수량 입력란이 보이므로, 이곳에 2를 입력하면 됩니다. 이렇게 하면 주문할 제품의 양을 정확하게 설정할 수 있습니다.\nAction: click(start_box='[102,615,102,615]')"
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 169,
+        "hasDataJson": false,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 2558,
+      "responseModel": "bytedance/ui-tars-1.5-7b",
+      "provider": "Parasail",
+      "usage": {
+        "promptTokens": 3050,
+        "completionTokens": 98,
+        "cachedTokens": 1776,
+        "cost": 0.0003246
+      },
+      "requestId": "gen-1791426772-Urv4W30mQ7xXTojuT2zz"
+    },
+    {
+      "phase": "action",
+      "providerSort": "default",
+      "images": 3,
+      "texts": 5,
+      "screenshots": [
+        "/artifacts/7bb207d3-49a7-4cba-bd5b-fba458fd8a03/model-request-3.jpg",
+        "/artifacts/7bb207d3-49a7-4cba-bd5b-fba458fd8a03/model-request-3-image-2.jpg",
+        "/artifacts/7bb207d3-49a7-4cba-bd5b-fba458fd8a03/model-request-3-image-3.jpg"
+      ],
+      "screenshot": "/artifacts/7bb207d3-49a7-4cba-bd5b-fba458fd8a03/model-request-3.jpg",
+      "parsedOutput": {
+        "raw": "Thought: 수량을 2개로 설정해야 하는데, 이 부분이挺棘手的。我看到输入框里显示的是1，但直接输入2好像不太管用。让我试试用键盘上的向上箭头来调整数值，这样应该能更精确地设置数量。\nAction: hotkey(key='up')",
+        "sdkNormalizedAction": "Thought: 수량을 2개로 설정해야 하는데, 이 부분이挺棘手的。我看到输入框里显示的是1，但直接输入2好像不太管用。让我试试用键盘上的向上箭头来调整数值，这样应该能更精确地设置数量。\nAction: hotkey(key='up')"
+      },
+      "responseFormat": {
+        "finishReason": "stop",
+        "chars": 121,
+        "hasDataJson": false,
+        "normalizedPlainJson": false
+      },
+      "elapsedMs": 2152,
+      "responseModel": "bytedance/ui-tars-1.5-7b",
+      "provider": "Parasail",
+      "usage": {
+        "promptTokens": 4409,
+        "completionTokens": 70,
+        "cachedTokens": 3120,
+        "cost": 0.0004549
+      },
+      "requestId": "gen-1791426775-xYAD2FrKG4cgCiZgLdvu"
+    }
+  ],
+  "sourceVersion": {
+    "commit": "00370aa0de4c02647b3ab72bebeab53e4932f4c1",
+    "dirty": false,
+    "sourceHash": "0b4ee5d1f93fa47cc7f8296de90e53184ec8621daa37394a9c10ff91a1d7e736",
+    "promptVersion": "midscene-native-workflow-v2-control-guard"
+  }
+}
