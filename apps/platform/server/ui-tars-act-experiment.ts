@@ -17,6 +17,9 @@ export const orderScenario = {
   requiredInputs:["2","김성지","test@gmail.com"],
 };
 export const experimentLimits = {maxCalls:20,maxActions:12,maxSeconds:180};
+// Optional comparison variant (off by default): one general input-state rule for every field, appended to the
+// aiAct planning context only. No scenario values, coordinates or DOM; the user's task text is not touched.
+export const inputStateGuidance = "입력칸 공통 규칙: 입력칸 안의 흐린 예시 문구(placeholder)는 입력값이 아니며 그 칸은 빈 칸이다. 요구된 값을 직접 입력하기 전에는 입력을 완료했다고 판단하지 않는다. 삭제한 뒤에도 같은 예시 문구가 보이면 삭제를 반복하지 말고 요구된 값을 입력한다.";
 
 const nfc = (v:string) => v.normalize("NFC").trim();
 
@@ -31,8 +34,10 @@ const nfc = (v:string) => v.normalize("NFC").trim();
 // as (465,731), off screen). The model gets back its own raw answer; the executor keeps the normalized one.
 // Exact match only: an assistant turn this run did not produce fails the request instead of being guessed.
 const uiTarsSummary = (text:string) => text.replace(/Reflection:[\s\S]*?(?=Action_Summary:|Action:|$)/g,"").trim(); // Midscene ui-tars getSummary
-export function uiTarsActAgentOptions(settings:Settings,run:Run,runtime:Runtime,createClient:(settings:Settings)=>any) {
+export function uiTarsActAgentOptions(settings:Settings,run:Run,runtime:Runtime,createClient:(settings:Settings)=>any,generalGuidance?:string) {
   const base = midsceneAgentOptions(settings,run,runtime,createClient);
+  // Midscene uses aiContexts.aiAct instead of (not in addition to) default, so the variant repeats default.
+  const aiContexts = generalGuidance ? {...base.aiContexts,aiAct:`${base.aiContexts.default}\n${generalGuidance}`} : base.aiContexts;
   const rawByNormalized = new Map<string,string>();
   const rawHistory = (content:unknown) => {
     const raw = typeof content==="string" ? rawByNormalized.get(content) : undefined;
@@ -40,7 +45,7 @@ export function uiTarsActAgentOptions(settings:Settings,run:Run,runtime:Runtime,
     return raw;
   };
   const modelConfig = Object.fromEntries(Object.entries(base.modelConfig).filter(([key])=>!key.startsWith("MIDSCENE_PLANNING_MODEL_")));
-  return {...base,modelConfig:{...modelConfig,MIDSCENE_MODEL_FAMILY:"vlm-ui-tars"},
+  return {...base,aiContexts,modelConfig:{...modelConfig,MIDSCENE_MODEL_FAMILY:"vlm-ui-tars"},
     createOpenAIClient:async () => {
       const client = await base.createOpenAIClient();
       const create = client.chat.completions.create;
@@ -75,6 +80,7 @@ export function playwrightKeyName(keyName:string) {
 export async function runUiTarsActExperiment(options:{
   settings:Settings;
   createClient:(settings:Settings)=>any;
+  inputGuidance?:boolean;
   scenario?:typeof orderScenario;
   launchBrowser?:()=>Promise<Browser>;
   navigateTarget?:(page:Page,url:string)=>Promise<unknown>;
@@ -88,7 +94,8 @@ export async function runUiTarsActExperiment(options:{
   const runtime:Runtime = {controller:options.controller ?? new AbortController()};
   const folder = path.join(artifactsDir,run.id);
   const report:any = {
-    experiment:"ui-tars-direct-aiAct",runId:run.id,scenario,limits:{maxCalls:settings.maxCalls,maxActions:settings.maxActions,maxSeconds:settings.maxSeconds,maxTokens:settings.maxTokens},
+    experiment:"ui-tars-direct-aiAct",runId:run.id,scenario,
+    prompt:{variant:options.inputGuidance?"input-guidance":"baseline",userTask:scenario.task,generalGuidance:options.inputGuidance?inputStateGuidance:null},limits:{maxCalls:settings.maxCalls,maxActions:settings.maxActions,maxSeconds:settings.maxSeconds,maxTokens:settings.maxTokens},
     sdk:{},aiAct:{status:"not-run"},modelFinished:{declared:false},
     inputs:{stepwiseVisualConfirmation:"not-performed",note:"직접 aiAct 경로에는 기존 단계별 aiString 입력값 확인이 없습니다. typedValues는 모델이 요청한 type 내용이며 화면 확인값이 아닙니다."},
     orderCompletion:{status:"needs-independent-review",note:"코드/모델로 판정하지 않음. finalScreenshot·video로 독립 검토."},
@@ -127,7 +134,7 @@ export async function runUiTarsActExperiment(options:{
     await page.waitForTimeout(1000);
     report.initialScreenshot = await capture("act-initial");
 
-    const agent = new PlaywrightAgent(page,uiTarsActAgentOptions(settings,run,runtime,options.createClient));
+    const agent = new PlaywrightAgent(page,uiTarsActAgentOptions(settings,run,runtime,options.createClient,options.inputGuidance?inputStateGuidance:undefined));
     agent.interface.getElementsNodeTree = async () => { throw new Error("DOM planning is disabled"); };
     const planning = (agent as any).resolveModelRuntime("planning");
     report.sdk = {
