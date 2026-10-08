@@ -4,7 +4,7 @@ import path from "node:path";
 import type {Page} from "playwright";
 import {defaults} from "./domain";
 import {artifactsDir} from "./runner";
-import {experimentLimits,orderScenario,runUiTarsActExperiment,uiTarsActAgentOptions} from "./ui-tars-act-experiment";
+import {experimentLimits,orderScenario,playwrightKeyName,runUiTarsActExperiment,uiTarsActAgentOptions} from "./ui-tars-act-experiment";
 import {inputSchema} from "./domain";
 import {makeRun} from "./runner";
 
@@ -137,12 +137,54 @@ it("user stop and total time limit end the run without further calls", async () 
   expect(timed.report.counts.calls).toBe(2);
 }, 60000);
 
-it("an action execution error stops instead of letting Midscene replan", async () => {
+it("an unknown hotkey is blocked before the action and stops instead of letting Midscene replan", async () => {
   const mock = provider(["Thought: 키 입력\nAction: hotkey(key='nosuchkey')",...happy]);
-  const {report} = await run(mock);
+  const keys:string[] = [];
+  const {report} = await run(mock,{navigateTarget:async page=>{
+    await page.exposeBinding("observe",(_source,key:string)=>{keys.push(key);});
+    await navigateTarget(page);
+    await page.evaluate(()=>document.addEventListener("keydown",e=>(window as any).observe(e.key)));
+  }});
   expect(report.status).toBe("limited-incomplete");
   expect(report.reason).toMatch(/행동 실행 오류로 중지/);
   expect(report.counts.calls).toBe(1);
+  expect(report.steps).toMatchObject([{name:"KeyboardPress",plannedKeyName:"nosuchkey",executed:false,error:expect.stringContaining("알 수 없는 키")}]);
+  expect(keys).toEqual([]);
+}, 60000);
+
+it("maps only UI-TARS arrow aliases to Playwright keys, keeps existing combos and blocks unknown keys", () => {
+  expect(["up","down","left","right","Up"].map(playwrightKeyName)).toEqual(["ArrowUp","ArrowDown","ArrowLeft","ArrowRight","ArrowUp"]);
+  // keyName as Midscene builds it: transformHotkeyInput(key).join("+").
+  expect(playwrightKeyName("Meta+A")).toBe("Meta+A");expect(playwrightKeyName("Control+A")).toBe("Control+A");
+  expect(playwrightKeyName("Shift+up")).toBe("Shift+ArrowUp");expect(playwrightKeyName("ArrowUp")).toBe("ArrowUp");
+  for (const key of ["Backspace","Enter","Tab","Escape","PageDown","Delete","2"]) expect(playwrightKeyName(key)).toBe(key);
+  for (const key of ["nosuchkey","upp","Meta+nosuchkey","arrow up",""]) expect(()=>playwrightKeyName(key)).toThrow("알 수 없는 키");
+});
+
+it("replays live run 7bb207d3: raw hotkey(key='up') presses ArrowUp on the focused number input (1 -> 2), raw text stays in history", async () => {
+  const raw = ["Thought: 빨간 머그 선택\nAction: click(start_box='(145,344)')","Thought: 수량 칸 클릭\nAction: click(start_box='(132,448)')",
+    "Thought: 키보드 위쪽 화살표로 수량 조정\nAction: hotkey(key='up')","Thought: 완료\nAction: finished(content='완료')"];
+  // Live clicks executed at (145,341) and (131,443) on 1280x720; the fixture puts the mug and a number input there.
+  const page = `<style>*{margin:0}button,input{position:absolute;width:160px;height:40px}</style>
+<button id="red" style="left:100px;top:320px" onclick="this.textContent='빨간 머그 ✓'">빨간 머그</button>
+<input id="qty" type="number" value="1" min="1" style="left:100px;top:423px" aria-label="수량">`;
+  let qty = "";
+  const mock = provider(raw);
+  const {report} = await run(mock,{navigateTarget:async p=>{
+    await p.exposeBinding("observe",(_source,value:string)=>{qty=value;});
+    await p.setContent(page);
+    await p.evaluate(()=>document.getElementById("qty")!.addEventListener("input",e=>(window as any).observe((e.target as HTMLInputElement).value)));
+  }});
+  expect(qty).toBe("2");
+  expect(report.steps.map((s:any)=>s.name)).toEqual(["Tap","Tap","KeyboardPress"]);
+  expect(report.steps[2]).toMatchObject({plannedKeyName:"up",parameters:{keyName:"ArrowUp"},executed:true});
+  expect(report.transport[2].parsedOutput.raw).toBe(raw[2]);
+  const planning = mock.bodies.filter(b=>JSON.stringify(b).includes("## Action Space"));
+  expect(planning[3].messages.filter((m:any)=>m.role==="assistant").map((m:any)=>m.content)).toEqual(raw.slice(0,3));
+  // Current screen is the last request image; the shared screenshot field keeps pointing at the first one.
+  expect(report.transport[3].currentScreenshot).toBe(report.transport[3].screenshots.at(-1));
+  expect(report.transport[3].screenshot).toBe(report.transport[3].screenshots[0]);
+  expect(report.transport[3].screenshots).toHaveLength(4);
 }, 60000);
 
 it("follow-up requests replay UI-TARS' own pixel coordinates in the assistant history, while the SDK executes normalized ones", async () => {

@@ -1,5 +1,6 @@
 import {chromium,type Browser,type Page} from "playwright";
 import {PlaywrightAgent} from "@midscene/web/playwright";
+import {_keyDefinitions} from "@midscene/shared/us-keyboard-layout";
 import {mkdir,writeFile} from "node:fs/promises";
 import path from "node:path";
 import {inputSchema,validateTarget,type Run,type Settings,type Step} from "./domain";
@@ -56,6 +57,19 @@ export function uiTarsActAgentOptions(settings:Settings,run:Run,runtime:Runtime,
       };
       return client;
     }};
+}
+
+// UI-TARS names arrow keys up/down/left/right; Midscene's hotkey transform passes them through unchanged and
+// Playwright rejects them ("Unknown key: up", live run 7bb207d3). Only these unambiguous aliases are mapped,
+// per key token of the SDK keyName ("Meta+A" stays as is). Any other token that is not a Midscene key
+// definition or a single character is blocked before the action instead of being guessed.
+const arrowAliases:Record<string,string> = {up:"ArrowUp",down:"ArrowDown",left:"ArrowLeft",right:"ArrowRight"};
+export function playwrightKeyName(keyName:string) {
+  const tokens = keyName.trim().split(/\s*\+\s*|\s+/);
+  const mapped = tokens.map(token => arrowAliases[token.toLowerCase()] ?? token);
+  const unknown = mapped.filter(key => !(key.length===1 || (key in _keyDefinitions && (_keyDefinitions as any)[key].key===key)));
+  if (unknown.length) throw new Error(`알 수 없는 키라 실행하지 않습니다: ${JSON.stringify(keyName)}`);
+  return mapped.join("+");
 }
 
 export async function runUiTarsActExperiment(options:{
@@ -146,6 +160,13 @@ export async function runUiTarsActExperiment(options:{
         plan:{observation:"UI-TARS aiAct 계획 행동",rationale:name,action:{type:"midscene",name,description:name},verdict:"continue",finding:null},
         native:{name,parameters:structuredClone(param)},modelCall:run.calls} as Step;
       run.steps.push(current);run.actions++;
+      if (name==="KeyboardPress") {
+        const keyName = (param as any)?.keyName;
+        if (typeof keyName!=="string") throw new Error("키 이름이 없어 실행하지 않습니다.");
+        (current as any).plannedKeyName = keyName;
+        // Midscene passes this same param object on to the action call; the model text/history are untouched.
+        (param as any).keyName = playwrightKeyName(keyName);
+      }
     };
     agent.interface.afterInvokeAction = async (_name,param) => {
       if (!current) return;
@@ -199,9 +220,12 @@ export async function runUiTarsActExperiment(options:{
     : runtime.providerFailure || report.aiAct.status!=="returned" || report.error ? "failed" : "model-finished-needs-review";
   report.reason = runtime.limitReason ?? runtime.providerFailure?.code ?? report.aiAct.error ?? report.error;
   report.counts = {calls:run.calls,actions:run.actions,executedActions:run.steps.filter(s=>s.executed).length,tokens:run.tokens,cost:run.cost,startedAt:run.startedAt,endedAt:run.endedAt};
-  report.steps = run.steps.map(s=>({index:s.index,name:s.native?.name,parameters:s.native?.parameters,executed:s.executed,error:(s as any).error,before:s.before,after:s.after,afterModelCall:(s as any).modelCall}));
+  report.steps = run.steps.map(s=>({index:s.index,name:s.native?.name,parameters:s.native?.parameters,executed:s.executed,plannedKeyName:(s as any).plannedKeyName,error:(s as any).error,before:s.before,after:s.after,afterModelCall:(s as any).modelCall}));
   // Raw model responses and the exact request images; keys and base64 never stored here.
-  report.transport = run.transport;
+  // transport[].screenshot is the first image of the request (the oldest history image once UI-TARS history grows);
+  // currentScreenshot is the last image, the screen the model acted on.
+  report.transport = run.transport.map(t=>({...t,currentScreenshot:t.screenshots?.at(-1)}));
+  report.transportNote = "screenshot=요청의 첫 이미지(이력이 쌓이면 가장 오래된 화면), currentScreenshot=요청의 마지막 이미지(모델이 판단한 현재 화면)";
   report.sourceVersion = run.sourceVersion;
   await mkdir(folder,{recursive:true});
   await writeFile(path.join(folder,"ACT_EXPERIMENT.json"),JSON.stringify(report,null,2));
