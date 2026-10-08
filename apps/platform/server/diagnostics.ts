@@ -19,6 +19,7 @@ const advice = {
   MODEL_TIMEOUT: ["모델 응답 시간이 초과됐습니다.", "공급자 상태와 설정한 모델·실행 시간 한도를 확인하세요."],
   MODEL_INITIALIZATION_FAILED: ["Vision 모델 초기화에 실패했습니다.", "설정한 모델 ID·Midscene 모델 family와 환경을 확인하세요."],
   MODEL_RESPONSE_INVALID: ["모델 응답을 계획 형식으로 검증하지 못했습니다.", "모델의 구조화된 응답 지원과 출력 토큰 설정을 확인하세요. 이 실패는 제품 결함 판정이 아닙니다."],
+  MODEL_STRUCTURED_OUTPUT_MISSING: ["모델 응답에 요구한 구조화 결과(data-json)가 없습니다.", "출력 한도 소진(finish_reason=length)으로 종료된 응답은 별도로 차단되므로 이 응답은 그 경우가 아닙니다. 토큰 한도를 늘리기 전에 응답 형식 호환성을 확인하세요. 원응답과 종료 사유는 실행 기록에 보존됩니다. 이 실패는 제품 결함 판정이 아닙니다."],
   MODEL_OUTPUT_TRUNCATED: ["모델 응답이 출력 토큰 한도에서 잘렸습니다.", "모델과 출력 토큰 설정을 확인하세요. 잘린 응답은 성공으로 처리하지 않습니다."],
   INPUT_CONFIRMATION_FAILED: ["도구 완료 후 입력 결과 확인에 실패했습니다.", "입력 결과와 요청 증거를 확인하세요. 도구 완료만으로 업무 성공을 판단하지 않습니다."],
   ACTION_FAILED: ["브라우저 행동 실행에 실패했습니다.", "화면과 브라우저 상태를 확인하세요. 자동화 실패는 제품 결함이 아닙니다."],
@@ -45,6 +46,7 @@ export function diagnose(error: unknown, phase: ExecutionPhase): RunDiagnostic {
   else if (phase === "target-navigation") code = e?.name === "TimeoutError" ? "TARGET_TIMEOUT" : "TARGET_UNREACHABLE";
   else if (text === "MODEL_OUTPUT_TRUNCATED") code = "MODEL_OUTPUT_TRUNCATED";
   else if (text === "INPUT_CONFIRMATION_FAILED") code = "INPUT_CONFIRMATION_FAILED";
+  else if (/Missing required field: data-json/.test(text)) code = "MODEL_STRUCTURED_OUTPUT_MISSING";
   else if (e?.name === "ZodError") code = "MODEL_RESPONSE_INVALID";
   else if (phase === "screenshot") code = "SCREENSHOT_FAILED";
   else if (phase === "model-initialization") code = "MODEL_INITIALIZATION_FAILED";

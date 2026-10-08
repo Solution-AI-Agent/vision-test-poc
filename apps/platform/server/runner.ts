@@ -243,6 +243,12 @@ export function instrumentClient(client: any, run: Run, runtime: Runtime) {
     run.tokens += response.usage?.total_tokens ?? 0;
     if (typeof response.usage?.cost === "number")
       run.cost = (run.cost ?? 0) + response.usage.cost;
+    // A cut-off response may still parse after Midscene's JSON repair; never let it become a shorter plan.
+    if (response.choices?.[0]?.finish_reason === "length") {
+      const safe = new SafeExecutionError("MODEL_OUTPUT_TRUNCATED");
+      runtime.providerFailure = diagnose(safe, run.executionPhase ?? "model-plan");
+      throw safe;
+    }
     if (typeof content === "string" && run.settings.family === "ui-tars-1.5" && uiTarsAction) {
       message.content = await normalizeUiTarsAction(content, body.messages);
       record.parsedOutput = {raw:content, sdkNormalizedAction:message.content};

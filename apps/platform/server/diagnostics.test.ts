@@ -66,6 +66,8 @@ it("classifies video, model and output failures without exposing raw secrets or 
   expect(diagnose(new SafeExecutionError("MODEL_API_FAILED", 401), "input-confirmation")).toMatchObject({ code: "MODEL_API_FAILED", httpStatus: 401, action: "API 키를 다시 확인하세요." });
   expect(diagnose(new SafeExecutionError("MODEL_NETWORK_FAILED"), "goal-selection").code).toBe("MODEL_NETWORK_FAILED");
   expect(diagnose(new Error("MODEL_OUTPUT_TRUNCATED"), "model-plan").code).toBe("MODEL_OUTPUT_TRUNCATED");
+  expect(diagnose(new Error(`XML parse error: Missing required field: data-json ${secret}`), "model-plan")).toMatchObject({ code: "MODEL_STRUCTURED_OUTPUT_MISSING", phase: "model-plan" });
+  expect(JSON.stringify(diagnose(new Error(`Missing required field: data-json ${secret}`), "input-confirmation"))).not.toContain(secret);
 });
 
 it("provider rejection keeps safe HTTP details before Midscene wraps the exception", async () => {
