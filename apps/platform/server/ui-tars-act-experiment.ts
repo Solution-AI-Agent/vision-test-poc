@@ -17,6 +17,16 @@ export const orderScenario = {
   requiredInputs:["2","김성지","test@gmail.com"],
 };
 export const experimentLimits = {maxCalls:20,maxActions:12,maxSeconds:180};
+// Diagnostic only (not a replacement for the order, not an app step split): the single quantity clause of the
+// user's original task on a fresh Store D page, to separate single-input ability from long task/history effects.
+// The task is a verbatim substring of orderScenario.task; the expected result is derived for this clause (not user text).
+export const quantityClauseScenario = {
+  url:orderScenario.url,
+  task:"수량을 2로 입력한다.",
+  expected:"수량 칸의 값이 2로 보인다.",
+  requiredInputs:[orderScenario.requiredInputs[0]],
+};
+export const quantityClauseLimits = {maxCalls:6,maxActions:4,maxSeconds:90};
 // Optional comparison variant (off by default): one general input-state rule for every field, appended to the
 // aiAct planning context only. No scenario values, coordinates or DOM; the user's task text is not touched.
 export const inputStateGuidance = "입력칸 공통 규칙: 입력칸 안의 흐린 예시 문구(placeholder)는 입력값이 아니며 그 칸은 빈 칸이다. 요구된 값을 직접 입력하기 전에는 입력을 완료했다고 판단하지 않는다. 삭제한 뒤에도 같은 예시 문구가 보이면 삭제를 반복하지 말고 요구된 값을 입력한다.";

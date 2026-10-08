@@ -4,7 +4,7 @@ import path from "node:path";
 import type {Page} from "playwright";
 import {defaults} from "./domain";
 import {artifactsDir} from "./runner";
-import {experimentLimits,inputStateGuidance,orderScenario,playwrightKeyName,runUiTarsActExperiment,uiTarsActAgentOptions} from "./ui-tars-act-experiment";
+import {experimentLimits,inputStateGuidance,orderScenario,playwrightKeyName,quantityClauseLimits,quantityClauseScenario,runUiTarsActExperiment,uiTarsActAgentOptions} from "./ui-tars-act-experiment";
 import {inputSchema} from "./domain";
 import {makeRun} from "./runner";
 
@@ -241,4 +241,21 @@ it("input-guidance variant sends the general input-state rule in the aiAct plann
   // Midscene trims the rendered context, so the baseline loses the default context's trailing space; the clock line differs per run.
   const same = (t:string) => t.replace(/current time: [^(]+/gi,"current time: T ");
   expect(b.map(x=>x.map(t=>same(t.replace(" \n"+inputStateGuidance,""))))).toEqual(a.map(x=>x.map(same)));
+}, 60000);
+
+it("quantity-clause diagnostic sends only the verbatim clause under 6 calls / 4 actions / 90s and keeps verdicts separate", async () => {
+  expect(orderScenario.task).toContain(quantityClauseScenario.task);
+  const mock = provider([happy[1],happy[2],happy[3],"Thought: 완료\nAction: finished(content='완료')"]);
+  const {report} = await run(mock,{scenario:quantityClauseScenario},quantityClauseLimits);
+  const planning = mock.bodies.filter(b=>JSON.stringify(b).includes("## Action Space"));
+  const text = JSON.stringify(planning[0]);
+  expect(text).toContain(`<user_instruction>${quantityClauseScenario.task}</user_instruction>`);
+  expect(text).not.toContain("김성지");expect(text).not.toContain("test@gmail.com");expect(text).not.toContain(inputStateGuidance);
+  expect(report).toMatchObject({limits:{maxCalls:6,maxActions:4,maxSeconds:90},prompt:{variant:"baseline",generalGuidance:null},
+    status:"model-finished-needs-review",orderCompletion:{status:"needs-independent-review"},inputs:{typedValues:["2"],requiredTyped:{"2":true}}});
+  expect(report.counts).toMatchObject({calls:5,actions:3});
+  // A model that keeps clicking the same field ends at the 4-action limit as incomplete.
+  const looping = await run(provider([happy[1]]),{scenario:quantityClauseScenario},quantityClauseLimits);
+  expect(looping.report).toMatchObject({status:"limited-incomplete",reason:"행동 한도 도달 (4회)",assertion:{status:"not-run"}});
+  expect(looping.report.counts).toMatchObject({calls:5,actions:4,executedActions:4});
 }, 60000);
